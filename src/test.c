@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "../header/test2.h"
 
-main(){
+void main(){
   printf("Hello World\n");
-
+  bonjour();
 }
