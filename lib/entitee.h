@@ -80,4 +80,4 @@ void init_joueur(joueur_t* joueur, int pv, int attaque, int x, int y);
 
 void init_monstre(monstre_t* monstre, int pv, int attaque, int x, int y, int niveau);
 
-void init_nonCombattant(nonCombattant_t* nonCombattant)
+void init_nonCombattant(nonCombattant_t* nonCombattant, int id, float x, float y);
