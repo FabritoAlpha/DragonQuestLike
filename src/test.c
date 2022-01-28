@@ -1,4 +1,4 @@
-#include  "../header/test2.h"
+#include  "../lib/test2.h"
 
 int main(){
  	bonjour();
