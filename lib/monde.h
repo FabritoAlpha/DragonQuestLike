@@ -9,11 +9,11 @@
 #include "entitee.h"
 
 typedef struct{
-
-} t_objet;
-
-typedef struct{
-
+	monstre_t ** monstres;
+	nonCombattant_t ** coffre;
+	nonCombattant_t ** personnages;
+	int largeur;
+	int longueur;
 } t_salle;
 
 typedef struct{
