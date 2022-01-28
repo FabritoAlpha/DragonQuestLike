@@ -1,7 +1,7 @@
 # Makefile du projet.
 # Définition des répertoires de travail.
 SRC=./src
-HEAD=./header
+LIB=./lib
 OBJ=./obj
 BIN=./bin
 
@@ -14,7 +14,7 @@ all: test
 test: $(OBJ)/test.o $(OBJ)/test2.o
 	$(CC) $(OBJ)/test.o $(OBJ)/test2.o -o $(BIN)/test -lm
 
-$(OBJ)/test.o: $(SRC)/test.c $(HEAD)/test2.h
+$(OBJ)/test.o: $(SRC)/test.c $(LIB)/test2.h
 	$(CC) -c $(SRC)/test.c -o $(OBJ)/test.o -lm
 
 $(OBJ)/test2.o: $(SRC)/test2.c
