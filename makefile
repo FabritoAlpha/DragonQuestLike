@@ -36,18 +36,12 @@ test_entitee: $(OBJ)/test_entitee.o $(OBJ)/entitee.o
 $(OBJ)/test_entitee.o: $(TEST)/test_entitee.c
 	$(CC) $(CFLAGS) -c ./$< -o $@  -lm
 
-$(OBJ)/entitee.o: $(SRC)/entitee.c
-	$(CC) $(CFLAGS) -c ./$< -o $@  -lm
-
 monde: test_monde
 
 test_monde: $(OBJ)/test_monde.o $(OBJ)/monde.o
 	$(CC) $(CFLAGS) ./$^ -o $(BIN)/$@ -lm
 
 $(OBJ)/test_monde.o: $(TEST)/test_monde.c $(LIB)/monde.h $(LIB)/entitee.h
-	$(CC) $(CFLAGS) -c ./$< -o $@  -lm
-
-$(OBJ)/monde.o: $(SRC)/monde.c
 	$(CC) $(CFLAGS) -c ./$< -o $@  -lm
 
 jeu: test_jeu
