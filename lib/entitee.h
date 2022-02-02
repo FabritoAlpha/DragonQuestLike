@@ -17,7 +17,8 @@
   * \brief représentation d'une entitee combattante
 */
 typedef struct{
-  int pv; /**< nombre de point de vie */
+  int pvMax; /**< nombre de point de vie max */
+  int pvCour; /**< nombre de point de vie actuelle*/
   int attaque; /**< valeur de ses points d'attaques */
   int vitesse;
   float x; /**< possition sur l'axe des abscisses */

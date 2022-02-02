@@ -5,7 +5,7 @@
   * \brief Test les fonctions d'entitees
   * \author Anna Béranger, Arthur Fabre, Alex Choux
 */
-void main(){
+int main(){
     printf("Lancement du test unitaire pour les entitées\n");
     printf("\n***\n");
     printf("Création de l'entitée joueur");
