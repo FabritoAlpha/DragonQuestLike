@@ -38,7 +38,10 @@ void en_haut(combattant_t* entitee){
     combattant->y = (combattant->y)-conbattant->vitesse;
 }
 
-int niveau
+/**
+  * \fn joueur_t creer_joueur()
+  * \brief La fonction créer le joueur.
+*/
 joueur_t creer_joueur(){
     joueur_t * player = NULL;
     player = malloc(sizeof(joueur_t));
@@ -50,7 +53,13 @@ joueur_t creer_joueur(){
     player->objet_equipe=NULL;
     return player;
 }
-
+/**
+  * \fn void init_joueur(joueur_t* joueur, int pv, int attaque, int vitesse, int x, int y)
+  * \param joueur entitée à déplacer.
+  * \param pv entitée à déplacer.
+  * \param attaque entitée à déplacer.
+  * \brief déplacement d'une entitée en haut selon un pas.
+*/
 void init_joueur(joueur_t* joueur, int pv, int attaque, int vitesse, int x, int y){
   joueur->combattant->pv=pv;
   joueur->combattant->attaque=attaque;
