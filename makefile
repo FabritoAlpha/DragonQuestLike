@@ -41,7 +41,7 @@ monde: test_monde
 test_monde: $(OBJ)/test_monde.o 
 	$(CC) $(CFLAGS) -c ./$< -o $(BIN)/$@ -lm
 
-$(OBJ)/test_monde.o: $(TEST)/test_monde.c $(LIB)/entitee.h
+$(OBJ)/test_monde.o: $(TEST)/test_monde.c $(LIB)/monde.h $(LIB)/entitee.h
 	$(CC) $(CFLAGS) -c ./$< -o $@  -lm
 
 jeu: test_jeu
