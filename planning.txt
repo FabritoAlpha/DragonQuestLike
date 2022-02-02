@@ -81,12 +81,14 @@ Microplanning:
 		init monde
 		test_monde.c
 		mettre en place sdl-image et sdl-ttf
+		recherche images
+		affichage image jeu
 
 14 février - 20 février:
 	Tout le monde: 
 		microplanning	
 	Arthur: 
-		affichage menu et texte (sdl-ttf)
+		menu affichage dans le terminal
 	Alex: 
 		écriture de l'histoire
 		création du fichier intéraction avec perso et coffre
@@ -104,5 +106,14 @@ Microplanning:
 		gestion des combats
 		jeu_test.c
 	Anna: 
-		fonction de sauvegarde dans un fichier txt
 		initialisation par fichier de sauvegarde txt
+		affichage menu et texte avec sdl-ttf
+		
+:
+	Tout le monde: 
+		microplanning	
+	Arthur: 
+		fonction de sauvegarde dans un fichier txt
+	Alex: 
+	Anna: 
+
