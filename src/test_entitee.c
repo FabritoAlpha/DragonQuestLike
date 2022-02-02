@@ -10,13 +10,13 @@ void main(){
     printf("\n***\n");
     printf("Création de l'entitée joueur");
     joueur_t PlayerOne ;
-    int pv,attaque,vitesse,x,y;
+    int pvCour,pvMax,attaque,vitesse,x,y;
     PlayerOne = creer_joueur();
     printf("Initialisation du joueur\n");
-    printf("Saisir pv,attaque,vitesse,x,y\n")
+    printf("Saisir pv,attaque,vitesse,x,y\n");
     scanf("%d%d%d%d%d",&pvMax,&pvCour,&attaque,&vitesse,&x,&y);
-    init_joueur(&PlayerOne,pv,pvCour,attaque,vitesse,x,y);
+    init_joueur(&PlayerOne,pvMax,pvCour,attaque,vitesse,x,y);
     printf("Affichage des valeurs du joueur \n");
-    prinft("Les pv max du joueur sont %d",PlayerOne->combattant->pvMax);
+    printf("Les pv max du joueur sont %d",PlayerOne.combattant->pvMax);
 
 }

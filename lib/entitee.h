@@ -9,9 +9,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define TAILLE_INVENTAIRE 0;
-#define NB_EQUIPEMENT 0;
-#define PAS 1
+#define TAILLE_INVENTAIRE 0
+#define NB_EQUIPEMENT 0
 
 /**
   * \struct combattant_t
@@ -45,7 +44,7 @@ typedef struct{
   int inventaire[TAILLE_INVENTAIRE]; /**< id des objets en possession du joueur */
   int objet_equipe[NB_EQUIPEMENT]; /**< id des objets équipés par le joueur */
 
-} joueur_t;
+}joueur_t;
 
 /**
   * \struct monstre_t
@@ -74,13 +73,13 @@ typedef struct{
   * \param entitee entitée à déplacer.
   * \brief déplacement d'une entitée à gauche selon un PAS.
 */
-void a_gauche(combattant_t* entitee, int PAS);
+void a_gauche(combattant_t* entitee);
 
-void a_droite(combattant_t* entitee, int PAS);
+void a_droite(combattant_t* entitee);
 
-void en_bas(combattant_t* entitee, int PAS);
+void en_bas(combattant_t* entitee);
 
-void en_haut(combattant_t* entitee, int PAS);
+void en_haut(combattant_t* entitee);
 
 joueur_t creer_joueur();
 

@@ -12,7 +12,7 @@
   * \brief déplacement d'une entitée à gauche selon un pas.
 */
 void a_gauche(combattant * entitee){
-    combattant->x = (combattant->x)-conbattant->vitesse;
+    entitee->x = (entitee->x)-entitee->vitesse;
 }
 /**
   * \fn void a_droite(combattant_t*)
@@ -20,7 +20,7 @@ void a_gauche(combattant * entitee){
   * \brief déplacement d'une entitée à droite selon un pas.
 */
 void a_droite(combattant_t* entitee){
-    combattant->x = (combattant->x)+conbattant->vitesse;
+    entitee->x = (entitee->x)+entitee->vitesse;
 }
 /**
   * \fn void en_bas(combattant_t*)
@@ -28,7 +28,7 @@ void a_droite(combattant_t* entitee){
   * \brief déplacement d'une entitée en bas selon un pas.
 */
 void en_bas(combattant_t* entitee){
-    combattant->y = (combattant->y)+conbattant->vitesse;
+    entitee->y = (entitee->y)+entitee->vitesse;
 }
 /**
   * \fn void en_haut(combattant_t*)
@@ -36,7 +36,7 @@ void en_bas(combattant_t* entitee){
   * \brief déplacement d'une entitée en haut selon un pas.
 */
 void en_haut(combattant_t* entitee){
-    combattant->y = (combattant->y)-conbattant->vitesse;
+    entitee->y = (entitee->y)-entitee->vitesse;
 }
 
 /**
