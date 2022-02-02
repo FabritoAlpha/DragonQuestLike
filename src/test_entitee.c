@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <entitee.h>
+#include "../lib/entitee.h"
 /**
   * \file test_entitee.c
   * \brief Test les fonctions d'entitees
