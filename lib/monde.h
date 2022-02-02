@@ -11,8 +11,10 @@
 #include <stdio.h>
 #include "entitee.h"
 
-#define NB_SALLES 2;
-#define NB_ZONES 1;
+#define NB_SALLES 4
+#define NB_ZONES 1
+#define NB_MONSTRES_SALLE 1
+#define NB_PERSO_SALLE 1
 
 /**
 	*\struct salle_t
@@ -20,9 +22,9 @@
 */
 typedef struct{
 	monstre_t ** monstres; /**< Liste des monstres de la salle (peut être vide)*/
-	int nb_monstres; /**< Nombre de monstres que contient la salle */
-	nonCombattant_t ** coffre; /**< Liste des coffres de la salle (peut être vide)*/
-	nonCombattant_t ** persos;/**< Liste des personnages non joueurs de la salle (peut être vide) */
+	//int nb_monstres; /**< Nombre de monstres que contient la salle */
+	nonCombattant_t * coffre; /**< coffre de la salle (peut être vide)*/
+	nonCombattant_t ** perso;/**< Liste des personnages non joueurs de la salle (peut être vide) */
 	int difficulte;/**< Entier qui représente le niveau de difficulté de la salle */
 	int num_salle; /**< Numéro de la salle dans la zone */
 	//int largeur; à voir si on en a besoin
@@ -47,54 +49,26 @@ typedef struct{
 	zone_t ** zones; /**< Liste des zones composant le monde */
 } monde_t;
 
-/**
-	*\fn void creer_monde(monde_t *)
-	*\brief allocation de la mémoire nécessaire au monde
-	*\param monde environnement global du jeu
-*/
-void creer_monde(monde_t * monde);
+int existe_salle(salle_t* salle);
+int existe_zone(zone_t* zone);
+int existe_monde(monde_t* monde);
 
-/**
-	*\fn void creer_zone(zone_t *)
-	*\brief allocation de la mémoire nécessaire à une zone
-	*\param zone une zone du monde
-*/
-void creer_zone(zone_t * zone);
+salle_t* creer_salle();
+zone_t * creer_zone();
+monde_t * creer_monde();
 
-/**
-	*\fn void creer_salle(salle_t *)
-	*\brief allocation de la mémoire nécessaire à une salle
-	*\param zone une salle d'une zone
-*/
-void creer_salle(salle_t * salle);
 
-/**
-	*\fn void detruire_monde(monde_t **)
-	*\brief libération de la mémoire allouée au monde lorsque la partie est terminée
-	*\param monde environnement global du jeu
-*/
 void detruire_monde(monde_t ** monde);
-
-/**
-	*\fn void detruire_zone(zone_t **)
-	*\brief libération de la mémoire allouée à une zone du monde lorsque la partie est terminée
-	*\param monde une zone du monde
-*/
 void detruire_zone(zone_t ** zone);
-
-/**
-	*\fn void detruire_salle(salle_t **)
-	*\brief libération de la mémoire allouée à une salle d'une zone lorsque la partie est terminée
-	*\param monde une salle d'une zone
-*/
 void detruire_salle(salle_t ** salle);
 
 /**
-	*\fn void init_monde(monde_t *)
+	*\fn void init_monde(monde_t * monde, FILE* fichier_sauvegarde)
 	*\brief initialisation du monde
 	*\param monde environnement global du jeu
+	*\param fichier_sauvegarde fichier avec les données d'initialisation
 */
-void init_monde(monde_t * monde);
+void init_monde(monde_t * monde, FILE* fichier_sauvegarde);
 
 /**
 	*\fn void init_zone(zone_t * zone, int num_zone)
