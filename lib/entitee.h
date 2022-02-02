@@ -84,7 +84,7 @@ void en_haut(combattant_t* entitee, int PAS);
 
 joueur_t creer_joueur();
 
-void init_joueur(joueur_t* joueur, int pv, int attaque, int vitesse, int x, int y);
+void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, int x, int y);
 
 void init_monstre(monstre_t* monstre, int pv, int attaque, int vitesse, int x, int y, int niveau, int type);
 

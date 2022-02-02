@@ -3,6 +3,7 @@
   * \brief Contient les fonctions liées aux entitées
   * \author Anna Béranger, Arthur Fabre, Alex Choux
 */
+#include <stdio.h>
 #include  "../lib/entitee.h"
 
 /**
@@ -54,14 +55,19 @@ joueur_t creer_joueur(){
     return player;
 }
 /**
-  * \fn void init_joueur(joueur_t* joueur, int pv, int attaque, int vitesse, int x, int y)
-  * \param joueur entitée à déplacer.
-  * \param pv entitée à déplacer.
-  * \param attaque entitée à déplacer.
-  * \brief déplacement d'une entitée en haut selon un pas.
+  * \fn void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, int x, int y)
+  * \param joueur entitée à initialiser.
+  * \param pvMax entitée à initialiser.
+  * \param pvCour entitée à initialiser.
+  * \param attaque entitée à initialiser.
+  * \param vitesse entitée à initialiser.
+  * \param x entitée à initialiser.
+  * \param y entitée à initialiser.
+  * \brief Initialisation du joueur avec des parametres.
 */
-void init_joueur(joueur_t* joueur, int pv, int attaque, int vitesse, int x, int y){
-  joueur->combattant->pv=pv;
+void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, int x, int y){
+  joueur->combattant->pvMax=pvMax;
+  joueur->combattant->pvCour=pvCour;
   joueur->combattant->attaque=attaque;
   joueur->combattant->vitesse=vitesse;
   joueur->combattant->x=x;
