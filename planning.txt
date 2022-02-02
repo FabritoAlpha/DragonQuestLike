@@ -1,0 +1,108 @@
+Planning
+
+Macroplanning: https://docs.google.com/spreadsheets/d/1ef4WqBX_j6s_sS7xId5KBBCj4vFqkOIw-Li9mVlAPKU/edit?usp=sharing
+
+Microplanning:
+
+17 janvier - 23 janvier : 
+	Tout le monde: 
+		macroplanning
+		création et connexion au dépôt git
+	Arthur: 
+		makefile
+	Alex: 
+		makefile
+	Anna: 
+		création des répertoires et fichiers
+
+24 janvier - 30 janvier :
+	Tout le monde: 
+		définitions des structures
+	Arthur: 
+		fonctions de joueur.h et joueur.c
+	Alex: 
+		fonctions de monde.h et monde.c
+		commentaires doxygen
+	Anna: 
+		fonctions de monde.h et monde.c
+		commentaires doxygen
+
+31 janvier - 6 février :
+	Tout le monde: 
+		
+	Arthur: 
+		fonctions création et initialisation combattant
+		fonctions création et initialisation joueur
+		test_entitee.c
+	Alex: 
+		makefile avec les tests
+		aide Arthur et Anna
+	Anna: 
+		création fichiers test
+		fonctions création et destruction salle
+		fonctions création et destruction zone
+		fonctions création et destruction monde
+		test_monde.c
+
+31 janvier - 6 février :
+	Tout le monde: 
+		
+	Arthur: 
+		fonctions création et initialisation combattant
+		fonctions création et initialisation joueur
+		test_entitee.c
+	Alex: 
+		makefile avec les tests
+		aide Arthur et Anna
+	Anna: 
+		création fichiers test
+		fonctions création et destruction salle
+		fonctions création et destruction zone
+		fonctions création et destruction monde
+		test_monde.c
+		
+7 février - 13 février :
+	Tout le monde: 
+		prototype graphique du jeu
+		
+	Arthur: 
+		fonctions création et initialisation non combattant
+		destruction joueur
+		destruction monstre
+		destruction non combattant
+		test_entitee.c
+	Alex: 
+		définition de la librairie jeu.h
+		initialisation du jeu
+		test_jeu.c
+	Anna: 
+		initialisation salle
+		init zone
+		init monde
+		test_monde.c
+		mettre en place sdl-image et sdl-ttf
+
+14 février - 20 février:
+	Tout le monde: 
+		microplanning	
+	Arthur: 
+		affichage menu et texte (sdl-ttf)
+	Alex: 
+		écriture de l'histoire
+		création du fichier intéraction avec perso et coffre
+	Anna: 
+		gestion des collisions
+		gestion des intéractions
+		test_jeu.c
+
+21 février - 28 février:
+	Tout le monde: 
+		microplanning	
+	Arthur: 
+		gestion de l'inventaire du joueur
+	Alex: 
+		gestion des combats
+		jeu_test.c
+	Anna: 
+		fonction de sauvegarde dans un fichier txt
+		initialisation par fichier de sauvegarde txt
