@@ -31,7 +31,7 @@ $(OBJ)/entitee.o: $(SRC)/entitee.c $(LIB)/entitee.h
 entitee: test_entitee
 
 test_entitee: $(OBJ)/test_entitee.o 
-	$(CC) $(CFLAGS) -c ./$< -o $(BIN)/$@ -lm
+	$(CC) $(CFLAGS) ./$< -o $(BIN)/$@ -lm
 
 $(OBJ)/test_entitee.o: $(TEST)/test_entitee.c
 	$(CC) $(CFLAGS) -c ./$< -o $@  -lm
@@ -39,7 +39,7 @@ $(OBJ)/test_entitee.o: $(TEST)/test_entitee.c
 monde: test_monde
 
 test_monde: $(OBJ)/test_monde.o 
-	$(CC) $(CFLAGS) -c ./$< -o $(BIN)/$@ -lm
+	$(CC) $(CFLAGS) ./$< -o $(BIN)/$@ -lm
 
 $(OBJ)/test_monde.o: $(TEST)/test_monde.c $(LIB)/monde.h $(LIB)/entitee.h
 	$(CC) $(CFLAGS) -c ./$< -o $@  -lm
@@ -47,7 +47,7 @@ $(OBJ)/test_monde.o: $(TEST)/test_monde.c $(LIB)/monde.h $(LIB)/entitee.h
 jeu: test_jeu
 
 test_jeu: $(OBJ)/test_jeu.o 
-	$(CC) $(CFLAGS) -c ./$< -o $(BIN)/$@ -lm
+	$(CC) $(CFLAGS) ./$< -o $(BIN)/$@ -lm
 
 $(OBJ)/test_jeu.o: $(TEST)/test_jeu.c
 	$(CC) $(CFLAGS) -c ./$< -o $@  -lm
