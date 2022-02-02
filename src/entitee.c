@@ -11,7 +11,7 @@
   * \param entitee entitée à déplacer.
   * \brief déplacement d'une entitée à gauche selon un pas.
 */
-void a_gauche(combattant * entitee){
+void a_gauche(combattant_t * entitee){
     entitee->x = (entitee->x)-entitee->vitesse;
 }
 /**
@@ -39,21 +39,24 @@ void en_haut(combattant_t* entitee){
     entitee->y = (entitee->y)-entitee->vitesse;
 }
 
+
 /**
   * \fn joueur_t creer_joueur()
   * \brief La fonction créer le joueur.
 */
-joueur_t creer_joueur(){
-    joueur_t * player = NULL;
+joueur_t * creer_joueur(){
+    joueur_t * player;
     player = malloc(sizeof(joueur_t));
     player->combattant= malloc(sizeof(combattant_t));
-    player->combattant=NULL;
+
     player->inventaire= malloc(sizeof(int)*TAILLE_INVENTAIRE);
-    player->inventaire=NULL;
+
     player->objet_equipe=malloc(sizeof(int)*NB_EQUIPEMENT);
-    player->objet_equipe=NULL;
+
     return player;
 }
+
+
 /**
   * \fn void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, int x, int y)
   * \param joueur entitée à initialiser.
@@ -65,12 +68,12 @@ joueur_t creer_joueur(){
   * \param y entitée à initialiser.
   * \brief Initialisation du joueur avec des parametres.
 */
-void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, int x, int y){
+void init_joueur(joueur_t * joueur, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau){
   joueur->combattant->pvMax=pvMax;
   joueur->combattant->pvCour=pvCour;
   joueur->combattant->attaque=attaque;
   joueur->combattant->vitesse=vitesse;
   joueur->combattant->x=x;
   joueur->combattant->y=y;
-  joueur->combattant->niveau=1;
+  joueur->combattant->niveau=niveau;
 }

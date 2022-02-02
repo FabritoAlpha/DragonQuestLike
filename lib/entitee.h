@@ -23,6 +23,7 @@ typedef struct{
   int vitesse;
   float x; /**< possition sur l'axe des abscisses */
   float y; /**< position sur l'axe des ordonnées */
+  int niveau; /**< niveau du combattant */
 } combattant_t;
 
 /**
@@ -42,8 +43,8 @@ typedef struct{
 */
 typedef struct{
   combattant_t* combattant; /**< points de vie et position */
-  int inventaire[TAILLE_INVENTAIRE]; /**< id des objets en possession du joueur */
-  int objet_equipe[NB_EQUIPEMENT]; /**< id des objets équipés par le joueur */
+  int ** inventaire; /**< id des objets en possession du joueur */
+  int ** objet_equipe; /**< id des objets équipés par le joueur */
 
 }joueur_t;
 
@@ -66,7 +67,6 @@ typedef struct{
   float x; /**< possition sur l'axe des abscisses */
   float y; /**< position sur l'axe des ordonnées */
   int visite; /**< 1: le joueur a déjà intéragi avec l'entité */
-  int niveau; /**< niveau du combattant */
 } nonCombattant_t;
 
 /**
@@ -82,11 +82,12 @@ void en_bas(combattant_t* entitee);
 
 void en_haut(combattant_t* entitee);
 
-joueur_t creer_joueur();
+joueur_t * creer_joueur();
 
-void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, int x, int y);
 
-void init_monstre(monstre_t* monstre, int pv, int attaque, int vitesse, int x, int y, int niveau, int type);
+void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau);
+
+void init_monstre(monstre_t* monstre, int pv, int attaque, int vitesse, float x, float y, int niveau, int type);
 
 void init_nonCombattant(nonCombattant_t* nonCombattant, int id, float x, float y);
 
