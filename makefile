@@ -4,6 +4,7 @@ SRC=./src
 LIB=./lib
 OBJ=./obj
 BIN=./bin
+TEST=./test
 
 #Compilateur gcc
 
@@ -32,7 +33,7 @@ entitee: test_entitee
 test_entitee: $(OBJ)/test_entitee.o 
 	$(CC) $(CFLAGS) -c ./$< -o $@ -lm
 
-$(OBJ)/test_entitee.o: $(SRC)/test_entitee.c
+$(OBJ)/test_entitee.o: $(TEST)/test_entitee.c
 	$(CC) $(CFLAGS) -c ./$< -o $@  -lm
 
 monde: test_monde
@@ -40,7 +41,7 @@ monde: test_monde
 test_monde: $(OBJ)/test_monde.o 
 	$(CC) $(CFLAGS) -c ./$< -o $@ -lm
 
-$(OBJ)/test_monde.o: $(SRC)/test_monde.c
+$(OBJ)/test_monde.o: $(TEST)/test_monde.c
 	$(CC) $(CFLAGS) -c ./$< -o $@  -lm
 
 jeu: test_jeu
@@ -48,5 +49,5 @@ jeu: test_jeu
 test_jeu: $(OBJ)/test_jeu.o 
 	$(CC) $(CFLAGS) -c ./$< -o $@ -lm
 
-$(OBJ)/test_jeu.o: $(SRC)/test_jeu.c
+$(OBJ)/test_jeu.o: $(TEST)/test_jeu.c
 	$(CC) $(CFLAGS) -c ./$< -o $@  -lm
