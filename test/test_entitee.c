@@ -16,8 +16,8 @@ int main(){
     printf("Initialisation du joueur\n");
     printf("Saisir pvMax,pvCour,attaque,vitesse,x,y,niveau(XP)\n");
     scanf("%d%d%d%d%f%f%d",&pvMax,&pvCour,&attaque,&vitesse,&x,&y,&niveau);
-    printf("Pas d'erreur de saisi\n");
-    init_joueur(PlayerOne,pvMax,pvCour,attaque,vitesse,x,y);
+    //printf("Pas d'erreur de saisi\n");
+    init_joueur(PlayerOne,pvMax,pvCour,attaque,vitesse,x,y,niveau);
     printf("Affichage des valeurs du joueur \n");
     printf("Les pv max du joueur sont %d\n",PlayerOne->combattant->pvMax);
     printf("Les pv max du joueur sont %d\n",PlayerOne->combattant->pvCour);
@@ -26,4 +26,45 @@ int main(){
     printf("Les pv max du joueur sont %f\n",PlayerOne->combattant->x);
     printf("Les pv max du joueur sont %f\n",PlayerOne->combattant->y);
     printf("Les pv max du joueur sont %d\n",PlayerOne->combattant->niveau);
+    printf("Déstruction du joueur\n");
+    printf("\n***\n");
+    detruire_joueur(&PlayerOne);
+    printf("\n***\n");
+    printf("Création de l'entitée monstre");
+    monstre_t * MonsterOne ;
+    int type;
+    MonsterOne = creer_monstre();
+    printf("Initialisation du joueur\n");
+    printf("Saisir le type du monstre");
+    scanf("%d",&type);
+    init_monstre(MonsterOne,pvMax,pvCour,attaque,vitesse,x,y,niveau,type);
+    printf("Affichage des valeurs du joueur \n");
+    printf("Les pv max du joueur sont %d\n",MonsterOne->combattant->pvMax);
+    printf("Les pv max du joueur sont %d\n",MonsterOne->combattant->pvCour);
+    printf("Les pv max du joueur sont %d\n",MonsterOne->combattant->attaque);
+    printf("Les pv max du joueur sont %d\n",MonsterOne->combattant->vitesse);
+    printf("Les pv max du joueur sont %f\n",MonsterOne->combattant->x);
+    printf("Les pv max du joueur sont %f\n",MonsterOne->combattant->y);
+    printf("Les pv max du joueur sont %d\n",MonsterOne->combattant->niveau);
+    printf("Les pv max du joueur sont %d\n",MonsterOne->type);
+    printf("Déstruction du monstre\n");
+    printf("\n***\n");
+    detruire_monstre(&MonsterOne);
+    printf("\n***\n");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

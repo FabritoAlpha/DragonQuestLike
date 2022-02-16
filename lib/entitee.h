@@ -84,14 +84,17 @@ void en_haut(combattant_t* entitee);
 
 joueur_t * creer_joueur();
 
+monstre_t * creer_monstre();
 
 void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau);
 
-void init_monstre(monstre_t* monstre, int pv, int attaque, int vitesse, float x, float y, int niveau, int type);
+void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau,int type);
 
 void init_nonCombattant(nonCombattant_t* nonCombattant, int id, float x, float y);
 
+void detruire_joueur(joueur_t ** player);
 
+void detruire_monstre(monstre_t ** monster);
 
 
 
