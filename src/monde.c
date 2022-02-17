@@ -103,7 +103,7 @@ void detruire_monde(monde_t ** monde){
 */
 void detruire_zone(zone_t ** zone){
     for(int i = 0; i < NB_SALLES; i++){
-        detruire_salle((*zone)->salles[i]);
+        detruire_salle(&(*zone)->salles[i]);
     }
     free((*zone));
     (*zone) = NULL;
@@ -130,7 +130,7 @@ void detruire_salle(salle_t ** salle){
     (*salle) = NULL;
 }
 
-void init_monde(monde_t * monde, FILE* fichier_sauvegarde){
+void init_monde(monde_t * monde){
 
 }
 

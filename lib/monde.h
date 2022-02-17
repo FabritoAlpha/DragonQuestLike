@@ -68,7 +68,7 @@ void detruire_salle(salle_t ** salle);
 	*\param monde environnement global du jeu
 	*\param fichier_sauvegarde fichier avec les données d'initialisation
 */
-void init_monde(monde_t * monde, FILE* fichier_sauvegarde);
+void init_monde(monde_t * monde);
 
 /**
 	*\fn void init_zone(zone_t * zone, int num_zone)

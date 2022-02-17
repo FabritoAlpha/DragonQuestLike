@@ -10,7 +10,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "monde.h"
+#include "sdl2_fonctions.h"
+#include "images.h"
 
+#define SCREEN_WIDTH 1600
+#define SCREEN_HEIGHT 900
+
+void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde);
+void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, monde_t * monde);
+void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures);
 
 /**
 	*\struct salle_t
