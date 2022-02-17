@@ -28,7 +28,7 @@ void clean_images(images_t *textures){
 */
 
 void init_images(SDL_Renderer *renderer, images_t *textures){
-    textures->fond = load_image( "../rsrc/img/test.bmp",renderer);
+    textures->fond = load_image("../rsrc/img/test.bmp",renderer);
 }
 
 /**
