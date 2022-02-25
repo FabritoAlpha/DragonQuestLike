@@ -75,7 +75,7 @@ monstre_t * creer_monstre(){
 nonCombattant_t * creer_nonCombattant(){
   nonCombattant_t * nonCombat;
   nonCombat = malloc(sizeof(nonCombattant_t));
-  return nonCombat;
+  return(nonCombat);
 }
 
 /**
