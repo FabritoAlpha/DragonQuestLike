@@ -91,7 +91,7 @@ void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vites
 
 void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau,int type);
 
-void init_nonCombattant(nonCombattant_t* nonCombattant, int id, float x, float y);
+void init_nonCombattant(nonCombattant_t* nonCombattant, int id, float x, float y,int visite);
 
 void detruire_joueur(joueur_t ** player);
 
