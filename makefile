@@ -46,8 +46,8 @@ $(OBJ)/test_entitee.o: $(TEST)/test_entitee.c
 
 monde: test_monde
 
-test_monde: $(OBJ)/test_monde.o $(OBJ)/monde.o
-	$(CC) $(CFLAGS) ./$^ -o $(BIN)/$@ $(LIBS)
+test_monde: $(OBJ)/test_monde.o $(OBJ)/monde.o $(OBJ)/entitee.o
+	$(CC) $(CFLAGS) ./$< -o $(BIN)/$@ $(LIBS)
 
 $(OBJ)/test_monde.o: $(TEST)/test_monde.c $(LIB)/monde.h $(LIB)/entitee.h
 	$(CC) $(CFLAGS) -c ./$< -o $@  $(LIBS)
