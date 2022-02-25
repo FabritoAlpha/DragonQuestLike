@@ -47,6 +47,7 @@ typedef struct{
 */
 typedef struct{
 	zone_t ** zones; /**< Liste des zones composant le monde */
+	joueur_t* joueur; /**< joueur */
 } monde_t;
 
 int existe_salle(salle_t* salle);
