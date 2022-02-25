@@ -86,6 +86,8 @@ joueur_t * creer_joueur();
 
 monstre_t * creer_monstre();
 
+nonCombattant_t * creer_nonCombattant();
+
 void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau);
 
 void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau,int type);

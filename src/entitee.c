@@ -41,7 +41,7 @@ void en_haut(combattant_t* entitee){
 
 
 /**
-  * \fn joueur_t creer_joueur()
+  * \fn joueur_t * creer_joueur()
   * \brief La fonction créer le joueur.
 */
 joueur_t * creer_joueur(){
@@ -57,7 +57,7 @@ joueur_t * creer_joueur(){
 }
 
 /**
-  * \fn monstre_t creer_monstre()
+  * \fn monstre_t * creer_monstre()
   * \brief La fonction créer le joueur.
 */
 monstre_t * creer_monstre(){
@@ -68,14 +68,38 @@ monstre_t * creer_monstre(){
 }
 
 /**
+  * \fn nonCombattant_t * creer_nonCombattant()
+  * \brief La fonction créer une entitée non combattante.
+*/
+
+nonCombattant_t * creer_nonCombattant(){
+  nonCombattant_t * nonCombat;
+  nonCombat = malloc(sizeof(nonCombattant_t));
+  return nonCombat;
+}
+
+/**
   * \fn void detruire_joueur(joueur_t ** player)
   * \brief La fonction détruire le joueur.
 */
 void detruire_joueur(joueur_t ** player){
+  int i;
   free((*player)->combattant);
+  (*player)->combattant=NULL;
+  for(i=0;i<TAILLE_INVENTAIRE;i++){
+    free((*player)->inventaire[i]);
+    (*player)->inventaire[i]=NULL;
+  }
   free((*player)->inventaire);
+  (*player)->inventaire=NULL;
+  for(i=0;i<NB_EQUIPEMENT;i++){
+    free((*player)->objet_equipe[i]);
+    (*player)->objet_equipe[i]=NULL;
+  }
   free((*player)->objet_equipe);
+  (*player)->objet_equipe=NULL;
   free(*(player));
+  (*player)=NULL;
 }
 /**
   * \fn void detruire_monstre(monstre_t ** player)
