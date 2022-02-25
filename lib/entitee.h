@@ -97,6 +97,8 @@ void detruire_joueur(joueur_t ** player);
 
 void detruire_monstre(monstre_t ** monster);
 
+void detruire_nonCombattant(nonCombattant_t ** nonCombat);
+
 
 
 
