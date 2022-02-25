@@ -10,7 +10,7 @@
 
 
 int main(){
-    printf("ok");
+
     salle_t * salle = NULL;
     zone_t * zone = NULL;
     monde_t * monde = NULL;
@@ -21,21 +21,21 @@ int main(){
     else
         printf("erreur lors de la création de la salle\n\n");
 
-    /*zone = creer_zone();
+    zone = creer_zone();
     if(existe_zone(zone))
         printf("création de la zone réussie\n\n");
     else
         printf("erreur lors de la création de la zone\n\n");
 
-    //monde = creer_monde();
+    monde = creer_monde();
     if(existe_monde(monde))
         printf("création du monde réussie\n\n");
     else
-        printf("erreur lors de la création du monde\n\n");*/
+        printf("erreur lors de la création du monde\n\n");
 
     detruire_salle(&salle);
-    //detruire_zone(&zone);
-    //detruire_monde(&monde);
+    detruire_zone(&zone);
+    detruire_monde(&monde);
 
     return 0;
 

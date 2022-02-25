@@ -50,7 +50,7 @@ salle_t * creer_salle(){
     int i;
     salle_t * salle;
     salle = malloc(sizeof(salle_t));
-    
+
     salle->monstres = malloc(sizeof(monstre_t) * NB_MONSTRES_SALLE);
     for(i = 0; i < NB_MONSTRES_SALLE; i++){
         salle->monstres[i] = creer_monstre();
@@ -122,12 +122,12 @@ void detruire_monde(monde_t ** monde){
 */
 void detruire_zone(zone_t ** zone){
     for(int i = 0; i < NB_SALLES; i++){
-        detruire_salle(&(*zone)->salles[i]);
+        detruire_salle(&((*zone)->salles[i]));
     }
 
     free((*zone)->salles);
     (*zone)->salles = NULL;
-    
+
     free(*zone);
     (*zone) = NULL;
 }
@@ -139,7 +139,7 @@ void detruire_zone(zone_t ** zone){
 */
 void detruire_salle(salle_t ** salle){
     int i;
-    
+
     free((*salle)->coffre);
     (*salle)->coffre = NULL;
 
