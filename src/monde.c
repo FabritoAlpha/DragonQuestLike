@@ -111,7 +111,7 @@ void detruire_monde(monde_t ** monde){
 
     detruire_joueur(&(*monde)->joueur);
 
-    free((*monde));
+    free(*monde);
     (*monde) = NULL;
 }
 
@@ -125,10 +125,10 @@ void detruire_zone(zone_t ** zone){
         detruire_salle(&(*zone)->salles[i]);
     }
 
-    free(((*zone)->salles);
+    free((*zone)->salles);
     (*zone)->salles = NULL;
     
-    free((*zone));
+    free(*zone);
     (*zone) = NULL;
 }
 
@@ -139,14 +139,10 @@ void detruire_zone(zone_t ** zone){
 */
 void detruire_salle(salle_t ** salle){
     int i;
-<<<<<<< HEAD
     
     free((*salle)->coffre);
     (*salle)->coffre = NULL;
 
-=======
-    detruire_nonCombattant(&(*salle)->coffre);
->>>>>>> ad2395bbb5e7ce9c379b78cd3b6cc0334a5b2c54
     for(i = 0; i < NB_MONSTRES_SALLE; i++){
         detruire_monstre(&(*salle)->monstres[i]);
     }
