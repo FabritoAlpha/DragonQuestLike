@@ -107,10 +107,19 @@ void detruire_joueur(joueur_t ** player){
 */
 void detruire_monstre(monstre_t ** monster){
   free((*monster)->combattant);
-  free(*(monster));
+  (*monster)->combattant=NULL;
+  free(*monster);
+  (*monster)=NULL;
 
 }
-
+/**
+  * \fn void detruire_nonCombattant(nonCombattant_t ** nonCombat)
+  * \brief La fonction détruire un nonCombattant.
+*/
+void detruire_nonCombattant(nonCombattant_t ** nonCombat){
+  free(*nonCombat);
+  (*nonCombat)=NULL;
+}
 
 /**
   * \fn void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, int x, int y)
@@ -153,4 +162,19 @@ void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int v
   monster->combattant->y=y;
   monster->combattant->niveau=niveau;
   monster->type=type;
+}
+
+/**
+  * \fn void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,int visite)
+  * \param nonCombat entitée à initialiser.
+  * \param x entitée à initialiser.
+  * \param y entitée à initialiser.
+  * \param visite entitée à initialiser.
+  * \brief Initialisation du nonCombattant avec des parametres.
+*/
+void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,int visite){
+  nonCombat->id=id;
+  nonCombat->x=x;
+  nonCombat->y=y;
+  nonCombat->visite=visite;
 }

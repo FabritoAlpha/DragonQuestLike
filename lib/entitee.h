@@ -54,7 +54,6 @@ typedef struct{
 */
 typedef struct{
   combattant_t* combattant; /**< points de vie et position */
-
   int type; /**< correspond à son type 0=normal 1=boss */
 } monstre_t;
 
