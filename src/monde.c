@@ -47,6 +47,7 @@ int existe_monde(monde_t* monde){
 	*\return un pointeur sur un salle
 */
 salle_t * creer_salle(){
+    int i;
     salle_t * salle;
     salle = malloc(sizeof(salle_t));
     for(i = 0; i < NB_MONSTRES_SALLE; i++){
@@ -97,7 +98,7 @@ void detruire_monde(monde_t ** monde){
     for(int i = 0; i < NB_ZONES; i++){
         detruire_zone(&((*monde)->zones[i]));
     }
-    detruire_joueur((*monde)->joueur);
+    detruire_joueur(&(*monde)->joueur);
     free((*monde));
     (*monde) = NULL;
 }
@@ -125,7 +126,7 @@ void detruire_salle(salle_t ** salle){
     free((*salle)->coffre);
     (*salle)->coffre = NULL;
     for(i = 0; i < NB_MONSTRES_SALLE; i++){
-        detruire_monstre((*salle)->monstres[i]);
+        detruire_monstre(&(*salle)->monstres[i]);
     }
     for(i = 0; i < NB_PERSO_SALLE; i++){
         free((*salle)->perso[i]);
@@ -140,7 +141,7 @@ void init_monde(monde_t * monde){
 }
 
 void init_zone(zone_t * zone, int num_zone){
-  
+
 }
 
 void init_salle(salle_t * salle, int num_salle){
