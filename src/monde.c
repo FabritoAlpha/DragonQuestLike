@@ -50,12 +50,17 @@ salle_t * creer_salle(){
     int i;
     salle_t * salle;
     salle = malloc(sizeof(salle_t));
+    
+    salle->monstres = malloc(sizeof(monstre_t) * NB_MONSTRES_SALLE);
     for(i = 0; i < NB_MONSTRES_SALLE; i++){
         salle->monstres[i] = creer_monstre();
     }
+
+    salle->perso = malloc(sizeof(monstre_t) * NB_PERSO_SALLE);
     for(i = 0; i < NB_PERSO_SALLE; i++){
         salle->perso[i] = creer_nonCombattant();
     }
+
     salle->coffre = creer_nonCombattant();
     return salle;
 }
@@ -68,6 +73,7 @@ salle_t * creer_salle(){
 zone_t * creer_zone(){
     zone_t * zone;
     zone = malloc(sizeof(zone_t));
+    zone->salles = malloc(sizeof(salle_t) * NB_SALLES);
     for(int i = 0; i < NB_SALLES; i++){
         zone->salles[i] = creer_salle();
     }
@@ -82,6 +88,7 @@ zone_t * creer_zone(){
 monde_t * creer_monde(){
     monde_t * monde;
     monde = malloc(sizeof(monde_t));
+    monde->zones = malloc(sizeof(zone_t) * NB_ZONES);
     for(int i = 0; i < NB_ZONES; i++){
         monde->zones[i] = creer_zone();
     }
@@ -98,7 +105,12 @@ void detruire_monde(monde_t ** monde){
     for(int i = 0; i < NB_ZONES; i++){
         detruire_zone(&((*monde)->zones[i]));
     }
+
+    free((*monde)->zones);
+    (*monde)->zones = NULL;
+
     detruire_joueur(&(*monde)->joueur);
+
     free((*monde));
     (*monde) = NULL;
 }
@@ -112,6 +124,10 @@ void detruire_zone(zone_t ** zone){
     for(int i = 0; i < NB_SALLES; i++){
         detruire_salle(&(*zone)->salles[i]);
     }
+
+    free(((*zone)->salles);
+    (*zone)->salles = NULL;
+    
     free((*zone));
     (*zone) = NULL;
 }
@@ -123,16 +139,25 @@ void detruire_zone(zone_t ** zone){
 */
 void detruire_salle(salle_t ** salle){
     int i;
+    
     free((*salle)->coffre);
     (*salle)->coffre = NULL;
+
     for(i = 0; i < NB_MONSTRES_SALLE; i++){
         detruire_monstre(&(*salle)->monstres[i]);
     }
+
     for(i = 0; i < NB_PERSO_SALLE; i++){
-        free((*salle)->perso[i]);
-        (*salle)->perso[i] = NULL;
+        detruire_nonCombattant(&(*salle)->perso[i]);
     }
-    free((*salle));
+
+    free((*salle)->monstres);
+    (*salle)->monstres = NULL;
+
+    free((*salle)->perso);
+    (*salle)->perso= NULL;
+
+    free(*salle);
     (*salle) = NULL;
 }
 
