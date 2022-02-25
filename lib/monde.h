@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include "entitee.h"
 
+
 #define NB_SALLES 4
 #define NB_ZONES 1
 #define NB_MONSTRES_SALLE 1

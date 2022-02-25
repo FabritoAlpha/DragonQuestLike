@@ -123,14 +123,12 @@ void detruire_zone(zone_t ** zone){
 */
 void detruire_salle(salle_t ** salle){
     int i;
-    free((*salle)->coffre);
-    (*salle)->coffre = NULL;
+    detruire_nonCombattant(&(*salle)->coffre);
     for(i = 0; i < NB_MONSTRES_SALLE; i++){
         detruire_monstre(&(*salle)->monstres[i]);
     }
     for(i = 0; i < NB_PERSO_SALLE; i++){
-        free((*salle)->perso[i]);
-        (*salle)->perso[i] = NULL;
+        detruire_nonCombattant(&(*salle)->perso[i]);
     }
     free((*salle));
     (*salle) = NULL;
