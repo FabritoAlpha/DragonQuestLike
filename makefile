@@ -41,7 +41,7 @@ entitee: test_entitee
 test_entitee: $(OBJ)/test_entitee.o $(OBJ)/entitee.o
 	$(CC) $(CFLAGS) ./$^ -o $(BIN)/$@ $(LIBS)
 
-$(OBJ)/test_entitee.o: $(TEST)/test_entitee.c
+$(OBJ)/test_entitee.o: $(TEST)/test_entitee.c $(LIB)/entitee.h
 	$(CC) $(CFLAGS) -c ./$< -o $@  $(LIBS)
 
 monde: test_monde
@@ -49,15 +49,15 @@ monde: test_monde
 test_monde: $(OBJ)/test_monde.o $(OBJ)/monde.o $(OBJ)/entitee.o
 	$(CC) $(CFLAGS) ./$^ -o $(BIN)/$@ $(LIBS)
 
-$(OBJ)/test_monde.o: $(TEST)/test_monde.c $(LIB)/monde.h $(LIB)/entitee.h
+$(OBJ)/test_monde.o: $(TEST)/test_monde.c $(LIB)/monde.h 
 	$(CC) $(CFLAGS) -c ./$< -o $@  $(LIBS)
 
 jeu: test_jeu
 
-test_jeu: $(OBJ)/test_jeu.o
-	$(CC) $(CFLAGS) ./$< -o $(BIN)/$@ $(LIBS)
+test_jeu: $(OBJ)/test_jeu.o $(OBJ)/jeu.o $(OBJ)/monde.o $(OBJ)/entitee.o
+	$(CC) $(CFLAGS) ./$^ -o $(BIN)/$@ $(LIBS)
 
-$(OBJ)/test_jeu.o: $(TEST)/test_jeu.c
+$(OBJ)/test_jeu.o: $(TEST)/test_jeu.c $(LIB)/jeu.h
 	$(CC) $(CFLAGS) -c ./$< -o $@  $(LIBS)
 
 clean:
