@@ -46,5 +46,8 @@ void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, mond
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
     //on vide le renderer
     clear_renderer(renderer);
+
     fond_position(renderer, textures);
+
+    update_screen(renderer);
 }

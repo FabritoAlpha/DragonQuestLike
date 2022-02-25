@@ -119,6 +119,7 @@ void clear_renderer(SDL_Renderer *renderer){
     SDL_RenderClear(renderer);
 }
 
+
 /**
  * \fn void clean_sdl(SDL_Renderer *renderer,SDL_Window *window)
  * \brief libère la mémoire du renderer et de la fenêtre

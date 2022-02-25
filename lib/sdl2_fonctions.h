@@ -15,6 +15,8 @@ void clean_texture(SDL_Texture *texture);
 
 void clear_renderer(SDL_Renderer *renderer);
 
+void clear_texture(SDL_Texture *texture);
+
 void clean_sdl(SDL_Renderer *renderer,SDL_Window *window);
 
 #endif

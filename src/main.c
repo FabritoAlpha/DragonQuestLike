@@ -22,11 +22,11 @@ int main(){
     //mise en place du jeu (l'écran, le monde de jeu et les textures. )
     init(&window,&screen, &textures, &monde);
 
-    //faire boucle du jeu avec mise à jour jeu, évènement (handle event) et rafraichissement
+    //TO DO boucle du jeu avec mise à jour jeu, évènement (handle event) et rafraichissement
     while(fin == 0){
-      printf("diff de 0 pour continuer");
-      scanf("%d",&fin);
       rafraichir(screen, &monde, &textures);
+      printf("diff de 0 pour fermer la fenêtre: ");
+      scanf("%d",&fin);
     }
 
     // Nettoyer et quitter SDL
