@@ -59,3 +59,6 @@ test_jeu: $(OBJ)/test_jeu.o
 
 $(OBJ)/test_jeu.o: $(TEST)/test_jeu.c
 	$(CC) $(CFLAGS) -c ./$< -o $@  $(LIBS)
+
+clean:
+	rm -rf $(OBJ)/*.o
