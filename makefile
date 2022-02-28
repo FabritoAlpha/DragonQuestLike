@@ -49,7 +49,7 @@ monde: test_monde
 test_monde: $(OBJ)/test_monde.o $(OBJ)/monde.o $(OBJ)/entitee.o
 	$(CC) $(CFLAGS) ./$^ -o $(BIN)/$@ $(LIBS)
 
-$(OBJ)/test_monde.o: $(TEST)/test_monde.c $(LIB)/monde.h 
+$(OBJ)/test_monde.o: $(TEST)/test_monde.c $(LIB)/monde.h
 	$(CC) $(CFLAGS) -c ./$< -o $@  $(LIBS)
 
 jeu: test_jeu
@@ -62,3 +62,4 @@ $(OBJ)/test_jeu.o: $(TEST)/test_jeu.c $(LIB)/jeu.h
 
 clean:
 	rm -rf $(OBJ)/*.o
+	rm -rf $(BIN)/*
