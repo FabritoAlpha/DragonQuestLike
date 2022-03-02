@@ -14,7 +14,9 @@
 */
 
 void clean_images(images_t *textures){
+    printf("Je ne plante pas dans clean images avant clean_texture\n");
     clean_texture(textures->fond);
+    printf("Clean_textures se réalise 'correctement'\n");
     textures->fond = NULL;
 
 }

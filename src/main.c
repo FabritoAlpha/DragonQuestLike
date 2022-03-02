@@ -19,6 +19,9 @@ int main(){
     SDL_Window *window;
     int fin = 0;
 
+    //Pointeur qui pointe sur monde, utile pour libérer la mémoire allouée au monde à la fin
+    monde_t * monde2 = &monde;
+
     //mise en place du jeu (l'écran, le monde de jeu et les textures. )
     init(&window,&screen, &textures, &monde);
 
@@ -30,7 +33,15 @@ int main(){
     }
 
     // Nettoyer et quitter SDL
+    printf("On teste de la libérer allouée à la SDL\n");
     clean(window, screen, &textures, &monde);
+    printf("Réussite de la libération de la mémoire ?\n");
+
+    printf("On teste de libérer la mémoire du monde\n");
+    detruire_monde(&monde2);
+    printf("Le problème ne vient pas du monde\n");
+
+    printf("'Pas de pb(en tout cas visible)' avant le clean, vérifier la libération de la mémoire allouée\n");
 
     return 0;
 }
