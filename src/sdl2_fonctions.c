@@ -8,7 +8,6 @@
 #include "../lib/sdl2_fonctions.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <SDL_ttf.h>
 
 /**
  * \fn int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height)

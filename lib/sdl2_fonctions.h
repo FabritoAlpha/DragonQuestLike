@@ -2,7 +2,7 @@
 #define SDL2_FONCTIONS_H
 
 #include <SDL2/SDL.h>
-#include <SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
 
 int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height);
 

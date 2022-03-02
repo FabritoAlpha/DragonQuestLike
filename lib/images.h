@@ -4,7 +4,6 @@
 #include "sdl2_fonctions.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <SDL_ttf.h>
 #include "entitee.h"
 
 /**
