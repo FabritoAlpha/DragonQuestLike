@@ -8,6 +8,7 @@
 #include "../lib/sdl2_fonctions.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <SDL_ttf.h>
 
 /**
  * \fn int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height)
@@ -149,4 +150,49 @@ void clean_sdl(SDL_Renderer *renderer,SDL_Window *window){
     }
 
     SDL_Quit();
+}
+
+/**
+ * \brief initialisation de la ttf
+ */
+void init_ttf(){
+    if(TTF_Init() < 0){
+        TTF_GetError();
+    }
+}
+
+/**
+ * \brief l'écriture sur l'écran
+ * \param  const char* fileName le nom du fichier et la taille de la police
+*/
+TTF_Font* apply_font(const char* fileName, int size){
+    //charger la police
+    TTF_Font *font = TTF_OpenFont(fileName, size);
+    if(font == NULL){
+        printf("Erreur chargement font: %s\n", SDL_GetError());
+    }
+    return font;
+}
+/*
+ * \brief appliquer la couleur et la texture du text
+ * \param SDL_Renderer pour le rendu de du text
+ * \param int r, g , b  pour la couleur de l'écriture
+ * \param const char* text pour le texte à afficher
+ * \param TTF_font* font pour la police du text
+ * \param int x,y,w,h pour la position et la taille de l'encadré du text.
+ */
+void apply_text(SDL_Renderer *renderer, int r, int g, int b , const char* text, TTF_Font* font, int x, int y, int w, int h){
+    SDL_Surface *surface = NULL;
+    SDL_Texture *texture = NULL;
+    //gérer la couleur
+    SDL_Color color = { r,g,b,255 };
+    surface = TTF_RenderText_Solid(font, text, color);
+
+    texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Rect dstrect2 = {x, y, w, h};
+    SDL_RenderCopy(renderer, texture, NULL, &dstrect2);
+    SDL_DestroyTexture(texture);
+    texture = NULL;
+    SDL_FreeSurface(surface);
+    surface = NULL;
 }

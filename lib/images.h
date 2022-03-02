@@ -4,6 +4,7 @@
 #include "sdl2_fonctions.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <SDL_ttf.h>
 #include "entitee.h"
 
 /**
@@ -14,6 +15,7 @@ typedef struct images_s{
 
     SDL_Texture* fond; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* joueur; /*!< Texture liée à l'image du joueur. */
+    TTF_Font *font; /*!< Texture liée à la police du texte affiché à l'écran */
 
 } images_t;
 

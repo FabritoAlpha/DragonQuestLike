@@ -5,8 +5,8 @@ LIB=./lib
 OBJ=./obj
 BIN=./bin
 TEST=./test
-LIBS = `sdl2-config --libs` -lm
-INCLUDES = -I./SDL2_image
+LIBS = `sdl2-config --libs` -lSDL2_ttf -lm
+INCLUDES = -I./SDL2_ttf -I./SDL2_image -I./SDL_ttf
 
 #Compilateur gcc
 

@@ -36,6 +36,7 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, mond
 void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, monde_t * monde){
     init_monde(monde);
     init_sdl(window, renderer,SCREEN_WIDTH, SCREEN_HEIGHT);
+    init_ttf();
     init_images(*renderer,textures);
 }
 
@@ -51,7 +52,23 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
     clear_renderer(renderer);
 
     fond_position(renderer, textures);
-    joueur_position(renderer, textures, monde->joueur);
+
+    char message[200] = "";
+
+    if(monde->etat_jeu == 0){
+      sprintf(message, "Menu: entrée pour jouer");
+      if(textures->font != 0){
+          apply_text(renderer, 195, 203, 219, message , textures->font, SCREEN_WIDTH/4 +2 , SCREEN_HEIGHT -200 , 350, 80);
+      }
+    }
+
+    if(monde->etat_jeu == 1){
+      joueur_position(renderer, textures, monde->joueur);
+      sprintf(message, "Jeu en cours");
+      if(textures->font != 0){
+          apply_text(renderer, 195, 203, 219, message , textures->font, SCREEN_WIDTH/4 +2 , SCREEN_HEIGHT -200 , 350, 80);
+      }
+    }
 
     update_screen(renderer);
 }
