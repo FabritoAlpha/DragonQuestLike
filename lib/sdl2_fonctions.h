@@ -7,7 +7,7 @@ int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height
 
 SDL_Texture* load_image(const char* nomfichier, SDL_Renderer* renderer);
 
-void apply_texture(SDL_Texture *texture,SDL_Renderer *renderer,int x, int y);
+void apply_texture(SDL_Texture *texture,SDL_Renderer *renderer,float x, float y);
 
 void update_screen(SDL_Renderer *renderer);
 

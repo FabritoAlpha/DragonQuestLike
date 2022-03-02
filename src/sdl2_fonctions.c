@@ -82,7 +82,7 @@ SDL_Texture* load_image(const char* nomfichier, SDL_Renderer* renderer)
  * \param y l'ordonnée sur le renderer de l'endroit où est appliquée texture (point en haut à gauche de la surface)
 */
 
-void apply_texture(SDL_Texture *texture,SDL_Renderer *renderer,int x, int y){
+void apply_texture(SDL_Texture *texture,SDL_Renderer *renderer,float x, float y){
     SDL_Rect dst = {0, 0, 0, 0};
 
     SDL_QueryTexture(texture, NULL, NULL, &dst.w, &dst.h);

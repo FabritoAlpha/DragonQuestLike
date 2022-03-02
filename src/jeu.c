@@ -37,8 +37,6 @@ void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, mond
     init_monde(monde);
     init_sdl(window, renderer,SCREEN_WIDTH, SCREEN_HEIGHT);
     init_images(*renderer,textures);
-
-
 }
 
 /**
@@ -53,6 +51,40 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
     clear_renderer(renderer);
 
     fond_position(renderer, textures);
+    joueur_position(renderer, textures, monde->joueur);
 
     update_screen(renderer);
+}
+
+/**
+ * \brief gestion des évènements avant le rafraichissement
+ * \param event contient les événements
+ * \param monde les données du monde
+ */
+
+void evenements(SDL_Event* event, monde_t * monde){
+    const Uint8* keystates = SDL_GetKeyboardState(NULL);
+
+    if( keystates[SDL_SCANCODE_RETURN] && monde->etat_jeu == 0){
+        monde->etat_jeu = 1;
+        printf("jeu en cours");
+    }
+    if(keystates[SDL_SCANCODE_ESCAPE] ){
+        monde->etat_jeu = -1;
+        printf("fin du jeu");
+    }
+    if(keystates[SDL_SCANCODE_LEFT] && monde->etat_jeu == 1) {
+        a_gauche(monde->joueur->combattant);
+    }
+    if(keystates[SDL_SCANCODE_RIGHT] && monde->etat_jeu == 1){
+        a_droite(monde->joueur->combattant);
+    }
+    if(keystates[SDL_SCANCODE_UP] && monde->etat_jeu == 1){
+        en_haut(monde->joueur->combattant);
+    }
+    if(keystates[SDL_SCANCODE_DOWN] && monde->etat_jeu == 1){
+        en_bas(monde->joueur->combattant);
+    }
+
+    SDL_PumpEvents();
 }

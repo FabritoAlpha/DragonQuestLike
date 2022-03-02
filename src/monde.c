@@ -166,7 +166,8 @@ void init_monde(monde_t * monde){
   for(i = 0; i < NB_ZONES; i++){
     init_zone(monde->zones[i], i);
   }
-  init_joueur(monde->joueur,0,0,0,0,0,0,0);
+  init_joueur(monde->joueur,0,0,0,1,0,0,0);
+  monde->etat_jeu = 0;
 }
 
 void init_zone(zone_t * zone, int num_zone){

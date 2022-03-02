@@ -6,6 +6,7 @@
  */
 
 #include "../lib/images.h"
+#include "../lib/entitee.h"
 
 /**
  * \fn void clean_images(images_t *textures)
@@ -18,6 +19,8 @@ void clean_images(images_t *textures){
     clean_texture(textures->fond);
     printf("Clean_textures se réalise 'correctement'\n");
     textures->fond = NULL;
+    clean_texture(textures->joueur);
+    textures->joueur = NULL;
 
 }
 
@@ -31,6 +34,8 @@ void clean_images(images_t *textures){
 
 void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->fond = load_image("./rsrc/img/test.bmp",renderer);
+    textures->joueur = load_image("./rsrc/img/joueur_test.bmp",renderer);
+
 }
 
 /**
@@ -41,4 +46,8 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
 */
 void fond_position(SDL_Renderer *renderer, images_t *textures){
     apply_texture(textures->fond, renderer, 0, 0);
+}
+
+void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur){
+    apply_texture(textures->joueur, renderer, joueur->combattant->x, joueur->combattant->y);
 }

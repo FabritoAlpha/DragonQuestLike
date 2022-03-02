@@ -19,6 +19,7 @@
 void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde);
 void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, monde_t * monde);
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures);
+void evenements(SDL_Event* event, monde_t * monde);
 
 /**
 	*\struct salle_t
