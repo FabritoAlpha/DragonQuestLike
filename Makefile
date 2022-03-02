@@ -26,8 +26,8 @@ all: DragonQuest
 DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/monde.o $(OBJ)/entitee.o
 	$(CC) $(CFLAGS) $^ -o $(BIN)/$@ $(LIBS) $(INCS)
 
-$(OBJ)/main.o: $(SRC)/main.c $(SRC)/jeu.c $(LIB)/jeu.h $(LIB)/sdl2_fonctions.h $(LIB)/images.h
-	$(CC) $(FLAGS) -c ./$^ -o $@ $(LIBS) $(INCS)
+$(OBJ)/main.o: $(SRC)/main.c $(LIB)/jeu.h $(LIB)/sdl2_fonctions.h $(LIB)/images.h
+	$(CC) $(FLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
 
 $(OBJ)/sdl2_fonctions.o: $(SRC)/sdl2_fonctions.c $(LIB)/sdl2_fonctions.h
 	$(CC) $(FLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
