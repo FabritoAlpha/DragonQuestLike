@@ -35,8 +35,9 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, mond
  */
 void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, monde_t * monde){
     init_monde(monde);
-    init_images(*renderer,textures);
     init_sdl(window, renderer,SCREEN_WIDTH, SCREEN_HEIGHT);
+    init_images(*renderer,textures);
+
 
 }
 
