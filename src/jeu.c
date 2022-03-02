@@ -19,7 +19,7 @@
 */
 void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde){
     //printf("Test de la destruction du monde\n");
-    //detruire_monde(&monde);
+    detruire_monde(&monde);
     printf("Test de la destruction de textures\n");
     clean_images(textures);
     printf("Test de la destruction de la sdl");
@@ -34,10 +34,10 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, mond
  * \param wordl le monde
  */
 void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, monde_t * monde){
-    init_sdl(window, renderer,SCREEN_WIDTH, SCREEN_HEIGHT);
-    monde = creer_monde();
     init_monde(monde);
     init_images(*renderer,textures);
+    init_sdl(window, renderer,SCREEN_WIDTH, SCREEN_HEIGHT);
+
 }
 
 /**
