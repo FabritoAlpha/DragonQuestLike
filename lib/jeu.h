@@ -18,6 +18,8 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, mond
 void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, monde_t * monde);
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures);
 void evenements(SDL_Event* event, monde_t * monde);
+int test_collision_joueur(joueur_t * joueur, salle_t * salle_courante, int largeur_ecran, int longueur_ecran); // à améliorer avec un type boolen
+int test_collision_monstre(monstre_t * monstre, salle_t * salle_du_monstre, int largeur_ecran, int longueur_ecran);// même chose
 
 /**
 	*\struct salle_t
@@ -35,18 +37,7 @@ void evenements(SDL_Event* event, monde_t * monde);
 //Fonction qui gère les dialogues
 
 
-void creation_jeu();
-void init_partie();
-void save_partie();
-void fin_partie();
-void combat();
-void affichage_menu_combat();;
-void affichage_inventaire();
-void affichage_menu();
-void deplacement_personnage();
-void deplacement_monstre();
-void affichage_boutique();
-void affichage_dialogue();
+
 
 /**
 	*\fn void init_salle(salle_t * salle, int num_salle)
