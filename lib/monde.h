@@ -19,7 +19,7 @@
 
 #define SCREEN_WIDTH 1000
 #define SCREEN_HEIGHT 600
-
+#define STATUE 0
 /**
 	*\struct salle_t
 	*\brief représentation d'une salle

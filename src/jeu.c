@@ -9,7 +9,7 @@
 #include "../lib/images.h"
 #include "../lib/sdl2_fonctions.h"
 #include "../lib/jeu.h"
-
+//int statut=0;
 /**
 * \brief fonction qui nettoie le jeu: nettoyage de la partie graphique (SDL), nettoyage des textures, nettoyage des données
 * \param window la fenêtre du jeu
@@ -48,6 +48,7 @@ void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, mond
  */
 
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
+
     //on vide le renderer
     clear_renderer(renderer);
 
@@ -65,7 +66,9 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
     if(monde->etat_jeu == 1){
       joueur_position(renderer, textures, monde->joueur);
       for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
+
         monstre_position(renderer, textures, monde->zones[0]->salles[0]->monstres[i]);
+        //deplacement_monstre(monde->zones[0]->salles[0]->monstres[i],&statut);
       }
       sprintf(message, "Jeu en cours");
       if(textures->font != 0){

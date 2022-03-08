@@ -178,3 +178,20 @@ void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,in
   nonCombat->y=y;
   nonCombat->visite=visite;
 }
+/**
+  * \fn void deplacement_monstre(monstre_t * monstre)
+  * \param montre à déplacer.
+  * \brief Déplacement d'un monstre.
+  *
+  *
+*//*
+void deplacement_monstre(monstre_t * monstre, int * statut){
+  if((*statut) == 0){
+    for(int i=0;i<200;i++){
+      printf("yes");
+      a_gauche(monstre->combattant);
+    }
+  }
+  (*statut) = 1;
+}
+*/

@@ -12,6 +12,7 @@
 #define TAILLE_INVENTAIRE 0
 #define NB_EQUIPEMENT 0
 
+
 /**
   * \struct combattant_t
   * \brief représentation d'une entitee combattante
@@ -99,7 +100,7 @@ void detruire_monstre(monstre_t ** monster);
 
 void detruire_nonCombattant(nonCombattant_t ** nonCombat);
 
-
+void deplacement_monstre(monstre_t * monstre,int * statut);
 
 
 
