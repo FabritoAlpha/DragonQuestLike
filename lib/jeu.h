@@ -13,8 +13,8 @@
 #include "sdl2_fonctions.h"
 #include "images.h"
 
-#define SCREEN_WIDTH 1600
-#define SCREEN_HEIGHT 900
+#define SCREEN_WIDTH 1000
+#define SCREEN_HEIGHT 600
 
 void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde);
 void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, monde_t * monde);
