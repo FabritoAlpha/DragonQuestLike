@@ -122,7 +122,7 @@ void clean_texture(SDL_Texture *texture){
 void clear_renderer(SDL_Renderer *renderer){
     int i;
     i = SDL_RenderClear(renderer);
-    printf("Valeur du clear du renderer : %d\n",i);
+    //printf("Valeur du clear du renderer : %d\n",i);
 }
 
 

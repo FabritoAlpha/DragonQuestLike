@@ -17,6 +17,9 @@
 #define NB_MONSTRES_SALLE 1
 #define NB_PERSO_SALLE 1
 
+#define SCREEN_WIDTH 1000
+#define SCREEN_HEIGHT 600
+
 /**
 	*\struct salle_t
 	*\brief représentation d'une salle
