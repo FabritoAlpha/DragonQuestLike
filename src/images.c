@@ -21,6 +21,8 @@ void clean_images(images_t *textures){
     textures->fond = NULL;
     clean_texture(textures->joueur);
     textures->joueur = NULL;
+    clean_texture(textures->monstre);
+    textures->monstre = NULL;
     if(textures->font != NULL){
         clean_font(textures->font);
         textures->font = NULL;
@@ -39,6 +41,7 @@ void clean_images(images_t *textures){
 void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->fond = load_image("./rsrc/img/test.bmp",renderer);
     textures->joueur = load_image("./rsrc/img/joueur_test.bmp",renderer);
+    textures->monstre = load_image("./rsrc/img/monstre_test.bmp",renderer);
     textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
 
 }
@@ -55,4 +58,8 @@ void fond_position(SDL_Renderer *renderer, images_t *textures){
 
 void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur){
     apply_texture(textures->joueur, renderer, joueur->combattant->x, joueur->combattant->y);
+}
+
+void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre){
+    apply_texture(textures->monstre, renderer, monstre->combattant->x, monstre->combattant->y);
 }

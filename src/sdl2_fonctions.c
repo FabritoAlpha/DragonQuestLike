@@ -195,3 +195,17 @@ void apply_text(SDL_Renderer *renderer, int r, int g, int b , const char* text, 
     SDL_FreeSurface(surface);
     surface = NULL;
 }
+
+/** SDL TTF **/
+
+/**
+ * \brief La fonction ferme la police et quitte la ttf
+ * \param la police à fermer
+*/
+
+void clean_font(TTF_Font *font){
+    if(font != NULL){
+        TTF_CloseFont(font);
+    }
+    TTF_Quit();
+}

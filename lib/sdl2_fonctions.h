@@ -26,4 +26,6 @@ TTF_Font* apply_font(const char* fileName, int size);
 
 void apply_text(SDL_Renderer *renderer, int r, int g, int b , const char* text, TTF_Font* font, int x, int y, int w, int h);
 
+void clean_font(TTF_Font *font);
+
 #endif

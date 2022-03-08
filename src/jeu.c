@@ -58,15 +58,18 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
     if(monde->etat_jeu == 0){
       sprintf(message, "Menu: entrée pour jouer");
       if(textures->font != 0){
-          apply_text(renderer, 195, 203, 219, message , textures->font, SCREEN_WIDTH/4 +2 , SCREEN_HEIGHT -200 , 350, 80);
+          apply_text(renderer, 200, 0, 0, message , textures->font, SCREEN_WIDTH/4 +2 , SCREEN_HEIGHT -200 , 350, 80);
       }
     }
 
     if(monde->etat_jeu == 1){
       joueur_position(renderer, textures, monde->joueur);
+      for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
+        monstre_position(renderer, textures, monde->zones[0]->salles[0]->monstres[i]);
+      }
       sprintf(message, "Jeu en cours");
       if(textures->font != 0){
-          apply_text(renderer, 195, 203, 219, message , textures->font, SCREEN_WIDTH/4 +2 , SCREEN_HEIGHT -200 , 350, 80);
+          apply_text(renderer, 200, 0, 0, message , textures->font, SCREEN_WIDTH/4 +2 , SCREEN_HEIGHT -200 , 350, 80);
       }
     }
 
@@ -82,26 +85,34 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
 void evenements(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
-    if( keystates[SDL_SCANCODE_RETURN] && monde->etat_jeu == 0){
-        monde->etat_jeu = 1;
-        printf("jeu en cours");
-    }
-    if(keystates[SDL_SCANCODE_ESCAPE] ){
-        monde->etat_jeu = -1;
-        printf("fin du jeu");
-    }
-    if(keystates[SDL_SCANCODE_LEFT] && monde->etat_jeu == 1) {
-        a_gauche(monde->joueur->combattant);
-    }
-    if(keystates[SDL_SCANCODE_RIGHT] && monde->etat_jeu == 1){
-        a_droite(monde->joueur->combattant);
-    }
-    if(keystates[SDL_SCANCODE_UP] && monde->etat_jeu == 1){
-        en_haut(monde->joueur->combattant);
-    }
-    if(keystates[SDL_SCANCODE_DOWN] && monde->etat_jeu == 1){
-        en_bas(monde->joueur->combattant);
-    }
+      if( keystates[SDL_SCANCODE_RETURN] && monde->etat_jeu == 0){
+          monde->etat_jeu = 1;
+          printf("jeu en cours");
+      }
+      if(keystates[SDL_SCANCODE_LEFT] && monde->etat_jeu == 1) {
+          a_gauche(monde->joueur->combattant);
+      }
+      if(keystates[SDL_SCANCODE_RIGHT] && monde->etat_jeu == 1){
+          a_droite(monde->joueur->combattant);
+      }
+      if(keystates[SDL_SCANCODE_UP] && monde->etat_jeu == 1){
+          en_haut(monde->joueur->combattant);
+      }
+      if(keystates[SDL_SCANCODE_DOWN] && monde->etat_jeu == 1){
+          en_bas(monde->joueur->combattant);
+      }
+      while(SDL_PollEvent( event )) {
+         //Si l'utilisateur a cliqué sur le X de la fenêtre
+         if( event->type == SDL_QUIT ) {
+             //On indique la fin du jeu
+             monde->etat_jeu = -1;
+             printf("fin du jeu");
+         }
+         if(keystates[SDL_SCANCODE_ESCAPE] ){
+             monde->etat_jeu = -1;
+             printf("fin du jeu");
+         }
+      }
 
     SDL_PumpEvents();
 }
