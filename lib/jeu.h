@@ -20,6 +20,8 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures);
 void evenements(SDL_Event* event, monde_t * monde);
 int test_collision_joueur(joueur_t * joueur, salle_t * salle_courante, int largeur_ecran, int longueur_ecran); // à améliorer avec un type boolen
 int test_collision_monstre(monstre_t * monstre, salle_t * salle_du_monstre, int largeur_ecran, int longueur_ecran);// même chose
+void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures);
+void evenements_menu(SDL_Event* event, monde_t * monde);
 
 /**
 	*\struct salle_t

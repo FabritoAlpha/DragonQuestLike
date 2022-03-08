@@ -169,6 +169,7 @@ void init_monde(monde_t * monde){
   }
   init_joueur(monde->joueur,0,0,0,1,0,0,0);
   monde->etat_jeu = 0;
+  monde->option = 1;
 }
 
 void init_zone(zone_t * zone, int num_zone){

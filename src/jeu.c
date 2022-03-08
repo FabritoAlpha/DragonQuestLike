@@ -57,10 +57,7 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
     char message[200] = "";
 
     if(monde->etat_jeu == 0){
-      sprintf(message, "Menu: entrée pour jouer");
-      if(textures->font != 0){
-          apply_text(renderer, 200, 0, 0, message , textures->font, SCREEN_WIDTH/4 +2 , SCREEN_HEIGHT -200 , 350, 80);
-      }
+      affichage_menu(renderer, monde, textures);
     }
 
     if(monde->etat_jeu == 1){
@@ -79,6 +76,79 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
     update_screen(renderer);
 }
 
+void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
+    char opt[20] = "";
+    //jouer
+    if(monde->option == 1){
+        sprintf(opt, "Jouer");
+        if(textures->font != 0){
+            apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 , SCREEN_HEIGHT/4 , 350, 80);
+        }
+        sprintf(opt, "Nouvelle Partie");
+        if(textures->font != 0){
+            apply_text(renderer, 0, 255, 0 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/4 , 350, 80);
+        }
+        sprintf(opt, "Quitter");
+        if(textures->font != 0){
+            apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/4, 350, 80);
+        }
+    }
+    //Nouvelle partie
+    if(monde->option == 2){
+        sprintf(opt, "Jouer");
+        if(textures->font != 0){
+            apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , SCREEN_HEIGHT/4 , 350, 80);
+        }
+        sprintf(opt, "Nouvelle Partie");
+        if(textures->font != 0){
+            apply_text(renderer, 150, 255, 150 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/4 , 350, 80);
+        }
+        sprintf(opt, "Quitter");
+        if(textures->font != 0){
+            apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/4, 350, 80);
+        }
+    }
+    //quitter
+    if(monde->option == 3){
+        sprintf(opt, "Jouer");
+        if(textures->font != 0){
+            apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , SCREEN_HEIGHT/4 , 350, 80);
+        }
+        sprintf(opt, "Nouvelle Partie");
+        if(textures->font != 0){
+            apply_text(renderer, 0, 255, 0 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/4 , 350, 80);
+        }
+        sprintf(opt, "Quitter");
+        if(textures->font != 0){
+            apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/4, 350, 80);
+        }
+    }
+}
+
+void evenements_menu(SDL_Event* event, monde_t * monde){
+    const Uint8* keystates = SDL_GetKeyboardState(NULL);
+    if(event->type == SDL_KEYDOWN){
+        if(keystates[SDL_SCANCODE_DOWN]){
+            if(monde->option < 3)
+                monde->option++;
+            else
+                monde->option = 1;
+        }
+        if(keystates[SDL_SCANCODE_UP]){
+            if(monde->option > 1)
+                monde->option--;
+            else
+                monde->option = 3; //3 options pour le moment
+        }
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
+            monde->etat_jeu = 1;
+        }
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
+            monde->etat_jeu = -1;
+        }
+    }
+}
+
 /**
  * \brief gestion des évènements avant le rafraichissement
  * \param event contient les événements
@@ -86,36 +156,40 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
  */
 
 void evenements(SDL_Event* event, monde_t * monde){
-    const Uint8* keystates = SDL_GetKeyboardState(NULL);
+  const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
-      if( keystates[SDL_SCANCODE_RETURN] && monde->etat_jeu == 0){
-          monde->etat_jeu = 1;
-          printf("jeu en cours");
-      }
-      if(keystates[SDL_SCANCODE_LEFT] && monde->etat_jeu == 1) {
-          a_gauche(monde->joueur->combattant);
-      }
-      if(keystates[SDL_SCANCODE_RIGHT] && monde->etat_jeu == 1){
-          a_droite(monde->joueur->combattant);
-      }
-      if(keystates[SDL_SCANCODE_UP] && monde->etat_jeu == 1){
-          en_haut(monde->joueur->combattant);
-      }
-      if(keystates[SDL_SCANCODE_DOWN] && monde->etat_jeu == 1){
-          en_bas(monde->joueur->combattant);
-      }
-      while(SDL_PollEvent( event )) {
-         //Si l'utilisateur a cliqué sur le X de la fenêtre
-         if( event->type == SDL_QUIT ) {
-             //On indique la fin du jeu
-             monde->etat_jeu = -1;
-             printf("fin du jeu");
-         }
-         if(keystates[SDL_SCANCODE_ESCAPE] ){
-             monde->etat_jeu = -1;
-             printf("fin du jeu");
-         }
-      }
+    while(SDL_PollEvent( event )) {
+        /*!< Menu */
+        if(monde->etat_jeu == 0){
+            evenements_menu(event, monde);
+        }
+        /*!< Jeu en cours */
+        if(monde->etat_jeu == 1){
+            if(event->key.keysym.sym == SDLK_LEFT) {
+                a_gauche(monde->joueur->combattant);
+            }
+            if(event->key.keysym.sym == SDLK_RIGHT){
+                a_droite(monde->joueur->combattant);
+            }
+            if(event->key.keysym.sym == SDLK_UP){
+                en_haut(monde->joueur->combattant);
+            }
+            if(event->key.keysym.sym == SDLK_DOWN){
+                en_bas(monde->joueur->combattant);
+            }
+        }
+
+        //Si l'utilisateur a cliqué sur le X de la fenêtre
+        if( event->type == SDL_QUIT ) {
+            //On indique la fin du jeu
+            monde->etat_jeu = -1;
+            printf("fin du jeu");
+        }
+        if(keystates[SDL_SCANCODE_ESCAPE] ){
+            monde->etat_jeu = -1;
+            printf("fin du jeu");
+        }
+    }
 
     SDL_PumpEvents();
 }
