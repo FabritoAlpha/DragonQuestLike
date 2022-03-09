@@ -164,6 +164,7 @@ void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int v
   monster->type=type;
 }
 
+
 /**
   * \fn void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,int visite)
   * \param nonCombat entitée à initialiser.

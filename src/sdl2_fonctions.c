@@ -35,7 +35,7 @@ int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height
 
     (*window) = SDL_CreateWindow("Dragon Quest Like", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
             width, height,
-            SDL_WINDOW_FULLSCREEN); //SDL_WINDOW_RESIZABLE
+            SDL_WINDOW_FULLSCREEN); //SDL_WINDOW_RESIZABLE SDL_WINDOW_SHOWN SDL_WINDOW_FULLSCREEN SDL_WINDOW_MAXIMIZED
 
     if (window == 0)
     {
@@ -49,6 +49,7 @@ int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height
          /* faire ce qu'il faut pour quitter proprement */
     }
 
+    SDL_GetWindowSize((*window),&taille_fenetre[0],&taille_fenetre[1]);
 
     return 0;
 }

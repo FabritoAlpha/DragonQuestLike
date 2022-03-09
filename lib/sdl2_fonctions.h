@@ -4,6 +4,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
+extern int taille_fenetre[2];
+
 int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height);
 
 SDL_Texture* load_image(const char* nomfichier, SDL_Renderer* renderer);

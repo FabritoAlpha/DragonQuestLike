@@ -9,6 +9,8 @@
 #include "../lib/images.h"
 #include "../lib/sdl2_fonctions.h"
 
+int taille_fenetre[2];
+
 /**
  *  \brief programme principal qui implémente la boucle du jeu
  */
@@ -39,6 +41,8 @@ int main(){
     printf("Le problème ne vient pas du monde\n");
 
     printf("'Pas de pb(en tout cas visible)' avant le clean, vérifier la libération de la mémoire allouée\n");
+
+    printf("largeur de la fenêtre: %d \n hauteur de la fenêtre: %d\n", taille_fenetre[0], taille_fenetre[1]);
 
     return 0;
 }

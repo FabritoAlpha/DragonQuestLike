@@ -8,6 +8,8 @@
 #include "../lib/images.h"
 #include "../lib/entitee.h"
 
+
+
 /**
  * \fn void clean_images(images_t *textures)
  * \brief La fonction nettoie les textures
@@ -53,13 +55,13 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
  * \param textures les textures du jeu
 */
 void fond_position(SDL_Renderer *renderer, images_t *textures){
-    apply_texture(textures->fond, renderer, 0, 0);
+    apply_texture(textures->fond, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
 }
 
 void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur){
-    apply_texture(textures->joueur, renderer, joueur->combattant->x, joueur->combattant->y);
+    apply_texture(textures->joueur, renderer, joueur->combattant->x + (taille_fenetre[0]/2) - 500, joueur->combattant->y + (taille_fenetre[1]/2) - 375);
 }
 
 void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre){
-    apply_texture(textures->monstre, renderer, monstre->combattant->x, monstre->combattant->y);
+    apply_texture(textures->monstre, renderer, monstre->combattant->x + (taille_fenetre[0]/2) - 500, monstre->combattant->y + (taille_fenetre[1]/2) - 375);
 }
