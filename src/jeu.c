@@ -54,8 +54,6 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
 
     fond_position(renderer, textures);
 
-    char message[200] = "";
-
     if(monde->etat_jeu == 0){
       affichage_menu(renderer, monde, textures);
     }
@@ -66,10 +64,6 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
 
         monstre_position(renderer, textures, monde->zones[0]->salles[0]->monstres[i]);
         //deplacement_monstre(monde->zones[0]->salles[0]->monstres[i],&statut);
-      }
-      sprintf(message, "Jeu en cours");
-      if(textures->font != 0){
-          apply_text(renderer, 200, 0, 0, message , textures->font, SCREEN_WIDTH/4 +2 , SCREEN_HEIGHT -200 , 350, 80);
       }
     }
 

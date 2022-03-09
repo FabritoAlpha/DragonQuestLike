@@ -25,7 +25,7 @@ int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height
         fprintf(stderr, "Erreur initialisation de la SDL : %s", SDL_GetError());
         return -1;
     }
-    if(0 != SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_SHOWN, window, renderer)){
+    if(0 != SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_FULLSCREEN, window, renderer)){
         fprintf(stderr, "Erreur lors de la creation de l'image et du renderer : %s", SDL_GetError());
         return -1;
     }
@@ -122,7 +122,7 @@ void clean_texture(SDL_Texture *texture){
 void clear_renderer(SDL_Renderer *renderer){
     int i;
     i = SDL_RenderClear(renderer);
-    //printf("Valeur du clear du renderer : %d\n",i);
+    printf("Valeur du clear du renderer : %d\n",i);
 }
 
 
