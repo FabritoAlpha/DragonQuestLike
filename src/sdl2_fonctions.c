@@ -27,9 +27,26 @@ int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height
         fprintf(stderr, "Erreur initialisation de la SDL : %s", SDL_GetError());
         return -1;
     }
-    if(0 != SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_FULLSCREEN, window, renderer)){
+
+    /*if(0 != SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_FULLSCREEN, window, renderer)){
         fprintf(stderr, "Erreur lors de la creation de l'image et du renderer : %s", SDL_GetError());
         return -1;
+    }*/
+
+    (*window) = SDL_CreateWindow("Dragon Quest Like", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+            width, height,
+            SDL_WINDOW_FULLSCREEN); //SDL_WINDOW_RESIZABLE
+
+    if (window == 0)
+    {
+        fprintf(stderr, "Erreur d'initialisation de la SDL : %s\n", SDL_GetError());
+        /* on peut aussi utiliser SLD_Log() */
+    }
+
+    (*renderer) = SDL_CreateRenderer(*window, -1, SDL_RENDERER_ACCELERATED ); /*  SDL_RENDERER_SOFTWARE */
+    if ((*renderer) == 0) {
+         fprintf(stderr, "Erreur d'initialisation de la SDL : %s\n", SDL_GetError());
+         /* faire ce qu'il faut pour quitter proprement */
     }
 
 
