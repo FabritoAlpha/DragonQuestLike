@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+
 /**
  * \fn int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height)
  * \brief La fonction initialise la SDL.
@@ -29,6 +31,8 @@ int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height
         fprintf(stderr, "Erreur lors de la creation de l'image et du renderer : %s", SDL_GetError());
         return -1;
     }
+
+
     return 0;
 }
 
@@ -84,6 +88,7 @@ SDL_Texture* load_image(const char* nomfichier, SDL_Renderer* renderer)
 
 void apply_texture(SDL_Texture *texture,SDL_Renderer *renderer,float x, float y){
     SDL_Rect dst = {0, 0, 0, 0};
+    //SDL_Rect src = {0, 0, 0, 0};
 
     SDL_QueryTexture(texture, NULL, NULL, &dst.w, &dst.h);
     dst.x = x; dst.y=y;
