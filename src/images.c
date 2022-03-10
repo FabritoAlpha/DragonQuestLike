@@ -42,7 +42,7 @@ void clean_images(images_t *textures){
 
 void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->fond = load_image("./rsrc/img/zone0_salle0.bmp",renderer);
-    textures->joueur = load_image("./rsrc/img/joueur1.bmp",renderer);
+    textures->joueur = load_image("./rsrc/img/joueur.bmp",renderer);
     textures->monstre = load_image("./rsrc/img/monstre.bmp",renderer);
     textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
 
