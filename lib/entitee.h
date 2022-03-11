@@ -8,9 +8,10 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <time.h>
 #define TAILLE_INVENTAIRE 0
 #define NB_EQUIPEMENT 0
+
 
 
 /**
@@ -56,6 +57,9 @@ typedef struct{
 typedef struct{
   combattant_t* combattant; /**< points de vie et position */
   int type; /**< correspond à son type 0=normal 1=boss */
+  int xref;
+  int yref;
+  int dir;
 } monstre_t;
 
 /**
@@ -90,7 +94,7 @@ nonCombattant_t * creer_nonCombattant();
 
 void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau);
 
-void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau,int type);
+void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse, int niveau,int type);
 
 void init_nonCombattant(nonCombattant_t* nonCombattant, int id, float x, float y,int visite);
 
@@ -100,7 +104,7 @@ void detruire_monstre(monstre_t ** monster);
 
 void detruire_nonCombattant(nonCombattant_t ** nonCombat);
 
-void deplacement_monstre(monstre_t * monstre,int * statut);
+void deplacement_monstre(monstre_t * monstre);
 
 
 

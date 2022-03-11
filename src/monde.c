@@ -183,7 +183,7 @@ void init_zone(zone_t * zone, int num_zone){
 void init_salle(salle_t * salle, int num_salle){
   int i;
   for(i = 0; i < NB_MONSTRES_SALLE; i++){
-    init_monstre(salle->monstres[i], 0, 0, 0, 0, SCREEN_WIDTH/2,SCREEN_HEIGHT/2,0,0);
+    init_monstre(salle->monstres[i], 0, 0, 0, 5,0,0);
   }
   for(i = 0; i < NB_PERSO_SALLE; i++){
     init_nonCombattant(salle->perso[i], 0, 0, 0,0);

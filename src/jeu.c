@@ -9,7 +9,6 @@
 #include "../lib/images.h"
 #include "../lib/sdl2_fonctions.h"
 #include "../lib/jeu.h"
-//int statut=0;
 /**
 * \brief fonction qui nettoie le jeu: nettoyage de la partie graphique (SDL), nettoyage des textures, nettoyage des données
 * \param window la fenêtre du jeu
@@ -40,15 +39,15 @@ void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, mond
     init_images(*renderer,textures);
 }
 
+
 /**
  * \brief La fonction rafraichit l'écran en fonction de l'état des données du monde
  * \param renderer la surface de l'écran de jeu
  * \param world les données du monde
  * \param textures les textures
  */
-
-void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
-
+void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick){
+    int time_sec=(SDL_GetTicks()/10);
     //on vide le renderer
     clear_renderer(renderer);
 
@@ -60,11 +59,18 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
 
     if(monde->etat_jeu == 1){
       joueur_position(renderer, textures, monde->joueur);
-      for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
 
+      for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
         monstre_position(renderer, textures, monde->zones[0]->salles[0]->monstres[i]);
-        //deplacement_monstre(monde->zones[0]->salles[0]->monstres[i],&statut);
+
+        //deplacement_monstre(monde->zones[0]->salles[0]->monstres[i]);
+        if(time_sec>(*next_tick)){
+          (*next_tick)+=1;
+          deplacement_monstre(monde->zones[0]->salles[0]->monstres[i]);
+        }
+
       }
+
     }
 
     update_screen(renderer);

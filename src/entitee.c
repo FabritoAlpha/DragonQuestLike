@@ -153,15 +153,18 @@ void init_joueur(joueur_t * joueur, int pvMax, int pvCour, int attaque, int vite
   * \param y entitée à initialiser.
   * \brief Initialisation du monstre avec des parametres.
 */
-void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau,int type){
+void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse,int niveau,int type){
   monster->combattant->pvMax=pvMax;
   monster->combattant->pvCour=pvCour;
   monster->combattant->attaque=attaque;
   monster->combattant->vitesse=vitesse;
-  monster->combattant->x=x;
-  monster->combattant->y=y;
+  monster->combattant->x=500;
+  monster->combattant->y=250;
   monster->combattant->niveau=niveau;
   monster->type=type;
+  monster->xref=500;
+  monster->yref=250;
+  monster->dir=-1;
 }
 
 
@@ -185,14 +188,27 @@ void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,in
   * \brief Déplacement d'un monstre.
   *
   *
-*//*
-void deplacement_monstre(monstre_t * monstre, int * statut){
-  if((*statut) == 0){
-    for(int i=0;i<200;i++){
-      printf("yes");
-      a_gauche(monstre->combattant);
+*/
+//int direction = rand()%4;
+//printf("%d\n",direction);
+void deplacement_monstre(monstre_t * monstre){
+  int direction;
+  direction=rand()%4;
+  printf("%d\n",direction);
+  if(monstre->dir==-1){
+    monstre->dir=direction;
+  }
+  if(monstre->dir==0 && monstre->combattant->x>monstre->xref-100){ // Si le monstre va à gauche
+    a_gauche(monstre->combattant);
+    if(monstre->combattant->x<=monstre->xref-100){
+      monstre->xref=monstre->combattant->x;
+      monstre->dir=direction;
     }
   }
-  (*statut) = 1;
+  if(monstre->dir==1 && monstre->combattant->x<monstre->xref-100){ // Si le monstre va à droite
+    a_droite(monstre->combattant);
+    if(monstre->combattant->x>=monstre->xref-100){
+      monstre->xref=monstre->combattant->x;
+    }
+  }
 }
-*/

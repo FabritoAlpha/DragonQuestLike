@@ -20,16 +20,17 @@ int main(){
     images_t textures;
     SDL_Renderer *screen;
     SDL_Window *window;
+    srand(time(NULL));
 
     monde = creer_monde();
-
+    int tick=5;
     //mise en place du jeu (l'écran, le monde de jeu et les textures. )
     init(&window,&screen, &textures, monde);
 
     //TO DO boucle du jeu avec mise à jour jeu, évènement (handle event) et rafraichissement
     while(monde->etat_jeu != -1){
       evenements(&event,monde);
-      rafraichir(screen, monde, &textures);
+      rafraichir(screen, monde, &textures,&tick);
     }
 
     // Nettoyer et quitter SDL
