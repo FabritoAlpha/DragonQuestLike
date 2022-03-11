@@ -24,13 +24,14 @@ int main(){
 
     monde = creer_monde();
     int tick=5;
+    int tick_monstre=5;
     //mise en place du jeu (l'écran, le monde de jeu et les textures. )
     init(&window,&screen, &textures, monde);
 
     //TO DO boucle du jeu avec mise à jour jeu, évènement (handle event) et rafraichissement
     while(monde->etat_jeu != -1){
       evenements(&event,monde);
-      rafraichir(screen, monde, &textures,&tick);
+      rafraichir(screen, monde, &textures,&tick,&tick_monstre);
     }
 
     // Nettoyer et quitter SDL

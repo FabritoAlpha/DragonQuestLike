@@ -46,7 +46,7 @@ void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, mond
  * \param world les données du monde
  * \param textures les textures
  */
-void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick){
+void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre){
     int time_sec=(SDL_GetTicks()/10);
     //on vide le renderer
     clear_renderer(renderer);
@@ -61,7 +61,19 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
       joueur_position(renderer, textures, monde->joueur);
 
       for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
+        int suivaleatoir;
         monstre_position(renderer, textures, monde->zones[0]->salles[0]->monstres[i]);
+        if(time_sec>(*next_tick_monstre)){
+          if(monde->zones[0]->salles[0]->monstres[i]->combattant->vitesse==1){
+            monde->zones[0]->salles[0]->monstres[i]->combattant->vitesse=0;
+          }else{
+            monde->zones[0]->salles[0]->monstres[i]->combattant->vitesse=1;
+          }
+          do{
+            suivaleatoir=rand()%500;
+          }while(suivaleatoir<200||suivaleatoir>500);
+          (*next_tick_monstre)+=suivaleatoir;
+        }
 
         if(time_sec>(*next_tick)){
           (*next_tick)+=1;
