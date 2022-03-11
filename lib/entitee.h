@@ -60,6 +60,7 @@ typedef struct{
   int xref;
   int yref;
   int dir;
+  int dist;
 } monstre_t;
 
 /**

@@ -165,6 +165,7 @@ void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int v
   monster->xref=500;
   monster->yref=250;
   monster->dir=-1;
+  monster->dist=-1;
 }
 
 
@@ -197,40 +198,53 @@ void deplacement_monstre(monstre_t * monstre){
   //printf("Xref %d \n",monstre->xref);
   //printf("Yref %d \n",monstre->yref);
   int direction;
-  direction=rand()%4;
+  int distance;
+
   if(monstre->dir==-1){
+    printf("dedans\n************\n");
+    direction=rand()%4;
+    do{distance=rand()%300;}while(distance<50||distance>300);
     monstre->dir=direction;
+    monstre->dist=distance;
+    printf("monstre dir %d \n",monstre->dir);
+    printf("distance %d\n",monstre->dist);
   }
-  if(monstre->dir==0 && (monstre->combattant->x)>(monstre->xref-50)){ // Si le monstre va à gauche
+  //printf("distance: %d\n",distance);
+  if(monstre->dir==0 && (monstre->combattant->x)>(monstre->xref-monstre->dist)){ // Si le monstre va à gauche
     a_gauche(monstre->combattant);
-    if((monstre->combattant->x)<=(monstre->xref-50)){
+    if((monstre->combattant->x)<=(monstre->xref-monstre->dist)){
+      do{direction=rand()%4;}while(direction==1);
+      do{distance=rand()%300;}while(distance<50||distance>300);
       monstre->xref=monstre->combattant->x;
       monstre->dir=direction;
-
     }
   }
-  if(monstre->dir==1 && (monstre->combattant->x)<(monstre->xref+50)){ // Si le monstre va à droite
+  if(monstre->dir==1 && (monstre->combattant->x)<(monstre->xref+monstre->dist)){ // Si le monstre va à droite
     a_droite(monstre->combattant);
-    if((monstre->combattant->x)>=(monstre->xref+50)){
+    if((monstre->combattant->x)>=(monstre->xref+monstre->dist)){
+      do{direction=rand()%4;}while(direction==0);
+      do{distance=rand()%300;}while(distance<50||distance>300);
       monstre->xref=monstre->combattant->x;
       monstre->dir=direction;
 
     }
   }
-  if(monstre->dir==2 && (monstre->combattant->y)>(monstre->yref-50)){ // Si le monstre va en haut
+  if(monstre->dir==2 && (monstre->combattant->y)>(monstre->yref-monstre->dist)){ // Si le monstre va en haut
     en_haut(monstre->combattant);
-    if((monstre->combattant->y)<=(monstre->yref-50)){
+    if((monstre->combattant->y)<=(monstre->yref-monstre->dist)){
+      do{direction=rand()%4;}while(direction==3);
+      do{distance=rand()%300;}while(distance<50||distance>300);
       monstre->yref=monstre->combattant->y;
       monstre->dir=direction;
-
     }
   }
-  if(monstre->dir==3 && (monstre->combattant->y)<(monstre->yref+50)){ // Si le monstre va en bas
+  if(monstre->dir==3 && (monstre->combattant->y)<(monstre->yref+monstre->dist)){ // Si le monstre va en bas
     en_bas(monstre->combattant);
-    if((monstre->combattant->y)>=(monstre->yref+50)){
+    if((monstre->combattant->y)>=(monstre->yref+monstre->dist)){
+      do{direction=rand()%4;}while(direction==2);
+      do{distance=rand()%300;}while(distance<50||distance>300);
       monstre->yref=monstre->combattant->y;
       monstre->dir=direction;
-
     }
   }
 }
