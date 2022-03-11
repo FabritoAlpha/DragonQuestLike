@@ -199,11 +199,13 @@ void deplacement_monstre(monstre_t * monstre){
   //printf("Yref %d \n",monstre->yref);
   int direction;
   int distance;
+  int dist_min=10;
+  int dist_max=50;
 
   if(monstre->dir==-1){
     printf("dedans\n************\n");
     direction=rand()%4;
-    do{distance=rand()%300;}while(distance<50||distance>300);
+    do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
     monstre->dir=direction;
     monstre->dist=distance;
     printf("monstre dir %d \n",monstre->dir);
@@ -214,7 +216,7 @@ void deplacement_monstre(monstre_t * monstre){
     a_gauche(monstre->combattant);
     if((monstre->combattant->x)<=(monstre->xref-monstre->dist)){
       do{direction=rand()%4;}while(direction==1);
-      do{distance=rand()%300;}while(distance<50||distance>300);
+      do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
       monstre->xref=monstre->combattant->x;
       monstre->dir=direction;
     }
@@ -223,7 +225,7 @@ void deplacement_monstre(monstre_t * monstre){
     a_droite(monstre->combattant);
     if((monstre->combattant->x)>=(monstre->xref+monstre->dist)){
       do{direction=rand()%4;}while(direction==0);
-      do{distance=rand()%300;}while(distance<50||distance>300);
+      do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
       monstre->xref=monstre->combattant->x;
       monstre->dir=direction;
 
@@ -233,7 +235,7 @@ void deplacement_monstre(monstre_t * monstre){
     en_haut(monstre->combattant);
     if((monstre->combattant->y)<=(monstre->yref-monstre->dist)){
       do{direction=rand()%4;}while(direction==3);
-      do{distance=rand()%300;}while(distance<50||distance>300);
+      do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
       monstre->yref=monstre->combattant->y;
       monstre->dir=direction;
     }
@@ -242,7 +244,7 @@ void deplacement_monstre(monstre_t * monstre){
     en_bas(monstre->combattant);
     if((monstre->combattant->y)>=(monstre->yref+monstre->dist)){
       do{direction=rand()%4;}while(direction==2);
-      do{distance=rand()%300;}while(distance<50||distance>300);
+      do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
       monstre->yref=monstre->combattant->y;
       monstre->dir=direction;
     }
