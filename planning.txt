@@ -4,40 +4,40 @@ Macroplanning: https://docs.google.com/spreadsheets/d/1ef4WqBX_j6s_sS7xId5KBBCj4
 
 Microplanning:
 
-17 janvier - 23 janvier : 
-	Tout le monde: 
+17 janvier - 23 janvier :
+	Tout le monde:
 		macroplanning
 		création et connexion au dépôt git
-	Arthur: 
+	Arthur:
 		makefile
-	Alex: 
+	Alex:
 		makefile
-	Anna: 
+	Anna:
 		création des répertoires et fichiers
 
 24 janvier - 30 janvier :
-	Tout le monde: 
+	Tout le monde:
 		définitions des structures
-	Arthur: 
+	Arthur:
 		fonctions de joueur.h et joueur.c
-	Alex: 
+	Alex:
 		fonctions de monde.h et monde.c
 		commentaires doxygen
-	Anna: 
+	Anna:
 		fonctions de monde.h et monde.c
 		commentaires doxygen
 
 31 janvier - 6 février :
-	Tout le monde: 
-		
-	Arthur: 
+	Tout le monde:
+
+	Arthur:
 		fonctions création et initialisation combattant
 		fonctions création et initialisation joueur
 		test_entitee.c
-	Alex: 
+	Alex:
 		makefile avec les tests
 		aide Arthur et Anna
-	Anna: 
+	Anna:
 		création fichiers test
 		fonctions création et destruction salle
 		fonctions création et destruction zone
@@ -45,38 +45,38 @@ Microplanning:
 		test_monde.c
 
 31 janvier - 6 février :
-	Tout le monde: 
-		
-	Arthur: 
+	Tout le monde:
+
+	Arthur:
 		fonctions création et initialisation combattant
 		fonctions création et initialisation joueur
 		test_entitee.c
-	Alex: 
+	Alex:
 		makefile avec les tests
 		aide Arthur et Anna
-	Anna: 
+	Anna:
 		création fichiers test
 		fonctions création et destruction salle
 		fonctions création et destruction zone
 		fonctions création et destruction monde
 		test_monde.c
 		microplannings
-		
+
 7 février - 13 février :
-	Tout le monde: 
+	Tout le monde:
 		prototype graphique du jeu
-		
-	Arthur: 
+
+	Arthur:
 		fonctions création et initialisation non combattant
 		destruction joueur
 		destruction monstre
 		destruction non combattant
 		test_entitee.c
-	Alex: 
+	Alex:
 		définition de la librairie jeu.h
 		initialisation du jeu
 		test_jeu.c
-	Anna: 
+	Anna:
 		initialisation salle
 		init zone
 		init monde
@@ -86,35 +86,49 @@ Microplanning:
 		affichage image jeu
 
 14 février - 20 février:
-	Tout le monde: 
-		microplanning	
-	Arthur: 
+	Tout le monde:
+		microplanning
+	Arthur:
 		menu affichage dans le terminal
-	Alex: 
+	Alex:
 		écriture de l'histoire
 		création du fichier intéraction avec perso et coffre
-	Anna: 
+	Anna:
 		gestion des collisions
 		gestion des intéractions
 		test_jeu.c
 
 21 février - 28 février:
-	Tout le monde: 
-		microplanning	
-	Arthur: 
+	Tout le monde:
+		microplanning
+	Arthur:
 		gestion de l'inventaire du joueur
-	Alex: 
+	Alex:
 		gestion des combats
 		jeu_test.c
-	Anna: 
+	Anna:
 		initialisation par fichier de sauvegarde txt
 		affichage menu et texte avec sdl-ttf
-		
-:
-	Tout le monde: 
-		microplanning	
-	Arthur: 
-		fonction de sauvegarde dans un fichier txt
-	Alex: 
-	Anna: 
 
+1er mars:
+	Tout le monde:
+		microplanning
+
+	Arthur: déplacement monstres
+	Alex: gestion des combats + collisions
+	Anna: menu de base + plein écran
+
+8 mars
+	Arthur: déplacement des monstres
+	Alex: collisions
+	Anna: initialisation à partir de fichiers textes + sauvegardes dans des fichiers
+
+15 mars:
+	Arthur: déplacement monstre qui détecte le joueur
+	Alex: gestion des combats
+	Anna: passage de salles en salles et de zones en zones + placements non combattants
+
+22 mars:
+	Arthur:
+	Alex: 
+	Anna: intéractions/ dialogues avec non combattants + menu parties sauvegardées
