@@ -192,23 +192,47 @@ void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,in
 //int direction = rand()%4;
 //printf("%d\n",direction);
 void deplacement_monstre(monstre_t * monstre){
+  printf("X%f \n",monstre->combattant->x);
+  printf("Y%f \n",monstre->combattant->y);
+  printf("Xref %d \n",monstre->xref);
+  printf("Yref %d \n",monstre->yref);
+  printf("****\n");
   int direction;
   direction=rand()%4;
-  printf("%d\n",direction);
   if(monstre->dir==-1){
     monstre->dir=direction;
+    printf("%d pos after -1:\n",direction);
   }
-  if(monstre->dir==0 && monstre->combattant->x>monstre->xref-100){ // Si le monstre va à gauche
+  if(monstre->dir==0 && (monstre->combattant->x)>(monstre->xref-50)){ // Si le monstre va à gauche
     a_gauche(monstre->combattant);
-    if(monstre->combattant->x<=monstre->xref-100){
-      monstre->xref=monstre->combattant->x;
+    if((monstre->combattant->x)<=(monstre->xref-50)){
+      //monstre->xref=monstre->combattant->x;
       monstre->dir=direction;
+      printf("%d\n",direction);
     }
   }
-  if(monstre->dir==1 && monstre->combattant->x<monstre->xref-100){ // Si le monstre va à droite
+  if(monstre->dir==1 && (monstre->combattant->x)<(monstre->xref+50)){ // Si le monstre va à droite
     a_droite(monstre->combattant);
-    if(monstre->combattant->x>=monstre->xref-100){
-      monstre->xref=monstre->combattant->x;
+    if((monstre->combattant->x)>=(monstre->xref+50)){
+      //monstre->xref=monstre->combattant->x;
+      monstre->dir=direction;
+      printf("%d\n",direction);
+    }
+  }
+  if(monstre->dir==2 && (monstre->combattant->y)<(monstre->yref+50)){ // Si le monstre va en haut
+    en_haut(monstre->combattant);
+    if((monstre->combattant->y)>=(monstre->yref+50)){
+      //monstre->yref=monstre->combattant->y;
+      monstre->dir=direction;
+      printf("%d\n",direction);
+    }
+  }
+  if(monstre->dir==3 && (monstre->combattant->y)>(monstre->yref-50)){ // Si le monstre va en bas
+    en_bas(monstre->combattant);
+    if((monstre->combattant->y)<=(monstre->yref-50)){
+      //monstre->yref=monstre->combattant->y;
+      monstre->dir=direction;
+      printf("%d\n",direction);
     }
   }
 }

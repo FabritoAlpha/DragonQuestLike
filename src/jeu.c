@@ -63,7 +63,6 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
       for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
         monstre_position(renderer, textures, monde->zones[0]->salles[0]->monstres[i]);
 
-        //deplacement_monstre(monde->zones[0]->salles[0]->monstres[i]);
         if(time_sec>(*next_tick)){
           (*next_tick)+=1;
           deplacement_monstre(monde->zones[0]->salles[0]->monstres[i]);
