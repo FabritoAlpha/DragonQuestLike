@@ -52,7 +52,7 @@ int collision_combattant_ecran(combattant_t * combattant){
         return(COLLISION);
     }
     if(combattant->type == JOUEUR){
-    
+
         if(combattant->x + LARGEUR_PERSONNAGE  > SCREEN_WIDTH ){
             printf("combattant y = %f\n", combattant->y);
             printf("combattant x = %f\n", combattant->x);
@@ -296,7 +296,7 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
     //on vide le renderer
     clear_renderer(renderer);
 
-    fond_position(renderer, textures);
+    fond_position(renderer, textures, monde->etat_jeu, monde->joueur->zone, monde->joueur->salle);
 
     if(monde->etat_jeu == 0){
       affichage_menu(renderer, monde, textures);

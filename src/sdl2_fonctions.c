@@ -160,7 +160,6 @@ void clean_sdl(SDL_Renderer *renderer,SDL_Window *window){
     if(NULL != renderer){
         SDL_DestroyRenderer(renderer);
     }
-
     if(NULL != window){
         SDL_DestroyWindow(window);
     }

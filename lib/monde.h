@@ -12,8 +12,8 @@
 #include "entitee.h"
 
 
-#define NB_SALLES 1
-#define NB_ZONES 1
+#define NB_SALLES 2
+#define NB_ZONES 2
 #define NB_MONSTRES_SALLE 1
 #define NB_PERSO_SALLE 1
 

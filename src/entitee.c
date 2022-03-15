@@ -141,6 +141,8 @@ void init_joueur(joueur_t * joueur, int pvMax, int pvCour, int attaque, int vite
   joueur->combattant->y=100;
   joueur->combattant->niveau=niveau;
   joueur->combattant->type = 1;
+  joueur->salle = 0;
+  joueur->zone = 0;
 }
 
 /**
