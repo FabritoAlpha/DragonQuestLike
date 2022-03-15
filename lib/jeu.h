@@ -13,6 +13,10 @@
 #include "sdl2_fonctions.h"
 #include "images.h"
 
+#define COLLISION 1
+#define PAS_COLLISION 0
+
+
 
 void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde);
 void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, monde_t * monde);
@@ -23,6 +27,20 @@ int test_collision_monstre(monstre_t * monstre, salle_t * salle_du_monstre, int 
 void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures);
 void evenements_menu(SDL_Event* event, monde_t * monde);
 
+
+int collision_combattant_ecran(combattant_t * combattant);
+int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre);
+int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj);
+int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * coffre);
+int collision_combattant(combattant_t * combattant, salle_t * salle, int indice_monstre, joueur_t * joueur);
+
+
+void deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
+void deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
+void deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
+void deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
+
+void deplacement_monstre(monstre_t * monstre, monde_t * m);
 /**
 	*\struct salle_t
 	*\brief représentation d'une salle

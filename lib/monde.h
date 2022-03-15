@@ -17,9 +17,22 @@
 #define NB_MONSTRES_SALLE 1
 #define NB_PERSO_SALLE 1
 
-#define SCREEN_WIDTH 1000
-#define SCREEN_HEIGHT 750
+#define SCREEN_WIDTH 1000.0
+#define SCREEN_HEIGHT 750.0
 #define STATUE 0
+
+#define HAUTEUR_PERSONNAGE 60.0
+#define LARGEUR_PERSONNAGE 45.0
+
+#define HAUTEUR_MONSTRE 50.0
+#define LARGEUR_MONSTRE 50.0
+
+#define HAUTEUR_PERSO_NN_JOUEUR 50.0
+#define LARGEUR_PERSO_NN_JOUEUR 30.0
+
+#define HAUTEUR_COFFRE 20.0
+#define LARGEUR_COFFRE 20.0
+
 /**
 	*\struct salle_t
 	*\brief représentation d'une salle

@@ -132,14 +132,15 @@ void detruire_nonCombattant(nonCombattant_t ** nonCombat){
   * \param y entitée à initialiser.
   * \brief Initialisation du joueur avec des parametres.
 */
-void init_joueur(joueur_t * joueur, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau){
+void init_joueur(joueur_t * joueur, int pvMax, int pvCour, int attaque, int vitesse,int niveau){
   joueur->combattant->pvMax=pvMax;
   joueur->combattant->pvCour=pvCour;
   joueur->combattant->attaque=attaque;
   joueur->combattant->vitesse=vitesse;
-  joueur->combattant->x=x;
-  joueur->combattant->y=y;
+  joueur->combattant->x=100;
+  joueur->combattant->y=100;
   joueur->combattant->niveau=niveau;
+  joueur->combattant->type = 1;
 }
 
 /**
@@ -162,10 +163,11 @@ void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int v
   monster->combattant->y=250;
   monster->combattant->niveau=niveau;
   monster->type=type;
-  monster->xref=500;
-  monster->yref=250;
+  monster->x=500;
+  monster->y=250;
   monster->dir=-1;
   monster->dist=-1;
+  monster->combattant->type = 0;
 }
 
 
@@ -183,70 +185,4 @@ void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,in
   nonCombat->y=y;
   nonCombat->visite=visite;
 }
-/**
-  * \fn void deplacement_monstre(monstre_t * monstre)
-  * \param montre à déplacer.
-  * \brief Déplacement d'un monstre.
-  *
-  *
-*/
-//int direction = rand()%4;
-//printf("%d\n",direction);
-void deplacement_monstre(monstre_t * monstre){
-  //printf("X%f \n",monstre->combattant->x);
-  //printf("Y%f \n",monstre->combattant->y);
-  //printf("Xref %d \n",monstre->xref);
-  //printf("Yref %d \n",monstre->yref);
-  int direction;
-  int distance;
-  int dist_min=10;
-  int dist_max=50;
 
-  if(monstre->dir==-1){
-    printf("dedans\n************\n");
-    direction=rand()%4;
-    do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
-    monstre->dir=direction;
-    monstre->dist=distance;
-    printf("monstre dir %d \n",monstre->dir);
-    printf("distance %d\n",monstre->dist);
-  }
-  //printf("distance: %d\n",distance);
-  if(monstre->dir==0 && (monstre->combattant->x)>(monstre->xref-monstre->dist)){ // Si le monstre va à gauche
-    a_gauche(monstre->combattant);
-    if((monstre->combattant->x)<=(monstre->xref-monstre->dist)){
-      do{direction=rand()%4;}while(direction==1);
-      do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
-      monstre->xref=monstre->combattant->x;
-      monstre->dir=direction;
-    }
-  }
-  if(monstre->dir==1 && (monstre->combattant->x)<(monstre->xref+monstre->dist)){ // Si le monstre va à droite
-    a_droite(monstre->combattant);
-    if((monstre->combattant->x)>=(monstre->xref+monstre->dist)){
-      do{direction=rand()%4;}while(direction==0);
-      do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
-      monstre->xref=monstre->combattant->x;
-      monstre->dir=direction;
-
-    }
-  }
-  if(monstre->dir==2 && (monstre->combattant->y)>(monstre->yref-monstre->dist)){ // Si le monstre va en haut
-    en_haut(monstre->combattant);
-    if((monstre->combattant->y)<=(monstre->yref-monstre->dist)){
-      do{direction=rand()%4;}while(direction==3);
-      do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
-      monstre->yref=monstre->combattant->y;
-      monstre->dir=direction;
-    }
-  }
-  if(monstre->dir==3 && (monstre->combattant->y)<(monstre->yref+monstre->dist)){ // Si le monstre va en bas
-    en_bas(monstre->combattant);
-    if((monstre->combattant->y)>=(monstre->yref+monstre->dist)){
-      do{direction=rand()%4;}while(direction==2);
-      do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
-      monstre->yref=monstre->combattant->y;
-      monstre->dir=direction;
-    }
-  }
-}

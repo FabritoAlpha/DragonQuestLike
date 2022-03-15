@@ -12,6 +12,9 @@
 #define TAILLE_INVENTAIRE 0
 #define NB_EQUIPEMENT 0
 
+#define JOUEUR 1
+#define MONSTRE 0
+
 
 
 /**
@@ -94,7 +97,7 @@ monstre_t * creer_monstre();
 
 nonCombattant_t * creer_nonCombattant();
 
-void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau);
+void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, int niveau);
 
 void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse, int niveau,int type);
 
