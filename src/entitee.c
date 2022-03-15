@@ -168,6 +168,7 @@ void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int v
   monster->dir=-1;
   monster->dist=-1;
   monster->combattant->type = 0;
+  monster->etat = 0;
 }
 
 
@@ -185,4 +186,3 @@ void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,in
   nonCombat->y=y;
   nonCombat->visite=visite;
 }
-

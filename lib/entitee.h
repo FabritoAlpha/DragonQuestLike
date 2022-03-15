@@ -65,6 +65,7 @@ typedef struct{
   int y;
   int dir;
   int dist;
+  int etat; 
 } monstre_t;
 
 /**
