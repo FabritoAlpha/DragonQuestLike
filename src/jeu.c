@@ -33,7 +33,7 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, mond
  * \param wordl le monde
  */
 void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, monde_t * monde){
-    init_monde(monde);
+    init_monde_menu(monde);
     init_sdl(window, renderer,SCREEN_WIDTH, SCREEN_HEIGHT);
     init_ttf();
     init_images(*renderer,textures);
@@ -397,6 +397,7 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
                 monde->option = 3; //3 options pour le moment
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
+            init_monde_jeu(monde,"./rsrc/txt/init.txt"); //TO DO utiliser sauvegarde de différentes parties
             monde->etat_jeu = 1;
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){

@@ -162,14 +162,22 @@ void detruire_salle(salle_t ** salle){
     (*salle) = NULL;
 }
 
-void init_monde(monde_t * monde){
-  int i;
-  for(i = 0; i < NB_ZONES; i++){
-    init_zone(monde->zones[i], i);
-  }
-  init_joueur(monde->joueur,0,0,0,20,0);
+void init_monde_menu(monde_t * monde){
   monde->etat_jeu = 0;
   monde->option = 1;
+}
+
+void init_monde_jeu(monde_t * monde, char* chemin_fichier){
+  int i; int j_niveau; int j_zone;
+  FILE * fichier;
+  fichier = fopen(chemin_fichier,"r");
+  for(i = j_zone; i < NB_ZONES; i++){
+    init_zone(monde->zones[i], i);
+  }
+  fscanf(fichier,"%i", &j_niveau);
+  fscanf(fichier,"%i", &j_zone);
+  init_joueur(monde->joueur,j_niveau,j_zone);
+  fclose(fichier);
 }
 
 void init_zone(zone_t * zone, int num_zone){
