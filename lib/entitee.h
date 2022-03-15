@@ -58,8 +58,8 @@ typedef struct{
 typedef struct{
   combattant_t* combattant; /**< points de vie et position */
   int type; /**< correspond à son type 0=normal 1=boss */
-  int xref;
-  int yref;
+  int x;
+  int y;
   int dir;
   int dist;
 } monstre_t;
@@ -106,7 +106,7 @@ void detruire_monstre(monstre_t ** monster);
 
 void detruire_nonCombattant(nonCombattant_t ** nonCombat);
 
-void deplacement_monstre(monstre_t * monstre);
+void deplacement_monstre(monstre_t * monstre, salle_t * salle, int indice_monstre, joueur_t * joueur);
 
 
 
