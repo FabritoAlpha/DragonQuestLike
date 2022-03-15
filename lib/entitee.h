@@ -26,6 +26,7 @@ typedef struct{
   float x; /**< possition sur l'axe des abscisses */
   float y; /**< position sur l'axe des ordonnées */
   int niveau; /**< niveau du combattant */
+  int type; /**< type du combattant: monstre ou joueur*/
 } combattant_t;
 
 /**
