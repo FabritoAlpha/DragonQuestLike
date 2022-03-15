@@ -125,10 +125,19 @@ Microplanning:
 
 15 mars:
 	Arthur: déplacement monstre qui détecte le joueur
-	Alex: gestion des combats
-	Anna: passage de salles en salles et de zones en zones + placements non combattants
+	Alex: collisions : déplacement de salles en salles et de zones en zones
+				gestion des combats
+				réorganisation du git
+	Anna: initialisation à partir de fichiers textes + sauvegardes dans des fichiers + menu parties sauvegardées
+				affichage de salles en salles et de zones en zones + placements non combattants (coffres + perso)
 
-22 mars:
-	Arthur:
-	Alex: 
-	Anna: intéractions/ dialogues avec non combattants + menu parties sauvegardées
+21 mars:
+	Arthur: inventaire
+	Alex: combats
+	Anna: placements non combattants (coffres + perso) + intéractions/ dialogues avec non combattants
+				affichage objets
+
+28 mars:
+documentation (revoir commentaires + constantes)
+tests
+graphisme
