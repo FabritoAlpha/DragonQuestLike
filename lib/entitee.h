@@ -106,15 +106,4 @@ void detruire_monstre(monstre_t ** monster);
 
 void detruire_nonCombattant(nonCombattant_t ** nonCombat);
 
-void deplacement_monstre(monstre_t * monstre, salle_t * salle, int indice_monstre, joueur_t * joueur);
-
-
-
-
-
-
-
-
-
-
 #endif
