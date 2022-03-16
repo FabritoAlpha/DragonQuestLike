@@ -292,6 +292,7 @@ void deplacement_monstre(monstre_t * monstre, monde_t * m){
  * \param textures les textures
  */
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre){
+    printf("Ne plante pas au DEBUT de rafraichir\n");
     int time_sec=(SDL_GetTicks()/10);
     //on vide le renderer
     clear_renderer(renderer);
@@ -328,8 +329,9 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
       }
 
     }
-
+    printf("Dans RAFRAICHIR je ne plante pas AVANT l'UPDATE SCREEN\n");
     update_screen(renderer);
+    printf("Je ne plante pas PENDANT rafraichir\n");
 }
 
 void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
@@ -383,6 +385,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures)
 
 void evenements_menu(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
+    printf("Ne plante pas AVANT evenements menu\n");
     if(event->type == SDL_KEYDOWN){
         if(keystates[SDL_SCANCODE_DOWN]){
             if(monde->option < 3)
@@ -397,13 +400,17 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
                 monde->option = 3; //3 options pour le moment
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
+            printf("Ne plante pas au moment d'init le jeu\n");
             init_monde_jeu(monde,"./rsrc/txt/init.txt"); //TO DO utiliser sauvegarde de différentes parties
+            printf("Init bien réalisé ça vient de monde->etat_jeu = 1\n");
             monde->etat_jeu = 1;
+            printf("N'a pas planté DURANT l'init du jeu\n");
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
             monde->etat_jeu = -1;
         }
     }
+    printf("Ne plante pas A LA FIN de evenements menu\n");
 }
 
 /**

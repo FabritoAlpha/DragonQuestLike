@@ -14,7 +14,7 @@ typedef struct images_s{
 
     //SDL_Texture* menu; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* zone0salle0; /*!< Texture liée à l'image du fond de l'écran. */
-    //SDL_Texture* zone0salle1; /*!< Texture liée à l'image du fond de l'écran. */
+    //SDL_Texture* s1; /*!< Texture liée à l'image du fond de l'écran. */
     //SDL_Texture* zone1salle0; /*!< Texture liée à l'image du fond de l'écran. */
     //SDL_Texture* zone1salle1; /*!< Texture liée à l'image du fond de l'écran. */
 
