@@ -40,6 +40,10 @@ void deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monst
 void deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
 void deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
 
+void deplacement_salles(joueur_t * j, int indice_salle);
+
+void deplacement_zones(joueur_t * j);
+
 void deplacement_monstre(monstre_t * monstre, monde_t * m);
 /**
 	*\struct salle_t

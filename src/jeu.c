@@ -39,6 +39,14 @@ void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, mond
     init_images(*renderer,textures);
 }
 
+void deplacement_salles(joueur_t * j, int indice_salle){
+	j->salle += indice_salle;
+}
+
+void deplacement_zones(joueur_t * j){
+	(j->zone)++;
+}
+
 int collision_combattant_ecran(combattant_t * combattant){
 
     if(combattant->x  < 100.0){
