@@ -7,7 +7,13 @@
 // le problème c'est que nous ne nous situons pas dans un repère orthonormé classique
 // je travail donc sur la rédaction d'une formule qui fonctionne avec le repère de la sdl
 // d'apres des forums la formule fonctionnerai.
-
-int distance(combattant_t * joueur,combattant_t * monstre){// renvoie la distance entre deux combattants.
-//
+#include "maths.h"
+float distance(combattant_t * joueur,combattant_t * monstre){// renvoie la distance entre deux combattants.
+  int distance;
+  xa=joueur->combattant->x;
+  ya=joueur->combattant->y;
+  xb=monstre->combattant->x;
+  yb=monstre->combattant->y;
+  distance=sqrt(pow(xb-xa,2)+pow(yb-ya,2));
+  return distance;
 }

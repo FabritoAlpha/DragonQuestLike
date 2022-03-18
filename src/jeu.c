@@ -52,7 +52,7 @@ int collision_combattant_ecran(combattant_t * combattant){
         return(COLLISION);
     }
     if(combattant->type == JOUEUR){
-    
+
         if(combattant->x + LARGEUR_PERSONNAGE  > SCREEN_WIDTH ){
             printf("combattant y = %f\n", combattant->y);
             printf("combattant x = %f\n", combattant->x);
@@ -202,85 +202,147 @@ void deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstr
     }
 }
 
-void deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
+int deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
+    entitee->x = (entitee->x)+entitee->vitesse;
+    if(collision_combattant(entitee, salle, indice_monstre, j)){
+        printf("On doit retourner à gauche\n");
+        a_gauche(entitee);
+        return(1);
+    }else{
+      return(0);
+    }
+}
+
+int deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
     entitee->x = (entitee->x)-entitee->vitesse;
     if(collision_combattant(entitee, salle, indice_monstre, j)){
         printf("On doit retourner à droite\n");
         a_droite(entitee);
+        return(1);
+    }else{
+      return(0);
     }
 }
 
-void deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
+int deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
     entitee->y = (entitee->y)-entitee->vitesse;
     if(collision_combattant(entitee, salle, indice_monstre, j)){
         printf("On doit retourner en bas\n");
         en_bas(entitee);
+        return(1);
+    }else{
+      return(0);
     }
 }
 
-void deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
+int deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
     entitee->y = (entitee->y)+entitee->vitesse;
     if(collision_combattant(entitee, salle, indice_monstre, j)){
         printf("On doit retourner en haut\n");
         en_haut(entitee);
+        return(1);
+    }else{
+      return(0);
     }
 }
 
-void deplacement_monstre(monstre_t * monstre, monde_t * m){
-  //printf("X%f \n",monstre->combattant->x);
-  //printf("Y%f \n",monstre->combattant->y);
-  //printf("Xref %d \n",monstre->xref);
-  //printf("Yref %d \n",monstre->yref);
+int distancejoueurmonstre(joueur_t * joueur,monstre_t * monstre){// renvoie la distance entre deux combattants.
+  int distance;
+  int xa=joueur->combattant->x;
+  int ya=joueur->combattant->y;
+  int xb=monstre->combattant->x;
+  int yb=monstre->combattant->y;
+  distance=sqrt(pow(xb-xa,2)+pow(yb-ya,2));
+  return distance;
+}
+
+void deplacement_monstre(monstre_t * monstre,monde_t * m){
+  int valColision=0;
   int direction;
   int distance;
-  int dist_min=10;
-  int dist_max=50;
-
-  if(monstre->dir==-1){
-    printf("dedans\n************\n");
-    direction=rand()%4;
-    do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
-    monstre->dir=direction;
-    monstre->dist=distance;
-    printf("monstre dir %d \n",monstre->dir);
-    printf("distance %d\n",monstre->dist);
+  int dist_min=10;// A METRE JEU.H
+  int dist_max=50;// A METRE JEU.H
+  int nb_direction=4; //A METRE JEU.H
+  int distance_agro=400; //A METRE JEU.H
+  if(distancejoueurmonstre(m->joueur,monstre)>distance_agro && monstre->etat==1){
+    monstre->etat=0;
+    monstre->dir=-1;
   }
-  //printf("distance: %d\n",distance);
-  if(monstre->dir==0 && (monstre->combattant->x)>(monstre->x-monstre->dist)){ // Si le monstre va à gauche
-    deplacement_gauche(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur);
-    if((monstre->combattant->x)<=(monstre->x-monstre->dist)){
-      do{direction=rand()%4;}while(direction==1);
-      do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
+  if(distancejoueurmonstre(m->joueur,monstre)<distance_agro && monstre->etat==0){
+    monstre->etat=1;
+  }
+  printf("%d",monstre->etat);
+  if(monstre->etat==0){ // Etat du monde dans lequel il se déplace de manière aléatoire
+    if(monstre->dir==-1){
+      direction=rand()%nb_direction;
+      do{distance=rand()%dist_max;}while(distance<dist_min||distance>dist_max);
+      monstre->dir=direction;
+      monstre->dist=distance;
       monstre->x=monstre->combattant->x;
-      monstre->dir=direction;
+      monstre->y=monstre->combattant->y;
     }
-  }
-  if(monstre->dir==1 && (monstre->combattant->x)<(monstre->x+monstre->dist)){ // Si le monstre va à droite
-    deplacement_droit(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur);
-    if((monstre->combattant->x)>=(monstre->x+monstre->dist)){
-      do{direction=rand()%4;}while(direction==0);
-      do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
-      monstre->x=monstre->combattant->x;
-      monstre->dir=direction;
+    if(monstre->dir==0 && (monstre->combattant->x)>(monstre->x-monstre->dist)){ // Si le monstre va à gauche
+      valColision = deplacement_gauche(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur);
+      if(valColision){
+        monstre->dir=-1;
+      }
+      if((monstre->combattant->x)<=(monstre->x-monstre->dist)){
+        do{direction=rand()%nb_direction;}while(direction==1);
+        do{distance=rand()%dist_max;}while(distance<dist_min||distance>dist_max);
+        monstre->x=monstre->combattant->x;
+        monstre->dir=direction;
+      }
+    }
+    if(monstre->dir==1 && (monstre->combattant->x)<(monstre->x+monstre->dist)){ // Si le monstre va à droite
+      valColision = deplacement_droit(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur);
+      if(valColision){
+        monstre->dir=-1;
+      }
+      if((monstre->combattant->x)>=(monstre->x+monstre->dist)){
+        do{direction=rand()%nb_direction;}while(direction==0);
+        do{distance=rand()%dist_max;}while(distance<dist_min||distance>dist_max);
+        monstre->x=monstre->combattant->x;
+        monstre->dir=direction;
 
+      }
+    }
+    if(monstre->dir==2 && (monstre->combattant->y)>(monstre->y-monstre->dist)){ // Si le monstre va en haut
+      valColision = deplacement_haut(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur);
+      if(valColision){
+        monstre->dir=-1;
+      }
+      if((monstre->combattant->y)<=(monstre->y-monstre->dist)){
+        do{direction=rand()%nb_direction;}while(direction==3);
+        do{distance=rand()%dist_max;}while(distance<dist_min||distance>dist_max);
+        monstre->y=monstre->combattant->y;
+        monstre->dir=direction;
+      }
+    }
+    if(monstre->dir==3 && (monstre->combattant->y)<(monstre->y+monstre->dist)){ // Si le monstre va en bas
+      valColision = deplacement_bas(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur);
+      if(valColision){
+        monstre->dir=-1;
+      }
+      if((monstre->combattant->y)>=(monstre->y+monstre->dist)){
+        do{direction=rand()%nb_direction;}while(direction==2);
+        do{distance=rand()%dist_max;}while(distance<dist_min||distance>dist_max);
+        monstre->y=monstre->combattant->y;
+        monstre->dir=direction;
+      }
     }
   }
-  if(monstre->dir==2 && (monstre->combattant->y)>(monstre->y-monstre->dist)){ // Si le monstre va en haut
-    deplacement_haut(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur);
-    if((monstre->combattant->y)<=(monstre->y-monstre->dist)){
-      do{direction=rand()%4;}while(direction==3);
-      do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
-      monstre->y=monstre->combattant->y;
-      monstre->dir=direction;
+  if(monstre->etat==1){// Etat du monstre dans lequel il fonce vers le joueur
+    if(m->joueur->combattant->x < monstre->combattant->x){
+      valColision = deplacement_gauche(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur);
     }
-  }
-  if(monstre->dir==3 && (monstre->combattant->y)<(monstre->y+monstre->dist)){ // Si le monstre va en bas
-    deplacement_bas(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur);
-    if((monstre->combattant->y)>=(monstre->y+monstre->dist)){
-      do{direction=rand()%4;}while(direction==2);
-      do{distance=rand()%300;}while(distance<dist_min||distance>dist_max);
-      monstre->y=monstre->combattant->y;
-      monstre->dir=direction;
+    if(m->joueur->combattant->x > monstre->combattant->x){
+      valColision = deplacement_droit(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur);
+    }
+    if(m->joueur->combattant->y < monstre->combattant->y){
+      valColision = deplacement_haut(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur);
+    }
+    if(m->joueur->combattant->y > monstre->combattant->y){
+      valColision = deplacement_bas(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur);
     }
   }
 }

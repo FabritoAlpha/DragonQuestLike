@@ -6,7 +6,7 @@
 
 #ifndef _JEU_H
 #define _JEU_H
-
+#include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "monde.h"
@@ -35,12 +35,12 @@ int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * cof
 int collision_combattant(combattant_t * combattant, salle_t * salle, int indice_monstre, joueur_t * joueur);
 
 
-void deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
-void deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
-void deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
-void deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
+int deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
+int deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
+int deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
+int deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
 
-void deplacement_monstre(monstre_t * monstre, monde_t * m);
+void deplacement_monstre(monstre_t * monstre,monde_t * m);
 /**
 	*\struct salle_t
 	*\brief représentation d'une salle
