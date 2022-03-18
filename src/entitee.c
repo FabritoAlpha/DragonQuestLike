@@ -132,15 +132,17 @@ void detruire_nonCombattant(nonCombattant_t ** nonCombat){
   * \param y entitée à initialiser.
   * \brief Initialisation du joueur avec des parametres.
 */
-void init_joueur(joueur_t * joueur, int pvMax, int pvCour, int attaque, int vitesse,int niveau){
-  joueur->combattant->pvMax=pvMax;
-  joueur->combattant->pvCour=pvCour;
-  joueur->combattant->attaque=attaque;
-  joueur->combattant->vitesse=vitesse;
-  joueur->combattant->x=100;
-  joueur->combattant->y=100;
+void init_joueur(joueur_t * joueur,int niveau, int zone){
+  joueur->combattant->pvMax=100;
+  joueur->combattant->pvCour=100;
+  joueur->combattant->attaque=10;
+  joueur->combattant->vitesse=20;
+  joueur->combattant->x= 1000/10;
+  joueur->combattant->y= 1000/10;
   joueur->combattant->niveau=niveau;
   joueur->combattant->type = 1;
+  joueur->zone = zone;
+  joueur->salle = 0;
 }
 
 /**

@@ -162,21 +162,42 @@ void detruire_salle(salle_t ** salle){
     (*salle) = NULL;
 }
 
-void init_monde(monde_t * monde){
-  int i;
-  for(i = 0; i < NB_ZONES; i++){
-    init_zone(monde->zones[i], i);
-  }
-  init_joueur(monde->joueur,0,0,0,20,0);
+void init_monde_menu(monde_t * monde){
   monde->etat_jeu = 0;
   monde->option = 1;
 }
 
+void init_monde_jeu(monde_t * monde, char* chemin_fichier){
+  int i; int j_niveau; int j_zone;
+  FILE * fichier;
+  printf("Ok1 init_monde_jeu\n");
+  fichier = fopen(chemin_fichier,"r");
+  fscanf(fichier,"%i", &j_niveau);
+  fscanf(fichier,"%i", &j_zone);
+  printf("Ok2 init_monde_jeu\n");
+  for(i = j_zone; i < NB_ZONES; i++){
+    printf("Ok2 bis init_monde_jeu\n");
+    printf("i = %d et j_zone = %d et nb_zones = %d\n",i, j_zone, NB_ZONES);
+    init_zone(monde->zones[i], i);
+    printf("Ok2 bis bis init_monde_jeu\n");
+  }
+  printf("Ok3 init_monde_jeu\n");
+  fscanf(fichier,"%i", &j_niveau);
+  fscanf(fichier,"%i", &j_zone);
+  printf("Ok4 init_monde_jeu\n");
+  init_joueur(monde->joueur,j_niveau,j_zone);
+  printf("Ok5 init_monde_jeu\n");
+  fclose(fichier);
+}
+
 void init_zone(zone_t * zone, int num_zone){
   int i;
+  printf("Oui on arrive dans init_zone\n");
   zone->num_zone = num_zone;
   for(i = 0; i < NB_SALLES; i++){
+    printf("OK1 init_zone\n");
     init_salle(zone->salles[i], i);
+    printf("OK2 init_zone\n");
   }
 }
 

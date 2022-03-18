@@ -12,8 +12,8 @@
 #include "entitee.h"
 
 
-#define NB_SALLES 1
-#define NB_ZONES 1
+#define NB_SALLES 2
+#define NB_ZONES 2
 #define NB_MONSTRES_SALLE 1
 #define NB_PERSO_SALLE 1
 
@@ -88,7 +88,8 @@ void detruire_salle(salle_t ** salle);
 	*\param monde environnement global du jeu
 	*\param fichier_sauvegarde fichier avec les données d'initialisation
 */
-void init_monde(monde_t * monde);
+void init_monde_menu(monde_t * monde);
+void init_monde_jeu(monde_t * monde, char* chemin_fichier);
 
 /**
 	*\fn void init_zone(zone_t * zone, int num_zone)

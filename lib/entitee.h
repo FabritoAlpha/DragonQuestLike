@@ -51,7 +51,8 @@ typedef struct{
   combattant_t* combattant; /**< points de vie et position */
   int ** inventaire; /**< id des objets en possession du joueur */
   int ** objet_equipe; /**< id des objets équipés par le joueur */
-
+  int zone;
+  int salle;
 }joueur_t;
 
 /**
@@ -65,7 +66,7 @@ typedef struct{
   int y;
   int dir;
   int dist;
-  int etat; 
+  int etat;
 } monstre_t;
 
 /**
@@ -98,7 +99,7 @@ monstre_t * creer_monstre();
 
 nonCombattant_t * creer_nonCombattant();
 
-void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, int niveau);
+void init_joueur(joueur_t * joueur,int niveau, int zone);
 
 void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse, int niveau,int type);
 
