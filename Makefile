@@ -23,7 +23,7 @@ CFLAGS=$(FLAGS) -g
 
 all: DragonQuest
 
-DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu2.o $(OBJ)/monde.o $(OBJ)/entitee.o
+DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/monde.o $(OBJ)/entitee.o
 	$(CC) $(CFLAGS) $^ -o $(BIN)/$@ $(LIBS) $(INCS)
 
 $(OBJ)/main.o: $(SRC)/main.c $(LIB)/jeu.h $(LIB)/sdl2_fonctions.h $(LIB)/images.h
@@ -35,7 +35,7 @@ $(OBJ)/sdl2_fonctions.o: $(SRC)/sdl2_fonctions.c $(LIB)/sdl2_fonctions.h
 $(OBJ)/images.o: $(SRC)/images.c $(LIB)/images.h
 	$(CC) $(FLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
 
-$(OBJ)/jeu2.o: $(SRC)/jeu2.c $(LIB)/jeu.h
+$(OBJ)/jeu.o: $(SRC)/jeu.c $(LIB)/jeu.h
 	$(CC) $(FLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
 
 $(OBJ)/monde.o: $(SRC)/monde.c $(LIB)/monde.h
