@@ -26,7 +26,8 @@ int test_collision_joueur(joueur_t * joueur, salle_t * salle_courante, int large
 int test_collision_monstre(monstre_t * monstre, salle_t * salle_du_monstre, int largeur_ecran, int longueur_ecran);// même chose
 void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures);
 void evenements_menu(SDL_Event* event, monde_t * monde);
-
+void evenements_inventaire(SDL_Event* event, monde_t * monde);
+void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures);
 
 int collision_combattant_ecran(combattant_t * combattant);
 int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre);
@@ -40,9 +41,15 @@ int deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstr
 int deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
 int deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
 
+
 void deplacement_monstre(monstre_t * monstre,monde_t * m);
-void changement_salle(joueur_t * j, int changement_salle);
-void changement_zone(joueur_t * j);
+
+void deplacement_salles(joueur_t * j, int indice_salle);
+
+void deplacement_zones(joueur_t * j);
+
+void deplacement_monstre(monstre_t * monstre, monde_t * m);
+
 /**
 	*\struct salle_t
 	*\brief représentation d'une salle

@@ -60,11 +60,11 @@ void changement_zone(joueur_t * j){
 int collision_combattant_ecran(combattant_t * combattant/*monde_t * monde*/){
 
     if(combattant->x  < 100.0){
-        
+
         return(COLLISION);
     }
     if(combattant->y < 100.0){
-        
+
         return(COLLISION);
     }
     if(combattant->type == JOUEUR){
@@ -91,22 +91,22 @@ int collision_combattant_ecran(combattant_t * combattant/*monde_t * monde*/){
     	  }*/
 
         if(combattant->x + LARGEUR_PERSONNAGE  > SCREEN_WIDTH ){
-            
+
             return(COLLISION);
         }
         if(combattant->y + HAUTEUR_PERSONNAGE > SCREEN_HEIGHT - 100){
-            
+
             return(COLLISION);
         }
     }
 
     if(combattant->type == MONSTRE){
         if(combattant->x + LARGEUR_MONSTRE  > SCREEN_WIDTH ){
-            
+
             return(COLLISION);
         }
         if(combattant->y + HAUTEUR_MONSTRE > SCREEN_HEIGHT - 100){
-           
+
             return(COLLISION);
         }
     }
@@ -118,7 +118,7 @@ int collision_combattant_ecran(combattant_t * combattant/*monde_t * monde*/){
 int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*monde_t * monde */){
 
     if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_MONSTRE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_MONSTRE) ){
-        
+
         /*
         charger_combat(monde);
         return(PAS_COLLISION);
@@ -126,7 +126,7 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*mond
         return(COLLISION);
     }
     if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_MONSTRE) && (joueur->y  >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_MONSTRE) ){
-        
+
         return(COLLISION);
         /*
         charger_combat(monde);
@@ -134,7 +134,7 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*mond
         */
     }
     if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_MONSTRE) && (joueur->y >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_MONSTRE) ){
-        
+
         return(COLLISION);
         /*
         charger_combat(monde);
@@ -142,7 +142,7 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*mond
         */
     }
     if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_MONSTRE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_MONSTRE) ){
-        
+
         return(COLLISION);
         /*
         charger_combat(monde);
@@ -156,19 +156,19 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*mond
 int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj){
 
   if( (combattant->x + LARGEUR_PERSONNAGE >= pnj->x) && (combattant->x + LARGEUR_PERSONNAGE <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y + HAUTEUR_PERSONNAGE >= pnj->y) && (combattant->y + HAUTEUR_PERSONNAGE <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
-    
+
     return(COLLISION);
   }
   if( (combattant->x + LARGEUR_PERSONNAGE >= pnj->x) && (combattant->x + LARGEUR_PERSONNAGE <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y  >= pnj->y) && (combattant->y <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
-    
+
     return(COLLISION);
   }
   if( (combattant->x >= pnj->x) && (combattant->x <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y >= pnj->y) && (combattant->y <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
-    
+
     return(COLLISION);
   }
   if( (combattant->x >= pnj->x) && (combattant->x <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y + HAUTEUR_PERSONNAGE >= pnj->y) && (combattant->y + HAUTEUR_PERSONNAGE <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
-    
+
     return(COLLISION);
   }
 
@@ -179,19 +179,19 @@ int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * cof
 
 
   if( (combattant->x + LARGEUR_PERSONNAGE >= coffre->x) && (combattant->x + LARGEUR_PERSONNAGE <= coffre->x + LARGEUR_COFFRE) && (combattant->y + HAUTEUR_PERSONNAGE >= coffre->y) && (combattant->y + HAUTEUR_PERSONNAGE <= coffre->y + HAUTEUR_COFFRE) ){
-    
+
     return(COLLISION);
   }
   if( (combattant->x + LARGEUR_PERSONNAGE >= coffre->x) && (combattant->x + LARGEUR_PERSONNAGE <= coffre->x + LARGEUR_COFFRE) && (combattant->y  >= coffre->y) && (combattant->y <= coffre->y + HAUTEUR_COFFRE) ){
-    
+
     return(COLLISION);
   }
   if( (combattant->x >= coffre->x) && (combattant->x <= coffre->x + LARGEUR_COFFRE) && (combattant->y >= coffre->y) && (combattant->y <= coffre->y + HAUTEUR_COFFRE) ){
-    
+
     return(COLLISION);
   }
   if( (combattant->x >= coffre->x) && (combattant->x <= coffre->x + LARGEUR_COFFRE) && (combattant->y + HAUTEUR_PERSONNAGE >= coffre->y) && (combattant->y + HAUTEUR_PERSONNAGE <= coffre->y + HAUTEUR_COFFRE) ){
-    
+
     return(COLLISION);
   }
 
@@ -245,7 +245,7 @@ int collision_combattant(combattant_t * combattant, salle_t * salle, int indice_
 int deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
     entitee->x = (entitee->x)+entitee->vitesse;
     if(collision_combattant(entitee, salle, indice_monstre, j)){
-        
+
         a_gauche(entitee);
         return(1);
     }else{
@@ -256,7 +256,7 @@ int deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre
 int deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
     entitee->x = (entitee->x)-entitee->vitesse;
     if(collision_combattant(entitee, salle, indice_monstre, j)){
-        
+
         a_droite(entitee);
         return(1);
     }else{
@@ -267,7 +267,7 @@ int deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstr
 int deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
     entitee->y = (entitee->y)-entitee->vitesse;
     if(collision_combattant(entitee, salle, indice_monstre, j)){
-        
+
         en_bas(entitee);
         return(1);
     }else{
@@ -278,7 +278,7 @@ int deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre,
 int deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
     entitee->y = (entitee->y)+entitee->vitesse;
     if(collision_combattant(entitee, salle, indice_monstre, j)){
-        
+
         en_haut(entitee);
         return(1);
     }else{
@@ -394,7 +394,7 @@ void deplacement_monstre(monstre_t * monstre,monde_t * m){
  * \param textures les textures
  */
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre){
-    
+
     int time_sec=(SDL_GetTicks()/10);
     //on vide le renderer
     clear_renderer(renderer);
@@ -405,6 +405,9 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
       printf("Dans le premier if on ne plante pas avant affichage du menu\n\n\n");
       affichage_menu(renderer, monde, textures);
       printf("Dans le premier if on ne plante pas pdt affichage du menu\n\n\n");
+    }
+    if(monde->etat_jeu == 3){
+      affichage_inventaire(renderer, monde, textures);
     }
 
     printf("On ne plante pas avant le second if de rafraichir\n\n\n");
@@ -435,9 +438,9 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
       }
 
     }
-    
+
     update_screen(renderer);
-    
+
 }
 
 void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
@@ -491,7 +494,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures)
 
 void evenements_menu(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
-    
+
     if(event->type == SDL_KEYDOWN){
         if(keystates[SDL_SCANCODE_DOWN]){
             if(monde->option < 3)
@@ -506,11 +509,157 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
                 monde->option = 3; //3 options pour le moment
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
-            
+
             init_monde_jeu(monde,"./rsrc/txt/init.txt"); //TO DO utiliser sauvegarde de différentes parties
-            
+
             monde->etat_jeu = 1;
-            
+
+        }
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
+            monde->etat_jeu = -1;
+        }
+    }
+
+}
+void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
+    char opt[20] = "";
+    //jouer
+    if(monde->option == 1){
+        sprintf(opt, "inventaire");
+        if(textures->font != 0){
+            apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/5 , SCREEN_HEIGHT/5 , 200, 60);
+        }
+        sprintf(opt, "Objet 1");
+        if(textures->font != 0){
+            apply_text(renderer, 0, 255, 0 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/6 , 350, 80);
+        }
+        sprintf(opt, "Objet 2");
+        if(textures->font != 0){
+            apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/6, 350, 80);
+        }
+        sprintf(opt, "Objet 3");
+        if(textures->font != 0){
+            apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/6, 350, 80);
+        }
+        sprintf(opt, "Objet 4");
+        if(textures->font != 0){
+            apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 5*SCREEN_HEIGHT/6, 350, 80);
+        }
+    }
+    //Nouvelle partie
+    if(monde->option == 2){
+      sprintf(opt, "inventaire");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/5 , SCREEN_HEIGHT/5 , 200, 60);
+      }
+      sprintf(opt, "Objet 1");
+      if(textures->font != 0){
+          apply_text(renderer, 150, 255, 150 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/6 , 350, 80);
+      }
+      sprintf(opt, "Objet 2");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/6, 350, 80);
+      }
+      sprintf(opt, "Objet 3");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/6, 350, 80);
+      }
+      sprintf(opt, "Objet 4");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 5*SCREEN_HEIGHT/6, 350, 80);
+      }
+    }
+    //quitter
+    if(monde->option == 3){
+      sprintf(opt, "inventaire");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/5 , SCREEN_HEIGHT/5 , 200, 60);
+      }
+      sprintf(opt, "Objet 1");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/6 , 350, 80);
+      }
+      sprintf(opt, "Objet 2");
+      if(textures->font != 0){
+          apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/6, 350, 80);
+      }
+      sprintf(opt, "Objet 3");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/6, 350, 80);
+      }
+      sprintf(opt, "Objet 4");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 5*SCREEN_HEIGHT/6, 350, 80);
+      }
+    }
+    if(monde->option == 4){
+      sprintf(opt, "inventaire");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/5 , SCREEN_HEIGHT/5 , 200, 60);
+      }
+      sprintf(opt, "Objet 1");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/6 , 350, 80);
+      }
+      sprintf(opt, "Objet 2");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/6, 350, 80);
+      }
+      sprintf(opt, "Objet 3");
+      if(textures->font != 0){
+          apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/6, 350, 80);
+      }
+      sprintf(opt, "Objet 4");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 5*SCREEN_HEIGHT/6, 350, 80);
+      }
+    }
+    if(monde->option == 5){
+      sprintf(opt, "inventaire");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/5 , SCREEN_HEIGHT/5 , 200, 60);
+      }
+      sprintf(opt, "Objet 1");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/6 , 350, 80);
+      }
+      sprintf(opt, "Objet 2");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/6, 350, 80);
+      }
+      sprintf(opt, "Objet 3");
+      if(textures->font != 0){
+          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/6, 350, 80);
+      }
+      sprintf(opt, "Objet 4");
+      if(textures->font != 0){
+          apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 , 5*SCREEN_HEIGHT/6, 350, 80);
+      }
+    }
+}
+void evenements_inventaire(SDL_Event* event, monde_t * monde){
+    const Uint8* keystates = SDL_GetKeyboardState(NULL);
+    printf("On arrive dans event inventaire\n");
+    if(event->type == SDL_KEYDOWN){
+      printf("in1\n");
+        if(keystates[SDL_SCANCODE_DOWN]){
+            if(monde->option < 5)
+                monde->option++;
+            else
+                monde->option = 1;
+        }
+        if(keystates[SDL_SCANCODE_UP]){
+            if(monde->option > 1)
+                monde->option--;
+            else
+                monde->option = 3; //3 options pour le moment
+        }
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
+
+            init_monde_jeu(monde,"./rsrc/txt/init.txt"); //TO DO utiliser sauvegarde de différentes parties
+
+            monde->etat_jeu = 1;
+
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
             monde->etat_jeu = -1;
@@ -528,8 +677,11 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
 void evenements(SDL_Event* event, monde_t * monde){
   const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
+
     while(SDL_PollEvent( event )) {
-        /*!< Menu */
+        if(event->type != SDL_KEYDOWN)
+           continue;
+
         if(monde->etat_jeu == 0){
             evenements_menu(event, monde);
         }
@@ -547,6 +699,18 @@ void evenements(SDL_Event* event, monde_t * monde){
             if(event->key.keysym.sym == SDLK_DOWN){
                 deplacement_bas(monde->joueur->combattant, monde->zones[0]->salles[0], 0, NULL);
             }
+            if(event->key.keysym.sym == SDLK_i){// Si en jeu il ouvre l'inventaire
+                monde->etat_jeu=3;
+                event->key.keysym.sym =0;
+
+            }
+        }
+        // Si dans l'inventaire le joueur le ferme.
+        if(monde->etat_jeu==3){// si dans inventaire
+          evenements_inventaire(event, monde);
+          if(event->key.keysym.sym == SDLK_i){
+            monde->etat_jeu=1;
+          }
         }
 
         //Si l'utilisateur a cliqué sur le X de la fenêtre
