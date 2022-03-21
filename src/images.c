@@ -90,8 +90,28 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
 */
 void fond_position(SDL_Renderer *renderer, images_t *textures, int etat, int zone, int salle){
     
-    apply_texture(textures->zone0salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
- 
+    //fond du menu
+    if(etat == 1){
+        if(zone == 0){
+            if(salle == 0){
+                apply_texture(textures->zone0salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+            }
+            if(salle == 1){
+                apply_texture(textures->zone0salle1, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+            }
+        }
+        if(zone == 1){
+            if(salle == 0){
+                apply_texture(textures->zone1salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+            }
+            if(salle == 1){
+                apply_texture(textures->zone1salle1, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+            }
+        }
+    }
+    else{
+        apply_texture(textures->zone0salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+    }
 }
 
 void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur){

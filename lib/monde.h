@@ -33,6 +33,12 @@
 #define HAUTEUR_COFFRE 20.0
 #define LARGEUR_COFFRE 20.0
 
+#define ENTREE_HAUT_SALLE_1 (SCREEN_HEIGHT / 2 - 100)
+#define ENTREE_BAS_SALLE_1 (SCREEN_HEIGHT / 2 + 100)
+
+#define ENTREE_GAUCHE_ZONE_SUIVANTE (SCREEN_WIDTH / 2 - 100)
+#define ENTREE_DROITE_ZONE_SUIVANTE (SCREEN_WIDTH / 2 + 100)
+
 /**
 	*\struct salle_t
 	*\brief représentation d'une salle

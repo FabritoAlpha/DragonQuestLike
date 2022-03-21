@@ -29,17 +29,17 @@ void evenements_menu(SDL_Event* event, monde_t * monde);
 void evenements_inventaire(SDL_Event* event, monde_t * monde);
 void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures);
 
-int collision_combattant_ecran(combattant_t * combattant);
+int collision_combattant_ecran(combattant_t * combattant, monde_t * monde);
 int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre);
 int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj);
 int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * coffre);
-int collision_combattant(combattant_t * combattant, salle_t * salle, int indice_monstre, joueur_t * joueur);
+int collision_combattant(combattant_t * combattant, salle_t * salle, int indice_monstre, joueur_t * joueur, monde_t * monde);
 
 
-int deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
-int deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
-int deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
-int deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
+int deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j, monde_t * monde);
+int deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j, monde_t * monde);
+int deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j, monde_t * monde);
+int deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j, monde_t * monde);
 
 
 void deplacement_monstre(monstre_t * monstre,monde_t * m);
