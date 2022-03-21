@@ -202,13 +202,7 @@ int collision_combattant(combattant_t * combattant, salle_t * salle, int indice_
     return(PAS_COLLISION);
 }
 
-void deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
-    entitee->x = (entitee->x)+entitee->vitesse;
-    if(collision_combattant(entitee, salle, indice_monstre, j)){
-        printf("On doit retourner à gauche\n");
-        a_gauche(entitee);
-    }
-}
+
 
 int deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
     entitee->x = (entitee->x)+entitee->vitesse;
