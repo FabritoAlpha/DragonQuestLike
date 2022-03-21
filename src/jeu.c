@@ -96,40 +96,41 @@ int collision_combattant_ecran(combattant_t * combattant){
 
 int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre){
 
-    if( (joueur->x + LARGEUR_PERSONNAGE > monstre->x) && (joueur->x + LARGEUR_PERSONNAGE < monstre->x + LARGEUR_MONSTRE) && (joueur->y + HAUTEUR_PERSONNAGE > monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE < monstre->y + HAUTEUR_MONSTRE) ){
+    if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_MONSTRE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_MONSTRE) ){
         printf("joueur ne peut pas aller à droite/bas car il rentrerait en collision avec monstre\n");
         return(COLLISION);
     }
-    if( (joueur->x + LARGEUR_PERSONNAGE > monstre->x) && (joueur->x + LARGEUR_PERSONNAGE < monstre->x + LARGEUR_MONSTRE) && (joueur->y  > monstre->y) && (joueur->y < monstre->y + HAUTEUR_MONSTRE) ){
+    if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_MONSTRE) && (joueur->y  >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_MONSTRE) ){
         printf("joueur ne peut pas aller à droite/haut car il rentrerait en collision avec monstre\n");
         return(COLLISION);
     }
-    if( (joueur->x > monstre->x) && (joueur->x < monstre->x + LARGEUR_MONSTRE) && (joueur->y > monstre->y) && (joueur->y < monstre->y + HAUTEUR_MONSTRE) ){
+    if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_MONSTRE) && (joueur->y >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_MONSTRE) ){
         printf("joueur ne peut pas aller à gauche/haut car il rentrerait en collision avec monstre\n");
         return(COLLISION);
     }
-    if( (joueur->x > monstre->x) && (joueur->x < monstre->x + LARGEUR_MONSTRE) && (joueur->y + HAUTEUR_PERSONNAGE > monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE < monstre->y + HAUTEUR_MONSTRE) ){
+    if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_MONSTRE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_MONSTRE) ){
         printf("joueur ne peut pas aller à gauche/bas car il rentrerait en collision avec monstre\n");
         return(COLLISION);
     }
     return(PAS_COLLISION);
 }
 
+
 int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj){
 
-  if( (combattant->x + LARGEUR_PERSONNAGE > pnj->x) && (combattant->x + LARGEUR_PERSONNAGE < pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y + HAUTEUR_PERSONNAGE > pnj->y) && (combattant->y + HAUTEUR_PERSONNAGE < pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
+  if( (combattant->x + LARGEUR_PERSONNAGE >= pnj->x) && (combattant->x + LARGEUR_PERSONNAGE <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y + HAUTEUR_PERSONNAGE >= pnj->y) && (combattant->y + HAUTEUR_PERSONNAGE <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
     printf("combattant ne peut pas aller à droite/bas car il rentrerait en collision avec le pnj\n");
     return(COLLISION);
   }
-  if( (combattant->x + LARGEUR_PERSONNAGE > pnj->x) && (combattant->x + LARGEUR_PERSONNAGE < pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y  > pnj->y) && (combattant->y < pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
+  if( (combattant->x + LARGEUR_PERSONNAGE >= pnj->x) && (combattant->x + LARGEUR_PERSONNAGE <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y  >= pnj->y) && (combattant->y <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
     printf("combattant ne peut pas aller à droite/haut car il rentrerait en collision avec le pnj\n");
     return(COLLISION);
   }
-  if( (combattant->x > pnj->x) && (combattant->x < pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y > pnj->y) && (combattant->y < pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
+  if( (combattant->x >= pnj->x) && (combattant->x <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y >= pnj->y) && (combattant->y <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
     printf("combattant ne peut pas aller à gauche/haut car il rentrerait en collision avec pnj\n");
     return(COLLISION);
   }
-  if( (combattant->x > pnj->x) && (combattant->x < pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y + HAUTEUR_PERSONNAGE > pnj->y) && (combattant->y + HAUTEUR_PERSONNAGE < pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
+  if( (combattant->x >= pnj->x) && (combattant->x <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y + HAUTEUR_PERSONNAGE >= pnj->y) && (combattant->y + HAUTEUR_PERSONNAGE <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
     printf("combattant ne peut pas aller à gauche/bas car il rentrerait en collision avec pnj\n");
     return(COLLISION);
   }
@@ -140,19 +141,19 @@ int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj){
 int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * coffre){
 
 
-  if( (combattant->x + LARGEUR_PERSONNAGE > coffre->x) && (combattant->x + LARGEUR_PERSONNAGE < coffre->x + LARGEUR_COFFRE) && (combattant->y + HAUTEUR_PERSONNAGE > coffre->y) && (combattant->y + HAUTEUR_PERSONNAGE < coffre->y + HAUTEUR_COFFRE) ){
+  if( (combattant->x + LARGEUR_PERSONNAGE >= coffre->x) && (combattant->x + LARGEUR_PERSONNAGE <= coffre->x + LARGEUR_COFFRE) && (combattant->y + HAUTEUR_PERSONNAGE >= coffre->y) && (combattant->y + HAUTEUR_PERSONNAGE <= coffre->y + HAUTEUR_COFFRE) ){
     printf("combattant ne peut pas aller à droite/bas car il rentrerait en collision avec le coffre\n");
     return(COLLISION);
   }
-  if( (combattant->x + LARGEUR_PERSONNAGE > coffre->x) && (combattant->x + LARGEUR_PERSONNAGE < coffre->x + LARGEUR_COFFRE) && (combattant->y  > coffre->y) && (combattant->y < coffre->y + HAUTEUR_COFFRE) ){
+  if( (combattant->x + LARGEUR_PERSONNAGE >= coffre->x) && (combattant->x + LARGEUR_PERSONNAGE <= coffre->x + LARGEUR_COFFRE) && (combattant->y  >= coffre->y) && (combattant->y <= coffre->y + HAUTEUR_COFFRE) ){
     printf("combattant ne peut pas aller à droite/haut car il rentrerait en collision avec le coffre\n");
     return(COLLISION);
   }
-  if( (combattant->x > coffre->x) && (combattant->x < coffre->x + LARGEUR_COFFRE) && (combattant->y > coffre->y) && (combattant->y < coffre->y + HAUTEUR_COFFRE) ){
+  if( (combattant->x >= coffre->x) && (combattant->x <= coffre->x + LARGEUR_COFFRE) && (combattant->y >= coffre->y) && (combattant->y <= coffre->y + HAUTEUR_COFFRE) ){
     printf("combattant ne peut pas aller à gauche/haut car il rentrerait en collision avec le coffre\n");
     return(COLLISION);
   }
-  if( (combattant->x > coffre->x) && (combattant->x < coffre->x + LARGEUR_COFFRE) && (combattant->y + HAUTEUR_PERSONNAGE > coffre->y) && (combattant->y + HAUTEUR_PERSONNAGE < coffre->y + HAUTEUR_COFFRE) ){
+  if( (combattant->x >= coffre->x) && (combattant->x <= coffre->x + LARGEUR_COFFRE) && (combattant->y + HAUTEUR_PERSONNAGE >= coffre->y) && (combattant->y + HAUTEUR_PERSONNAGE <= coffre->y + HAUTEUR_COFFRE) ){
     printf("combattant ne peut pas aller à gauche/bas car il rentrerait en collision avec le coffre\n");
     return(COLLISION);
   }
