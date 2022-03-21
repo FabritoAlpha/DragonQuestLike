@@ -17,11 +17,11 @@
 * \param world le monde
 */
 void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde){
-    //printf("Test de la destruction du monde\n");
+
     detruire_monde(&monde);
-    printf("Test de la destruction de textures\n");
+
     clean_images(textures);
-    printf("Test de la destruction de la sdl");
+
     clean_sdl(renderer,window);
 }
 
@@ -39,53 +39,64 @@ void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, mond
     init_images(*renderer,textures);
 }
 
-void deplacement_salles(joueur_t * j, int indice_salle){
-	j->salle += indice_salle;
+void changement_salle(joueur_t * j, int changement_salle){
+	j->salle = (j->salle) + changement_salle;
 }
 
-void deplacement_zones(joueur_t * j){
+void changement_zone(joueur_t * j){
 	(j->zone)++;
 }
 
-int collision_combattant_ecran(combattant_t * combattant){
+int collision_combattant_ecran(combattant_t * combattant/*monde_t * monde*/){
 
     if(combattant->x  < 100.0){
-        printf("Il ne peut pas aller à gauche car il sortirait de l'écran\n");
+        
         return(COLLISION);
     }
     if(combattant->y < 100.0){
-        printf("combattant y = %f\n", combattant->y);
-        printf("combattant x = %f\n", combattant->x);
-        printf("Il ne peut pas aller en haut car il sortirait de l'écran\n");
+        
         return(COLLISION);
     }
     if(combattant->type == JOUEUR){
+        /*
+        #define ENTREE_HAUT_SALLE_1 (SCREEN_HEIGHT / 2 - 100)
+        #define ENTREE_BAS_SALLE_1 (SCREEN_HEIGHT / 2 + 100)
+
+        #define ENTREE_GAUCHE_ZONE_SUIVANTE (SCREEN_WIDTH / 2 - 100)
+        #define ENTREE_DROITE_ZONE_SUIVANTE (SCREEN_WIDTH / 2 + 100)
+
+        if( (num_salle_courrante == 0) && (combattant->y >= ENTREE_HAUT_SALLE_1) && (combattant->y + HAUTEUR_PERSONNAGE <= ENTREE_BAS_SALLE_1) && (combattant->x  + LARGEUR_PERSONNAGE >= SCREEN_WIDTH) ){
+          changement_salle(monde->joueur, +1);
+    		  RETURN(PAS_COLLISION);
+    	  }
+
+        if( (num_salle_courrante == 1) && (combattant->y >= ENTREE_HAUT_SALLE_1) && (combattant->y + HAUTEUR_PERSONNAGE <= ENTREE_BAS_SALLE_1) && (combattant->x <= 0) ){
+          changement_salle(monde->joueur, -1);
+    		  RETURN(PAS_COLLISION);
+    	  }
+
+    	  if( (num_salle_courrante == 1) && (combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE >= SCREEN_HEIGHT) ){
+    		  changement_zone(monde->joueur);
+    		  RETURN(PAS_COLLISION);
+    	  }*/
 
         if(combattant->x + LARGEUR_PERSONNAGE  > SCREEN_WIDTH ){
-            printf("combattant y = %f\n", combattant->y);
-            printf("combattant x = %f\n", combattant->x);
-            printf("Il ne peut pas aller en bas car il sortirait de l'écran\n");
+            
             return(COLLISION);
         }
         if(combattant->y + HAUTEUR_PERSONNAGE > SCREEN_HEIGHT - 100){
-            printf("combattant y = %f\n", combattant->y);
-            printf("combattant x = %f\n", combattant->x);
-            printf("Il ne peut pas aller en haut car il sortirait de l'écran\n");
+            
             return(COLLISION);
         }
     }
 
     if(combattant->type == MONSTRE){
         if(combattant->x + LARGEUR_MONSTRE  > SCREEN_WIDTH ){
-            printf("combattant y = %f\n", combattant->y);
-            printf("combattant x = %f\n", combattant->x);
-            printf("Il ne peut pas aller en bas car il sortirait de l'écran\n");
+            
             return(COLLISION);
         }
         if(combattant->y + HAUTEUR_MONSTRE > SCREEN_HEIGHT - 100){
-            printf("combattant y = %f\n", combattant->y);
-            printf("combattant x = %f\n", combattant->x);
-            printf("Il ne peut pas aller en haut car il sortirait de l'écran\n");
+           
             return(COLLISION);
         }
     }
@@ -97,20 +108,36 @@ int collision_combattant_ecran(combattant_t * combattant){
 int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre){
 
     if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_MONSTRE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_MONSTRE) ){
-        printf("joueur ne peut pas aller à droite/bas car il rentrerait en collision avec monstre\n");
+        
+        /*
+        combat();
+        return(PAS_COLLISION);
+        */
         return(COLLISION);
     }
     if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_MONSTRE) && (joueur->y  >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_MONSTRE) ){
-        printf("joueur ne peut pas aller à droite/haut car il rentrerait en collision avec monstre\n");
+        
         return(COLLISION);
+        /*
+        combat();
+        return(PAS_COLLISION);
+        */
     }
     if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_MONSTRE) && (joueur->y >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_MONSTRE) ){
-        printf("joueur ne peut pas aller à gauche/haut car il rentrerait en collision avec monstre\n");
+        
         return(COLLISION);
+        /*
+        combat();
+        return(PAS_COLLISION);
+        */
     }
     if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_MONSTRE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_MONSTRE) ){
-        printf("joueur ne peut pas aller à gauche/bas car il rentrerait en collision avec monstre\n");
+        
         return(COLLISION);
+        /*
+        combat();
+        return(PAS_COLLISION);
+        */
     }
     return(PAS_COLLISION);
 }
@@ -119,19 +146,19 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre){
 int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj){
 
   if( (combattant->x + LARGEUR_PERSONNAGE >= pnj->x) && (combattant->x + LARGEUR_PERSONNAGE <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y + HAUTEUR_PERSONNAGE >= pnj->y) && (combattant->y + HAUTEUR_PERSONNAGE <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
-    printf("combattant ne peut pas aller à droite/bas car il rentrerait en collision avec le pnj\n");
+    
     return(COLLISION);
   }
   if( (combattant->x + LARGEUR_PERSONNAGE >= pnj->x) && (combattant->x + LARGEUR_PERSONNAGE <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y  >= pnj->y) && (combattant->y <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
-    printf("combattant ne peut pas aller à droite/haut car il rentrerait en collision avec le pnj\n");
+    
     return(COLLISION);
   }
   if( (combattant->x >= pnj->x) && (combattant->x <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y >= pnj->y) && (combattant->y <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
-    printf("combattant ne peut pas aller à gauche/haut car il rentrerait en collision avec pnj\n");
+    
     return(COLLISION);
   }
   if( (combattant->x >= pnj->x) && (combattant->x <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y + HAUTEUR_PERSONNAGE >= pnj->y) && (combattant->y + HAUTEUR_PERSONNAGE <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
-    printf("combattant ne peut pas aller à gauche/bas car il rentrerait en collision avec pnj\n");
+    
     return(COLLISION);
   }
 
@@ -142,19 +169,19 @@ int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * cof
 
 
   if( (combattant->x + LARGEUR_PERSONNAGE >= coffre->x) && (combattant->x + LARGEUR_PERSONNAGE <= coffre->x + LARGEUR_COFFRE) && (combattant->y + HAUTEUR_PERSONNAGE >= coffre->y) && (combattant->y + HAUTEUR_PERSONNAGE <= coffre->y + HAUTEUR_COFFRE) ){
-    printf("combattant ne peut pas aller à droite/bas car il rentrerait en collision avec le coffre\n");
+    
     return(COLLISION);
   }
   if( (combattant->x + LARGEUR_PERSONNAGE >= coffre->x) && (combattant->x + LARGEUR_PERSONNAGE <= coffre->x + LARGEUR_COFFRE) && (combattant->y  >= coffre->y) && (combattant->y <= coffre->y + HAUTEUR_COFFRE) ){
-    printf("combattant ne peut pas aller à droite/haut car il rentrerait en collision avec le coffre\n");
+    
     return(COLLISION);
   }
   if( (combattant->x >= coffre->x) && (combattant->x <= coffre->x + LARGEUR_COFFRE) && (combattant->y >= coffre->y) && (combattant->y <= coffre->y + HAUTEUR_COFFRE) ){
-    printf("combattant ne peut pas aller à gauche/haut car il rentrerait en collision avec le coffre\n");
+    
     return(COLLISION);
   }
   if( (combattant->x >= coffre->x) && (combattant->x <= coffre->x + LARGEUR_COFFRE) && (combattant->y + HAUTEUR_PERSONNAGE >= coffre->y) && (combattant->y + HAUTEUR_PERSONNAGE <= coffre->y + HAUTEUR_COFFRE) ){
-    printf("combattant ne peut pas aller à gauche/bas car il rentrerait en collision avec le coffre\n");
+    
     return(COLLISION);
   }
 
@@ -208,7 +235,7 @@ int collision_combattant(combattant_t * combattant, salle_t * salle, int indice_
 int deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
     entitee->x = (entitee->x)+entitee->vitesse;
     if(collision_combattant(entitee, salle, indice_monstre, j)){
-        printf("On doit retourner à gauche\n");
+        
         a_gauche(entitee);
         return(1);
     }else{
@@ -219,7 +246,7 @@ int deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre
 int deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
     entitee->x = (entitee->x)-entitee->vitesse;
     if(collision_combattant(entitee, salle, indice_monstre, j)){
-        printf("On doit retourner à droite\n");
+        
         a_droite(entitee);
         return(1);
     }else{
@@ -230,7 +257,7 @@ int deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstr
 int deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
     entitee->y = (entitee->y)-entitee->vitesse;
     if(collision_combattant(entitee, salle, indice_monstre, j)){
-        printf("On doit retourner en bas\n");
+        
         en_bas(entitee);
         return(1);
     }else{
@@ -241,7 +268,7 @@ int deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre,
 int deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j){
     entitee->y = (entitee->y)+entitee->vitesse;
     if(collision_combattant(entitee, salle, indice_monstre, j)){
-        printf("On doit retourner en haut\n");
+        
         en_haut(entitee);
         return(1);
     }else{
@@ -357,7 +384,7 @@ void deplacement_monstre(monstre_t * monstre,monde_t * m){
  * \param textures les textures
  */
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre){
-    printf("Ne plante pas au DEBUT de rafraichir\n");
+    
     int time_sec=(SDL_GetTicks()/10);
     //on vide le renderer
     clear_renderer(renderer);
@@ -394,9 +421,9 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
       }
 
     }
-    printf("Dans RAFRAICHIR je ne plante pas AVANT l'UPDATE SCREEN\n");
+    
     update_screen(renderer);
-    printf("Je ne plante pas PENDANT rafraichir\n");
+    
 }
 
 void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
@@ -450,7 +477,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures)
 
 void evenements_menu(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
-    printf("Ne plante pas AVANT evenements menu\n");
+    
     if(event->type == SDL_KEYDOWN){
         if(keystates[SDL_SCANCODE_DOWN]){
             if(monde->option < 3)
@@ -465,17 +492,17 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
                 monde->option = 3; //3 options pour le moment
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
-            printf("Ne plante pas au moment d'init le jeu\n");
+            
             init_monde_jeu(monde,"./rsrc/txt/init.txt"); //TO DO utiliser sauvegarde de différentes parties
-            printf("Init bien réalisé ça vient de monde->etat_jeu = 1\n");
+            
             monde->etat_jeu = 1;
-            printf("N'a pas planté DURANT l'init du jeu\n");
+            
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
             monde->etat_jeu = -1;
         }
     }
-    printf("Ne plante pas A LA FIN de evenements menu\n");
+
 }
 
 /**

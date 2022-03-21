@@ -41,8 +41,8 @@ int deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre,
 int deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j);
 
 void deplacement_monstre(monstre_t * monstre,monde_t * m);
-void deplacement_salles(joueur_t * j, int indice_monstre);
-void deplacement_zones(joueur_t * j);
+void changement_salle(joueur_t * j, int changement_salle);
+void changement_zone(joueur_t * j);
 /**
 	*\struct salle_t
 	*\brief représentation d'une salle
