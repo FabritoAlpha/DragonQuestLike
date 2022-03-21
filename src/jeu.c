@@ -39,6 +39,16 @@ void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, mond
     init_images(*renderer,textures);
 }
 
+/*
+La fonction charger_combat sert à actualiser l'état du jeu afin de mettre le jeu en version "combat"
+
+#define COMBAT 57
+
+void charger_combat(monde_t * monde){
+  monde->etat_jeu = COMBAT;
+}
+
+*/
 void changement_salle(joueur_t * j, int changement_salle){
 	j->salle = (j->salle) + changement_salle;
 }
@@ -105,12 +115,12 @@ int collision_combattant_ecran(combattant_t * combattant/*monde_t * monde*/){
     return(PAS_COLLISION);
 }
 
-int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre){
+int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*monde_t * monde */){
 
     if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_MONSTRE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_MONSTRE) ){
         
         /*
-        combat();
+        charger_combat(monde);
         return(PAS_COLLISION);
         */
         return(COLLISION);
@@ -119,7 +129,7 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre){
         
         return(COLLISION);
         /*
-        combat();
+        charger_combat(monde);
         return(PAS_COLLISION);
         */
     }
@@ -127,7 +137,7 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre){
         
         return(COLLISION);
         /*
-        combat();
+        charger_combat(monde);
         return(PAS_COLLISION);
         */
     }
@@ -135,7 +145,7 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre){
         
         return(COLLISION);
         /*
-        combat();
+        charger_combat(monde);
         return(PAS_COLLISION);
         */
     }
