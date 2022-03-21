@@ -11,13 +11,12 @@
 */
 
 typedef struct images_s{
-
     //SDL_Texture* menu; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* zone0salle0; /*!< Texture liée à l'image du fond de l'écran. */
     //SDL_Texture* s1; /*!< Texture liée à l'image du fond de l'écran. */
-    //SDL_Texture* zone1salle0; /*!< Texture liée à l'image du fond de l'écran. */
-    //SDL_Texture* zone1salle1; /*!< Texture liée à l'image du fond de l'écran. */
-
+    SDL_Texture* zone0salle1;
+    SDL_Texture* zone1salle0; /*!< Texture liée à l'image du fond de l'écran. */
+    SDL_Texture* zone1salle1; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* joueur; /*!< Texture liée à l'image du joueur. */
     SDL_Texture* monstre; /*!< Texture liée à l'image des monstres. */
     TTF_Font *font; /*!< Texture liée à la police du texte affiché à l'écran */

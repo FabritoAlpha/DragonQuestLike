@@ -44,6 +44,12 @@ void clean_images(images_t *textures){
     clean_texture(textures->zone0salle0);
     //printf("Clean_textures se réalise 'correctement'\n");
     textures->zone0salle0 = NULL;
+    clean_texture(textures->zone0salle1);
+    textures->zone0salle1 = NULL;
+    clean_texture(textures->zone1salle0);
+    textures->zone1salle0 = NULL;
+    clean_texture(textures->zone1salle1);
+    textures->zone1salle1 = NULL;
     clean_texture(textures->joueur);
     textures->joueur = NULL;
     clean_texture(textures->monstre);
@@ -67,10 +73,10 @@ void clean_images(images_t *textures){
 
 void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->zone0salle0 = load_image("./rsrc/img/zone0_salle0.bmp",renderer);
-    /*textures->zone0salle1 = load_image("./rsrc/img/zone0_salle1.bmp",renderer);
-    textures->zone1salle0 = load_image("./rsrc/img/zone1_salle0.bmp",renderer);
-    textures->zone1salle1 = load_image("./rsrc/img/zone1_salle1.bmp",renderer);*/
     //textures->menu = load_image("./rsrc/img/menu.bmp",renderer);
+    textures->zone0salle1 = load_image("./rsrc/img/zone0_salle1.bmp",renderer);
+    textures->zone1salle0 = load_image("./rsrc/img/zone1_salle0.bmp",renderer);
+    textures->zone1salle1 = load_image("./rsrc/img/zone1_salle1.bmp",renderer);
     textures->joueur = load_image("./rsrc/img/joueur.bmp",renderer);
     textures->monstre = load_image("./rsrc/img/monstre.bmp",renderer);
     textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
@@ -83,25 +89,9 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
  * \param textures les textures du jeu
 */
 void fond_position(SDL_Renderer *renderer, images_t *textures, int etat, int zone, int salle){
-    //si on est pas dans le menu
-    //if(etat != 0){
-        /*if(zone == 0){
-            if(salle == 0)*/
-                //apply_texture(textures->zone0salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
-            /*if(salle == 1)
-                apply_texture(textures->zone0salle1, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
-        }
-        else if(zone == 1){
-            if(salle == 0)
-                apply_texture(textures->zone1salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
-            if(salle == 1)
-                apply_texture(textures->zone1salle1, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
-        }*/
-    //}
-    //else{
-        apply_texture(textures->zone0salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
-    //}
-    //apply_texture(textures->menu, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+    
+    apply_texture(textures->zone0salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+ 
 }
 
 void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur){

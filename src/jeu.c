@@ -400,12 +400,16 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
     clear_renderer(renderer);
 
     fond_position(renderer, textures, monde->etat_jeu, monde->joueur->zone, monde->joueur->salle);
-
+    printf("On ne plante pas avant le premier if de rafraichir\n\n\n");
     if(monde->etat_jeu == 0){
+      printf("Dans le premier if on ne plante pas avant affichage du menu\n\n\n");
       affichage_menu(renderer, monde, textures);
+      printf("Dans le premier if on ne plante pas pdt affichage du menu\n\n\n");
     }
 
+    printf("On ne plante pas avant le second if de rafraichir\n\n\n");
     if(monde->etat_jeu == 1){
+      printf("On ne plante pas avant joueur_position dans le second if de rafraichir\n\n\n");
       joueur_position(renderer, textures, monde->joueur);
 
       for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
