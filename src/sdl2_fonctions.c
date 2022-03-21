@@ -65,13 +65,13 @@ int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height
 
 SDL_Texture* load_image(const char* nomfichier, SDL_Renderer* renderer)
 {
-    printf("Oui on arrive dans load_image\n");
+    //printf("Oui on arrive dans load_image\n");
     SDL_Surface *tmp = NULL;
     SDL_Texture *texture = NULL;
     tmp = SDL_LoadBMP(nomfichier);
     if(NULL == tmp)
     {
-        printf("Erreur via tmp dans load images\n");
+        //printf("Erreur via tmp dans load images\n");
         fprintf(stderr, "Erreur pendant chargement image BMP: %s", SDL_GetError());
         return NULL;
     }
@@ -81,13 +81,13 @@ SDL_Texture* load_image(const char* nomfichier, SDL_Renderer* renderer)
     tmp = NULL;
     if(NULL == texture)
     {
-        printf("Erreur via la texture dans load image\n");
+        //printf("Erreur via la texture dans load image\n");
         fprintf(stderr, "Erreur pendant creation de la texture liee a l'image chargee: %s", SDL_GetError());
         return NULL;
     }
     if(tmp != NULL)
     {
-        printf("Erreur via tmp != NULL dans load image\n");
+        //printf("Erreur via tmp != NULL dans load image\n");
         fprintf(stderr, "Erreur freesurface: %s", SDL_GetError());
         return NULL;
     }
@@ -164,10 +164,10 @@ void clean_sdl(SDL_Renderer *renderer,SDL_Window *window){
         SDL_DestroyWindow(window);
     }
     if(renderer != NULL){
-      printf("Le renderer ne pointe pas sur NULL\n");
+      //printf("Le renderer ne pointe pas sur NULL\n");
     }
     if(window != NULL){
-      printf("Le window ne pointe pas sur NULL\n");
+      //printf("Le window ne pointe pas sur NULL\n");
     }
 
     SDL_Quit();

@@ -311,7 +311,7 @@ void deplacement_monstre(monstre_t * monstre,monde_t * m){
   if(distancejoueurmonstre(m->joueur,monstre)<distance_agro && monstre->etat==0){
     monstre->etat=1;
   }
-  printf("%d",monstre->etat);
+  //printf("%d",monstre->etat);
   if(monstre->etat==0){ // Etat du monde dans lequel il se déplace de manière aléatoire
     if(monstre->dir==-1){
       direction=rand()%nb_direction;

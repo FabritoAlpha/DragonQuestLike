@@ -17,7 +17,7 @@
 */
 
 void clean_images(images_t *textures){
-    printf("Je ne plante pas dans clean images avant clean_texture\n");
+    //printf("Je ne plante pas dans clean images avant clean_texture\n");
     /*if(textures->zone0salle1 != NULL){
         clean_texture(textures->zone0salle1);
         printf("Ok1");
@@ -42,7 +42,7 @@ void clean_images(images_t *textures){
         printf("Ok3");
     }*/
     clean_texture(textures->zone0salle0);
-    printf("Clean_textures se réalise 'correctement'\n");
+    //printf("Clean_textures se réalise 'correctement'\n");
     textures->zone0salle0 = NULL;
     clean_texture(textures->joueur);
     textures->joueur = NULL;
