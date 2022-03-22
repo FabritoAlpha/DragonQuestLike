@@ -23,7 +23,7 @@ CFLAGS=$(FLAGS) -g
 
 all: DragonQuest
 
-DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/monde.o $(OBJ)/entitee.o
+DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/menu.o $(OBJ)/monde.o $(OBJ)/entitee.o
 	$(CC) $(CFLAGS) $^ -o $(BIN)/$@ $(LIBS) $(INCS)
 
 $(OBJ)/main.o: $(SRC)/main.c $(LIB)/jeu.h $(LIB)/sdl2_fonctions.h $(LIB)/images.h
@@ -38,11 +38,15 @@ $(OBJ)/images.o: $(SRC)/images.c $(LIB)/images.h
 $(OBJ)/jeu.o: $(SRC)/jeu.c $(LIB)/jeu.h
 	$(CC) $(FLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
 
+$(OBJ)/menu.o: $(SRC)/menu.c $(LIB)/menu.h
+	$(CC) $(FLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
+
 $(OBJ)/monde.o: $(SRC)/monde.c $(LIB)/monde.h
 	$(CC) $(FLAGS) -c ./$< -o $@
 
 $(OBJ)/entitee.o: $(SRC)/entitee.c $(LIB)/entitee.h
 	$(CC) $(FLAGS) -c ./$< -o $@
+
 
 entitee: test_entitee
 
