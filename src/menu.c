@@ -231,25 +231,25 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
     //jouer
     if(monde->option == 1){
         sprintf(opt, "inventaire");
-        if(textures->font != 0){
+
             apply_text(renderer, 150, 255, 0, opt , textures->font, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
-        }
+
         sprintf(opt, "Objet 1");
-        if(textures->font != 0){
+
             apply_text(renderer, 0, 255, 0 , opt , textures->font, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , LARGEUR_TEXT, HAUTEUR_TEXT);
-        }
+
         sprintf(opt, "Objet 2");
-        if(textures->font != 0){
+
             apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, LARGEUR_TEXT, HAUTEUR_TEXT);
-        }
+
         sprintf(opt, "Objet 3");
-        if(textures->font != 0){
+
             apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
-        }
+
         sprintf(opt, "Objet 4");
-        if(textures->font != 0){
+
             apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
-        }
+
     }
     //Nouvelle partie
     if(monde->option == 2){
