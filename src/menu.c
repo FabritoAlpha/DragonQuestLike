@@ -346,24 +346,40 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
     if(event->type == SDL_KEYDOWN){
         if(keystates[SDL_SCANCODE_DOWN]){
-            if(monde->option < 5)
-                monde->option++;
-            else
-                monde->option = 1;
+          switch(monde->option){
+            case 1 :monde->option=2;break;//
+            case 2 :monde->option=4;break;//1
+            case 3 :monde->option=5;break;//2
+            case 4 :monde->option=1;break;//3
+            case 5 :monde->option=1;break;//4
+          }
         }
         if(keystates[SDL_SCANCODE_UP]){
-            if(monde->option > 1)
-                monde->option--;
-            else
-                monde->option = 5; //5 options pour le moment
+          switch(monde->option){
+            case 1 :monde->option=4;break;//
+            case 2 :monde->option=1;break;//1
+            case 3 :monde->option=1;break;//2
+            case 4 :monde->option=2;break;//3
+            case 5 :monde->option=3;break;//4
+          }
         }
         if(keystates[SDL_SCANCODE_LEFT]){
-          if(monde->option > 2)
-            monde->option--;
+          switch(monde->option){
+            case 1 :break;//
+            case 2 :monde->option=3;break;//1
+            case 3 :monde->option=2;break;//2
+            case 4 :monde->option=5;break;//3
+            case 5 :monde->option=4;break;//4
+          }
         }
         if(keystates[SDL_SCANCODE_RIGHT]){
-          if(monde->option < 5)
-            monde->option++;
+          switch(monde->option){
+            case 1 :break;//
+            case 2 :monde->option=3;break;//1
+            case 3 :monde->option=2;break;//2
+            case 4 :monde->option=5;break;//3
+            case 5 :monde->option=4;break;//4
+          }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
             //
