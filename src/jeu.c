@@ -51,10 +51,34 @@ void charger_combat(monde_t * monde){
 */
 void changement_salle(joueur_t * j, int changement_salle){
 	j->salle = (j->salle) + changement_salle;
+	
+	switch(j->salle){
+		case 0:
+			j->combattant->x = SCREEN_WIDTH - 150;
+			j->combattant->y = (SCREEN_HEIGHT/2) - (HAUTEUR_PERSONNAGE/2);
+			break;
+		case 1: 
+			j->combattant->x = LARGEUR_PERSONNAGE + 30;
+			j->combattant->y = (SCREEN_HEIGHT/2) - (HAUTEUR_PERSONNAGE/2);
+			break;
+		case 2: 
+			j->combattant->x = (SCREEN_WIDTH/2) - (LARGEUR_PERSONNAGE/2);
+			j->combattant->y = HAUTEUR_PERSONNAGE + 30;
+			break;
+		case 3: 
+			j->combattant->x = SCREEN_WIDTH - 150;
+			j->combattant->y = (SCREEN_HEIGHT/2) - (HAUTEUR_PERSONNAGE/2);
+			break;
+	
+	}
 }
 
 void changement_zone(joueur_t * j){
 	(j->zone)++;
+	j->salle = 0;
+	
+	j->combattant->x = (SCREEN_WIDTH/2) - (LARGEUR_PERSONNAGE/2);
+	j->combattant->y = HAUTEUR_PERSONNAGE + 30;
 }
 
 int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
