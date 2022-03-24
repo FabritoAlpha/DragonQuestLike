@@ -55,11 +55,11 @@ void changement_salle(joueur_t * j, int changement_salle){
 	switch(j->salle){
 		case 0:
 			j->combattant->x = SCREEN_WIDTH - 150;
-			j->combattant->y = (SCREEN_HEIGTH/2) - (HAUTEUR_PERSONNAGE/2);
+			j->combattant->y = (SCREEN_HEIGHT/2) - (HAUTEUR_PERSONNAGE/2);
 			break;
 		case 1: 
 			j->combattant->x = LARGEUR_PERSONNAGE + 30;
-			j->combattant->y = (SCREEN_HEIGTH/2) - (HAUTEUR_PERSONNAGE/2);
+			j->combattant->y = (SCREEN_HEIGHT/2) - (HAUTEUR_PERSONNAGE/2);
 			break;
 		case 2: 
 			j->combattant->x = (SCREEN_WIDTH/2) - (LARGEUR_PERSONNAGE/2);
@@ -67,7 +67,7 @@ void changement_salle(joueur_t * j, int changement_salle){
 			break;
 		case 3: 
 			j->combattant->x = SCREEN_WIDTH - 150;
-			j->combattant->y = (SCREEN_HEIGTH/2) - (HAUTEUR_PERSONNAGE/2);
+			j->combattant->y = (SCREEN_HEIGHT/2) - (HAUTEUR_PERSONNAGE/2);
 			break;
 	
 	}
