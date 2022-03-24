@@ -73,6 +73,7 @@ typedef struct{
 	joueur_t* joueur; /**< joueur */
 	int etat_jeu; /**< état du jeu: 0 menu, 1 jeu en cours, -1 fin de la boucle du jeu */
 	int option; /**< option a sélectionner */
+	int partie; /**< partie jouée, à charger et sauvegarder*/
 } monde_t;
 
 int existe_salle(salle_t* salle);

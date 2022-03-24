@@ -396,7 +396,7 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
 
     fond_position(renderer, textures, monde->etat_jeu, monde->joueur->zone, monde->joueur->salle);
     printf("On ne plante pas avant le premier if de rafraichir\n\n\n");
-    if(monde->etat_jeu == 0){
+    if(monde->etat_jeu == 0 || monde->etat_jeu == 4){
       printf("Dans le premier if on ne plante pas avant affichage du menu\n\n\n");
       affichage_menu(renderer, monde, textures);
       printf("Dans le premier if on ne plante pas pdt affichage du menu\n\n\n");
@@ -456,6 +456,10 @@ void evenements(SDL_Event* event, monde_t * monde){
 
         if(monde->etat_jeu == 0){
             evenements_menu(event, monde);
+        }
+        if(monde->etat_jeu == 4){
+            choix_partie(event,monde);
+            printf("menu partie\n");
         }
         /*!< Jeu en cours */
         if(monde->etat_jeu == 1){
