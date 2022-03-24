@@ -44,8 +44,63 @@ La fonction charger_combat sert à actualiser l'état du jeu afin de mettre le j
 
 #define COMBAT 57
 
-void charger_combat(monde_t * monde){
-  monde->etat_jeu = COMBAT;
+void fction(joueur_t * joueur, monstre_t * monstre, images_t texture){
+	
+	char nom_monstre[10];
+	
+	apply_texture(textures->arene_combat, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375); //voir si les coordonnées sont bonnes
+	apply_texture(textures->joueur,...);
+	//apply_texture la bonne image de monstre --> 
+	//récupération de l'information via la zone et la salle du joueur
+	switch(monde->joueur->zone){
+		case 0:
+			switch(monde->joueur->salle){
+				case (0||1||2):
+					//texture du monstre de base de la zone et de la salle
+					break;
+				case 3:
+					//texture du boss de la zone et de la salle
+					break;
+			}
+		case 1:
+			switch(monde->joueur->salle){
+				case (0||1||2):
+					//texture du monstre de base de la zone et de la salle
+					break;
+				case 3:
+					//texture du boss de la zone et de la salle
+					break;
+			}
+		case 2:
+			switch(monde->joueur->salle){
+				case (0||1||2):
+					//texture du monstre de base de la zone et de la salle
+					break;
+				case 3:
+					//texture du boss de la zone et de la salle
+					break;
+			}
+	}
+	
+	//Après avoir fait l'affichage de l'arène du joueur et du monstre engagé dans le combat on affiche les pts de vie du monstre en haut et les pts de vie du joueur en bas
+	
+	char pv_j[4];
+	char pv_m[4];
+	
+	snprintf(pv_j, 4, "%d", (monde->joueur->combattant->pvCour));
+	snprintf(pv_m, 4, "%d", (monstre->combattant->pvCour));
+	
+	--->on doit afficher les pts de vie transformés en string avec un sprintf et un apply_text
+	sprintf(opt, pv_j);
+	apply_text();
+	
+	sprintf(opt, pv_m);
+	apply_text();
+	
+	//Après les pv du j et du m on affiche un menu avec les options du joueur: attaque ou fuite
+	
+	e
+	
 }
 
 */
