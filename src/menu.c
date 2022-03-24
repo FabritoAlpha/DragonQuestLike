@@ -2,15 +2,15 @@
 #include  "../lib/menu.h"
 #define LARGEUR_TEXT 350//(SCREEN_WIDTH/4)
 #define HAUTEUR_TEXT 80//(POSITION_MENU_HEIGHT/10)
-#define TEXT_OBJET_L 350//(LARGEUR_TEXT/2)
-#define TEXT_OBJET_H 80//(HAUTEUR_TEXT/2)
+#define TEXT_OBJET_L (LARGEUR_TEXT/5)
+#define TEXT_OBJET_H (HAUTEUR_TEXT/5)
 #define POSITION_MENU_WIDTH (SCREEN_WIDTH/3)
 #define POSITION_MENU_HEIGHT (SCREEN_HEIGHT/4)
 #define POSITION_INVENTAIRE_L (SCREEN_WIDTH/2)
 #define POSITION_INVENTAIRE_H (SCREEN_HEIGHT/3)
-#define POSITION_INVENTAIRE_IMG_L POSITION_INVENTAIRE_L+100
-#define POSITION_INVENTAIRE_IMG_H POSITION_INVENTAIRE_H+100
-
+#define POSITION_INVENTAIRE_IMG_L POSITION_INVENTAIRE_L
+#define POSITION_INVENTAIRE_IMG_H POSITION_INVENTAIRE_H
+#define DECALAGE_IMG_TEXT_L 90
 
 
 
@@ -325,17 +325,17 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         sprintf(opt, "inventaire");
         apply_text(renderer, 150, 255, 0, opt , textures->font, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
         sprintf(opt, "Objet 1");
-        apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H);
-        apply_text(renderer, 0, 255, 0 , opt , textures->font,POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , LARGEUR_TEXT, HAUTEUR_TEXT);
+        apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        apply_text(renderer, 0, 255, 0 , opt , textures->font,POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , TEXT_OBJET_L, TEXT_OBJET_H);
         sprintf(opt, "Objet 2");
-        apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H);
-        apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, LARGEUR_TEXT, HAUTEUR_TEXT);
+        apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, TEXT_OBJET_L, TEXT_OBJET_H);
         sprintf(opt, "Objet 3");
-        apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H*1.5);
-        apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
+        apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*1.5);
+        apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, TEXT_OBJET_L, TEXT_OBJET_H);
         sprintf(opt, "Objet 4");
-        apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5);
-        apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
+        apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*1.5);
+        apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, TEXT_OBJET_L, TEXT_OBJET_H);
     }
     if(monde->option == 2){
       sprintf(opt, "inventaire");
