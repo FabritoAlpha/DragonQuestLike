@@ -438,7 +438,20 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
 
 }
 
+void sauvegarde(monde_t* monde){
+    FILE * fichier;
+    if(monde->partie == 1){
+        fichier = fopen("./rsrc/txt/partie1.txt","w");
+        fprintf(fichier, "%d\n%d", monde->joueur->zone, monde->joueur->salle);
+        fclose(fichier);
+    }
+    if(monde->partie == 2){
+      fichier = fopen("./rsrc/txt/partie2.txt","w");
+      fprintf(fichier, "%d\n%d", monde->joueur->zone, monde->joueur->salle);
+      fclose(fichier);
+    }
 
+}
 
 /**
  * \brief gestion des évènements avant le rafraichissement
@@ -491,11 +504,13 @@ void evenements(SDL_Event* event, monde_t * monde){
 
         //Si l'utilisateur a cliqué sur le X de la fenêtre
         if( event->type == SDL_QUIT ) {
+            sauvegarde(monde);
             //On indique la fin du jeu
             monde->etat_jeu = -1;
             printf("fin du jeu");
         }
         if(keystates[SDL_SCANCODE_ESCAPE] ){
+            sauvegarde(monde);
             monde->etat_jeu = -1;
             printf("fin du jeu");
         }
