@@ -53,6 +53,9 @@ typedef struct{
   int ** objet_equipe; /**< id des objets équipés par le joueur */
   int zone;
   int salle;
+  int mana;
+  int defense;
+  int agilite;
 }joueur_t;
 
 /**
