@@ -442,12 +442,12 @@ void sauvegarde(monde_t* monde){
     FILE * fichier;
     if(monde->partie == 1){
         fichier = fopen("./rsrc/txt/partie1.txt","w");
-        fprintf(fichier, "%d\n%d", monde->joueur->zone, monde->joueur->salle);
+        fprintf(fichier, "%d\n%d", monde->joueur->combattant->niveau, monde->joueur->zone);
         fclose(fichier);
     }
     if(monde->partie == 2){
       fichier = fopen("./rsrc/txt/partie2.txt","w");
-      fprintf(fichier, "%d\n%d", monde->joueur->zone, monde->joueur->salle);
+      fprintf(fichier, "%d\n%d", monde->joueur->combattant->niveau, monde->joueur->zone);
       fclose(fichier);
     }
 
