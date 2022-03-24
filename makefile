@@ -15,12 +15,15 @@ CFLAGS= -W -Wall -g -std=c99 -g `sdl2-config --cflags `
 
 all: DragonQuest
 
-DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/monde.o $(OBJ)/entitee.o
+DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/monde.o $(OBJ)/entitee.o $(OBJ)/menu.o
 	$(CC) $(CFLAGS) $(INCLUDES) $^ -o $(BIN)/$@ $(LIBS)
 
 $(OBJ)/main.o: $(SRC)/main.c $(SRC)/jeu.c $(LIB)/jeu.h $(LIB)/sdl2_fonctions.h $(LIB)/images.h
 	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS)
 
+$(OBJ)/menu.o: $(SRC)/menu.c $(LIB)/menu.h
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS)
+	
 $(OBJ)/sdl2_fonctions.o: $(SRC)/sdl2_fonctions.c $(LIB)/sdl2_fonctions.h
 	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS)
 
