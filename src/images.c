@@ -54,6 +54,10 @@ void clean_images(images_t *textures){
     textures->joueur = NULL;
     clean_texture(textures->monstre);
     textures->monstre = NULL;
+    clean_texture(textures->selection_active);
+    textures->selection_active = NULL;
+    clean_texture(textures->selection_inactive);
+    textures->selection_inactive = NULL;
     if(textures->font != NULL){
         clean_font(textures->font);
         textures->font = NULL;
@@ -79,6 +83,8 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->zone1salle1 = load_image("./rsrc/img/zone1_salle1.bmp",renderer);
     textures->joueur = load_image("./rsrc/img/joueur.bmp",renderer);
     textures->monstre = load_image("./rsrc/img/monstre.bmp",renderer);
+    textures->selection_active = load_image("./rsrc/img/selection_active.bmp",renderer);
+    textures->selection_active = load_image("./rsrc/img/selection_inactive.bmp",renderer);
     textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
 }
 
@@ -89,7 +95,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
  * \param textures les textures du jeu
 */
 void fond_position(SDL_Renderer *renderer, images_t *textures, int etat, int zone, int salle){
-    
+
     //fond du menu
     if(etat == 1){
         if(zone == 0){
