@@ -99,8 +99,20 @@ void fction(joueur_t * joueur, monstre_t * monstre, images_t texture){
 	
 	//Après les pv du j et du m on affiche un menu avec les options du joueur: attaque ou fuite
 	
-	e
+	//J'ai besoin d'une case avec attaque à l'intérieur et une case avec fuite à l'intérieur
+	apply_texture(textures->attaque,...);
+	sprintf(opt, "Attaque");
+	apply_text(...);
 	
+	apply_texture(textures->fuite,...);
+	sprintf(opt, "Fuite");
+	apply_text(...); 
+	
+	
+	//J'ai ensuite besoin que lorsque je clique sur la case, l'action soit réalisée
+	
+	
+
 }
 
 */
