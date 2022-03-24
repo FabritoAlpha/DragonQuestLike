@@ -101,6 +101,18 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
     		  return(PAS_COLLISION);
     	  }
 
+    }
+
+    switch(monde->joueur->salle){
+      case 0:
+        if(combattant->x  < 100.0){
+
+          return(COLLISION);
+        }
+        if(combattant->y < 100.0){
+
+          return(COLLISION);
+        }
         if(combattant->x + LARGEUR_PERSONNAGE  > SCREEN_WIDTH ){
 
             return(COLLISION);
@@ -109,27 +121,62 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
 
             return(COLLISION);
         }
-    }
+        break;
+      case 1:
+        if(combattant->x  < 0.0){
 
-    if(combattant->type == MONSTRE){
-        if(combattant->x + LARGEUR_MONSTRE  > SCREEN_WIDTH ){
+          return(COLLISION);
+        }
+        if(combattant->y < 100.0){
+
+          return(COLLISION);
+        }
+        if(combattant->x + LARGEUR_PERSONNAGE  > SCREEN_WIDTH - 100.0){
 
             return(COLLISION);
         }
-        if(combattant->y + HAUTEUR_MONSTRE > SCREEN_HEIGHT - 100){
+        if(combattant->y + HAUTEUR_PERSONNAGE > SCREEN_HEIGHT - 100){
 
             return(COLLISION);
         }
-    }
-    if(combattant->x  < 100.0){
+        break;
+      case 2:
+        if(combattant->x  < 0.0){
 
-        return(COLLISION);
-    }
-    if(combattant->y < 100.0){
+          return(COLLISION);
+        }
+        if(combattant->y < 100.0){
 
-        return(COLLISION);
-    }
+          return(COLLISION);
+        }
+        if(combattant->x + LARGEUR_PERSONNAGE  > SCREEN_WIDTH - 100){
 
+            return(COLLISION);
+        }
+        if(combattant->y + HAUTEUR_PERSONNAGE > SCREEN_HEIGHT - 100){
+
+            return(COLLISION);
+        }
+        break;
+      case 3:
+        if(combattant->x  < 100.0){
+
+          return(COLLISION);
+        }
+        if(combattant->y < 100.0){
+
+          return(COLLISION);
+        }
+        if(combattant->x + LARGEUR_PERSONNAGE  > SCREEN_WIDTH ){
+
+            return(COLLISION);
+        }
+        if(combattant->y + HAUTEUR_PERSONNAGE > SCREEN_HEIGHT - 100){
+
+            return(COLLISION);
+        }
+        break;
+    }
 
     return(PAS_COLLISION);
 }
