@@ -33,11 +33,11 @@ int main(){
 
     //TO DO boucle du jeu avec mise à jour jeu, évènement (handle event) et rafraichissement
     while(monde->etat_jeu != -1){
-      printf("On ne plante pas dans la boucle avant evenement\n\n\n\n");
+      //printf("On ne plante pas dans la boucle avant evenement\n\n\n\n");
       evenements(&event,monde);
-      printf("On ne plante pas dans la boucle entre evenement et rafraichir\n\n\n\n");
+      //printf("On ne plante pas dans la boucle entre evenement et rafraichir\n\n\n\n");
       rafraichir(screen, monde, textures,&tick,&tick_monstre);
-      printf("On ne plante pas dans la boucle apres rafraichir\n\n\n\n");
+      //printf("On ne plante pas dans la boucle apres rafraichir\n\n\n\n");
     }
 
     // Nettoyer et quitter SDL

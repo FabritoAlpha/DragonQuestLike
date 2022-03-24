@@ -165,6 +165,7 @@ void detruire_salle(salle_t ** salle){
 void init_monde_menu(monde_t * monde){
   monde->etat_jeu = 0;
   monde->option = 1;
+  monde->option2 = 0;
 }
 
 void init_monde_jeu(monde_t * monde, char* chemin_fichier){
@@ -177,7 +178,7 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
 
   for(i = j_zone; i < NB_ZONES; i++){
     init_zone(monde->zones[i], i);
-    
+
   }
 
   fscanf(fichier,"%i", &j_niveau);

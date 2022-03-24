@@ -100,13 +100,60 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures)
           if(textures->font != 0){
               apply_text(renderer, 0, 255, 0 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
           }
-          sprintf(opt, "Nouvelle partie");
-          if(textures->font != 0){
-              apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
-          }
           sprintf(opt, "Retour");
           if(textures->font != 0){
               apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
+          }
+          //si on a pas enclenché le nouveau menu de nouvelle partie
+          if(monde->option2 == 0){
+              //l'affichage de l'option nouvelle partie est affichée sélectionnée
+              sprintf(opt, "Nouvelle partie");
+              if(textures->font != 0){
+                  apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+              }
+          //sinon on affiche la sélection du nouveau menu
+          } else{
+              sprintf(opt, "Nouvelle partie");
+              if(textures->font != 0){
+                  apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+              }
+              sprintf(opt, "Effacer:");
+              if(textures->font != 0){
+                  apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 - 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+              }
+              if(monde->option2 == 1){
+                  sprintf(opt, "Partie1");
+                  if(textures->font != 0){
+                      apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                  }
+              } else {
+                  sprintf(opt, "Partie1");
+                  if(textures->font != 0){
+                      apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                  }
+              }
+              if(monde->option2 == 2){
+                  sprintf(opt, "Partie2");
+                  if(textures->font != 0){
+                      apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 + 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                  }
+              } else {
+                  sprintf(opt, "Partie2");
+                  if(textures->font != 0){
+                      apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 + 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                  }
+              }
+              if(monde->option2 == 3){
+                  sprintf(opt, "Annuler");
+                  if(textures->font != 0){
+                      apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 + 360, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                  }
+              } else {
+                  sprintf(opt, "Annuler");
+                  if(textures->font != 0){
+                      apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 + 360, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                  }
+              }
           }
       }
       //Retour
@@ -154,6 +201,7 @@ void choix_partie(SDL_Event* event, monde_t * monde){
     if(event->type == SDL_KEYDOWN){
         //si on enfonce la touche du bas
         if(keystates[SDL_SCANCODE_DOWN]){
+            monde->option2 = 0;
             //si on est pas à la dernière option on va sur l'option suivante
             if(monde->option < 4)
                 monde->option++;
@@ -162,6 +210,7 @@ void choix_partie(SDL_Event* event, monde_t * monde){
                 monde->option = 1;
         }
         if(keystates[SDL_SCANCODE_UP]){
+            monde->option2 = 0;
             if(monde->option > 1)
                 monde->option--;
             else
@@ -187,12 +236,48 @@ void choix_partie(SDL_Event* event, monde_t * monde){
         }
         //nouvelle partie
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
-          //on initialise la partie
-          init_monde_jeu(monde,"./rsrc/txt/init.txt"); //TO DO utiliser sauvegarde de différentes parties
-          //monde->partie = ;
-          printf("nouvelle partie");
-          //on commence le jeu
-          monde->etat_jeu = 1;
+            if(monde->option2 == 0)
+                monde->option2 = 4;
+        }
+        //si on es dans le sous-menu de nouvelle partie
+        if(monde->option2 != 0){
+            if(event->type == SDL_KEYDOWN){
+                //si on enfonce la touche de droite
+                if(keystates[SDL_SCANCODE_RIGHT]){
+                    //si on est pas à la dernière option on va sur l'option suivante
+                    if(monde->option2 < 3)
+                        monde->option2++;
+                    else
+                        //sinon on retourne sur la première option
+                        monde->option2 = 1;
+                }
+                //si on enfonce la touche de gauche
+                if(keystates[SDL_SCANCODE_LEFT]){
+                    if(monde->option2 > 1)
+                        monde->option2--;
+                    else
+                        monde->option2 = 3; //3 options pour le moment
+                }
+            }
+            printf("option2: %d", monde->option2);
+            //nouvelle partie sur l'emplacement partie 1
+            if(keystates[SDL_SCANCODE_RETURN] && monde->option2 == 1){
+              //on initialise la partie
+              init_monde_jeu(monde,"./rsrc/txt/init.txt");
+              monde->partie = 1;
+              monde->etat_jeu = 1;
+            }
+            //nouvelle partie sur l'emplacement partie 2
+            if(keystates[SDL_SCANCODE_RETURN] && monde->option2 == 2){
+              //on initialise la partie
+              init_monde_jeu(monde,"./rsrc/txt/init.txt");
+              monde->partie = 2;
+              monde->etat_jeu = 1;
+            }
+            //annuler le chargement d'une nouvelle partie
+            if(keystates[SDL_SCANCODE_RETURN] && monde->option2 == 3){
+              monde->option2 = 0;
+            }
         }
         //retour
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 4){
