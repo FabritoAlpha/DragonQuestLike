@@ -94,7 +94,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
  * \param renderer le renderer
  * \param textures les textures du jeu
 */
-void fond_position(SDL_Renderer *renderer, images_t *textures, int etat, int zone, int salle){
+void fond(SDL_Renderer *renderer, images_t *textures, int etat, int zone, int salle){
 
     //fond du menu
     if(etat == 1){

@@ -34,7 +34,7 @@ void clean_images(images_t *textures);
 
 void init_images(SDL_Renderer *renderer, images_t *textures);
 
-void fond_position(SDL_Renderer *renderer, images_t *textures, int etat, int zone, int salle);
+void fond(SDL_Renderer *renderer, images_t *textures, int etat, int zone, int salle);
 
 void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur);
 
