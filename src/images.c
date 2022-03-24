@@ -84,7 +84,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->joueur = load_image("./rsrc/img/joueur.bmp",renderer);
     textures->monstre = load_image("./rsrc/img/monstre.bmp",renderer);
     textures->selection_active = load_image("./rsrc/img/selection_active.bmp",renderer);
-    textures->selection_active = load_image("./rsrc/img/selection_inactive.bmp",renderer);
+    textures->selection_inactive = load_image("./rsrc/img/selection_inactive.bmp",renderer);
     textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
 }
 

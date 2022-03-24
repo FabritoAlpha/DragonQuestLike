@@ -8,6 +8,8 @@
 #define POSITION_MENU_HEIGHT (SCREEN_HEIGHT/4)
 #define POSITION_INVENTAIRE_L (SCREEN_WIDTH/2)
 #define POSITION_INVENTAIRE_H (SCREEN_HEIGHT/3)
+#define POSITION_INVENTAIRE_IMG_L POSITION_INVENTAIRE_L+100
+#define POSITION_INVENTAIRE_IMG_H POSITION_INVENTAIRE_H+100
 
 
 
@@ -202,7 +204,12 @@ void choix_partie(SDL_Event* event, monde_t * monde){
 
 void evenements_menu(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
+
     if(event->type == SDL_KEYDOWN){
+      // CHEAT CODE INVENTAIRE DIRECT
+        if(keystates[SDL_SCANCODE_H]){
+          monde->etat_jeu=3;
+        }
         if(keystates[SDL_SCANCODE_DOWN]){
             if(monde->option < 3)
                 monde->option++;
@@ -231,27 +238,20 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
     //jouer
     if(monde->option == 1){
         sprintf(opt, "inventaire");
-
-            apply_text(renderer, 150, 255, 0, opt , textures->font, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
-
+        apply_text(renderer, 150, 255, 0, opt , textures->font, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
         sprintf(opt, "Objet 1");
-
-            apply_text(renderer, 0, 255, 0 , opt , textures->font, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , LARGEUR_TEXT, HAUTEUR_TEXT);
-
+        apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H);
+        apply_text(renderer, 0, 255, 0 , opt , textures->font,POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , LARGEUR_TEXT, HAUTEUR_TEXT);
         sprintf(opt, "Objet 2");
-
-            apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, LARGEUR_TEXT, HAUTEUR_TEXT);
-
+        apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H);
+        apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, LARGEUR_TEXT, HAUTEUR_TEXT);
         sprintf(opt, "Objet 3");
-
-            apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
-
+        apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H*1.5);
+        apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
         sprintf(opt, "Objet 4");
-
-            apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
-
+        apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5);
+        apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
     }
-    //Nouvelle partie
     if(monde->option == 2){
       sprintf(opt, "inventaire");
       if(textures->font != 0){
