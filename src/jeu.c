@@ -574,7 +574,7 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
     //on vide le renderer
     clear_renderer(renderer);
 
-    fond_position(renderer, textures, monde->etat_jeu, monde->joueur->zone, monde->joueur->salle);
+    fond(renderer, textures, monde->etat_jeu, monde->joueur->zone, monde->joueur->salle);
     printf("On ne plante pas avant le premier if de rafraichir\n\n\n");
     if(monde->etat_jeu == 0 || monde->etat_jeu == 4){
       printf("Dans le premier if on ne plante pas avant affichage du menu\n\n\n");
