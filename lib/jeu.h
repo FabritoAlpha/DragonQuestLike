@@ -7,12 +7,7 @@
 #ifndef _JEU_H
 #define _JEU_H
 #include <math.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include "monde.h"
 #include "menu.h"
-#include "sdl2_fonctions.h"
-#include "images.h"
 
 #define COLLISION 1
 #define PAS_COLLISION 0
