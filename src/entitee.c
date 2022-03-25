@@ -143,6 +143,8 @@ void init_joueur(joueur_t * joueur,int niveau, int zone){
   joueur->combattant->type = 1;
   joueur->zone = zone;
   joueur->salle = 0;
+  joueur->objet_equipe[0]=1;
+  joueur->objet_equipe[0]=2;
 }
 
 /**
