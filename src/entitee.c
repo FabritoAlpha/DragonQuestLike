@@ -189,3 +189,29 @@ void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,in
   nonCombat->y=y;
   nonCombat->visite=visite;
 }
+
+
+objet_t * creer_objet(){
+  objet_t * objet;
+  objet= malloc(sizeof(objet_t));
+  objet->nom = malloc(sizeof(char));
+  objet->description = malloc(sizeof(char));
+  return(objet);
+}
+void objet_initialiser(objet_t * objet,int id,int attaque_sup,int vie_sup,char*nom,char*description){
+  objet->id=id;
+  objet->attaque_sup=attaque_sup;
+  objet->vie_sup=vie_sup;
+  objet->nom=nom;
+  objet->description=description;
+}
+
+void detruire_objet(objet_t**objet){
+  free((*objet)->nom);
+  (*objet)->nom=NULL;
+  free((*objet)->description);
+  (*objet)->description=NULL;
+  free(*objet);
+  (*objet)=NULL;
+
+}

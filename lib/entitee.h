@@ -39,6 +39,7 @@ typedef struct{
 typedef struct{
   int id; /**< id de l'objet */
   int attaque_sup; /**< attaque de l'objet */
+  int vie_sup; /**< vie de l'objet */
   char* nom; /**< nom de l'objet */
   char* description; /**< description de l'objet */
 } objet_t;
@@ -114,4 +115,9 @@ void detruire_monstre(monstre_t ** monster);
 
 void detruire_nonCombattant(nonCombattant_t ** nonCombat);
 
+objet_t * creer_objet();
+
+void objet_initialiser(objet_t * objet,int id,int attaque_sup,int vie_sup,char*nom,char*description);
+
+void detruire_objet(objet_t**objet);
 #endif
