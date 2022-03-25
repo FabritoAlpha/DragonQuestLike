@@ -7,8 +7,6 @@
 #ifndef _MONDE_H
 #define _MONDE_H
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "entitee.h"
 
 

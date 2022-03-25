@@ -1,9 +1,7 @@
-#ifndef TEXTURES_H
-#define TEXTURES_H
+#ifndef _IMAGES_H
+#define _IMAGES_H
 
 #include "sdl2_fonctions.h"
-#include <stdlib.h>
-#include <stdio.h>
 #include "entitee.h"
 
 /**
