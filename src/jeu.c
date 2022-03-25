@@ -327,24 +327,26 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*mond
 
 int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj){
 
-  if( (combattant->x + LARGEUR_PERSONNAGE >= pnj->x) && (combattant->x + LARGEUR_PERSONNAGE <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y + HAUTEUR_PERSONNAGE >= pnj->y) && (combattant->y + HAUTEUR_PERSONNAGE <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
+  if((combattant->x + LARGEUR_PERSONNAGE >= pnj->x) && (combattant->x + LARGEUR_PERSONNAGE <= pnj->x + LARGEUR_PERSONNAGE) && (combattant->y + HAUTEUR_PERSONNAGE >= pnj->y) && (combattant->y + HAUTEUR_PERSONNAGE <= pnj->y + HAUTEUR_PERSONNAGE)){
 
     return(COLLISION);
   }
-  if( (combattant->x + LARGEUR_PERSONNAGE >= pnj->x) && (combattant->x + LARGEUR_PERSONNAGE <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y  >= pnj->y) && (combattant->y <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
+  
+  if((combattant->x + LARGEUR_PERSONNAGE >= pnj->x) && (combattant->x + LARGEUR_PERSONNAGE <= pnj->x + LARGEUR_PERSONNAGE) && (combattant->y  >= pnj->y) && (combattant->y <= pnj->y + HAUTEUR_PERSONNAGE) ){
 
     return(COLLISION);
   }
-  if( (combattant->x >= pnj->x) && (combattant->x <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y >= pnj->y) && (combattant->y <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
+  
+  if((combattant->x >= pnj->x) && (combattant->x <= pnj->x + LARGEUR_PERSONNAGE) && (combattant->y >= pnj->y) && (combattant->y <= pnj->y + HAUTEUR_PERSONNAGE)){
 
     return(COLLISION);
   }
-  if( (combattant->x >= pnj->x) && (combattant->x <= pnj->x + LARGEUR_PERSO_NN_JOUEUR) && (combattant->y + HAUTEUR_PERSONNAGE >= pnj->y) && (combattant->y + HAUTEUR_PERSONNAGE <= pnj->y + HAUTEUR_PERSO_NN_JOUEUR) ){
+  
+  if( (combattant->x >= pnj->x) && (combattant->x <= pnj->x + LARGEUR_PERSONNAGE) && (combattant->y + HAUTEUR_PERSONNAGE >= pnj->y) && (combattant->y + HAUTEUR_PERSONNAGE <= pnj->y + HAUTEUR_PERSONNAGE) ){
 
     return(COLLISION);
   }
 
-  return(PAS_COLLISION);
 }
 
 int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * coffre){
