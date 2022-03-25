@@ -145,11 +145,11 @@ void detruire_salle(salle_t ** salle){
     for(i = 0; i < NB_MONSTRES_SALLE; i++){
         detruire_monstre(&(*salle)->monstres[i]);
     }
-
-    for(i = 0; i < NB_PERSO_SALLE; i++){
-        detruire_nonCombattant(&(*salle)->perso[i]);
+    if((*salle)->num_salle == 0){
+        for(i = 0; i < NB_PERSO_SALLE; i++){
+            detruire_nonCombattant(&(*salle)->perso[i]);
+        }
     }
-
     free((*salle)->monstres);
     (*salle)->monstres = NULL;
 
@@ -203,10 +203,12 @@ void init_salle(salle_t * salle, int num_salle){
   for(i = 0; i < NB_MONSTRES_SALLE; i++){
     init_monstre(salle->monstres[i], 0, 0, 0, 1,0,0);
   }
-  int hauteur = 200;
-  for(i = 0; i < NB_PERSO_SALLE; i++){
-    init_nonCombattant(salle->perso[i], 0, 100, hauteur,0);
-    hauteur = hauteur + 100;
+  if(num_salle == 0){
+      int hauteur = 200;
+      for(i = 0; i < NB_PERSO_SALLE; i++){
+        init_nonCombattant(salle->perso[i], 0, 100, hauteur,0);
+        hauteur = hauteur + 100;
+      }
   }
   salle->difficulte = 0;
   salle->num_salle = num_salle;

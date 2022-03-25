@@ -14,7 +14,7 @@
 #define NB_SALLES 2
 #define NB_ZONES 2
 #define NB_MONSTRES_SALLE 1
-#define NB_PERSO_SALLE 3
+#define NB_PERSO_SALLE 1
 
 
 #define SCREEN_WIDTH 1000.0
