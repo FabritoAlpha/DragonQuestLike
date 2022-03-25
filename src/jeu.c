@@ -347,6 +347,7 @@ int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj){
     return(COLLISION);
   }
 
+  return(PAS_COLLISION);
 }
 
 int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * coffre){
