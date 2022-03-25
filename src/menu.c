@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include  "../lib/menu.h"
 #define LARGEUR_TEXT 350//(SCREEN_WIDTH/4)
 #define HAUTEUR_TEXT 80//(POSITION_MENU_HEIGHT/10)

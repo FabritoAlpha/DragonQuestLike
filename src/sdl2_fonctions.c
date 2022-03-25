@@ -6,8 +6,6 @@
 */
 
 #include "../lib/sdl2_fonctions.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 
 

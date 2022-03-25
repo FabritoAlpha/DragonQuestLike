@@ -6,8 +6,6 @@
 */
 
 #include "../lib/jeu.h"
-#include "../lib/images.h"
-#include "../lib/sdl2_fonctions.h"
 
 int taille_fenetre[2];
 

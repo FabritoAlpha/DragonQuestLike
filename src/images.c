@@ -6,7 +6,6 @@
  */
 
 #include "../lib/images.h"
-#include "../lib/entitee.h"
 
 
 

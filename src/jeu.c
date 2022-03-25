@@ -5,9 +5,6 @@
 *\date 17/02/2022
 */
 
-#include "../lib/monde.h"
-#include "../lib/images.h"
-#include "../lib/sdl2_fonctions.h"
 #include "../lib/jeu.h"
 /**
 * \brief fonction qui nettoie le jeu: nettoyage de la partie graphique (SDL), nettoyage des textures, nettoyage des données

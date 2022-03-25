@@ -3,7 +3,6 @@
   * \brief Contient les fonctions liées aux entitées
   * \author Anna Béranger, Arthur Fabre, Alex Choux
 */
-#include <stdio.h>
 #include  "../lib/entitee.h"
 
 /**
