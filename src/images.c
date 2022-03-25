@@ -53,6 +53,8 @@ void clean_images(images_t *textures){
     textures->joueur = NULL;
     clean_texture(textures->monstre);
     textures->monstre = NULL;
+    clean_texture(textures->personnage);
+    textures->personnage = NULL;
     clean_texture(textures->selection_active);
     textures->selection_active = NULL;
     clean_texture(textures->selection_inactive);
@@ -82,6 +84,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->zone1salle1 = load_image("./rsrc/img/zone1_salle1.bmp",renderer);
     textures->joueur = load_image("./rsrc/img/joueur.bmp",renderer);
     textures->monstre = load_image("./rsrc/img/monstre.bmp",renderer);
+    textures->personnage = load_image("./rsrc/img/perso.bmp",renderer);
     textures->selection_active = load_image("./rsrc/img/selection_active.bmp",renderer);
     textures->selection_inactive = load_image("./rsrc/img/selection_inactive.bmp",renderer);
     textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
@@ -125,4 +128,8 @@ void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueu
 
 void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre){
     apply_texture(textures->monstre, renderer, monstre->combattant->x + (taille_fenetre[0]/2) - 500, monstre->combattant->y + (taille_fenetre[1]/2) - 375);
+}
+
+void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* perso){
+    apply_texture(textures->personnage, renderer, perso->x + (taille_fenetre[0]/2) - 500, perso->y + (taille_fenetre[1]/2) - 375);
 }

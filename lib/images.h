@@ -17,6 +17,7 @@ typedef struct images_s{
     SDL_Texture* zone1salle1; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* joueur; /*!< Texture liée à l'image du joueur. */
     SDL_Texture* monstre; /*!< Texture liée à l'image des monstres. */
+    SDL_Texture* personnage; /*!< Texture liée à l'image d'un personnage. */
     SDL_Texture* epee1; /*!< Texture liée à l'image de l'épee 1. */
     SDL_Texture* epee2; /*!< Texture liée à l'image de l'épee 2. */
     SDL_Texture* bouclier1; /*!< Texture liée à l'image du bouclier 1. */
@@ -37,5 +38,7 @@ void fond(SDL_Renderer *renderer, images_t *textures, int etat, int zone, int sa
 void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur);
 
 void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre);
+
+void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* perso);
 
 #endif

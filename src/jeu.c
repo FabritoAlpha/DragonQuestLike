@@ -42,12 +42,12 @@ La fonction charger_combat sert à actualiser l'état du jeu afin de mettre le j
 #define COMBAT 57
 
 void fction(joueur_t * joueur, monstre_t * monstre, images_t texture){
-	
+
 	char nom_monstre[10];
-	
+
 	apply_texture(textures->arene_combat, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375); //voir si les coordonnées sont bonnes
 	apply_texture(textures->joueur,...);
-	//apply_texture la bonne image de monstre --> 
+	//apply_texture la bonne image de monstre -->
 	//récupération de l'information via la zone et la salle du joueur
 	switch(monde->joueur->zone){
 		case 0:
@@ -78,69 +78,69 @@ void fction(joueur_t * joueur, monstre_t * monstre, images_t texture){
 					break;
 			}
 	}
-	
+
 	//Après avoir fait l'affichage de l'arène du joueur et du monstre engagé dans le combat on affiche les pts de vie du monstre en haut et les pts de vie du joueur en bas
-	
+
 	char pv_j[4];
 	char pv_m[4];
-	
+
 	snprintf(pv_j, 4, "%d", (monde->joueur->combattant->pvCour));
 	snprintf(pv_m, 4, "%d", (monstre->combattant->pvCour));
-	
+
 	--->on doit afficher les pts de vie transformés en string avec un sprintf et un apply_text
 	sprintf(opt, pv_j);
 	apply_text();
-	
+
 	sprintf(opt, pv_m);
 	apply_text();
-	
+
 	//Après les pv du j et du m on affiche un menu avec les options du joueur: attaque ou fuite
-	
+
 	//J'ai besoin d'une case avec attaque à l'intérieur et une case avec fuite à l'intérieur
 	apply_texture(textures->attaque,...);
 	sprintf(opt, "Attaque");
 	apply_text(...);
-	
+
 	apply_texture(textures->fuite,...);
 	sprintf(opt, "Fuite");
-	apply_text(...); 
-	
-	
+	apply_text(...);
+
+
 	//J'ai ensuite besoin que lorsque je clique sur la case, l'action soit réalisée
-	
-	
+
+
 
 }
 
 */
 void changement_salle(joueur_t * j, int changement_salle){
 	j->salle = (j->salle) + changement_salle;
-	
+
 	switch(j->salle){
 		case 0:
 			j->combattant->x = SCREEN_WIDTH - 150;
 			j->combattant->y = (SCREEN_HEIGHT/2) - (HAUTEUR_PERSONNAGE/2);
 			break;
-		case 1: 
+		case 1:
 			j->combattant->x = LARGEUR_PERSONNAGE + 30;
 			j->combattant->y = (SCREEN_HEIGHT/2) - (HAUTEUR_PERSONNAGE/2);
 			break;
-		case 2: 
+		case 2:
 			j->combattant->x = (SCREEN_WIDTH/2) - (LARGEUR_PERSONNAGE/2);
 			j->combattant->y = HAUTEUR_PERSONNAGE + 30;
 			break;
-		case 3: 
+		case 3:
 			j->combattant->x = SCREEN_WIDTH - 150;
 			j->combattant->y = (SCREEN_HEIGHT/2) - (HAUTEUR_PERSONNAGE/2);
 			break;
-	
+
 	}
 }
 
 void changement_zone(joueur_t * j){
 	(j->zone)++;
 	j->salle = 0;
-	
+
 	j->combattant->x = (SCREEN_WIDTH/2) - (LARGEUR_PERSONNAGE/2);
 	j->combattant->y = HAUTEUR_PERSONNAGE + 30;
 }
@@ -559,6 +559,12 @@ void deplacement_monstre(monstre_t * monstre,monde_t * m){
   }
 }
 
+void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, salle_t* salle){
+    for(int i = 0; i < NB_PERSO_SALLE ; i++){
+        nonCombattant_position(renderer, textures, salle->perso[i]);
+    }
+}
+
 /**
  * \brief La fonction rafraichit l'écran en fonction de l'état des données du monde
  * \param renderer la surface de l'écran de jeu
@@ -586,6 +592,9 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
     if(monde->etat_jeu == 1){
       printf("On ne plante pas avant joueur_position dans le second if de rafraichir\n\n\n");
       joueur_position(renderer, textures, monde->joueur);
+
+      affichage_nonCombattants(renderer,textures,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]);
+      printf("ok");
 
       for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
         int suivaleatoir;
