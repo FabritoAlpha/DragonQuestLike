@@ -18,6 +18,9 @@ int main(){
     images_t* textures;
     SDL_Renderer *screen;
     SDL_Window *window;
+    
+    TTF_Font * police = NULL;
+
     srand(time(NULL));
     textures = malloc(sizeof(images_t));
     monde = creer_monde();
@@ -26,9 +29,13 @@ int main(){
 
     printf("Le programme n'a pas planté avant l'init\n\n\n");
     //mise en place du jeu (l'écran, le monde de jeu et les textures. )
-    init(&window,&screen, textures, monde);
-    printf("Le programme n'a pas planté après l'init et avant la boucle while\n\n\n");
+    //init(&window,&screen, textures, monde);
 
+    init_monde_menu(monde);
+    init_sdl(&window,&screen, SCREEN_WIDTH, SCREEN_HEIGHT);
+    init_ttf();
+    police = TTF_OpenFont("./rsrc/img/ka1.ttf",20);
+    
     //TO DO boucle du jeu avec mise à jour jeu, évènement (handle event) et rafraichissement
     while(monde->etat_jeu != -1){
       //printf("On ne plante pas dans la boucle avant evenement\n\n\n\n");

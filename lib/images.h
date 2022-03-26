@@ -24,7 +24,7 @@ typedef struct images_s{
     SDL_Texture* bouclier2; /*!< Texture liée à l'image du bouclier 2. */
     SDL_Texture* selection_inactive; /*!< Texture liée à l'image de fond d'un objet quand il n'est pas équipé. */
     SDL_Texture* selection_active; /*!< Texture liée à l'image de fond d'un objet quand il est équipé. */
-    TTF_Font *font; /*!< Texture liée à la police du texte affiché à l'écran */
+    //TTF_Font *font; /*!< Texture liée à la police du texte affiché à l'écran */
 
 
 } images_t;
