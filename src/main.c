@@ -34,7 +34,8 @@ int main(){
     init_monde_menu(monde);
     init_sdl(&window,&screen, SCREEN_WIDTH, SCREEN_HEIGHT);
     init_ttf();
-    police = apply_font("./rsrc/img/ka1.ttf", 20);
+    init_images(screen,&textures);
+    police = TTF_OpenFont("./rsrc/img/ka1.ttf", 20);
 
     //TO DO boucle du jeu avec mise à jour jeu, évènement (handle event) et rafraichissement
     while(monde->etat_jeu != -1){
