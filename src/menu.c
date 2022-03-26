@@ -13,40 +13,40 @@
 
 
 
-void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
+void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font * police){
   char opt[20] = "";
   //menu de base
   if(monde->etat_jeu == 0){
       //jouer
       if(monde->option == 1){
           sprintf(opt, "Jouer");
-          if(textures->font != 0){
-              apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
+          if(police != 0){
+              apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
           }
           sprintf(opt, "Quitter");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
           }
       }
       //quitter
       if(monde->option == 2){
           sprintf(opt, "Jouer");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
           }
           sprintf(opt, "Quitter");
-          if(textures->font != 0){
-              apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
+          if(police != 0){
+              apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
           }
       }
       if(monde->option < 1 || monde->option > 2){
         sprintf(opt, "Jouer");
-        if(textures->font != 0){
-            apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
+        if(police != 0){
+            apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
         }
         sprintf(opt, "Quitter");
-        if(textures->font != 0){
-            apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
+        if(police != 0){
+            apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
         }
       }
   }
@@ -54,103 +54,103 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures)
       //Partie 1
       if(monde->option == 1){
           sprintf(opt, "Partie 1");
-          if(textures->font != 0){
-              apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
+          if(police != 0){
+              apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
           }
           sprintf(opt, "Partie 2");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
           }
           sprintf(opt, "Nouvelle partie");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
           }
           sprintf(opt, "Retour");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
           }
       }
       //Partie 2
       if(monde->option == 2){
           sprintf(opt, "Partie 1");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
           }
           sprintf(opt, "Partie 2");
-          if(textures->font != 0){
-              apply_text(renderer, 150, 255, 150 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
+          if(police != 0){
+              apply_text(renderer, 150, 255, 150 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
           }
           sprintf(opt, "Nouvelle partie");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
           }
           sprintf(opt, "Retour");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
           }
       }
       //Nouvelle partie
       if(monde->option == 3){
           sprintf(opt, "Partie 1");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
           }
           sprintf(opt, "Partie 2");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
           }
           sprintf(opt, "Retour");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
           }
           //si on a pas enclenché le nouveau menu de nouvelle partie
           if(monde->option2 == 0){
               //l'affichage de l'option nouvelle partie est affichée sélectionnée
               sprintf(opt, "Nouvelle partie");
-              if(textures->font != 0){
-                  apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+              if(police != 0){
+                  apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
               }
           //sinon on affiche la sélection du nouveau menu
           } else{
               sprintf(opt, "Nouvelle partie");
-              if(textures->font != 0){
-                  apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+              if(police != 0){
+                  apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
               }
               sprintf(opt, "Effacer:");
-              if(textures->font != 0){
-                  apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 - 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+              if(police != 0){
+                  apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 - 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
               }
               if(monde->option2 == 1){
                   sprintf(opt, "Partie1");
-                  if(textures->font != 0){
-                      apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                  if(police != 0){
+                      apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
                   }
               } else {
                   sprintf(opt, "Partie1");
-                  if(textures->font != 0){
-                      apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                  if(police != 0){
+                      apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
                   }
               }
               if(monde->option2 == 2){
                   sprintf(opt, "Partie2");
-                  if(textures->font != 0){
-                      apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 + 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                  if(police != 0){
+                      apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 + 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
                   }
               } else {
                   sprintf(opt, "Partie2");
-                  if(textures->font != 0){
-                      apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 + 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                  if(police != 0){
+                      apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 + 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
                   }
               }
               if(monde->option2 == 3){
                   sprintf(opt, "Annuler");
-                  if(textures->font != 0){
-                      apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 + 360, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                  if(police != 0){
+                      apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 + 360, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
                   }
               } else {
                   sprintf(opt, "Annuler");
-                  if(textures->font != 0){
-                      apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 + 360, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                  if(police != 0){
+                      apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 + 360, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
                   }
               }
           }
@@ -158,38 +158,38 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures)
       //Retour
       if(monde->option == 4){
           sprintf(opt, "Partie 1");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
           }
           sprintf(opt, "Partie 2");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
           }
           sprintf(opt, "Nouvelle partie");
-          if(textures->font != 0){
-              apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+          if(police != 0){
+              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
           }
           sprintf(opt, "Retour");
-          if(textures->font != 0){
-              apply_text(renderer, 150, 255, 150, opt , textures->font, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
+          if(police != 0){
+              apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
           }
       }
       if(monde->option > 4 || monde->option < 1){
         sprintf(opt, "Partie 1");
-        if(textures->font != 0){
-            apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
+        if(police != 0){
+            apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
         }
         sprintf(opt, "Partie 2");
-        if(textures->font != 0){
-            apply_text(renderer, 0, 255, 0 , opt , textures->font, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
+        if(police != 0){
+            apply_text(renderer, 0, 255, 0 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
         }
         sprintf(opt, "Nouvelle partie");
-        if(textures->font != 0){
-            apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+        if(police != 0){
+            apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
         }
         sprintf(opt, "Retour");
-        if(textures->font != 0){
-            apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
+        if(police != 0){
+            apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
         }
       }
   }
@@ -317,112 +317,112 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
     }
 
 }
-void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures){
+void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font* police){
     char opt[20] = "";
     //jouer
     if(monde->option == 1){
         sprintf(opt, "inventaire");
-        apply_text(renderer, 150, 255, 0, opt , textures->font, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
+        apply_text(renderer, 150, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
         sprintf(opt, "Objet 1");
         apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
-        apply_text(renderer, 0, 255, 0 , opt , textures->font,POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_text(renderer, 0, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , TEXT_OBJET_L, TEXT_OBJET_H);
         sprintf(opt, "Objet 2");
         apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
-        apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, TEXT_OBJET_L, TEXT_OBJET_H);
         sprintf(opt, "Objet 3");
         apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*1.5);
-        apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, TEXT_OBJET_L, TEXT_OBJET_H);
         sprintf(opt, "Objet 4");
         apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*1.5);
-        apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, TEXT_OBJET_L, TEXT_OBJET_H);
     }
     if(monde->option == 2){
       sprintf(opt, "inventaire");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 1");
-      if(textures->font != 0){
-          apply_text(renderer, 150, 255, 0 , opt , textures->font, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 150, 255, 0 , opt , police, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 2");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 3");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 4");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
       }
     }
     //quitter
     if(monde->option == 3){
       sprintf(opt, "inventaire");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 1");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0 , opt , textures->font, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0 , opt , police, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 2");
-      if(textures->font != 0){
-          apply_text(renderer, 150, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 150, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 3");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 4");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
       }
     }
     if(monde->option == 4){
       sprintf(opt, "inventaire");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 1");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0 , opt , textures->font, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0 , opt , police, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 2");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 3");
-      if(textures->font != 0){
-          apply_text(renderer, 150, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 150, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 4");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
       }
     }
     if(monde->option == 5){
       sprintf(opt, "inventaire");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 1");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0 , opt , textures->font, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0 , opt , police, POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 2");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 3");
-      if(textures->font != 0){
-          apply_text(renderer, 0, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
       }
       sprintf(opt, "Objet 4");
-      if(textures->font != 0){
-          apply_text(renderer, 150, 255, 0, opt , textures->font, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
+      if(police != 0){
+          apply_text(renderer, 150, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, LARGEUR_TEXT, HAUTEUR_TEXT);
       }
     }
 }

@@ -34,20 +34,20 @@ int main(){
     init_monde_menu(monde);
     init_sdl(&window,&screen, SCREEN_WIDTH, SCREEN_HEIGHT);
     init_ttf();
-    police = TTF_OpenFont("./rsrc/img/ka1.ttf",20);
-    
+    police = apply_font("./rsrc/img/ka1.ttf", 20);
+
     //TO DO boucle du jeu avec mise à jour jeu, évènement (handle event) et rafraichissement
     while(monde->etat_jeu != -1){
       //printf("On ne plante pas dans la boucle avant evenement\n\n\n\n");
       evenements(&event,monde);
       //printf("On ne plante pas dans la boucle entre evenement et rafraichir\n\n\n\n");
-      rafraichir(screen, monde, textures,&tick,&tick_monstre);
+      rafraichir(screen, monde, textures,&tick,&tick_monstre,police);
       //printf("On ne plante pas dans la boucle apres rafraichir\n\n\n\n");
     }
 
     // Nettoyer et quitter SDL
     printf("On teste de la libérer allouée à la SDL\n");
-    clean(window, screen, textures, monde);
+    clean(window, screen, textures, monde,police);
     printf("Réussite de la libération de la mémoire ?\n");
 
     printf("On teste de libérer la mémoire du monde\n");

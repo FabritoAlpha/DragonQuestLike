@@ -29,7 +29,7 @@ typedef struct images_s{
 
 } images_t;
 
-void clean_images(images_t *textures);
+void clean_images(images_t *textures, TTF_Font* police);
 
 void init_images(SDL_Renderer *renderer, images_t *textures);
 

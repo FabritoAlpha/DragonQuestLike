@@ -15,7 +15,7 @@
  * \param textures les textures
 */
 
-void clean_images(images_t *textures){
+void clean_images(images_t *textures, TTF_Font * police){
     //printf("Je ne plante pas dans clean images avant clean_texture\n");
     /*if(textures->zone0salle1 != NULL){
         clean_texture(textures->zone0salle1);
@@ -59,9 +59,9 @@ void clean_images(images_t *textures){
     textures->selection_active = NULL;
     clean_texture(textures->selection_inactive);
     textures->selection_inactive = NULL;
-    if(textures->font != NULL){
-        clean_font(textures->font);
-        textures->font = NULL;
+    if(police != NULL){
+        clean_font(police);
+        police = NULL;
     }
 
 
@@ -87,7 +87,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->personnage = load_image("./rsrc/img/perso.bmp",renderer);
     textures->selection_active = load_image("./rsrc/img/selection_active.bmp",renderer);
     textures->selection_inactive = load_image("./rsrc/img/selection_inactive.bmp",renderer);
-    textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
+    //textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
 }
 
 /**

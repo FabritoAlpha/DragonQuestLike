@@ -13,11 +13,11 @@
 * \param textures les textures
 * \param world le monde
 */
-void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde){
+void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde, TTF_Font * police){
 
     detruire_monde(&monde);
 
-    clean_images(textures);
+    clean_images(textures, police);
 
     clean_sdl(renderer,window);
 }
@@ -29,7 +29,7 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, mond
  * \param textures les textures
  * \param wordl le monde
  */
-void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, monde_t * monde){
+void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, monde_t * monde, TTF_Font* police){
     init_monde_menu(monde);
     init_sdl(window, renderer,SCREEN_WIDTH, SCREEN_HEIGHT);
     init_ttf();
@@ -575,21 +575,25 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, salle_
  * \param world les données du monde
  * \param textures les textures
  */
-void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre){
+void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
 
     int time_sec=(SDL_GetTicks()/10);
     //on vide le renderer
     clear_renderer(renderer);
 
-    fond(renderer, textures, monde->etat_jeu, monde->joueur->zone, monde->joueur->salle);
+    
     printf("On ne plante pas avant le premier if de rafraichir\n\n\n");
     if(monde->etat_jeu == 0 || monde->etat_jeu == 4){
+      fond(renderer, textures, monde->etat_jeu, 0,0);
       printf("Dans le premier if on ne plante pas avant affichage du menu\n\n\n");
-      affichage_menu(renderer, monde, textures);
+      affichage_menu(renderer, monde, textures, police);
       printf("Dans le premier if on ne plante pas pdt affichage du menu\n\n\n");
     }
+    else{
+      fond(renderer, textures, monde->etat_jeu, monde->joueur->zone, monde->joueur->salle);
+    }
     if(monde->etat_jeu == 3){
-      affichage_inventaire(renderer, monde, textures);
+      affichage_inventaire(renderer, monde, textures, police);
     }
 
     printf("On ne plante pas avant le second if de rafraichir\n\n\n");
