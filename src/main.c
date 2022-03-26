@@ -18,7 +18,7 @@ int main(){
     images_t* textures;
     SDL_Renderer *screen;
     SDL_Window *window;
-    
+
     TTF_Font * police = NULL;
 
     srand(time(NULL));
@@ -32,9 +32,10 @@ int main(){
     //init(&window,&screen, textures, monde);
 
     init_monde_menu(monde);
+    //printf("monde->etat_jeu = %d\n", monde->etat_jeu);
     init_sdl(&window,&screen, SCREEN_WIDTH, SCREEN_HEIGHT);
     init_ttf();
-    init_images(screen,&textures);
+    init_images(screen,textures);
     police = TTF_OpenFont("./rsrc/img/ka1.ttf", 20);
 
     //TO DO boucle du jeu avec mise à jour jeu, évènement (handle event) et rafraichissement
