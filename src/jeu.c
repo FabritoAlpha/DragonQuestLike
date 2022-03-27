@@ -22,20 +22,6 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, mond
     clean_sdl(renderer,window);
 }
 
-/**
- * \brief fonction qui initialise le jeu: initialisation de la partie graphique (SDL), chargement des textures, initialisation des données
- * \param window la fenêtre du jeu
- * \param renderer le renderer
- * \param textures les textures
- * \param wordl le monde
- */
-void init(SDL_Window **window, SDL_Renderer **renderer, images_t *textures, monde_t * monde, TTF_Font* police){
-    init_monde_menu(monde);
-    init_sdl(window, renderer,SCREEN_WIDTH, SCREEN_HEIGHT);
-    init_ttf();
-    init_images(*renderer,textures);
-}
-
 /*
 La fonction charger_combat sert à actualiser l'état du jeu afin de mettre le jeu en version "combat"
 
@@ -118,20 +104,20 @@ void changement_salle(joueur_t * j, int changement_salle){
 
 	switch(j->salle){
 		case 0:
-			j->combattant->x = SCREEN_WIDTH - 150;
-			j->combattant->y = (SCREEN_HEIGHT/2) - (HAUTEUR_PERSONNAGE/2);
+      //Si le personnage revient à gauche, on le met tout à droite de la salle sans changer sa hauteur
+			j->combattant->x = SCREEN_WIDTH - j->combattant->x - 20 - LARGEUR_PERSONNAGE;
 			break;
 		case 1:
-			j->combattant->x = LARGEUR_PERSONNAGE + 30;
-			j->combattant->y = (SCREEN_HEIGHT/2) - (HAUTEUR_PERSONNAGE/2);
+      //S'il arrive de la gauche, on ne change pas sa hauteur et on le met tout à gauche
+			j->combattant->x = 20;
 			break;
 		case 2:
-			j->combattant->x = (SCREEN_WIDTH/2) - (LARGEUR_PERSONNAGE/2);
-			j->combattant->y = HAUTEUR_PERSONNAGE + 30;
+      //S'il arrive d'en haut on le met tout en haut sans changer son placement latéral
+			j->combattant->y = HAUTEUR_PERSONNAGE + 20;
 			break;
 		case 3:
-			j->combattant->x = SCREEN_WIDTH - 150;
-			j->combattant->y = (SCREEN_HEIGHT/2) - (HAUTEUR_PERSONNAGE/2);
+      //S'il va vers la gauche même cas que pour le cas 0
+			j->combattant->x = SCREEN_WIDTH - j->combattant->x - 20 - LARGEUR_PERSONNAGE;
 			break;
 
 	}
@@ -150,12 +136,12 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
 
     if(combattant->type == JOUEUR){
 
-        if( (monde->joueur->salle == 0) && (combattant->y >= ENTREE_HAUT_SALLE_1) && (combattant->y + HAUTEUR_PERSONNAGE <= ENTREE_BAS_SALLE_1) && (combattant->x  + LARGEUR_PERSONNAGE >= SCREEN_WIDTH) ){
+        if( (monde->joueur->salle == 0)  && (combattant->x  + LARGEUR_PERSONNAGE >= SCREEN_WIDTH) ){
           changement_salle(monde->joueur, +1);
     		  return(PAS_COLLISION);
     	  }
 
-        if( (monde->joueur->salle == 1) && (combattant->y >= ENTREE_HAUT_SALLE_1) && (combattant->y + HAUTEUR_PERSONNAGE <= ENTREE_BAS_SALLE_1) && (combattant->x <= 0) ){
+        if( (monde->joueur->salle == 1)  && (combattant->x <= 0) ){
           changement_salle(monde->joueur, -1);
     		  return(PAS_COLLISION);
     	  }
@@ -289,7 +275,7 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
 
 int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*monde_t * monde */){
 
-    if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_MONSTRE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_MONSTRE) ){
+    if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
         /*
         charger_combat(monde);
@@ -297,7 +283,7 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*mond
         */
         return(COLLISION);
     }
-    if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_MONSTRE) && (joueur->y  >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_MONSTRE) ){
+    if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y  >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
         return(COLLISION);
         /*
@@ -305,7 +291,7 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*mond
         return(PAS_COLLISION);
         */
     }
-    if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_MONSTRE) && (joueur->y >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_MONSTRE) ){
+    if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
         return(COLLISION);
         /*
@@ -313,7 +299,7 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*mond
         return(PAS_COLLISION);
         */
     }
-    if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_MONSTRE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_MONSTRE) ){
+    if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
         return(COLLISION);
         /*
@@ -374,7 +360,7 @@ int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * cof
 
 }
 
-int collision_combattant(combattant_t * combattant, salle_t * salle, int indice_monstre, joueur_t * joueur, monde_t * monde){
+int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t * monde/*, int indice_salle, int indice_zone*/){
     int i;
 
     if(collision_combattant_ecran(combattant, monde)){
@@ -383,7 +369,7 @@ int collision_combattant(combattant_t * combattant, salle_t * salle, int indice_
 
     if(combattant->type == JOUEUR){
       for(i = 0; i < NB_MONSTRES_SALLE; i++){
-        if(collision_joueur_monstre(combattant, salle->monstres[i]->combattant)){
+        if(collision_joueur_monstre(combattant,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant)){
             return(COLLISION);
         }
       }
@@ -397,7 +383,7 @@ int collision_combattant(combattant_t * combattant, salle_t * salle, int indice_
           }*/
         }
       }
-      if(collision_joueur_monstre(joueur->combattant, combattant)){
+      if(collision_joueur_monstre(monde->joueur->combattant, combattant)){
         return(COLLISION);
       }
     }
@@ -408,7 +394,7 @@ int collision_combattant(combattant_t * combattant, salle_t * salle, int indice_
       }
     }
 
-    if(collision_combattant_coffre(combattant, salle->coffre)){
+    if(collision_combattant_coffre(combattant, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre)){
       return(COLLISION);
     }
 
@@ -417,9 +403,9 @@ int collision_combattant(combattant_t * combattant, salle_t * salle, int indice_
 
 
 
-int deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j, monde_t * monde){
+int deplacement_droit(combattant_t * entitee, int indice_monstre, monde_t * monde){
     entitee->x = (entitee->x)+entitee->vitesse;
-    if(collision_combattant(entitee, salle, indice_monstre, j, monde)){
+    if(collision_combattant(entitee, indice_monstre, monde)){
 
         a_gauche(entitee);
         return(1);
@@ -428,9 +414,9 @@ int deplacement_droit(combattant_t * entitee, salle_t *salle, int indice_monstre
     }
 }
 
-int deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j, monde_t * monde){
+int deplacement_gauche(combattant_t * entitee, int indice_monstre, monde_t * monde){
     entitee->x = (entitee->x)-entitee->vitesse;
-    if(collision_combattant(entitee, salle, indice_monstre, j, monde)){
+    if(collision_combattant(entitee, indice_monstre, monde)){
 
         a_droite(entitee);
         return(1);
@@ -439,9 +425,9 @@ int deplacement_gauche(combattant_t * entitee, salle_t *salle, int indice_monstr
     }
 }
 
-int deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j, monde_t * monde){
+int deplacement_haut(combattant_t * entitee, int indice_monstre, monde_t * monde){
     entitee->y = (entitee->y)-entitee->vitesse;
-    if(collision_combattant(entitee, salle, indice_monstre, j, monde)){
+    if(collision_combattant(entitee, indice_monstre, monde)){
 
         en_bas(entitee);
         return(1);
@@ -450,9 +436,9 @@ int deplacement_haut(combattant_t * entitee, salle_t *salle, int indice_monstre,
     }
 }
 
-int deplacement_bas(combattant_t * entitee, salle_t *salle, int indice_monstre, joueur_t * j, monde_t * monde){
+int deplacement_bas(combattant_t * entitee, int indice_monstre, monde_t * monde){
     entitee->y = (entitee->y)+entitee->vitesse;
-    if(collision_combattant(entitee, salle, indice_monstre, j, monde)){
+    if(collision_combattant(entitee, indice_monstre, monde)){
 
         en_haut(entitee);
         return(1);
@@ -497,7 +483,7 @@ void deplacement_monstre(monstre_t * monstre,monde_t * m){
       monstre->y=monstre->combattant->y;
     }
     if(monstre->dir==0 && (monstre->combattant->x)>(monstre->x-monstre->dist)){ // Si le monstre va à gauche
-      valColision = deplacement_gauche(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur, m);
+      valColision = deplacement_gauche(monstre->combattant, 0, m);
       if(valColision){
         monstre->dir=-1;
       }
@@ -509,7 +495,7 @@ void deplacement_monstre(monstre_t * monstre,monde_t * m){
       }
     }
     if(monstre->dir==1 && (monstre->combattant->x)<(monstre->x+monstre->dist)){ // Si le monstre va à droite
-      valColision = deplacement_droit(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur, m);
+      valColision = deplacement_droit(monstre->combattant, 0, m);
       if(valColision){
         monstre->dir=-1;
       }
@@ -522,7 +508,7 @@ void deplacement_monstre(monstre_t * monstre,monde_t * m){
       }
     }
     if(monstre->dir==2 && (monstre->combattant->y)>(monstre->y-monstre->dist)){ // Si le monstre va en haut
-      valColision = deplacement_haut(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur, m);
+      valColision = deplacement_haut(monstre->combattant, 0, m);
       if(valColision){
         monstre->dir=-1;
       }
@@ -534,7 +520,7 @@ void deplacement_monstre(monstre_t * monstre,monde_t * m){
       }
     }
     if(monstre->dir==3 && (monstre->combattant->y)<(monstre->y+monstre->dist)){ // Si le monstre va en bas
-      valColision = deplacement_bas(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur, m);
+      valColision = deplacement_bas(monstre->combattant, 0, m);
       if(valColision){
         monstre->dir=-1;
       }
@@ -548,16 +534,16 @@ void deplacement_monstre(monstre_t * monstre,monde_t * m){
   }
   if(monstre->etat==1){// Etat du monstre dans lequel il fonce vers le joueur
     if(m->joueur->combattant->x < monstre->combattant->x){
-      valColision = deplacement_gauche(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur,m);
+      valColision = deplacement_gauche(monstre->combattant, 0,m);
     }
     if(m->joueur->combattant->x > monstre->combattant->x){
-      valColision = deplacement_droit(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur,m);
+      valColision = deplacement_droit(monstre->combattant, 0,m);
     }
     if(m->joueur->combattant->y < monstre->combattant->y){
-      valColision = deplacement_haut(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur,m);
+      valColision = deplacement_haut(monstre->combattant, 0,m);
     }
     if(m->joueur->combattant->y > monstre->combattant->y){
-      valColision = deplacement_bas(monstre->combattant, m->zones[0]->salles[0], 0, m->joueur,m);
+      valColision = deplacement_bas(monstre->combattant, 0,m);
     }
   }
 }
@@ -578,17 +564,17 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, salle_
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
 
     int time_sec=(SDL_GetTicks()/10);
-    //on vide le renderer
-    clear_renderer(renderer);
 
-    printf("monde->etat_jeu = %d\n", monde->etat_jeu);
-    printf("On ne plante pas avant le premier if de rafraichir\n\n\n");
+    //on vide le renderer
+    SDL_RenderClear(renderer);
+
+
     if(monde->etat_jeu == 0 || monde->etat_jeu == 4){
-      printf("On rentre dans le premier if\n");
+
       fond(renderer, textures, monde->etat_jeu, 0,0);
-      printf("Dans le premier if on ne plante pas avant affichage du menu\n\n\n");
-      affichage_menu(renderer, monde, textures, police);
-      printf("Dans le premier if on ne plante pas pdt affichage du menu\n\n\n");
+
+      affichage_menu(renderer, monde, police);
+
     }
     else{
       fond(renderer, textures, monde->etat_jeu, monde->joueur->zone, monde->joueur->salle);
@@ -597,9 +583,9 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
       affichage_inventaire(renderer, monde, textures, police);
     }
 
-    printf("On ne plante pas avant le second if de rafraichir\n\n\n");
+
     if(monde->etat_jeu == 1){
-      printf("On ne plante pas avant joueur_position dans le second if de rafraichir\n\n\n");
+
       joueur_position(renderer, textures, monde->joueur);
 
       affichage_nonCombattants(renderer,textures,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]);
@@ -628,7 +614,8 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
 
     }
 
-    update_screen(renderer);
+    //On actualise l'affichage
+    SDL_RenderPresent(renderer);
 
 }
 
@@ -671,16 +658,16 @@ void evenements(SDL_Event* event, monde_t * monde){
         /*!< Jeu en cours */
         if(monde->etat_jeu == 1){
             if(event->key.keysym.sym == SDLK_LEFT) {
-                deplacement_gauche(monde->joueur->combattant, monde->zones[0]->salles[0], 0, NULL,monde);
+                deplacement_gauche(monde->joueur->combattant, 0, monde);
             }
             if(event->key.keysym.sym == SDLK_RIGHT){
-                deplacement_droit(monde->joueur->combattant, monde->zones[0]->salles[0], 0, NULL,monde);
+                deplacement_droit(monde->joueur->combattant, 0, monde);
             }
             if(event->key.keysym.sym == SDLK_UP){
-                deplacement_haut(monde->joueur->combattant, monde->zones[0]->salles[0], 0, NULL,monde);
+                deplacement_haut(monde->joueur->combattant, 0, monde);
             }
             if(event->key.keysym.sym == SDLK_DOWN){
-                deplacement_bas(monde->joueur->combattant, monde->zones[0]->salles[0], 0, NULL,monde);
+                deplacement_bas(monde->joueur->combattant, 0, monde);
             }
             if(event->key.keysym.sym == SDLK_i){// Si en jeu il ouvre l'inventaire
                 monde->etat_jeu=3;

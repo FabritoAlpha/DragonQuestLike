@@ -107,7 +107,8 @@ void apply_texture(SDL_Texture *texture,SDL_Renderer *renderer,float x, float y)
     //SDL_Rect src = {0, 0, 0, 0};
 
     SDL_QueryTexture(texture, NULL, NULL, &dst.w, &dst.h);
-    dst.x = x; dst.y=y;
+    dst.x = x;
+    dst.y = y;
 
     SDL_RenderCopy(renderer, texture, NULL, &dst);
 
@@ -203,15 +204,22 @@ TTF_Font* apply_font(const char* fileName, int size){
 void apply_text(SDL_Renderer *renderer, int r, int g, int b , const char* text, TTF_Font* font, int x, int y, int w, int h){
     SDL_Surface *surface = NULL;
     SDL_Texture *texture = NULL;
+
     //gérer la couleur
     SDL_Color color = { r,g,b,255 };
-    surface = TTF_RenderText_Solid(font, text, color);
 
+    //On transforme le texte en surface puis texture à afficher
+    surface = TTF_RenderText_Solid(font, text, color);
     texture = SDL_CreateTextureFromSurface(renderer, surface);
+
     SDL_Rect dstrect2 = {x, y, w, h};
+
+    //On "ajoute" le texte à l'affichage
     SDL_RenderCopy(renderer, texture, NULL, &dstrect2);
+
     SDL_DestroyTexture(texture);
     texture = NULL;
+
     SDL_FreeSurface(surface);
     surface = NULL;
 }

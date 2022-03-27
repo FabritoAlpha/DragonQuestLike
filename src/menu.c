@@ -13,7 +13,7 @@
 
 
 
-void affichage_menu(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font * police){
+void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
   char opt[20] = "";
   //menu de base
   if(monde->etat_jeu == 0){

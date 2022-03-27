@@ -22,42 +22,49 @@ int main(){
     TTF_Font * police = NULL;
 
     srand(time(NULL));
+
+    //Allocation de la mémoire de la structure images_t contenant toutes les images utiles au jeu
     textures = malloc(sizeof(images_t));
+
+    //Création du monde
     monde = creer_monde();
     int tick=5;
     int tick_monstre=5;
 
-    printf("Le programme n'a pas planté avant l'init\n\n\n");
     //mise en place du jeu (l'écran, le monde de jeu et les textures. )
-    //init(&window,&screen, textures, monde);
 
+    //Initialisation des options du menu ainsi que du menu à afficher au début de la partie
     init_monde_menu(monde);
-    //printf("monde->etat_jeu = %d\n", monde->etat_jeu);
+
+    //Initialisation de la sdl
     init_sdl(&window,&screen, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+    //Initialisation de la ttf
     init_ttf();
+
+    //On charge toutes les images utiles au jeu
     init_images(screen,textures);
+
+    //On charge la police de la ttf et on choisit sa taille
     police = TTF_OpenFont("./rsrc/img/ka1.ttf", 20);
 
     //TO DO boucle du jeu avec mise à jour jeu, évènement (handle event) et rafraichissement
     while(monde->etat_jeu != -1){
-      //printf("On ne plante pas dans la boucle avant evenement\n\n\n\n");
+
+      //Gestion des évènements durant le jeu: choix des menus, déplacements du personnage...
       evenements(&event,monde);
-      //printf("On ne plante pas dans la boucle entre evenement et rafraichir\n\n\n\n");
+
+      //Rafraichissement de l'affichage de la fenêtre
       rafraichir(screen, monde, textures,&tick,&tick_monstre,police);
-      //printf("On ne plante pas dans la boucle apres rafraichir\n\n\n\n");
+
     }
 
-    // Nettoyer et quitter SDL
-    printf("On teste de la libérer allouée à la SDL\n");
+    // Nettoyage de la sdl et de la ttf
     clean(window, screen, textures, monde,police);
-    printf("Réussite de la libération de la mémoire ?\n");
-
-    printf("On teste de libérer la mémoire du monde\n");
-    printf("Le problème ne vient pas du monde\n");
-
-    printf("'Pas de pb(en tout cas visible)' avant le clean, vérifier la libération de la mémoire allouée\n");
 
     printf("largeur de la fenêtre: %d \n hauteur de la fenêtre: %d\n", taille_fenetre[0], taille_fenetre[1]);
+
+    //Libération de la mémoire liée à la structure images_t
     free(textures);
     return 0;
 }
