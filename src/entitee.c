@@ -135,7 +135,7 @@ void init_joueur(joueur_t * joueur,int niveau, int zone){
   joueur->combattant->x= 1000/10;
   joueur->combattant->y= 1000/10;
   joueur->combattant->niveau=niveau;
-  joueur->combattant->type = 1;
+  joueur->combattant->type = JOUEUR;
   joueur->zone = zone;
   joueur->salle = 0;
 }
@@ -164,8 +164,8 @@ void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int v
   monster->y=250;
   monster->dir=-1;
   monster->dist=-1;
-  monster->combattant->type = 0;
-  monster->etat = 0;
+  monster->combattant->type = MONSTRE;
+  monster->etat = VIVANT;
 }
 
 

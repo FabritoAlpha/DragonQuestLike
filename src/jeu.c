@@ -136,36 +136,21 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
 
     if(combattant->type == JOUEUR){
 
-        if( (monde->joueur->salle == 0)  && (combattant->x  + LARGEUR_PERSONNAGE >= SCREEN_WIDTH) ){
-          changement_salle(monde->joueur, +1);
-    		  return(PAS_COLLISION);
-    	  }
-
-        if( (monde->joueur->salle == 1)  && (combattant->x <= 0) ){
-          changement_salle(monde->joueur, -1);
-    		  return(PAS_COLLISION);
-    	  }
-
-    	  if( (monde->joueur->salle == 1) && (combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE >= SCREEN_HEIGHT - 100) ){
-    		  changement_zone(monde->joueur);
-    		  return(PAS_COLLISION);
-    	  }
-
         switch(monde->joueur->salle){
           case 0:
-            if((combattant->y == ENTREE_HAUT_SALLE_1) && (combattant->y + HAUTEUR_PERSONNAGE <= ENTREE_BAS_SALLE_1) && (combattant->x + LARGEUR_PERSONNAGE >= SCREEN_WIDTH)){
+            if(combattant->x + LARGEUR_PERSONNAGE >= SCREEN_WIDTH){
               changement_salle(monde->joueur, +1);
     		      return(PAS_COLLISION);
             }
             break;
           case 1:
-            if((combattant->y >= ENTREE_HAUT_SALLE_1) && (combattant->y + HAUTEUR_PERSONNAGE <= ENTREE_BAS_SALLE_1) && (combattant->x <= 0)){
+            if(combattant->x <= 0){
               changement_salle(monde->joueur, -1);
     		      return(PAS_COLLISION);
     	      }
 
     	      if((combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE >= SCREEN_HEIGHT - 100)){
-    		      changement_zone(monde->joueur);
+    		      changement_salle(monde->joueur, +1);
     		      return(PAS_COLLISION);
     	      }
             break;
@@ -175,13 +160,13 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
     		      return(PAS_COLLISION);
     	      }
 
-    	      if((combattant->y == ENTREE_HAUT_SALLE_1) && (combattant->y + HAUTEUR_PERSONNAGE <= ENTREE_BAS_SALLE_1) && (combattant->x >= 0.0)){
+    	      if(combattant->x >= 0.0){
               changement_salle(monde->joueur, +1);
     		      return(PAS_COLLISION);
             }
             break;
           case 3:
-            if((combattant->y == ENTREE_HAUT_SALLE_1) && (combattant->y + HAUTEUR_PERSONNAGE <= ENTREE_BAS_SALLE_1) && (combattant->x + LARGEUR_PERSONNAGE>= SCREEN_WIDTH)){
+            if(combattant->x + LARGEUR_PERSONNAGE>= SCREEN_WIDTH){
               changement_salle(monde->joueur, -1);
     		      return(PAS_COLLISION);
     	      }
