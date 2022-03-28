@@ -106,11 +106,32 @@ void apply_texture(SDL_Texture *texture,SDL_Renderer *renderer,float x, float y)
     SDL_Rect dst = {0, 0, 0, 0};
     //SDL_Rect src = {0, 0, 0, 0};
 
+    if(texture == NULL){
+      printf("Texture NULL\n");
+    }
+    if(renderer == NULL){
+      printf("Renderer Null\n");
+    }
+
     SDL_QueryTexture(texture, NULL, NULL, &dst.w, &dst.h);
     dst.x = x;
     dst.y = y;
 
+    if(texture == NULL){
+      printf("Texture NULL\n");
+    }
+    if(renderer == NULL){
+      printf("Renderer Null\n");
+    }
+
     SDL_RenderCopy(renderer, texture, NULL, &dst);
+
+    if(texture == NULL){
+      printf("Texture NULL\n");
+    }
+    if(renderer == NULL){
+      printf("Renderer Null\n");
+    }
 
 }
 

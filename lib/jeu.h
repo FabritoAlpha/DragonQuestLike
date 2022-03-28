@@ -28,7 +28,7 @@
 #define RETOUR 4
 
 void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde, TTF_Font * police);
-void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * tick,int *tick_monstre, TTF_Font * police);
+void rafraichir(SDL_Event* event,SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * tick,int *tick_monstre, TTF_Font * police);
 void evenements(SDL_Event* event, monde_t * monde);
 int test_collision_joueur(joueur_t * joueur, salle_t * salle_courante, int largeur_ecran, int longueur_ecran); // à améliorer avec un type boolen
 int test_collision_monstre(monstre_t * monstre, salle_t * salle_du_monstre, int largeur_ecran, int longueur_ecran);// même chose

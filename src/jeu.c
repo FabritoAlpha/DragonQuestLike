@@ -785,7 +785,7 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, salle_
  * \param world les données du monde
  * \param textures les textures
  */
-void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
+void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
     //printf("On rentre dans rafraichir\n");
     int time_sec=(SDL_GetTicks()/20);
 
@@ -839,6 +839,9 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
 
     }
 
+    /*if(monde->etat_jeu == ETAT_COMBAT){
+      combat(monde->joueur, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0], textures, renderer, event, monde, police);
+    }*/
     //On actualise l'affichage
     SDL_RenderPresent(renderer);
 
