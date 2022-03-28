@@ -67,6 +67,8 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->selection_active = NULL;
     clean_texture(textures->selection_inactive);
     textures->selection_inactive = NULL;
+    clean_texture(textures->fond_inventaire);
+    textures->fond_inventaire=NULL;
     if(police != NULL){
         clean_font(police);
         police = NULL;
@@ -99,6 +101,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->bouclier2 = load_image("./rsrc/img/bouclier2_inventaire.bmp",renderer);
     textures->selection_active = load_image("./rsrc/img/selection_active.bmp",renderer);
     textures->selection_inactive = load_image("./rsrc/img/selection_inactive.bmp",renderer);
+    textures->fond_inventaire = load_image("./rsrc/img/fond_inventaire.bmp",renderer);
     //textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
 }
 
@@ -128,6 +131,9 @@ void fond(SDL_Renderer *renderer, images_t *textures, int etat, int zone, int sa
                 apply_texture(textures->zone1salle1, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
             }
         }
+    }
+    if(etat == 3){
+        apply_texture(textures->fond_inventaire, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
     }
     else{
         apply_texture(textures->zone0salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
