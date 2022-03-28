@@ -50,8 +50,8 @@ typedef struct{
 */
 typedef struct{
   combattant_t* combattant; /**< points de vie et position */
-  int ** inventaire; /**< id des objets en possession du joueur */
-  int ** objet_equipe; /**< id des objets équipés par le joueur */
+  int * inventaire; /**< id des objets en possession du joueur */
+  int * objet_equipe; /**< id des objets équipés par le joueur */
   int zone;
   int salle;
   int mana;

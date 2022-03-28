@@ -85,18 +85,14 @@ void detruire_joueur(joueur_t ** player){
   int i;
   free((*player)->combattant);
   (*player)->combattant=NULL;
-  for(i=0;i<TAILLE_INVENTAIRE;i++){
-    free((*player)->inventaire[i]);
-    (*player)->inventaire[i]=NULL;
-  }
+  
   free((*player)->inventaire);
   (*player)->inventaire=NULL;
-  for(i=0;i<NB_EQUIPEMENT;i++){
-    free((*player)->objet_equipe[i]);
-    (*player)->objet_equipe[i]=NULL;
-  }
+
+  
   free((*player)->objet_equipe);
   (*player)->objet_equipe=NULL;
+  
   free(*(player));
   (*player)=NULL;
 }
