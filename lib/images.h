@@ -2,7 +2,7 @@
 #define _IMAGES_H
 
 #include "sdl2_fonctions.h"
-#include "entitee.h"
+#include "monde.h"
 
 /**
  * \brief stocke les images (textures) nécessaires à l'affichage graphique
@@ -12,9 +12,19 @@ typedef struct images_s{
     //SDL_Texture* menu; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* zone0salle0; /*!< Texture liée à l'image du fond de l'écran. */
     //SDL_Texture* s1; /*!< Texture liée à l'image du fond de l'écran. */
-    SDL_Texture* zone0salle1;
+    SDL_Texture* zone0salle1; /*!< Texture liée à l'image du fond de l'écran*/
+    SDL_Texture* zone0salle2; /*!< Texture liée à l'image du fond de l'écran*/
+    SDL_Texture* zone0salle3; /*!< Texture liée à l'image du fond de l'écran*/
     SDL_Texture* zone1salle0; /*!< Texture liée à l'image du fond de l'écran. */
-    SDL_Texture* zone1salle1; /*!< Texture liée à l'image du fond de l'écran. */
+    //SDL_Texture* s1; /*!< Texture liée à l'image du fond de l'écran. */
+    SDL_Texture* zone1salle1; /*!< Texture liée à l'image du fond de l'écran*/
+    SDL_Texture* zone1salle2; /*!< Texture liée à l'image du fond de l'écran*/
+    SDL_Texture* zone1salle3; /*!< Texture liée à l'image du fond de l'écran*/
+    SDL_Texture* zone2salle0; /*!< Texture liée à l'image du fond de l'écran. */
+    //SDL_Texture* s1; /*!< Texture liée à l'image du fond de l'écran. */
+    SDL_Texture* zone2salle1; /*!< Texture liée à l'image du fond de l'écran*/
+    SDL_Texture* zone2salle2; /*!< Texture liée à l'image du fond de l'écran*/
+    SDL_Texture* zone2salle3; /*!< Texture liée à l'image du fond de l'écran*/
     SDL_Texture* joueur; /*!< Texture liée à l'image du joueur. */
     SDL_Texture* monstre; /*!< Texture liée à l'image des monstres. */
     SDL_Texture* personnage; /*!< Texture liée à l'image d'un personnage. */
@@ -34,7 +44,7 @@ void clean_images(images_t *textures, TTF_Font* police);
 
 void init_images(SDL_Renderer *renderer, images_t *textures);
 
-void fond(SDL_Renderer *renderer, images_t *textures, int etat, int zone, int salle);
+void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde);
 
 void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur);
 
