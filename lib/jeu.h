@@ -16,7 +16,7 @@
 #define MENU1 1
 #define MENU2 2
 
-//Choix du joueur pour le menu 1 du combat	
+//Choix du joueur pour le menu 1 du combat
 #define ATTAQUE 1
 #define FUITE 2
 
@@ -35,10 +35,12 @@ int test_collision_monstre(monstre_t * monstre, salle_t * salle_du_monstre, int 
 
 
 int collision_combattant_ecran(combattant_t * combattant, monde_t * monde);
-int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre);
+int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, monde_t * monde);
 int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj);
 int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * coffre);
 int collision_combattant(combattant_t * combattant,int indice_monstre, monde_t * monde);
+
+void combat(joueur_t * joueur, monstre_t * monstre, images_t * textures, SDL_Renderer* renderer, SDL_Event* event, monde_t * monde, TTF_Font * police);
 
 
 int deplacement_droit(combattant_t * entitee, int indice_monstre, monde_t * monde);

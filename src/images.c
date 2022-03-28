@@ -53,10 +53,28 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->zone1salle0 = NULL;
     clean_texture(textures->zone1salle1);
     textures->zone1salle1 = NULL;
+    clean_texture(textures->zone1salle2);
+    textures->zone1salle2 = NULL;
+    clean_texture(textures->zone1salle3);
+    textures->zone1salle3 = NULL;
+    /*clean_texture(textures->zone2salle0);
+    textures->zone2salle0 = NULL;
+    clean_texture(textures->zone2salle1);
+    textures->zone2salle1 = NULL;
+    clean_texture(textures->zone2salle2);
+    textures->zone2salle2 = NULL;
+    clean_texture(textures->zone2salle3);
+    textures->zone2salle3 = NULL;*/
     clean_texture(textures->joueur);
     textures->joueur = NULL;
     clean_texture(textures->monstre);
     textures->monstre = NULL;
+    clean_texture(textures->monstre_zone1);
+    textures->monstre_zone1 = NULL;
+    clean_texture(textures->monstre_zone2);
+    textures->monstre_zone2 = NULL;
+    clean_texture(textures->boss);
+    textures->boss = NULL;
     clean_texture(textures->personnage);
     textures->personnage = NULL;
     clean_texture(textures->epee1);
@@ -73,6 +91,12 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->selection_inactive = NULL;
     clean_texture(textures->fond_inventaire);
     textures->fond_inventaire=NULL;
+    clean_texture(textures->case_combat);
+    textures->case_combat = NULL;
+    clean_texture(textures->arene_combat);
+    textures->arene_combat = NULL;
+    clean_texture(textures->game_over);
+    textures->game_over = NULL;
     if(police != NULL){
         clean_font(police);
         police = NULL;
@@ -98,8 +122,17 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->zone0salle3 = load_image("./rsrc/img/zone0_salle3.bmp",renderer);
     textures->zone1salle0 = load_image("./rsrc/img/zone1_salle0.bmp",renderer);
     textures->zone1salle1 = load_image("./rsrc/img/zone1_salle1.bmp",renderer);
+    textures->zone1salle2 = load_image("./rsrc/img/zone1_salle2.bmp",renderer);
+    textures->zone1salle3 = load_image("./rsrc/img/zone1_salle3.bmp",renderer);
+    //textures->zone2salle0 = load_image("./rsrc/img/zone2_salle0.bmp",renderer);
+    //textures->zone2salle1 = load_image("./rsrc/img/zone2_salle1.bmp",renderer);
+    //textures->zone2salle2 = load_image("./rsrc/img/zone2_salle2.bmp",renderer);
+    //textures->zone2salle3 = load_image("./rsrc/img/zone2_salle3.bmp",renderer);
     textures->joueur = load_image("./rsrc/img/joueur.bmp",renderer);
     textures->monstre = load_image("./rsrc/img/monstre.bmp",renderer);
+    textures->monstre_zone1 = load_image("./rsrc/img/monstre.bmp",renderer);
+    textures->monstre_zone2 = load_image("./rsrc/img/monstre.bmp",renderer);
+    textures->boss = load_image("./rsrc/img/monstre.bmp",renderer);
     textures->personnage = load_image("./rsrc/img/perso.bmp",renderer);
     textures->epee1 = load_image("./rsrc/img/epee1_inventaire.bmp",renderer);
     textures->epee2 = load_image("./rsrc/img/epee2_inventaire.bmp",renderer);
@@ -109,6 +142,10 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->selection_inactive = load_image("./rsrc/img/selection_inactive.bmp",renderer);
     textures->fond_inventaire = load_image("./rsrc/img/fond_inventaire.bmp",renderer);
     //textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
+    textures->case_combat = load_image("./rsrc/img/selection_active.bmp", renderer);
+    textures->game_over = load_image("./rsrc/img/fond_inventaire.bmp", renderer);
+    textures->arene_combat = load_image("./rsrc/img/zone0_salle1.bmp", renderer);
+
 }
 
 /**
@@ -140,7 +177,7 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
                     break;
                 case 3:
                     //printf("zone 0 salle 3 \n");
-                    
+
                     apply_texture(textures->zone0salle3, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
                     break;
             }
@@ -180,6 +217,9 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
     }
     else if(etat == 3){
         apply_texture(textures->fond_inventaire, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+    }
+    else if(etat == ETAT_COMBAT){
+      apply_texture(textures->arene_combat, renderer, (taille_fenetre[0]/2)-500, (taille_fenetre[1]/2) - 375);
     }
     else{
         apply_texture(textures->zone0salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);

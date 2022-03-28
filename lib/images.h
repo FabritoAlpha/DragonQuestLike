@@ -4,6 +4,8 @@
 #include "sdl2_fonctions.h"
 #include "monde.h"
 
+#define ETAT_COMBAT 12
+
 /**
  * \brief stocke les images (textures) nécessaires à l'affichage graphique
 */
@@ -27,6 +29,9 @@ typedef struct images_s{
     SDL_Texture* zone2salle3; /*!< Texture liée à l'image du fond de l'écran*/
     SDL_Texture* joueur; /*!< Texture liée à l'image du joueur. */
     SDL_Texture* monstre; /*!< Texture liée à l'image des monstres. */
+    SDL_Texture* monstre_zone1; /*!< Texture liée à l'image des monstres. */
+    SDL_Texture* monstre_zone2; /*!< Texture liée à l'image des monstres. */
+    SDL_Texture* boss; /*!< Texture liée à l'image des monstres. */
     SDL_Texture* personnage; /*!< Texture liée à l'image d'un personnage. */
     SDL_Texture* epee1; /*!< Texture liée à l'image de l'épee 1. */
     SDL_Texture* epee2; /*!< Texture liée à l'image de l'épee 2. */
@@ -35,6 +40,9 @@ typedef struct images_s{
     SDL_Texture* selection_inactive; /*!< Texture liée à l'image de fond d'un objet quand il n'est pas équipé. */
     SDL_Texture* selection_active; /*!< Texture liée à l'image de fond d'un objet quand il est équipé. */
     SDL_Texture* fond_inventaire;
+    SDL_Texture* case_combat;
+    SDL_Texture* game_over;
+    SDL_Texture* arene_combat;
     //TTF_Font *font; /*!< Texture liée à la police du texte affiché à l'écran */
 
 

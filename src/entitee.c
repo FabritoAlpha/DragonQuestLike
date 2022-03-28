@@ -85,14 +85,14 @@ void detruire_joueur(joueur_t ** player){
   int i;
   free((*player)->combattant);
   (*player)->combattant=NULL;
-  
+
   free((*player)->inventaire);
   (*player)->inventaire=NULL;
 
-  
+
   free((*player)->objet_equipe);
   (*player)->objet_equipe=NULL;
-  
+
   free(*(player));
   (*player)=NULL;
 }
@@ -138,6 +138,7 @@ void init_joueur(joueur_t * joueur,int niveau, int zone){
   joueur->combattant->type = JOUEUR;
   joueur->zone = zone;
   joueur->salle = 0;
+  joueur->or = 0;
 }
 
 /**
@@ -226,4 +227,3 @@ void initialiser_biblio(objet_t tableau[]){
   bouclier2 =objet_initialiser(bouclier2,4,4,0,"Bouclier en Diamant","Desc");
   tableau[i_tab++]=*bouclier2;
 }
-

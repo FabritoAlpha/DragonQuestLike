@@ -18,14 +18,14 @@ int main(){
     images_t* textures;
     SDL_Renderer *screen;
     SDL_Window *window;
-    
+
     TTF_Font * police = NULL;
 
     srand(time(NULL));
 
     //Allocation de la mémoire de la structure images_t contenant toutes les images utiles au jeu
     textures = malloc(sizeof(images_t));
-    
+
     //Création du monde
     monde = creer_monde();
     int tick=5;
@@ -59,7 +59,10 @@ int main(){
 
       //Gestion des évènements durant le jeu: choix des menus, déplacements du personnage...
       evenements(&event,monde);
-
+      if(monde->etat_jeu == ETAT_COMBAT){
+        printf("On rentre dans le combat\n");
+        //combat(monde->joueur, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0], textures, screen, &event, monde, police);
+      }
       //Rafraichissement de l'affichage de la fenêtre
       rafraichir(screen, monde, textures,&tick,&tick_monstre,police);
 

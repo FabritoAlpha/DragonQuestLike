@@ -22,83 +22,308 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, mond
     clean_sdl(renderer,window);
 }
 
-/*
-La fonction charger_combat sert à actualiser l'état du jeu afin de mettre le jeu en version "combat"
 
-#define COMBAT 57
 
-void fction(joueur_t * joueur, monstre_t * monstre, images_t texture){
+void combat(joueur_t * joueur, monstre_t * monstre, images_t * textures, SDL_Renderer * renderer, SDL_Event * event, monde_t * monde, TTF_Font* police){
 
-	char nom_monstre[10];
-
-	apply_texture(textures->arene_combat, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375); //voir si les coordonnées sont bonnes
-	apply_texture(textures->joueur,...);
+	//char nom_monstre[10];
+  char opt[10];
+  const Uint8* keystates = SDL_GetKeyboardState(NULL);
+	//apply_texture(textures->arene_combat, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375); //voir si les coordonnées sont bonnes
+	apply_texture(textures->joueur,renderer, 1*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);//Ãƒ  tester Ãƒ  taton
 	//apply_texture la bonne image de monstre -->
-	//récupération de l'information via la zone et la salle du joueur
+	//récupéation de l'information via la zone et la salle du joueur
 	switch(monde->joueur->zone){
 		case 0:
-			switch(monde->joueur->salle){
-				case (0||1||2):
-					//texture du monstre de base de la zone et de la salle
-					break;
-				case 3:
-					//texture du boss de la zone et de la salle
-					break;
-			}
+      //Renommer monstre_zone0
+      printf("Le monstre s'affiche\n");
+			apply_texture(textures->monstre, renderer, 100, 100);
+      break;
 		case 1:
-			switch(monde->joueur->salle){
-				case (0||1||2):
-					//texture du monstre de base de la zone et de la salle
-					break;
-				case 3:
-					//texture du boss de la zone et de la salle
-					break;
-			}
+      apply_texture(textures->monstre_zone1, renderer, 7*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
+      break;
 		case 2:
 			switch(monde->joueur->salle){
 				case (0||1||2):
-					//texture du monstre de base de la zone et de la salle
+          apply_texture(textures->monstre_zone2, renderer, 7*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
 					break;
 				case 3:
-					//texture du boss de la zone et de la salle
+          apply_texture(textures->boss, renderer, 7*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
 					break;
 			}
+      break;
 	}
 
 	//Après avoir fait l'affichage de l'arène du joueur et du monstre engagé dans le combat on affiche les pts de vie du monstre en haut et les pts de vie du joueur en bas
 
-	char pv_j[4];
-	char pv_m[4];
+	char pv_j[3];
+	char pv_m[3];
+  char mana_j[3];
 
-	snprintf(pv_j, 4, "%d", (monde->joueur->combattant->pvCour));
-	snprintf(pv_m, 4, "%d", (monstre->combattant->pvCour));
+	int num_menu_cour = MENU1;
 
-	--->on doit afficher les pts de vie transformés en string avec un sprintf et un apply_text
-	sprintf(opt, pv_j);
-	apply_text();
+	int option_menu_1 = RIEN;
+	int option_menu_2 = RIEN;
 
-	sprintf(opt, pv_m);
-	apply_text();
+	snprintf(pv_j, 3, "%d", (monde->joueur->combattant->pvCour));
+	snprintf(pv_m, 3, "%d", (monstre->combattant->pvCour));
+  snprintf(mana_j, 3, "%d", (monde->joueur->manaCour));
 
-	//Après les pv du j et du m on affiche un menu avec les options du joueur: attaque ou fuite
+  //Il faut afficher la barre de point de vie du joueur et du monstre ainsi que la barre de mana du joueur
 
-	//J'ai besoin d'une case avec attaque à l'intérieur et une case avec fuite à l'intérieur
-	apply_texture(textures->attaque,...);
-	sprintf(opt, "Attaque");
-	apply_text(...);
+  //Trois apply_texture à faire
+  //->un pour chaque barre
 
-	apply_texture(textures->fuite,...);
-	sprintf(opt, "Fuite");
-	apply_text(...);
+  sprintf(opt, pv_j);
+  apply_text(renderer, 0, 255, 0, opt, police, 1*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+
+  sprintf(opt, pv_m);
+  apply_text(renderer, 0, 255, 0, opt, police, 7*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+
+  sprintf(opt, mana_j);
+  apply_text(renderer, 0, 255, 0, opt, police, 1*SCREEN_WIDTH/8, 3*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
 
 
-	//J'ai ensuite besoin que lorsque je clique sur la case, l'action soit réalisée
+	//Mettre une condition sur le numéro du menu
 
 
+	//IF NUM_MENU_COUR == MENU1
+  if(num_menu_cour == 1){
+  	//On doit afficher les cases nécessaires pour l'attaque et la fuite
+
+  	//Après les pv du j et du m on affiche un menu avec les options du joueur: attaque ou fuite
+
+
+    //Il faut apv_policeint de vie du joueur et du monstre ainsi que la barre de mana du joueur
+
+    //switch(option_menupv_mwitch(option_mepolicech(option_menu_1mana_j/J'ai besoin d'une case avec attaque à  l'intérieur et une case avec fuite à  l'intérieur
+
+  	//--> ça c'est à  mettre avant le choix du menu
+  	//case pour le choix policey_texture(textures->case_combat, renderer, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8);
+  	//case pour le choix fuite
+  	apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8);
+
+  	//Peut-ÃƒÂªtre mettre un if(police != 0) Ãƒ  voir
+
+  	sprintf(opt, "Attaque");
+  	apply_text(renderer, 0, 255, 0, opt, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+
+  	sprintf(opt, "Fuite");
+  	apply_text(renderer, 0, 255, 0, opt, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+
+  	//On doit dorÃƒÂ©navant permettre la saisie du coup
+
+  	if(event->type == SDL_KEYDOWN){
+  		if(keystates[SDL_SCANCODE_LEFT]){
+  			switch(option_menu_1){
+  				//On dÃ©cale le curseur vers la case Ã  gauche
+  				case RIEN:
+  					option_menu_1 = ATTAQUE;
+  					break;
+  				case ATTAQUE:
+  					option_menu_1 = FUITE;
+  					break;
+  				case FUITE:
+  					option_menu_1 = ATTAQUE;
+  					break;
+  			}
+  		}
+  		if(keystates[SDL_SCANCODE_RIGHT]){
+  			switch(option_menu_1){
+  				//On dÃ©cale le curseur vers la case Ã  droite
+  				case RIEN:
+  					option_menu_1 = FUITE;
+  					break;
+  				case ATTAQUE:
+  					option_menu_1 = FUITE;
+  					break;
+  				case FUITE:
+  					option_menu_1 = ATTAQUE;
+  					break;
+  			}
+  		}
+  		if(keystates[SDL_SCANCODE_RETURN] && option_menu_1 != RIEN){
+  			switch(option_menu_1){
+  				case ATTAQUE:
+  					//On change le numÃƒÂ©ro menu courrant pour afficher celui des attaques dispos
+  					num_menu_cour = MENU2;
+  					break;
+  				case FUITE:
+  					//On quitte le combat
+  					//On modifie l'ÃƒÂ©tat du jeu afin de retourner Ãƒ  la carte principale
+  					monde->etat_jeu = 1;
+  					break;
+
+  			}
+  		}
+  	}
+    }
+	//Il faut vérifier qu'on a bien choisi d'afficher le menu2 et pas de fuire
+	//IF NUM_MENU_COUR == MENU2
+  if(num_menu_cour == MENU2){
+  	//On doit afficher les cases nÃƒÂ©cessaires pour l'epee, le sort et le tir Ãƒ  l'arc
+
+
+  	//J'ai besoin d'une case avec epee Ãƒ  l'intÃƒÂ©rieur, une case avec sort Ãƒ  l'intÃƒÂ©rieur, une case avec arc Ãƒ  l'intÃƒÂ©rieur et une case Retour
+
+  	//--> ÃƒÂ§a c'est Ãƒ  mettre avant le choix du menu
+  	//case pour le choix coup d'Ã©pÃ©Ã©
+  	apply_texture(textures->case_combat, renderer, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8);
+  	//case pour le choix sort
+  	apply_texture(textures->case_combat, renderer, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8);
+  	//case pour le choix tir Ã  l'arc
+  	apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8);
+  	//case pour le choix retour
+  	apply_texture(textures->case_combat, renderer, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8);
+
+  	//Peut-être mettre un if(police != 0) à  voir
+
+  	//Affichage du "Epee"
+  	sprintf(opt, "Epee");
+  	apply_text(renderer, 0, 255, 0, opt, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+
+  	//Affichage du "Sort"
+  	sprintf(opt, "Sort");
+  	apply_text(renderer, 0, 255, 0, opt, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+
+  	//Affichage du "Arc"
+  	sprintf(opt, "Arc");
+  	apply_text(renderer, 0, 255, 0, opt, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+
+  	//Affichage du "Retour"
+  	sprintf(opt, "Retour");
+  	apply_text(renderer, 0, 255, 0, opt, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+
+  	//On doit dorénavant permettre la saisie du coup
+
+  	if(event->type == SDL_KEYDOWN){
+  		if(keystates[SDL_SCANCODE_LEFT]){
+  			switch(option_menu_2){
+  				//On dÃ©cale le curseur vers la case Ã  gauche
+  				case RIEN:
+  					option_menu_2 = EPEE;
+  					break;
+  				case EPEE:
+  					option_menu_2 = RETOUR;
+  					break;
+  				case SORT:
+  					option_menu_2 = EPEE;
+  					break;
+  				case ARC:
+  					//Si on a assez de mana on va sur la case sort sinon on va sur la case epee
+  					if(joueur->manaCour >=5){
+  						option_menu_2 = SORT;
+  					}
+  					else{
+  						option_menu_2 = EPEE;
+  					}
+  					break;
+  				case RETOUR:
+  					option_menu_2 = ARC;
+  					break;
+  			}
+  		}
+  		if(keystates[SDL_SCANCODE_RIGHT]){
+  			switch(option_menu_2){
+  				//On décale le curseur vers la case Ã  droite
+  				case RIEN:
+  					option_menu_2 = RETOUR;
+  					break;
+  				case EPEE:
+  					//Si on a assez de manas on va sur sort sinon on va sur arc car on ne peut pas utiliser le sort
+  					if(joueur->manaCour >=5){
+  						option_menu_2 = SORT;
+  					}
+  					else{
+  						option_menu_2 = ARC;
+  					}
+  					break;
+  				case SORT:
+  					option_menu_2 = ARC;
+  					break;
+  				case ARC:
+  					option_menu_2 = RETOUR;
+  					break;
+  				case RETOUR:
+  					option_menu_2 = EPEE;
+  					break;
+  			}
+  		}
+  		if(keystates[SDL_SCANCODE_RETURN] && option_menu_2 != RIEN){
+  			switch(option_menu_2){
+  				//Action lorsqu'on clique sur entrer en Ã©tant sur une des actions possibles
+  				case EPEE:
+  					//On inflige des dégâts au monstre
+  					//Actualise ses pts de vie
+  					monstre->combattant->pvCour -= joueur->combattant->attaque;
+  					//Finit le combat si pv du monstre <= 0
+  					if(monstre->combattant->pvCour <= 0){
+  						monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+  						monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
+              joueur->or += 30;
+            }
+  					break;
+  				case SORT:
+  					//On inflige des dégâts au monstre
+  					//Actualise ses pts de vie
+  					monstre->combattant->pvCour -= joueur->combattant->attaque;
+  					//
+  					//Finit le combat si pv du monstre <= 0
+  					if(monstre->combattant->pvCour <= 0){
+  						monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+  						monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
+              joueur->or += 30;
+            }
+  					break;
+  				case ARC:
+  					//On inflige des dÃ©gÃ¢ts au monstre
+  					//Actualise ses pts de vie
+  					monstre->combattant->pvCour -= joueur->combattant->attaque;
+  					//Finit le combat si pv du monstre <= 0
+  					if(monstre->combattant->pvCour <= 0){
+  						monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+  						monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
+              joueur->or += 30;
+            }
+  					break;
+  				case RETOUR:
+  					//Si on appuie sur "Retour" on affiche de nouveau le menu1
+  					option_menu_2 = MENU1;
+  					break;
+  			}
+  		}
+  	}
+  }
+	//Après avoir saisi le coup du joueur c'est au monstre de jouer
+	//Il faut vÃ©rifier que le monstre est vivant et qu'on n'a pas choisi soit : - de fuir, soit d'afficher le menu 1
+
+	if(monstre->etat == VIVANT && num_menu_cour != MENU1 && monde->etat_jeu != 1){
+		//Le monstre inflige des dégâts basiquement au joueur
+		joueur->combattant->pvCour -= monstre->combattant->attaque;
+
+		if( joueur->combattant->pvCour <= 0){
+			//S'il tue le joueur on affiche game over
+			apply_texture(textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+			//Il doit cliquer sur une touche en dehors de escape afin de le passer
+			while(!(event->type == SDL_KEYDOWN) || keystates[SDL_SCANCODE_ESCAPE]){
+			}
+			//On recharge au dÃ©but de la zone
+			//pv au max, mana au max, retour Ã  la premiÃ¨re salle de la zone
+			joueur->combattant->pvCour = joueur->combattant->pvMax;
+			joueur->manaCour = joueur->manaMax;
+			joueur->salle = 0;
+
+			//On réinitialise la zone
+			init_zone(monde->zones[joueur->zone], joueur->zone);
+
+			//On divise son or par 2
+			//Retour à  la carte du monde
+			monde->etat_jeu = 1;
+		}
+	}
 
 }
 
-*/
 void changement_salle(joueur_t * j, int changement_salle){
 	j->salle = (j->salle) + changement_salle;
 
@@ -266,10 +491,11 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
     return(PAS_COLLISION);
 }
 
-int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*monde_t * monde */){
+int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, monde_t * monde ){
 
     if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
+        monde->etat_jeu = ETAT_COMBAT;
         /*
         charger_combat(monde);
         return(PAS_COLLISION);
@@ -277,6 +503,8 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*mond
         return(COLLISION);
     }
     if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y  >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_PERSONNAGE) ){
+
+        monde->etat_jeu = ETAT_COMBAT;
 
         return(COLLISION);
         /*
@@ -286,6 +514,8 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*mond
     }
     if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
+        monde->etat_jeu = ETAT_COMBAT;
+
         return(COLLISION);
         /*
         charger_combat(monde);
@@ -294,6 +524,7 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre/*mond
     }
     if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
+        monde->etat_jeu = ETAT_COMBAT;
         return(COLLISION);
         /*
         charger_combat(monde);
@@ -362,7 +593,7 @@ int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t 
 
     if(combattant->type == JOUEUR){
       for(i = 0; i < NB_MONSTRES_SALLE; i++){
-        if(collision_joueur_monstre(combattant,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant)){
+        if(collision_joueur_monstre(combattant,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant, monde)){
             return(COLLISION);
         }
       }
@@ -376,7 +607,7 @@ int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t 
           }*/
         }
       }
-      if(collision_joueur_monstre(monde->joueur->combattant, combattant)){
+      if(collision_joueur_monstre(monde->joueur->combattant, combattant, monde)){
         return(COLLISION);
       }
     }
