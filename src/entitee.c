@@ -135,7 +135,7 @@ void init_joueur(joueur_t * joueur,int niveau, int zone){
   joueur->combattant->pvMax=100;
   joueur->combattant->pvCour=100;
   joueur->combattant->attaque=10;
-  joueur->combattant->vitesse=20;
+  joueur->combattant->vitesse=10;
   joueur->combattant->x= 1000/10;
   joueur->combattant->y= 1000/10;
   joueur->combattant->niveau=niveau;

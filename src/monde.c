@@ -204,9 +204,9 @@ void init_salle(salle_t * salle, int num_salle){
     init_monstre(salle->monstres[i], 0, 0, 0, 1,0,0);
   }
   if(num_salle == 0){
-      int hauteur = 200;
+      int hauteur = 251;
       for(i = 0; i < NB_PERSO_SALLE; i++){
-        init_nonCombattant(salle->perso[i], 0, 100, hauteur,0);
+        init_nonCombattant(salle->perso[i], 0, 104, hauteur,0);
         hauteur = hauteur + 100;
       }
   }
