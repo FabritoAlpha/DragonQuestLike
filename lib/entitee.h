@@ -12,8 +12,13 @@
 #define TAILLE_INVENTAIRE 6
 #define NB_EQUIPEMENT 2
 
+//Type du combattant
 #define JOUEUR 1
 #define MONSTRE 0
+
+//Etat des monstres
+#define VIVANT 1
+#define MORT 0
 
 
 
@@ -55,7 +60,8 @@ typedef struct{
   objet_t * objet_equipe; /**< id des objets équipés par le joueur */
   int zone;
   int salle;
-  int mana;
+  int manaMax;
+  int manaCour;
   int defense;
   int agilite;
 }joueur_t;
@@ -71,7 +77,7 @@ typedef struct{
   int y;
   int dir;
   int dist;
-  int etat;
+  int etat; /**< Correspond à l'état du monstre: vivant ou mort*/
 } monstre_t;
 
 /**
