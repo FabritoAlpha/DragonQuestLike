@@ -55,6 +55,14 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->monstre = NULL;
     clean_texture(textures->personnage);
     textures->personnage = NULL;
+    clean_texture(textures->epee1);
+    textures->epee1=NULL;
+    clean_texture(textures->epee2);
+    textures->epee2=NULL;
+    clean_texture(textures->bouclier1);
+    textures->bouclier1=NULL;
+    clean_texture(textures->bouclier2);
+    textures->bouclier2=NULL;
     clean_texture(textures->selection_active);
     textures->selection_active = NULL;
     clean_texture(textures->selection_inactive);
@@ -85,6 +93,10 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->joueur = load_image("./rsrc/img/joueur.bmp",renderer);
     textures->monstre = load_image("./rsrc/img/monstre.bmp",renderer);
     textures->personnage = load_image("./rsrc/img/perso.bmp",renderer);
+    textures->epee1 = load_image("./rsrc/img/epee1_inventaire.bmp",renderer);
+    textures->epee2 = load_image("./rsrc/img/epee2_inventaire.bmp",renderer);
+    textures->bouclier1 = load_image("./rsrc/img/bouclier1_inventaire.bmp",renderer);
+    textures->bouclier2 = load_image("./rsrc/img/bouclier2_inventaire.bmp",renderer);
     textures->selection_active = load_image("./rsrc/img/selection_active.bmp",renderer);
     textures->selection_inactive = load_image("./rsrc/img/selection_inactive.bmp",renderer);
     //textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
