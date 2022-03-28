@@ -11,7 +11,7 @@
 
 
 
-#define NB_SALLES 2
+#define NB_SALLES 4
 #define NB_ZONES 6
 
 #define NB_MONSTRES_SALLE 1

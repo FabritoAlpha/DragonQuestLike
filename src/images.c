@@ -45,6 +45,10 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->zone0salle0 = NULL;
     clean_texture(textures->zone0salle1);
     textures->zone0salle1 = NULL;
+    clean_texture(textures->zone0salle2);
+    textures->zone0salle1 = NULL;
+    clean_texture(textures->zone0salle3);
+    textures->zone0salle1 = NULL;
     clean_texture(textures->zone1salle0);
     textures->zone1salle0 = NULL;
     clean_texture(textures->zone1salle1);
@@ -90,6 +94,8 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->zone0salle0 = load_image("./rsrc/img/zone0_salle0.bmp",renderer);
     //textures->menu = load_image("./rsrc/img/menu.bmp",renderer);
     textures->zone0salle1 = load_image("./rsrc/img/zone0_salle1.bmp",renderer);
+    textures->zone0salle2 = load_image("./rsrc/img/zone0_salle2.bmp",renderer);
+    textures->zone0salle3 = load_image("./rsrc/img/zone0_salle3.bmp",renderer);
     textures->zone1salle0 = load_image("./rsrc/img/zone1_salle0.bmp",renderer);
     textures->zone1salle1 = load_image("./rsrc/img/zone1_salle1.bmp",renderer);
     textures->joueur = load_image("./rsrc/img/joueur.bmp",renderer);
@@ -111,28 +117,68 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
  * \param renderer le renderer
  * \param textures les textures du jeu
 */
-void fond(SDL_Renderer *renderer, images_t *textures, int etat, int zone, int salle){
+void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
 
+    int zone = monde->joueur->zone;
+    int salle = monde->joueur->salle;
+    int etat = monde->etat_jeu;
     //fond du menu
     if(etat == 1){
         if(zone == 0){
-            if(salle == 0){
-                apply_texture(textures->zone0salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
-            }
-            if(salle == 1){
-                apply_texture(textures->zone0salle1, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+            switch(salle){
+                case 0:
+                    //printf("zone 0 salle 0 \n");
+                    apply_texture(textures->zone0salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    break;
+                case 1:
+                    //printf("zone 0 salle 1 \n");
+                    apply_texture(textures->zone0salle1, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    break;
+                case 2:
+                    //printf("zone 0 salle 2 \n");
+                    apply_texture(textures->zone0salle2, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    break;
+                case 3:
+                    //printf("zone 0 salle 3 \n");
+                    
+                    apply_texture(textures->zone0salle3, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    break;
             }
         }
         if(zone == 1){
-            if(salle == 0){
-                apply_texture(textures->zone1salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+            switch(salle){
+                case 0:
+                    apply_texture(textures->zone1salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    break;
+                case 1:
+                    apply_texture(textures->zone1salle1, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    break;
+                case 2:
+                    apply_texture(textures->zone1salle2, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    break;
+                case 3:
+                    apply_texture(textures->zone1salle3, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    break;
             }
-            if(salle == 1){
-                apply_texture(textures->zone1salle1, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+        }
+        if(zone == 2){
+            switch(salle){
+                case 0:
+                    apply_texture(textures->zone2salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    break;
+                case 1:
+                    apply_texture(textures->zone2salle1, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    break;
+                case 2:
+                    apply_texture(textures->zone2salle2, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    break;
+                case 3:
+                    apply_texture(textures->zone2salle3, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    break;
             }
         }
     }
-    if(etat == 3){
+    else if(etat == 3){
         apply_texture(textures->fond_inventaire, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
     }
     else{

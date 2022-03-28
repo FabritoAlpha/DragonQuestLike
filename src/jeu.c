@@ -113,8 +113,13 @@ void changement_salle(joueur_t * j, int changement_salle){
 			break;
 		case 2:
       //S'il arrive d'en haut on le met tout en haut sans changer son placement latéral
-			j->combattant->y = HAUTEUR_PERSONNAGE + 20;
-			break;
+			if(changement_salle == 1){
+        j->combattant->y = HAUTEUR_PERSONNAGE + 100;
+      }
+      else{
+        j->combattant->x = SCREEN_WIDTH - j->combattant-> x;
+      }
+      break;
 		case 3:
       //S'il va vers la gauche même cas que pour le cas 0
 			j->combattant->x = SCREEN_WIDTH - j->combattant->x - 20 - LARGEUR_PERSONNAGE;
@@ -150,17 +155,17 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
     	      }
 
     	      if((combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE >= SCREEN_HEIGHT - 100)){
-    		      changement_salle(monde->joueur, +1);
+              changement_salle(monde->joueur, +1);
     		      return(PAS_COLLISION);
     	      }
             break;
           case 2:
-            if((combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y <= 100.0)){
+            if((combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y <= 0.0)){
               changement_salle(monde->joueur, -1);
     		      return(PAS_COLLISION);
     	      }
 
-    	      if(combattant->x >= 0.0){
+    	      if(combattant->x <= 0.0){
               changement_salle(monde->joueur, +1);
     		      return(PAS_COLLISION);
             }
@@ -171,7 +176,8 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
     		      return(PAS_COLLISION);
     	      }
 
-    	      if((combattant->y == ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE >= SCREEN_HEIGHT - 100)){
+    	      if((combattant->y == ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE >= SCREEN_HEIGHT - 200)){
+              printf("Changer de zone: OUI\n");
               changement_zone(monde->joueur);
     		      return(PAS_COLLISION);
             }
@@ -547,7 +553,7 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, salle_
  * \param textures les textures
  */
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
-
+    //printf("On rentre dans rafraichir\n");
     int time_sec=(SDL_GetTicks()/20);
 
     //on vide le renderer
@@ -556,13 +562,14 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
 
     if(monde->etat_jeu == 0 || monde->etat_jeu == 4){
 
-      fond(renderer, textures, monde->etat_jeu, 0,0);
+      fond(renderer, textures, monde);
 
       affichage_menu(renderer, monde, police);
 
     }
     else{
-      fond(renderer, textures, monde->etat_jeu, monde->joueur->zone, monde->joueur->salle);
+      //printf("Test affichage fond\n");
+      fond(renderer, textures, monde);
     }
     if(monde->etat_jeu == 3){
       affichage_inventaire(renderer, monde, textures, police);
