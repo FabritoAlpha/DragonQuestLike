@@ -105,26 +105,30 @@ void changement_salle(joueur_t * j, int changement_salle){
 	switch(j->salle){
 		case 0:
       //Si le personnage revient à gauche, on le met tout à droite de la salle sans changer sa hauteur
-			j->combattant->x = SCREEN_WIDTH - j->combattant->x - 20 - LARGEUR_PERSONNAGE;
+			j->combattant->x = SCREEN_WIDTH - j->combattant->vitesse - LARGEUR_PERSONNAGE;
 			break;
 		case 1:
       //S'il arrive de la gauche, on ne change pas sa hauteur et on le met tout à gauche
-			j->combattant->x = 20;
-			break;
+			if(changement_salle == 1){
+        j->combattant->x = j->combattant->vitesse;
+      }
+      else{
+        j->combattant->y = SCREEN_HEIGHT - 100 - j->combattant->vitesse;
+      }
+      break;
 		case 2:
       //S'il arrive d'en haut on le met tout en haut sans changer son placement latéral
 			if(changement_salle == 1){
-        j->combattant->y = HAUTEUR_PERSONNAGE + 100;
+        j->combattant->y = 100 + j->combattant->vitesse;
       }
       else{
-        j->combattant->x = SCREEN_WIDTH - j->combattant-> x;
+        j->combattant->x = j->combattant->vitesse;
       }
       break;
 		case 3:
       //S'il va vers la gauche même cas que pour le cas 0
-			j->combattant->x = SCREEN_WIDTH - j->combattant->x - 20 - LARGEUR_PERSONNAGE;
+			j->combattant->x = SCREEN_WIDTH - j->combattant->vitesse - LARGEUR_PERSONNAGE;
 			break;
-
 	}
 }
 
@@ -133,11 +137,10 @@ void changement_zone(joueur_t * j){
 	j->salle = 0;
 
 	j->combattant->x = (SCREEN_WIDTH/2) - (LARGEUR_PERSONNAGE/2);
-	j->combattant->y = HAUTEUR_PERSONNAGE + 30;
+	j->combattant->y = 100 + 10;
 }
 
 int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
-
 
     if(combattant->type == JOUEUR){
 
@@ -160,7 +163,7 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
     	      }
             break;
           case 2:
-            if((combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y <= 0.0)){
+            if((combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y <= 100.0)){
               changement_salle(monde->joueur, -1);
     		      return(PAS_COLLISION);
     	      }
@@ -176,8 +179,7 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
     		      return(PAS_COLLISION);
     	      }
 
-    	      if((combattant->y == ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE >= SCREEN_HEIGHT - 200)){
-              printf("Changer de zone: OUI\n");
+    	      if((combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE >= SCREEN_HEIGHT - 100)){
               changement_zone(monde->joueur);
     		      return(PAS_COLLISION);
             }
