@@ -295,7 +295,7 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
           monde->etat_jeu=3;
         }
         if(keystates[SDL_SCANCODE_DOWN]){
-            if(monde->option < 3)
+            if(monde->option < 2)
                 monde->option++;
             else
                 monde->option = 1;
@@ -304,14 +304,14 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
             if(monde->option > 1)
                 monde->option--;
             else
-                monde->option = 3; //3 options pour le moment
+                monde->option = 2; //2 options pour le moment
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
             //on entre dans un menu avec le choix de la partie
             monde->etat_jeu = 4;
             monde->option = 0;
         }
-        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 2){
             monde->etat_jeu = -1;
         }
     }
