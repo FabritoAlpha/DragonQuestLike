@@ -18,18 +18,24 @@ int main(){
     images_t* textures;
     SDL_Renderer *screen;
     SDL_Window *window;
-
+    
     TTF_Font * police = NULL;
 
     srand(time(NULL));
 
     //Allocation de la mémoire de la structure images_t contenant toutes les images utiles au jeu
     textures = malloc(sizeof(images_t));
-
+    
     //Création du monde
     monde = creer_monde();
     int tick=5;
     int tick_monstre=5;
+
+    //Initialisation de la bibliothèque des objets
+    initialiser_biblio(monde->biblio_objet);
+    printf("id :%d\n", monde->biblio_objet[0].id);
+    printf("Nom obj: %s\n", monde->biblio_objet[0].nom);
+    printf("\n");
 
     //mise en place du jeu (l'écran, le monde de jeu et les textures. )
 

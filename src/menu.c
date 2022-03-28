@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include  "../lib/menu.h"
 #define LARGEUR_TEXT 350//(SCREEN_WIDTH/4)
 #define HAUTEUR_TEXT 80//(POSITION_MENU_HEIGHT/10)
@@ -10,7 +11,8 @@
 #define POSITION_INVENTAIRE_IMG_L POSITION_INVENTAIRE_L
 #define POSITION_INVENTAIRE_IMG_H POSITION_INVENTAIRE_H
 #define DECALAGE_IMG_TEXT_L 90
-
+#define DECALAGE_TEXT_IMG_L 100
+#define DECALAGE_TEXT_IMG_H 100
 
 
 void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
@@ -317,24 +319,36 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
     }
 
 }
-void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font* police){
+void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font * police){
     char opt[20] = "";
+    char opt2[20] = "";
     //jouer
     if(monde->option == 1){
         sprintf(opt, "inventaire");
         apply_text(renderer, 150, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
-        sprintf(opt, "Objet 1");
+        //snprintf(opt2, 20, "%ls", monde->joueur->inventaire[0]);
+        //sprintf(opt,opt2);
+        //apply_text(renderer, 150, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6-100 , LARGEUR_TEXT/2, HAUTEUR_TEXT/2);
+        //sprintf(opt, "Objet 1");
+        snprintf(opt2, 20, "%i", monde->joueur->inventaire[0]);
+        sprintf(opt,"%s", opt2);
         apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
-        apply_text(renderer, 0, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.3, POSITION_INVENTAIRE_H , TEXT_OBJET_L, TEXT_OBJET_H);
-        sprintf(opt, "Objet 2");
+        apply_text(renderer, 0, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
+        //sprintf(opt, "Objet 2");
+        snprintf(opt2, 20, "%i", monde->joueur->inventaire[0]);
+        sprintf(opt,"%s", opt2);
         apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
-        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2 , POSITION_INVENTAIRE_H, TEXT_OBJET_L, TEXT_OBJET_H);
-        sprintf(opt, "Objet 3");
+        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L , POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H, TEXT_OBJET_L, TEXT_OBJET_H);
+        //sprintf(opt, "Objet 3");
+        snprintf(opt2, 20, "%i", monde->joueur->inventaire[0]);
+        sprintf(opt,"%s", opt2);
         apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*1.5);
-        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.3 , POSITION_INVENTAIRE_H*1.5, TEXT_OBJET_L, TEXT_OBJET_H);
-        sprintf(opt, "Objet 4");
+        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H, TEXT_OBJET_L, TEXT_OBJET_H);
+        //sprintf(opt, "Objet 4");
+        snprintf(opt2, 20, "%i", monde->joueur->inventaire[0]);
+        sprintf(opt,"%s", opt2);
         apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*1.5);
-        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2, POSITION_INVENTAIRE_H*1.5, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H, TEXT_OBJET_L, TEXT_OBJET_H);
     }
     if(monde->option == 2){
       sprintf(opt, "inventaire");

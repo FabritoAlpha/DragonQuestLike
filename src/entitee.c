@@ -48,9 +48,9 @@ joueur_t * creer_joueur(){
     player = malloc(sizeof(joueur_t));
     player->combattant= malloc(sizeof(combattant_t));
 
-    player->inventaire= malloc(sizeof(int)*TAILLE_INVENTAIRE);
+    player->inventaire= malloc(sizeof(objet_t)*TAILLE_INVENTAIRE);
 
-    player->objet_equipe=malloc(sizeof(int)*NB_EQUIPEMENT);
+    player->objet_equipe=malloc(sizeof(objet_t)*NB_EQUIPEMENT);
 
     return player;
 }
@@ -138,8 +138,6 @@ void init_joueur(joueur_t * joueur,int niveau, int zone){
   joueur->combattant->type = 1;
   joueur->zone = zone;
   joueur->salle = 0;
-  joueur->objet_equipe[0]=1;
-  joueur->objet_equipe[0]=2;
 }
 
 /**
@@ -194,12 +192,13 @@ objet_t * creer_objet(){
   objet->description = malloc(sizeof(char));
   return(objet);
 }
-void objet_initialiser(objet_t * objet,int id,int attaque_sup,int vie_sup,char*nom,char*description){
+objet_t * objet_initialiser(objet_t * objet,int id,int attaque_sup,int vie_sup,char*nom,char*description){
   objet->id=id;
   objet->attaque_sup=attaque_sup;
   objet->vie_sup=vie_sup;
   objet->nom=nom;
   objet->description=description;
+  return objet;
 }
 
 void detruire_objet(objet_t**objet){
@@ -211,3 +210,12 @@ void detruire_objet(objet_t**objet){
   (*objet)=NULL;
 
 }
+
+void initialiser_biblio(objet_t tableau[]){
+  int i_tab=0;
+  objet_t * obj;
+  obj = creer_objet();
+  obj =objet_initialiser(obj,1,4,0,"Epee en bois","petite epee");
+  tableau[i_tab]=*obj;
+}
+

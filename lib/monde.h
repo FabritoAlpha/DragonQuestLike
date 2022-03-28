@@ -70,6 +70,7 @@ typedef struct{
 	int option; /**< option a sélectionner */
 	int option2; /**<option 2 pour sous menus */
 	int partie; /**< partie jouée, à charger et sauvegarder*/
+	objet_t biblio_objet[TAILLE_INVENTAIRE]; /**< Bibliothèque contenant chaque objet du monde*/
 } monde_t;
 
 int existe_salle(salle_t* salle);
