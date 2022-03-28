@@ -213,9 +213,17 @@ void detruire_objet(objet_t**objet){
 
 void initialiser_biblio(objet_t tableau[]){
   int i_tab=0;
-  objet_t * obj;
-  obj = creer_objet();
-  obj =objet_initialiser(obj,1,4,0,"Epee en bois","petite epee");
-  tableau[i_tab]=*obj;
+  objet_t * epee1 = creer_objet();
+  epee1 =objet_initialiser(epee1,1,4,0,"Epee en pierre","Desc");
+  tableau[i_tab++]=*epee1;
+  objet_t * epee2 = creer_objet();
+  epee2 =objet_initialiser(epee2,1,4,0,"Epee en diamant","Desc");
+  tableau[i_tab++]=*epee2;
+  objet_t * bouclier1 = creer_objet();
+  bouclier1 =objet_initialiser(bouclier1,1,4,0,"Bouclier en pierre","Desc");
+  tableau[i_tab++]=*bouclier1;
+  objet_t * bouclier2 = creer_objet();
+  bouclier2 =objet_initialiser(bouclier2,1,4,0,"Bouclier en Diamant","Desc");
+  tableau[i_tab++]=*bouclier2;
 }
 
