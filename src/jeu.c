@@ -563,7 +563,7 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, salle_
  */
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
 
-    int time_sec=(SDL_GetTicks()/10);
+    int time_sec=(SDL_GetTicks()/20);
 
     //on vide le renderer
     SDL_RenderClear(renderer);
