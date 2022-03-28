@@ -217,13 +217,13 @@ void initialiser_biblio(objet_t tableau[]){
   epee1 =objet_initialiser(epee1,1,4,0,"Epee en pierre","Desc");
   tableau[i_tab++]=*epee1;
   objet_t * epee2 = creer_objet();
-  epee2 =objet_initialiser(epee2,1,4,0,"Epee en diamant","Desc");
+  epee2 =objet_initialiser(epee2,2,4,0,"Epee en diamant","Desc");
   tableau[i_tab++]=*epee2;
   objet_t * bouclier1 = creer_objet();
-  bouclier1 =objet_initialiser(bouclier1,1,4,0,"Bouclier en pierre","Desc");
+  bouclier1 =objet_initialiser(bouclier1,3,4,0,"Bouclier en pierre","Desc");
   tableau[i_tab++]=*bouclier1;
   objet_t * bouclier2 = creer_objet();
-  bouclier2 =objet_initialiser(bouclier2,1,4,0,"Bouclier en Diamant","Desc");
+  bouclier2 =objet_initialiser(bouclier2,4,4,0,"Bouclier en Diamant","Desc");
   tableau[i_tab++]=*bouclier2;
 }
 
