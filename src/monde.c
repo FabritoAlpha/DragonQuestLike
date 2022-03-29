@@ -117,7 +117,7 @@ void detruire_monde(monde_t ** monde){
 /**
 	*\fn void detruire_zone(zone_t **)
 	*\brief libération de la mémoire allouée à une zone du monde lorsque la partie est terminée
-	*\param monde une zone du monde
+	*\param zone une zone du monde
 */
 void detruire_zone(zone_t ** zone){
     for(int i = 0; i < NB_SALLES; i++){

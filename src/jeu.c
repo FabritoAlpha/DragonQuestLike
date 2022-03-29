@@ -670,7 +670,12 @@ int deplacement_bas(combattant_t * entitee, int indice_monstre, monde_t * monde)
       return(0);
     }
 }
-
+/**
+	*\fn distancejoueurmonstre(joueur_t * joueur,monstre_t * monstre)
+	*\brief renvoie la distance entre deux type combattant, ici utile entre le joueur et le monstre
+	*\param joueur entitée combattant représentant le joueur
+  *\param monstre entitée combattant représentant le monstre
+*/
 int distancejoueurmonstre(joueur_t * joueur,monstre_t * monstre){// renvoie la distance entre deux combattants.
   int distance;
   int xa=joueur->combattant->x;
@@ -680,8 +685,13 @@ int distancejoueurmonstre(joueur_t * joueur,monstre_t * monstre){// renvoie la d
   distance=sqrt(pow(xb-xa,2)+pow(yb-ya,2));
   return distance;
 }
-
-void deplacement_monstre(monstre_t * monstre,monde_t * m){
+/**
+	*\fn deplacement_monstre(monstre_t * monstre, monde_t * m)
+	*\brief IA du monstre, le déplace dans son environnement.
+	*\param m monde dans lequel le monstre se situe
+  *\param monstre entitée qui est controlé
+*/
+void deplacement_monstre(monstre_t * monstre, monde_t * m){
   int valColision=0;
   int direction;
   int distance;
@@ -698,7 +708,7 @@ void deplacement_monstre(monstre_t * monstre,monde_t * m){
   }
   //printf("%d",monstre->etat);
   if(monstre->etat==0){ // Etat du monde dans lequel il se déplace de manière aléatoire
-    if(monstre->dir==-1){
+    if(monstre->dir==-1){ // dir -1 = initialisation du monstre sur son emplacement
       direction=rand()%nb_direction;
       do{distance=rand()%dist_max;}while(distance<dist_min||distance>dist_max);
       monstre->dir=direction;
