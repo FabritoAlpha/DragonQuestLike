@@ -89,11 +89,6 @@ typedef struct{
   float y; /**< position sur l'axe des ordonnées */
   int visite; /**< 1: le joueur a déjà intéragi avec l'entité */
 } nonCombattant_t;
-/**
-  * \tableau tableau_objet
-  * \brief tableau comprenant les différents objets du jeu.
-*/
-
 
 /**
   * \fn void a_gauche(combattant_t*)
@@ -101,11 +96,23 @@ typedef struct{
   * \brief déplacement d'une entitée à gauche selon un PAS.
 */
 void a_gauche(combattant_t* entitee);
-
+/**
+  * \fn void a_droite(combattant_t*)
+  * \param entitee entitée à déplacer.
+  * \brief déplacement d'une entitée à droite selon un PAS.
+*/
 void a_droite(combattant_t* entitee);
-
+/**
+  * \fn void en_bas(combattant_t*)
+  * \param entitee entitée à déplacer.
+  * \brief déplacement d'une entitée en bas selon un PAS.
+*/
 void en_bas(combattant_t* entitee);
-
+/**
+  * \fn void en_haut(combattant_t*)
+  * \param entitee entitée à déplacer.
+  * \brief déplacement d'une entitée en haut selon un PAS.
+*/
 void en_haut(combattant_t* entitee);
 
 joueur_t * creer_joueur();
