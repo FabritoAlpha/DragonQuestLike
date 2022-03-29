@@ -794,6 +794,8 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, salle_
  * \param renderer la surface de l'écran de jeu
  * \param world les données du monde
  * \param textures les textures
+ * \param next_tick correspond au prochain tick du jeu
+ * \param next_tick_monstre correspond au prochain tick dans lequel le monstre va effectuer une action
  */
 void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
     //printf("On rentre dans rafraichir\n");
@@ -841,7 +843,7 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
         }
 
         if(time_sec>(*next_tick)){
-          (*next_tick)+=1;
+
           deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i], monde);
         }
 
@@ -853,6 +855,7 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
       combat(monde->joueur, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0], textures, renderer, event, monde, police);
     }*/
     //On actualise l'affichage
+    (*next_tick)+=1;
     SDL_RenderPresent(renderer);
 
 }
