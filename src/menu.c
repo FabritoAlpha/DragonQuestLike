@@ -326,8 +326,15 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
     monde->joueur->inventaire[3]=monde->biblio_objet[3];
     char opt[20] = "";
     char opt2[20] = "";
-    snprintf(opt2, 20, "%d", monde->joueur->combattant->pvCour);
-    apply_text(renderer, 150, 255, 0, opt2 , police, SCREEN_WIDTH*0.7 , SCREEN_HEIGHT/6 , TEXT_OBJET_L, TEXT_OBJET_H);
+    sprintf(opt, "PV");
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.55 , SCREEN_HEIGHT/6 , TEXT_OBJET_L, TEXT_OBJET_H+50);
+    snprintf(opt, 20, "%d", monde->joueur->combattant->pvCour);
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.63 , SCREEN_HEIGHT/6 , TEXT_OBJET_L, TEXT_OBJET_H+50);
+    sprintf(opt, "slash");
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.70 , SCREEN_HEIGHT/6 , TEXT_OBJET_L, TEXT_OBJET_H+50);
+    snprintf(opt, 20, "%d", monde->joueur->combattant->pvMax);
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.75 , SCREEN_HEIGHT/6 , TEXT_OBJET_L, TEXT_OBJET_H+50);
+
     if(monde->option == 1){
         sprintf(opt, "inventaire");
         apply_text(renderer, 150, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);

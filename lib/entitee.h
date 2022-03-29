@@ -62,8 +62,6 @@ typedef struct{
   int salle;
   int manaMax;
   int manaCour;
-  int defense;
-  int agilite;
   int or;
 }joueur_t;
 
