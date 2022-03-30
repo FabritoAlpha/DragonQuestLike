@@ -884,7 +884,7 @@ void sauvegarde(monde_t* monde){
     */
     if(monde->partie == 1){
         fichier = fopen("./rsrc/txt/partie1.txt","w");
-        fprintf(fichier, "%d\n%d\n%d\n%d\n%d\n", monde->joueur->combattant->niveau, monde->joueur->zone, monde->joueur->pvMax, monde->joueur->pvCour, monde->joueur->manaMax, monde->joueur->manaCour);
+        fprintf(fichier, "%d\n%d\n%d\n%d\n%d\n", monde->joueur->combattant->niveau, monde->joueur->zone, monde->joueur->combattant->pvMax, monde->joueur->combattant->pvCour, monde->joueur->manaMax, monde->joueur->manaCour);
         fclose(fichier);
     }
     if(monde->partie == 2){
