@@ -8,6 +8,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <time.h>
 #define TAILLE_INVENTAIRE 6
 #define NB_EQUIPEMENT 2

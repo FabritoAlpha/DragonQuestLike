@@ -169,6 +169,8 @@ void init_monde_menu(monde_t * monde){
 
 void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   int i; 
+  int j;
+
   int j_niveau; 
   int j_zone;
   int j_mana_max;
@@ -179,8 +181,7 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   int j_attaque;
   int j_nb_obj_inv;
   int j_nb_obj_equip;
-  //int obj_equipe[NB_EQUIPEMENT];
-  //int obj_inv[TAILLE_INVENTAIRE]
+
 
   FILE * fichier;
 
@@ -207,10 +208,37 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
 
   for(i = j_zone; i < NB_ZONES; i++){
     init_zone(monde->zones[i], i);
-
   }
 
   init_joueur(monde->joueur,j_niveau,j_zone,j_pv_max,j_pv_cour,j_mana_max,j_mana_cour,j_attaque,j_or,j_nb_obj_inv, j_nb_obj_equip);
+
+    //On copie les informations des objets dans le tableau de l'inventaire du joueur
+    for(i = 0; i < j_nb_obj_inv; i++){
+        for(j = 0; j < TAILLE_INVENTAIRE; j++){
+            if(monde->joueur->inventaire[i].id == monde->biblio_objet[j].id){
+                //SI les objets ont le même id, copie les informations de l'objet dans le tableau du joueur
+                monde->joueur->inventaire[i].attaque_sup = monde->biblio_objet[j].attaque_sup;
+                monde->joueur->inventaire[i].mana_sup = monde->biblio_objet[j].mana_sup;
+                monde->joueur->inventaire[i].vie_sup = monde->biblio_objet[j].vie_sup;
+                strcpy(monde->joueur->inventaire[i].nom, monde->biblio_objet[j].nom);
+                strcpy(monde->joueur->inventaire[i].description, monde->biblio_objet[j].description);
+            }
+        }
+    }
+
+    //On fait la même chose pour le tableau des objets équipés
+    for(i = 0; i < j_nb_obj_equip; i++){
+        for(j = 0; j < NB_EQUIPEMENT; j++){
+            if(monde->joueur->objet_equipe[i].id == monde->biblio_objet[j].id){
+                //SI les objets ont le même id, copie les informations de l'objet dans le tableau du joueur
+                monde->joueur->objet_equipe[i].attaque_sup = monde->biblio_objet[j].attaque_sup;
+                monde->joueur->objet_equipe[i].mana_sup = monde->biblio_objet[j].mana_sup;
+                monde->joueur->objet_equipe[i].vie_sup = monde->biblio_objet[j].vie_sup;
+                strcpy(monde->joueur->objet_equipe[i].nom, monde->biblio_objet[j].nom);
+                strcpy(monde->joueur->objet_equipe[i].description, monde->biblio_objet[j].description);
+            }
+        }
+    }
 
   fclose(fichier);
 }
@@ -242,3 +270,4 @@ void init_salle(salle_t * salle, int num_salle){
   salle->num_salle = num_salle;
   init_nonCombattant(salle->coffre, 0, 0, 0,0);
 }
+

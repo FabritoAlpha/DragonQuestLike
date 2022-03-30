@@ -912,7 +912,6 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
     else if(monde->joueur->combattant->pvCour <= 0){
         //Si le joueur est mort alors on affiche une image de game over
         //Il faudra appuyez sur une touche pour sortir du jeu
-        printf("LE JOUEUR EST MORT: GAME OVER\n");
         apply_texture(textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
         apply_text(renderer, 255, 0, 0, "Game Over", police, SCREEN_WIDTH/2 - 100, SCREEN_HEIGHT/2 - 125, 200, 100);
         apply_text(renderer, 255, 0, 0, "Press Enter To Retry", police, SCREEN_WIDTH/2 - 200, SCREEN_HEIGHT/2 + 25, 400, 100);
