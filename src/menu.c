@@ -602,3 +602,358 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
     }
 
 }
+
+void evenements_combat(SDL_Event * event, monde_t * monde){
+    const Uint8* keystates = SDL_GetKeyboardState(NULL);
+    if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT){
+        if(monde->num_menu_comb == 1){
+        
+
+            if(event->type == SDL_KEYDOWN){
+                if(keystates[SDL_SCANCODE_LEFT]){
+                    switch(monde->option){
+                        //On décale le curseur vers la case Ã  gauche
+                        case RIEN:
+                            monde->option = ATTAQUE;
+                            break;
+                        case ATTAQUE:
+                            monde->option = FUITE;
+                            break;
+                        case FUITE:
+                            monde->option = ATTAQUE;
+                            break;
+                    }
+                }
+                if(keystates[SDL_SCANCODE_RIGHT]){
+                    switch(monde->option){
+                        //On décale le curseur vers la case Ã  droite
+                        case RIEN:
+                            monde->option = FUITE;
+                            break;
+                        case ATTAQUE:
+                            monde->option = FUITE;
+                            break;
+                        case FUITE:
+                            monde->option = ATTAQUE;
+                            break;
+                    }
+                }
+                if(keystates[SDL_SCANCODE_RETURN] && monde->option != RIEN){
+                    switch(monde->option){
+                        case ATTAQUE:
+                            //On change le numéro menu combat pour afficher celui des attaques dispos
+                            monde->num_menu_comb = MENU2;
+                            monde->option = RIEN;
+                            break;
+                        case FUITE:
+                            //On quitte le combat
+                            //On modifie l'état du jeu afin de retourner à  la carte principale
+                            monde->etat_jeu = 1;
+                            break;
+
+                    }
+                }
+            }
+        }
+
+        else if(monde->num_menu_comb == MENU2){
+            
+            //On doit dorénavant permettre la saisie du coup
+
+            if(event->type == SDL_KEYDOWN){
+                if(keystates[SDL_SCANCODE_LEFT]){
+                    switch(monde->option){
+                        //On décale le curseur vers la case Ã  gauche
+                        case RIEN:
+                            monde->option = EPEE;
+                            break;
+                        case EPEE:
+                            monde->option = RETOUR;
+                            break;
+                        case SORT:
+                            monde->option = EPEE;
+                            break;
+                        case ARC:
+                            //Si on a assez de mana on va sur la case sort sinon on va sur la case epee
+                            if(monde->joueur->manaCour >=5){
+                                monde->option = SORT;
+                            }
+                            else{
+                                monde->option = EPEE;
+                            }
+                            break;
+                        case RETOUR:
+                            monde->option = ARC;
+                            break;
+                    }
+                }
+                if(keystates[SDL_SCANCODE_RIGHT]){
+                    switch(monde->option){
+                        //On décale le curseur vers la case Ã  droite
+                        case RIEN:
+                            monde->option = RETOUR;
+                            break;
+                        case EPEE:
+                            //Si on a assez de manas on va sur sort sinon on va sur arc car on ne peut pas utiliser le sort
+                            if(monde->joueur->manaCour >=5){
+                                monde->option = SORT;
+                            }
+                            else{
+                                monde->option = ARC;
+                            }
+                            break;
+                        case SORT:
+                            monde->option = ARC;
+                            break;
+                        case ARC:
+                            monde->option = RETOUR;
+                            break;
+                        case RETOUR:
+                            monde->option = EPEE;
+                            break;
+                    }
+                }
+                if(keystates[SDL_SCANCODE_RETURN] && monde->option != RIEN){
+                    switch(monde->option){
+                        //Action lorsqu'on clique sur entrer en Ã©tant sur une des actions possibles
+                        case EPEE:
+                            //On inflige des dégâts au monstre
+                            //Actualise ses pts de vie
+                            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour -=monde->joueur->combattant->attaque;
+                            //Finit le combat si pv du monstre <= 0
+                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour <= 0){
+                                monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+                                //monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
+                                monde->joueur->or += 30;
+                            }
+                            break;
+                        case SORT:
+                            //On inflige des dégâts au monstre
+                            //Actualise ses pts de vie
+                            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour -=monde->joueur->combattant->attaque;
+                            //On réduit de 5 ses points de mana
+                            monde->joueur->manaCour -= 5;
+                            //Finit le combat si pv du monstre <= 0
+                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour <= 0){
+                                //monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+                                monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
+                                monde->joueur->or += 30;
+                            }
+                            break;
+                        case ARC:
+                            //On inflige des dÃ©gÃ¢ts au monstre
+                            //Actualise ses pts de vie
+                            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour -=monde->joueur->combattant->attaque;
+                            //Finit le combat si pv du monstre <= 0
+                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour <= 0){
+                                //monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+                                monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
+                                monde->joueur->or += 30;
+                            }
+                            break;
+                        case RETOUR:
+                            //Si on appuie sur "Retour" on affiche de nouveau le menu1
+                            monde->num_menu_comb = MENU1;
+                            monde->option = RIEN;
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
+    //Le monstre attaque si le joueur a attaqué
+
+    if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT && monde->num_menu_comb != MENU1 && monde->etat_jeu != 1){
+		//Le monstre inflige des dégâts basiquement au joueur
+		monde->joueur->combattant->pvCour -= monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->attaque;
+
+		if( monde->joueur->combattant->pvCour <= 0){
+			//S'il tue le joueur on affiche game over
+			//apply_texture(textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+			//Il doit cliquer sur une touche en dehors de escape afin de le passer
+			while(!(event->type == SDL_KEYDOWN) || keystates[SDL_SCANCODE_ESCAPE]){
+			}
+			//On recharge au début de la zone
+			//pv au max, mana au max, retour à  la première salle de la zone
+			monde->joueur->combattant->pvCour = monde->joueur->combattant->pvMax;
+			monde->joueur->manaCour = monde->joueur->manaMax;
+			monde->joueur->salle = 0;
+
+			//On réinitialise la zone
+			init_zone(monde->zones[monde->joueur->zone], monde->joueur->zone);
+
+			//On divise son or par 2
+			//Retour à  la carte du monde
+			monde->etat_jeu = 1;
+		}
+	}
+    //On réinitialise la valeur de menu sur celle du premier pour le ré-afficher par la suite
+    monde->num_menu_comb = MENU1;
+}
+
+void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font* police){
+    //Si le monstre est vivant et le joueur vivant alors on affiche tout ce qui est utile à prendre en compte pour les combats:
+    //PV/PM
+    //Menus ave choix des actions
+
+    if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT && monde->joueur->combattant->pvCour > 0){
+        //On affiche le monstre et le personnage 
+        apply_texture(textures->joueur,renderer, 1*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
+
+        //récupéation de l'information via la zone et la salle du joueur
+        switch(monde->joueur->zone){
+            case 0:
+        //Renommer monstre_zone0
+        printf("Le monstre s'affiche\n");
+                apply_texture(textures->monstre, renderer, 100, 100);
+        break;
+            case 1:
+        apply_texture(textures->monstre_zone1, renderer, 7*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
+        break;
+            case 2:
+                switch(monde->joueur->salle){
+                    case (0||1||2):
+            apply_texture(textures->monstre_zone2, renderer, 7*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
+                        break;
+                    case 3:
+            apply_texture(textures->boss, renderer, 7*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
+                        break;
+                }
+        break;
+        }
+
+        //On affiche les points de vie/pm du joueur et du monstre
+
+        char pv_j[3];
+        char pv_m[3];
+        char pm_j[3];
+
+        sprintf(pv_j, "%d", (monde->joueur->combattant->pvCour));
+        sprintf(pv_m, "%d", (monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour));
+        sprintf(pm_j, "%d", (monde->joueur->manaCour));
+
+        //Il faut afficher la barre de point de vie du joueur et du monstre ainsi que la barre de mana du joueur
+
+        //Trois apply_texture à faire
+        //->un pour chaque barre
+
+        //sprintf(opt, pv_j);
+        apply_text(renderer, 0, 255, 0, pv_j, police, 1*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+
+        //sprintf(opt, pv_m);
+        apply_text(renderer, 0, 255, 0, pv_m, police, 4*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+
+        //sprintf(opt, mana_j);
+        apply_text(renderer, 0, 255, 0, pm_j, police, 7*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+
+        
+        //Si on affiche le menu 1
+        if(monde->num_menu_comb == MENU1){
+            //chaînes de caractères du texte
+            char atq[10];
+            char fuite[10];
+            
+            //Les cases dans lesquelles le texte se trouve
+            apply_texture(textures->case_combat, renderer, 1*SCREEN_WIDTH/8, 6*SCREEN_HEIGHT/8);
+            apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 6*SCREEN_HEIGHT/8);
+
+            //Texte à afficher
+            sprintf(atq, "Attaque");
+            sprintf(fuite, "Fuite");
+
+            switch(monde->option){
+                case RIEN:
+                    apply_text(renderer, 0, 255, 0, atq, police, 3*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+
+                    apply_text(renderer, 0, 255, 0, fuite, police, 6*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    break;
+                case ATTAQUE:
+                    apply_text(renderer, 255, 0, 0, atq, police, 3*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+
+                    apply_text(renderer, 0, 255, 0, fuite, police, 6*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    break;
+                case FUITE:
+                    apply_text(renderer, 0, 255, 0, atq, police, 3*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+
+                    apply_text(renderer, 255, 0, 0, fuite, police, 6*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    break;
+            }
+        }
+
+        //Si on affiche le menu 2
+        if(monde->num_menu_comb == MENU2){
+
+            char epee[10];
+            char sort[10];
+            char arc[10];
+            char retour[10];
+
+            //Chaînes de caractères utiles pour afficher le texte
+            sprintf(epee, "épée");
+            sprintf(sort, "Sort");
+            sprintf(arc, "Arc");
+            sprintf(retour, "Retour");
+
+            //case pour le choix coup d'épée
+            apply_texture(textures->case_combat, renderer, 1*SCREEN_WIDTH/8, 5*SCREEN_HEIGHT/8);
+            //case pour le choix sort
+            apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 5*SCREEN_HEIGHT/8);
+            //case pour le choix tir Ã  l'arc
+            apply_texture(textures->case_combat, renderer, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8);
+            //case pour le choix retour
+            apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8);
+
+
+
+            apply_text(renderer, 0, 255, 0, epee, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+            apply_text(renderer, 0, 255, 0, sort, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+            apply_text(renderer, 0, 255, 0, arc, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+            apply_text(renderer, 0, 255, 0, retour, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+            switch(monde->option){
+                case RIEN:
+                    apply_text(renderer, 0, 255, 0, epee, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 0, sort, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 0, arc, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 0, retour, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    break;
+                case EPEE:
+                    apply_text(renderer, 255, 0, 0, epee, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 0, sort, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 0, arc, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 0, retour, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    break;
+                case SORT:
+                    apply_text(renderer, 0, 255, 0, epee, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 255, 0, 0, sort, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 0, arc, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 0, retour, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    break;
+                case ARC:
+                    apply_text(renderer, 0, 255, 0, epee, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 0, sort, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 255, 0, 0, arc, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 0, retour, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    break;
+                case RETOUR:
+                    apply_text(renderer, 0, 255, 0, epee, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 0, sort, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 0, arc, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 255, 0, 0, retour, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    break;
+            }
+        }
+    }
+
+    else if(monde->joueur->combattant->pvCour <= 0){
+        //Si le joueur est mort alors on affiche une image de game over
+        //Il faudra appuyez sur une touche pour sortir du jeu
+
+        apply_texture(textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+
+    }
+    else{
+        //ça signifie que seul le monstre est mort -> on retourne seulement au jeu
+        monde->etat_jeu = 1;
+    }
+}

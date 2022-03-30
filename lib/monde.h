@@ -9,7 +9,9 @@
 
 #include "entitee.h"
 
-
+//Numéro du menu lors du combat
+#define MENU1 1
+#define MENU2 2
 
 #define NB_SALLES 4
 #define NB_ZONES 6
@@ -70,6 +72,7 @@ typedef struct{
 	int option; /**< option a sélectionner */
 	int option2; /**<option 2 pour sous menus */
 	int partie; /**< partie jouée, à charger et sauvegarder*/
+	int num_menu_comb; /**< Numéro du menu du combat */
 	objet_t biblio_objet[TAILLE_INVENTAIRE]; /**< Bibliothèque contenant chaque objet du monde*/
 } monde_t;
 

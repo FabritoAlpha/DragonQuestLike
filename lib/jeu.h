@@ -12,21 +12,6 @@
 #define COLLISION 1
 #define PAS_COLLISION 0
 
-//Numéro du menu lors du combat
-#define MENU1 1
-#define MENU2 2
-
-//Choix du joueur pour le menu 1 du combat
-#define ATTAQUE 1
-#define FUITE 2
-
-//Choix du joueur pour le menu 2 du combat
-#define RIEN 0
-#define EPEE 1
-#define SORT 2
-#define ARC 3
-#define RETOUR 4
-
 void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde, TTF_Font * police);
 void rafraichir(SDL_Event* event,SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * tick,int *tick_monstre, TTF_Font * police);
 void evenements(SDL_Event* event, monde_t * monde);

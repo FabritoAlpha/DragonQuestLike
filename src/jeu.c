@@ -29,8 +29,10 @@ void combat(joueur_t * joueur, monstre_t * monstre, images_t * textures, SDL_Ren
 	//char nom_monstre[10];
   char opt[10];
   const Uint8* keystates = SDL_GetKeyboardState(NULL);
-	//apply_texture(textures->arene_combat, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375); //voir si les coordonnées sont bonnes
-	apply_texture(textures->joueur,renderer, 1*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);//Ãƒ  tester Ãƒ  taton
+	
+  //Les 2 apply textures servent à afficher le monstre et le joueur
+  
+	apply_texture(textures->joueur,renderer, 1*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
 	//apply_texture la bonne image de monstre -->
 	//récupéation de l'information via la zone et la salle du joueur
 	switch(monde->joueur->zone){
@@ -65,23 +67,23 @@ void combat(joueur_t * joueur, monstre_t * monstre, images_t * textures, SDL_Ren
 	int option_menu_1 = RIEN;
 	int option_menu_2 = RIEN;
 
-	snprintf(pv_j, 3, "%d", (monde->joueur->combattant->pvCour));
-	snprintf(pv_m, 3, "%d", (monstre->combattant->pvCour));
-  snprintf(mana_j, 3, "%d", (monde->joueur->manaCour));
+	sprintf(pv_j, "%d", (monde->joueur->combattant->pvCour));
+	sprintf(pv_m, "%d", (monstre->combattant->pvCour));
+  sprintf(mana_j, "%d", (monde->joueur->manaCour));
 
   //Il faut afficher la barre de point de vie du joueur et du monstre ainsi que la barre de mana du joueur
 
   //Trois apply_texture à faire
   //->un pour chaque barre
 
-  sprintf(opt, pv_j);
-  apply_text(renderer, 0, 255, 0, opt, police, 1*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+  //sprintf(opt, pv_j);
+  apply_text(renderer, 0, 255, 0, pv_j, police, 1*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
 
-  sprintf(opt, pv_m);
-  apply_text(renderer, 0, 255, 0, opt, police, 7*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+  //sprintf(opt, pv_m);
+  apply_text(renderer, 0, 255, 0, pv_m, police, 7*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
 
-  sprintf(opt, mana_j);
-  apply_text(renderer, 0, 255, 0, opt, police, 1*SCREEN_WIDTH/8, 3*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+  //sprintf(opt, mana_j);
+  apply_text(renderer, 0, 255, 0, mana_j, police, 1*SCREEN_WIDTH/8, 3*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
 
 
 	//Mettre une condition sur le numéro du menu
@@ -101,15 +103,16 @@ void combat(joueur_t * joueur, monstre_t * monstre, images_t * textures, SDL_Ren
   	//--> ça c'est à  mettre avant le choix du menu
   	//case pour le choix policey_texture(textures->case_combat, renderer, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8);
   	//case pour le choix fuite
-  	apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8);
+  	apply_texture(textures->case_combat, renderer, 1*SCREEN_WIDTH/8, 6*SCREEN_HEIGHT/8);
+    apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 6*SCREEN_HEIGHT/8);
 
   	//Peut-ÃƒÂªtre mettre un if(police != 0) Ãƒ  voir
 
   	sprintf(opt, "Attaque");
-  	apply_text(renderer, 0, 255, 0, opt, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+  	apply_text(renderer, 0, 255, 0, opt, police, 3*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
 
   	sprintf(opt, "Fuite");
-  	apply_text(renderer, 0, 255, 0, opt, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(2*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+  	apply_text(renderer, 0, 255, 0, opt, police, 6*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
 
   	//On doit dorÃƒÂ©navant permettre la saisie du coup
 
@@ -157,7 +160,7 @@ void combat(joueur_t * joueur, monstre_t * monstre, images_t * textures, SDL_Ren
   			}
   		}
   	}
-    }
+  }
 	//Il faut vérifier qu'on a bien choisi d'afficher le menu2 et pas de fuire
 	//IF NUM_MENU_COUR == MENU2
   if(num_menu_cour == MENU2){
@@ -819,6 +822,9 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
     if(monde->etat_jeu == 3){
       affichage_inventaire(renderer, monde, textures, police);
     }
+    if(monde->etat_jeu == ETAT_COMBAT){
+      affichage_combat(renderer, monde, textures, police);
+    }
 
 
     if(monde->etat_jeu == 1){
@@ -922,6 +928,9 @@ void evenements(SDL_Event* event, monde_t * monde){
           if(event->key.keysym.sym == SDLK_i){
             monde->etat_jeu=1;
           }
+        }
+        if(monde->etat_jeu == ETAT_COMBAT){
+          evenements_combat(event, monde);
         }
 
         //Si l'utilisateur a cliqué sur le X de la fenêtre

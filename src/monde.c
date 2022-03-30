@@ -164,6 +164,7 @@ void init_monde_menu(monde_t * monde){
   monde->etat_jeu = 0;
   monde->option = 1;
   monde->option2 = 0;
+  monde->num_menu_comb = MENU1;
 }
 
 void init_monde_jeu(monde_t * monde, char* chemin_fichier){

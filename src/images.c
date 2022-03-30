@@ -57,14 +57,14 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->zone1salle2 = NULL;
     clean_texture(textures->zone1salle3);
     textures->zone1salle3 = NULL;
-    /*clean_texture(textures->zone2salle0);
+    clean_texture(textures->zone2salle0);
     textures->zone2salle0 = NULL;
     clean_texture(textures->zone2salle1);
     textures->zone2salle1 = NULL;
     clean_texture(textures->zone2salle2);
     textures->zone2salle2 = NULL;
     clean_texture(textures->zone2salle3);
-    textures->zone2salle3 = NULL;*/
+    textures->zone2salle3 = NULL;
     clean_texture(textures->joueur);
     textures->joueur = NULL;
     clean_texture(textures->monstre);
@@ -124,10 +124,10 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->zone1salle1 = load_image("./rsrc/img/zone1_salle1.bmp",renderer);
     textures->zone1salle2 = load_image("./rsrc/img/zone1_salle2.bmp",renderer);
     textures->zone1salle3 = load_image("./rsrc/img/zone1_salle3.bmp",renderer);
-    //textures->zone2salle0 = load_image("./rsrc/img/zone2_salle0.bmp",renderer);
-    //textures->zone2salle1 = load_image("./rsrc/img/zone2_salle1.bmp",renderer);
-    //textures->zone2salle2 = load_image("./rsrc/img/zone2_salle2.bmp",renderer);
-    //textures->zone2salle3 = load_image("./rsrc/img/zone2_salle3.bmp",renderer);
+    textures->zone2salle0 = load_image("./rsrc/img/zone2_salle0.bmp",renderer);
+    textures->zone2salle1 = load_image("./rsrc/img/zone2_salle1.bmp",renderer);
+    textures->zone2salle2 = load_image("./rsrc/img/zone2_salle2.bmp",renderer);
+    textures->zone2salle3 = load_image("./rsrc/img/zone2_salle3.bmp",renderer);
     textures->joueur = load_image("./rsrc/img/joueur.bmp",renderer);
     textures->monstre = load_image("./rsrc/img/monstre.bmp",renderer);
     textures->monstre_zone1 = load_image("./rsrc/img/monstre.bmp",renderer);
@@ -142,7 +142,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->selection_inactive = load_image("./rsrc/img/selection_inactive.bmp",renderer);
     textures->fond_inventaire = load_image("./rsrc/img/fond_inventaire.bmp",renderer);
     //textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
-    textures->case_combat = load_image("./rsrc/img/selection_active.bmp", renderer);
+    textures->case_combat = load_image("./rsrc/img/selection_inactive.bmp", renderer);
     textures->game_over = load_image("./rsrc/img/fond_inventaire.bmp", renderer);
     textures->arene_combat = load_image("./rsrc/img/zone0_salle1.bmp", renderer);
 
