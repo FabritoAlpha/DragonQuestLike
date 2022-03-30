@@ -13,7 +13,8 @@
 #define DECALAGE_IMG_TEXT_L 90
 #define DECALAGE_TEXT_IMG_L 125
 #define DECALAGE_TEXT_IMG_H 150
-#define COULEUR_1_SELECTION 200
+#define COULEUR_1_SELECTION 255
+#define COULEUR_2_VIDE 0
 
 
 void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
@@ -271,21 +272,21 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
 }
 void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font * police){
     //epee en pierre
-    monde->joueur->inventaire[0]=monde->biblio_objet[0]; // placement de l'item dans l'inventaire pour tester le menu
+    //monde->joueur->inventaire[0]=monde->biblio_objet[0]; // placement de l'item dans l'inventaire pour tester le menu
     //epee en diamant
-    monde->joueur->inventaire[1]=monde->biblio_objet[1]; // placement de l'item dans l'inventaire pour tester le menu
+    //monde->joueur->inventaire[1]=monde->biblio_objet[1]; // placement de l'item dans l'inventaire pour tester le menu
     //bouclier en pierre
-    monde->joueur->inventaire[2]=monde->biblio_objet[2]; // placement de l'item dans l'inventaire pour tester le menu
+    //monde->joueur->inventaire[2]=monde->biblio_objet[2]; // placement de l'item dans l'inventaire pour tester le menu
     //bouclier en diamant
-    monde->joueur->inventaire[3]=monde->biblio_objet[3]; // placement de l'item dans l'inventaire pour tester le menu
+    //monde->joueur->inventaire[3]=monde->biblio_objet[3]; // placement de l'item dans l'inventaire pour tester le menu
     //Potion de vie
-    monde->joueur->inventaire[4]=monde->biblio_objet[4]; // placement de l'item dans l'inventaire pour tester le menu
+    //monde->joueur->inventaire[4]=monde->biblio_objet[4]; // placement de l'item dans l'inventaire pour tester le menu
     //Potion de mana
-    monde->joueur->inventaire[5]=monde->biblio_objet[5]; // placement de l'item dans l'inventaire pour tester le menu
+    //monde->joueur->inventaire[5]=monde->biblio_objet[5]; // placement de l'item dans l'inventaire pour tester le menu
     char opt[20] = "";
     char opt2[20] = "";
-    int couleur=0; // Couleur d'un item non selectionné
-
+    int couleur=0; // Couleur 1 d'un item non selectionné
+    int couleur2=255; //Couleur 2 d'un item normal
     // Affichage du mana
     sprintf(opt, "Mana");
     apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.55 , SCREEN_HEIGHT/12 , TEXT_OBJET_L*0.6, TEXT_OBJET_H/2+50);
@@ -295,7 +296,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
     apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.65 , SCREEN_HEIGHT/12 , TEXT_OBJET_L*0.9, TEXT_OBJET_H/2+50);
     snprintf(opt, 20, "%d", monde->joueur->manaMax);
     apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.73 , SCREEN_HEIGHT/12 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
-    // Affichage des points de vie 
+    // Affichage des points de vie
     sprintf(opt, "PV");
     apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.55 , SCREEN_HEIGHT/6 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
     snprintf(opt, 20, "%d", monde->joueur->combattant->pvCour);
@@ -321,64 +322,67 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         //Objet1
         if(monde->option==2){
             couleur=COULEUR_1_SELECTION;
+            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }else{
             couleur=0;
+            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }
+        if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[0].id&&monde->joueur->inventaire[0].id!=0){
+            apply_texture(textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        }
+
         if(monde->joueur->inventaire[0].id!=0){// Si l'objet est dans l'inventaire
             snprintf(opt2, 20, "%s", monde->joueur->inventaire[0].nom);
-            if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[0].id){
-                apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
-            }else{
-                apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
-            }
             apply_texture(textures->epee1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
             apply_text(renderer, couleur, 255, 0 , opt2 , police,POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
         }
         //Objet 2
         if(monde->option==3){
             couleur=COULEUR_1_SELECTION;
+            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }else{
             couleur=0;
+            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }
+        if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[1].id&&monde->joueur->inventaire[1].id!=0){
+            apply_texture(textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        }
+
         if(monde->joueur->inventaire[1].id!=0){
             snprintf(opt2, 20, "%s", monde->joueur->inventaire[1].nom);
-            if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[1].id){
-                apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
-            }else{
-                apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
-            }
             apply_texture(textures->epee2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
             apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L , POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H, TEXT_OBJET_L, TEXT_OBJET_H);
         }
         //Objet 3
         if(monde->option==4){
             couleur=COULEUR_1_SELECTION;
+            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }else{
             couleur=0;
+            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
+        if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[2].id&&monde->joueur->inventaire[2].id!=0){
+            apply_texture(textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        }
+
         if(monde->joueur->inventaire[2].id!=0){
             snprintf(opt2, 20, "%s", monde->joueur->inventaire[2].nom);
-            if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[2].id){
-                apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
-            }else{
-                apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
-            }
             apply_texture(textures->bouclier1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
             apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
         }
         //Objet 4
         if(monde->option==5){
             couleur=COULEUR_1_SELECTION;
+            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }else{
             couleur=0;
+            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        }
+        if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[3].id&&monde->joueur->inventaire[3].id!=0){
+            apply_texture(textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
         if(monde->joueur->inventaire[3].id!=0){
             snprintf(opt2, 20, "%s", monde->joueur->inventaire[3].nom);
-            if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[3].id){
-                apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
-            }else{
-                apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
-            }
             apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
             apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
         }
@@ -386,13 +390,16 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         if(monde->option==6){
             couleur=COULEUR_1_SELECTION;
         }else{
-            couleur=0;
+            couleur=COULEUR_2_VIDE;
         }
         if(monde->joueur->inventaire[4].id!=0){
-            sprintf(opt, "Potion de vie");
-            apply_text(renderer, couleur, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
-            apply_texture(textures->potion_pv, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H);
+          couleur2=COULEUR_1_SELECTION;
+        }else{
+          couleur2=COULEUR_2_VIDE;
         }
+        sprintf(opt, "Potion de vie");
+        apply_text(renderer, couleur, couleur2, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->potion_pv, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H);
         //Objet 7 Potion Mana
         if(monde->option==7){
             couleur=COULEUR_1_SELECTION;
@@ -400,10 +407,13 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
             couleur=0;
         }
         if(monde->joueur->inventaire[5].id!=0){
-        sprintf(opt, "Potion de mana");
-        apply_text(renderer, couleur, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
-        apply_texture(textures->potion_mana, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H*2);
+          couleur2=COULEUR_1_SELECTION;
+        }else{
+          couleur2=COULEUR_2_VIDE;
         }
+        sprintf(opt, "Potion de mana");
+        apply_text(renderer, couleur, couleur2, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->potion_mana, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H*2);
 }
 void evenements_inventaire(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
@@ -464,7 +474,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                     monde->joueur->nb_obj_equip--;
                 }
                 if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
-                    monde->joueur->manaCour=monde->joueur->manaMax; 
+                    monde->joueur->manaCour=monde->joueur->manaMax;
                 }
                 if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
                     monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
@@ -475,7 +485,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                 monde->joueur->combattant->attaque+=monde->joueur->objet_equipe[0].attaque_sup;
                 monde->joueur->nb_obj_equip++;
 
-            } 
+            }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
             //Epee en diamant équipée
@@ -486,7 +496,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                     monde->joueur->nb_obj_equip--;
                 }
                 if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
-                    monde->joueur->manaCour=monde->joueur->manaMax; 
+                    monde->joueur->manaCour=monde->joueur->manaMax;
                 }
                 if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
                     monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
@@ -497,8 +507,8 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                 monde->joueur->manaMax+=monde->joueur->objet_equipe[0].mana_sup;
                 monde->joueur->manaCour+=monde->joueur->objet_equipe[0].mana_sup;
                 monde->joueur->nb_obj_equip++;
-                
-            }     
+
+            }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 4){
             //Bouclier en bois
@@ -532,7 +542,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                     monde->joueur->nb_obj_equip--;
                 }
                 if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
-                    monde->joueur->manaCour=monde->joueur->manaMax; 
+                    monde->joueur->manaCour=monde->joueur->manaMax;
                 }
                 if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
                     monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
@@ -564,7 +574,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                 monde->joueur->inventaire[5].id=0;
             }
         }
-        
+
     }
 
 

@@ -95,6 +95,8 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->selection_active = NULL;
     clean_texture(textures->selection_inactive);
     textures->selection_inactive = NULL;
+    clean_texture(textures->equipe);
+    textures->equipe=NULL;
     clean_texture(textures->fond_inventaire);
     textures->fond_inventaire=NULL;
     clean_texture(textures->case_combat);
@@ -147,6 +149,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->bouclier2 = load_image("./rsrc/img/bouclier2_inventaire.bmp",renderer);
     textures->selection_active = load_image("./rsrc/img/selection_active.bmp",renderer);
     textures->selection_inactive = load_image("./rsrc/img/selection_inactive.bmp",renderer);
+    textures->equipe = load_image("./rsrc/img/equipe.bmp",renderer);
     textures->potion_pv = load_image("./rsrc/img/fiole_rouge.bmp",renderer);
     textures->potion_mana = load_image("./rsrc/img/fiole_bleu.bmp",renderer);
     textures->fond_inventaire = load_image("./rsrc/img/fond_inventaire.bmp",renderer);
