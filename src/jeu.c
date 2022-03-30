@@ -833,11 +833,22 @@ int nonCombattant_proche(monde_t * monde){
 }
 
 void affichage_dialogue(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
-    char parole[20] = "";
+    char parole[150] = "";
     // si c'est un pnj non marchand
     if(nonCombattant_proche(monde) == 1){
         sprintf(parole, "Bonjour!");
-        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 350 , 175, 40);
+        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 350 , 90, 20);
+    }
+    // si c'est un marchand
+    if(nonCombattant_proche(monde) == 2){
+        sprintf(parole, "Bonjour! Que voulez-vous acheter?");
+        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 350 , 270, 20);
+        sprintf(parole, "   > Des armes!");
+        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 775 - 156 + (taille_fenetre[1]/2) - 350 , 100, 20);
+        sprintf(parole, "   > Des potions!");
+        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 800 - 156 + (taille_fenetre[1]/2) - 350 , 110, 20);
+        sprintf(parole, "   > Rien, merci!");
+        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 825 - 156 + (taille_fenetre[1]/2) - 350 , 100, 20);
     }
 }
 
@@ -858,6 +869,11 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
         }
 
         // si c'est un marchand
+        if(nonCombattant_proche(monde) == 2){
+            if(keystates[SDL_SCANCODE_RETURN]){
+                monde->etat_jeu = 1;
+            }
+        }
     }
 }
 
