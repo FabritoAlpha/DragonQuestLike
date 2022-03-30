@@ -191,8 +191,8 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   fscanf(fichier,"%i", &j_pv_cour);
   fscanf(fichier,"%i", &j_mana_max);
   fscanf(fichier,"%i", &j_mana_cour);
-  fscanf(fichier,"%i", &j_attaque);
   fscanf(fichier,"%i", &j_or);
+  fscanf(fichier,"%i", &j_attaque);
   fscanf(fichier,"%i", &j_nb_obj_inv);
 
     for(i = 0; i < j_nb_obj_inv; i++){
