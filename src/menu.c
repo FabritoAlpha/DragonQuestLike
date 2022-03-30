@@ -881,9 +881,10 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour -=monde->joueur->combattant->attaque;
                             //Finit le combat si pv du monstre <= 0
                             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour <= 0){
-                                monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+                                //monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
                                 //monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
+                                monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat = MORT;
                             }
                             indice_deg++;//On indique que le joueur a attaqué
                             break;
@@ -908,6 +909,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             //Finit le combat si pv du monstre <= 0
                             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour <= 0){
                                 //monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+                                printf("On tue par l'arc\n");
                                 monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
                             }
@@ -928,13 +930,13 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
         printf("Boucle\n");
       }
       printf("Sortie de boucle\n");
-			if(monde->partie == 1){
-                init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
-            }
-            else{
-                init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
-            }
+		if(monde->partie == 1){
+            init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
         }
+        else{
+            init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
+        }
+    }
     //Le monstre attaque si le joueur a attaqué
 
     else if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT && monde->num_menu_comb != MENU1 && monde->etat_jeu != 1 && indice_deg == 1){
