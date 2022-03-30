@@ -138,7 +138,7 @@ void detruire_nonCombattant(nonCombattant_t ** nonCombat);
 
 objet_t * creer_objet();
 
-objet_t * objet_initialiser(objet_t * objet,int id,int attaque_sup,int vie_sup,char*nom,char*description);
+objet_t * objet_initialiser(objet_t * objet,int id,int attaque_sup, int mana_sup,int vie_sup,char*nom,char*description);
 
 void detruire_objet(objet_t**objet);
 

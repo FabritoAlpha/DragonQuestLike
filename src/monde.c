@@ -210,7 +210,7 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
 
   }
 
-  init_joueur(monde->joueur,j_niveau,j_zone);
+  init_joueur(monde->joueur,j_niveau,j_zone,j_pv_max,j_pv_cour,j_mana_max,j_mana_cour,j_attaque,j_or,j_nb_obj_inv, j_nb_obj_equip);
 
   fclose(fichier);
 }
