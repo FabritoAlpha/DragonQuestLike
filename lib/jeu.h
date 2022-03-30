@@ -18,6 +18,10 @@ void evenements(SDL_Event* event, monde_t * monde);
 int test_collision_joueur(joueur_t * joueur, salle_t * salle_courante, int largeur_ecran, int longueur_ecran); // à améliorer avec un type boolen
 int test_collision_monstre(monstre_t * monstre, salle_t * salle_du_monstre, int largeur_ecran, int longueur_ecran);// même chose
 
+int distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite);
+int nonCombattant_proche(monde_t * monde);
+void affichage_dialogue(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police);
+void interaction_nonCombattant(SDL_Event* event, monde_t * monde);
 
 int collision_combattant_ecran(combattant_t * combattant, monde_t * monde);
 int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, monde_t * monde);

@@ -366,7 +366,7 @@ void changement_zone(monde_t * monde){
 
 	monde->joueur->combattant->x = (SCREEN_WIDTH/2) - (LARGEUR_PERSONNAGE/2);
 	monde->joueur->combattant->y = 100 + 10;
-  
+
   sauvegarde(monde);
 }
 
@@ -799,6 +799,69 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, salle_
 }
 
 /**
+	*\fn distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite)
+  *\brief renvoie la distance entre le joueur et un nonCombattant
+  *\param joueur
+  *\param entite
+*/
+int distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite){
+    int distance;
+    int xa = joueur->combattant->x;
+    int ya = joueur->combattant->y;
+    int xb = entite->x;
+    int yb = entite->y;
+    distance = sqrt(pow(xb-xa,2)+pow(yb-ya,2));
+    return distance;
+}
+
+/**
+	*\fn nonCombattant_proche(monde_t * monde)
+  *\brief renvoie 0 si aucun combattant est proche, 1 si un pnj est proche, 2 si un coffre est proche
+  *\param monde
+*/
+int nonCombattant_proche(monde_t * monde){
+  //pnj de la salle 0
+  if(monde->joueur->salle == 0){
+      //pnj
+      if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[0]->perso[0]) <= 75)
+          return 1;
+      //marchand
+      if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[0]->perso[1]) <= 75)
+          return 2;
+  }
+  return 0;
+}
+
+void affichage_dialogue(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
+    char parole[20] = "";
+    // si c'est un pnj non marchand
+    if(nonCombattant_proche(monde) == 1){
+        sprintf(parole, "Bonjour!");
+        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 350 , 175, 40);
+    }
+}
+
+/**
+	*\fn interaction_nonCombattant(SDL_Event* event, monde_t * monde)
+  *\brief gestion des intéraction avec les nonCombattant: dialogue avec pnj, ouverture de coffre
+  *\param monde
+  *\param event
+*/
+void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
+    const Uint8* keystates = SDL_GetKeyboardState(NULL);
+    if(event->type == SDL_KEYDOWN){
+        // si c'est un pnj non marchand
+        if(nonCombattant_proche(monde) == 1){
+            if(keystates[SDL_SCANCODE_RETURN]){
+                monde->etat_jeu = 1;
+            }
+        }
+
+        // si c'est un marchand
+    }
+}
+
+/**
  * \brief La fonction rafraichit l'écran en fonction de l'état des données du monde
  * \param renderer la surface de l'écran de jeu
  * \param world les données du monde
@@ -832,6 +895,11 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
       affichage_combat(renderer, monde, textures, police);
     }
 
+    if(monde->etat_jeu == ETAT_DIALOGUE){
+        interaction_nonCombattant(event, monde);
+        dialogue_position(renderer, textures);
+        affichage_dialogue(renderer, monde, police);
+    }
 
     if(monde->etat_jeu == 1){
 
@@ -968,6 +1036,11 @@ void evenements(SDL_Event* event, monde_t * monde){
         }
         /*!< Jeu en cours */
         if(monde->etat_jeu == 1){
+            //on entre dans un dialogue
+            if((nonCombattant_proche(monde) == 1  ||  nonCombattant_proche(monde) == 2) && event->key.keysym.sym == SDLK_p){
+                monde->etat_jeu = ETAT_DIALOGUE;
+                printf("DIALOGUE");
+            }
             if(event->key.keysym.sym == SDLK_LEFT) {
                 deplacement_gauche(monde->joueur->combattant, 0, monde);
             }

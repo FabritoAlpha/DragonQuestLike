@@ -77,6 +77,8 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->boss = NULL;
     clean_texture(textures->personnage);
     textures->personnage = NULL;
+    clean_texture(textures->dialogue);
+    textures->dialogue = NULL;
     clean_texture(textures->epee1);
     textures->epee1=NULL;
     clean_texture(textures->epee2);
@@ -138,6 +140,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->monstre_zone2 = load_image("./rsrc/img/monstre.bmp",renderer);
     textures->boss = load_image("./rsrc/img/monstre.bmp",renderer);
     textures->personnage = load_image("./rsrc/img/perso.bmp",renderer);
+    textures->dialogue = load_image("./rsrc/img/dialogue.bmp",renderer);
     textures->epee1 = load_image("./rsrc/img/epee1_inventaire.bmp",renderer);
     textures->epee2 = load_image("./rsrc/img/epee2_inventaire.bmp",renderer);
     textures->bouclier1 = load_image("./rsrc/img/bouclier1_inventaire.bmp",renderer);
@@ -166,7 +169,7 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
     int salle = monde->joueur->salle;
     int etat = monde->etat_jeu;
     //fond du menu
-    if(etat == 1){
+    if(etat == 1 || etat == ETAT_DIALOGUE){
         if(zone == 0){
             switch(salle){
                 case 0:
@@ -243,4 +246,10 @@ void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* mon
 
 void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* perso){
     apply_texture(textures->personnage, renderer, perso->x + (taille_fenetre[0]/2) - 500, perso->y + (taille_fenetre[1]/2) - 375);
+}
+
+void dialogue_position(SDL_Renderer *renderer, images_t *textures){
+    apply_texture(textures->dialogue, renderer, (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 375);
+    apply_texture(textures->joueur, renderer, 450 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
+    apply_texture(textures->personnage, renderer, 550 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
 }
