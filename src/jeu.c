@@ -919,6 +919,11 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
 
     if(monde->etat_jeu == 1){
 
+      if(nonCombattant_proche(monde) == 1 || nonCombattant_proche(monde) == 2){
+        char indication[150] = "Appuyer sur P pour parler";
+        apply_text(renderer, 0, 0, 0, indication , police, (taille_fenetre[0]/2), (taille_fenetre[1]/2) , 500, 40);
+      }
+
       joueur_position(renderer, textures, monde->joueur);
 
       affichage_nonCombattants(renderer,textures,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]);
