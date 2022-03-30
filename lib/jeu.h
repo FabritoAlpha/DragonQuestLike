@@ -34,6 +34,8 @@ int deplacement_haut(combattant_t * entitee, int indice_monstre, monde_t * monde
 int deplacement_bas(combattant_t * entitee, int indice_monstre, monde_t * monde);
 
 
+void sauvegarde(monde_t * monde);
+
 void deplacement_monstre(monstre_t * monstre,monde_t * m);
 
 void deplacement_salles(joueur_t * j, int indice_salle);

@@ -360,12 +360,14 @@ void changement_salle(joueur_t * j, int changement_salle){
 	}
 }
 
-void changement_zone(joueur_t * j){
-	(j->zone)++;
-	j->salle = 0;
+void changement_zone(monde_t * monde){
+	(monde->joueur->zone)++;
+	monde->joueur->salle = 0;
 
-	j->combattant->x = (SCREEN_WIDTH/2) - (LARGEUR_PERSONNAGE/2);
-	j->combattant->y = 100 + 10;
+	monde->joueur->combattant->x = (SCREEN_WIDTH/2) - (LARGEUR_PERSONNAGE/2);
+	monde->joueur->combattant->y = 100 + 10;
+  
+  sauvegarde(monde);
 }
 
 int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
@@ -408,7 +410,7 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
     	      }
 
     	      if((combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE >= SCREEN_HEIGHT - 100)){
-              changement_zone(monde->joueur);
+              changement_zone(monde);
     		      return(PAS_COLLISION);
             }
             break;

@@ -928,20 +928,13 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
         printf("Boucle\n");
       }
       printf("Sortie de boucle\n");
-			//On recharge au début de la zone
-			//pv au max, mana au max, retour à  la première salle de la zone
-			monde->joueur->combattant->pvCour = monde->joueur->combattant->pvMax;
-			monde->joueur->manaCour = monde->joueur->manaMax;
-			monde->joueur->salle = 0;
-
-			//On réinitialise la zone
-			init_zone(monde->zones[monde->joueur->zone], monde->joueur->zone);
-      monde->joueur->combattant->x = 100.0;
-      monde->joueur->combattant->y = 100.0;
-			//On divise son or par 2
-			//Retour à  la carte du monde
-			monde->etat_jeu = 1;
-		}
+			if(monde->partie == 1){
+                init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
+            }
+            else{
+                init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
+            }
+        }
     //Le monstre attaque si le joueur a attaqué
 
     else if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT && monde->num_menu_comb != MENU1 && monde->etat_jeu != 1 && indice_deg == 1){
