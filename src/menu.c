@@ -16,185 +16,134 @@
 
 
 void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
-  char opt[20] = "";
-  //menu de base
-  if(monde->etat_jeu == 0){
-      //jouer
-      if(monde->option == 1){
-          sprintf(opt, "Jouer");
-          if(police != 0){
-              apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
-          }
-          sprintf(opt, "Quitter");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
-          }
-      }
-      //quitter
-      if(monde->option == 2){
-          sprintf(opt, "Jouer");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
-          }
-          sprintf(opt, "Quitter");
-          if(police != 0){
-              apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
-          }
-      }
-      if(monde->option < 1 || monde->option > 2){
-        sprintf(opt, "Jouer");
-        if(police != 0){
-            apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
+    char opt[20] = "";
+
+    //menu de base
+    if(monde->etat_jeu == 0){
+        //jouer
+        if(monde->option == 1){
+            sprintf(opt, "Jouer");
+            if(police != 0){
+                apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
+            }
+        } else{
+            sprintf(opt, "Jouer");
+            if(police != 0){
+                apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
+            }
         }
-        sprintf(opt, "Quitter");
-        if(police != 0){
-            apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
+        //quitter
+        if(monde->option == 2){
+            sprintf(opt, "Quitter");
+            if(police != 0){
+                apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
+            }
+        } else{
+            sprintf(opt, "Quitter");
+            if(police != 0){
+                apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
+            }
         }
-      }
-  }
-  if(monde->etat_jeu == 4){
-      //Partie 1
-      if(monde->option == 1){
-          sprintf(opt, "Partie 1");
-          if(police != 0){
-              apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
-          }
-          sprintf(opt, "Partie 2");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
-          }
-          sprintf(opt, "Nouvelle partie");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
-          }
-          sprintf(opt, "Retour");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
-          }
-      }
-      //Partie 2
-      if(monde->option == 2){
-          sprintf(opt, "Partie 1");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
-          }
-          sprintf(opt, "Partie 2");
-          if(police != 0){
-              apply_text(renderer, 150, 255, 150 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
-          }
-          sprintf(opt, "Nouvelle partie");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
-          }
-          sprintf(opt, "Retour");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
-          }
-      }
-      //Nouvelle partie
-      if(monde->option == 3){
-          sprintf(opt, "Partie 1");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
-          }
-          sprintf(opt, "Partie 2");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
-          }
-          sprintf(opt, "Retour");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
-          }
-          //si on a pas enclenché le nouveau menu de nouvelle partie
-          if(monde->option2 == 0){
-              //l'affichage de l'option nouvelle partie est affichée sélectionnée
-              sprintf(opt, "Nouvelle partie");
-              if(police != 0){
-                  apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
-              }
-          //sinon on affiche la sélection du nouveau menu
-          } else{
-              sprintf(opt, "Nouvelle partie");
-              if(police != 0){
-                  apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
-              }
-              sprintf(opt, "Effacer:");
-              if(police != 0){
-                  apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 - 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
-              }
-              if(monde->option2 == 1){
-                  sprintf(opt, "Partie1");
-                  if(police != 0){
-                      apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
-                  }
-              } else {
-                  sprintf(opt, "Partie1");
-                  if(police != 0){
-                      apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
-                  }
-              }
-              if(monde->option2 == 2){
-                  sprintf(opt, "Partie2");
-                  if(police != 0){
-                      apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 + 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
-                  }
-              } else {
-                  sprintf(opt, "Partie2");
-                  if(police != 0){
-                      apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 + 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
-                  }
-              }
-              if(monde->option2 == 3){
-                  sprintf(opt, "Annuler");
-                  if(police != 0){
-                      apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 + 360, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
-                  }
-              } else {
-                  sprintf(opt, "Annuler");
-                  if(police != 0){
-                      apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 + 360, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
-                  }
-              }
-          }
-      }
-      //Retour
-      if(monde->option == 4){
-          sprintf(opt, "Partie 1");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
-          }
-          sprintf(opt, "Partie 2");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
-          }
-          sprintf(opt, "Nouvelle partie");
-          if(police != 0){
-              apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
-          }
-          sprintf(opt, "Retour");
-          if(police != 0){
-              apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
-          }
-      }
-      if(monde->option > 4 || monde->option < 1){
-        sprintf(opt, "Partie 1");
-        if(police != 0){
-            apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
+    }
+
+    //menu choix de partie
+    if(monde->etat_jeu == 4){
+        //Partie 1
+        if(monde->option == 1){
+            sprintf(opt, "Partie 1");
+            if(police != 0){
+                apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
+            }
+        } else{
+            sprintf(opt, "Partie 1");
+            if(police != 0){
+                apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
+            }
         }
-        sprintf(opt, "Partie 2");
-        if(police != 0){
-            apply_text(renderer, 0, 255, 0 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
+        //Partie 2
+        if(monde->option == 2){
+            sprintf(opt, "Partie 2");
+            if(police != 0){
+                apply_text(renderer, 150, 255, 150 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
+            }
+        } else{
+            sprintf(opt, "Partie 2");
+            if(police != 0){
+                apply_text(renderer, 0, 255, 0 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
+            }
         }
-        sprintf(opt, "Nouvelle partie");
-        if(police != 0){
-            apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+        //Nouvelle partie
+        if(monde->option == 3){
+            //si on a pas enclenché le nouveau menu de nouvelle partie
+            if(monde->option2 == 0){
+                //l'affichage de l'option nouvelle partie est affichée sélectionnée
+                sprintf(opt, "Nouvelle partie");
+                if(police != 0){
+                    apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+                }
+            //sinon on affiche la sélection du nouveau menu
+            } else{
+                sprintf(opt, "Nouvelle partie");
+                if(police != 0){
+                    apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+                }
+                sprintf(opt, "Effacer:");
+                if(police != 0){
+                    apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 - 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                }
+                if(monde->option2 == 1){
+                    sprintf(opt, "Partie1");
+                    if(police != 0){
+                        apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                    }
+                } else {
+                    sprintf(opt, "Partie1");
+                    if(police != 0){
+                        apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                    }
+                }
+                if(monde->option2 == 2){
+                    sprintf(opt, "Partie2");
+                    if(police != 0){
+                        apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 + 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                    }
+                } else {
+                    sprintf(opt, "Partie2");
+                    if(police != 0){
+                        apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 + 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                    }
+                }
+                if(monde->option2 == 3){
+                    sprintf(opt, "Annuler");
+                    if(police != 0){
+                        apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 + 360, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                    }
+                } else {
+                    sprintf(opt, "Annuler");
+                    if(police != 0){
+                        apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 + 360, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                    }
+                }
+            }
+        } else{
+            sprintf(opt, "Nouvelle partie");
+            if(police != 0){
+                apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+            }
         }
-        sprintf(opt, "Retour");
-        if(police != 0){
-            apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
+        //Retour
+        if(monde->option == 4){
+            sprintf(opt, "Retour");
+            if(police != 0){
+                apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
+            }
+        } else{
+            sprintf(opt, "Retour");
+            if(police != 0){
+                apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
+            }
         }
-      }
-  }
+    }
 }
 
 void choix_partie(SDL_Event* event, monde_t * monde){
