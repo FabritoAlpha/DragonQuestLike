@@ -168,10 +168,10 @@ void init_monde_menu(monde_t * monde){
 }
 
 void init_monde_jeu(monde_t * monde, char* chemin_fichier){
-  int i; 
+  int i;
   int j;
 
-  int j_niveau; 
+  int j_niveau;
   int j_zone;
   int j_mana_max;
   int j_mana_cour;
@@ -272,6 +272,5 @@ void init_salle(salle_t * salle, int num_salle){
   }
   salle->difficulte = 0;
   salle->num_salle = num_salle;
-  init_nonCombattant(salle->coffre, 0, 0, 0,0);
+  init_nonCombattant(salle->coffre, 0, 500 - LARGEUR_COFFRE/2, 80,0);
 }
-

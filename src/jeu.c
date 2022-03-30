@@ -829,10 +829,12 @@ int nonCombattant_proche(monde_t * monde){
       if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[0]->perso[1]) <= 75)
           return 2;
   }
+  if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[0]->coffre) <= 75)
+      return 3;
   return 0;
 }
 
-void affichage_dialogue(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
+void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * monde, TTF_Font * police){
     char parole[150] = "";
     // si c'est un pnj non marchand
     if(nonCombattant_proche(monde) == 1){
@@ -849,6 +851,13 @@ void affichage_dialogue(SDL_Renderer *renderer, monde_t * monde, TTF_Font * poli
         apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 800 - 156 + (taille_fenetre[1]/2) - 350 , 110, 20);
         sprintf(parole, "   > Rien, merci!");
         apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 825 - 156 + (taille_fenetre[1]/2) - 350 , 100, 20);
+    }
+    if(nonCombattant_proche(monde) == 3){
+        sprintf(parole, "Recompense");
+        apply_text(renderer, 0, 0, 0, parole , police, (taille_fenetre[0]/2) - 325, (taille_fenetre[1]/2) - 100 , 650, 80);
+        sprintf(parole, "500");
+        apply_text(renderer, 0, 0, 0, parole , police, (taille_fenetre[0]/2) - 300, (taille_fenetre[1]/2) , 200, 60);
+        or_position(renderer, textures, (taille_fenetre[0]/2) - 100, (taille_fenetre[1]/2) + 30);
     }
 }
 
@@ -874,8 +883,21 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
                 monde->etat_jeu = 1;
             }
         }
+        // si c'est un coffre
+        if(nonCombattant_proche(monde) == 3){
+            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre->visite == 0){
+                monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre->visite = 1;
+                monde->joueur->or = monde->joueur->or + 500;
+            }
+            if(keystates[SDL_SCANCODE_RETURN]){
+                monde->etat_jeu = 1;
+            }
+        }
     }
 }
+
+
+
 
 /**
  * \brief La fonction rafraichit l'écran en fonction de l'état des données du monde
@@ -914,19 +936,31 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
     if(monde->etat_jeu == ETAT_DIALOGUE){
         interaction_nonCombattant(event, monde);
         dialogue_position(renderer, textures);
-        affichage_dialogue(renderer, monde, police);
+        affichage_dialogue(renderer, textures, monde, police);
+    }
+    if(monde->etat_jeu == ETAT_COFFRE){
+        interaction_nonCombattant(event, monde);
+        affichage_dialogue(renderer, textures, monde, police);
     }
 
     if(monde->etat_jeu == 1){
 
       if(nonCombattant_proche(monde) == 1 || nonCombattant_proche(monde) == 2){
         char indication[150] = "Appuyer sur P pour parler";
-        apply_text(renderer, 0, 0, 0, indication , police, (taille_fenetre[0]/2), (taille_fenetre[1]/2) , 500, 40);
+        apply_text(renderer, 0, 0, 0, indication , police, (taille_fenetre[0]/2) - 250, (taille_fenetre[1]/2) , 500, 40);
+      }
+      if(nonCombattant_proche(monde) == 3){
+          if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre->visite == 0){
+              char indication[150] = "Appuyer sur 0 pour ouvrir le coffre";
+              apply_text(renderer, 0, 0, 0, indication , police, (taille_fenetre[0]/2) - 300, (taille_fenetre[1]/2) , 600, 40);
+          }
       }
 
       joueur_position(renderer, textures, monde->joueur);
 
       affichage_nonCombattants(renderer,textures,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]);
+
+      coffre_position(renderer, textures, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre);
 
       for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
         int suivaleatoir;
@@ -1057,10 +1091,14 @@ void evenements(SDL_Event* event, monde_t * monde){
         }
         /*!< Jeu en cours */
         if(monde->etat_jeu == 1){
+            //le coffre s'ouvre
+            if(nonCombattant_proche(monde) == 3  && event->key.keysym.sym == SDLK_o && monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre->visite == 0){
+                monde->etat_jeu = ETAT_COFFRE;
+            }
+
             //on entre dans un dialogue
             if((nonCombattant_proche(monde) == 1  ||  nonCombattant_proche(monde) == 2) && event->key.keysym.sym == SDLK_p){
                 monde->etat_jeu = ETAT_DIALOGUE;
-                printf("DIALOGUE");
             }
             if(event->key.keysym.sym == SDLK_LEFT) {
                 deplacement_gauche(monde->joueur->combattant, 0, monde);

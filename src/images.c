@@ -77,6 +77,10 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->boss = NULL;
     clean_texture(textures->personnage);
     textures->personnage = NULL;
+    clean_texture(textures->coffre);
+    textures->coffre = NULL;
+    clean_texture(textures->or);
+    textures->or = NULL;
     clean_texture(textures->dialogue);
     textures->dialogue = NULL;
     clean_texture(textures->epee1);
@@ -142,6 +146,8 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->monstre_zone2 = load_image("./rsrc/img/monstre.bmp",renderer);
     textures->boss = load_image("./rsrc/img/monstre.bmp",renderer);
     textures->personnage = load_image("./rsrc/img/perso.bmp",renderer);
+    textures->coffre = load_image("./rsrc/img/coffre.bmp",renderer);
+    textures->or = load_image("./rsrc/img/piece.bmp",renderer);
     textures->dialogue = load_image("./rsrc/img/dialogue.bmp",renderer);
     textures->epee1 = load_image("./rsrc/img/epee1_inventaire.bmp",renderer);
     textures->epee2 = load_image("./rsrc/img/epee2_inventaire.bmp",renderer);
@@ -172,7 +178,7 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
     int salle = monde->joueur->salle;
     int etat = monde->etat_jeu;
     //fond du menu
-    if(etat == 1 || etat == ETAT_DIALOGUE){
+    if(etat == 1 || etat == ETAT_DIALOGUE || etat == ETAT_COFFRE){
         if(zone == 0){
             switch(salle){
                 case 0:
@@ -255,4 +261,12 @@ void dialogue_position(SDL_Renderer *renderer, images_t *textures){
     apply_texture(textures->dialogue, renderer, (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 375);
     apply_texture(textures->joueur, renderer, 450 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
     apply_texture(textures->personnage, renderer, 550 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
+}
+
+void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* coffre){
+    apply_texture(textures->coffre, renderer, coffre->x + (taille_fenetre[0]/2) - 500, coffre->y + (taille_fenetre[1]/2) - 375);
+}
+
+void or_position(SDL_Renderer *renderer, images_t *textures, int x, int y){
+    apply_texture(textures->or, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
 }

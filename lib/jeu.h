@@ -20,7 +20,7 @@ int test_collision_monstre(monstre_t * monstre, salle_t * salle_du_monstre, int 
 
 int distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite);
 int nonCombattant_proche(monde_t * monde);
-void affichage_dialogue(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police);
+void affichage_dialogue(SDL_Renderer *renderer,images_t *textures, monde_t * monde, TTF_Font * police);
 void interaction_nonCombattant(SDL_Event* event, monde_t * monde);
 
 int collision_combattant_ecran(combattant_t * combattant, monde_t * monde);
