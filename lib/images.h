@@ -37,6 +37,8 @@ typedef struct images_s{
     SDL_Texture* epee2; /*!< Texture liée à l'image de l'épee 2. */
     SDL_Texture* bouclier1; /*!< Texture liée à l'image du bouclier 1. */
     SDL_Texture* bouclier2; /*!< Texture liée à l'image du bouclier 2. */
+    SDL_Texture* potion_pv; /*!< Texture liée à l'image de la potion de point de vie. */
+    SDL_Texture* potion_mana; /*!< Texture liée à l'image de la potion de mana. */
     SDL_Texture* selection_inactive; /*!< Texture liée à l'image de fond d'un objet quand il n'est pas équipé. */
     SDL_Texture* selection_active; /*!< Texture liée à l'image de fond d'un objet quand il est équipé. */
     SDL_Texture* fond_inventaire;

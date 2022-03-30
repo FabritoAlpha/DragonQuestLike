@@ -930,7 +930,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour -=monde->joueur->combattant->attaque;
                             //Finit le combat si pv du monstre <= 0
                             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour <= 0){
-                                //monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+                                monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
                                 //monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
                                 monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat = MORT;
@@ -945,7 +945,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             monde->joueur->manaCour -= 5;
                             //Finit le combat si pv du monstre <= 0
                             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour <= 0){
-                                //monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+                                monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
                                 monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
                             }
@@ -957,7 +957,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour -=monde->joueur->combattant->attaque;
                             //Finit le combat si pv du monstre <= 0
                             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour <= 0){
-                                //monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+                                monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
                                 printf("On tue par l'arc\n");
                                 monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;

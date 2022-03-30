@@ -839,16 +839,6 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
 
       affichage_nonCombattants(renderer,textures,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]);
 
-      //printf("Etat du monstre: %d\n", monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat);
-      if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == MORT){
-        //printf("Test mort du monstre de la salle v1\n");
-      }
-      if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat != VIVANT){
-        //printf("Test mort du monstre de la salle v2\n");
-      }
-      if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT){
-        //printf("Test mort du monstre de la salle v3\n");
-      }
       for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
         int suivaleatoir;
         if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->etat == VIVANT){
@@ -874,9 +864,6 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
 
     }
 
-    /*if(monde->etat_jeu == ETAT_COMBAT){
-      combat(monde->joueur, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0], textures, renderer, event, monde, police);
-    }*/
     //On actualise l'affichage
     (*next_tick)+=1;
     SDL_RenderPresent(renderer);
