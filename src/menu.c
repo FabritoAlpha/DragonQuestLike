@@ -372,7 +372,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }else{
             apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-        
+
         apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
     }
@@ -413,7 +413,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }else{
             apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-        
+
         apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
     }
@@ -454,7 +454,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }else{
             apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-        
+
         apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
     }
@@ -495,7 +495,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }else{
             apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-        
+
         apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
     }
@@ -536,7 +536,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }else{
             apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-  
+
         apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         apply_text(renderer, 150, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
     }
@@ -605,9 +605,11 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
 
 void evenements_combat(SDL_Event * event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
+    int joueur_etait_vivant = (monde->joueur->combattant->pvCour > 0);
+    int indice_deg = 0; //Si le joueur n'a pas attaqué vaut 0, 1 sinon
     if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT){
         if(monde->num_menu_comb == 1){
-        
+
 
             if(event->type == SDL_KEYDOWN){
                 if(keystates[SDL_SCANCODE_LEFT]){
@@ -642,7 +644,9 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                     switch(monde->option){
                         case ATTAQUE:
                             //On change le numéro menu combat pour afficher celui des attaques dispos
+                            //printf("On passe au menu des attaques\n");
                             monde->num_menu_comb = MENU2;
+                            //printf("Nouveau numéro de menu : %d\n", monde->num_menu_comb);
                             monde->option = RIEN;
                             break;
                         case FUITE:
@@ -657,7 +661,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
         }
 
         else if(monde->num_menu_comb == MENU2){
-            
+
             //On doit dorénavant permettre la saisie du coup
 
             if(event->type == SDL_KEYDOWN){
@@ -726,6 +730,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                                 //monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
                             }
+                            indice_deg++;//On indique que le joueur a attaqué
                             break;
                         case SORT:
                             //On inflige des dégâts au monstre
@@ -739,6 +744,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                                 monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
                             }
+                            indice_deg++;
                             break;
                         case ARC:
                             //On inflige des dÃ©gÃ¢ts au monstre
@@ -750,6 +756,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                                 monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
                             }
+                            indice_deg++;
                             break;
                         case RETOUR:
                             //Si on appuie sur "Retour" on affiche de nouveau le menu1
@@ -761,19 +768,11 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
             }
         }
     }
-
-    //Le monstre attaque si le joueur a attaqué
-
-    if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT && monde->num_menu_comb != MENU1 && monde->etat_jeu != 1){
-		//Le monstre inflige des dégâts basiquement au joueur
-		monde->joueur->combattant->pvCour -= monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->attaque;
-
-		if( monde->joueur->combattant->pvCour <= 0){
-			//S'il tue le joueur on affiche game over
-			//apply_texture(textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
-			//Il doit cliquer sur une touche en dehors de escape afin de le passer
-			while(!(event->type == SDL_KEYDOWN) || keystates[SDL_SCANCODE_ESCAPE]){
-			}
+    if(!joueur_etait_vivant){
+      while(event->type != SDL_KEYDOWN){
+        printf("Boucle\n");
+      }
+      printf("Sortie de boucle\n");
 			//On recharge au début de la zone
 			//pv au max, mana au max, retour à  la première salle de la zone
 			monde->joueur->combattant->pvCour = monde->joueur->combattant->pvMax;
@@ -782,30 +781,46 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
 
 			//On réinitialise la zone
 			init_zone(monde->zones[monde->joueur->zone], monde->joueur->zone);
-
+      monde->joueur->combattant->x = 100.0;
+      monde->joueur->combattant->y = 100.0;
 			//On divise son or par 2
 			//Retour à  la carte du monde
 			monde->etat_jeu = 1;
 		}
+    //Le monstre attaque si le joueur a attaqué
+
+    else if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT && monde->num_menu_comb != MENU1 && monde->etat_jeu != 1 && indice_deg == 1){
+		//Le monstre inflige des dégâts basiquement au joueur
+		monde->joueur->combattant->pvCour -= monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->attaque;
+
+		if( monde->joueur->combattant->pvCour <= 0 && joueur_etait_vivant == 1){
+      printf("Joueur mort\n");
+			//S'il tue le joueur on affiche game over
+			//apply_texture(textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+			//Il doit cliquer sur une touche en dehors de escape afin de le passer
+		}
 	}
     //On réinitialise la valeur de menu sur celle du premier pour le ré-afficher par la suite
-    monde->num_menu_comb = MENU1;
+    if(monde->num_menu_comb != MENU2){
+        monde->num_menu_comb = MENU1;
+    }
 }
 
 void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font* police){
     //Si le monstre est vivant et le joueur vivant alors on affiche tout ce qui est utile à prendre en compte pour les combats:
     //PV/PM
     //Menus ave choix des actions
-
+    //printf("Option du menu: %d\n", monde->option);
+    //printf("Numéro du menu:%d\n",monde->num_menu_comb);
     if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT && monde->joueur->combattant->pvCour > 0){
-        //On affiche le monstre et le personnage 
+        //On affiche le monstre et le personnage
         apply_texture(textures->joueur,renderer, 1*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
 
         //récupéation de l'information via la zone et la salle du joueur
         switch(monde->joueur->zone){
             case 0:
         //Renommer monstre_zone0
-        printf("Le monstre s'affiche\n");
+        //printf("Le monstre s'affiche\n");
                 apply_texture(textures->monstre, renderer, 100, 100);
         break;
             case 1:
@@ -847,13 +862,13 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
         //sprintf(opt, mana_j);
         apply_text(renderer, 0, 255, 0, pm_j, police, 7*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
 
-        
+
         //Si on affiche le menu 1
         if(monde->num_menu_comb == MENU1){
             //chaînes de caractères du texte
             char atq[10];
             char fuite[10];
-            
+
             //Les cases dans lesquelles le texte se trouve
             apply_texture(textures->case_combat, renderer, 1*SCREEN_WIDTH/8, 6*SCREEN_HEIGHT/8);
             apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 6*SCREEN_HEIGHT/8);
@@ -948,8 +963,10 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
     else if(monde->joueur->combattant->pvCour <= 0){
         //Si le joueur est mort alors on affiche une image de game over
         //Il faudra appuyez sur une touche pour sortir du jeu
-
+        printf("LE JOUEUR EST MORT: GAME OVER\n");
         apply_texture(textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+        apply_text(renderer, 255, 0, 0, "Game Over", police, SCREEN_WIDTH/2 - 100, SCREEN_HEIGHT/2 - 125, 200, 100);
+        apply_text(renderer, 255, 0, 0, "Press Enter To Retry", police, SCREEN_WIDTH/2 - 200, SCREEN_HEIGHT/2 + 25, 400, 100);
 
     }
     else{

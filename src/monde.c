@@ -202,7 +202,7 @@ void init_zone(zone_t * zone, int num_zone){
 void init_salle(salle_t * salle, int num_salle){
   int i;
   for(i = 0; i < NB_MONSTRES_SALLE; i++){
-    init_monstre(salle->monstres[i], 0, 0, 0, 1,0,0);
+    init_monstre(salle->monstres[i], 30, 30,100, 1,0,0);
   }
   if(num_salle == 0){
       int hauteur = 251;

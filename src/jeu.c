@@ -29,9 +29,9 @@ void combat(joueur_t * joueur, monstre_t * monstre, images_t * textures, SDL_Ren
 	//char nom_monstre[10];
   char opt[10];
   const Uint8* keystates = SDL_GetKeyboardState(NULL);
-	
+
   //Les 2 apply textures servent à afficher le monstre et le joueur
-  
+
 	apply_texture(textures->joueur,renderer, 1*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
 	//apply_texture la bonne image de monstre -->
 	//récupéation de l'information via la zone et la salle du joueur
@@ -503,12 +503,13 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, mond
         charger_combat(monde);
         return(PAS_COLLISION);
         */
+        monde->option = RIEN;
         return(COLLISION);
     }
     if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y  >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
         monde->etat_jeu = ETAT_COMBAT;
-
+        monde->option = RIEN;
         return(COLLISION);
         /*
         charger_combat(monde);
@@ -518,7 +519,7 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, mond
     if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
         monde->etat_jeu = ETAT_COMBAT;
-
+        monde->option = RIEN;
         return(COLLISION);
         /*
         charger_combat(monde);
@@ -528,6 +529,7 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, mond
     if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
         monde->etat_jeu = ETAT_COMBAT;
+        monde->option = RIEN;
         return(COLLISION);
         /*
         charger_combat(monde);
@@ -866,11 +868,23 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
 
 }
 
+// NOTE: SAUVEGARDER A CHAQUE CHANGEMENT DE ZONE PUIS REINITIALISER LE MONDE A PARTIR DU FICHIER SAUVEGARDE PREALABLEMENT SI MORT DU JOUEUR
 void sauvegarde(monde_t* monde){
     FILE * fichier;
+    //Pour sauvegarder correctement la partie:
+    /*
+    -niveau du joueur --> nécessaires
+    -zone du joueur --> nécessaires
+    -pvMax, pvCour du joueur -->nécessaires
+    -manaMax, manaCour du joueur -->nécessaires
+    -Or du joueur --> nécessaires
+    -Les objets possédés voire ceux équipés --> nécessaires
+      -->Faire comment: premier nb le nombre d'item, les nombres suivants: les id respectifs de chaque item
+    -L'etat des monstres --> pas besoin puisqu'on charge tout le temps au début de la zone donc tous les monstres sont vivants à cet instant
+    */
     if(monde->partie == 1){
         fichier = fopen("./rsrc/txt/partie1.txt","w");
-        fprintf(fichier, "%d\n%d", monde->joueur->combattant->niveau, monde->joueur->zone);
+        fprintf(fichier, "%d\n%d\n%d\n%d\n%d\n", monde->joueur->combattant->niveau, monde->joueur->zone, monde->joueur->pvMax, monde->joueur->pvCour, monde->joueur->manaMax, monde->joueur->manaCour);
         fclose(fichier);
     }
     if(monde->partie == 2){
