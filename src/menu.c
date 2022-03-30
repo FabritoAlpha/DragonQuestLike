@@ -275,16 +275,32 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
     monde->joueur->inventaire[3]=monde->biblio_objet[3];
     char opt[20] = "";
     char opt2[20] = "";
+    // Affichage du mana
+    sprintf(opt, "Mana");
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.55 , SCREEN_HEIGHT/12 , TEXT_OBJET_L*0.6, TEXT_OBJET_H/2+50);
+    snprintf(opt, 20, "%d", monde->joueur->manaCour);
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.60 , SCREEN_HEIGHT/12 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
+    sprintf(opt, "ManaMax");
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.65 , SCREEN_HEIGHT/12 , TEXT_OBJET_L*0.9, TEXT_OBJET_H/2+50);
+    snprintf(opt, 20, "%d", monde->joueur->manaMax);
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.73 , SCREEN_HEIGHT/12 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
+    // Affichage des points de vie 
     sprintf(opt, "PV");
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.55 , SCREEN_HEIGHT/6 , TEXT_OBJET_L, TEXT_OBJET_H+50);
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.55 , SCREEN_HEIGHT/6 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
     snprintf(opt, 20, "%d", monde->joueur->combattant->pvCour);
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.63 , SCREEN_HEIGHT/6 , TEXT_OBJET_L, TEXT_OBJET_H+50);
-    sprintf(opt, "slash");
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.70 , SCREEN_HEIGHT/6 , TEXT_OBJET_L, TEXT_OBJET_H+50);
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.60 , SCREEN_HEIGHT/6 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
+    sprintf(opt, "PVMax");
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.65 , SCREEN_HEIGHT/6 , TEXT_OBJET_L*0.8, TEXT_OBJET_H/2+50);
     snprintf(opt, 20, "%d", monde->joueur->combattant->pvMax);
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.75 , SCREEN_HEIGHT/6 , TEXT_OBJET_L, TEXT_OBJET_H+50);
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.73 , SCREEN_HEIGHT/6 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
+    // Affichange des degats
+    sprintf(opt, "Attaque");
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.55 , SCREEN_HEIGHT/4 , TEXT_OBJET_L*0.9, TEXT_OBJET_H/2+50);
+    snprintf(opt, 20, "%d", monde->joueur->combattant->attaque);
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.63 , SCREEN_HEIGHT/4 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
 
-    if(monde->option == 1){
+    // Affichange dynamique des séléctions avec option 1 2 3 4 5.
+    if(monde->option == 1){ // OPTION 1 INVENTAIRE
         sprintf(opt, "inventaire");
         apply_text(renderer, 150, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
         //Objet1
@@ -305,7 +321,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }
         apply_texture(textures->epee2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L , POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H, TEXT_OBJET_L, TEXT_OBJET_H);
-        //sprintf(opt, "Objet 3");
+        //Objet 3
         snprintf(opt2, 20, "%s", monde->joueur->inventaire[2].nom);
         if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[2].id){
             apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
@@ -314,21 +330,28 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }
         apply_texture(textures->bouclier1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
-        //sprintf(opt, "Objet 4");
+        //Objet 4
         snprintf(opt2, 20, "%s", monde->joueur->inventaire[3].nom);
         if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[3].id){
             apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }else{
             apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-
         apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        //Objet 6 Potion Santée
+        sprintf(opt, "Potion de vie");
+        apply_text(renderer, 0, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        //Objet 7 Potion Mana
+        sprintf(opt, "Potion de mana");
+        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
     }
-    if(monde->option == 2){
+    if(monde->option == 2){ // OPTION 2 OBJET 1
         sprintf(opt, "inventaire");
         apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
-        //sprintf(opt, "Objet 1");
+        //Objet 1
         snprintf(opt2, 20, "%s", monde->joueur->inventaire[0].nom);
         if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[0].id){
             apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
@@ -337,7 +360,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }
         apply_texture(textures->epee1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         apply_text(renderer,150, 255, 0 , opt2 , police,POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
-        //sprintf(opt, "Objet 2");
+        //Objet 2
         snprintf(opt2, 20, "%s", monde->joueur->inventaire[1].nom);
         if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[1].id){
             apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
@@ -346,7 +369,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }
         apply_texture(textures->epee2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L , POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H, TEXT_OBJET_L, TEXT_OBJET_H);
-        //sprintf(opt, "Objet 3");
+        //Objet 3
         snprintf(opt2, 20, "%s", monde->joueur->inventaire[2].nom);
         if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[2].id){
             apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
@@ -355,18 +378,25 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }
         apply_texture(textures->bouclier1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
-        //sprintf(opt, "Objet 4");
+        //Objet 4
         snprintf(opt2, 20, "%s", monde->joueur->inventaire[3].nom);
         if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[3].id){
             apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }else{
             apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-
         apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        //Objet 6 Potion Santée
+        sprintf(opt, "Potion de vie");
+        apply_text(renderer, 0, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        //Objet 7 Potion Mana
+        sprintf(opt, "Potion de mana");
+        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
     }
-    if(monde->option == 3){
+    if(monde->option == 3){ // OPTION 3 OBJET 2
         sprintf(opt, "inventaire");
         apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
         //sprintf(opt, "Objet 1");
@@ -403,11 +433,18 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }else{
             apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-
         apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        //Objet 6 Potion Santée
+        sprintf(opt, "Potion de vie");
+        apply_text(renderer, 0, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        //Objet 7 Potion Mana
+        sprintf(opt, "Potion de mana");
+        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
     }
-    if(monde->option == 4){
+    if(monde->option == 4){ // OPTION 4 OBJET 3
         sprintf(opt, "inventaire");
         apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
         //sprintf(opt, "Objet 1");
@@ -444,11 +481,18 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }else{
             apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-
         apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        //Objet 6 Potion Santée
+        sprintf(opt, "Potion de vie");
+        apply_text(renderer, 0, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        //Objet 7 Potion Mana
+        sprintf(opt, "Potion de mana");
+        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
     }
-    if(monde->option == 5){
+    if(monde->option == 5){ // OPTION 5 OBJET 4
         sprintf(opt, "inventaire");
         apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
         //sprintf(opt, "Objet 1");
@@ -485,9 +529,112 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }else{
             apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-
         apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         apply_text(renderer, 150, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        //Objet 6 Potion Santée
+        sprintf(opt, "Potion de vie");
+        apply_text(renderer, 0, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        //Objet 7 Potion Mana
+        sprintf(opt, "Potion de mana");
+        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+    }
+    if(monde->option == 6){ // OPTION 6 OPTION VIE
+        sprintf(opt, "inventaire");
+        apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
+        //sprintf(opt, "Objet 1");
+        snprintf(opt2, 20, "%s", monde->joueur->inventaire[0].nom);
+        if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[0].id){
+            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        }else{
+            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        }
+        apply_texture(textures->epee1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        apply_text(renderer, 0, 255, 0 , opt2 , police,POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
+        //sprintf(opt, "Objet 2");
+        snprintf(opt2, 20, "%s", monde->joueur->inventaire[1].nom);
+        if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[1].id){
+            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        }else{
+            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        }
+        apply_texture(textures->epee2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L , POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H, TEXT_OBJET_L, TEXT_OBJET_H);
+        //sprintf(opt, "Objet 3");
+        snprintf(opt2, 20, "%s", monde->joueur->inventaire[2].nom);
+        if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[2].id){
+            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        }else{
+            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        }
+        apply_texture(textures->bouclier1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        //sprintf(opt, "Objet 4");
+        snprintf(opt2, 20, "%s", monde->joueur->inventaire[3].nom);
+        if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[3].id){
+            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        }else{
+            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        }
+        apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        //Objet 6 Potion Santée
+        sprintf(opt, "Potion de vie");
+        apply_text(renderer, 150, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        //Objet 7 Potion Mana
+        sprintf(opt, "Potion de mana");
+        apply_text(renderer, 0, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+    }
+    if(monde->option == 7){ // OPTION 7 OPTION MANA
+        sprintf(opt, "inventaire");
+        apply_text(renderer, 0, 255, 0, opt , police, SCREEN_WIDTH/6 , SCREEN_HEIGHT/6 , LARGEUR_TEXT, HAUTEUR_TEXT);
+        //sprintf(opt, "Objet 1");
+        snprintf(opt2, 20, "%s", monde->joueur->inventaire[0].nom);
+        if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[0].id){
+            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        }else{
+            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        }
+        apply_texture(textures->epee1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        apply_text(renderer, 0, 255, 0 , opt2 , police,POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
+        //sprintf(opt, "Objet 2");
+        snprintf(opt2, 20, "%s", monde->joueur->inventaire[1].nom);
+        if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[1].id){
+            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        }else{
+            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        }
+        apply_texture(textures->epee2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L , POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H, TEXT_OBJET_L, TEXT_OBJET_H);
+        //sprintf(opt, "Objet 3");
+        snprintf(opt2, 20, "%s", monde->joueur->inventaire[2].nom);
+        if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[2].id){
+            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        }else{
+            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        }
+        apply_texture(textures->bouclier1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        //sprintf(opt, "Objet 4");
+        snprintf(opt2, 20, "%s", monde->joueur->inventaire[3].nom);
+        if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[3].id){
+            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        }else{
+            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        }
+        apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        apply_text(renderer, 0, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        //Objet 6 Potion Santée
+        sprintf(opt, "Potion de vie");
+        apply_text(renderer, 0, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+        //Objet 7 Potion Mana
+        sprintf(opt, "Potion de mana");
+        apply_text(renderer, 150, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
     }
 }
 void evenements_inventaire(SDL_Event* event, monde_t * monde){
@@ -500,6 +647,8 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
             case 3 :monde->option=5;break;//2
             case 4 :monde->option=1;break;//3
             case 5 :monde->option=1;break;//4
+            case 6 :monde->option=7;break;//6
+            case 7 :monde->option=6;break;//7
           }
         }
         if(keystates[SDL_SCANCODE_UP]){
@@ -509,46 +658,103 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
             case 3 :monde->option=1;break;//2
             case 4 :monde->option=2;break;//3
             case 5 :monde->option=3;break;//4
+            case 6 :monde->option=7;break;//6
+            case 7 :monde->option=6;break;//7
           }
         }
         if(keystates[SDL_SCANCODE_LEFT]){
           switch(monde->option){
             case 1 :break;//
-            case 2 :monde->option=3;break;//1
+            case 2 :monde->option=6;break;//1
             case 3 :monde->option=2;break;//2
-            case 4 :monde->option=5;break;//3
+            case 4 :monde->option=7;break;//3
             case 5 :monde->option=4;break;//4
+            case 6 :monde->option=3;break;//6
+            case 7 :monde->option=5;break;//7
           }
         }
         if(keystates[SDL_SCANCODE_RIGHT]){
           switch(monde->option){
             case 1 :break;//
             case 2 :monde->option=3;break;//1
-            case 3 :monde->option=2;break;//2
+            case 3 :monde->option=6;break;//2
             case 4 :monde->option=5;break;//3
-            case 5 :monde->option=4;break;//4
+            case 5 :monde->option=7;break;//4
+            case 6 :monde->option=2;break;//6
+            case 7 :monde->option=4;break;//7
           }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
             //
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 2){
-            //
-            monde->joueur->objet_equipe[0]=monde->joueur->inventaire[0];
+            //Epee en bois équipée
+            if(monde->joueur->objet_equipe[0].id!=monde->joueur->inventaire[0].id){
+                //Stat Debuff
+                if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[1].id){
+                    monde->joueur->manaMax-=monde->joueur->objet_equipe[0].mana_sup;
+                    monde->joueur->nb_obj_equip--;
+                }
+                //Equipe
+                monde->joueur->objet_equipe[0]=monde->joueur->inventaire[0];
+                //Stat buff
+                monde->joueur->combattant->attaque+=monde->joueur->objet_equipe[0].attaque_sup;
+                monde->joueur->nb_obj_equip++;
+
+            } 
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
-            //
-            monde->joueur->objet_equipe[0]=monde->joueur->inventaire[1];
+            //Epee en diamant équipée
+            if(monde->joueur->objet_equipe[0].id!=monde->joueur->inventaire[1].id){
+                //Stat Debuff
+                if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[0].id){
+                    monde->joueur->combattant->attaque-=monde->joueur->objet_equipe[0].attaque_sup;
+                    monde->joueur->nb_obj_equip--;
+                }
+
+                //Equipe
+                monde->joueur->objet_equipe[0]=monde->joueur->inventaire[1];
+                //Stat buff
+                monde->joueur->manaMax+=monde->joueur->objet_equipe[0].mana_sup;
+                monde->joueur->nb_obj_equip++;
+                
+            }     
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 4){
-            //
-            monde->joueur->objet_equipe[1]=monde->joueur->inventaire[2];
+            //Bouclier en bois
+            if(monde->joueur->objet_equipe[1].id!=monde->joueur->inventaire[2].id){
+                //Stat Debuff
+                if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[3].id){
+                    monde->joueur->manaMax-=monde->joueur->objet_equipe[1].mana_sup;
+                    monde->joueur->nb_obj_equip--;
+                }
+                //Equipe
+                monde->joueur->objet_equipe[1]=monde->joueur->inventaire[2];
+                //Stat buff
+                monde->joueur->combattant->pvMax+=monde->joueur->objet_equipe[1].vie_sup;
+                monde->joueur->nb_obj_equip++;
+
+            }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 5){
-            //
-            monde->joueur->objet_equipe[1]=monde->joueur->inventaire[3];
+            //Bouclier en diamant
+            if(monde->joueur->objet_equipe[1].id!=monde->joueur->inventaire[3].id){
+                //Stat Debuff
+                if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[2].id){
+                    monde->joueur->combattant->pvMax-=monde->joueur->objet_equipe[1].vie_sup;
+                    monde->joueur->nb_obj_equip--;
+                }
+
+                //Equipe
+                monde->joueur->objet_equipe[1]=monde->joueur->inventaire[3];
+                //Stat buff
+                monde->joueur->manaMax+=monde->joueur->objet_equipe[1].mana_sup;
+                monde->joueur->nb_obj_equip++;
+
+            }
         }
     }
+
 
 }
 
