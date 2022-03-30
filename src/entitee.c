@@ -127,18 +127,22 @@ void detruire_nonCombattant(nonCombattant_t ** nonCombat){
   * \param y entitée à initialiser.
   * \brief Initialisation du joueur avec des parametres.
 */
-void init_joueur(joueur_t * joueur,int niveau, int zone){
-  joueur->combattant->pvMax=100;
-  joueur->combattant->pvCour=100;
-  joueur->combattant->attaque=10;
+void init_joueur(joueur_t * joueur,int niveau, int zone, int pv_M, int pv_C, int mana_M, int mana_C, int atk, int or, int nb_inv, int nb_equip){
+  joueur->combattant->pvMax=pv_M;
+  joueur->combattant->pvCour=pv_C;
+  joueur->manaMax=mana_M;
+  joueur->manaCour=mana_C;
+  joueur->combattant->attaque=atk;
   joueur->combattant->vitesse=10;
   joueur->combattant->x= 1000/10;
   joueur->combattant->y= 1000/10;
   joueur->combattant->niveau=niveau;
   joueur->combattant->type = JOUEUR;
+  joueur->nb_obj_equip = nb_equip;
+  joueur->nb_obj_inventaire = nb_inv;
   joueur->zone = zone;
   joueur->salle = 0;
-  joueur->or = 0;
+  joueur->or = or;
 }
 
 /**
@@ -193,9 +197,10 @@ objet_t * creer_objet(){
   objet->description = malloc(sizeof(char));
   return(objet);
 }
-objet_t * objet_initialiser(objet_t * objet,int id,int attaque_sup,int vie_sup,char*nom,char*description){
+objet_t * objet_initialiser(objet_t * objet,int id,int attaque_sup,int mana_sup,int vie_sup,char*nom,char*description){
   objet->id=id;
   objet->attaque_sup=attaque_sup;
+  objet->mana_sup=mana_sup;
   objet->vie_sup=vie_sup;
   objet->nom=nom;
   objet->description=description;
@@ -215,15 +220,15 @@ void detruire_objet(objet_t**objet){
 void initialiser_biblio(objet_t tableau[]){
   int i_tab=0;
   objet_t * epee1 = creer_objet();
-  epee1 =objet_initialiser(epee1,1,4,0,"Epee en pierre","Desc");
+  epee1 =objet_initialiser(epee1,1,4,0,0,"Epee en pierre","Desc");
   tableau[i_tab++]=*epee1;
   objet_t * epee2 = creer_objet();
-  epee2 =objet_initialiser(epee2,2,4,0,"Epee en diamant","Desc");
+  epee2 =objet_initialiser(epee2,2,0,8,0,"Epee en diamant","Desc");
   tableau[i_tab++]=*epee2;
   objet_t * bouclier1 = creer_objet();
-  bouclier1 =objet_initialiser(bouclier1,3,4,0,"Bouclier en pierre","Desc");
+  bouclier1 =objet_initialiser(bouclier1,3,0,0,10,"Bouclier en pierre","Desc");
   tableau[i_tab++]=*bouclier1;
   objet_t * bouclier2 = creer_objet();
-  bouclier2 =objet_initialiser(bouclier2,4,4,0,"Bouclier en Diamant","Desc");
+  bouclier2 =objet_initialiser(bouclier2,4,0,10,0,"Bouclier en Diamant","Desc");
   tableau[i_tab++]=*bouclier2;
 }

@@ -168,20 +168,47 @@ void init_monde_menu(monde_t * monde){
 }
 
 void init_monde_jeu(monde_t * monde, char* chemin_fichier){
-  int i; int j_niveau; int j_zone;
+  int i; 
+  int j_niveau; 
+  int j_zone;
+  int j_mana_max;
+  int j_mana_cour;
+  int j_pv_max;
+  int j_pv_cour;
+  int j_or;
+  int j_attaque;
+  int j_nb_obj_inv;
+  int j_nb_obj_equip;
+  //int obj_equipe[NB_EQUIPEMENT];
+  //int obj_inv[TAILLE_INVENTAIRE]
+
   FILE * fichier;
 
   fichier = fopen(chemin_fichier,"r");
   fscanf(fichier,"%i", &j_niveau);
   fscanf(fichier,"%i", &j_zone);
+  fscanf(fichier,"%i", &j_pv_max);
+  fscanf(fichier,"%i", &j_pv_cour);
+  fscanf(fichier,"%i", &j_mana_max);
+  fscanf(fichier,"%i", &j_mana_cour);
+  fscanf(fichier,"%i", &j_attaque);
+  fscanf(fichier,"%i", &j_or);
+  fscanf(fichier,"%i", &j_nb_obj_inv);
+
+    for(i = 0; i < j_nb_obj_inv; i++){
+        fscanf(fichier, "%i", monde->joueur->inventaire[i].id);
+    }
+  fscanf(fichier,"%i", &j_nb_obj_equip);
+  for(i = 0; i < j_nb_obj_equip; i++){
+        fscanf(fichier, "%i", monde->joueur->objet_equipe[i].id);
+    }
+
+
 
   for(i = j_zone; i < NB_ZONES; i++){
     init_zone(monde->zones[i], i);
 
   }
-
-  fscanf(fichier,"%i", &j_niveau);
-  fscanf(fichier,"%i", &j_zone);
 
   init_joueur(monde->joueur,j_niveau,j_zone);
 
