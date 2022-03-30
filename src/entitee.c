@@ -231,4 +231,10 @@ void initialiser_biblio(objet_t tableau[]){
   objet_t * bouclier2 = creer_objet();
   bouclier2 =objet_initialiser(bouclier2,4,0,10,0,"Bouclier en Diamant","Desc");
   tableau[i_tab++]=*bouclier2;
+  objet_t *potionvie = creer_objet();
+  potionvie =objet_initialiser(potionvie,6,0,0,20,"Potion de vie","Desc");
+  tableau[i_tab++]=*potionvie;
+  objet_t *potionmana = creer_objet();
+  potionmana =objet_initialiser(potionmana,7,0,20,0,"Potion de mana","Desc");
+  tableau[i_tab++]=*potionmana;
 }

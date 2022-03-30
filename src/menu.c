@@ -268,11 +268,13 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
     }
 
 }
-void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font * police){
+oid affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font * police){
     monde->joueur->inventaire[0]=monde->biblio_objet[0]; // placement de l'item dans l'inventaire pour tester le menu
-    monde->joueur->inventaire[1]=monde->biblio_objet[1];
-    monde->joueur->inventaire[2]=monde->biblio_objet[2];
-    monde->joueur->inventaire[3]=monde->biblio_objet[3];
+    monde->joueur->inventaire[1]=monde->biblio_objet[1]; // placement de l'item dans l'inventaire pour tester le menu
+    monde->joueur->inventaire[2]=monde->biblio_objet[2]; // placement de l'item dans l'inventaire pour tester le menu
+    monde->joueur->inventaire[3]=monde->biblio_objet[3]; // placement de l'item dans l'inventaire pour tester le menu
+    monde->joueur->inventaire[4]=monde->biblio_objet[4]; // placement de l'item dans l'inventaire pour tester le menu
+    monde->joueur->inventaire[5]=monde->biblio_objet[5]; // placement de l'item dans l'inventaire pour tester le menu
     char opt[20] = "";
     char opt2[20] = "";
     // Affichage du mana
@@ -695,6 +697,12 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                     monde->joueur->manaMax-=monde->joueur->objet_equipe[0].mana_sup;
                     monde->joueur->nb_obj_equip--;
                 }
+                if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
+                    monde->joueur->manaCour=monde->joueur->manaMax; 
+                }
+                if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
+                    monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
+                }
                 //Equipe
                 monde->joueur->objet_equipe[0]=monde->joueur->inventaire[0];
                 //Stat buff
@@ -711,7 +719,12 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                     monde->joueur->combattant->attaque-=monde->joueur->objet_equipe[0].attaque_sup;
                     monde->joueur->nb_obj_equip--;
                 }
-
+                if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
+                    monde->joueur->manaCour=monde->joueur->manaMax; 
+                }
+                if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
+                    monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
+                }
                 //Equipe
                 monde->joueur->objet_equipe[0]=monde->joueur->inventaire[1];
                 //Stat buff
@@ -727,6 +740,12 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                 if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[3].id){
                     monde->joueur->manaMax-=monde->joueur->objet_equipe[1].mana_sup;
                     monde->joueur->nb_obj_equip--;
+                }
+                if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
+                    monde->joueur->manaCour=monde->joueur->manaMax;
+                }
+                if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
+                    monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
                 }
                 //Equipe
                 monde->joueur->objet_equipe[1]=monde->joueur->inventaire[2];
@@ -744,7 +763,12 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                     monde->joueur->combattant->pvMax-=monde->joueur->objet_equipe[1].vie_sup;
                     monde->joueur->nb_obj_equip--;
                 }
-
+                if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
+                    monde->joueur->manaCour=monde->joueur->manaMax; 
+                }
+                if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
+                    monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
+                }
                 //Equipe
                 monde->joueur->objet_equipe[1]=monde->joueur->inventaire[3];
                 //Stat buff
@@ -753,6 +777,28 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
 
             }
         }
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 6){
+
+            if(monde->joueur->inventaire[4].id==6){
+                monde->joueur->combattant->pvCour+=monde->joueur->inventaire[4].vie_sup;
+                if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
+                    monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
+                }
+                monde->joueur->inventaire[4].id=0;
+            }
+        }
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 7){
+
+            if(monde->joueur->inventaire[5].id==7){
+                printf("rentre ici\n");
+                monde->joueur->manaCour+=monde->joueur->inventaire[5].mana_sup;
+                if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
+                    monde->joueur->manaCour=monde->joueur->manaMax;
+                }
+                monde->joueur->inventaire[5].id=0;
+            }
+        }
+        
     }
 
 
