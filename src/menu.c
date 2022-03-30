@@ -729,6 +729,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                 monde->joueur->objet_equipe[0]=monde->joueur->inventaire[1];
                 //Stat buff
                 monde->joueur->manaMax+=monde->joueur->objet_equipe[0].mana_sup;
+                monde->joueur->manaCour+=monde->joueur->objet_equipe[0].mana_sup;
                 monde->joueur->nb_obj_equip++;
                 
             }     
@@ -751,6 +752,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                 monde->joueur->objet_equipe[1]=monde->joueur->inventaire[2];
                 //Stat buff
                 monde->joueur->combattant->pvMax+=monde->joueur->objet_equipe[1].vie_sup;
+                monde->joueur->combattant->pvCour+=monde->joueur->objet_equipe[1].vie_sup;
                 monde->joueur->nb_obj_equip++;
 
             }
@@ -773,6 +775,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                 monde->joueur->objet_equipe[1]=monde->joueur->inventaire[3];
                 //Stat buff
                 monde->joueur->manaMax+=monde->joueur->objet_equipe[1].mana_sup;
+                monde->joueur->manaCour+=monde->joueur->objet_equipe[1].mana_sup;
                 monde->joueur->nb_obj_equip++;
 
             }
