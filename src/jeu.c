@@ -902,19 +902,11 @@ void sauvegarde(monde_t* monde){
         fprintf(fichier, "%d\n", nb_obj_inv);
         for(i = 0; i < nb_obj_inv; i++){
           fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
-          free(monde->joueur->inventaire[i].nom);
-          monde->joueur->inventaire[i].nom=NULL;
-          free(monde->joueur->inventaire[i].description);
-          monde->joueur->inventaire[i].description=NULL;
         }
         //Sauvegarde des objets équipés
         fprintf(fichier, "%d\n", nb_obj_equip);
         for(i = 0; i < nb_obj_equip; i++){
           fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
-          free(monde->joueur->inventaire[i].nom);
-          monde->joueur->inventaire[i].nom=NULL;
-          free(monde->joueur->inventaire[i].description);
-          monde->joueur->inventaire[i].description=NULL;
         }
         //On ferme le fichier
         fclose(fichier);
