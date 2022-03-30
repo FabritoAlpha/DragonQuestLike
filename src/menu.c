@@ -270,11 +270,17 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
 
 }
 void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font * police){
+    //epee en pierre
     monde->joueur->inventaire[0]=monde->biblio_objet[0]; // placement de l'item dans l'inventaire pour tester le menu
+    //epee en diamant
     monde->joueur->inventaire[1]=monde->biblio_objet[1]; // placement de l'item dans l'inventaire pour tester le menu
+    //bouclier en pierre
     monde->joueur->inventaire[2]=monde->biblio_objet[2]; // placement de l'item dans l'inventaire pour tester le menu
+    //bouclier en diamant
     monde->joueur->inventaire[3]=monde->biblio_objet[3]; // placement de l'item dans l'inventaire pour tester le menu
+    //Potion de vie
     monde->joueur->inventaire[4]=monde->biblio_objet[4]; // placement de l'item dans l'inventaire pour tester le menu
+    //Potion de mana
     monde->joueur->inventaire[5]=monde->biblio_objet[5]; // placement de l'item dans l'inventaire pour tester le menu
     char opt[20] = "";
     char opt2[20] = "";
@@ -358,7 +364,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
                 apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
             }
             apply_texture(textures->bouclier1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
-            apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+            apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
         }
         //Objet 4
         if(monde->option==5){
@@ -374,7 +380,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
                 apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
             }
             apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
-            apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
+            apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
         }
         //Objet 6 Potion Santée
         if(monde->option==6){
@@ -384,8 +390,8 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }
         if(monde->joueur->inventaire[4].id!=0){
             sprintf(opt, "Potion de vie");
-            apply_text(renderer, couleur, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
-            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+            apply_text(renderer, couleur, 255, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
+            apply_texture(textures->potion_pv, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H);
         }
         //Objet 7 Potion Mana
         if(monde->option==7){
@@ -395,8 +401,8 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }
         if(monde->joueur->inventaire[5].id!=0){
         sprintf(opt, "Potion de mana");
-        apply_text(renderer, couleur, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L-30, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+150, TEXT_OBJET_L, TEXT_OBJET_H);
-        apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+        apply_text(renderer, couleur, 255, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
+        apply_texture(textures->potion_mana, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H*2);
         }
 }
 void evenements_inventaire(SDL_Event* event, monde_t * monde){
