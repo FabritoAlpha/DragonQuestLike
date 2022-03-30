@@ -872,7 +872,7 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
 void sauvegarde(monde_t* monde){
     FILE * fichier;
     int i;
-    int nb_obj_inv = monde->joueur->nb_obj_inv;
+    int nb_obj_inv = monde->joueur->nb_obj_inventaire;
     int nb_obj_equip = monde->joueur->nb_obj_equip;
     //Pour sauvegarder correctement la partie:
     /*
@@ -903,9 +903,9 @@ void sauvegarde(monde_t* monde){
           fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
         }
         //Sauvegarde des objets équipés
-        fprintf(fichier, "%d\n", nb_obj_equip;
+        fprintf(fichier, "%d\n", nb_obj_equip);
         for(i = 0; i < nb_obj_inv; i++){
-          fprintf(fichier, "%d\n", monde->joueur->objet_quipe[i].id);
+          fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
         }
         //On ferme le fichier
         fclose(fichier);
@@ -913,7 +913,7 @@ void sauvegarde(monde_t* monde){
     if(monde->partie == 2){
       fichier = fopen("./rsrc/txt/partie1.txt","w");
       //Sauvegarde du niveau et de la zone locale
-      fprintf(fichier, "%d\n%d\n%d\n", monde->joueur->combattant->niveau, monde->joueur->zone);
+      fprintf(fichier, "%d\n%d\n", monde->joueur->combattant->niveau, monde->joueur->zone);
       //Sauvegarde des pv max et courrants
       fprintf(fichier, "%d\n%d\n", monde->joueur->combattant->pvMax, monde->joueur->combattant->pvCour);
       //Sauvegarde du mana max et courrant
@@ -926,9 +926,9 @@ void sauvegarde(monde_t* monde){
         fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
       }
       //Sauvegarde des objets équipés
-      fprintf(fichier, "%d\n", nb_obj_equip;
+      fprintf(fichier, "%d\n", nb_obj_equip);
       for(i = 0; i < nb_obj_inv; i++){
-        fprintf(fichier, "%d\n", monde->joueur->objet_quipe[i].id);
+        fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
       }
       //On ferme le fichier
       fclose(fichier);

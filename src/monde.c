@@ -196,11 +196,11 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   fscanf(fichier,"%i", &j_nb_obj_inv);
 
     for(i = 0; i < j_nb_obj_inv; i++){
-        fscanf(fichier, "%i", monde->joueur->inventaire[i].id);
+        fscanf(fichier, "%i", &monde->joueur->inventaire[i].id);
     }
   fscanf(fichier,"%i", &j_nb_obj_equip);
   for(i = 0; i < j_nb_obj_equip; i++){
-        fscanf(fichier, "%i", monde->joueur->objet_equipe[i].id);
+        fscanf(fichier, "%i", &monde->joueur->objet_equipe[i].id);
     }
 
 
