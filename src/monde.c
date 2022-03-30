@@ -217,6 +217,8 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
         for(j = 0; j < TAILLE_INVENTAIRE; j++){
             if(monde->joueur->inventaire[i].id == monde->biblio_objet[j].id){
                 //SI les objets ont le même id, copie les informations de l'objet dans le tableau du joueur
+                monde->joueur->inventaire[i].nom = malloc(sizeof(char)*20);
+                monde->joueur->inventaire[i].description = malloc(sizeof(char)*50);
                 monde->joueur->inventaire[i].attaque_sup = monde->biblio_objet[j].attaque_sup;
                 monde->joueur->inventaire[i].mana_sup = monde->biblio_objet[j].mana_sup;
                 monde->joueur->inventaire[i].vie_sup = monde->biblio_objet[j].vie_sup;
@@ -231,6 +233,8 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
         for(j = 0; j < NB_EQUIPEMENT; j++){
             if(monde->joueur->objet_equipe[i].id == monde->biblio_objet[j].id){
                 //SI les objets ont le même id, copie les informations de l'objet dans le tableau du joueur
+                monde->joueur->objet_equipe[i].nom = malloc(sizeof(char)*20);
+                monde->joueur->objet_equipe[i].description = malloc(sizeof(char)*50);
                 monde->joueur->objet_equipe[i].attaque_sup = monde->biblio_objet[j].attaque_sup;
                 monde->joueur->objet_equipe[i].mana_sup = monde->biblio_objet[j].mana_sup;
                 monde->joueur->objet_equipe[i].vie_sup = monde->biblio_objet[j].vie_sup;

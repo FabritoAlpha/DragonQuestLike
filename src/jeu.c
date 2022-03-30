@@ -837,24 +837,25 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
 
       for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
         int suivaleatoir;
-        monstre_position(renderer, textures, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]);
-        if(time_sec>(*next_tick_monstre)){
-          if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant->vitesse==1){
-            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant->vitesse=0;
-          }else{
-            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant->vitesse=1;
+        if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->etat == VIVANT){
+          monstre_position(renderer, textures, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]);
+          if(time_sec>(*next_tick_monstre)){
+            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant->vitesse==1){
+              monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant->vitesse=0;
+            }else{
+              monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant->vitesse=1;
+            }
+            do{
+              suivaleatoir=rand()%500;
+            }while(suivaleatoir<200||suivaleatoir>500);
+            (*next_tick_monstre)+=suivaleatoir;
           }
-          do{
-            suivaleatoir=rand()%500;
-          }while(suivaleatoir<200||suivaleatoir>500);
-          (*next_tick_monstre)+=suivaleatoir;
+
+          if(time_sec>(*next_tick)){
+
+            deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i], monde);
+          }
         }
-
-        if(time_sec>(*next_tick)){
-
-          deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i], monde);
-        }
-
       }
 
     }
@@ -901,11 +902,19 @@ void sauvegarde(monde_t* monde){
         fprintf(fichier, "%d\n", nb_obj_inv);
         for(i = 0; i < nb_obj_inv; i++){
           fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
+          free(monde->joueur->inventaire[i].nom);
+          monde->joueur->inventaire[i].nom=NULL;
+          free(monde->joueur->inventaire[i].description);
+          monde->joueur->inventaire[i].description=NULL;
         }
         //Sauvegarde des objets équipés
         fprintf(fichier, "%d\n", nb_obj_equip);
-        for(i = 0; i < nb_obj_inv; i++){
+        for(i = 0; i < nb_obj_equip; i++){
           fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
+          free(monde->joueur->inventaire[i].nom);
+          monde->joueur->inventaire[i].nom=NULL;
+          free(monde->joueur->inventaire[i].description);
+          monde->joueur->inventaire[i].description=NULL;
         }
         //On ferme le fichier
         fclose(fichier);
@@ -924,11 +933,19 @@ void sauvegarde(monde_t* monde){
       fprintf(fichier, "%d\n", nb_obj_inv);
       for(i = 0; i < nb_obj_inv; i++){
         fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
+        free(monde->joueur->inventaire[i].nom);
+        monde->joueur->inventaire[i].nom=NULL;
+        free(monde->joueur->inventaire[i].description);
+        monde->joueur->inventaire[i].description=NULL;
       }
       //Sauvegarde des objets équipés
       fprintf(fichier, "%d\n", nb_obj_equip);
-      for(i = 0; i < nb_obj_inv; i++){
+      for(i = 0; i < nb_obj_equip; i++){
         fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
+        free(monde->joueur->inventaire[i].nom);
+        monde->joueur->inventaire[i].nom=NULL;
+        free(monde->joueur->inventaire[i].description);
+        monde->joueur->inventaire[i].description=NULL;
       }
       //On ferme le fichier
       fclose(fichier);

@@ -193,8 +193,8 @@ void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,in
 objet_t * creer_objet(){
   objet_t * objet;
   objet= malloc(sizeof(objet_t));
-  objet->nom = malloc(sizeof(char));
-  objet->description = malloc(sizeof(char));
+  objet->nom = malloc(sizeof(char)*20);
+  objet->description = malloc(sizeof(char)*50);
   return(objet);
 }
 objet_t * objet_initialiser(objet_t * objet,int id,int attaque_sup,int mana_sup,int vie_sup,char*nom,char*description){
