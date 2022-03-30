@@ -600,8 +600,10 @@ int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t 
 
     if(combattant->type == JOUEUR){
       for(i = 0; i < NB_MONSTRES_SALLE; i++){
-        if(collision_joueur_monstre(combattant,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant, monde)){
+        if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->etat == VIVANT){
+          if(collision_joueur_monstre(combattant,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant, monde)){
             return(COLLISION);
+          }
         }
       }
     }
@@ -839,7 +841,7 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
 
       for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
         int suivaleatoir;
-        if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->etat == VIVANT){
+        if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->etat == 1){
           monstre_position(renderer, textures, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]);
           if(time_sec>(*next_tick_monstre)){
             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant->vitesse==1){
