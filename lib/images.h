@@ -51,6 +51,12 @@ typedef struct images_s{
     SDL_Texture* case_combat;
     SDL_Texture* game_over;
     SDL_Texture* arene_combat;
+    SDL_Texture* potion_b_petite;
+    SDL_Texture* potion_r_petite;
+    SDL_Texture* epee1_petite;
+    SDL_Texture* epee2_petite;
+    SDL_Texture* bouclier1_petit;
+    SDL_Texture* bouclier2_petit;
     //TTF_Font *font; /*!< Texture liée à la police du texte affiché à l'écran */
 
 
@@ -73,5 +79,7 @@ void dialogue_position(SDL_Renderer *renderer, images_t *textures);
 void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* coffre);
 
 void or_position(SDL_Renderer *renderer, images_t *textures, int x, int y);
+
+void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num);
 
 #endif

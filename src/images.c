@@ -107,6 +107,18 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->case_combat = NULL;
     clean_texture(textures->arene_combat);
     textures->arene_combat = NULL;
+    clean_texture(textures->potion_b_petite);
+    textures->potion_b_petite = NULL;
+    clean_texture(textures->bouclier2_petit);
+    textures->bouclier2_petit = NULL;
+    clean_texture(textures->potion_r_petite);
+    textures->potion_r_petite = NULL;
+    clean_texture(textures->epee1_petite);
+    textures->epee1_petite = NULL;
+    clean_texture(textures->epee2_petite);
+    textures->epee2_petite = NULL;
+    clean_texture(textures->bouclier1_petit);
+    textures->bouclier1_petit = NULL;
     clean_texture(textures->game_over);
     textures->game_over = NULL;
     if(police != NULL){
@@ -163,7 +175,12 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->case_combat = load_image("./rsrc/img/selection_inactive.bmp", renderer);
     textures->game_over = load_image("./rsrc/img/fond_inventaire.bmp", renderer);
     textures->arene_combat = load_image("./rsrc/img/zone0_salle1.bmp", renderer);
-
+    textures->potion_b_petite = load_image("./rsrc/img/fiole_bleu_boutique.bmp", renderer);
+    textures->potion_r_petite = load_image("./rsrc/img/fiole_rouge_boutique.bmp", renderer);
+    textures->epee1_petite = load_image("./rsrc/img/epee1.bmp", renderer);
+    textures->epee2_petite = load_image("./rsrc/img/epee2.bmp", renderer);
+    textures->bouclier1_petit = load_image("./rsrc/img/bouclier1.bmp", renderer);
+    textures->bouclier2_petit = load_image("./rsrc/img/bouclier2.bmp", renderer);
 }
 
 /**
@@ -269,4 +286,28 @@ void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t
 
 void or_position(SDL_Renderer *renderer, images_t *textures, int x, int y){
     apply_texture(textures->or, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+}
+
+void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num){
+    // 1: potion rouge, 2: potion bleue, 3: epee 1, 4: bouclier 1, 5: epee 2, 6: bouclier 2
+    switch(num){
+        case 1:
+              apply_texture(textures->potion_r_petite, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 2:
+              apply_texture(textures->potion_b_petite, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 3:
+              apply_texture(textures->epee1_petite, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 4:
+              apply_texture(textures->bouclier1_petit, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 5:
+              apply_texture(textures->epee2_petite, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 6:
+              apply_texture(textures->bouclier2_petit, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+        break;
+    }
 }

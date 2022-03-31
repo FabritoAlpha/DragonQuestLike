@@ -104,6 +104,7 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
 
         // si c'est un marchand
         if(nonCombattant_proche(monde) == 2){
+
             if(keystates[SDL_SCANCODE_RETURN]){
                 monde->etat_jeu = 1;
             }
@@ -773,6 +774,8 @@ void evenements(SDL_Event* event, monde_t * monde){
 
             //on entre dans un dialogue
             if((nonCombattant_proche(monde) == 1  ||  nonCombattant_proche(monde) == 2) && event->key.keysym.sym == SDLK_p){
+                //on initialise l'option pour les réponses au marchand
+                monde->option = -1;
                 monde->etat_jeu = ETAT_DIALOGUE;
             }
             if(event->key.keysym.sym == SDLK_LEFT) {
