@@ -570,19 +570,19 @@ int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj){
 int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * coffre){
 
 
-  if( (combattant->x + LARGEUR_PERSONNAGE >= coffre->x) && (combattant->x + LARGEUR_PERSONNAGE <= coffre->x + LARGEUR_COFFRE) && (combattant->y + HAUTEUR_PERSONNAGE >= coffre->y) && (combattant->y + HAUTEUR_PERSONNAGE <= coffre->y + HAUTEUR_COFFRE) ){
+  if( (coffre->x + LARGEUR_COFFRE >= combattant->x) && (coffre->x + LARGEUR_COFFRE <= combattant->x + LARGEUR_PERSONNAGE) && (coffre->y + HAUTEUR_COFFRE >= combattant->y) && (coffre->y + HAUTEUR_COFFRE <= combattant->y + HAUTEUR_COMBATTANT) ){
 
     return(COLLISION);
   }
-  if( (combattant->x + LARGEUR_PERSONNAGE >= coffre->x) && (combattant->x + LARGEUR_PERSONNAGE <= coffre->x + LARGEUR_COFFRE) && (combattant->y  >= coffre->y) && (combattant->y <= coffre->y + HAUTEUR_COFFRE) ){
+  if( (coffre->x + LARGEUR_COFFRE >= combattant->x) && (coffre->x + LARGEUR_COFFRE <= combattant->x + LARGEUR_PERSONNAGE) && (coffre->y  >= combattant->y) && (coffre->y <= combattant->y + HAUTEUR_PERSONNAGE) ){
 
     return(COLLISION);
   }
-  if( (combattant->x >= coffre->x) && (combattant->x <= coffre->x + LARGEUR_COFFRE) && (combattant->y >= coffre->y) && (combattant->y <= coffre->y + HAUTEUR_COFFRE) ){
+  if( (coffre->x >= combattant->x) && (coffre->x <= combattant->x + LARGEUR_PERSONNAGE) && (coffre->y >= combattant->y) && (coffre->y <= combattant->y + HAUTEUR_PERSONNAGE) ){
 
     return(COLLISION);
   }
-  if( (combattant->x >= coffre->x) && (combattant->x <= coffre->x + LARGEUR_COFFRE) && (combattant->y + HAUTEUR_PERSONNAGE >= coffre->y) && (combattant->y + HAUTEUR_PERSONNAGE <= coffre->y + HAUTEUR_COFFRE) ){
+  if( (coffre->x >= combattant->x) && (coffre->x <= combattant->x + LARGEUR_PERSONNAGE) && (coffre->y + HAUTEUR_COFFRE >= combattant->y) && (coffre->y + HAUTEUR_COFFRE <= combattant->y + HAUTEUR_COMBATTANT) ){
 
     return(COLLISION);
   }
