@@ -68,14 +68,65 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
     }
     // si c'est un marchand
     if(nonCombattant_proche(monde) == 2){
+
+        //afficher l'or en possession du joueur
+        sprintf(parole, "%d", monde->joueur->or);
+        apply_text(renderer, 0, 0, 0, parole , police, 800 + (taille_fenetre[0]/2) - 500, 505 + (taille_fenetre[1]/2) - 350 , 75, 60);
+        or_position(renderer, textures, 865 + (taille_fenetre[0]/2) - 500, 505 + (taille_fenetre[1]/2) - 350);
+
         sprintf(parole, "Bonjour! Que voulez-vous acheter?");
         apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 350 , 270, 20);
-        sprintf(parole, "   > Des armes!");
-        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 775 - 156 + (taille_fenetre[1]/2) - 350 , 100, 20);
-        sprintf(parole, "   > Des potions!");
-        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 800 - 156 + (taille_fenetre[1]/2) - 350 , 110, 20);
-        sprintf(parole, "   > Rien, merci!");
-        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 825 - 156 + (taille_fenetre[1]/2) - 350 , 100, 20);
+
+        //icones objet
+        icone_boutique_position(renderer, textures, 60 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 1);
+        icone_boutique_position(renderer, textures, 250 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 2);
+        icone_boutique_position(renderer, textures, 440 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 3);
+        icone_boutique_position(renderer, textures, 630 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 4);
+
+        //nom des objets
+        sprintf(parole, "potion de vie");
+        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 100, 20);
+        sprintf(parole, "potion de mana");
+        apply_text(renderer, 0, 0, 0, parole , police, 290 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 120, 20);
+        sprintf(parole, "epee en pierre");
+        apply_text(renderer, 0, 0, 0, parole , police, 480 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 110, 20);
+        sprintf(parole, "bouclier en pierre");
+        apply_text(renderer, 0, 0, 0, parole , police, 670 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 140, 20);
+
+        //prix
+        sprintf(parole, "20");
+        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 18, 20);
+        apply_text(renderer, 0, 0, 0, parole , police, 290 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 18, 20);
+        sprintf(parole, "100");
+        apply_text(renderer, 0, 0, 0, parole , police, 480 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 27, 20);
+        apply_text(renderer, 0, 0, 0, parole , police, 670 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 27, 20);
+
+        //icone or
+        icone_boutique_position(renderer, textures, 105 + (taille_fenetre[0]/2) - 500, 642 + (taille_fenetre[1]/2) - 350 , 7);
+        icone_boutique_position(renderer, textures, 295 + (taille_fenetre[0]/2) - 500, 642 + (taille_fenetre[1]/2) - 350 , 7);
+        icone_boutique_position(renderer, textures, 493 + (taille_fenetre[0]/2) - 500, 642 + (taille_fenetre[1]/2) - 350 , 7);
+        icone_boutique_position(renderer, textures, 683 + (taille_fenetre[0]/2) - 500, 642 + (taille_fenetre[1]/2) - 350 , 7);
+
+        //Annuler
+        sprintf(parole, "Rien,");
+        apply_text(renderer, 0, 0, 0, parole , police, 880 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 36, 20);
+        sprintf(parole, "merci!");
+        apply_text(renderer, 0, 0, 0, parole , police, 875 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 45, 20);
+
+        //affichage sélection d'option
+        sprintf(parole, "X");
+        if(monde->option == 1)
+            apply_text(renderer, 0, 0, 0, parole , police, 140 + (taille_fenetre[0]/2) - 500, 680 + (taille_fenetre[1]/2) - 350 , 9, 20);
+        if(monde->option == 2)
+            apply_text(renderer, 0, 0, 0, parole , police, 330 + (taille_fenetre[0]/2) - 500, 680 + (taille_fenetre[1]/2) - 350 , 9, 20);
+        if(monde->option == 3)
+            apply_text(renderer, 0, 0, 0, parole , police, 520 + (taille_fenetre[0]/2) - 500, 680 + (taille_fenetre[1]/2) - 350 , 9, 20);
+        if(monde->option == 4)
+            apply_text(renderer, 0, 0, 0, parole , police, 710 + (taille_fenetre[0]/2) - 500, 680 + (taille_fenetre[1]/2) - 350 , 9, 20);
+        if(monde->option == 5)
+            apply_text(renderer, 0, 0, 0, parole , police, 900 + (taille_fenetre[0]/2) - 500, 680 + (taille_fenetre[1]/2) - 350 , 9, 20);
+
+
     }
     if(nonCombattant_proche(monde) == 3){
         sprintf(parole, "Recompense");
@@ -104,10 +155,46 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
 
         // si c'est un marchand
         if(nonCombattant_proche(monde) == 2){
-
-            if(keystates[SDL_SCANCODE_RETURN]){
+            if(keystates[SDL_SCANCODE_RIGHT]){
+                if(monde->option < 5)
+                    monde->option++;
+                else
+                    monde->option = 1;
+            }
+            if(keystates[SDL_SCANCODE_LEFT]){
+                if(monde->option > 1)
+                    monde->option--;
+                else
+                    monde->option = 5; //5 options pour le moment
+            }
+            //TO DO ajouter les objets dans l'inventaire
+            if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
+                //on achète la potion de vie
+                monde->joueur->or = monde->joueur->or - 20; // TO DOvérifier que l'argent en possession est suffisant
+                monde->option = 0;
+            }
+            if(keystates[SDL_SCANCODE_RETURN] && monde->option == 2){
+                //on achète la potion de mana
+                monde->joueur->or = monde->joueur->or - 20;
+                monde->option = 0;
+            }
+            //TO DO vérifier quelles armes le marchand vend
+            if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
+                //on achète une des épées
+                monde->joueur->or = monde->joueur->or - 100;
+                monde->option = 0;
+            }
+            if(keystates[SDL_SCANCODE_RETURN] && monde->option == 4){
+                //on achète un des boucliers
+                monde->joueur->or = monde->joueur->or - 100;
+                monde->option = 0;
+            }
+            if(keystates[SDL_SCANCODE_RETURN] && monde->option == 5){
+                monde->option = 0;
+                //on quitte la boutique
                 monde->etat_jeu = 1;
             }
+
         }
         // si c'est un coffre
         if(nonCombattant_proche(monde) == 3){

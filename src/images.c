@@ -119,6 +119,8 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->epee2_petite = NULL;
     clean_texture(textures->bouclier1_petit);
     textures->bouclier1_petit = NULL;
+    clean_texture(textures->or_petit);
+    textures->or_petit = NULL;
     clean_texture(textures->game_over);
     textures->game_over = NULL;
     if(police != NULL){
@@ -181,6 +183,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->epee2_petite = load_image("./rsrc/img/epee2.bmp", renderer);
     textures->bouclier1_petit = load_image("./rsrc/img/bouclier1.bmp", renderer);
     textures->bouclier2_petit = load_image("./rsrc/img/bouclier2.bmp", renderer);
+    textures->or_petit = load_image("./rsrc/img/piece_petite.bmp", renderer);
 }
 
 /**
@@ -289,7 +292,7 @@ void or_position(SDL_Renderer *renderer, images_t *textures, int x, int y){
 }
 
 void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num){
-    // 1: potion rouge, 2: potion bleue, 3: epee 1, 4: bouclier 1, 5: epee 2, 6: bouclier 2
+    // 1: potion rouge, 2: potion bleue, 3: epee 1, 4: bouclier 1, 5: epee 2, 6: bouclier 2, 7: icone or
     switch(num){
         case 1:
               apply_texture(textures->potion_r_petite, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
@@ -308,6 +311,9 @@ void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, 
         break;
         case 6:
               apply_texture(textures->bouclier2_petit, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 7:
+        			apply_texture(textures->or_petit, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
         break;
     }
 }

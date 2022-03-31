@@ -57,6 +57,7 @@ typedef struct images_s{
     SDL_Texture* epee2_petite;
     SDL_Texture* bouclier1_petit;
     SDL_Texture* bouclier2_petit;
+    SDL_Texture* or_petit;
     //TTF_Font *font; /*!< Texture liée à la police du texte affiché à l'écran */
 
 
