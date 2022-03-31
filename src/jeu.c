@@ -837,12 +837,10 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
     }
 
     if(monde->etat_jeu == ETAT_DIALOGUE){
-        interaction_nonCombattant(event, monde);
         dialogue_position(renderer, textures);
         affichage_dialogue(renderer, textures, monde, police);
     }
     if(monde->etat_jeu == ETAT_COFFRE){
-        interaction_nonCombattant(event, monde);
         affichage_dialogue(renderer, textures, monde, police);
     }
 
@@ -1030,6 +1028,10 @@ void evenements(SDL_Event* event, monde_t * monde){
         }
         if(monde->etat_jeu == ETAT_COMBAT){
           evenements_combat(event, monde);
+        }
+
+        if(monde->etat_jeu == ETAT_DIALOGUE || monde->etat_jeu == ETAT_COFFRE){
+          interaction_nonCombattant(event, monde);
         }
 
         //Si l'utilisateur a cliqué sur le X de la fenêtre
