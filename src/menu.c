@@ -310,6 +310,11 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
     apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.55 , SCREEN_HEIGHT/4 , TEXT_OBJET_L*0.9, TEXT_OBJET_H/2+50);
     snprintf(opt, 20, "%d", monde->joueur->combattant->attaque);
     apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.63 , SCREEN_HEIGHT/4 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
+    sprintf(opt, "Or");
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.68 , SCREEN_HEIGHT/4 , TEXT_OBJET_L*0.9, TEXT_OBJET_H/2+50);
+    snprintf(opt, 20, "%d", monde->joueur->or);
+    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.75 , SCREEN_HEIGHT/4 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
+
     // Affichange dynamique des séléctions avec option 1 2 3 4 5 6 7.
         // Affichage Inventaire
         if(monde->option==1){
@@ -427,6 +432,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
             case 5 :monde->option=1;break;//4
             case 6 :monde->option=7;break;//6
             case 7 :monde->option=6;break;//7
+            default:monde->option=1;break;
           }
         }
         if(keystates[SDL_SCANCODE_UP]){
@@ -438,6 +444,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
             case 5 :monde->option=3;break;//4
             case 6 :monde->option=7;break;//6
             case 7 :monde->option=6;break;//7
+            default:monde->option=1;break;
           }
         }
         if(keystates[SDL_SCANCODE_LEFT]){
@@ -449,6 +456,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
             case 5 :monde->option=4;break;//4
             case 6 :monde->option=3;break;//6
             case 7 :monde->option=5;break;//7
+            default:monde->option=1;break;
           }
         }
         if(keystates[SDL_SCANCODE_RIGHT]){
@@ -460,6 +468,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
             case 5 :monde->option=7;break;//4
             case 6 :monde->option=2;break;//6
             case 7 :monde->option=4;break;//7
+            default:monde->option=1;break;
           }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){

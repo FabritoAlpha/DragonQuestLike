@@ -171,22 +171,30 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
                 //on achète la potion de vie
                 monde->joueur->or = monde->joueur->or - 20; // TO DOvérifier que l'argent en possession est suffisant
+                // Ajout de l'objet ! DOIT ETRE CHANGER POUR PRENDRE EN COMPTE UN NOMBRE DE POTION
+                monde->joueur->inventaire[4]=monde->biblio_objet[4];
                 monde->option = 0;
             }
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 2){
                 //on achète la potion de mana
                 monde->joueur->or = monde->joueur->or - 20;
+                // Ajout de l'objet ! DOIT ETRE CHANGER POUR PRENDRE EN COMPTE UN NOMBRE DE POTION
+                monde->joueur->inventaire[5]=monde->biblio_objet[5];
                 monde->option = 0;
             }
             //TO DO vérifier quelles armes le marchand vend
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
                 //on achète une des épées
                 monde->joueur->or = monde->joueur->or - 100;
+                // Ajout de l'objet !
+                monde->joueur->inventaire[0]=monde->biblio_objet[0];
                 monde->option = 0;
             }
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 4){
                 //on achète un des boucliers
                 monde->joueur->or = monde->joueur->or - 100;
+                // Ajout de l'objet !
+                monde->joueur->inventaire[2]=monde->biblio_objet[2];
                 monde->option = 0;
             }
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 5){
