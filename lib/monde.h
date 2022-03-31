@@ -41,7 +41,7 @@
 	*\brief représentation d'une salle
 */
 typedef struct{
-	monstre_t ** monstres; /**< Liste des monstres de la salle (peut être vide)*/
+	monstre_t * monstre; /**< Liste des monstres de la salle (peut être vide)*/
 	//int nb_monstres; /**< Nombre de monstres que contient la salle */
 	nonCombattant_t * coffre; /**< coffre de la salle (peut être vide)*/
 	nonCombattant_t ** perso;/**< Liste des personnages non joueurs de la salle (peut être vide) */

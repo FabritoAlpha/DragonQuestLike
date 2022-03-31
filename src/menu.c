@@ -584,7 +584,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
     int joueur_etait_vivant = (monde->joueur->combattant->pvCour > 0);
     int indice_deg = 0; //Si le joueur n'a pas attaqué vaut 0, 1 sinon
-    if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT){
+    if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT){
         if(monde->num_menu_comb == 1){
 
 
@@ -700,26 +700,26 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                         case EPEE:
                             //On inflige des dégâts au monstre
                             //Actualise ses pts de vie
-                            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour -=monde->joueur->combattant->attaque;
+                            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour -=monde->joueur->combattant->attaque;
                             //Finit le combat si pv du monstre <= 0
-                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour <= 0){
+                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour <= 0){
                                 monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
                                 //monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
-                                monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat = MORT;
+                                monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat = MORT;
                             }
                             indice_deg++;//On indique que le joueur a attaqué
                             break;
                         case SORT:
                             //On inflige des dégâts au monstre
                             //Actualise ses pts de vie
-                            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour -=monde->joueur->combattant->attaque;
+                            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour -=monde->joueur->combattant->attaque;
                             //On réduit de 5 ses points de mana
                             monde->joueur->manaCour -= 5;
                             //Finit le combat si pv du monstre <= 0
-                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour <= 0){
+                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour <= 0){
                                 monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
-                                monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
+                                monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
                             }
                             indice_deg++;
@@ -727,12 +727,12 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                         case ARC:
                             //On inflige des dÃ©gÃ¢ts au monstre
                             //Actualise ses pts de vie
-                            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour -=monde->joueur->combattant->attaque;
+                            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour -=monde->joueur->combattant->attaque;
                             //Finit le combat si pv du monstre <= 0
-                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour <= 0){
+                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour <= 0){
                                 monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
                                 printf("On tue par l'arc\n");
-                                monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
+                                monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
                             }
                             indice_deg++;
@@ -761,9 +761,9 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
     }
     //Le monstre attaque si le joueur a attaqué
 
-    else if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT && monde->num_menu_comb != MENU1 && monde->etat_jeu != 1 && indice_deg == 1){
+    else if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->num_menu_comb != MENU1 && monde->etat_jeu != 1 && indice_deg == 1){
 		//Le monstre inflige des dégâts basiquement au joueur
-		monde->joueur->combattant->pvCour -= monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->attaque;
+		monde->joueur->combattant->pvCour -= monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->attaque;
 
 		if( monde->joueur->combattant->pvCour <= 0 && joueur_etait_vivant == 1){
       printf("Joueur mort\n");
@@ -784,7 +784,7 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
     //Menus ave choix des actions
     //printf("Option du menu: %d\n", monde->option);
     //printf("Numéro du menu:%d\n",monde->num_menu_comb);
-    if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->etat == VIVANT && monde->joueur->combattant->pvCour > 0){
+    if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->joueur->combattant->pvCour > 0){
         //On affiche le monstre et le personnage
         apply_texture(textures->joueur,renderer, 1*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
 
@@ -817,7 +817,7 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
         char pm_j[3];
 
         sprintf(pv_j, "%d", (monde->joueur->combattant->pvCour));
-        sprintf(pv_m, "%d", (monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0]->combattant->pvCour));
+        sprintf(pv_m, "%d", (monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour));
         sprintf(pm_j, "%d", (monde->joueur->manaCour));
 
         //Il faut afficher la barre de point de vie du joueur et du monstre ainsi que la barre de mana du joueur

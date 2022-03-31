@@ -570,7 +570,7 @@ int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj){
 int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * coffre){
 
 
-  if( (coffre->x + LARGEUR_COFFRE >= combattant->x) && (coffre->x + LARGEUR_COFFRE <= combattant->x + LARGEUR_PERSONNAGE) && (coffre->y + HAUTEUR_COFFRE >= combattant->y) && (coffre->y + HAUTEUR_COFFRE <= combattant->y + HAUTEUR_COMBATTANT) ){
+  if( (coffre->x + LARGEUR_COFFRE >= combattant->x) && (coffre->x + LARGEUR_COFFRE <= combattant->x + LARGEUR_PERSONNAGE) && (coffre->y + HAUTEUR_COFFRE >= combattant->y) && (coffre->y + HAUTEUR_COFFRE <= combattant->y + HAUTEUR_PERSONNAGE) ){
 
     return(COLLISION);
   }
@@ -582,7 +582,7 @@ int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * cof
 
     return(COLLISION);
   }
-  if( (coffre->x >= combattant->x) && (coffre->x <= combattant->x + LARGEUR_PERSONNAGE) && (coffre->y + HAUTEUR_COFFRE >= combattant->y) && (coffre->y + HAUTEUR_COFFRE <= combattant->y + HAUTEUR_COMBATTANT) ){
+  if( (coffre->x >= combattant->x) && (coffre->x <= combattant->x + LARGEUR_PERSONNAGE) && (coffre->y + HAUTEUR_COFFRE >= combattant->y) && (coffre->y + HAUTEUR_COFFRE <= combattant->y + HAUTEUR_PERSONNAGE) ){
 
     return(COLLISION);
   }
@@ -598,25 +598,8 @@ int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t 
       return(COLLISION);
     }
 
-    if(combattant->type == JOUEUR){
-      for(i = 0; i < NB_MONSTRES_SALLE; i++){
-        if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->etat == VIVANT){
-          if(collision_joueur_monstre(combattant,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant, monde)){
-            return(COLLISION);
-          }
-        }
-      }
-    }
-
-    if(combattant->type == MONSTRE){
-      for(i = 0; i < NB_MONSTRES_SALLE; i++){
-        if(indice_monstre != i){
-          /*if(collision_monstre(combattant, salle->monstres[i]->combattant)){
-            return(COLLISION);
-          }*/
-        }
-      }
-      if(collision_joueur_monstre(monde->joueur->combattant, combattant, monde)){
+    if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT){
+      if(collision_joueur_monstre(combattant,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant, monde)){
         return(COLLISION);
       }
     }
@@ -863,29 +846,26 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
 
       coffre_position(renderer, textures, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre);
 
-      for(int i = 0; i < NB_MONSTRES_SALLE ; i++){
-        int suivaleatoir;
-        if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->etat == VIVANT){
-          monstre_position(renderer, textures, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]);
-          if(time_sec>(*next_tick_monstre)){
-            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant->vitesse==1){
-              monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant->vitesse=0;
-            }else{
-              monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i]->combattant->vitesse=1;
-            }
-            do{
-              suivaleatoir=rand()%500;
-            }while(suivaleatoir<200||suivaleatoir>500);
-            (*next_tick_monstre)+=suivaleatoir;
+      int suivaleatoir;
+      if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT){
+        monstre_position(renderer, textures, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre);
+        if(time_sec>(*next_tick_monstre)){
+          if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->vitesse==1){
+            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->vitesse=0;
+          }else{
+            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->vitesse=1;
           }
+          do{
+            suivaleatoir=rand()%500;
+          }while(suivaleatoir<200||suivaleatoir>500);
+          (*next_tick_monstre)+=suivaleatoir;
+        }
 
-          if(time_sec>(*next_tick)){
+        if(time_sec>(*next_tick)){
 
-            deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[i], monde);
-          }
+          deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
         }
       }
-
     }
 
     //On actualise l'affichage

@@ -50,10 +50,9 @@ salle_t * creer_salle(){
     salle_t * salle;
     salle = malloc(sizeof(salle_t));
 
-    salle->monstres = malloc(sizeof(monstre_t) * NB_MONSTRES_SALLE);
-    for(i = 0; i < NB_MONSTRES_SALLE; i++){
-        salle->monstres[i] = creer_monstre();
-    }
+    salle->monstre = malloc(sizeof(monstre_t));
+
+    salle->monstre = creer_monstre();
 
     salle->perso = malloc(sizeof(monstre_t) * NB_PERSO_SALLE);
     for(i = 0; i < NB_PERSO_SALLE; i++){
@@ -142,16 +141,15 @@ void detruire_salle(salle_t ** salle){
     free((*salle)->coffre);
     (*salle)->coffre = NULL;
 
-    for(i = 0; i < NB_MONSTRES_SALLE; i++){
-        detruire_monstre(&(*salle)->monstres[i]);
-    }
+    detruire_monstre(&((*salle)->monstre));
+    
     if((*salle)->num_salle == 0){
         for(i = 0; i < NB_PERSO_SALLE; i++){
             detruire_nonCombattant(&(*salle)->perso[i]);
         }
     }
-    free((*salle)->monstres);
-    (*salle)->monstres = NULL;
+    free((*salle)->monstre);
+    (*salle)->monstre = NULL;
 
     free((*salle)->perso);
     (*salle)->perso= NULL;
@@ -260,15 +258,15 @@ void init_zone(zone_t * zone, int num_zone){
 
 void init_salle(salle_t * salle, int num_salle){
   int i;
-  for(i = 0; i < NB_MONSTRES_SALLE; i++){
-    init_monstre(salle->monstres[i], 30, 30,100, 1,0,0);
-  }
+  
+  init_monstre(salle->monstre, 30, 30,100, 1,0,0);
+  
   if(num_salle == 0){
-      int hauteur = 251;
-      for(i = 0; i < NB_PERSO_SALLE; i++){
+    int hauteur = 251;
+    for(i = 0; i < NB_PERSO_SALLE; i++){
         init_nonCombattant(salle->perso[i], 0, 104, hauteur,0);
         hauteur = hauteur + 100;
-      }
+    }
   }
   salle->difficulte = 0;
   salle->num_salle = num_salle;
