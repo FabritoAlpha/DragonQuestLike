@@ -649,19 +649,19 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             monde->option = EPEE;
                             break;
                         case EPEE:
-                            monde->option = RETOUR;
+                            if(monde->joueur->manaCour >= 5){
+                                monde->option = SORT;
+                            }
+                            else{
+                                monde->option = ARC;
+                            }
                             break;
                         case SORT:
                             monde->option = EPEE;
                             break;
                         case ARC:
                             //Si on a assez de mana on va sur la case sort sinon on va sur la case epee
-                            if(monde->joueur->manaCour >=5){
-                                monde->option = SORT;
-                            }
-                            else{
-                                monde->option = EPEE;
-                            }
+                            monde->option = RETOUR;
                             break;
                         case RETOUR:
                             monde->option = ARC;
@@ -684,13 +684,65 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             }
                             break;
                         case SORT:
-                            monde->option = ARC;
+                            monde->option = EPEE;
                             break;
                         case ARC:
                             monde->option = RETOUR;
                             break;
                         case RETOUR:
+                            monde->option = ARC;
+                            break;
+                    }
+                }
+                if(keystates[SDL_SCANCODE_DOWN]){
+                    switch(monde->option){
+                        //On décale le curseur vers la case Ã  droite
+                        case RIEN:
+                            monde->option = RETOUR;
+                            break;
+                        case EPEE:
+                            //Si on a assez de manas on va sur sort sinon on va sur arc car on ne peut pas utiliser le sort
+                            monde->option = ARC;
+                            break;
+                        case SORT:
+                            monde->option = RETOUR;
+                            break;
+                        case ARC:
                             monde->option = EPEE;
+                            break;
+                        case RETOUR:
+                            if(monde->joueur->manaCour >= 5){
+                              monde->option = SORT;
+                            }
+                            else{
+                              monde->option = EPEE;
+                            }
+                            break;
+                    }
+                }
+                if(keystates[SDL_SCANCODE_UP]){
+                    switch(monde->option){
+                        //On décale le curseur vers la case Ã  droite
+                        case RIEN:
+                            monde->option = EPEE;
+                            break;
+                        case EPEE:
+                            //Si on a assez de manas on va sur sort sinon on va sur arc car on ne peut pas utiliser le sort
+                            monde->option = ARC;
+                            break;
+                        case SORT:
+                            monde->option = RETOUR;
+                            break;
+                        case ARC:
+                            monde->option = EPEE;
+                            break;
+                        case RETOUR:
+                            if(monde->joueur->manaCour >= 5){
+                              monde->option = SORT;
+                            }
+                            else{
+                              monde->option = EPEE;
+                            }
                             break;
                     }
                 }
@@ -752,26 +804,27 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
         printf("Boucle\n");
       }
       printf("Sortie de boucle\n");
-		if(monde->partie == 1){
-            init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
-        }
-        else{
-            init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
-        }
+      monde->num_menu_comb = MENU1;
+		  if(monde->partie == 1){
+        init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
+      }
+      else{
+        init_monde_jeu(monde, "./rsrc/txt/partie2.txt");
+      }
     }
     //Le monstre attaque si le joueur a attaqué
 
     else if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->num_menu_comb != MENU1 && monde->etat_jeu != 1 && indice_deg == 1){
-		//Le monstre inflige des dégâts basiquement au joueur
-		monde->joueur->combattant->pvCour -= monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->attaque;
+		    //Le monstre inflige des dégâts basiquement au joueur
+		    monde->joueur->combattant->pvCour -= monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->attaque;
 
-		if( monde->joueur->combattant->pvCour <= 0 && joueur_etait_vivant == 1){
-      printf("Joueur mort\n");
-			//S'il tue le joueur on affiche game over
-			//apply_texture(textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
-			//Il doit cliquer sur une touche en dehors de escape afin de le passer
-		}
-	}
+		    if( monde->joueur->combattant->pvCour <= 0 && joueur_etait_vivant == 1){
+          printf("Joueur mort\n");
+			    //S'il tue le joueur on affiche game over
+			    //apply_texture(textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+		      //Il doit cliquer sur une touche en dehors de escape afin de le passer
+		    }
+	  }
     //On réinitialise la valeur de menu sur celle du premier pour le ré-afficher par la suite
     if(monde->num_menu_comb != MENU2){
         monde->num_menu_comb = MENU1;
@@ -786,28 +839,34 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
     //printf("Numéro du menu:%d\n",monde->num_menu_comb);
     if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->joueur->combattant->pvCour > 0){
         //On affiche le monstre et le personnage
-        apply_texture(textures->joueur,renderer, 1*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
+        apply_texture(textures->joueur,renderer, 150, 150);
 
         //récupéation de l'information via la zone et la salle du joueur
         switch(monde->joueur->zone){
             case 0:
         //Renommer monstre_zone0
         //printf("Le monstre s'affiche\n");
-                apply_texture(textures->monstre, renderer, 100, 100);
-        break;
+                apply_texture(textures->monstre, renderer, SCREEN_WIDTH - 150, 150);
+                break;
             case 1:
-        apply_texture(textures->monstre_zone1, renderer, 7*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
-        break;
+                apply_texture(textures->monstre_zone1, renderer, SCREEN_WIDTH - 150, 150);
+                break;
             case 2:
                 switch(monde->joueur->salle){
-                    case (0||1||2):
-            apply_texture(textures->monstre_zone2, renderer, 7*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
+                    case 0:
+                        apply_texture(textures->monstre_zone2, renderer, SCREEN_WIDTH - 150, 150);
+                        break;
+                    case 1:
+                        apply_texture(textures->monstre_zone2, renderer, SCREEN_WIDTH - 150, 150);
+                        break;
+                    case 2:
+                        apply_texture(textures->monstre_zone2, renderer, SCREEN_WIDTH - 150, 150);
                         break;
                     case 3:
-            apply_texture(textures->boss, renderer, 7*SCREEN_WIDTH/8, 1*SCREEN_HEIGHT/8);
+                        apply_texture(textures->boss, renderer, SCREEN_WIDTH - 250, 200);
                         break;
                 }
-        break;
+            break;
         }
 
         //On affiche les points de vie/pm du joueur et du monstre
@@ -836,13 +895,13 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
         //->un pour chaque barre
 
         //sprintf(opt, pv_j);
-        apply_text(renderer, 0, 255, 0, pv_j, police, 1*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/24),(SCREEN_HEIGHT/20));
+        apply_text(renderer, 255, 20, 20, pv_j, police, 50, 150, 50, 50);
 
         //sprintf(opt, pv_m);
-        apply_text(renderer, 0, 255, 0, pv_m, police, 4*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+        apply_text(renderer, 255, 20, 20, pv_m, police, SCREEN_WIDTH - 80, 150, 50, 50);
 
         //sprintf(opt, mana_j);
-        apply_text(renderer, 0, 255, 0, pm_j, police, 7*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+        apply_text(renderer, 20, 20, 255, pm_j, police, 50, 210, 50, 50);
 
 
         //Si on affiche le menu 1
@@ -852,8 +911,8 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
             char fuite[10];
 
             //Les cases dans lesquelles le texte se trouve
-            apply_texture(textures->case_combat, renderer, 1*SCREEN_WIDTH/8, 6*SCREEN_HEIGHT/8);
-            apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 6*SCREEN_HEIGHT/8);
+            apply_texture(textures->case_combat, renderer, 2*SCREEN_WIDTH/8, 5*SCREEN_HEIGHT/8);
+            apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 5*SCREEN_HEIGHT/8);
 
             //Texte à afficher
             sprintf(atq, "Attaque");
@@ -861,19 +920,19 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
 
             switch(monde->option){
                 case RIEN:
-                    apply_text(renderer, 0, 255, 0, atq, police, 3*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, atq, police, 4*SCREEN_WIDTH/16, 11*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
 
-                    apply_text(renderer, 0, 255, 0, fuite, police, 6*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, fuite, police, 11*SCREEN_WIDTH/16,11*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
                     break;
                 case ATTAQUE:
-                    apply_text(renderer, 255, 0, 0, atq, police, 3*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 255, 0, 0, atq, police, 4*SCREEN_WIDTH/16, 11*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
 
-                    apply_text(renderer, 0, 255, 0, fuite, police, 6*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, fuite, police, 11*SCREEN_WIDTH/16,11*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
                     break;
                 case FUITE:
-                    apply_text(renderer, 0, 255, 0, atq, police, 3*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, atq, police, 4*SCREEN_WIDTH/16, 11*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
 
-                    apply_text(renderer, 255, 0, 0, fuite, police, 6*SCREEN_WIDTH/8, 8*SCREEN_HEIGHT/10,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 255, 0, 0, fuite, police, 11*SCREEN_WIDTH/16, 11*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
                     break;
             }
         }
@@ -887,56 +946,56 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
             char retour[10];
 
             //Chaînes de caractères utiles pour afficher le texte
-            sprintf(epee, "épée");
+            sprintf(epee, "Epee");
             sprintf(sort, "Sort");
             sprintf(arc, "Arc");
             sprintf(retour, "Retour");
 
             //case pour le choix coup d'épée
-            apply_texture(textures->case_combat, renderer, 1*SCREEN_WIDTH/8, 5*SCREEN_HEIGHT/8);
+            apply_texture(textures->case_combat, renderer, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16);
             //case pour le choix sort
-            apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 5*SCREEN_HEIGHT/8);
+            apply_texture(textures->case_combat, renderer, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16);
             //case pour le choix tir Ã  l'arc
-            apply_texture(textures->case_combat, renderer, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8);
+            apply_texture(textures->case_combat, renderer, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16);
             //case pour le choix retour
-            apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8);
+            apply_texture(textures->case_combat, renderer, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16);
 
 
 
-            apply_text(renderer, 0, 255, 0, epee, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-            apply_text(renderer, 0, 255, 0, sort, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-            apply_text(renderer, 0, 255, 0, arc, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-            apply_text(renderer, 0, 255, 0, retour, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+            apply_text(renderer, 0, 255, 255, epee, police, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+            apply_text(renderer, 0, 255, 255, sort, police, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+            apply_text(renderer, 0, 255, 255, arc, police, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+            apply_text(renderer, 0, 255, 255, retour, police, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
             switch(monde->option){
                 case RIEN:
-                    apply_text(renderer, 0, 255, 0, epee, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 0, 255, 0, sort, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 0, 255, 0, arc, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 0, 255, 0, retour, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 255, epee, police, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, sort, police, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, arc, police, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, retour, police, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
                     break;
                 case EPEE:
-                    apply_text(renderer, 255, 0, 0, epee, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 0, 255, 0, sort, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 0, 255, 0, arc, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 0, 255, 0, retour, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 255, 0, 0, epee, police, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, sort, police, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, arc, police, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, retour, police, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
                     break;
                 case SORT:
-                    apply_text(renderer, 0, 255, 0, epee, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 255, 0, 0, sort, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 0, 255, 0, arc, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 0, 255, 0, retour, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 255, epee, police, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 255, 0, 0, sort, police, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, arc, police, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, retour, police, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
                     break;
                 case ARC:
-                    apply_text(renderer, 0, 255, 0, epee, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 0, 255, 0, sort, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 255, 0, 0, arc, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 0, 255, 0, retour, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 255, epee, police, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, sort, police, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 255, 0, 0, arc, police, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, retour, police, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
                     break;
                 case RETOUR:
-                    apply_text(renderer, 0, 255, 0, epee, police, 1*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 0, 255, 0, sort, police, 3*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 0, 255, 0, arc, police, 5*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
-                    apply_text(renderer, 255, 0, 0, retour, police, 7*SCREEN_WIDTH/8, 7*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+                    apply_text(renderer, 0, 255, 255, epee, police, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, sort, police, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, arc, police, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 255, 0, 0, retour, police, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
                     break;
             }
         }

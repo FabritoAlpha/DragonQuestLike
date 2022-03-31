@@ -258,7 +258,7 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
     }
     else if(etat == ETAT_COMBAT){
       apply_texture(textures->arene_combat, renderer, (taille_fenetre[0]/2)-500, (taille_fenetre[1]/2) - 375);
-      apply_texture(textures->monstre, renderer, 200.0, 200.0);
+      
     }
     else{
         apply_texture(textures->zone0salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
