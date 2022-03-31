@@ -170,17 +170,28 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
             //TO DO ajouter les objets dans l'inventaire
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
                 //on achète la potion de vie
-                monde->joueur->or = monde->joueur->or - 20; // TO DOvérifier que l'argent en possession est suffisant
-                // Ajout de l'objet ! DOIT ETRE CHANGER POUR PRENDRE EN COMPTE UN NOMBRE DE POTION
-                monde->joueur->inventaire[4]=monde->biblio_objet[4];
-                monde->option = 0;
+                if((monde->joueur->or)-20 >= 0){ // vérification de l'argent du joueur
+                  monde->joueur->or = monde->joueur->or - 20; 
+                  // Ajout de l'objet ! 
+                  if(monde->joueur->inventaire[4].id!=monde->biblio_objet[4].id){ // test si déja présent dans inventaire
+                    monde->joueur->inventaire[4]=monde->biblio_objet[4];
+                  }
+                  monde->joueur->inventaire[4].attaque_sup++;
+                  monde->option = 0;
+                }
+                
             }
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 2){
                 //on achète la potion de mana
-                monde->joueur->or = monde->joueur->or - 20;
-                // Ajout de l'objet ! DOIT ETRE CHANGER POUR PRENDRE EN COMPTE UN NOMBRE DE POTION
-                monde->joueur->inventaire[5]=monde->biblio_objet[5];
-                monde->option = 0;
+                if((monde->joueur->or) -20 >= 0){ // vérification de l'argent du joueur
+                  monde->joueur->or = monde->joueur->or - 20; 
+                  // Ajout de l'objet ! 
+                  if(monde->joueur->inventaire[5].id!=monde->biblio_objet[5].id){ // test si déja présent dans inventaire
+                    monde->joueur->inventaire[5]=monde->biblio_objet[5]; // ajout de la potion dans l'inventaire
+                  }
+                  monde->joueur->inventaire[5].attaque_sup++; // dans tout les cas ajouter 1
+                  monde->option = 0;
+                } 
             }
             //TO DO vérifier quelles armes le marchand vend
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
@@ -750,9 +761,7 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
           }while(suivaleatoir<200||suivaleatoir>500);
           (*next_tick_monstre)+=suivaleatoir;
         }
-
         if(time_sec>(*next_tick)){
-
           deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
         }
       }

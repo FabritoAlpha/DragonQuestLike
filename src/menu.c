@@ -405,6 +405,8 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         sprintf(opt, "Potion de vie");
         apply_text(renderer, couleur, couleur2, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
         apply_texture(textures->potion_pv, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H);
+        snprintf(opt, 20, "%d", monde->joueur->inventaire[4].attaque_sup);
+        apply_text(renderer, couleur, couleur2, 0 , opt , police,POSITION_INVENTAIRE_L*0.15+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L/5, TEXT_OBJET_H);
         //Objet 7 Potion Mana
         if(monde->option==7){
             couleur=COULEUR_1_SELECTION;
@@ -419,6 +421,8 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         sprintf(opt, "Potion de mana");
         apply_text(renderer, couleur, couleur2, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
         apply_texture(textures->potion_mana, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H*2);
+        snprintf(opt, 20, "%d", monde->joueur->inventaire[5].attaque_sup);
+        apply_text(renderer, couleur, couleur2, 0, opt , police, POSITION_INVENTAIRE_L*0.15+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L/5, TEXT_OBJET_H);
 }
 void evenements_inventaire(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
@@ -566,21 +570,29 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
             }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 6){
-            if(monde->joueur->inventaire[4].id==6){
+            if(monde->joueur->inventaire[4].id==6 && monde->joueur->inventaire[4].attaque_sup>0){ // Si il y'a une potion dans l'inventaire 
                 monde->joueur->combattant->pvCour+=monde->joueur->inventaire[4].vie_sup;
                 if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
                     monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
                 }
-                monde->joueur->inventaire[4].id=0;
+                monde->joueur->inventaire[4].attaque_sup--; // Enleve une potion de l'inventaire
+                if(monde->joueur->inventaire[4].attaque_sup==0){ // Si il n'y à plus de potions on l'enleve de l'inventaire.
+                    monde->joueur->inventaire[4].id=0;
+                }
+                
             }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 7){
-            if(monde->joueur->inventaire[5].id==7){
+            if(monde->joueur->inventaire[5].id==7&&monde->joueur->inventaire[5].attaque_sup>0){ // Si il y'a une potion dans l'inventaire 
                 monde->joueur->manaCour+=monde->joueur->inventaire[5].mana_sup;
                 if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
                     monde->joueur->manaCour=monde->joueur->manaMax;
                 }
-                monde->joueur->inventaire[5].id=0;
+                monde->joueur->inventaire[5].attaque_sup--; // Enleve une potion de l'inventaire
+                if(monde->joueur->inventaire[5].attaque_sup==0){ // Si il n'y à plus de potions on l'enleve de l'inventaire.
+                    monde->joueur->inventaire[5].id=0;
+                }
+
             }
         }
 

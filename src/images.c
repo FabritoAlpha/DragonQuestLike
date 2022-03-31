@@ -266,7 +266,23 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
 }
 
 void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur){
+    // Affichage du joueur.
     apply_texture(textures->joueur, renderer, joueur->combattant->x + (taille_fenetre[0]/2) - 500, joueur->combattant->y + (taille_fenetre[1]/2) - 375);
+    // Affichage de l'équipement du joueur
+    // Epee
+    if(joueur->objet_equipe[0].id==joueur->inventaire[0].id&&joueur->inventaire[0].id!=0){
+        apply_texture(textures->epee1_petite, renderer, joueur->combattant->x+35 + (taille_fenetre[0]/2) - 500, joueur->combattant->y +30 + (taille_fenetre[1]/2) - 375);
+    }
+    if(joueur->objet_equipe[0].id==joueur->inventaire[1].id&&joueur->inventaire[1].id!=0){
+        apply_texture(textures->epee2_petite, renderer, joueur->combattant->x+35 + (taille_fenetre[0]/2) - 500, joueur->combattant->y +30 + (taille_fenetre[1]/2) - 375);
+    }
+    // Bouclier
+    if(joueur->objet_equipe[1].id==joueur->inventaire[2].id&&joueur->inventaire[2].id!=0){
+        apply_texture(textures->bouclier1_petit, renderer, joueur->combattant->x-10 + (taille_fenetre[0]/2) - 500, joueur->combattant->y +33 + (taille_fenetre[1]/2) - 375);
+    }
+    if(joueur->objet_equipe[1].id==joueur->inventaire[3].id&&joueur->inventaire[3].id!=0){
+        apply_texture(textures->bouclier2_petit, renderer, joueur->combattant->x-10 + (taille_fenetre[0]/2) - 500, joueur->combattant->y +33 + (taille_fenetre[1]/2) - 375);
+    }
 }
 
 void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre){
