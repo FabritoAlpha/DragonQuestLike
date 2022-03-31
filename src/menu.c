@@ -815,18 +815,28 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
         char pv_j[3];
         char pv_m[3];
         char pm_j[3];
+/*
+        printf("pv_j %d\n", (monde->joueur->combattant->pvCour));
+        printf("pv_m %d\n", (monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour));
+        printf("pm_j, %d\n", (monde->joueur->manaCour));
 
-        sprintf(pv_j, "%d", (monde->joueur->combattant->pvCour));
+*/
+        int pv_j2 =  (monde->joueur->combattant->pvCour);
+        //printf("PV = %d\n", pv_j2);
+        sprintf(pv_j, "%d", pv_j2);
+        //itoa(pv_j2, pv_j, DECIMAL);
         sprintf(pv_m, "%d", (monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour));
         sprintf(pm_j, "%d", (monde->joueur->manaCour));
 
+        //printf("pv_j = %d\n", (monde->joueur->combattant->pvCour));
+        //printf("pv_j = %s\n", pv_j);
         //Il faut afficher la barre de point de vie du joueur et du monstre ainsi que la barre de mana du joueur
 
         //Trois apply_texture à faire
         //->un pour chaque barre
 
         //sprintf(opt, pv_j);
-        apply_text(renderer, 0, 255, 0, pv_j, police, 1*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));
+        apply_text(renderer, 0, 255, 0, pv_j, police, 1*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/24),(SCREEN_HEIGHT/20));
 
         //sprintf(opt, pv_m);
         apply_text(renderer, 0, 255, 0, pv_m, police, 4*SCREEN_WIDTH/8, 2*SCREEN_HEIGHT/8,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/10));

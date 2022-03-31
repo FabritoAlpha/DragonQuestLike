@@ -1,5 +1,6 @@
 #ifndef MENU_H
 #define MENU_H
+
 #include "monde.h"
 #include "images.h"
 
