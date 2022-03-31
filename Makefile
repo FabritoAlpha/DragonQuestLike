@@ -27,25 +27,25 @@ DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o 
 	$(CC) $(CFLAGS) $^ -o $(BIN)/$@ $(LIBS) $(INCS)
 
 $(OBJ)/main.o: $(SRC)/main.c $(LIB)/jeu.h $(LIB)/sdl2_fonctions.h $(LIB)/images.h
-	$(CC) $(FLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
 
 $(OBJ)/sdl2_fonctions.o: $(SRC)/sdl2_fonctions.c $(LIB)/sdl2_fonctions.h
-	$(CC) $(FLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
 
 $(OBJ)/images.o: $(SRC)/images.c $(LIB)/images.h
-	$(CC) $(FLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
 
 $(OBJ)/jeu.o: $(SRC)/jeu.c $(LIB)/jeu.h
-	$(CC) $(FLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
 
 $(OBJ)/menu.o: $(SRC)/menu.c $(LIB)/menu.h
-	$(CC) $(FLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
 
 $(OBJ)/monde.o: $(SRC)/monde.c $(LIB)/monde.h
-	$(CC) $(FLAGS) -c ./$< -o $@
+	$(CC) $(CFLAGS) -c ./$< -o $@
 
 $(OBJ)/entitee.o: $(SRC)/entitee.c $(LIB)/entitee.h
-	$(CC) $(FLAGS) -c ./$< -o $@
+	$(CC) $(CFLAGS) -c ./$< -o $@
 
 
 entitee: test_entitee
