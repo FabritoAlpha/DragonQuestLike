@@ -176,7 +176,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     //textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
     textures->case_combat = load_image("./rsrc/img/selection_inactive.bmp", renderer);
     textures->game_over = load_image("./rsrc/img/fond_inventaire.bmp", renderer);
-    textures->arene_combat = load_image("./rsrc/img/zone0_salle1.bmp", renderer);
+    textures->arene_combat = load_image("./rsrc/img/arene.bmp", renderer);
     textures->potion_b_petite = load_image("./rsrc/img/fiole_bleu_boutique.bmp", renderer);
     textures->potion_r_petite = load_image("./rsrc/img/fiole_rouge_boutique.bmp", renderer);
     textures->epee1_petite = load_image("./rsrc/img/epee1.bmp", renderer);

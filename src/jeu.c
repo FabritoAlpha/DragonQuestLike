@@ -594,8 +594,10 @@ int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t 
     }
 
     if(combattant->type == JOUEUR){
-      if(collision_joueur_monstre(combattant,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant, monde)){
-        return(COLLISION);
+      if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre == VIVANT){
+        if(collision_joueur_monstre(combattant,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant, monde)){
+          return(COLLISION);
+        }
       }
     }
 
@@ -861,7 +863,7 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
         }
         printf("time sec %d nexttick %d\n",time_sec,(*next_tick));
         if(time_sec>(*next_tick)){
-          
+          (*next_tick)++;
           printf("On déplace le monstre");
           deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
         }
@@ -874,7 +876,7 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
     }
 
     //On actualise l'affichage
-    (*next_tick)+=1;
+    //(*next_tick)+=1;
     SDL_RenderPresent(renderer);
 
 }
