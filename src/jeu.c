@@ -686,15 +686,14 @@ void deplacement_monstre(monstre_t * monstre, monde_t * m){
   int dist_max=50;// A METRE JEU.H
   int nb_direction=4; //A METRE JEU.H
   int distance_agro=400; //A METRE JEU.H
-  if(distancejoueurmonstre(m->joueur,monstre)>distance_agro && monstre->etat==1){
-    monstre->etat=0;
+  if(distancejoueurmonstre(m->joueur,monstre)>distance_agro && monstre->agro==1){
+    monstre->agro=0;
     monstre->dir=-1;
   }
-  if(distancejoueurmonstre(m->joueur,monstre)<distance_agro && monstre->etat==0){
-    monstre->etat=1;
+  if(distancejoueurmonstre(m->joueur,monstre)<distance_agro && monstre->agro==0){
+    monstre->agro=1;
   }
-  //printf("%d",monstre->etat);
-  if(monstre->etat==0){ // Etat du monde dans lequel il se déplace de manière aléatoire
+  if(monstre->agro==0){ // Etat du monde dans lequel il se déplace de manière aléatoire
     if(monstre->dir==-1){ // dir -1 = initialisation du monstre sur son emplacement
       direction=rand()%nb_direction;
       do{distance=rand()%dist_max;}while(distance<dist_min||distance>dist_max);
@@ -753,7 +752,7 @@ void deplacement_monstre(monstre_t * monstre, monde_t * m){
       }
     }
   }
-  if(monstre->etat==1){// Etat du monstre dans lequel il fonce vers le joueur
+  if(monstre->agro==1){// Etat du monstre dans lequel il fonce vers le joueur
     if(m->joueur->combattant->x < monstre->combattant->x){
       valColision = deplacement_gauche(monstre->combattant, 0,m);
     }
@@ -793,7 +792,7 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, salle_
  */
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
     //printf("On rentre dans rafraichir\n");
-    int time_sec=(SDL_GetTicks()/20);
+    int time_sec=(SDL_GetTicks()/10);
 
     //on vide le renderer
     SDL_RenderClear(renderer);
@@ -860,10 +859,18 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
           }while(suivaleatoir<200||suivaleatoir>500);
           (*next_tick_monstre)+=suivaleatoir;
         }
+        printf("time sec %d nexttick %d\n",time_sec,(*next_tick));
         if(time_sec>(*next_tick)){
+          
+          printf("On déplace le monstre");
           deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
         }
+        else{
+          (*next_tick)-= 2;
+        }
+        
       }
+      
     }
 
     //On actualise l'affichage

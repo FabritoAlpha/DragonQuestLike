@@ -81,6 +81,7 @@ typedef struct{
   int dir;
   int dist;
   int etat; /**< Correspond à l'état du monstre: vivant ou mort*/
+  int agro;
 } monstre_t;
 
 /**
