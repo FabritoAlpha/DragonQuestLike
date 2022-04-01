@@ -594,10 +594,15 @@ int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t 
     }
 
     if(combattant->type == JOUEUR){
-      if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre == VIVANT){
+      if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT){
         if(collision_joueur_monstre(combattant,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant, monde)){
           return(COLLISION);
         }
+      }
+    }
+    else{
+      if(collision_joueur_monstre(monde->joueur->combattant, combattant, monde)){
+        return(COLLISION);
       }
     }
 
@@ -861,18 +866,18 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
           }while(suivaleatoir<200||suivaleatoir>500);
           (*next_tick_monstre)+=suivaleatoir;
         }
-        printf("time sec %d nexttick %d\n",time_sec,(*next_tick));
+        //printf("time sec %d nexttick %d\n",time_sec,(*next_tick));
         if(time_sec>(*next_tick)){
           (*next_tick)++;
-          printf("On déplace le monstre");
+          //printf("On déplace le monstre");
           deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
         }
         else{
           (*next_tick)-= 2;
         }
-        
+
       }
-      
+
     }
 
     //On actualise l'affichage
@@ -912,11 +917,13 @@ void sauvegarde(monde_t* monde){
         fprintf(fichier, "%d\n", monde->joueur->combattant->attaque);
         //Sauvegarde des objets présents dans l'inventaire
         fprintf(fichier, "%d\n", nb_obj_inv);
+        printf("nb obj inv : %d\n", nb_obj_inv);
         for(i = 0; i < nb_obj_inv; i++){
           fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
         }
         //Sauvegarde des objets équipés
         fprintf(fichier, "%d\n", nb_obj_equip);
+        printf("nb obj equip : %d\n", nb_obj_equip);
         for(i = 0; i < nb_obj_equip; i++){
           fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
         }
@@ -1042,13 +1049,13 @@ void evenements(SDL_Event* event, monde_t * monde){
 
         //Si l'utilisateur a cliqué sur le X de la fenêtre
         if( event->type == SDL_QUIT ) {
-            sauvegarde(monde);
+            //sauvegarde(monde);
             //On indique la fin du jeu
             monde->etat_jeu = -1;
             printf("fin du jeu");
         }
         if(keystates[SDL_SCANCODE_ESCAPE] ){
-            sauvegarde(monde);
+            //sauvegarde(monde);
             monde->etat_jeu = -1;
             printf("fin du jeu");
         }

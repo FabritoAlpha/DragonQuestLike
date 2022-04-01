@@ -891,9 +891,9 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
 
         //On affiche les points de vie/pm du joueur et du monstre
 
-        char pv_j[4];
-        char pv_m[4];
-        char pm_j[4];
+        char pv_j[5];
+        char pv_m[5];
+        char pm_j[5];
 /*
         printf("pv_j %d\n", (monde->joueur->combattant->pvCour));
         printf("pv_m %d\n", (monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour));
@@ -901,14 +901,12 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
 
 */
         int pv_j2 =  (monde->joueur->combattant->pvCour);
-        fprintf(stderr, "PV = %d\n", pv_j2);
+
         sprintf(pv_j, "%d", pv_j2);
         //itoa(pv_j2, pv_j, DECIMAL);
         sprintf(pv_m, "%d", (monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour));
         sprintf(pm_j, "%d", (monde->joueur->manaCour));
 
-        fprintf(stderr, "pv_j = %d\n", (monde->joueur->combattant->pvCour));
-        fprintf(stderr, "pv_j = %s\n", pv_j);
         //Il faut afficher la barre de point de vie du joueur et du monstre ainsi que la barre de mana du joueur
 
         //Trois apply_texture à faire

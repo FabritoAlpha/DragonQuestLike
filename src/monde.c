@@ -222,6 +222,7 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
                 monde->joueur->inventaire[i].vie_sup = monde->biblio_objet[j].vie_sup;
                 strcpy(monde->joueur->inventaire[i].nom, monde->biblio_objet[j].nom);
                 strcpy(monde->joueur->inventaire[i].description, monde->biblio_objet[j].description);
+                printf("On a copié un item de l'inventaire\n");
             }
         }
     }
@@ -238,6 +239,7 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
                 monde->joueur->objet_equipe[i].vie_sup = monde->biblio_objet[j].vie_sup;
                 strcpy(monde->joueur->objet_equipe[i].nom, monde->biblio_objet[j].nom);
                 strcpy(monde->joueur->objet_equipe[i].description, monde->biblio_objet[j].description);
+                printf("On a copié un item de l'inventaire equipe\n");
             }
         }
     }
