@@ -54,7 +54,13 @@ int nonCombattant_proche(monde_t * monde){
       if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[0]->perso[1]) <= 75)
           return 2;
   }
-  if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[0]->coffre) <= 75)
+  //pnj de la salle 2
+  if(monde->joueur->salle == 2){
+      //marchand
+      if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[2]->perso[0]) <= 75)
+          return 2;
+  }
+  if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre) <= 75)
       return 3;
   return 0;
 }
@@ -63,8 +69,22 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
     char parole[150] = "";
     // si c'est un pnj non marchand
     if(nonCombattant_proche(monde) == 1){
-        sprintf(parole, "Bonjour!");
-        apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 350 , 90, 20);
+        if(monde->joueur->zone == 0){
+          sprintf(parole, "Bonjour!");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 594 + (taille_fenetre[1]/2) - 350 , 90, 20);
+          sprintf(parole, "Comment allez-vous?");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 634 + (taille_fenetre[1]/2) - 350 , 180, 20);
+          sprintf(parole, "Moi je vais bien.");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 674 + (taille_fenetre[1]/2) - 350 , 125, 20);
+        }
+        if(monde->joueur->zone == 1){
+          sprintf(parole, "Bonjour!");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 350 , 90, 20);
+        }
+        if(monde->joueur->zone == 2){
+          sprintf(parole, "Bonjour!");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 350 , 90, 20);
+        }
     }
     // si c'est un marchand
     if(nonCombattant_proche(monde) == 2){
@@ -78,20 +98,33 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
         apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 350 , 270, 20);
 
         //icones objet
+        if(monde->joueur->zone == 2){
+          icone_boutique_position(renderer, textures, 440 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 5);
+          icone_boutique_position(renderer, textures, 630 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 6);
+        } else{
+          icone_boutique_position(renderer, textures, 440 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 3);
+          icone_boutique_position(renderer, textures, 630 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 4);
+        }
         icone_boutique_position(renderer, textures, 60 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 1);
         icone_boutique_position(renderer, textures, 250 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 2);
-        icone_boutique_position(renderer, textures, 440 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 3);
-        icone_boutique_position(renderer, textures, 630 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 4);
+
 
         //nom des objets
+        if(monde->joueur->zone == 2){
+          sprintf(parole, "epee en diamant");
+          apply_text(renderer, 0, 0, 0, parole , police, 480 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 110, 20);
+          sprintf(parole, "bouclier en diamant");
+          apply_text(renderer, 0, 0, 0, parole , police, 670 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 140, 20);
+        }else{
+          sprintf(parole, "epee en pierre");
+          apply_text(renderer, 0, 0, 0, parole , police, 480 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 110, 20);
+          sprintf(parole, "bouclier en pierre");
+          apply_text(renderer, 0, 0, 0, parole , police, 670 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 140, 20);
+        }
         sprintf(parole, "potion de vie");
         apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 100, 20);
         sprintf(parole, "potion de mana");
         apply_text(renderer, 0, 0, 0, parole , police, 290 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 120, 20);
-        sprintf(parole, "epee en pierre");
-        apply_text(renderer, 0, 0, 0, parole , police, 480 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 110, 20);
-        sprintf(parole, "bouclier en pierre");
-        apply_text(renderer, 0, 0, 0, parole , police, 670 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 140, 20);
 
         //prix
         sprintf(parole, "20");
@@ -167,45 +200,67 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
                 else
                     monde->option = 5; //5 options pour le moment
             }
-            //TO DO ajouter les objets dans l'inventaire
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
                 //on achète la potion de vie
                 if((monde->joueur->or)-20 >= 0){ // vérification de l'argent du joueur
-                  monde->joueur->or = monde->joueur->or - 20; 
-                  // Ajout de l'objet ! 
-                  if(monde->joueur->inventaire[4].id!=monde->biblio_objet[4].id){ // test si déja présent dans inventaire
-                    monde->joueur->inventaire[4]=monde->biblio_objet[4];
-                  }
-                  monde->joueur->inventaire[4].attaque_sup++;
+                  monde->joueur->or = monde->joueur->or - 20;
+                  // Ajout d'une potion de vie
+                  ajout_objet(monde->joueur, monde->biblio_objet, 4);
                   monde->option = 0;
                 }
-                
+
             }
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 2){
                 //on achète la potion de mana
                 if((monde->joueur->or) -20 >= 0){ // vérification de l'argent du joueur
-                  monde->joueur->or = monde->joueur->or - 20; 
-                  // Ajout de l'objet ! 
-                  if(monde->joueur->inventaire[5].id!=monde->biblio_objet[5].id){ // test si déja présent dans inventaire
-                    monde->joueur->inventaire[5]=monde->biblio_objet[5]; // ajout de la potion dans l'inventaire
-                  }
-                  monde->joueur->inventaire[5].attaque_sup++; // dans tout les cas ajouter 1
+                  monde->joueur->or = monde->joueur->or - 20;
+                  // Ajout d'une potion de mana
+                  ajout_objet(monde->joueur, monde->biblio_objet, 5);
                   monde->option = 0;
-                } 
+                }
             }
-            //TO DO vérifier quelles armes le marchand vend
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
-                //on achète une des épées
-                monde->joueur->or = monde->joueur->or - 100;
-                // Ajout de l'objet !
-                monde->joueur->inventaire[0]=monde->biblio_objet[0];
-                monde->option = 0;
+                //si on est dans la dernière zone
+                if(monde->joueur->zone == 2){
+                  //le marchand vend l'épée en diamant
+                  if((monde->joueur->or) - 200 >= 0 && !objet_present(monde->joueur, monde->biblio_objet, 1)){ // vérification de l'argent du joueur
+                    monde->joueur->or = monde->joueur->or - 200;
+                    // Ajout d'une épée en diamant
+                    ajout_objet(monde->joueur, monde->biblio_objet, 1);
+                    monde->option = 0;
+                  }
+                } else{
+                  //avant la dernière zone:
+                  //le marchand vend l'épée en pierre
+                  if((monde->joueur->or) - 100 >= 0 && !objet_present(monde->joueur, monde->biblio_objet, 0)){ // vérification de l'argent du joueur
+                    monde->joueur->or = monde->joueur->or - 100;
+                    // Ajout d'une épée en pierre
+                    ajout_objet(monde->joueur, monde->biblio_objet, 0);
+                    monde->option = 0;
+                  }
+                }
             }
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 4){
-                //on achète un des boucliers
-                monde->joueur->or = monde->joueur->or - 100;
-                // Ajout de l'objet !
-                monde->joueur->inventaire[2]=monde->biblio_objet[2];
+              //si on est dans la dernière zone
+              if(monde->joueur->zone == 2){
+                //le marchand vend le bouclier en diamant
+                // vérification de l'argent du joueur et de l'absence de l'objet dans l'inventaire
+                if((monde->joueur->or) - 200 >= 0 && !objet_present(monde->joueur, monde->biblio_objet, 3)){
+                  monde->joueur->or = monde->joueur->or - 200;
+                  // Ajout d'un bouclier en diamant
+                  ajout_objet(monde->joueur, monde->biblio_objet, 3);
+                  monde->option = 0;
+                }
+              } else{
+                //avant la dernière zone:
+                //le marchand vend le bouclier en pierre
+                if((monde->joueur->or) - 100 >= 0 && !objet_present(monde->joueur, monde->biblio_objet, 2)){ // vérification de l'argent du joueur
+                  monde->joueur->or = monde->joueur->or - 100;
+                  // Ajout d'un bouclier en pierre
+                  ajout_objet(monde->joueur, monde->biblio_objet, 2);
+                  monde->option = 0;
+                }
+              }
                 monde->option = 0;
             }
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 5){
@@ -680,6 +735,9 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, salle_
         for(int i = 0; i < NB_PERSO_SALLE ; i++){
             nonCombattant_position(renderer, textures, salle->perso[i]);
         }
+    if(salle->num_salle == 2)
+        nonCombattant_position(renderer, textures, salle->perso[0]);
+    coffre_position(renderer, textures, salle->coffre);
 }
 
 
@@ -744,8 +802,6 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
       joueur_position(renderer, textures, monde->joueur);
 
       affichage_nonCombattants(renderer,textures,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]);
-
-      coffre_position(renderer, textures, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre);
 
       int suivaleatoir;
       if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT){

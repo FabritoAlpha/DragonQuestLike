@@ -238,3 +238,23 @@ void initialiser_biblio(objet_t tableau[]){
   potionmana =objet_initialiser(potionmana,7,0,20,0,"Potion de mana","Desc");
   tableau[i_tab++]=*potionmana;
 }
+
+int objet_present(joueur_t* joueur, objet_t* biblio, int ind){
+  return joueur->inventaire[ind].id == biblio[ind].id;
+}
+
+/**
+  * \fn void ajout_objet(joueur_t* joueur, int ind)
+  * \param joueur jour à qui on veut remplir l'inventaire
+  * \param ind indice de l'objet que l'on veut ajouter
+  * \brief Ajoute un objet dans l'inventaire du joueur si il ne l'a pas encore ou incrémente le nombre de potion
+*/
+void ajout_objet(joueur_t* joueur, objet_t* biblio, int ind){
+  if(!objet_present(joueur, biblio, ind)){ // si l'objet n'est pas dans l'inventaire
+    joueur->inventaire[ind]= biblio[ind]; // on l'ajoute
+  }
+  //si l'objet est une potion
+  if(ind == 4 || ind == 5){
+    joueur->inventaire[ind].attaque_sup++; // dans tout les cas ajouter 1 (on peut avoir plusieurs potions)
+  }
+}

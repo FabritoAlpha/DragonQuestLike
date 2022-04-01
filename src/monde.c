@@ -142,7 +142,7 @@ void detruire_salle(salle_t ** salle){
     (*salle)->coffre = NULL;
 
     detruire_monstre(&((*salle)->monstre));
-    
+
     if((*salle)->num_salle == 0){
         for(i = 0; i < NB_PERSO_SALLE; i++){
             detruire_nonCombattant(&(*salle)->perso[i]);
@@ -258,17 +258,22 @@ void init_zone(zone_t * zone, int num_zone){
 
 void init_salle(salle_t * salle, int num_salle){
   int i;
-  
+
   init_monstre(salle->monstre, 30, 30,100, 1,0,0);
-  
-  if(num_salle == 0){
+
+  if(num_salle == 0 || num_salle == 2){
     int hauteur = 251;
     for(i = 0; i < NB_PERSO_SALLE; i++){
-        init_nonCombattant(salle->perso[i], 0, 104, hauteur,0);
+        if(num_salle == 0){
+          init_nonCombattant(salle->perso[i], 0, 104, hauteur,0);
+        }
         hauteur = hauteur + 100;
+    }
+    if(num_salle == 2){
+      init_nonCombattant(salle->perso[0], 0, 846, hauteur,0);
     }
   }
   salle->difficulte = 0;
   salle->num_salle = num_salle;
-  init_nonCombattant(salle->coffre, 0, 500 - LARGEUR_COFFRE/2, 80,0);
+  init_nonCombattant(salle->coffre, 0, 900 - LARGEUR_COFFRE, 80,0);
 }

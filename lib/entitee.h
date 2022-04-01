@@ -145,6 +145,9 @@ void detruire_objet(objet_t**objet);
 
 void initialiser_biblio(objet_t tableau[]);
 
+int objet_present(joueur_t* joueur, objet_t* biblio, int ind);
+
+void ajout_objet(joueur_t* joueur,  objet_t* biblio, int ind);
 
 
 
