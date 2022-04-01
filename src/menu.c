@@ -243,10 +243,6 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
     if(event->type == SDL_KEYDOWN){
-      // CHEAT CODE INVENTAIRE DIRECT
-        if(keystates[SDL_SCANCODE_H]){
-          monde->etat_jeu=3;
-        }
         if(keystates[SDL_SCANCODE_DOWN]){
             if(monde->option < 2)
                 monde->option++;
@@ -260,9 +256,11 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
                 monde->option = 2; //2 options pour le moment
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
+            printf("On appuie sur jouer\n");
             //on entre dans un menu avec le choix de la partie
             monde->etat_jeu = 4;
-            monde->option = 0;
+            monde->option = -1;
+            printf("monde->etat_jeu = %d\n", monde->etat_jeu);
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 2){
             monde->etat_jeu = -1;
@@ -821,17 +819,18 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
         }
     }
     if(!joueur_etait_vivant){
-      while(event->type != SDL_KEYDOWN){
-        printf("Boucle\n");
-      }
-      printf("Sortie de boucle\n");
-      monde->num_menu_comb = MENU1;
-		  if(monde->partie == 1){
-        init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
-      }
-      else{
-        init_monde_jeu(monde, "./rsrc/txt/partie2.txt");
-      }
+        while(event->type != SDL_KEYDOWN){
+            printf("Boucle\n");
+        }
+        printf("Sortie de boucle\n");
+        monde->num_menu_comb = MENU1;
+        monde->etat_jeu = 1;
+	    if(monde->partie == 1){
+            init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
+        }
+        else{
+            init_monde_jeu(monde, "./rsrc/txt/partie2.txt");
+        }
     }
     //Le monstre attaque si le joueur a attaqué
 

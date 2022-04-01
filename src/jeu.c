@@ -593,7 +593,7 @@ int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t 
       return(COLLISION);
     }
 
-    if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT){
+    if(combattant->type == JOUEUR){
       if(collision_joueur_monstre(combattant,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant, monde)){
         return(COLLISION);
       }
@@ -962,10 +962,15 @@ void evenements(SDL_Event* event, monde_t * monde){
            continue;
 
         if(monde->etat_jeu == 0){
+            printf("On rentre dans evenements menu\n");
             evenements_menu(event, monde);
         }
         if(monde->etat_jeu == 4){
             choix_partie(event,monde);
+            if(monde->partie == 1 || monde->partie == 2){
+              //Après avoir choisi le fichier où sauvegarder on écrase la sauvegarde avec soit l'initialisation soit le fichier chargé qui était sauvegardé
+              sauvegarde(monde);
+            }
             printf("menu partie\n");
         }
         /*!< Jeu en cours */
@@ -976,7 +981,8 @@ void evenements(SDL_Event* event, monde_t * monde){
             }
             //si on appuie sur M on retour au menu principal
             if(event->key.keysym.sym == SDLK_m){
-              monde->etat_jeu=0;
+              monde->option = 1;
+              monde->etat_jeu= 0;
             }
             //le coffre s'ouvre
             if(nonCombattant_proche(monde) == 3  && event->key.keysym.sym == SDLK_o && monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre->visite == 0){
