@@ -66,7 +66,7 @@ int main(){
         //combat(monde->joueur, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0], textures, screen, &event, monde, police);
       }*/
       //Rafraichissement de l'affichage de la fenêtre
-      rafraichir(&event, screen, monde, textures,&tick,&tick_monstre,police);
+      rafraichir( screen, monde, textures,&tick,&tick_monstre,police);
 
     }
 

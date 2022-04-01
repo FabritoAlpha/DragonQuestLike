@@ -570,7 +570,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
             }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 6){
-            if(monde->joueur->inventaire[4].id==6 && monde->joueur->inventaire[4].attaque_sup>0){ // Si il y'a une potion dans l'inventaire 
+            if(monde->joueur->inventaire[4].id==6 && monde->joueur->inventaire[4].attaque_sup>0){ // Si il y'a une potion dans l'inventaire
                 monde->joueur->combattant->pvCour+=monde->joueur->inventaire[4].vie_sup;
                 if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
                     monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
@@ -579,11 +579,11 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
                 if(monde->joueur->inventaire[4].attaque_sup==0){ // Si il n'y à plus de potions on l'enleve de l'inventaire.
                     monde->joueur->inventaire[4].id=0;
                 }
-                
+
             }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 7){
-            if(monde->joueur->inventaire[5].id==7&&monde->joueur->inventaire[5].attaque_sup>0){ // Si il y'a une potion dans l'inventaire 
+            if(monde->joueur->inventaire[5].id==7&&monde->joueur->inventaire[5].attaque_sup>0){ // Si il y'a une potion dans l'inventaire
                 monde->joueur->manaCour+=monde->joueur->inventaire[5].mana_sup;
                 if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
                     monde->joueur->manaCour=monde->joueur->manaMax;
@@ -892,9 +892,9 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
 
         //On affiche les points de vie/pm du joueur et du monstre
 
-        char pv_j[3];
-        char pv_m[3];
-        char pm_j[3];
+        char pv_j[4];
+        char pv_m[4];
+        char pm_j[4];
 /*
         printf("pv_j %d\n", (monde->joueur->combattant->pvCour));
         printf("pv_m %d\n", (monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour));
@@ -902,14 +902,14 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
 
 */
         int pv_j2 =  (monde->joueur->combattant->pvCour);
-        //printf("PV = %d\n", pv_j2);
+        fprintf(stderr, "PV = %d\n", pv_j2);
         sprintf(pv_j, "%d", pv_j2);
         //itoa(pv_j2, pv_j, DECIMAL);
         sprintf(pv_m, "%d", (monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour));
         sprintf(pm_j, "%d", (monde->joueur->manaCour));
 
-        //printf("pv_j = %d\n", (monde->joueur->combattant->pvCour));
-        //printf("pv_j = %s\n", pv_j);
+        fprintf(stderr, "pv_j = %d\n", (monde->joueur->combattant->pvCour));
+        fprintf(stderr, "pv_j = %s\n", pv_j);
         //Il faut afficher la barre de point de vie du joueur et du monstre ainsi que la barre de mana du joueur
 
         //Trois apply_texture à faire

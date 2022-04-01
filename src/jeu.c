@@ -127,12 +127,19 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
         apply_text(renderer, 0, 0, 0, parole , police, 290 + (taille_fenetre[0]/2) - 500, 630 + (taille_fenetre[1]/2) - 350 , 120, 20);
 
         //prix
+        if(monde->joueur->zone == 2){
+          sprintf(parole, "200");
+          apply_text(renderer, 0, 0, 0, parole , police, 480 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 27, 20);
+          apply_text(renderer, 0, 0, 0, parole , police, 670 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 27, 20);
+        }else{
+          sprintf(parole, "100");
+          apply_text(renderer, 0, 0, 0, parole , police, 480 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 27, 20);
+          apply_text(renderer, 0, 0, 0, parole , police, 670 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 27, 20);
+        }
         sprintf(parole, "20");
         apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 18, 20);
         apply_text(renderer, 0, 0, 0, parole , police, 290 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 18, 20);
-        sprintf(parole, "100");
-        apply_text(renderer, 0, 0, 0, parole , police, 480 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 27, 20);
-        apply_text(renderer, 0, 0, 0, parole , police, 670 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350 , 27, 20);
+
 
         //icone or
         icone_boutique_position(renderer, textures, 105 + (taille_fenetre[0]/2) - 500, 642 + (taille_fenetre[1]/2) - 350 , 7);
@@ -279,6 +286,38 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
             if(keystates[SDL_SCANCODE_RETURN]){
                 monde->etat_jeu = 1;
             }
+        }
+    }
+}
+
+void affichage_aide(SDL_Renderer *renderer, TTF_Font * police){
+    char aide[150] = "";
+    //largeur: 20 par caractère
+    sprintf(aide, "ENTREE - Quitter le menu d'aide");
+    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 85 + (taille_fenetre[1]/2) - 350 , 620, 50);
+    sprintf(aide, "M - Retour au menu principal");
+    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 155 + (taille_fenetre[1]/2) - 350 , 560, 50);
+    sprintf(aide, "FLECHES - Naviguer");
+    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 225 + (taille_fenetre[1]/2) - 350 , 360, 50);
+    sprintf(aide, "ENTREE - Valider l'option");
+    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 295 + (taille_fenetre[1]/2) - 350 , 500, 50);
+    sprintf(aide, "O - Ouvrir le coffre");
+    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 365 + (taille_fenetre[1]/2) - 350 , 400, 50);
+    sprintf(aide, "I - Ouvrir ou fermer l'inventaire");
+    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 435 + (taille_fenetre[1]/2) - 350 , 660, 50);
+    sprintf(aide, "C - Afficher la carte");
+    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 505 + (taille_fenetre[1]/2) - 350 , 420, 50);
+    sprintf(aide, "P - Parler");
+    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 575 + (taille_fenetre[1]/2) - 350 , 200, 50);
+
+}
+
+void revenir_au_jeu(SDL_Event* event, monde_t * monde){
+    const Uint8* keystates = SDL_GetKeyboardState(NULL);
+    //on quitte l'affichage des cmmandes
+    if(event->type == SDL_KEYDOWN){
+        if(keystates[SDL_SCANCODE_RETURN]){
+                monde->etat_jeu = 1;
         }
     }
 }
@@ -752,7 +791,7 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, salle_
  * \param next_tick correspond au prochain tick du jeu
  * \param next_tick_monstre correspond au prochain tick dans lequel le monstre va effectuer une action
  */
-void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
+void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
     //printf("On rentre dans rafraichir\n");
     int time_sec=(SDL_GetTicks()/20);
 
@@ -785,17 +824,21 @@ void rafraichir(SDL_Event * event, SDL_Renderer *renderer, monde_t * monde, imag
     if(monde->etat_jeu == ETAT_COFFRE){
         affichage_dialogue(renderer, textures, monde, police);
     }
+    if(monde->etat_jeu == ETAT_AIDE){
+        affichage_aide(renderer, police);
+    }
 
     if(monde->etat_jeu == 1){
-
+      char aide[10] = "Aide A";
+      apply_text(renderer, 0, 0, 0, aide , police, 570 + (taille_fenetre[0]/2) - 250, 300 + (taille_fenetre[1]/2) , 100, 40);
       if(nonCombattant_proche(monde) == 1 || nonCombattant_proche(monde) == 2){
         char indication[150] = "Appuyer sur P pour parler";
-        apply_text(renderer, 0, 0, 0, indication , police, (taille_fenetre[0]/2) - 250, (taille_fenetre[1]/2) , 500, 40);
+        apply_text(renderer, 0, 0, 0, indication , police, (taille_fenetre[0]/2) - 250, 230 + (taille_fenetre[1]/2) , 500, 40);
       }
       if(nonCombattant_proche(monde) == 3){
           if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre->visite == 0){
               char indication[150] = "Appuyer sur 0 pour ouvrir le coffre";
-              apply_text(renderer, 0, 0, 0, indication , police, (taille_fenetre[0]/2) - 300, (taille_fenetre[1]/2) , 600, 40);
+              apply_text(renderer, 0, 0, 0, indication , police, (taille_fenetre[0]/2) - 300, 230 + (taille_fenetre[1]/2) , 600, 40);
           }
       }
 
@@ -927,6 +970,14 @@ void evenements(SDL_Event* event, monde_t * monde){
         }
         /*!< Jeu en cours */
         if(monde->etat_jeu == 1){
+            //si on appuie sur A on affiches les commandes et la map
+            if(event->key.keysym.sym == SDLK_a){
+              monde->etat_jeu = ETAT_AIDE;
+            }
+            //si on appuie sur M on retour au menu principal
+            if(event->key.keysym.sym == SDLK_m){
+              monde->etat_jeu=0;
+            }
             //le coffre s'ouvre
             if(nonCombattant_proche(monde) == 3  && event->key.keysym.sym == SDLK_o && monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre->visite == 0){
                 monde->etat_jeu = ETAT_COFFRE;
@@ -965,6 +1016,9 @@ void evenements(SDL_Event* event, monde_t * monde){
         }
         if(monde->etat_jeu == ETAT_COMBAT){
           evenements_combat(event, monde);
+        }
+        if(monde->etat_jeu == ETAT_AIDE){
+          revenir_au_jeu(event, monde);
         }
 
         if(monde->etat_jeu == ETAT_DIALOGUE || monde->etat_jeu == ETAT_COFFRE){

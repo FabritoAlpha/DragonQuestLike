@@ -13,7 +13,7 @@
 #define PAS_COLLISION 0
 
 void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde, TTF_Font * police);
-void rafraichir(SDL_Event* event,SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * tick,int *tick_monstre, TTF_Font * police);
+void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * tick,int *tick_monstre, TTF_Font * police);
 void evenements(SDL_Event* event, monde_t * monde);
 int test_collision_joueur(joueur_t * joueur, salle_t * salle_courante, int largeur_ecran, int longueur_ecran); // à améliorer avec un type boolen
 int test_collision_monstre(monstre_t * monstre, salle_t * salle_du_monstre, int largeur_ecran, int longueur_ecran);// même chose
@@ -22,6 +22,9 @@ int distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite);
 int nonCombattant_proche(monde_t * monde);
 void affichage_dialogue(SDL_Renderer *renderer,images_t *textures, monde_t * monde, TTF_Font * police);
 void interaction_nonCombattant(SDL_Event* event, monde_t * monde);
+
+void affichage_aide(SDL_Renderer *renderer, TTF_Font * police);
+void revenir_au_jeu(SDL_Event* event, monde_t * monde);
 
 int collision_combattant_ecran(combattant_t * combattant, monde_t * monde);
 int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, monde_t * monde);

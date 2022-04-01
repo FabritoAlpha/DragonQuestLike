@@ -7,6 +7,7 @@
 #define ETAT_COMBAT 12
 #define ETAT_DIALOGUE 22
 #define ETAT_COFFRE 21
+#define ETAT_AIDE 23
 
 /**
  * \brief stocke les images (textures) nécessaires à l'affichage graphique
