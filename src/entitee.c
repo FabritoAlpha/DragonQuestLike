@@ -204,6 +204,7 @@ objet_t * objet_initialiser(objet_t * objet,int id,int attaque_sup,int mana_sup,
   objet->vie_sup=vie_sup;
   objet->nom=nom;
   objet->description=description;
+  objet->nb_obj = 0;
   return objet;
 }
 
@@ -252,9 +253,10 @@ int objet_present(joueur_t* joueur, objet_t* biblio, int ind){
 void ajout_objet(joueur_t* joueur, objet_t* biblio, int ind){
   if(!objet_present(joueur, biblio, ind)){ // si l'objet n'est pas dans l'inventaire
     joueur->inventaire[ind]= biblio[ind]; // on l'ajoute
+    (joueur->nb_obj_inventaire)++;
   }
   //si l'objet est une potion
   if(ind == 4 || ind == 5){
-    joueur->inventaire[ind].attaque_sup++; // dans tout les cas ajouter 1 (on peut avoir plusieurs potions)
+    joueur->inventaire[ind].nb_obj++; // dans tout les cas ajouter 1 (on peut avoir plusieurs potions)
   }
 }

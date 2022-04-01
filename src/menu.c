@@ -403,7 +403,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         sprintf(opt, "Potion de vie");
         apply_text(renderer, couleur, couleur2, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
         apply_texture(textures->potion_pv, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H);
-        snprintf(opt, 20, "%d", monde->joueur->inventaire[4].attaque_sup);
+        snprintf(opt, 20, "%d", monde->joueur->inventaire[4].nb_obj);
         apply_text(renderer, couleur, couleur2, 0 , opt , police,POSITION_INVENTAIRE_L*0.15+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L/5, TEXT_OBJET_H);
         //Objet 7 Potion Mana
         if(monde->option==7){
@@ -419,12 +419,13 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         sprintf(opt, "Potion de mana");
         apply_text(renderer, couleur, couleur2, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
         apply_texture(textures->potion_mana, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H*2);
-        snprintf(opt, 20, "%d", monde->joueur->inventaire[5].attaque_sup);
+        snprintf(opt, 20, "%d", monde->joueur->inventaire[5].nb_obj);
         apply_text(renderer, couleur, couleur2, 0, opt , police, POSITION_INVENTAIRE_L*0.15+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L/5, TEXT_OBJET_H);
 }
 void evenements_inventaire(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
     if(event->type == SDL_KEYDOWN){
+      printf("Debut Nb obj equip = %d\n", monde->joueur->nb_obj_equip);
         if(keystates[SDL_SCANCODE_DOWN]){
           switch(monde->option){
             case 1 :monde->option=2;break;//
@@ -480,38 +481,40 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
             //Epee en bois équipée
             if(monde->joueur->objet_equipe[0].id!=monde->joueur->inventaire[0].id){
                 //Stat Debuff
-                if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[1].id){
+                //Si l'épée équipée est la deuxième
+                if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[1].id && monde->joueur->objet_equipe[0].id != 0){
                     monde->joueur->manaMax-=monde->joueur->objet_equipe[0].mana_sup;
                     monde->joueur->nb_obj_equip--;
                 }
                 if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
                     monde->joueur->manaCour=monde->joueur->manaMax;
-                }
+                }/*
                 if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
                     monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
-                }
+                }*/
                 //Equipe
                 monde->joueur->objet_equipe[0]=monde->joueur->inventaire[0];
                 //Stat buff
                 monde->joueur->combattant->attaque+=monde->joueur->objet_equipe[0].attaque_sup;
+
                 monde->joueur->nb_obj_equip++;
 
             }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
             //Epee en diamant équipée
-            if(monde->joueur->objet_equipe[0].id!=monde->joueur->inventaire[1].id){
+            if(monde->joueur->objet_equipe[0].id!=monde->joueur->inventaire[1].id && monde->joueur->objet_equipe[0].id != 0){
                 //Stat Debuff
                 if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[0].id){
                     monde->joueur->combattant->attaque-=monde->joueur->objet_equipe[0].attaque_sup;
                     monde->joueur->nb_obj_equip--;
-                }
+                }/*
                 if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
                     monde->joueur->manaCour=monde->joueur->manaMax;
                 }
                 if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
                     monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
-                }
+                }*/
                 //Equipe
                 monde->joueur->objet_equipe[0]=monde->joueur->inventaire[1];
                 //Stat buff
@@ -525,36 +528,41 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
             //Bouclier en bois
             if(monde->joueur->objet_equipe[1].id!=monde->joueur->inventaire[2].id){
                 //Stat Debuff
-                if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[3].id){
+                if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[3].id && monde->joueur->objet_equipe[1].id != 0){
                     monde->joueur->manaMax-=monde->joueur->objet_equipe[1].mana_sup;
+                    printf("Je désequipe\n");
+                    printf("id obj_equipe 1: %d\n", monde->joueur->objet_equipe[1].id);
+                    printf("id obj inventaire 3 : %d\n", monde->joueur->inventaire[3].id);
                     monde->joueur->nb_obj_equip--;
                 }
                 if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
                     monde->joueur->manaCour=monde->joueur->manaMax;
-                }
+                }/*
                 if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
                     monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
-                }
+                }*/
                 //Equipe
                 monde->joueur->objet_equipe[1]=monde->joueur->inventaire[2];
                 //Stat buff
                 monde->joueur->combattant->pvMax+=monde->joueur->objet_equipe[1].vie_sup;
                 monde->joueur->combattant->pvCour+=monde->joueur->objet_equipe[1].vie_sup;
-                monde->joueur->nb_obj_equip++;
+                printf("Nb d'obj equipe avant equipement: %d\n", monde->joueur->nb_obj_equip);
 
+                monde->joueur->nb_obj_equip++;
+                printf("Nb d'obj equipe apres equipement: %d\n", monde->joueur->nb_obj_equip);
             }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 5){
             //Bouclier en diamant
-            if(monde->joueur->objet_equipe[1].id!=monde->joueur->inventaire[3].id){
+            if(monde->joueur->objet_equipe[1].id!=monde->joueur->inventaire[3].id && monde->joueur->objet_equipe[1].id != 0){
                 //Stat Debuff
                 if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[2].id){
                     monde->joueur->combattant->pvMax-=monde->joueur->objet_equipe[1].vie_sup;
                     monde->joueur->nb_obj_equip--;
-                }
+                }/*
                 if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
                     monde->joueur->manaCour=monde->joueur->manaMax;
-                }
+                }*/
                 if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
                     monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
                 }
@@ -568,26 +576,26 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
             }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 6){
-            if(monde->joueur->inventaire[4].id==6 && monde->joueur->inventaire[4].attaque_sup>0){ // Si il y'a une potion dans l'inventaire
+            if(monde->joueur->inventaire[4].id==6 && monde->joueur->inventaire[4].nb_obj>0){ // Si il y'a une potion dans l'inventaire
                 monde->joueur->combattant->pvCour+=monde->joueur->inventaire[4].vie_sup;
                 if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
                     monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
                 }
-                monde->joueur->inventaire[4].attaque_sup--; // Enleve une potion de l'inventaire
-                if(monde->joueur->inventaire[4].attaque_sup==0){ // Si il n'y à plus de potions on l'enleve de l'inventaire.
+                monde->joueur->inventaire[4].nb_obj--; // Enleve une potion de l'inventaire
+                if(monde->joueur->inventaire[4].nb_obj==0){ // Si il n'y à plus de potions on l'enleve de l'inventaire.
                     monde->joueur->inventaire[4].id=0;
                 }
 
             }
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 7){
-            if(monde->joueur->inventaire[5].id==7&&monde->joueur->inventaire[5].attaque_sup>0){ // Si il y'a une potion dans l'inventaire
+            if(monde->joueur->inventaire[5].id==7&&monde->joueur->inventaire[5].nb_obj>0){ // Si il y'a une potion dans l'inventaire
                 monde->joueur->manaCour+=monde->joueur->inventaire[5].mana_sup;
                 if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
                     monde->joueur->manaCour=monde->joueur->manaMax;
                 }
-                monde->joueur->inventaire[5].attaque_sup--; // Enleve une potion de l'inventaire
-                if(monde->joueur->inventaire[5].attaque_sup==0){ // Si il n'y à plus de potions on l'enleve de l'inventaire.
+                monde->joueur->inventaire[5].nb_obj--; // Enleve une potion de l'inventaire
+                if(monde->joueur->inventaire[5].nb_obj==0){ // Si il n'y à plus de potions on l'enleve de l'inventaire.
                     monde->joueur->inventaire[5].id=0;
                 }
 
@@ -596,7 +604,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
 
     }
 
-
+    printf("Fin Nb obj equip = %d\n", monde->joueur->nb_obj_equip);
 }
 
 void evenements_combat(SDL_Event * event, monde_t * monde){

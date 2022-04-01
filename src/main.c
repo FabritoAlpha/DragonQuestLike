@@ -34,6 +34,8 @@ int main(){
     //Initialisation de la bibliothèque des objets
     initialiser_biblio(monde->biblio_objet);
     printf("id :%d\n", monde->biblio_objet[0].id);
+    printf("Oui\n");
+    printf("Nb obj = %d\n", monde->biblio_objet[0].nb_obj);
     printf("Nom obj: %s\n", monde->biblio_objet[0].nom);
     printf("\n");
 

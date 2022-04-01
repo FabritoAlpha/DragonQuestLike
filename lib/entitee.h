@@ -47,6 +47,7 @@ typedef struct{
   int attaque_sup; /**< attaque de l'objet */
   int mana_sup; /**< mana de l'objet */
   int vie_sup; /**< vie de l'objet */
+  int nb_obj;
   char* nom; /**< nom de l'objet */
   char* description; /**< description de l'objet */
 } objet_t;

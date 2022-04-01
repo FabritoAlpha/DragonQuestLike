@@ -870,7 +870,7 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
         if(time_sec>(*next_tick)){
           (*next_tick)++;
           //printf("On déplace le monstre");
-          deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
+          //deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
         }
         else{
           (*next_tick)-= 2;
@@ -918,14 +918,24 @@ void sauvegarde(monde_t* monde){
         //Sauvegarde des objets présents dans l'inventaire
         fprintf(fichier, "%d\n", nb_obj_inv);
         printf("nb obj inv : %d\n", nb_obj_inv);
-        for(i = 0; i < nb_obj_inv; i++){
-          fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
+        for(i = 0; i < TAILLE_INVENTAIRE; i++){
+          //Si un objet est présent à l'indice i du tableau
+          if(monde->joueur->inventaire[i].id != 0){
+            printf("i = %d\n", i);
+            printf("id = %d\n", monde->joueur->inventaire[i].id);
+            printf("desc = %s\n", monde->joueur->inventaire[i].description);
+            fprintf(fichier, "%d\n", i);
+            fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
+            fprintf(fichier, "%d\n", monde->joueur->inventaire[i].nb_obj);
+          }
         }
         //Sauvegarde des objets équipés
         fprintf(fichier, "%d\n", nb_obj_equip);
         printf("nb obj equip : %d\n", nb_obj_equip);
         for(i = 0; i < nb_obj_equip; i++){
+          printf("i2 = %d\n", i);
           fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
+          fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].nb_obj);
         }
         //On ferme le fichier
         fclose(fichier);
@@ -943,20 +953,28 @@ void sauvegarde(monde_t* monde){
       //Sauvegarde des objets présents dans l'inventaire
       fprintf(fichier, "%d\n", nb_obj_inv);
       for(i = 0; i < nb_obj_inv; i++){
-        fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
-        free(monde->joueur->inventaire[i].nom);
-        monde->joueur->inventaire[i].nom=NULL;
-        free(monde->joueur->inventaire[i].description);
-        monde->joueur->inventaire[i].description=NULL;
+        if(monde->joueur->inventaire[i].id != 0){
+          printf("i = %d\n", i);
+          printf("id = %d\n", monde->joueur->inventaire[i].id);
+          printf("desc = %s\n", monde->joueur->inventaire[i].description);
+          fprintf(fichier, "%d\n", i);
+          fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
+          fprintf(fichier, "%d\n", monde->joueur->inventaire[i].nb_obj);
+        }
+        //free(monde->joueur->inventaire[i].nom);
+        //monde->joueur->inventaire[i].nom=NULL;
+        //free(monde->joueur->inventaire[i].description);
+        //monde->joueur->inventaire[i].description=NULL;
       }
       //Sauvegarde des objets équipés
       fprintf(fichier, "%d\n", nb_obj_equip);
       for(i = 0; i < nb_obj_equip; i++){
         fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
-        free(monde->joueur->inventaire[i].nom);
-        monde->joueur->inventaire[i].nom=NULL;
-        free(monde->joueur->inventaire[i].description);
-        monde->joueur->inventaire[i].description=NULL;
+        fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].nb_obj);
+        //free(monde->joueur->inventaire[i].nom);
+        //monde->joueur->inventaire[i].nom=NULL;
+        //free(monde->joueur->inventaire[i].description);
+        //monde->joueur->inventaire[i].description=NULL;
       }
       //On ferme le fichier
       fclose(fichier);
