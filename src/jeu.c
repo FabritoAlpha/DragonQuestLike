@@ -775,14 +775,44 @@ void deplacement_monstre(monstre_t * monstre, monde_t * m){
   }
 }
 
-void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, salle_t* salle){
-    if(salle->num_salle == 0)
-        for(int i = 0; i < NB_PERSO_SALLE ; i++){
-            nonCombattant_position(renderer, textures, salle->perso[i]);
-        }
-    if(salle->num_salle == 2)
-        nonCombattant_position(renderer, textures, salle->perso[0]);
-    coffre_position(renderer, textures, salle->coffre);
+void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, zone_t* zone, salle_t* salle){
+    int n_zone = zone->num_zone;
+    int n_salle = salle->num_salle;
+    switch(n_zone){
+        case 0:
+            switch(n_salle){
+                case 0:
+                    nonCombattant_position(renderer, textures, salle->perso[0], 0);
+                    nonCombattant_position(renderer, textures, salle->perso[1], 4);
+                break;
+                case 2:
+                    nonCombattant_position(renderer, textures, salle->perso[0], 3);
+                break;
+            }
+        break;
+        case 1:
+            switch(n_salle){
+                case 0:
+                    nonCombattant_position(renderer, textures, salle->perso[0], 1);
+                    nonCombattant_position(renderer, textures, salle->perso[1], 3);
+                break;
+                case 2:
+                    nonCombattant_position(renderer, textures, salle->perso[0], 4);
+                break;
+            }
+        break;
+        case 2:
+            switch(n_salle){
+                case 0:
+                    nonCombattant_position(renderer, textures, salle->perso[0], 2);
+                    nonCombattant_position(renderer, textures, salle->perso[1], 4);
+                break;
+                case 2:
+                    nonCombattant_position(renderer, textures, salle->perso[0], 3);
+                break;
+            }
+        break;
+    }
 }
 
 
@@ -850,7 +880,7 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
 
       joueur_position(renderer, textures, monde->joueur);
 
-      affichage_nonCombattants(renderer,textures,monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]);
+      affichage_nonCombattants(renderer,textures, monde->zones[monde->joueur->zone], monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]);
 
       int suivaleatoir;
       if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT){

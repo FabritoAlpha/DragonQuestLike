@@ -35,8 +35,13 @@ typedef struct images_s{
     SDL_Texture* monstre_zone1; /*!< Texture liée à l'image des monstres. */
     SDL_Texture* monstre_zone2; /*!< Texture liée à l'image des monstres. */
     SDL_Texture* boss; /*!< Texture liée à l'image des monstres. */
-    SDL_Texture* personnage; /*!< Texture liée à l'image d'un personnage. */
+    SDL_Texture* perso_z0; /*!< Texture liée à l'image d'un personnage. */
+    SDL_Texture* perso_z1; /*!< Texture liée à l'image d'un personnage. */
+    SDL_Texture* perso_z2; /*!< Texture liée à l'image d'un personnage. */
+    SDL_Texture* marchand; /*!< Texture liée à l'image d'un personnage. */
+    SDL_Texture* marchande; /*!< Texture liée à l'image d'un personnage. */
     SDL_Texture* coffre; /*!< Texture liée à l'image d'un coffre. */
+    SDL_Texture* coffre_vide; /*!< Texture liée à l'image d'un coffre. */
     SDL_Texture* or; /*!< Texture liée à l'image d'une pièce. */
     SDL_Texture* dialogue; /*!< Texture liée à la zone de dialogue. */
     SDL_Texture* epee1; /*!< Texture liée à l'image de l'épee 1. */
@@ -75,11 +80,11 @@ void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueu
 
 void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre);
 
-void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* perso);
+void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* perso, int type);
 
 void dialogue_position(SDL_Renderer *renderer, images_t *textures);
 
-void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* coffre);
+void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* coffre, int ouvert);
 
 void or_position(SDL_Renderer *renderer, images_t *textures, int x, int y);
 

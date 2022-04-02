@@ -75,8 +75,18 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->monstre_zone2 = NULL;
     clean_texture(textures->boss);
     textures->boss = NULL;
-    clean_texture(textures->personnage);
-    textures->personnage = NULL;
+    clean_texture(textures->perso_z0);
+    textures->perso_z0 = NULL;
+    clean_texture(textures->perso_z1);
+    textures->perso_z1 = NULL;
+    clean_texture(textures->perso_z2);
+    textures->perso_z2 = NULL;
+    clean_texture(textures->marchand);
+    textures->marchand = NULL;
+    clean_texture(textures->marchande);
+    textures->marchande = NULL;
+    clean_texture(textures->coffre_vide);
+    textures->coffre_vide = NULL;
     clean_texture(textures->coffre);
     textures->coffre = NULL;
     clean_texture(textures->or);
@@ -161,7 +171,12 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->monstre_zone1 = load_image("./rsrc/img/monstre.bmp",renderer);
     textures->monstre_zone2 = load_image("./rsrc/img/monstre.bmp",renderer);
     textures->boss = load_image("./rsrc/img/monstre.bmp",renderer);
-    textures->personnage = load_image("./rsrc/img/perso.bmp",renderer);
+    textures->perso_z0 = load_image("./rsrc/img/perso_z0.bmp",renderer);
+    textures->perso_z1 = load_image("./rsrc/img/perso_z1.bmp",renderer);
+    textures->perso_z2 = load_image("./rsrc/img/perso_z2.bmp",renderer);
+    textures->marchand = load_image("./rsrc/img/marchand.bmp",renderer);
+    textures->marchande = load_image("./rsrc/img/marchande.bmp",renderer);
+    textures->coffre_vide = load_image("./rsrc/img/coffre_vide.bmp",renderer);
     textures->coffre = load_image("./rsrc/img/coffre.bmp",renderer);
     textures->or = load_image("./rsrc/img/piece.bmp",renderer);
     textures->dialogue = load_image("./rsrc/img/dialogue.bmp",renderer);
@@ -292,18 +307,37 @@ void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* mon
     apply_texture(textures->monstre, renderer, monstre->combattant->x + (taille_fenetre[0]/2) - 500, monstre->combattant->y + (taille_fenetre[1]/2) - 375);
 }
 
-void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* perso){
-    apply_texture(textures->personnage, renderer, perso->x + (taille_fenetre[0]/2) - 500, perso->y + (taille_fenetre[1]/2) - 375);
+void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* perso, int type){
+    switch(type){
+        case 0:
+            apply_texture(textures->perso_z0, renderer, perso->x + (taille_fenetre[0]/2) - 500, perso->y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 1:
+            apply_texture(textures->perso_z1, renderer, perso->x + (taille_fenetre[0]/2) - 500, perso->y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 2:
+            apply_texture(textures->perso_z2, renderer, perso->x + (taille_fenetre[0]/2) - 500, perso->y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 3:
+            apply_texture(textures->marchand, renderer, perso->x + (taille_fenetre[0]/2) - 500, perso->y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 4:
+            apply_texture(textures->marchande, renderer, perso->x + (taille_fenetre[0]/2) - 500, perso->y + (taille_fenetre[1]/2) - 375);
+        break;
+    }
 }
 
 void dialogue_position(SDL_Renderer *renderer, images_t *textures){
     apply_texture(textures->dialogue, renderer, (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 375);
     apply_texture(textures->joueur, renderer, 450 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
-    apply_texture(textures->personnage, renderer, 550 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
+    apply_texture(textures->marchand, renderer, 550 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
 }
 
-void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* coffre){
-    apply_texture(textures->coffre, renderer, coffre->x + (taille_fenetre[0]/2) - 500, coffre->y + (taille_fenetre[1]/2) - 375);
+void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* coffre, int ouvert){
+    if(ouvert == 1)
+        apply_texture(textures->coffre_vide, renderer, coffre->x + (taille_fenetre[0]/2) - 500, coffre->y + (taille_fenetre[1]/2) - 375);
+    if(ouvert == 0)
+        apply_texture(textures->coffre, renderer, coffre->x + (taille_fenetre[0]/2) - 500, coffre->y + (taille_fenetre[1]/2) - 375);
 }
 
 void or_position(SDL_Renderer *renderer, images_t *textures, int x, int y){
