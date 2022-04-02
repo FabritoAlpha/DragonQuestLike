@@ -221,22 +221,22 @@ void detruire_objet(objet_t**objet){
 void initialiser_biblio(objet_t tableau[]){
   int i_tab=0;
   objet_t * epee1 = creer_objet();
-  epee1 =objet_initialiser(epee1,1,4,0,0,"Epee en pierre","Desc");
+  epee1 =objet_initialiser(epee1,ID_EPEE_PIERRE,4,0,0,"Epee en pierre","Desc");
   tableau[i_tab++]=*epee1;
   objet_t * epee2 = creer_objet();
-  epee2 =objet_initialiser(epee2,2,0,8,0,"Epee en diamant","Desc");
+  epee2 =objet_initialiser(epee2,ID_EPEE_DIAM,0,8,0,"Epee en diamant","Desc");
   tableau[i_tab++]=*epee2;
   objet_t * bouclier1 = creer_objet();
-  bouclier1 =objet_initialiser(bouclier1,3,0,0,10,"Bouclier en pierre","Desc");
+  bouclier1 =objet_initialiser(bouclier1,ID_BOUCLIER_BOIS,0,0,10,"Bouclier en bois","Desc");
   tableau[i_tab++]=*bouclier1;
   objet_t * bouclier2 = creer_objet();
-  bouclier2 =objet_initialiser(bouclier2,4,0,10,0,"Bouclier en Diamant","Desc");
+  bouclier2 =objet_initialiser(bouclier2,ID_BOUCLIER_DIAM,0,10,0,"Bouclier en Diamant","Desc");
   tableau[i_tab++]=*bouclier2;
   objet_t *potionvie = creer_objet();
-  potionvie =objet_initialiser(potionvie,6,0,0,20,"Potion de vie","Desc");
+  potionvie =objet_initialiser(potionvie,ID_POTION_PV,0,0,20,"Potion de vie","Desc");
   tableau[i_tab++]=*potionvie;
   objet_t *potionmana = creer_objet();
-  potionmana =objet_initialiser(potionmana,7,0,20,0,"Potion de mana","Desc");
+  potionmana =objet_initialiser(potionmana,ID_POTION_MANA,0,20,0,"Potion de mana","Desc");
   tableau[i_tab++]=*potionmana;
 }
 
@@ -257,7 +257,7 @@ void ajout_objet(joueur_t* joueur, objet_t* biblio, int ind){
     (joueur->nb_obj_inventaire)++;
   }
   //si l'objet est une potion
-  if(ind == 4 || ind == 5){
+  if(ind == INDICE_POTION_PV || ind == INDICE_POTION_MANA){
     joueur->inventaire[ind].nb_obj++; // dans tout les cas ajouter 1 (on peut avoir plusieurs potions)
   }
 }

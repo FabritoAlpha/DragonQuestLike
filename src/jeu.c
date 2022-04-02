@@ -202,7 +202,7 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
         // si c'est un pnj non marchand
         if(nonCombattant_proche(monde) == 1){
             if(keystates[SDL_SCANCODE_RETURN]){
-                monde->etat_jeu = 1;
+                monde->etat_jeu = ETAT_JEU_PRINCIPAL;
             }
         }
 
@@ -286,7 +286,7 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 5){
                 monde->option = 0;
                 //on quitte la boutique
-                monde->etat_jeu = 1;
+                monde->etat_jeu = ETAT_JEU_PRINCIPAL;
             }
 
         }
@@ -297,7 +297,7 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
                 monde->joueur->or = monde->joueur->or + 500;
             }
             if(keystates[SDL_SCANCODE_RETURN]){
-                monde->etat_jeu = 1;
+                monde->etat_jeu = ETAT_JEU_PRINCIPAL;
             }
         }
     }
@@ -330,7 +330,7 @@ void revenir_au_jeu(SDL_Event* event, monde_t * monde){
     //on quitte l'affichage des cmmandes
     if(event->type == SDL_KEYDOWN){
         if(keystates[SDL_SCANCODE_RETURN]){
-                monde->etat_jeu = 1;
+                monde->etat_jeu = ETAT_JEU_PRINCIPAL;
         }
     }
 }
@@ -349,7 +349,7 @@ void changement_salle(joueur_t * j, int changement_salle){
         j->combattant->x = j->combattant->vitesse;
       }
       else{
-        j->combattant->y = SCREEN_HEIGHT - 100 - j->combattant->vitesse;
+        j->combattant->y = SCREEN_HEIGHT - 100 -HAUTEUR_PERSONNAGE - j->combattant->vitesse;
       }
       break;
 		case 2:
@@ -358,12 +358,24 @@ void changement_salle(joueur_t * j, int changement_salle){
         j->combattant->y = 100 + j->combattant->vitesse;
       }
       else{
-        j->combattant->x = j->combattant->vitesse;
+        if(j->zone == 2){
+          j->combattant->x = 100;
+        }
+        else{
+            j->combattant->x = j->combattant->vitesse;
+        }
+
       }
       break;
 		case 3:
       //S'il va vers la gauche même cas que pour le cas 0
-			j->combattant->x = SCREEN_WIDTH - j->combattant->vitesse - LARGEUR_PERSONNAGE;
+      if(j->zone == 2){
+        printf("Modif de x du joueur\n");
+
+        j->combattant->x = SCREEN_WIDTH - LARGEUR_PERSONNAGE - 100 -j->combattant->vitesse;
+      }else{
+        j->combattant->x = SCREEN_WIDTH - j->combattant->vitesse - LARGEUR_PERSONNAGE;
+      }
 			break;
 	}
 }
@@ -401,23 +413,38 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
     	      }
             break;
           case 2:
+
             if((combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y <= 100.0)){
               changement_salle(monde->joueur, -1);
     		      return(PAS_COLLISION);
     	      }
-
-    	      if(combattant->x <= 0.0){
-              changement_salle(monde->joueur, +1);
-    		      return(PAS_COLLISION);
+            if(monde->joueur->zone == 2){
+              if(combattant->x <= 80.0 && combattant->y >= 250 && combattant->y + HAUTEUR_PERSONNAGE <= 490){
+                changement_salle(monde->joueur, +1);
+      		      return(PAS_COLLISION);
+              }
+            }
+    	      else{
+              if(combattant->x <= 0.0){
+                changement_salle(monde->joueur, +1);
+    		        return(PAS_COLLISION);
+              }
             }
             break;
           case 3:
-            if(combattant->x + LARGEUR_PERSONNAGE>= SCREEN_WIDTH){
-              changement_salle(monde->joueur, -1);
-    		      return(PAS_COLLISION);
-    	      }
-
-    	      if((combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE >= SCREEN_HEIGHT - 100)){
+            if(monde->joueur->zone == 2){
+              if(combattant->x + LARGEUR_PERSONNAGE>= SCREEN_WIDTH - 100 && combattant->y >= 210 && combattant->y + HAUTEUR_PERSONNAGE <= 540){
+                changement_salle(monde->joueur, -1);
+    		          return(PAS_COLLISION);
+    	        }
+            }
+            else{
+              if(combattant->x + LARGEUR_PERSONNAGE>= SCREEN_WIDTH){
+                changement_salle(monde->joueur, -1);
+    		        return(PAS_COLLISION);
+    	        }
+            }
+    	      if((combattant->x >= ENTREE_GAUCHE_ZONE_SUIVANTE) && (combattant->x + LARGEUR_PERSONNAGE <= ENTREE_DROITE_ZONE_SUIVANTE) && (combattant->y + HAUTEUR_PERSONNAGE >= SCREEN_HEIGHT - 100) && monde->joueur->zone < 2){
               changement_zone(monde);
     		      return(PAS_COLLISION);
             }
@@ -705,7 +732,7 @@ void deplacement_monstre(monstre_t * monstre, monde_t * m){
   int dist_min=10;// A METRE JEU.H
   int dist_max=50;// A METRE JEU.H
   int nb_direction=4; //A METRE JEU.H
-  int distance_agro=400; //A METRE JEU.H
+  int distance_agro=250; //A METRE JEU.H
   if(distancejoueurmonstre(m->joueur,monstre)>distance_agro && monstre->agro==1){
     monstre->agro=0;
     monstre->dir=-1;
@@ -846,13 +873,13 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, zone_t
  */
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
     //printf("On rentre dans rafraichir\n");
-    int time_sec=(SDL_GetTicks()/10);
+    int time_sec=(SDL_GetTicks()/15);
 
     //on vide le renderer
     SDL_RenderClear(renderer);
 
 
-    if(monde->etat_jeu == 0 || monde->etat_jeu == 4){
+    if(monde->etat_jeu == ETAT_MENU_1 || monde->etat_jeu == ETAT_MENU_2){
 
       fond(renderer, textures, monde);
 
@@ -863,7 +890,7 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
       //printf("Test affichage fond\n");
       fond(renderer, textures, monde);
     }
-    if(monde->etat_jeu == 3){
+    if(monde->etat_jeu == ETAT_INVENTAIRE){
       affichage_inventaire(renderer, monde, textures, police);
     }
     if(monde->etat_jeu == ETAT_COMBAT){
@@ -961,12 +988,12 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
         }
         //printf("time sec %d nexttick %d\n",time_sec,(*next_tick));
         if(time_sec>(*next_tick)){
-          (*next_tick)++;
+          (*next_tick) = (*next_tick) + 8;
           //printf("On déplace le monstre");
-          //deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
+          deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
         }
         else{
-          (*next_tick)-= 2;
+          (*next_tick) = (*next_tick)-1;
         }
 
       }
@@ -1086,11 +1113,11 @@ void evenements(SDL_Event* event, monde_t * monde){
         if(event->type != SDL_KEYDOWN)
            continue;
 
-        if(monde->etat_jeu == 0){
+        if(monde->etat_jeu == ETAT_MENU_1){
             printf("On rentre dans evenements menu\n");
             evenements_menu(event, monde);
         }
-        if(monde->etat_jeu == 4){
+        if(monde->etat_jeu == ETAT_MENU_2){
             choix_partie(event,monde);
             if(monde->partie == 1 || monde->partie == 2){
               //Après avoir choisi le fichier où sauvegarder on écrase la sauvegarde avec soit l'initialisation soit le fichier chargé qui était sauvegardé
@@ -1099,7 +1126,7 @@ void evenements(SDL_Event* event, monde_t * monde){
             printf("menu partie\n");
         }
         /*!< Jeu en cours */
-        if(monde->etat_jeu == 1){
+        if(monde->etat_jeu == ETAT_JEU_PRINCIPAL){
             //si on appuie sur A on affiches les commandes et la map
             if(event->key.keysym.sym == SDLK_a){
               monde->etat_jeu = ETAT_AIDE;
@@ -1107,7 +1134,7 @@ void evenements(SDL_Event* event, monde_t * monde){
             //si on appuie sur M on retour au menu principal
             if(event->key.keysym.sym == SDLK_m){
               monde->option = 1;
-              monde->etat_jeu= 0;
+              monde->etat_jeu= ETAT_MENU_1;
             }
             //le coffre s'ouvre
             if(nonCombattant_proche(monde) == 3  && event->key.keysym.sym == SDLK_o && monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre->visite == 0){
@@ -1133,13 +1160,13 @@ void evenements(SDL_Event* event, monde_t * monde){
                 deplacement_bas(monde->joueur->combattant, 0, monde);
             }
             if(event->key.keysym.sym == SDLK_i){// Si en jeu il ouvre l'inventaire
-                monde->etat_jeu=3;
+                monde->etat_jeu=ETAT_INVENTAIRE;
                 event->key.keysym.sym =0;
 
             }
         }
         // Si dans l'inventaire le joueur le ferme.
-        if(monde->etat_jeu==3){// si dans inventaire
+        if(monde->etat_jeu==ETAT_INVENTAIRE){// si dans inventaire
           evenements_inventaire(event, monde);
           if(event->key.keysym.sym == SDLK_i){
             monde->etat_jeu=1;
@@ -1160,12 +1187,12 @@ void evenements(SDL_Event* event, monde_t * monde){
         if( event->type == SDL_QUIT ) {
             //sauvegarde(monde);
             //On indique la fin du jeu
-            monde->etat_jeu = -1;
+            monde->etat_jeu = ETAT_QUITTER;
             printf("fin du jeu");
         }
         if(keystates[SDL_SCANCODE_ESCAPE] ){
             //sauvegarde(monde);
-            monde->etat_jeu = -1;
+            monde->etat_jeu = ETAT_QUITTER;
             printf("fin du jeu");
         }
     }

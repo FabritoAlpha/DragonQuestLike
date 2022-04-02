@@ -15,6 +15,14 @@
 #define ARC 3
 #define RETOUR 4
 
+//Choix du joueur pour le menu de l'Inventaire
+#define INVENTAIRE 1
+#define EPEE_PIERRE 2
+#define EPEE_DIAM 3
+#define BOUCLIER_PIERRE 4
+#define BOUCLIER_DIAM 5
+#define POTION_PV 6
+#define POTION_MANA 7
 
 void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police);
 void choix_partie(SDL_Event* event, monde_t * monde);

@@ -15,7 +15,7 @@ int taille_fenetre[2];
 int main(){
     SDL_Event event; // déclaration des évenements
     monde_t* monde;
-    images_t* textures;
+    images_t textures;
     SDL_Renderer *screen;
     SDL_Window *window;
 
@@ -24,7 +24,7 @@ int main(){
     srand(time(NULL));
 
     //Allocation de la mémoire de la structure images_t contenant toutes les images utiles au jeu
-    textures = malloc(sizeof(images_t));
+    //textures = malloc(sizeof(images_t));
 
     //Création du monde
     monde = creer_monde();
@@ -39,7 +39,7 @@ int main(){
     printf("Nom obj: %s\n", monde->biblio_objet[0].nom);
     printf("\n");
 
-    if(textures->case_combat != NULL){
+    if(textures.case_combat != NULL){
       printf("Pas de textures libérés\n");
     }
     //mise en place du jeu (l'écran, le monde de jeu et les textures. )
@@ -54,13 +54,12 @@ int main(){
     init_ttf();
 
     //On charge toutes les images utiles au jeu
-    init_images(screen,textures);
-
+    init_images(screen, &textures);
     //On charge la police de la ttf et on choisit sa taille
     police = TTF_OpenFont("./rsrc/img/ka1.ttf", 20);
 
     //TO DO boucle du jeu avec mise à jour jeu, évènement (handle event) et rafraichissement
-    while(monde->etat_jeu != -1){
+    while(monde->etat_jeu != ETAT_QUITTER){
 
       //Gestion des évènements durant le jeu: choix des menus, déplacements du personnage...
       evenements(&event,monde);
@@ -71,7 +70,7 @@ int main(){
         //combat(monde->joueur, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstres[0], textures, screen, &event, monde, police);
       }*/
       //Rafraichissement de l'affichage de la fenêtre
-      rafraichir( screen, monde, textures,&tick,&tick_monstre,police);
+      rafraichir( screen, monde, &textures,&tick,&tick_monstre,police);
 
     }
 
@@ -79,21 +78,21 @@ int main(){
     //clean(window, screen, textures, monde,police);
     detruire_monde(&monde);
 
-    clean_images(textures, police);
+    clean_images(&textures, police);
 
     clean_sdl(screen,window);
 
     printf("largeur de la fenêtre: %d \n hauteur de la fenêtre: %d\n", taille_fenetre[0], taille_fenetre[1]);
 
-    if(textures->case_combat != NULL){
-      printf("Pas de textures libérés\n");
+    if(textures.case_combat == NULL){
+      printf("textures libérés\n");
     }
 
     //Libération de la mémoire liée à la structure images_t
-    free(textures);
-    textures = NULL;
-    if(textures != NULL){
-      printf("Textures mal libérées\n");
-    }
+    //free(textures);
+    //textures = NULL;
+    //if(textures != NULL){
+      //printf("Textures mal libérées\n");
+    //}
     return 0;
 }

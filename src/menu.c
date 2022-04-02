@@ -21,7 +21,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
     char opt[20] = "";
 
     //menu de base
-    if(monde->etat_jeu == 0){
+    if(monde->etat_jeu == ETAT_MENU_1){
         //jouer
         if(monde->option == 1){
             sprintf(opt, "Jouer");
@@ -49,7 +49,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
     }
 
     //menu choix de partie
-    if(monde->etat_jeu == 4){
+    if(monde->etat_jeu == ETAT_MENU_2){
         //Partie 1
         if(monde->option == 1){
             sprintf(opt, "Partie 1");
@@ -175,7 +175,7 @@ void choix_partie(SDL_Event* event, monde_t * monde){
           monde->partie = 1;
           printf("partie1");
           //on commence le jeu
-          monde->etat_jeu = 1;
+          monde->etat_jeu = ETAT_JEU_PRINCIPAL;
         }
         //partie 2
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 2){
@@ -184,7 +184,7 @@ void choix_partie(SDL_Event* event, monde_t * monde){
           monde->partie = 2;
           printf("partie2");
           //on commence le jeu
-          monde->etat_jeu = 1;
+          monde->etat_jeu = ETAT_JEU_PRINCIPAL;
         }
         //nouvelle partie
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
@@ -217,14 +217,14 @@ void choix_partie(SDL_Event* event, monde_t * monde){
               //on initialise la partie
               init_monde_jeu(monde,"./rsrc/txt/init.txt");
               monde->partie = 1;
-              monde->etat_jeu = 1;
+              monde->etat_jeu = ETAT_JEU_PRINCIPAL;
             }
             //nouvelle partie sur l'emplacement partie 2
             if(keystates[SDL_SCANCODE_RETURN] && monde->option2 == 2){
               //on initialise la partie
               init_monde_jeu(monde,"./rsrc/txt/init.txt");
               monde->partie = 2;
-              monde->etat_jeu = 1;
+              monde->etat_jeu = ETAT_JEU_PRINCIPAL;
             }
             //annuler le chargement d'une nouvelle partie
             if(keystates[SDL_SCANCODE_RETURN] && monde->option2 == 3){
@@ -234,7 +234,7 @@ void choix_partie(SDL_Event* event, monde_t * monde){
         //retour
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 4){
           //on retourne au menu précedent
-          monde->etat_jeu = 0;
+          monde->etat_jeu = ETAT_MENU_1;
         }
     }
 }
@@ -258,12 +258,12 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
             printf("On appuie sur jouer\n");
             //on entre dans un menu avec le choix de la partie
-            monde->etat_jeu = 4;
+            monde->etat_jeu = ETAT_MENU_2;
             monde->option = -1;
             printf("monde->etat_jeu = %d\n", monde->etat_jeu);
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 2){
-            monde->etat_jeu = -1;
+            monde->etat_jeu = ETAT_QUITTER;
         }
     }
 
@@ -330,12 +330,12 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
             couleur=0;
             apply_texture(&textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }
-        if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[0].id&&monde->joueur->inventaire[0].id!=0){
+        if(monde->joueur->objet_equipe[INDICE_EPEE].id==monde->joueur->inventaire[INDICE_EPEE_PIERRE].id&&monde->joueur->inventaire[INDICE_EPEE_PIERRE].id!=0){
             apply_texture(&textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }
 
-        if(monde->joueur->inventaire[0].id!=0){// Si l'objet est dans l'inventaire
-            snprintf(opt2, 20, "%s", monde->joueur->inventaire[0].nom);
+        if(monde->joueur->inventaire[INDICE_EPEE_PIERRE].id!=0){// Si l'objet est dans l'inventaire
+            snprintf(opt2, 20, "%s", monde->joueur->inventaire[INDICE_EPEE_PIERRE].nom);
             apply_texture(&textures->epee1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
             apply_text(renderer, couleur, 255, 0 , opt2 , police,POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
         }
@@ -347,12 +347,12 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
             couleur=0;
             apply_texture(&textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }
-        if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[1].id&&monde->joueur->inventaire[1].id!=0){
+        if(monde->joueur->objet_equipe[INDICE_EPEE].id==monde->joueur->inventaire[INDICE_EPEE_DIAM].id&&monde->joueur->inventaire[INDICE_EPEE_DIAM].id!=0){
             apply_texture(&textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }
 
-        if(monde->joueur->inventaire[1].id!=0){
-            snprintf(opt2, 20, "%s", monde->joueur->inventaire[1].nom);
+        if(monde->joueur->inventaire[INDICE_EPEE_DIAM].id!=0){
+            snprintf(opt2, 20, "%s", monde->joueur->inventaire[INDICE_EPEE_DIAM].nom);
             apply_texture(&textures->epee2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
             apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L , POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H, TEXT_OBJET_L, TEXT_OBJET_H);
         }
@@ -364,12 +364,12 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
             couleur=0;
             apply_texture(&textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-        if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[2].id&&monde->joueur->inventaire[2].id!=0){
+        if(monde->joueur->objet_equipe[INDICE_BOUCLIER].id==monde->joueur->inventaire[INDICE_BOUCLIER_BOIS].id&&monde->joueur->inventaire[INDICE_BOUCLIER_BOIS].id!=0){
             apply_texture(&textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
 
-        if(monde->joueur->inventaire[2].id!=0){
-            snprintf(opt2, 20, "%s", monde->joueur->inventaire[2].nom);
+        if(monde->joueur->inventaire[INDICE_BOUCLIER_BOIS].id!=0){
+            snprintf(opt2, 20, "%s", monde->joueur->inventaire[INDICE_BOUCLIER_BOIS].nom);
             apply_texture(&textures->bouclier1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
             apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
         }
@@ -381,11 +381,11 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
             couleur=0;
             apply_texture(&textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-        if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[3].id&&monde->joueur->inventaire[3].id!=0){
+        if(monde->joueur->objet_equipe[INDICE_BOUCLIER].id==monde->joueur->inventaire[INDICE_BOUCLIER_DIAM].id&&monde->joueur->inventaire[INDICE_BOUCLIER_DIAM].id!=0){
             apply_texture(&textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
-        if(monde->joueur->inventaire[3].id!=0){
-            snprintf(opt2, 20, "%s", monde->joueur->inventaire[3].nom);
+        if(monde->joueur->inventaire[INDICE_BOUCLIER_DIAM].id!=0){
+            snprintf(opt2, 20, "%s", monde->joueur->inventaire[INDICE_BOUCLIER_DIAM].nom);
             apply_texture(&textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
             apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
         }
@@ -395,7 +395,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }else{
             couleur=COULEUR_2_VIDE;
         }
-        if(monde->joueur->inventaire[4].id!=0){
+        if(monde->joueur->inventaire[INDICE_POTION_PV].id!=0){
           couleur2=COULEUR_1_SELECTION;
         }else{
           couleur2=COULEUR_2_VIDE;
@@ -403,7 +403,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         sprintf(opt, "Potion de vie");
         apply_text(renderer, couleur, couleur2, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
         apply_texture(&textures->potion_pv, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H);
-        snprintf(opt, 20, "%d", monde->joueur->inventaire[4].nb_obj);
+        snprintf(opt, 20, "%d", monde->joueur->inventaire[INDICE_POTION_PV].nb_obj);
         apply_text(renderer, couleur, couleur2, 0 , opt , police,POSITION_INVENTAIRE_L*0.15+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L/5, TEXT_OBJET_H);
         //Objet 7 Potion Mana
         if(monde->option==7){
@@ -411,7 +411,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }else{
             couleur=0;
         }
-        if(monde->joueur->inventaire[5].id!=0){
+        if(monde->joueur->inventaire[INDICE_POTION_MANA].id!=0){
           couleur2=COULEUR_1_SELECTION;
         }else{
           couleur2=COULEUR_2_VIDE;
@@ -419,102 +419,161 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         sprintf(opt, "Potion de mana");
         apply_text(renderer, couleur, couleur2, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
         apply_texture(&textures->potion_mana, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H*2);
-        snprintf(opt, 20, "%d", monde->joueur->inventaire[5].nb_obj);
+        snprintf(opt, 20, "%d", monde->joueur->inventaire[INDICE_POTION_MANA].nb_obj);
         apply_text(renderer, couleur, couleur2, 0, opt , police, POSITION_INVENTAIRE_L*0.15+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L/5, TEXT_OBJET_H);
 }
+
 void evenements_inventaire(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
     if(event->type == SDL_KEYDOWN){
       //printf("Debut Nb obj equip = %d\n", monde->joueur->nb_obj_equip);
         if(keystates[SDL_SCANCODE_DOWN]){
           switch(monde->option){
-            case 1 :monde->option=2;break;//
-            case 2 :monde->option=4;break;//1
-            case 3 :monde->option=5;break;//2
-            case 4 :monde->option=1;break;//3
-            case 5 :monde->option=1;break;//4
-            case 6 :monde->option=7;break;//6
-            case 7 :monde->option=6;break;//7
-            default:monde->option=1;break;
+            case INVENTAIRE :
+              monde->option=EPEE_PIERRE;
+              break;//
+            case EPEE_PIERRE :
+              monde->option=BOUCLIER_PIERRE;
+              break;//1
+            case EPEE_DIAM :
+              monde->option=BOUCLIER_DIAM;
+              break;//2
+            case BOUCLIER_PIERRE :
+              monde->option=INVENTAIRE;
+              break;//3
+            case BOUCLIER_DIAM :
+              monde->option=EPEE_DIAM;
+              break;//4
+            case POTION_PV :
+              monde->option=POTION_MANA;
+              break;//6
+            case POTION_MANA :
+              monde->option=POTION_PV;
+              break;//7
+            default:
+              monde->option=INVENTAIRE;
+              break;
           }
         }
         if(keystates[SDL_SCANCODE_UP]){
           switch(monde->option){
-            case 1 :monde->option=4;break;//
-            case 2 :monde->option=1;break;//1
-            case 3 :monde->option=1;break;//2
-            case 4 :monde->option=2;break;//3
-            case 5 :monde->option=3;break;//4
-            case 6 :monde->option=7;break;//6
-            case 7 :monde->option=6;break;//7
-            default:monde->option=1;break;
+            case INVENTAIRE :
+              monde->option=BOUCLIER_PIERRE;
+              break;//
+            case EPEE_PIERRE :
+              monde->option=INVENTAIRE;
+              break;//1
+            case EPEE_DIAM :
+              monde->option=BOUCLIER_DIAM;
+              break;//2
+            case BOUCLIER_PIERRE :
+              monde->option=EPEE_PIERRE;
+              break;//3
+            case BOUCLIER_DIAM :
+              monde->option=EPEE_DIAM;
+              break;//4
+            case POTION_PV :
+              monde->option=POTION_MANA;
+              break;//6
+            case POTION_MANA :
+              monde->option=POTION_PV;
+              break;//7
+            default:
+              monde->option=INVENTAIRE;
+              break;
           }
         }
         if(keystates[SDL_SCANCODE_LEFT]){
           switch(monde->option){
-            case 1 :break;//
-            case 2 :monde->option=6;break;//1
-            case 3 :monde->option=2;break;//2
-            case 4 :monde->option=7;break;//3
-            case 5 :monde->option=4;break;//4
-            case 6 :monde->option=3;break;//6
-            case 7 :monde->option=5;break;//7
-            default:monde->option=1;break;
+            case INVENTAIRE :
+              break;//
+            case EPEE_PIERRE :
+              monde->option=POTION_PV;
+              break;//1
+            case EPEE_DIAM :
+              monde->option=EPEE_PIERRE;
+              break;//2
+            case BOUCLIER_PIERRE :
+              monde->option=POTION_MANA;
+              break;//3
+            case BOUCLIER_DIAM :
+              monde->option=BOUCLIER_PIERRE;
+              break;//4
+            case POTION_PV :
+              monde->option=EPEE_DIAM;
+              break;//6
+            case POTION_MANA :
+              monde->option=BOUCLIER_DIAM;
+              break;//7
+            default:
+              monde->option=INVENTAIRE;
+              break;
           }
         }
         if(keystates[SDL_SCANCODE_RIGHT]){
           switch(monde->option){
-            case 1 :break;//
-            case 2 :monde->option=3;break;//1
-            case 3 :monde->option=6;break;//2
-            case 4 :monde->option=5;break;//3
-            case 5 :monde->option=7;break;//4
-            case 6 :monde->option=2;break;//6
-            case 7 :monde->option=4;break;//7
-            default:monde->option=1;break;
+            case INVENTAIRE :
+              break;//
+            case EPEE_PIERRE :
+              monde->option=EPEE_DIAM;
+              break;//1
+            case EPEE_DIAM :
+              monde->option=POTION_PV;
+              break;//2
+            case BOUCLIER_PIERRE :
+              monde->option=BOUCLIER_DIAM;
+              break;//3
+            case BOUCLIER_DIAM :
+              monde->option=POTION_MANA;
+              break;//4
+            case POTION_PV :
+              monde->option=EPEE_PIERRE;
+              break;//6
+            case POTION_MANA :
+              monde->option=BOUCLIER_PIERRE;
+              break;//7
+            default:
+              monde->option=INVENTAIRE;
+              break;
           }
         }
-        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
-            //
-        }
-        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 2){
-            //Epee en bois équipée
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == EPEE_PIERRE){
             equipement_desequipement_objet(monde->joueur, 0, 0);
         }
-        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 3){
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == EPEE_DIAM){
             //Epee en diamant équipée
             equipement_desequipement_objet(monde->joueur, 1, 0);
         }
-        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 4){
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == BOUCLIER_PIERRE){
             //Bouclier en bois
             equipement_desequipement_objet(monde->joueur, 2, 1);
         }
-        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 5){
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == BOUCLIER_DIAM){
             //Bouclier en diamant
             equipement_desequipement_objet(monde->joueur, 3, 1);
         }
-        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 6){
-            if(monde->joueur->inventaire[4].id==6 && monde->joueur->inventaire[4].nb_obj>0 && (monde->joueur->combattant->pvCour < monde->joueur->combattant->pvMax)){ // Si il y'a une potion dans l'inventaire
-                monde->joueur->combattant->pvCour+=monde->joueur->inventaire[4].vie_sup;
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == POTION_PV){
+            if(monde->joueur->inventaire[INDICE_POTION_PV].id==ID_POTION_PV && monde->joueur->inventaire[INDICE_POTION_PV].nb_obj>0 && (monde->joueur->combattant->pvCour < monde->joueur->combattant->pvMax)){ // Si il y'a une potion dans l'inventaire
+                monde->joueur->combattant->pvCour+=monde->joueur->inventaire[INDICE_POTION_PV].vie_sup;
                 if(monde->joueur->combattant->pvCour>monde->joueur->combattant->pvMax){ // empeche d'avoir plus de pv que le pv max
                     monde->joueur->combattant->pvCour=monde->joueur->combattant->pvMax;
                 }
-                monde->joueur->inventaire[4].nb_obj--; // Enleve une potion de l'inventaire
-                if(monde->joueur->inventaire[4].nb_obj==0){ // Si il n'y à plus de potions on l'enleve de l'inventaire.
-                    monde->joueur->inventaire[4].id=0;
+                monde->joueur->inventaire[INDICE_POTION_PV].nb_obj--; // Enleve une potion de l'inventaire
+                if(monde->joueur->inventaire[INDICE_POTION_PV].nb_obj==0){ // Si il n'y à plus de potions on l'enleve de l'inventaire.
+                    monde->joueur->inventaire[INDICE_POTION_PV].id=0;
                 }
 
             }
         }
-        if(keystates[SDL_SCANCODE_RETURN] && monde->option == 7){
-            if(monde->joueur->inventaire[5].id==7&&monde->joueur->inventaire[5].nb_obj>0 && (monde->joueur->manaCour < monde->joueur->manaMax)){ // Si il y'a une potion dans l'inventaire
-                monde->joueur->manaCour+=monde->joueur->inventaire[5].mana_sup;
+        if(keystates[SDL_SCANCODE_RETURN] && monde->option == POTION_MANA){
+            if(monde->joueur->inventaire[INDICE_POTION_MANA].id==ID_POTION_MANA && monde->joueur->inventaire[INDICE_POTION_MANA].nb_obj>0 && (monde->joueur->manaCour < monde->joueur->manaMax)){ // Si il y'a une potion dans l'inventaire
+                monde->joueur->manaCour+=monde->joueur->inventaire[INDICE_POTION_MANA].mana_sup;
                 if(monde->joueur->manaCour>monde->joueur->manaMax){ // empeche d'avoir plus de mana que le mana max
                     monde->joueur->manaCour=monde->joueur->manaMax;
                 }
-                monde->joueur->inventaire[5].nb_obj--; // Enleve une potion de l'inventaire
-                if(monde->joueur->inventaire[5].nb_obj==0){ // Si il n'y à plus de potions on l'enleve de l'inventaire.
-                    monde->joueur->inventaire[5].id=0;
+                monde->joueur->inventaire[INDICE_POTION_MANA].nb_obj--; // Enleve une potion de l'inventaire
+                if(monde->joueur->inventaire[INDICE_POTION_MANA].nb_obj==0){ // Si il n'y à plus de potions on l'enleve de l'inventaire.
+                    monde->joueur->inventaire[INDICE_POTION_MANA].id=0;
                 }
 
             }
@@ -574,7 +633,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                         case FUITE:
                             //On quitte le combat
                             //On modifie l'état du jeu afin de retourner à  la carte principale
-                            monde->etat_jeu = 1;
+                            monde->etat_jeu = ETAT_JEU_PRINCIPAL;
                             break;
 
                     }
@@ -700,7 +759,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour -=monde->joueur->combattant->attaque;
                             //Finit le combat si pv du monstre <= 0
                             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour <= 0){
-                                monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+                                monde->etat_jeu = ETAT_JEU_PRINCIPAL;//On retourne sur la carte du monde si le monstre est mort
                                 //monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
                                 monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat = MORT;
@@ -715,7 +774,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             monde->joueur->manaCour -= 5;
                             //Finit le combat si pv du monstre <= 0
                             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour <= 0){
-                                monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+                                monde->etat_jeu = ETAT_JEU_PRINCIPAL;//On retourne sur la carte du monde si le monstre est mort
                                 monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
                             }
@@ -727,7 +786,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour -=monde->joueur->combattant->attaque;
                             //Finit le combat si pv du monstre <= 0
                             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour <= 0){
-                                monde->etat_jeu = 1;//On retourne sur la carte du monde si le monstre est mort
+                                monde->etat_jeu = ETAT_JEU_PRINCIPAL;//On retourne sur la carte du monde si le monstre est mort
                                 printf("On tue par l'arc\n");
                                 monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
                                 monde->joueur->or += 30;
@@ -750,7 +809,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
         }
         printf("Sortie de boucle\n");
         monde->num_menu_comb = MENU1;
-        monde->etat_jeu = 1;
+        monde->etat_jeu = ETAT_JEU_PRINCIPAL;
 	    if(monde->partie == 1){
             init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
         }
@@ -760,7 +819,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
     }
     //Le monstre attaque si le joueur a attaqué
 
-    else if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->num_menu_comb != MENU1 && monde->etat_jeu != 1 && indice_deg == 1){
+    else if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->num_menu_comb != MENU1 && monde->etat_jeu != ETAT_JEU_PRINCIPAL && indice_deg == 1){
 		    //Le monstre inflige des dégâts basiquement au joueur
 		    monde->joueur->combattant->pvCour -= monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->attaque;
 
@@ -859,7 +918,7 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
             apply_texture(&textures->case_combat, renderer, 600, 320);
             switch(monde->option){
               case ATTAQUE:
-                printf("On rentre en surbrillance dans attaque\n");
+                //printf("On rentre en surbrillance dans attaque\n");
                 apply_texture(&textures->surbrillance_combat, renderer, 100, 320);
                 break;
               case FUITE:
@@ -974,6 +1033,6 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
     }
     else{
         //ça signifie que seul le monstre est mort -> on retourne seulement au jeu
-        monde->etat_jeu = 1;
+        monde->etat_jeu = ETAT_JEU_PRINCIPAL;
     }
 }

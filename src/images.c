@@ -40,6 +40,8 @@ void clean_images(images_t *textures, TTF_Font * police){
         textures->zone1salle1 = NULL;
         printf("Ok3");
     }*/
+    //clean_texture(textures->print_yest);
+    //textures->print_yest = NULL;
     clean_texture(textures->zone0salle0);
     //printf("Clean_textures se réalise 'correctement'\n");
     textures->zone0salle0 = NULL;
@@ -153,6 +155,7 @@ void clean_images(images_t *textures, TTF_Font * police){
 */
 
 void init_images(SDL_Renderer *renderer, images_t *textures){
+  //load_image("./rsrc/img/joueur.bmp",&renderer,&textures->print_yest);
     load_image("./rsrc/img/zone0_salle0.bmp",&renderer,&textures->zone0salle0);
     //textures->menu = load_image("./rsrc/img/menu.bmp",renderer);
     load_image("./rsrc/img/zone0_salle1.bmp",&renderer,&textures->zone0salle1);
@@ -216,7 +219,7 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
     int salle = monde->joueur->salle;
     int etat = monde->etat_jeu;
     //fond du menu
-    if(etat == 1 || etat == ETAT_DIALOGUE || etat == ETAT_COFFRE || etat == ETAT_AIDE){
+    if(etat == ETAT_JEU_PRINCIPAL || etat == ETAT_DIALOGUE || etat == ETAT_COFFRE || etat == ETAT_AIDE){
         if(zone == 0){
             switch(salle){
                 case 0:
@@ -271,7 +274,7 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
             }
         }
     }
-    else if(etat == 3){
+    else if(etat == ETAT_INVENTAIRE){
         apply_texture(&textures->fond_inventaire, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
     }
     else if(etat == ETAT_COMBAT){

@@ -159,7 +159,7 @@ void detruire_salle(salle_t ** salle){
 }
 
 void init_monde_menu(monde_t * monde){
-  monde->etat_jeu = 0;
+  monde->etat_jeu = ETAT_MENU_1;
   monde->option = 1;
   monde->option2 = 0;
   monde->num_menu_comb = MENU1;
@@ -266,16 +266,23 @@ void init_zone(zone_t * zone, int num_zone){
   zone->num_zone = num_zone;
   for(i = 0; i < NB_SALLES; i++){
 
-    init_salle(zone->salles[i], i);
+    init_salle(zone->salles[i], i, num_zone);
 
   }
 }
 
-void init_salle(salle_t * salle, int num_salle){
+void init_salle(salle_t * salle, int num_salle, int num_zone){
   int i;
 
-  init_monstre(salle->monstre, 30, 30,100, 1,0,0);
-
+  //Si on est dans la dernière salle du jeu
+  //On a à faire à un boss
+  if(num_zone == NB_ZONES - 1 && num_salle == NB_SALLES - 1){
+    init_monstre(salle->monstre, 30, 30,100, 1,0,BOSS);
+  }
+  //Si on est dans une autre salle c'est un monstre commun
+  else{
+    init_monstre(salle->monstre, 30, 30,100, 1,0,COMMUN);
+  }
   if(num_salle == 0 || num_salle == 2){
     int hauteur = 251;
     for(i = 0; i < NB_PERSO_SALLE; i++){
@@ -291,4 +298,19 @@ void init_salle(salle_t * salle, int num_salle){
   salle->difficulte = 0;
   salle->num_salle = num_salle;
   init_nonCombattant(salle->coffre, 0, 900 - LARGEUR_COFFRE, 80,0);
+}
+
+//Retourne 1 si on a vaincu le boss final
+int victoire_jeu(monde_t * monde){
+  joueur_t * j = monde->joueur;
+
+  //Si le monstre de la zone et la salle actuelle est un boss
+  // + Si c'est la dernière salle de la dernière zone
+  // + si le monstre est mort
+  // alors le joueur a gagné
+  if(monde->zones[j->zone]->salles[j->salle]->monstre->type == BOSS && j->zone + 1 == NB_ZONES && j->salle + 1 == NB_SALLES &&monde->zones[j->zone]->salles[j->salle]->monstre->etat == MORT){
+    return(VICTOIRE);
+  }
+
+  return(PARTIE_EN_COURS);
 }

@@ -13,8 +13,15 @@
 #define MENU1 1
 #define MENU2 2
 
+//Valeurs représentants l'état de la partie
+#define VICTOIRE 1
+#define PARTIE_EN_COURS 0
+
+//Nombre de zones et de salles du monde
 #define NB_SALLES 4
-#define NB_ZONES 6
+#define NB_ZONES 3
+
+#define ETAT_MENU_1 0
 
 #define NB_MONSTRES_SALLE 1
 #define NB_PERSO_SALLE 2
@@ -112,7 +119,7 @@ void init_zone(zone_t * zone, int num_zone);
 	*\param salle une salle d'une zone
 	*\param num_salle numéro de la salle de la zone
 */
-void init_salle(salle_t * salle, int num_salle);
+void init_salle(salle_t * salle, int num_salle, int num_zone);
 
 void deplacement_monstre(monstre_t * monstre, monde_t * m);
 

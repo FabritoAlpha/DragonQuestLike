@@ -64,6 +64,7 @@ int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height
 void load_image(const char* nomfichier, SDL_Renderer** renderer, SDL_Texture** text)
 {
     //printf("Oui on arrive dans load_image\n");
+    //printf("On ouvre le fichier :%s\n", nomfichier);
     SDL_Surface *tmp = NULL;
     SDL_Texture *texture = NULL;
     tmp = SDL_LoadBMP(nomfichier);

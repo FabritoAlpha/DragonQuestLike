@@ -17,11 +17,33 @@
 #define JOUEUR 1
 #define MONSTRE 0
 
+//Type du monstre
+#define BOSS 1
+#define COMMUN 0
+
 //Etat des monstres
 #define VIVANT 1
 #define MORT 0
 
+//Id des objets
+#define ID_EPEE_PIERRE 1
+#define ID_EPEE_DIAM 2
+#define ID_BOUCLIER_BOIS 3
+#define ID_BOUCLIER_DIAM 4
+#define ID_POTION_PV 6
+#define ID_POTION_MANA 7
 
+//Indice des objets dans le tableau inventaire/bilbiothèque des objets
+#define INDICE_EPEE_PIERRE 0
+#define INDICE_EPEE_DIAM 1
+#define INDICE_BOUCLIER_BOIS 2
+#define INDICE_BOUCLIER_DIAM 3
+#define INDICE_POTION_PV 4
+#define INDICE_POTION_MANA 5
+
+//Indice des objets dans le tableau des objets équipés
+#define INDICE_EPEE 0
+#define INDICE_BOUCLIER 1
 
 /**
   * \struct combattant_t
