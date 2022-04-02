@@ -1036,3 +1036,21 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
         monde->etat_jeu = ETAT_JEU_PRINCIPAL;
     }
 }
+
+void affichage_victoire(SDL_Renderer* renderer, images_t * textures, TTF_Font* police){
+  apply_texture(&textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+  apply_text(renderer, 255, 0, 0, "VICTOIRE", police, SCREEN_WIDTH/2 - 100, SCREEN_HEIGHT/2 - 125, 200, 100);
+  apply_text(renderer, 255, 0, 0, "Press Enter To Quit", police, SCREEN_WIDTH/2 - 200, SCREEN_HEIGHT/2 + 25, 400, 100);
+
+}
+
+void evenements_fin_partie(SDL_Event* event, monde_t * monde){
+  const Uint8* keystates = SDL_GetKeyboardState(NULL);
+
+  if(event->type == SDL_KEYDOWN){
+    if(keystates[SDL_SCANCODE_RETURN]){
+      monde->etat_jeu = ETAT_MENU_1;
+      printf("Monde etat jeu :%d\n", monde->etat_jeu);
+    }
+  }
+}

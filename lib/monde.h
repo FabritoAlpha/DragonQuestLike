@@ -122,5 +122,5 @@ void init_zone(zone_t * zone, int num_zone);
 void init_salle(salle_t * salle, int num_salle, int num_zone);
 
 void deplacement_monstre(monstre_t * monstre, monde_t * m);
-
+int victoire_jeu(monde_t * monde);
 #endif

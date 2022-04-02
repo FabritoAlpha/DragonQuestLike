@@ -76,6 +76,5 @@ void deplacement_monstre(monstre_t * monstre, monde_t * m);
 	*\param salle une salle d'une zone
 	*\param num_salle numéro de la salle de la zone
 */
-void init_salle(salle_t * salle, int num_salle);
 
 #endif

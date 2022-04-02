@@ -31,18 +31,7 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde);
 void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font* police);
 void evenements_combat(SDL_Event * event, monde_t * monde);
 void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font* police);
-
-
-
-
-
-
-
-
-
-
-
-
-
+void evenements_fin_partie(SDL_Event * event, monde_t * monde);
+void affichage_victoire(SDL_Renderer* renderer, images_t * textures, TTF_Font* police);
 
 #endif

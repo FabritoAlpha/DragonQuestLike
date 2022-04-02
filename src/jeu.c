@@ -897,6 +897,10 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
       affichage_combat(renderer, monde, textures, police);
     }
 
+    if(monde->etat_jeu == ETAT_VICTOIRE){
+      affichage_victoire(renderer,textures,police);
+    }
+
     if(monde->etat_jeu == ETAT_DIALOGUE){
       switch(monde->joueur->zone){
           case 0:
@@ -999,6 +1003,9 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
       }
 
     }
+    if(victoire_jeu(monde) && monde->etat_jeu == ETAT_JEU_PRINCIPAL){
+      monde->etat_jeu = ETAT_VICTOIRE;
+    }
 
     //On actualise l'affichage
     //(*next_tick)+=1;
@@ -1030,18 +1037,18 @@ void sauvegarde(monde_t* monde){
         for(i = 0; i < TAILLE_INVENTAIRE; i++){
           //Si un objet est présent à l'indice i du tableau
           if(monde->joueur->inventaire[i].id != 0){
-            printf("i = %d\n", i);
-            printf("id = %d\n", monde->joueur->inventaire[i].id);
-            printf("desc = %s\n", monde->joueur->inventaire[i].description);
+            //printf("i = %d\n", i);
+            //printf("id = %d\n", monde->joueur->inventaire[i].id);
+            //printf("desc = %s\n", monde->joueur->inventaire[i].description);
             fprintf(fichier, "%d\n", i);
             //fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
             fprintf(fichier, "%d\n", monde->joueur->inventaire[i].nb_obj);
           }
         }
         fprintf(fichier, "%d\n", nb_obj_equip);
-        printf("nb obj equip : %d\n", nb_obj_equip);
+        //printf("nb obj equip : %d\n", nb_obj_equip);
         for(i = 0; i < nb_obj_equip; i++){
-          printf("i2 = %d\n", i);
+          //printf("i2 = %d\n", i);
           fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
           fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].nb_obj);
         }
@@ -1056,7 +1063,7 @@ void sauvegarde(monde_t* monde){
         fprintf(fichier, "%d\n", monde->joueur->combattant->attaque);
         //Sauvegarde des objets présents dans l'inventaire
 
-        printf("nb obj inv : %d\n", nb_obj_inv);
+        //printf("nb obj inv : %d\n", nb_obj_inv);
 
         //Sauvegarde des objets équipés
 
@@ -1070,18 +1077,18 @@ void sauvegarde(monde_t* monde){
       for(i = 0; i < TAILLE_INVENTAIRE; i++){
         //Si un objet est présent à l'indice i du tableau
         if(monde->joueur->inventaire[i].id != 0){
-          printf("i = %d\n", i);
-          printf("id = %d\n", monde->joueur->inventaire[i].id);
-          printf("desc = %s\n", monde->joueur->inventaire[i].description);
+          //printf("i = %d\n", i);
+          //printf("id = %d\n", monde->joueur->inventaire[i].id);
+          //printf("desc = %s\n", monde->joueur->inventaire[i].description);
           fprintf(fichier, "%d\n", i);
           //fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
           fprintf(fichier, "%d\n", monde->joueur->inventaire[i].nb_obj);
         }
       }
       fprintf(fichier, "%d\n", nb_obj_equip);
-      printf("nb obj equip : %d\n", nb_obj_equip);
+      //printf("nb obj equip : %d\n", nb_obj_equip);
       for(i = 0; i < nb_obj_equip; i++){
-        printf("i2 = %d\n", i);
+        //printf("i2 = %d\n", i);
         fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
         fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].nb_obj);
       }
@@ -1175,6 +1182,11 @@ void evenements(SDL_Event* event, monde_t * monde){
         if(monde->etat_jeu == ETAT_COMBAT){
           evenements_combat(event, monde);
         }
+
+        if(monde->etat_jeu == ETAT_VICTOIRE){
+          evenements_fin_partie(event, monde);
+        }
+
         if(monde->etat_jeu == ETAT_AIDE){
           revenir_au_jeu(event, monde);
         }
