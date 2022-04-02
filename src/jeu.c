@@ -776,43 +776,47 @@ void deplacement_monstre(monstre_t * monstre, monde_t * m){
 }
 
 void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, zone_t* zone, salle_t* salle){
-    int n_zone = zone->num_zone;
-    int n_salle = salle->num_salle;
-    switch(n_zone){
-        case 0:
-            switch(n_salle){
-                case 0:
-                    nonCombattant_position(renderer, textures, salle->perso[0], 0);
-                    nonCombattant_position(renderer, textures, salle->perso[1], 4);
-                break;
-                case 2:
-                    nonCombattant_position(renderer, textures, salle->perso[0], 3);
-                break;
-            }
-        break;
-        case 1:
-            switch(n_salle){
-                case 0:
-                    nonCombattant_position(renderer, textures, salle->perso[0], 1);
-                    nonCombattant_position(renderer, textures, salle->perso[1], 3);
-                break;
-                case 2:
-                    nonCombattant_position(renderer, textures, salle->perso[0], 4);
-                break;
-            }
-        break;
-        case 2:
-            switch(n_salle){
-                case 0:
-                    nonCombattant_position(renderer, textures, salle->perso[0], 2);
-                    nonCombattant_position(renderer, textures, salle->perso[1], 4);
-                break;
-                case 2:
-                    nonCombattant_position(renderer, textures, salle->perso[0], 3);
-                break;
-            }
-        break;
-    }
+  int n_zone = zone->num_zone;
+  int n_salle = salle->num_salle;
+  switch(n_zone){
+      case 0:
+          switch(n_salle){
+              case 0:
+                  nonCombattant_position(renderer, textures, salle->perso[0], 0);
+                  nonCombattant_position(renderer, textures, salle->perso[1], 4);
+              break;
+              case 2:
+                  nonCombattant_position(renderer, textures, salle->perso[0], 3);
+              break;
+          }
+      break;
+      case 1:
+          switch(n_salle){
+              case 0:
+                  nonCombattant_position(renderer, textures, salle->perso[0], 1);
+                  nonCombattant_position(renderer, textures, salle->perso[1], 3);
+              break;
+              case 2:
+                  nonCombattant_position(renderer, textures, salle->perso[0], 4);
+              break;
+          }
+      break;
+      case 2:
+          switch(n_salle){
+              case 0:
+                  nonCombattant_position(renderer, textures, salle->perso[0], 2);
+                  nonCombattant_position(renderer, textures, salle->perso[1], 4);
+              break;
+              case 2:
+                  nonCombattant_position(renderer, textures, salle->perso[0], 3);
+              break;
+          }
+      break;
+  }
+  if(salle->coffre->visite == 0)
+    coffre_position(renderer, textures, salle->coffre, 0);
+  else
+    coffre_position(renderer, textures, salle->coffre, 1);
 }
 
 
@@ -854,7 +858,53 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
     }
 
     if(monde->etat_jeu == ETAT_DIALOGUE){
-        dialogue_position(renderer, textures);
+      switch(monde->joueur->zone){
+          case 0:
+              switch(monde->joueur->salle){
+                  case 0:
+                      // si c'est un pnj non marchand
+                      if(nonCombattant_proche(monde) == 1)
+                          dialogue_position(renderer, textures, 0);
+                      // si c'est un marchand
+                      if(nonCombattant_proche(monde) == 2)
+                          dialogue_position(renderer, textures, 4);
+                  break;
+                  case 2:
+                      dialogue_position(renderer, textures, 3);
+                  break;
+              }
+          break;
+          case 1:
+              switch(monde->joueur->salle){
+                  case 0:
+                      // si c'est un pnj non marchand
+                      if(nonCombattant_proche(monde) == 1)
+                          dialogue_position(renderer, textures, 1);
+                      // si c'est un  marchand
+                      if(nonCombattant_proche(monde) == 2)
+                          dialogue_position(renderer, textures, 3);
+                  break;
+                  case 2:
+                      dialogue_position(renderer, textures, 4);
+                  break;
+              }
+          break;
+          case 2:
+              switch(monde->joueur->salle){
+                  case 0:
+                      // si c'est un pnj non marchand
+                      if(nonCombattant_proche(monde) == 1)
+                          dialogue_position(renderer, textures, 2);
+                      // si c'est un  marchand
+                      if(nonCombattant_proche(monde) == 2)
+                          dialogue_position(renderer, textures, 4);
+                  break;
+                  case 2:
+                      dialogue_position(renderer, textures, 3);
+                  break;
+              }
+          break;
+      }
         affichage_dialogue(renderer, textures, monde, police);
     }
     if(monde->etat_jeu == ETAT_COFFRE){

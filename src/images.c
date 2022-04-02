@@ -327,10 +327,26 @@ void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonComba
     }
 }
 
-void dialogue_position(SDL_Renderer *renderer, images_t *textures){
+void dialogue_position(SDL_Renderer *renderer, images_t *textures, int type){
     apply_texture(textures->dialogue, renderer, (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 375);
     apply_texture(textures->joueur, renderer, 450 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
-    apply_texture(textures->marchand, renderer, 550 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
+    switch(type){
+        case 0:
+            apply_texture(textures->perso_z0, renderer, 550 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
+        break;
+        case 1:
+            apply_texture(textures->perso_z1, renderer, 550 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
+        break;
+        case 2:
+            apply_texture(textures->perso_z2, renderer, 550 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
+        break;
+        case 3:
+            apply_texture(textures->marchand, renderer, 550 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
+        break;
+        case 4:
+            apply_texture(textures->marchande, renderer, 550 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
+        break;
+    }
 }
 
 void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* coffre, int ouvert){

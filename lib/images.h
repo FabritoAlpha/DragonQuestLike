@@ -82,7 +82,7 @@ void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* mon
 
 void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* perso, int type);
 
-void dialogue_position(SDL_Renderer *renderer, images_t *textures);
+void dialogue_position(SDL_Renderer *renderer, images_t *textures, int type);
 
 void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* coffre, int ouvert);
 
