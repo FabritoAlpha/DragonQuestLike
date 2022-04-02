@@ -906,6 +906,25 @@ void sauvegarde(monde_t* monde){
     if(monde->partie == 1){
         fichier = fopen("./rsrc/txt/partie1.txt","w");
         //Sauvegarde du niveau et de la zone locale
+        fprintf(fichier, "%d\n", nb_obj_inv);
+        for(i = 0; i < TAILLE_INVENTAIRE; i++){
+          //Si un objet est présent à l'indice i du tableau
+          if(monde->joueur->inventaire[i].id != 0){
+            printf("i = %d\n", i);
+            printf("id = %d\n", monde->joueur->inventaire[i].id);
+            printf("desc = %s\n", monde->joueur->inventaire[i].description);
+            fprintf(fichier, "%d\n", i);
+            //fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
+            fprintf(fichier, "%d\n", monde->joueur->inventaire[i].nb_obj);
+          }
+        }
+        fprintf(fichier, "%d\n", nb_obj_equip);
+        printf("nb obj equip : %d\n", nb_obj_equip);
+        for(i = 0; i < nb_obj_equip; i++){
+          printf("i2 = %d\n", i);
+          fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
+          fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].nb_obj);
+        }
         fprintf(fichier, "%d\n%d\n", monde->joueur->combattant->niveau, monde->joueur->zone);
         //Sauvegarde des pv max et courrants
         fprintf(fichier, "%d\n%d\n", monde->joueur->combattant->pvMax, monde->joueur->combattant->pvCour);
@@ -916,27 +935,11 @@ void sauvegarde(monde_t* monde){
         //Sauvegarde de l'attaque
         fprintf(fichier, "%d\n", monde->joueur->combattant->attaque);
         //Sauvegarde des objets présents dans l'inventaire
-        fprintf(fichier, "%d\n", nb_obj_inv);
+
         printf("nb obj inv : %d\n", nb_obj_inv);
-        for(i = 0; i < TAILLE_INVENTAIRE; i++){
-          //Si un objet est présent à l'indice i du tableau
-          if(monde->joueur->inventaire[i].id != 0){
-            printf("i = %d\n", i);
-            printf("id = %d\n", monde->joueur->inventaire[i].id);
-            printf("desc = %s\n", monde->joueur->inventaire[i].description);
-            fprintf(fichier, "%d\n", i);
-            fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
-            fprintf(fichier, "%d\n", monde->joueur->inventaire[i].nb_obj);
-          }
-        }
+
         //Sauvegarde des objets équipés
-        fprintf(fichier, "%d\n", nb_obj_equip);
-        printf("nb obj equip : %d\n", nb_obj_equip);
-        for(i = 0; i < nb_obj_equip; i++){
-          printf("i2 = %d\n", i);
-          fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
-          fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].nb_obj);
-        }
+
         //On ferme le fichier
         fclose(fichier);
     }
@@ -957,7 +960,7 @@ void sauvegarde(monde_t* monde){
           printf("i = %d\n", i);
           printf("id = %d\n", monde->joueur->inventaire[i].id);
           printf("desc = %s\n", monde->joueur->inventaire[i].description);
-          fprintf(fichier, "%d\n", i);
+          //fprintf(fichier, "%d\n", i);
           fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
           fprintf(fichier, "%d\n", monde->joueur->inventaire[i].nb_obj);
         }

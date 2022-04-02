@@ -253,10 +253,58 @@ int objet_present(joueur_t* joueur, objet_t* biblio, int ind){
 void ajout_objet(joueur_t* joueur, objet_t* biblio, int ind){
   if(!objet_present(joueur, biblio, ind)){ // si l'objet n'est pas dans l'inventaire
     joueur->inventaire[ind]= biblio[ind]; // on l'ajoute
+    joueur->inventaire[ind].nb_obj++;
     (joueur->nb_obj_inventaire)++;
   }
   //si l'objet est une potion
   if(ind == 4 || ind == 5){
     joueur->inventaire[ind].nb_obj++; // dans tout les cas ajouter 1 (on peut avoir plusieurs potions)
+  }
+}
+
+void equipement_desequipement_objet(joueur_t * joueur, int i_tab_inv, int i_obj_equipe){
+  if(joueur->inventaire[i_tab_inv].id != 0){
+    //Si l'objet est présent dans l'inventaire, on actualise l'équipement courrant
+    if(joueur->objet_equipe[i_obj_equipe].id != 0){
+      //Si quelque chose est équipe
+      //On le desequipe
+      //On diminue le mana max
+      joueur->manaMax -= joueur->objet_equipe[i_obj_equipe].mana_sup;
+      //On vérifie que le mana courrant n'est pas supérieur au mana max
+      if(joueur->manaCour > joueur->manaMax){
+        joueur->manaCour = joueur->manaMax;
+      }
+      //On diminue les pv max
+      joueur->combattant->pvMax -= joueur->objet_equipe[i_obj_equipe].vie_sup;
+      //On vérifie que les pv courrants sont inférieurs ou égaux
+      if(joueur->combattant->pvCour > joueur->combattant->pvMax){
+        joueur->combattant->pvCour = joueur->combattant->pvMax;
+      }
+      joueur->combattant->attaque -= joueur->objet_equipe[i_obj_equipe].attaque_sup;
+      if(joueur->objet_equipe[i_obj_equipe].id != joueur->inventaire[i_tab_inv].id){
+        //Si l'objet qui était équipé est différent de l'objet que l'on veut équipper on actualise ses stats avec les nouvelles stats de l'obj et on actualise l'id
+        joueur->manaMax += joueur->inventaire[i_tab_inv].mana_sup;
+        joueur->combattant->pvMax += joueur->inventaire[i_tab_inv].vie_sup;
+        joueur->combattant->attaque += joueur->inventaire[i_tab_inv].attaque_sup;
+        //On copie l'item dans le tableau de l'équipement
+        joueur->objet_equipe[i_obj_equipe] = joueur->inventaire[i_tab_inv];
+      }
+      else{
+        //Si on désequippe l'obj, on décremente le compteur
+        joueur->nb_obj_equip--;
+        //On indique que l'item n'est plus présent dans les objets equipes
+        joueur->objet_equipe[i_obj_equipe].id = 0;
+      }
+    }
+    else{
+      //Si rien n'est équipé on équipe juste l'objet
+      joueur->manaMax += joueur->inventaire[i_tab_inv].mana_sup;
+      joueur->combattant->pvMax += joueur->inventaire[i_tab_inv].vie_sup;
+      joueur->combattant->attaque += joueur->inventaire[i_tab_inv].attaque_sup;
+      //On copie l'item dans le tableau de l'équipement
+      joueur->objet_equipe[i_obj_equipe] = joueur->inventaire[i_tab_inv];
+      //On incrémente le compteur d'obj equipe
+      joueur->nb_obj_equip++;
+    }
   }
 }

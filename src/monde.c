@@ -184,6 +184,20 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   FILE * fichier;
 
   fichier = fopen(chemin_fichier,"r");
+  fscanf(fichier,"%i", &j_nb_obj_inv);
+
+    for(i = 0; i < j_nb_obj_inv; i++){
+        fscanf(fichier, "%i", &indice_tab_inv);
+        ajout_objet(monde->joueur, monde->biblio_objet ,indice_tab_inv);
+        fscanf(fichier, "%i", &monde->joueur->inventaire[indice_tab_inv].nb_obj);
+    }
+
+    fscanf(fichier,"%i", &j_nb_obj_equip);
+    for(i = 0; i < j_nb_obj_equip; i++){
+          fscanf(fichier, "%i", &monde->joueur->objet_equipe[i].id);
+          fscanf(fichier, "%i", &monde->joueur->objet_equipe[i].nb_obj);
+    }
+
   fscanf(fichier,"%i", &j_niveau);
   fscanf(fichier,"%i", &j_zone);
   fscanf(fichier,"%i", &j_pv_max);
@@ -192,18 +206,8 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   fscanf(fichier,"%i", &j_mana_cour);
   fscanf(fichier,"%i", &j_or);
   fscanf(fichier,"%i", &j_attaque);
-  fscanf(fichier,"%i", &j_nb_obj_inv);
 
-    for(i = 0; i < j_nb_obj_inv; i++){
-        fscanf(fichier, "%i", &indice_tab_inv);
-        fscanf(fichier, "%i", &monde->joueur->inventaire[indice_tab_inv].id);
-        fscanf(fichier, "%i", &monde->joueur->inventaire[indice_tab_inv].nb_obj);
-    }
-  fscanf(fichier,"%i", &j_nb_obj_equip);
-  for(i = 0; i < j_nb_obj_equip; i++){
-        fscanf(fichier, "%i", &monde->joueur->objet_equipe[i].id);
-        fscanf(fichier, "%i", &monde->joueur->objet_equipe[i].nb_obj);
-    }
+
 
 
 
@@ -214,7 +218,7 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   init_joueur(monde->joueur,j_niveau,j_zone,j_pv_max,j_pv_cour,j_mana_max,j_mana_cour,j_attaque,j_or,j_nb_obj_inv, j_nb_obj_equip);
     printf("On ne plante avant la copie de l'inventaire\n");
     //On copie les informations des objets dans le tableau de l'inventaire du joueur
-    for(i = 0; i < TAILLE_INVENTAIRE; i++){
+    /*for(i = 0; i < TAILLE_INVENTAIRE; i++){
         for(j = i; j == i; j++){
             printf("j = %d\n", j);
             if(monde->joueur->inventaire[i].id == monde->biblio_objet[j].id){
@@ -233,7 +237,7 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
                 monde->joueur->inventaire[i].mana_sup = monde->joueur->inventaire[j].mana_sup;
             }
         }
-    }
+    }*/
     printf("On ne plante pas après la copie de l'inventaire\n");
 
     //On fait la même chose pour le tableau des objets équipés

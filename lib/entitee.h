@@ -151,7 +151,7 @@ int objet_present(joueur_t* joueur, objet_t* biblio, int ind);
 
 void ajout_objet(joueur_t* joueur,  objet_t* biblio, int ind);
 
-
+void equipement_desequipement_objet(joueur_t * joueur, int i_tab_inv, int i_obj_equipe);
 
 
 
