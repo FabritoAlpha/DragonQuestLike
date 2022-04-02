@@ -39,6 +39,9 @@ int main(){
     printf("Nom obj: %s\n", monde->biblio_objet[0].nom);
     printf("\n");
 
+    if(textures->case_combat != NULL){
+      printf("Pas de textures libérés\n");
+    }
     //mise en place du jeu (l'écran, le monde de jeu et les textures. )
 
     //Initialisation des options du menu ainsi que du menu à afficher au début de la partie
@@ -73,11 +76,24 @@ int main(){
     }
 
     // Nettoyage de la sdl et de la ttf
-    clean(window, screen, textures, monde,police);
+    //clean(window, screen, textures, monde,police);
+    detruire_monde(&monde);
+
+    clean_images(textures, police);
+
+    clean_sdl(screen,window);
 
     printf("largeur de la fenêtre: %d \n hauteur de la fenêtre: %d\n", taille_fenetre[0], taille_fenetre[1]);
 
+    if(textures->case_combat != NULL){
+      printf("Pas de textures libérés\n");
+    }
+
     //Libération de la mémoire liée à la structure images_t
     free(textures);
+    textures = NULL;
+    if(textures != NULL){
+      printf("Textures mal libérées\n");
+    }
     return 0;
 }

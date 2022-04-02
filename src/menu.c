@@ -325,68 +325,68 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         //Objet1
         if(monde->option==2){
             couleur=COULEUR_1_SELECTION;
-            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+            apply_texture(&textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }else{
             couleur=0;
-            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+            apply_texture(&textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }
         if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[0].id&&monde->joueur->inventaire[0].id!=0){
-            apply_texture(textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+            apply_texture(&textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }
 
         if(monde->joueur->inventaire[0].id!=0){// Si l'objet est dans l'inventaire
             snprintf(opt2, 20, "%s", monde->joueur->inventaire[0].nom);
-            apply_texture(textures->epee1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+            apply_texture(&textures->epee1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
             apply_text(renderer, couleur, 255, 0 , opt2 , police,POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
         }
         //Objet 2
         if(monde->option==3){
             couleur=COULEUR_1_SELECTION;
-            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+            apply_texture(&textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }else{
             couleur=0;
-            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+            apply_texture(&textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }
         if(monde->joueur->objet_equipe[0].id==monde->joueur->inventaire[1].id&&monde->joueur->inventaire[1].id!=0){
-            apply_texture(textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+            apply_texture(&textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
         }
 
         if(monde->joueur->inventaire[1].id!=0){
             snprintf(opt2, 20, "%s", monde->joueur->inventaire[1].nom);
-            apply_texture(textures->epee2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
+            apply_texture(&textures->epee2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H);
             apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L , POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H, TEXT_OBJET_L, TEXT_OBJET_H);
         }
         //Objet 3
         if(monde->option==4){
             couleur=COULEUR_1_SELECTION;
-            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+            apply_texture(&textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }else{
             couleur=0;
-            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+            apply_texture(&textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
         if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[2].id&&monde->joueur->inventaire[2].id!=0){
-            apply_texture(textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+            apply_texture(&textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
 
         if(monde->joueur->inventaire[2].id!=0){
             snprintf(opt2, 20, "%s", monde->joueur->inventaire[2].nom);
-            apply_texture(textures->bouclier1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+            apply_texture(&textures->bouclier1,renderer, POSITION_INVENTAIRE_IMG_L*0.3+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
             apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*0.3+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
         }
         //Objet 4
         if(monde->option==5){
             couleur=COULEUR_1_SELECTION;
-            apply_texture(textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+            apply_texture(&textures->selection_active, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }else{
             couleur=0;
-            apply_texture(textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+            apply_texture(&textures->selection_inactive, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
         if(monde->joueur->objet_equipe[1].id==monde->joueur->inventaire[3].id&&monde->joueur->inventaire[3].id!=0){
-            apply_texture(textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+            apply_texture(&textures->equipe, renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
         }
         if(monde->joueur->inventaire[3].id!=0){
             snprintf(opt2, 20, "%s", monde->joueur->inventaire[3].nom);
-            apply_texture(textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
+            apply_texture(&textures->bouclier2,renderer, POSITION_INVENTAIRE_IMG_L*1.2+DECALAGE_IMG_TEXT_L, POSITION_INVENTAIRE_IMG_H*2);
             apply_text(renderer, couleur, 255, 0, opt2 , police, POSITION_INVENTAIRE_L*1.2+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
         }
         //Objet 6 Potion Santée
@@ -402,7 +402,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }
         sprintf(opt, "Potion de vie");
         apply_text(renderer, couleur, couleur2, 0 , opt , police,POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L, TEXT_OBJET_H);
-        apply_texture(textures->potion_pv, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H);
+        apply_texture(&textures->potion_pv, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H);
         snprintf(opt, 20, "%d", monde->joueur->inventaire[4].nb_obj);
         apply_text(renderer, couleur, couleur2, 0 , opt , police,POSITION_INVENTAIRE_L*0.15+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H+DECALAGE_TEXT_IMG_H , TEXT_OBJET_L/5, TEXT_OBJET_H);
         //Objet 7 Potion Mana
@@ -418,7 +418,7 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         }
         sprintf(opt, "Potion de mana");
         apply_text(renderer, couleur, couleur2, 0, opt , police, POSITION_INVENTAIRE_L*0.001+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L, TEXT_OBJET_H);
-        apply_texture(textures->potion_mana, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H*2);
+        apply_texture(&textures->potion_mana, renderer, POSITION_INVENTAIRE_IMG_L*0.001+DECALAGE_IMG_TEXT_L-3, POSITION_INVENTAIRE_IMG_H*2);
         snprintf(opt, 20, "%d", monde->joueur->inventaire[5].nb_obj);
         apply_text(renderer, couleur, couleur2, 0, opt , police, POSITION_INVENTAIRE_L*0.15+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L/5, TEXT_OBJET_H);
 }
@@ -785,31 +785,31 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
     //printf("Numéro du menu:%d\n",monde->num_menu_comb);
     if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->joueur->combattant->pvCour > 0){
         //On affiche le monstre et le personnage
-        apply_texture(textures->joueur,renderer, 180, 600);
+        apply_texture(&textures->joueur,renderer, 180, 600);
 
         //récupéation de l'information via la zone et la salle du joueur
         switch(monde->joueur->zone){
             case 0:
         //Renommer monstre_zone0
         //printf("Le monstre s'affiche\n");
-                apply_texture(textures->monstre, renderer, SCREEN_WIDTH - 180, 600);
+                apply_texture(&textures->monstre, renderer, SCREEN_WIDTH - 180, 600);
                 break;
             case 1:
-                apply_texture(textures->monstre_zone1, renderer, SCREEN_WIDTH - 180, 600);
+                apply_texture(&textures->monstre_zone1, renderer, SCREEN_WIDTH - 180, 600);
                 break;
             case 2:
                 switch(monde->joueur->salle){
                     case 0:
-                        apply_texture(textures->monstre_zone2, renderer, SCREEN_WIDTH - 180, 600);
+                        apply_texture(&textures->monstre_zone2, renderer, SCREEN_WIDTH - 180, 600);
                         break;
                     case 1:
-                        apply_texture(textures->monstre_zone2, renderer, SCREEN_WIDTH - 180, 600);
+                        apply_texture(&textures->monstre_zone2, renderer, SCREEN_WIDTH - 180, 600);
                         break;
                     case 2:
-                        apply_texture(textures->monstre_zone2, renderer, SCREEN_WIDTH - 180, 600);
+                        apply_texture(&textures->monstre_zone2, renderer, SCREEN_WIDTH - 180, 600);
                         break;
                     case 3:
-                        apply_texture(textures->boss, renderer, SCREEN_WIDTH - 280, 500);
+                        apply_texture(&textures->boss, renderer, SCREEN_WIDTH - 280, 500);
                         break;
                 }
             break;
@@ -855,14 +855,15 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
             char fuite[10];
 
             //Les cases dans lesquelles le texte se trouve
-            apply_texture(textures->case_combat, renderer, 100, 320);
-            apply_texture(textures->case_combat, renderer, 600, 320);
+            apply_texture(&textures->case_combat, renderer, 100, 320);
+            apply_texture(&textures->case_combat, renderer, 600, 320);
             switch(monde->option){
               case ATTAQUE:
-                apply_texture(textures->surbrillance_combat, renderer, 100, 320);
+                printf("On rentre en surbrillance dans attaque\n");
+                apply_texture(&textures->surbrillance_combat, renderer, 100, 320);
                 break;
               case FUITE:
-                apply_texture(textures->surbrillance_combat, renderer, 600, 320);
+                apply_texture(&textures->surbrillance_combat, renderer, 600, 320);
                 break;
             }
 
@@ -905,26 +906,26 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
             sprintf(retour, "Retour");
 
             //case pour le choix coup d'épée
-            apply_texture(textures->case_combat, renderer, 100, 320);
+            apply_texture(&textures->case_combat, renderer, 100, 320);
             //case pour le choix sort
-            apply_texture(textures->case_combat, renderer, 600, 320);
+            apply_texture(&textures->case_combat, renderer, 600, 320);
             //case pour le choix tir Ã  l'arc
-            apply_texture(textures->case_combat, renderer, 100, 440);
+            apply_texture(&textures->case_combat, renderer, 100, 440);
             //case pour le choix retour
-            apply_texture(textures->case_combat, renderer, 600, 440);
+            apply_texture(&textures->case_combat, renderer, 600, 440);
 
             switch(monde->option){
               case EPEE:
-                apply_texture(textures->surbrillance_combat, renderer, 100, 320);
+                apply_texture(&textures->surbrillance_combat, renderer, 100, 320);
                 break;
               case SORT:
-                apply_texture(textures->surbrillance_combat, renderer, 600, 320);
+                apply_texture(&textures->surbrillance_combat, renderer, 600, 320);
                 break;
               case ARC:
-                apply_texture(textures->surbrillance_combat, renderer, 100, 440);
+                apply_texture(&textures->surbrillance_combat, renderer, 100, 440);
                 break;
               case RETOUR:
-                apply_texture(textures->surbrillance_combat, renderer, 600, 440);
+                apply_texture(&textures->surbrillance_combat, renderer, 600, 440);
                 break;
             }
 
@@ -966,7 +967,7 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
     else if(monde->joueur->combattant->pvCour <= 0){
         //Si le joueur est mort alors on affiche une image de game over
         //Il faudra appuyez sur une touche pour sortir du jeu
-        apply_texture(textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+        apply_texture(&textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
         apply_text(renderer, 255, 0, 0, "Game Over", police, SCREEN_WIDTH/2 - 100, SCREEN_HEIGHT/2 - 125, 200, 100);
         apply_text(renderer, 255, 0, 0, "Press Enter To Retry", police, SCREEN_WIDTH/2 - 200, SCREEN_HEIGHT/2 + 25, 400, 100);
 

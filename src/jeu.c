@@ -30,12 +30,19 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, mond
   *\param entite
 */
 int distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite){
+    //printf("Test début distance pnj coffre\n");
     int distance;
+    //printf("Test début distance pnj coffre2\n");
     int xa = joueur->combattant->x;
+    //printf("Test début distance pnj coffre3\n");
     int ya = joueur->combattant->y;
+    //printf("Test début distance pnj coffre4\n");
     int xb = entite->x;
+    //printf("Test début distance pnj coffre5\n");
     int yb = entite->y;
+    //printf("Test début distance pnj coffre6\n");
     distance = sqrt(pow(xb-xa,2)+pow(yb-ya,2));
+    //printf("Test début distance pnj coffre7\n");
     return distance;
 }
 
@@ -48,9 +55,15 @@ int nonCombattant_proche(monde_t * monde){
   //pnj de la salle 0
   if(monde->joueur->salle == 0){
       //pnj
+      //printf("nonCombattant proche première condition\n");
+      joueur_t * j2 = monde->joueur;
+      //printf("Réussite d'affecation joueur\n");
+      nonCombattant_t * pnj=monde->zones[monde->joueur->zone]->salles[0]->perso[0] ;
+      //printf("Réussite affectation pnj\n");
       if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[0]->perso[0]) <= 75)
           return 1;
       //marchand
+      //printf("nonCombattant proche seconde condition\n");
       if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[0]->perso[1]) <= 75)
           return 2;
   }
@@ -1107,16 +1120,16 @@ void evenements(SDL_Event* event, monde_t * monde){
                 monde->option = -1;
                 monde->etat_jeu = ETAT_DIALOGUE;
             }
-            if(event->key.keysym.sym == SDLK_LEFT) {
+            if( keystates[SDL_SCANCODE_LEFT]) {
                 deplacement_gauche(monde->joueur->combattant, 0, monde);
             }
-            if(event->key.keysym.sym == SDLK_RIGHT){
+            if(keystates[SDL_SCANCODE_RIGHT]){
                 deplacement_droit(monde->joueur->combattant, 0, monde);
             }
-            if(event->key.keysym.sym == SDLK_UP){
+            if(keystates[SDL_SCANCODE_UP]){
                 deplacement_haut(monde->joueur->combattant, 0, monde);
             }
-            if(event->key.keysym.sym == SDLK_DOWN){
+            if(keystates[SDL_SCANCODE_DOWN]){
                 deplacement_bas(monde->joueur->combattant, 0, monde);
             }
             if(event->key.keysym.sym == SDLK_i){// Si en jeu il ouvre l'inventaire

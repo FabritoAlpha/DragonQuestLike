@@ -8,9 +8,9 @@ extern int taille_fenetre[2];
 
 int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height);
 
-SDL_Texture* load_image(const char* nomfichier, SDL_Renderer* renderer);
+void load_image(const char* nomfichier, SDL_Renderer** renderer, SDL_Texture** text);
 
-void apply_texture(SDL_Texture *texture,SDL_Renderer *renderer,float x, float y);
+void apply_texture(SDL_Texture **texture,SDL_Renderer *renderer,float x, float y);
 
 void update_screen(SDL_Renderer *renderer);
 

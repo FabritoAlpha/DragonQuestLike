@@ -61,7 +61,7 @@ int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height
  * (ex. le fichier path n'existe pas)
 */
 
-SDL_Texture* load_image(const char* nomfichier, SDL_Renderer* renderer)
+void load_image(const char* nomfichier, SDL_Renderer** renderer, SDL_Texture** text)
 {
     //printf("Oui on arrive dans load_image\n");
     SDL_Surface *tmp = NULL;
@@ -71,25 +71,28 @@ SDL_Texture* load_image(const char* nomfichier, SDL_Renderer* renderer)
     {
         //printf("Erreur via tmp dans load images\n");
         fprintf(stderr, "Erreur pendant chargement image BMP: %s", SDL_GetError());
-        return NULL;
+        return /*NULL*/;
     }
     SDL_SetColorKey(tmp, SDL_TRUE, SDL_MapRGB(tmp->format, 255, 0, 255));
-    texture = SDL_CreateTextureFromSurface(renderer, tmp);
+    texture = SDL_CreateTextureFromSurface(*renderer, tmp);
     SDL_FreeSurface(tmp);
     tmp = NULL;
     if(NULL == texture)
     {
         //printf("Erreur via la texture dans load image\n");
         fprintf(stderr, "Erreur pendant creation de la texture liee a l'image chargee: %s", SDL_GetError());
-        return NULL;
+        return /*NULL*/;
     }
     if(tmp != NULL)
     {
         //printf("Erreur via tmp != NULL dans load image\n");
         fprintf(stderr, "Erreur freesurface: %s", SDL_GetError());
-        return NULL;
+        return /*NULL*/;
     }
-    return texture;
+    if(texture == NULL){
+      printf("Texture NULL\n");
+    }
+    (*text) = texture;
 }
 
 /**
@@ -102,35 +105,35 @@ SDL_Texture* load_image(const char* nomfichier, SDL_Renderer* renderer)
  * \param y l'ordonnée sur le renderer de l'endroit où est appliquée texture (point en haut à gauche de la surface)
 */
 
-void apply_texture(SDL_Texture *texture,SDL_Renderer *renderer,float x, float y){
+void apply_texture(SDL_Texture **texture,SDL_Renderer *renderer,float x, float y){
     SDL_Rect dst = {0, 0, 0, 0};
     //SDL_Rect src = {0, 0, 0, 0};
 
-    if(texture == NULL){
-      printf("Texture NULL\n");
+    if(*texture == NULL){
+      //printf("Texture NULL\n");
     }
     if(renderer == NULL){
-      printf("Renderer Null\n");
+      //printf("Renderer Null\n");
     }
 
-    SDL_QueryTexture(texture, NULL, NULL, &dst.w, &dst.h);
+    SDL_QueryTexture(*texture, NULL, NULL, &dst.w, &dst.h);
     dst.x = x;
     dst.y = y;
 
     if(texture == NULL){
-      printf("Texture NULL\n");
+      //printf("Texture NULL\n");
     }
     if(renderer == NULL){
-      printf("Renderer Null\n");
+      //printf("Renderer Null\n");
     }
 
-    SDL_RenderCopy(renderer, texture, NULL, &dst);
+    SDL_RenderCopy(renderer, *texture, NULL, &dst);
 
     if(texture == NULL){
-      printf("Texture NULL\n");
+      //printf("Texture NULL\n");
     }
     if(renderer == NULL){
-      printf("Renderer Null\n");
+      //printf("Renderer Null\n");
     }
 
 }
@@ -154,6 +157,9 @@ void update_screen(SDL_Renderer *renderer){
 void clean_texture(SDL_Texture *texture){
     if(NULL != texture){
         SDL_DestroyTexture(texture);
+    }
+    else{
+      printf("Texture pas null\n");
     }
 }
 
