@@ -50,6 +50,7 @@ typedef struct images_s{
     SDL_Texture* equipe; /*!< Texture liée à l'image de fond d'un objet quand il est équipé. */
     SDL_Texture* fond_inventaire;
     SDL_Texture* case_combat;
+    SDL_Texture* surbrillance_combat;
     SDL_Texture* game_over;
     SDL_Texture* arene_combat;
     SDL_Texture* potion_b_petite;

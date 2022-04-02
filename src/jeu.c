@@ -944,7 +944,7 @@ void sauvegarde(monde_t* monde){
         fclose(fichier);
     }
     if(monde->partie == 2){
-      fichier = fopen("./rsrc/txt/partie1.txt","w");
+      fichier = fopen("./rsrc/txt/partie2.txt","w");
       //Sauvegarde du niveau et de la zone locale
       fprintf(fichier, "%d\n", nb_obj_inv);
       for(i = 0; i < TAILLE_INVENTAIRE; i++){
@@ -972,7 +972,8 @@ void sauvegarde(monde_t* monde){
       fprintf(fichier, "%d\n%d\n", monde->joueur->manaMax, monde->joueur->manaCour);
       //Sauvegarde de l'or
       fprintf(fichier, "%d\n", monde->joueur->or);
-
+      //Sauvegarde de l'attaque
+      fprintf(fichier, "%d\n", monde->joueur->combattant->attaque);
       //On ferme le fichier
       fclose(fichier);
     }

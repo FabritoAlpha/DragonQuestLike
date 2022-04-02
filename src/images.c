@@ -123,6 +123,8 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->or_petit = NULL;
     clean_texture(textures->game_over);
     textures->game_over = NULL;
+    clean_texture(textures->surbrillance_combat);
+    textures->surbrillance_combat = NULL;
     if(police != NULL){
         clean_font(police);
         police = NULL;
@@ -174,7 +176,8 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     textures->potion_mana = load_image("./rsrc/img/fiole_bleu.bmp",renderer);
     textures->fond_inventaire = load_image("./rsrc/img/fond_inventaire.bmp",renderer);
     //textures->font = apply_font("./rsrc/img/ka1.ttf", 30);
-    textures->case_combat = load_image("./rsrc/img/selection_inactive.bmp", renderer);
+    textures->case_combat = load_image("./rsrc/img/rectangles_combat.bmp", renderer);
+    textures->surbrillance_combat = load_image("./rsrc/img/surbrillance_combat.bmp", renderer);
     textures->game_over = load_image("./rsrc/img/fond_inventaire.bmp", renderer);
     textures->arene_combat = load_image("./rsrc/img/arene.bmp", renderer);
     textures->potion_b_petite = load_image("./rsrc/img/fiole_bleu_boutique.bmp", renderer);

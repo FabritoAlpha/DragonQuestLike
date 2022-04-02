@@ -785,31 +785,31 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
     //printf("Numéro du menu:%d\n",monde->num_menu_comb);
     if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->joueur->combattant->pvCour > 0){
         //On affiche le monstre et le personnage
-        apply_texture(textures->joueur,renderer, 150, 150);
+        apply_texture(textures->joueur,renderer, 180, 600);
 
         //récupéation de l'information via la zone et la salle du joueur
         switch(monde->joueur->zone){
             case 0:
         //Renommer monstre_zone0
         //printf("Le monstre s'affiche\n");
-                apply_texture(textures->monstre, renderer, SCREEN_WIDTH - 150, 150);
+                apply_texture(textures->monstre, renderer, SCREEN_WIDTH - 180, 600);
                 break;
             case 1:
-                apply_texture(textures->monstre_zone1, renderer, SCREEN_WIDTH - 150, 150);
+                apply_texture(textures->monstre_zone1, renderer, SCREEN_WIDTH - 180, 600);
                 break;
             case 2:
                 switch(monde->joueur->salle){
                     case 0:
-                        apply_texture(textures->monstre_zone2, renderer, SCREEN_WIDTH - 150, 150);
+                        apply_texture(textures->monstre_zone2, renderer, SCREEN_WIDTH - 180, 600);
                         break;
                     case 1:
-                        apply_texture(textures->monstre_zone2, renderer, SCREEN_WIDTH - 150, 150);
+                        apply_texture(textures->monstre_zone2, renderer, SCREEN_WIDTH - 180, 600);
                         break;
                     case 2:
-                        apply_texture(textures->monstre_zone2, renderer, SCREEN_WIDTH - 150, 150);
+                        apply_texture(textures->monstre_zone2, renderer, SCREEN_WIDTH - 180, 600);
                         break;
                     case 3:
-                        apply_texture(textures->boss, renderer, SCREEN_WIDTH - 250, 200);
+                        apply_texture(textures->boss, renderer, SCREEN_WIDTH - 280, 500);
                         break;
                 }
             break;
@@ -839,13 +839,13 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
         //->un pour chaque barre
 
         //sprintf(opt, pv_j);
-        apply_text(renderer, 255, 20, 20, pv_j, police, 50, 150, 50, 50);
+        apply_text(renderer, 255, 20, 20, pv_j, police, 50, 600, 50, 25);
 
         //sprintf(opt, pv_m);
-        apply_text(renderer, 255, 20, 20, pv_m, police, SCREEN_WIDTH - 80, 150, 50, 50);
+        apply_text(renderer, 255, 20, 20, pv_m, police, SCREEN_WIDTH - 80, 600, 50, 25);
 
         //sprintf(opt, mana_j);
-        apply_text(renderer, 20, 20, 255, pm_j, police, 50, 210, 50, 50);
+        apply_text(renderer, 20, 20, 255, pm_j, police, 50, 665, 50, 25);
 
 
         //Si on affiche le menu 1
@@ -855,8 +855,17 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
             char fuite[10];
 
             //Les cases dans lesquelles le texte se trouve
-            apply_texture(textures->case_combat, renderer, 2*SCREEN_WIDTH/8, 5*SCREEN_HEIGHT/8);
-            apply_texture(textures->case_combat, renderer, 5*SCREEN_WIDTH/8, 5*SCREEN_HEIGHT/8);
+            apply_texture(textures->case_combat, renderer, 100, 320);
+            apply_texture(textures->case_combat, renderer, 600, 320);
+            switch(monde->option){
+              case ATTAQUE:
+                apply_texture(textures->surbrillance_combat, renderer, 100, 320);
+                break;
+              case FUITE:
+                apply_texture(textures->surbrillance_combat, renderer, 600, 320);
+                break;
+            }
+
 
             //Texte à afficher
             sprintf(atq, "Attaque");
@@ -864,19 +873,19 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
 
             switch(monde->option){
                 case RIEN:
-                    apply_text(renderer, 0, 255, 255, atq, police, 4*SCREEN_WIDTH/16, 11*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, atq, police, 100 + 100, 320+20,100,30);
 
-                    apply_text(renderer, 0, 255, 255, fuite, police, 11*SCREEN_WIDTH/16,11*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, fuite, police, 600 + 100, 320+20, 100,30);
                     break;
                 case ATTAQUE:
-                    apply_text(renderer, 255, 0, 0, atq, police, 4*SCREEN_WIDTH/16, 11*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 255, 0, 0, atq, police, 100 + 100, 320 + 20,100, 30);
 
-                    apply_text(renderer, 0, 255, 255, fuite, police, 11*SCREEN_WIDTH/16,11*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, fuite, police, 600 + 100, 320 + 20,100, 30);
                     break;
                 case FUITE:
-                    apply_text(renderer, 0, 255, 255, atq, police, 4*SCREEN_WIDTH/16, 11*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, atq, police,100+100, 320 + 20,100, 30);
 
-                    apply_text(renderer, 255, 0, 0, fuite, police, 11*SCREEN_WIDTH/16, 11*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 255, 0, 0, fuite, police, 600+100, 320 + 20,100, 30);
                     break;
             }
         }
@@ -896,50 +905,59 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
             sprintf(retour, "Retour");
 
             //case pour le choix coup d'épée
-            apply_texture(textures->case_combat, renderer, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16);
+            apply_texture(textures->case_combat, renderer, 100, 320);
             //case pour le choix sort
-            apply_texture(textures->case_combat, renderer, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16);
+            apply_texture(textures->case_combat, renderer, 600, 320);
             //case pour le choix tir Ã  l'arc
-            apply_texture(textures->case_combat, renderer, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16);
+            apply_texture(textures->case_combat, renderer, 100, 440);
             //case pour le choix retour
-            apply_texture(textures->case_combat, renderer, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16);
+            apply_texture(textures->case_combat, renderer, 600, 440);
 
+            switch(monde->option){
+              case EPEE:
+                apply_texture(textures->surbrillance_combat, renderer, 100, 320);
+                break;
+              case SORT:
+                apply_texture(textures->surbrillance_combat, renderer, 600, 320);
+                break;
+              case ARC:
+                apply_texture(textures->surbrillance_combat, renderer, 100, 440);
+                break;
+              case RETOUR:
+                apply_texture(textures->surbrillance_combat, renderer, 600, 440);
+                break;
+            }
 
-
-            apply_text(renderer, 0, 255, 255, epee, police, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-            apply_text(renderer, 0, 255, 255, sort, police, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-            apply_text(renderer, 0, 255, 255, arc, police, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-            apply_text(renderer, 0, 255, 255, retour, police, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
             switch(monde->option){
                 case RIEN:
-                    apply_text(renderer, 0, 255, 255, epee, police, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 0, 255, 255, sort, police, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 0, 255, 255, arc, police, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 0, 255, 255, retour, police, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    break;
+                  apply_text(renderer, 0, 255, 255, epee, police, 100+100, 320+20,100,30);
+                  apply_text(renderer, 0, 255, 255, sort, police, 600+100, 320+20,100,30);
+                  apply_text(renderer, 0, 255, 255, arc, police, 100+100, 440+20,100,30);
+                  apply_text(renderer, 0, 255, 255, retour, police, 600+100, 440+20,100,30);
+                  break;
                 case EPEE:
-                    apply_text(renderer, 255, 0, 0, epee, police, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 0, 255, 255, sort, police, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 0, 255, 255, arc, police, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 0, 255, 255, retour, police, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 255, 0, 0, epee, police, 100+100, 320+20,100,30);
+                    apply_text(renderer, 0, 255, 255, sort, police, 600+100, 320+20,100,30);
+                    apply_text(renderer, 0, 255, 255, arc, police, 100+100, 440+20,100,30);
+                    apply_text(renderer, 0, 255, 255, retour, police, 600+100, 440+20,100,30);
                     break;
                 case SORT:
-                    apply_text(renderer, 0, 255, 255, epee, police, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 255, 0, 0, sort, police, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 0, 255, 255, arc, police, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 0, 255, 255, retour, police, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, epee, police, 100+100, 320+20,100,30);
+                    apply_text(renderer, 255, 0, 0, sort, police, 600+100, 320+20,100,30);
+                    apply_text(renderer, 0, 255, 255, arc, police, 100+100, 440+20,100,30);
+                    apply_text(renderer, 0, 255, 255, retour, police, 600+100, 440+20,100,30);
                     break;
                 case ARC:
-                    apply_text(renderer, 0, 255, 255, epee, police, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 0, 255, 255, sort, police, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 255, 0, 0, arc, police, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 0, 255, 255, retour, police, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, epee, police, 100+100, 320+20,100,30);
+                    apply_text(renderer, 0, 255, 255, sort, police, 600+100, 320+20,100,30);
+                    apply_text(renderer, 255, 0, 0, arc, police, 100+100, 440+20,100,30);
+                    apply_text(renderer, 0, 255, 255, retour, police, 600+100, 440+20,100,30);
                     break;
                 case RETOUR:
-                    apply_text(renderer, 0, 255, 255, epee, police, 3*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 0, 255, 255, sort, police, 10*SCREEN_WIDTH/16, 8*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 0, 255, 255, arc, police, 3*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
-                    apply_text(renderer, 255, 0, 0, retour, police, 10*SCREEN_WIDTH/16, 12*SCREEN_HEIGHT/16,(1*SCREEN_WIDTH/8),(SCREEN_HEIGHT/16));
+                    apply_text(renderer, 0, 255, 255, epee, police, 100+100, 320+20,100,30);
+                    apply_text(renderer, 0, 255, 255, sort, police, 600+100, 320+20,100,30);
+                    apply_text(renderer, 0, 255, 255, arc, police, 100+100, 440+20,100,30);
+                    apply_text(renderer, 255, 0, 0, retour, police, 600+100, 440+20,100,30);
                     break;
             }
         }
