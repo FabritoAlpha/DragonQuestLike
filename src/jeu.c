@@ -1,17 +1,20 @@
 /**
-*\file jeu.c
-*\brief gestion du jeu
-*\author Anna Beranger
-*\date 17/02/2022
+  * \file jeu.c
+  * \brief gestion du jeu
+  * \author Anna Beranger
+  * \date 03/03/2022
 */
 
 #include "../lib/jeu.h"
+
 /**
-* \brief fonction qui nettoie le jeu: nettoyage de la partie graphique (SDL), nettoyage des textures, nettoyage des données
-* \param window la fenêtre du jeu
-* \param renderer le renderer
-* \param textures les textures
-* \param world le monde
+  * \fn void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde, TTF_Font * police)
+  * \brief libère la mémoire allouée au jeu: la partie graphique (SDL), les textures, les données du jeu
+  * \param window la fenêtre du jeu
+  * \param renderer le renderer
+  * \param textures les textures
+  * \param monde le monde
+  * \param police la police utilisée
 */
 void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde, TTF_Font * police){
 
@@ -23,13 +26,15 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, mond
 }
 
 /**
- * \brief La fonction rafraichit l'écran en fonction de l'état des données du monde
- * \param renderer la surface de l'écran de jeu
- * \param world les données du monde
- * \param textures les textures
- * \param next_tick correspond au prochain tick du jeu
- * \param next_tick_monstre correspond au prochain tick dans lequel le monstre va effectuer une action
- */
+  * \fn void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police)
+  * \brief rafraichit l'affichage graphique en fonction des données du monde
+  * \param renderer la surface de l'écran de jeu
+  * \param monde les données du monde
+  * \param textures les textures
+  * \param next_tick correspond au prochain tick du jeu
+  * \param next_tick_monstre correspond au prochain tick dans lequel le monstre va effectuer une action
+  * \param police la police utilisée
+*/
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
     //printf("On rentre dans rafraichir\n");
     int time_sec=(SDL_GetTicks()/15);
@@ -117,10 +122,11 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
 }
 
 /**
- * \brief gestion des évènements avant le rafraichissement
- * \param event contient les événements
- * \param monde les données du monde
- */
+  * \fn void evenements(SDL_Event* event, monde_t * monde)
+  * \brief gestion des évènements claviers avant le rafraichissement
+  * \param event contient les événements claviers (et souris)
+  * \param monde les données du monde
+*/
 void evenements(SDL_Event* event, monde_t * monde){
   const Uint8* keystates = SDL_GetKeyboardState(NULL);
 

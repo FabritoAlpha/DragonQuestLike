@@ -1,7 +1,8 @@
 /**
-  * \file monde.h
-  * \brief header du monde
+  * \file jeu.h
+  * \brief header du jeu
   * \author Anna Béranger, Arthur Fabre, Alex Choux
+  * \date 03/03/2022
 */
 
 #ifndef _JEU_H
