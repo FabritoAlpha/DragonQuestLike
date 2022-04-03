@@ -2,6 +2,7 @@
   * \file monde.h
   * \brief header du monde
   * \author Anna Béranger, Arthur Fabre, Alex Choux
+	* \date 03/03/2022
 */
 
 #ifndef _MONDE_H
@@ -61,17 +62,14 @@
 */
 typedef struct{
 	monstre_t * monstre; /**< Liste des monstres de la salle (peut être vide)*/
-	//int nb_monstres; /**< Nombre de monstres que contient la salle */
 	nonCombattant_t * coffre; /**< coffre de la salle (peut être vide)*/
 	nonCombattant_t ** perso;/**< Liste des personnages non joueurs de la salle (peut être vide) */
 	int difficulte;/**< Entier qui représente le niveau de difficulté de la salle */
 	int num_salle; /**< Numéro de la salle dans la zone */
-	//int largeur; à voir si on en a besoin
-	//int longueur; à voir si on en a besoin
 } salle_t;
 
 /**
-	*\struct zonne_t
+	*\struct zone_t
 	*\brief représentation d'une zone
 */
 typedef struct{
@@ -81,8 +79,8 @@ typedef struct{
 } zone_t;
 
 /**
-	*\struct zone_t
-	*\brief représentation d'une zone
+	*\struct monde_t
+	*\brief représentation du monde
 */
 typedef struct{
 	zone_t ** zones; /**< Liste des zones composant le monde */
@@ -103,36 +101,15 @@ salle_t* creer_salle();
 zone_t * creer_zone();
 monde_t * creer_monde();
 
-
 void detruire_monde(monde_t ** monde);
 void detruire_zone(zone_t ** zone);
 void detruire_salle(salle_t ** salle);
 
-/**
-	*\fn void init_monde(monde_t * monde, FILE* fichier_sauvegarde)
-	*\brief initialisation du monde
-	*\param monde environnement global du jeu
-	*\param fichier_sauvegarde fichier avec les données d'initialisation
-*/
 void init_monde_menu(monde_t * monde);
 void init_monde_jeu(monde_t * monde, char* chemin_fichier);
-
-/**
-	*\fn void init_zone(zone_t * zone, int num_zone)
-	*\brief initialisation d'une zone du monde
-	*\param zone une zone du monde
-	*\param num_zone numéro de la zone du monde
-*/
 void init_zone(zone_t * zone, int num_zone);
-
-/**
-	*\fn void init_salle(salle_t * salle, int num_salle)
-	*\brief initialisation d'une salle d'une zone
-	*\param salle une salle d'une zone
-	*\param num_salle numéro de la salle de la zone
-*/
 void init_salle(salle_t * salle, int num_salle, int num_zone);
 
-void deplacement_monstre(monstre_t * monstre, monde_t * m);
 int victoire_jeu(monde_t * monde);
+
 #endif

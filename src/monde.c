@@ -2,15 +2,16 @@
   * \file monde.c
   * \brief fonctions de gestion du monde
   * \author Anna Béranger, Arthur Fabre, Alex Choux
+  * \date 03/03/2022
 */
 
 #include "../lib/monde.h"
 
 
 /**
-	*\fn int existe_salle(salle_t* salle)
-	*\brief renvoie 1 si la salle existe
-	*\param salle salle à tester
+	* \fn int existe_salle(salle_t* salle)
+	* \brief renvoie 1 si la salle existe
+	* \param salle salle à tester
 */
 int existe_salle(salle_t* salle){
     if(salle == NULL)
@@ -19,9 +20,9 @@ int existe_salle(salle_t* salle){
 }
 
 /**
-	*\fn int existe_zone(zone_t* zone)
-	*\brief renvoie 1 si la zone existe
-	*\param zone zone à tester
+	* \fn int existe_zone(zone_t* zone)
+	* \brief renvoie 1 si la zone existe
+	* \param zone zone à tester
 */
 int existe_zone(zone_t* zone){
     if(zone == NULL)
@@ -30,9 +31,9 @@ int existe_zone(zone_t* zone){
 }
 
 /**
-	*\fn int existe_monde(monde_t* monde)
-	*\brief renvoie 1 si le monde existe
-	*\param monde monde à tester
+	* \fn int existe_monde(monde_t* monde)
+	* \brief renvoie 1 si le monde existe
+	* \param monde monde à tester
 */
 int existe_monde(monde_t* monde){
     if(monde == NULL)
@@ -41,9 +42,9 @@ int existe_monde(monde_t* monde){
 }
 
 /**
-	*\fn salle_t* creer_salle()
-	*\brief allocation de la mémoire nécessaire à une salle
-	*\return un pointeur sur un salle
+	* \fn salle_t* creer_salle()
+	* \brief allocation de la mémoire nécessaire à une salle
+	* \return un pointeur sur une salle
 */
 salle_t * creer_salle(){
     int i;
@@ -64,9 +65,9 @@ salle_t * creer_salle(){
 }
 
 /**
-	*\fn zone_t * creer_zone()
-	*\brief allocation de la mémoire nécessaire à une zone
-	*\return un pointeur sur une zone
+	* \fn zone_t * creer_zone()
+	* \brief allocation de la mémoire nécessaire à une zone
+	* \return un pointeur sur une zone
 */
 zone_t * creer_zone(){
     zone_t * zone;
@@ -79,9 +80,9 @@ zone_t * creer_zone(){
 }
 
 /**
-	*\fn monde_t * creer_monde()
-	*\brief allocation de la mémoire nécessaire au monde
-	*\return un pointeur sur un monde
+	* \fn monde_t * creer_monde()
+	* \brief allocation de la mémoire nécessaire au monde
+	* \return un pointeur sur un monde
 */
 monde_t * creer_monde(){
     monde_t* monde;
@@ -95,9 +96,9 @@ monde_t * creer_monde(){
 }
 
 /**
-	*\fn void detruire_monde(monde_t **)
-	*\brief libération de la mémoire allouée au monde lorsque la partie est terminée
-	*\param monde environnement global du jeu
+	* \fn void detruire_monde(monde_t **)
+	* \brief libération de la mémoire allouée au monde lorsque la partie est terminée
+	* \param monde environnement global du jeu
 */
 void detruire_monde(monde_t ** monde){
     for(int i = 0; i < NB_ZONES; i++){
@@ -114,9 +115,9 @@ void detruire_monde(monde_t ** monde){
 }
 
 /**
-	*\fn void detruire_zone(zone_t **)
-	*\brief libération de la mémoire allouée à une zone du monde lorsque la partie est terminée
-	*\param zone une zone du monde
+	* \fn void detruire_zone(zone_t **)
+	* \brief libération de la mémoire allouée à une zone du monde lorsque la partie est terminée
+	* \param zone une zone du monde
 */
 void detruire_zone(zone_t ** zone){
     for(int i = 0; i < NB_SALLES; i++){
@@ -131,9 +132,9 @@ void detruire_zone(zone_t ** zone){
 }
 
 /**
-	*\fn void detruire_salle(salle_t **)
-	*\brief libération de la mémoire allouée à une salle d'une zone lorsque la partie est terminée
-	*\param salle une salle d'une zone
+	* \fn void detruire_salle(salle_t **)
+	* \brief libération de la mémoire allouée à une salle d'une zone lorsque la partie est terminée
+	* \param salle une salle d'une zone
 */
 void detruire_salle(salle_t ** salle){
     int i;
@@ -158,6 +159,11 @@ void detruire_salle(salle_t ** salle){
     (*salle) = NULL;
 }
 
+/**
+	* \fn void init_monde_menu(monde_t * monde)
+	* \brief initialise les attributs du monde nécessaires au menu
+	* \param monde le monde
+*/
 void init_monde_menu(monde_t * monde){
   monde->etat_jeu = ETAT_MENU_1;
   monde->option = 1;
@@ -165,6 +171,12 @@ void init_monde_menu(monde_t * monde){
   monde->num_menu_comb = MENU1;
 }
 
+/**
+	* \fn void init_monde_jeu(monde_t * monde, char* chemin_fichier)
+	* \brief initialise les attributs du monde nécessaires au jeu
+	* \param monde le monde
+  * \param chemin_fichier le chemin du fichier de chargement de partie
+*/
 void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   int i;
   int j;
@@ -260,6 +272,12 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   fclose(fichier);
 }
 
+/**
+	* \fn void init_zone(zone_t * zone, int num_zone)
+	* \brief initialise une zone
+	* \param zone la zone à initialiser
+  * \param num_zone le numéro de la zone
+*/
 void init_zone(zone_t * zone, int num_zone){
   int i;
 
@@ -271,6 +289,12 @@ void init_zone(zone_t * zone, int num_zone){
   }
 }
 
+/**
+	* \fn void init_salle(salle_t * salle, int num_salle, int num_zone)
+	* \brief initialise une salle
+	* \param salle la salle à initialiser
+  * \param num_salle le numéro de la salle
+*/
 void init_salle(salle_t * salle, int num_salle, int num_zone){
   int i;
 
@@ -300,7 +324,11 @@ void init_salle(salle_t * salle, int num_salle, int num_zone){
   init_nonCombattant(salle->coffre, 0, 900 - LARGEUR_COFFRE, 80,0);
 }
 
-//Retourne 1 si on a vaincu le boss final
+/**
+	* \fn int victoire_jeu(monde_t * monde)
+	* \brief renvoie 1 si on a vaincu le boss final
+	* \param monde les données du monde
+*/
 int victoire_jeu(monde_t * monde){
   joueur_t * j = monde->joueur;
 
