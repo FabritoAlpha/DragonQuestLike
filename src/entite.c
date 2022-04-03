@@ -1,47 +1,51 @@
 /**
   * \file entite.c
-  * \brief Contient les fonctions liées aux entitées
-  * \author Anna Béranger, Arthur Fabre, Alex Choux
+  * \brief primitives des entités
+  * \author Anna Beranger, Alex Choux, Arthur Fabre
+  * \date 03/03/2022
 */
 #include  "../lib/entite.h"
 
 /**
-  * \fn void a_gauche(combattant_t*)
-  * \param entite entitée à déplacer.
-  * \brief déplacement d'une entitée à gauche selon un pas.
+  * \fn void a_gauche(combattant_t* entite)
+  * \brief déplacement d'un combattant d'un pas à gauche
+  * \param entite combattant à déplacer
 */
 void a_gauche(combattant_t * entite){
     entite->x = (entite->x)-entite->vitesse;
 }
+
 /**
-  * \fn void a_droite(combattant_t*)
-  * \param entite entitée à déplacer.
-  * \brief déplacement d'une entitée à droite selon un pas.
+  * \fn void a_droite(combattant_t* entite)
+  * \brief déplacement d'un combattant d'un pas à droite
+  * \param entite combattant à déplacer
 */
 void a_droite(combattant_t* entite){
     entite->x = (entite->x)+entite->vitesse;
 }
+
 /**
-  * \fn void en_bas(combattant_t*)
-  * \param entite entitée à déplacer.
-  * \brief déplacement d'une entitée en bas selon un pas.
+  * \fn void en_bas(combattant_t* entite)
+  * \brief déplacement d'un combattant d'un pas en bas
+  * \param entite combattant à déplacer
 */
 void en_bas(combattant_t* entite){
     entite->y = (entite->y)+entite->vitesse;
 }
+
 /**
-  * \fn void en_haut(combattant_t*)
-  * \param entite entitée à déplacer.
-  * \brief déplacement d'une entitée en haut selon un pas.
+  * \fn void en_haut(combattant_t* entite)
+  * \brief déplacement d'un combattant d'un pas en haut
+  * \param entite combattant à déplacer
 */
 void en_haut(combattant_t* entite){
     entite->y = (entite->y)-entite->vitesse;
 }
 
-
 /**
   * \fn joueur_t * creer_joueur()
-  * \brief La fonction créer le joueur.
+  * \brief alloue de la mémoire pour un joueur
+  * \return un pointeur sur le joueur
 */
 joueur_t * creer_joueur(){
     joueur_t * player;
@@ -57,7 +61,8 @@ joueur_t * creer_joueur(){
 
 /**
   * \fn monstre_t * creer_monstre()
-  * \brief La fonction créer le joueur.
+  * \brief alloue de la mémoire pour un monstre
+  * \return un pointeur sur le monstre
 */
 monstre_t * creer_monstre(){
   monstre_t * monster;
@@ -68,7 +73,8 @@ monstre_t * creer_monstre(){
 
 /**
   * \fn nonCombattant_t * creer_nonCombattant()
-  * \brief La fonction créer une entitée non combattante.
+  * \brief alloue de la mémoire pour un pnj ou un coffre
+  * \return un pointeur sur le non combattant
 */
 
 nonCombattant_t * creer_nonCombattant(){
@@ -79,7 +85,8 @@ nonCombattant_t * creer_nonCombattant(){
 
 /**
   * \fn void detruire_joueur(joueur_t ** player)
-  * \brief La fonction détruire le joueur.
+  * \brief libère la mémoire allouée pour le joueur
+  * \param player le joueur
 */
 void detruire_joueur(joueur_t ** player){
   int i;
@@ -96,9 +103,11 @@ void detruire_joueur(joueur_t ** player){
   free(*(player));
   (*player)=NULL;
 }
+
 /**
-  * \fn void detruire_monstre(monstre_t ** player)
-  * \brief La fonction détruire le monstre.
+  * \fn void detruire_monstre(monstre_t ** monster)
+  * \brief libère la mémoire allouée pour le monstre
+  * \param monster le monstre
 */
 void detruire_monstre(monstre_t ** monster){
   free((*monster)->combattant);
@@ -107,9 +116,11 @@ void detruire_monstre(monstre_t ** monster){
   (*monster)=NULL;
 
 }
+
 /**
   * \fn void detruire_nonCombattant(nonCombattant_t ** nonCombat)
-  * \brief La fonction détruire un nonCombattant.
+  * \brief libère la mémoire allouée pour le non combattant
+  * \param nonCombat le non combattant
 */
 void detruire_nonCombattant(nonCombattant_t ** nonCombat){
   free(*nonCombat);
@@ -117,15 +128,19 @@ void detruire_nonCombattant(nonCombattant_t ** nonCombat){
 }
 
 /**
-  * \fn void init_joueur(joueur_t* joueur, int pvMax, int pvCour, int attaque, int vitesse, int x, int y)
-  * \param joueur entitée à initialiser.
-  * \param pvMax entitée à initialiser.
-  * \param pvCour entitée à initialiser.
-  * \param attaque entitée à initialiser.
-  * \param vitesse entitée à initialiser.
-  * \param x entitée à initialiser.
-  * \param y entitée à initialiser.
-  * \brief Initialisation du joueur avec des parametres.
+  * \fn void init_joueur(joueur_t * joueur,int niveau, int zone, int pv_M, int pv_C, int mana_M, int mana_C, int atk, int or, int nb_inv, int nb_equip)
+  * \brief initialisation du joueur
+  * \param joueur le joueur à initialiser
+  * \param niveau le niveau à donner au joueur
+  * \param zone la zone à donner au joueur
+  * \param pvM le nombre de points de vie maximal à donner au joueur
+  * \param pvC le nombre de points de vie à donner au joueur
+  * \param mana_M le nombre de points de mana maximal à donner au joueur
+  * \param mana_C le nombre de points de mana à donner au joueur
+  * \param atk la puissance d'attaque à donner au joueur
+  * \param or le nombre d'or à donner au joueur
+  * \param nb_inv nombre d'objets qui seront présents dans l'inventaire
+  * \param nb_equip nombre d'objets que le joueur aura d'équipés
 */
 void init_joueur(joueur_t * joueur,int niveau, int zone, int pv_M, int pv_C, int mana_M, int mana_C, int atk, int or, int nb_inv, int nb_equip){
   joueur->combattant->pvMax=pv_M;
@@ -146,15 +161,15 @@ void init_joueur(joueur_t * joueur,int niveau, int zone, int pv_M, int pv_C, int
 }
 
 /**
-  * \fn void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse, float x, float y,int niveau)
-  * \param monstre entitée à initialiser.
-  * \param pvMax entitée à initialiser.
-  * \param pvCour entitée à initialiser.
-  * \param attaque entitée à initialiser.
-  * \param vitesse entitée à initialiser.
-  * \param x entitée à initialiser.
-  * \param y entitée à initialiser.
-  * \brief Initialisation du monstre avec des parametres.
+  * \fn void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse,int niveau,int type)
+  * \brief initialisation d'un monstre
+  * \param monster le monstre à initialiser
+  * \param pvMax le nombre de points de vie maximal à donner au monstre
+  * \param pvCour le nombre de points de vie à donner au mnstre
+  * \param attaque la puissance d'attaque à donner au monstre
+  * \param vitesse la vitesse à donner au monstre
+  * \param niveau le niveau à donner au monstre
+  * \param type le type que sera le monstre
 */
 void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse,int niveau,int type){
   monster->combattant->pvMax=pvMax;
@@ -176,11 +191,12 @@ void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int v
 
 /**
   * \fn void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,int visite)
-  * \param nonCombat entitée à initialiser.
-  * \param x entitée à initialiser.
-  * \param y entitée à initialiser.
-  * \param visite entitée à initialiser.
-  * \brief Initialisation du nonCombattant avec des parametres.
+  * \brief initialisation d'un non combattant
+  * \param nonCombat le non combattant à initialiser
+  * \param x les coordonnées en abscisses à donner à l'entité
+  * \param y les coordonnées en ordonnées à donner à l'entité
+  * \param id l'id à donner à l'entité
+  * \param visite l'initialiser déjà visité ou non par le joueur
 */
 void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,int visite){
   nonCombat->id=id;
@@ -189,15 +205,32 @@ void init_nonCombattant(nonCombattant_t * nonCombat, int id, float x, float y,in
   nonCombat->visite=visite;
 }
 
-
+/**
+  * \fn objet_t * creer_objet()
+  * \brief alloue de la mémoire pour un objet
+  * \return un pointeur sur l'objet créé
+*/
 objet_t * creer_objet(){
   objet_t * objet;
-  objet= malloc(sizeof(objet_t));
+  objet = malloc(sizeof(objet_t));
   objet->nom = malloc(sizeof(char)*20);
   objet->description = malloc(sizeof(char)*50);
   return(objet);
 }
-objet_t * objet_initialiser(objet_t * objet,int id,int attaque_sup,int mana_sup,int vie_sup,char*nom,char*description){
+
+/**
+  * \fn objet_t * objet_initialiser(objet_t * objet, int id, int attaque_sup, int mana_sup, int vie_sup, char * nom, char * description)
+  * \brief initialisation d'un objet
+  * \param objet l'objet à initialisé
+  * \param id l'id à donner à l'objet
+  * \param attaque_sup l'attaque supplémentaire que l'objet doit apporter
+  * \param mana_sup les points de mana supplémentaires que l'objet doit apporter
+  * \param les points de vie supplémentaires que l'objet doit apporter
+  * \param nom le nom de l'objet
+  * \param description la description de l'objet
+  * \return un pointeur sur l'objet initialisé
+*/
+objet_t * objet_initialiser(objet_t * objet, int id, int attaque_sup, int mana_sup, int vie_sup, char * nom, char * description){
   objet->id=id;
   objet->attaque_sup=attaque_sup;
   objet->mana_sup=mana_sup;
@@ -208,6 +241,11 @@ objet_t * objet_initialiser(objet_t * objet,int id,int attaque_sup,int mana_sup,
   return objet;
 }
 
+/**
+  * \fn void detruire_objet(objet_t**objet)
+  * \brief libère la mémoire allouée pour l'objet
+  * \param objet l'objet à détruire
+*/
 void detruire_objet(objet_t**objet){
   free((*objet)->nom);
   (*objet)->nom=NULL;
@@ -218,6 +256,11 @@ void detruire_objet(objet_t**objet){
 
 }
 
+/**
+  * \fn void initialiser_biblio(objet_t tableau[])
+  * \brief initialise une bibliothèque d'objets
+  * \param tableau le tableau d'objet qui représente la bibliothèque
+*/
 void initialiser_biblio(objet_t tableau[]){
   int i_tab=0;
   objet_t * epee1 = creer_objet();
@@ -240,15 +283,24 @@ void initialiser_biblio(objet_t tableau[]){
   tableau[i_tab++]=*potionmana;
 }
 
+/**
+  * \fn int objet_present(joueur_t* joueur, objet_t* biblio, int ind)
+  * \brief vérifie qu'un objet est présent dans l'inventaire du joueur
+  * \param joueur le joueur
+  * \param biblio la bibliothèque qui contient tous les objets existants
+  * \param ind l'indice de l'objet
+  * \return objet présent dans l'inventaire (1), objet absent (0)
+*/
 int objet_present(joueur_t* joueur, objet_t* biblio, int ind){
   return joueur->inventaire[ind].id == biblio[ind].id;
 }
 
 /**
   * \fn void ajout_objet(joueur_t* joueur, int ind)
-  * \param joueur jour à qui on veut remplir l'inventaire
+  * \brief ajoute un objet dans l'inventaire du joueur si il ne l'a pas encore ou incrémente le nombre de potion
+  * \param joueur le joueur à qui on veut remplir l'inventaire
+  * \param biblio la bibliothèque qui contient tous les objets existants
   * \param ind indice de l'objet que l'on veut ajouter
-  * \brief Ajoute un objet dans l'inventaire du joueur si il ne l'a pas encore ou incrémente le nombre de potion
 */
 void ajout_objet(joueur_t* joueur, objet_t* biblio, int ind){
   if(!objet_present(joueur, biblio, ind)){ // si l'objet n'est pas dans l'inventaire
@@ -262,6 +314,13 @@ void ajout_objet(joueur_t* joueur, objet_t* biblio, int ind){
   }
 }
 
+/**
+  * \fn void equipement_desequipement_objet(joueur_t * joueur, int i_tab_inv, int i_obj_equipe)
+  * \brief équipe ou déséquipe le joueur
+  * \param joueur le joueur
+  * \param i_tab_inv indice de l'objet dans l'inventaire du joueur
+  * \param i_obj_equipe indice de l'objet parmis ses objets équipés
+*/
 void equipement_desequipement_objet(joueur_t * joueur, int i_tab_inv, int i_obj_equipe){
   if(joueur->inventaire[i_tab_inv].id != 0){
     //Si l'objet est présent dans l'inventaire, on actualise l'équipement courrant

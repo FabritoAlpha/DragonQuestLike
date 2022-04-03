@@ -1,11 +1,18 @@
+/**
+* \file deplacements.c
+* \brief déplacements et collisions du joueur et des monstres
+* \author Anna Beranger, Alex Choux, Arthur Fabre
+* \date 03/03/2022
+*/
+
 #include  "../lib/deplacements.h"
 
 /**
-	*\fn int distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite)
-  *\brief renvoie la distance entre le joueur et un non combattant, personnage ou coffre
-  *\param joueur le joueur
-  *\param entite l'entite, personnage ou coffre
-  *\return distance
+	* \fn int distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite)
+  * \brief renvoie la distance entre le joueur et un non combattant, personnage ou coffre
+  * \param joueur le joueur
+  * \param entite l'entite, personnage ou coffre
+  * \return distance
 */
 int distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite){
     //printf("Test début distance pnj coffre\n");
@@ -25,10 +32,10 @@ int distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite){
 }
 
 /**
-	*\fn int nonCombattant_proche(monde_t * monde)
-  *\brief teste si un personnage, un marchand ou un coffre est proche du joueur
-  *\param monde le monde du jeu
-  *\return 0 si aucun non combattant est proche, sinon, 1 si c'est un personnage, 2 si c'est un marchand, 3 si c'est un coffre
+	* \fn int nonCombattant_proche(monde_t * monde)
+  * \brief teste si un personnage, un marchand ou un coffre est proche du joueur
+  * \param monde le monde du jeu
+  * \return 0 si aucun non combattant est proche, sinon, 1 si c'est un personnage, 2 si c'est un marchand, 3 si c'est un coffre
 */
 int nonCombattant_proche(monde_t * monde){
   //pnj de la salle 0
@@ -58,10 +65,10 @@ int nonCombattant_proche(monde_t * monde){
 }
 
 /**
-	*\fn void changement_salle(joueur_t * j, int changement_salle)
-  *\brief gestion du passage du joueur dans une nouvelle salle
-  *\param j le joueur
-  *\param changement_salle direction aller (1) ou retour (-1)
+	* \fn void changement_salle(joueur_t * j, int changement_salle)
+  * \brief gestion du passage du joueur dans une nouvelle salle
+  * \param j le joueur
+  * \param changement_salle direction aller (1) ou retour (-1)
 */
 void changement_salle(joueur_t * j, int changement_salle){
 	j->salle = (j->salle) + changement_salle;
@@ -109,9 +116,9 @@ void changement_salle(joueur_t * j, int changement_salle){
 }
 
 /**
-	*\fn void changement_zone(monde_t * monde)
-  *\brief gestion du passage du joueur dans une nouvelle zone
-  *\param monde le monde du jeu
+	* \fn void changement_zone(monde_t * monde)
+  * \brief gestion du passage du joueur dans une nouvelle zone
+  * \param monde le monde du jeu
 */
 void changement_zone(monde_t * monde){
 	(monde->joueur->zone)++;
@@ -124,11 +131,11 @@ void changement_zone(monde_t * monde){
 }
 
 /**
-	*\fn int collision_combattant_ecran(combattant_t * combattant, monde_t * monde)
-  *\brief détection de collision du joueur ou d'un monstre avec le bord de la surface de jeu
-  *\param combattant le joueur ou un monstre
-  *\param monde le monde du jeu
-  *\return collision (1), pas de collision (0)
+	* \fn int collision_combattant_ecran(combattant_t * combattant, monde_t * monde)
+  * \brief détection de collision du joueur ou d'un monstre avec le bord de la surface de jeu
+  * \param combattant le joueur ou un monstre
+  * \param monde le monde du jeu
+  * \return collision (1), pas de collision (0)
 */
 int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
 
@@ -272,12 +279,12 @@ int collision_combattant_ecran(combattant_t * combattant, monde_t * monde){
 }
 
 /**
-	*\fn int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, monde_t * monde)
-  *\brief détection de collision entre le joueur et un monstre
-  *\param joueur le joueur
-  *\param monstre un monstre
-  *\param monde le monde du jeu
-  *\return collision (1), pas de collision (0)
+	* \fn int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, monde_t * monde)
+  * \brief détection de collision entre le joueur et un monstre
+  * \param joueur le joueur
+  * \param monstre un monstre
+  * \param monde le monde du jeu
+  * \return collision (1), pas de collision (0)
 */
 int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, monde_t * monde){
 
@@ -325,11 +332,11 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, mond
 }
 
 /**
-	*\fn int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj)
-  *\brief détection de collision entre le joueur ou un monstre et un personnage non joueur
-  *\param combattant le joueur ou un monstre
-  *\param pnj un personnage non joueur
-  *\return collision (1), pas de collision (0)
+	* \fn int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj)
+  * \brief détection de collision entre le joueur ou un monstre et un personnage non joueur
+  * \param combattant le joueur ou un monstre
+  * \param pnj un personnage non joueur
+  * \return collision (1), pas de collision (0)
 */
 int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj){
 
@@ -357,11 +364,11 @@ int collision_combattant_pnj(combattant_t * combattant, nonCombattant_t * pnj){
 }
 
 /**
-	*\fn int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * coffre)
-  *\brief détection de collision entre le joueur ou un monstre et un coffre
-  *\param combattant le joueur ou un monstre
-  *\param coffre un coffre
-  *\return collision (1), pas de collision (0)
+	* \fn int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * coffre)
+  * \brief détection de collision entre le joueur ou un monstre et un coffre
+  * \param combattant le joueur ou un monstre
+  * \param coffre un coffre
+  * \return collision (1), pas de collision (0)
 */
 int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * coffre){
 
@@ -388,12 +395,12 @@ int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * cof
 }
 
 /**
-	*\fn int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t * monde)
-  *\brief détection de collision entre un combattant(joueur ou monstre) et un coffre, un combattant ou un pnj
-  *\param combattant le joueur ou un monstre
-  *\param indice_monstre
-  *\param monde le monde du jeu
-  *\return collision (1), pas de collision (0)
+	* \fn int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t * monde)
+  * \brief détection de collision entre un combattant(joueur ou monstre) et un coffre, un combattant ou un pnj
+  * \param combattant le joueur ou un monstre
+  * \param indice_monstre
+  * \param monde le monde du jeu
+  * \return collision (1), pas de collision (0)
 */
 int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t * monde){
     int i;
@@ -429,12 +436,12 @@ int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t 
 }
 
 /**
-	*\fn int deplacement_droit(combattant_t * entite, int indice_monstre, monde_t * monde)
-  *\brief vérifie qu'un déplacement à droite est possible
-  *\param entite le joueur ou un monstre
-  *\param indice_monstre
-  *\param monde le monde du jeu
-  *\return déplacement non possible (1), déplacement possible (0)
+	* \fn int deplacement_droit(combattant_t * entite, int indice_monstre, monde_t * monde)
+  * \brief vérifie qu'un déplacement à droite est possible
+  * \param entite le joueur ou un monstre
+  * \param indice_monstre
+  * \param monde le monde du jeu
+  * \return déplacement non possible (1), déplacement possible (0)
 */
 int deplacement_droit(combattant_t * entite, int indice_monstre, monde_t * monde){
     entite->x = (entite->x)+entite->vitesse;
@@ -448,12 +455,12 @@ int deplacement_droit(combattant_t * entite, int indice_monstre, monde_t * monde
 }
 
 /**
-	*\fn int deplacement_gauche(combattant_t * entite, int indice_monstre, monde_t * monde)
-  *\brief vérifie qu'un déplacement à gauche est possible
-  *\param entite le joueur ou un monstre
-  *\param indice_monstre
-  *\param monde le monde du jeu
-  *\return déplacement non possible (1), déplacement possible (0)
+	* \fn int deplacement_gauche(combattant_t * entite, int indice_monstre, monde_t * monde)
+  * \brief vérifie qu'un déplacement à gauche est possible
+  * \param entite le joueur ou un monstre
+  * \param indice_monstre
+  * \param monde le monde du jeu
+  * \return déplacement non possible (1), déplacement possible (0)
 */
 int deplacement_gauche(combattant_t * entite, int indice_monstre, monde_t * monde){
     entite->x = (entite->x)-entite->vitesse;
@@ -467,12 +474,12 @@ int deplacement_gauche(combattant_t * entite, int indice_monstre, monde_t * mond
 }
 
 /**
-	*\fn int deplacement_haut(combattant_t * entite, int indice_monstre, monde_t * monde)
-  *\brief vérifie qu'un déplacement en haut est possible
-  *\param entite le joueur ou un monstre
-  *\param indice_monstre
-  *\param monde le monde du jeu
-  *\return déplacement non possible (1), déplacement possible (0)
+	* \fn int deplacement_haut(combattant_t * entite, int indice_monstre, monde_t * monde)
+  * \brief vérifie qu'un déplacement en haut est possible
+  * \param entite le joueur ou un monstre
+  * \param indice_monstre
+  * \param monde le monde du jeu
+  * \return déplacement non possible (1), déplacement possible (0)
 */
 int deplacement_haut(combattant_t * entite, int indice_monstre, monde_t * monde){
     entite->y = (entite->y)-entite->vitesse;
@@ -486,12 +493,12 @@ int deplacement_haut(combattant_t * entite, int indice_monstre, monde_t * monde)
 }
 
 /**
-	*\fn int deplacement_bas(combattant_t * entite, int indice_monstre, monde_t * monde)
-  *\brief vérifie qu'un déplacement en bas est possible
-  *\param entite le joueur ou un monstre
-  *\param indice_monstre
-  *\param monde le monde du jeu
-  *\return déplacement non possible (1), déplacement possible (0)
+	* \fn int deplacement_bas(combattant_t * entite, int indice_monstre, monde_t * monde)
+  * \brief vérifie qu'un déplacement en bas est possible
+  * \param entite le joueur ou un monstre
+  * \param indice_monstre
+  * \param monde le monde du jeu
+  * \return déplacement non possible (1), déplacement possible (0)
 */
 int deplacement_bas(combattant_t * entite, int indice_monstre, monde_t * monde){
     entite->y = (entite->y)+entite->vitesse;
@@ -505,11 +512,11 @@ int deplacement_bas(combattant_t * entite, int indice_monstre, monde_t * monde){
 }
 
 /**
-	*\fn int distancejoueurmonstre(joueur_t * joueur,monstre_t * monstre)
-	*\brief renvoie la distance entre  le joueur et un monstre
-	*\param joueur le joueur
-  *\param monstre un monstre
-  *\return distance
+	* \fn int distancejoueurmonstre(joueur_t * joueur,monstre_t * monstre)
+	* \brief renvoie la distance entre  le joueur et un monstre
+	* \param joueur le joueur
+  * \param monstre un monstre
+  * \return distance
 */
 int distancejoueurmonstre(joueur_t * joueur,monstre_t * monstre){
   int distance;
@@ -522,10 +529,10 @@ int distancejoueurmonstre(joueur_t * joueur,monstre_t * monstre){
 }
 
 /**
-	*\fn void deplacement_monstre(monstre_t * monstre, monde_t * m)
-	*\brief IA du monstre, le déplace dans son environnement
-  *\param monstre monstre qui est controlé
-	*\param m le monde du jeu
+	* \fn void deplacement_monstre(monstre_t * monstre, monde_t * m)
+	* \brief IA du monstre, le déplace dans son environnement
+  * \param monstre monstre qui est controlé
+	* \param m le monde du jeu
 */
 void deplacement_monstre(monstre_t * monstre, monde_t * m){
   int valColision=0;
@@ -618,9 +625,9 @@ void deplacement_monstre(monstre_t * monstre, monde_t * m){
 }
 
 /**
-	*\fn void sauvegarde(monde_t* monde)
-	*\brief sauvegarde la partie en cours
-	*\param monde le monde du jeu
+	* \fn void sauvegarde(monde_t* monde)
+	* \brief sauvegarde la partie en cours
+	* \param monde le monde du jeu
 */
 void sauvegarde(monde_t* monde){
     FILE * fichier;

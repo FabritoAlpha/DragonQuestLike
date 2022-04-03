@@ -1,8 +1,10 @@
 /**
   * \file entite.h
-  * \brief header des entitées
+  * \brief header des entités
   * \author Anna Béranger, Arthur Fabre, Alex Choux
+  * \date 03/03/2022
 */
+
 #ifndef entite_H
 #define entite_H
 
@@ -47,13 +49,13 @@
 
 /**
   * \struct combattant_t
-  * \brief représentation d'une entite combattante
+  * \brief représentation d'une entité combattante
 */
 typedef struct{
   int pvMax; /**< nombre de point de vie max */
-  int pvCour; /**< nombre de point de vie actuelle*/
+  int pvCour; /**< nombre de point de vie actuels*/
   int attaque; /**< valeur de ses points d'attaques */
-  int vitesse;
+  int vitesse; /**< pas */
   float x; /**< possition sur l'axe des abscisses */
   float y; /**< position sur l'axe des ordonnées */
   int niveau; /**< niveau du combattant */
@@ -69,11 +71,10 @@ typedef struct{
   int attaque_sup; /**< attaque de l'objet */
   int mana_sup; /**< mana de l'objet */
   int vie_sup; /**< vie de l'objet */
-  int nb_obj;
+  int nb_obj; /**< quantité de l'objet */
   char* nom; /**< nom de l'objet */
   char* description; /**< description de l'objet */
 } objet_t;
-
 
 /**
   * \struct joueur_t
@@ -81,15 +82,15 @@ typedef struct{
 */
 typedef struct{
   combattant_t* combattant; /**< points de vie et position */
-  objet_t * inventaire; /**< id des objets en possession du joueur */
-  objet_t * objet_equipe; /**< id des objets équipés par le joueur */
-  int nb_obj_inventaire;
-  int nb_obj_equip;
-  int zone;
-  int salle;
-  int manaMax;
-  int manaCour;
-  int or;
+  objet_t * inventaire; /**< objets en possession du joueur */
+  objet_t * objet_equipe; /**< objets équipés par le joueur */
+  int nb_obj_inventaire; /**< nombre d'objet dans l'inventaire du joueur */
+  int nb_obj_equip; /**< nombre d'objets équipés par le joueur */
+  int zone; /**< numéro de la zone où se trouve le joueur */
+  int salle; /**< numéro de la salle où se trouve le joueur */
+  int manaMax; /**< nombre de points de mana maximum que le joueur peut atteindre */
+  int manaCour; /**< nombre de points de mana actuels du joeur */
+  int or; /**< nombre de pièces d'or en possession du joueur */
 }joueur_t;
 
 /**
@@ -109,38 +110,22 @@ typedef struct{
 
 /**
   * \struct nonCombattant_t
-  * \brief représentation d'une entite non combattante
+  * \brief représentation d'une entité non combattante
 */
 typedef struct{
-  int id; /**< id des entités coffre: 0, pnj n°1: 1, pnj n°2: 2 */
+  int id; /**< id des entités */
   float x; /**< possition sur l'axe des abscisses */
   float y; /**< position sur l'axe des ordonnées */
   int visite; /**< 1: le joueur a déjà intéragi avec l'entité */
 } nonCombattant_t;
 
-/**
-  * \fn void a_gauche(combattant_t*)
-  * \param entite entitée à déplacer.
-  * \brief déplacement d'une entitée à gauche selon un PAS.
-*/
+
 void a_gauche(combattant_t* entite);
-/**
-  * \fn void a_droite(combattant_t*)
-  * \param entite entitée à déplacer.
-  * \brief déplacement d'une entitée à droite selon un PAS.
-*/
+
 void a_droite(combattant_t* entite);
-/**
-  * \fn void en_bas(combattant_t*)
-  * \param entite entitée à déplacer.
-  * \brief déplacement d'une entitée en bas selon un PAS.
-*/
+
 void en_bas(combattant_t* entite);
-/**
-  * \fn void en_haut(combattant_t*)
-  * \param entite entitée à déplacer.
-  * \brief déplacement d'une entitée en haut selon un PAS.
-*/
+
 void en_haut(combattant_t* entite);
 
 joueur_t * creer_joueur();

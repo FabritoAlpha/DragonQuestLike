@@ -1,3 +1,10 @@
+/**
+  * \file affichage.h
+  * \brief header des affichages
+  * \author Anna Béranger, Arthur Fabre, Alex Choux
+  * \date 03/03/2022
+*/
+
 #ifndef _AFFICHAGE_H
 #define _AFFICHAGE_H
 

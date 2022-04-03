@@ -1,3 +1,10 @@
+/**
+  * \file deplacements.h
+  * \brief header des déplacements
+  * \author Anna Béranger, Arthur Fabre, Alex Choux
+  * \date 03/03/2022
+*/
+
 #ifndef _DEPLACEMENTS_H
 #define _DEPLACEMENTS_H
 #include <math.h>
