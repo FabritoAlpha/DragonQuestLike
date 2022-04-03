@@ -1,3 +1,10 @@
+/**
+  * \file sdl2_fonctions.h
+  * \brief header des fonctions de gestion de la sdl2
+  * \author Anna Béranger, Arthur Fabre, Alex Choux
+	* \date 03/03/2022
+*/
+
 #ifndef SDL2_FONCTIONS_H
 #define SDL2_FONCTIONS_H
 
