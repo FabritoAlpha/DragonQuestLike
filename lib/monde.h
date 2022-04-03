@@ -7,6 +7,7 @@
 #ifndef _MONDE_H
 #define _MONDE_H
 
+#include "sdl2_fonctions.h"
 #include "entitee.h"
 
 //Numéro du menu lors du combat
@@ -21,7 +22,17 @@
 #define NB_SALLES 4
 #define NB_ZONES 3
 
+//Etat possible pour le jeu
 #define ETAT_MENU_1 0
+#define ETAT_COMBAT 12
+#define ETAT_DIALOGUE 22
+#define ETAT_COFFRE 21
+#define ETAT_AIDE 23
+#define ETAT_INVENTAIRE 3
+#define ETAT_QUITTER -1
+#define ETAT_MENU_2 4
+#define ETAT_JEU_PRINCIPAL 1
+#define ETAT_VICTOIRE 5
 
 #define NB_MONSTRES_SALLE 1
 #define NB_PERSO_SALLE 2

@@ -23,7 +23,7 @@ CFLAGS=$(FLAGS) -g
 
 all: DragonQuest
 
-DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/menu.o $(OBJ)/monde.o $(OBJ)/entitee.o
+DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/menu.o $(OBJ)/monde.o $(OBJ)/entitee.o $(OBJ)/affichage.o $(OBJ)/deplacements.o $(OBJ)/interactions.o
 	$(CC) $(CFLAGS) $^ -o $(BIN)/$@ $(LIBS) $(INCS)
 
 $(OBJ)/main.o: $(SRC)/main.c $(LIB)/jeu.h $(LIB)/sdl2_fonctions.h $(LIB)/images.h
@@ -42,11 +42,19 @@ $(OBJ)/menu.o: $(SRC)/menu.c $(LIB)/menu.h
 	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS) $(INCS)
 
 $(OBJ)/monde.o: $(SRC)/monde.c $(LIB)/monde.h
-	$(CC) $(CFLAGS) -c ./$< -o $@
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(INCS)
 
 $(OBJ)/entitee.o: $(SRC)/entitee.c $(LIB)/entitee.h
-	$(CC) $(CFLAGS) -c ./$< -o $@
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(INCS)
 
+$(OBJ)/affichage.o: $(SRC)/affichage.c $(LIB)/affichage.h
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(INCS)
+
+$(OBJ)/deplacements.o: $(SRC)/deplacements.c $(LIB)/deplacements.h
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(INCS)
+
+$(OBJ)/interactions.o: $(SRC)/interactions.c $(LIB)/interactions.h
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(INCS)
 
 entitee: test_entitee
 

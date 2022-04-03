@@ -15,7 +15,7 @@ CFLAGS= -W -Wall -g -std=c99 -g `sdl2-config --cflags `
 
 all: DragonQuest
 
-DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/monde.o $(OBJ)/entitee.o $(OBJ)/menu.o $(OBJ)/deplacements.o $(OBJ)/interactions.o
+DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/monde.o $(OBJ)/entitee.o $(OBJ)/menu.o $(OBJ)/deplacements.o $(OBJ)/interactions.o $(OBJ)/affichage.o
 	$(CC) $(CFLAGS) $(INCLUDES) $^ -o $(BIN)/$@ $(LIBS)
 
 $(OBJ)/main.o: $(SRC)/main.c $(SRC)/jeu.c $(LIB)/jeu.h $(LIB)/sdl2_fonctions.h $(LIB)/images.h
@@ -45,6 +45,9 @@ $(OBJ)/deplacements.o: $(SRC)/deplacements.c $(LIB)/deplacements.h
 $(OBJ)/interactions.o: $(SRC)/interactions.c $(LIB)/interactions.h
 	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS)
 
+$(OBJ)/affichage.o: $(SRC)/affichage.c $(LIB)/affichage.h
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS)
+	
 entitee: test_entitee
 
 test_entitee: $(OBJ)/test_entitee.o $(OBJ)/entitee.o

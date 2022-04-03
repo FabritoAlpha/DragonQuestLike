@@ -1,18 +1,8 @@
 #ifndef _IMAGES_H
 #define _IMAGES_H
 
-#include "sdl2_fonctions.h"
 #include "monde.h"
 
-#define ETAT_COMBAT 12
-#define ETAT_DIALOGUE 22
-#define ETAT_COFFRE 21
-#define ETAT_AIDE 23
-#define ETAT_INVENTAIRE 3
-#define ETAT_QUITTER -1
-#define ETAT_MENU_2 4
-#define ETAT_JEU_PRINCIPAL 1
-#define ETAT_VICTOIRE 5
 
 /**
  * \brief stocke les images (textures) nécessaires à l'affichage graphique
