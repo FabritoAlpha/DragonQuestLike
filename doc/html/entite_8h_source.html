@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dragon Quest Like:  Fichier source de lib/entite.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dragon Quest Like
+   </div>
+   <div id="projectbrief">Jeu de type J-RPG</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">entite.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="entite_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef entite_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define entite_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define TAILLE_INVENTAIRE 6</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define NB_EQUIPEMENT 2</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//Type du combattant</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define JOUEUR 1</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define MONSTRE 0</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//Type du monstre</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define BOSS 1</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define COMMUN 0</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//Etat des monstres</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define VIVANT 1</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define MORT 0</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">//Id des objets</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define ID_EPEE_PIERRE 1</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define ID_EPEE_DIAM 2</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#define ID_BOUCLIER_BOIS 3</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define ID_BOUCLIER_DIAM 4</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define ID_POTION_PV 6</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define ID_POTION_MANA 7</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">//Indice des objets dans le tableau inventaire/bilbiothèque des objets</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define INDICE_EPEE_PIERRE 0</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define INDICE_EPEE_DIAM 1</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define INDICE_BOUCLIER_BOIS 2</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define INDICE_BOUCLIER_DIAM 3</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define INDICE_POTION_PV 4</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define INDICE_POTION_MANA 5</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">//Indice des objets dans le tableau des objets équipés</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define INDICE_EPEE 0</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define INDICE_BOUCLIER 1</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structcombattant__t.html">   54</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structcombattant__t.html#a7b923539dfdf5885c4a4516d07b577fe">   55</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structcombattant__t.html#a7b923539dfdf5885c4a4516d07b577fe">pvMax</a>; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structcombattant__t.html#ac245b06b4d81a3056ed00bd3be5ae102">   56</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structcombattant__t.html#ac245b06b4d81a3056ed00bd3be5ae102">pvCour</a>; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structcombattant__t.html#ae5908c363ce216ab4cb8c1627749514a">   57</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structcombattant__t.html#ae5908c363ce216ab4cb8c1627749514a">attaque</a>; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structcombattant__t.html#a3d8286ea905e7f1af9ee7226060d0743">   58</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structcombattant__t.html#a3d8286ea905e7f1af9ee7226060d0743">vitesse</a>; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structcombattant__t.html#a8d4d81f62996227bd85e2da86f13ddd0">   59</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structcombattant__t.html#a8d4d81f62996227bd85e2da86f13ddd0">x</a>; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structcombattant__t.html#a41577cbdf9e519b63fc52505992db588">   60</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structcombattant__t.html#a41577cbdf9e519b63fc52505992db588">y</a>; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structcombattant__t.html#a2a0614b9b37a17703dbeffcfc3b68bca">   61</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structcombattant__t.html#a2a0614b9b37a17703dbeffcfc3b68bca">niveau</a>; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structcombattant__t.html#ab88ee79aadf9b54f2d082a1b2b876eec">   62</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structcombattant__t.html#ab88ee79aadf9b54f2d082a1b2b876eec">type</a>; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <a class="code" href="structcombattant__t.html">combattant_t</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="structobjet__t.html">   69</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structobjet__t.html#a535563dd45e5162e57e544a87b888de1">   70</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structobjet__t.html#a535563dd45e5162e57e544a87b888de1">id</a>; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structobjet__t.html#afbc77bf8b3e1c88c0b9024f54afe2011">   71</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structobjet__t.html#afbc77bf8b3e1c88c0b9024f54afe2011">attaque_sup</a>; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structobjet__t.html#a55e4b320564b86b3fb89d878cb9ae2c9">   72</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structobjet__t.html#a55e4b320564b86b3fb89d878cb9ae2c9">mana_sup</a>; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structobjet__t.html#ac7e3c171e1e5fe29008e41de0a35f118">   73</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structobjet__t.html#ac7e3c171e1e5fe29008e41de0a35f118">vie_sup</a>; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="structobjet__t.html#af37990e5718b72286ec24f9c48c800a8">   74</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structobjet__t.html#af37990e5718b72286ec24f9c48c800a8">nb_obj</a>; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structobjet__t.html#adaecfe2345dfadb98e0e433528b81c8f">   75</a></span>&#160;  <span class="keywordtype">char</span>* <a class="code" href="structobjet__t.html#adaecfe2345dfadb98e0e433528b81c8f">nom</a>; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="structobjet__t.html#a836a1f1ccd15e588f7a25904e96fbaf9">   76</a></span>&#160;  <span class="keywordtype">char</span>* <a class="code" href="structobjet__t.html#a836a1f1ccd15e588f7a25904e96fbaf9">description</a>; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;} <a class="code" href="structobjet__t.html">objet_t</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="structjoueur__t.html">   83</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a9ce22b00354ddfcddb3379a70bdc1d29">   84</a></span>&#160;  <a class="code" href="structcombattant__t.html">combattant_t</a>* <a class="code" href="structjoueur__t.html#a9ce22b00354ddfcddb3379a70bdc1d29">combattant</a>; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a8590ed5dede772b75669e2de74efd032">   85</a></span>&#160;  <a class="code" href="structobjet__t.html">objet_t</a> * <a class="code" href="structjoueur__t.html#a8590ed5dede772b75669e2de74efd032">inventaire</a>; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="structjoueur__t.html#aeb063d4a45ae0e525c4ec11048e44b2e">   86</a></span>&#160;  <a class="code" href="structobjet__t.html">objet_t</a> * <a class="code" href="structjoueur__t.html#aeb063d4a45ae0e525c4ec11048e44b2e">objet_equipe</a>; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a6ddb5147a3b2380f3beaff9a6d5e803c">   87</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structjoueur__t.html#a6ddb5147a3b2380f3beaff9a6d5e803c">nb_obj_inventaire</a>; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a8b2f13fd3827f4d8640e51e44d77e6df">   88</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structjoueur__t.html#a8b2f13fd3827f4d8640e51e44d77e6df">nb_obj_equip</a>; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a6e8ad28a893a29f1cacab77d25dac966">   89</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structjoueur__t.html#a6e8ad28a893a29f1cacab77d25dac966">zone</a>; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a8c5d2835d363c4241cb2ffc3958947b2">   90</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structjoueur__t.html#a8c5d2835d363c4241cb2ffc3958947b2">salle</a>; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a7e903e23bc4a9e975aab9deb939f9b7b">   91</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structjoueur__t.html#a7e903e23bc4a9e975aab9deb939f9b7b">manaMax</a>; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="structjoueur__t.html#a47a7f3f124d14c1022b7de318e68dbaf">   92</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structjoueur__t.html#a47a7f3f124d14c1022b7de318e68dbaf">manaCour</a>; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="structjoueur__t.html#ada726082f84021cbff5501e4563dd334">   93</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structjoueur__t.html#ada726082f84021cbff5501e4563dd334">or</a>; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}<a class="code" href="structjoueur__t.html">joueur_t</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="structmonstre__t.html">  100</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="structmonstre__t.html#ad18afa120cb30fac8f2a1fbf4569610e">  101</a></span>&#160;  <a class="code" href="structcombattant__t.html">combattant_t</a>* <a class="code" href="structmonstre__t.html#ad18afa120cb30fac8f2a1fbf4569610e">combattant</a>; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="structmonstre__t.html#a334c67a6b363a60e1474effdbe4f9ac9">  102</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structmonstre__t.html#a334c67a6b363a60e1474effdbe4f9ac9">type</a>; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordtype">int</span> x;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordtype">int</span> y;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordtype">int</span> dir;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">int</span> dist;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="structmonstre__t.html#aa0b3cd44a7d4f6869f19bb3aa4697b98">  107</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structmonstre__t.html#aa0b3cd44a7d4f6869f19bb3aa4697b98">etat</a>; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordtype">int</span> agro;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;} <a class="code" href="structmonstre__t.html">monstre_t</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="structnonCombattant__t.html">  115</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="structnonCombattant__t.html#a1725258d27d6c96313e97159e7e6e7e3">  116</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structnonCombattant__t.html#a1725258d27d6c96313e97159e7e6e7e3">id</a>; </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="structnonCombattant__t.html#ac55db3b78541d42f58b4ca3195fc3369">  117</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structnonCombattant__t.html#ac55db3b78541d42f58b4ca3195fc3369">x</a>; </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="structnonCombattant__t.html#a5911e71889f6efeec3aa7b2cfa5fe86d">  118</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structnonCombattant__t.html#a5911e71889f6efeec3aa7b2cfa5fe86d">y</a>; </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="structnonCombattant__t.html#ab3f10edef9660cdf07c87f4d7fdb3d74">  119</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structnonCombattant__t.html#ab3f10edef9660cdf07c87f4d7fdb3d74">visite</a>; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;} <a class="code" href="structnonCombattant__t.html">nonCombattant_t</a>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#a9b1e7e73d6952f892e2eb1844f65265c">a_gauche</a>(<a class="code" href="structcombattant__t.html">combattant_t</a>* entite);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#aa9afb234e9eb16fd89c313cdb975a278">a_droite</a>(<a class="code" href="structcombattant__t.html">combattant_t</a>* entite);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#a6d607d6ad02a239d995520b54d8cac62">en_bas</a>(<a class="code" href="structcombattant__t.html">combattant_t</a>* entite);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#a05c63590d2c2f4b399ff268c5a687b7a">en_haut</a>(<a class="code" href="structcombattant__t.html">combattant_t</a>* entite);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<a class="code" href="structjoueur__t.html">joueur_t</a> * <a class="code" href="entite_8h.html#a2d0d98194c5fa83c07ea73bc859cb892">creer_joueur</a>();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<a class="code" href="structmonstre__t.html">monstre_t</a> * <a class="code" href="entite_8h.html#ac73a28430e8d12bd1877c369e6e2c40b">creer_monstre</a>();</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<a class="code" href="structnonCombattant__t.html">nonCombattant_t</a> * <a class="code" href="entite_8h.html#a5419fa5e3c0e0152358a9067e7687929">creer_nonCombattant</a>();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#a477cb5d47ec1d3d5be1963583396cbcb">init_joueur</a>(<a class="code" href="structjoueur__t.html">joueur_t</a> * joueur,<span class="keywordtype">int</span> niveau, <span class="keywordtype">int</span> zone, <span class="keywordtype">int</span> pv_M, <span class="keywordtype">int</span> pv_C, <span class="keywordtype">int</span> mana_M, <span class="keywordtype">int</span> mana_C, <span class="keywordtype">int</span> atk, <span class="keywordtype">int</span> or, <span class="keywordtype">int</span> nb_inv, <span class="keywordtype">int</span> nb_equip);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#a5d4d12624a601d9c382fb93ad638446b">init_monstre</a>(<a class="code" href="structmonstre__t.html">monstre_t</a> * monster, <span class="keywordtype">int</span> pvMax, <span class="keywordtype">int</span> pvCour, <span class="keywordtype">int</span> attaque, <span class="keywordtype">int</span> vitesse, <span class="keywordtype">int</span> niveau,<span class="keywordtype">int</span> type);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#a964b470d46568a7cd3d8f4b8833a685b">init_nonCombattant</a>(<a class="code" href="structnonCombattant__t.html">nonCombattant_t</a>* nonCombattant, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y,<span class="keywordtype">int</span> visite);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#add9bc42cd91707b12c3c4806fad2f0e4">detruire_joueur</a>(<a class="code" href="structjoueur__t.html">joueur_t</a> ** player);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#a4346c66945812c852cc724421ec72f58">detruire_monstre</a>(<a class="code" href="structmonstre__t.html">monstre_t</a> ** monster);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#a0b4bcb67ab64f6875892ad0b75cd32bb">detruire_nonCombattant</a>(<a class="code" href="structnonCombattant__t.html">nonCombattant_t</a> ** nonCombat);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<a class="code" href="structobjet__t.html">objet_t</a> * <a class="code" href="entite_8h.html#aea48ddd5aa698a21ce7dd3bc414c02c6">creer_objet</a>();</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<a class="code" href="structobjet__t.html">objet_t</a> * <a class="code" href="entite_8h.html#ae9bb42d52f03bb6203ad101643e97382">objet_initialiser</a>(<a class="code" href="structobjet__t.html">objet_t</a> * objet,<span class="keywordtype">int</span> <span class="keywordtype">id</span>,<span class="keywordtype">int</span> attaque_sup, <span class="keywordtype">int</span> mana_sup,<span class="keywordtype">int</span> vie_sup,<span class="keywordtype">char</span>*nom,<span class="keywordtype">char</span>*description);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#aa1fb908770ad4e0e5bc9a7939f964331">detruire_objet</a>(<a class="code" href="structobjet__t.html">objet_t</a>**objet);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#a85f32539347611837d7f5da392d48815">initialiser_biblio</a>(<a class="code" href="structobjet__t.html">objet_t</a> tableau[]);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keywordtype">int</span> <a class="code" href="entite_8h.html#ac5b9976b185b37232c5ccf1b1bef4248">objet_present</a>(<a class="code" href="structjoueur__t.html">joueur_t</a>* joueur, <a class="code" href="structobjet__t.html">objet_t</a>* biblio, <span class="keywordtype">int</span> ind);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keywordtype">void</span> ajout_objet(<a class="code" href="structjoueur__t.html">joueur_t</a>* joueur,  <a class="code" href="structobjet__t.html">objet_t</a>* biblio, <span class="keywordtype">int</span> ind);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#a6fc66d09143aa4d8affe25a38384075f">equipement_desequipement_objet</a>(<a class="code" href="structjoueur__t.html">joueur_t</a> * joueur, <span class="keywordtype">int</span> i_tab_inv, <span class="keywordtype">int</span> i_obj_equipe);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructjoueur__t_html"><div class="ttname"><a href="structjoueur__t.html">joueur_t</a></div><div class="ttdoc">représentation du joueur</div><div class="ttdef"><b>Definition:</b> entite.h:83</div></div>
+<div class="ttc" id="astructcombattant__t_html_ab88ee79aadf9b54f2d082a1b2b876eec"><div class="ttname"><a href="structcombattant__t.html#ab88ee79aadf9b54f2d082a1b2b876eec">combattant_t::type</a></div><div class="ttdeci">int type</div><div class="ttdoc">type du combattant: monstre ou joueur</div><div class="ttdef"><b>Definition:</b> entite.h:62</div></div>
+<div class="ttc" id="astructobjet__t_html_adaecfe2345dfadb98e0e433528b81c8f"><div class="ttname"><a href="structobjet__t.html#adaecfe2345dfadb98e0e433528b81c8f">objet_t::nom</a></div><div class="ttdeci">char * nom</div><div class="ttdoc">nom de l'objet</div><div class="ttdef"><b>Definition:</b> entite.h:75</div></div>
+<div class="ttc" id="astructobjet__t_html_afbc77bf8b3e1c88c0b9024f54afe2011"><div class="ttname"><a href="structobjet__t.html#afbc77bf8b3e1c88c0b9024f54afe2011">objet_t::attaque_sup</a></div><div class="ttdeci">int attaque_sup</div><div class="ttdoc">attaque de l'objet</div><div class="ttdef"><b>Definition:</b> entite.h:71</div></div>
+<div class="ttc" id="aentite_8h_html_a6d607d6ad02a239d995520b54d8cac62"><div class="ttname"><a href="entite_8h.html#a6d607d6ad02a239d995520b54d8cac62">en_bas</a></div><div class="ttdeci">void en_bas(combattant_t *entite)</div><div class="ttdoc">déplacement d'un combattant d'un pas en bas</div><div class="ttdef"><b>Definition:</b> entite.c:32</div></div>
+<div class="ttc" id="astructobjet__t_html_ac7e3c171e1e5fe29008e41de0a35f118"><div class="ttname"><a href="structobjet__t.html#ac7e3c171e1e5fe29008e41de0a35f118">objet_t::vie_sup</a></div><div class="ttdeci">int vie_sup</div><div class="ttdoc">vie de l'objet</div><div class="ttdef"><b>Definition:</b> entite.h:73</div></div>
+<div class="ttc" id="astructcombattant__t_html_a3d8286ea905e7f1af9ee7226060d0743"><div class="ttname"><a href="structcombattant__t.html#a3d8286ea905e7f1af9ee7226060d0743">combattant_t::vitesse</a></div><div class="ttdeci">int vitesse</div><div class="ttdoc">pas</div><div class="ttdef"><b>Definition:</b> entite.h:58</div></div>
+<div class="ttc" id="aentite_8h_html_a4346c66945812c852cc724421ec72f58"><div class="ttname"><a href="entite_8h.html#a4346c66945812c852cc724421ec72f58">detruire_monstre</a></div><div class="ttdeci">void detruire_monstre(monstre_t **monster)</div><div class="ttdoc">libère la mémoire allouée pour le monstre</div><div class="ttdef"><b>Definition:</b> entite.c:112</div></div>
+<div class="ttc" id="astructmonstre__t_html_a334c67a6b363a60e1474effdbe4f9ac9"><div class="ttname"><a href="structmonstre__t.html#a334c67a6b363a60e1474effdbe4f9ac9">monstre_t::type</a></div><div class="ttdeci">int type</div><div class="ttdoc">correspond à son type 0=normal 1=boss</div><div class="ttdef"><b>Definition:</b> entite.h:102</div></div>
+<div class="ttc" id="astructobjet__t_html"><div class="ttname"><a href="structobjet__t.html">objet_t</a></div><div class="ttdoc">représentation d'un objet</div><div class="ttdef"><b>Definition:</b> entite.h:69</div></div>
+<div class="ttc" id="astructnonCombattant__t_html_a1725258d27d6c96313e97159e7e6e7e3"><div class="ttname"><a href="structnonCombattant__t.html#a1725258d27d6c96313e97159e7e6e7e3">nonCombattant_t::id</a></div><div class="ttdeci">int id</div><div class="ttdoc">id des entités</div><div class="ttdef"><b>Definition:</b> entite.h:116</div></div>
+<div class="ttc" id="astructcombattant__t_html"><div class="ttname"><a href="structcombattant__t.html">combattant_t</a></div><div class="ttdoc">représentation d'une entité combattante</div><div class="ttdef"><b>Definition:</b> entite.h:54</div></div>
+<div class="ttc" id="aentite_8h_html_a2d0d98194c5fa83c07ea73bc859cb892"><div class="ttname"><a href="entite_8h.html#a2d0d98194c5fa83c07ea73bc859cb892">creer_joueur</a></div><div class="ttdeci">joueur_t * creer_joueur()</div><div class="ttdoc">alloue de la mémoire pour un joueur</div><div class="ttdef"><b>Definition:</b> entite.c:50</div></div>
+<div class="ttc" id="astructobjet__t_html_af37990e5718b72286ec24f9c48c800a8"><div class="ttname"><a href="structobjet__t.html#af37990e5718b72286ec24f9c48c800a8">objet_t::nb_obj</a></div><div class="ttdeci">int nb_obj</div><div class="ttdoc">quantité de l'objet</div><div class="ttdef"><b>Definition:</b> entite.h:74</div></div>
+<div class="ttc" id="aentite_8h_html_a6fc66d09143aa4d8affe25a38384075f"><div class="ttname"><a href="entite_8h.html#a6fc66d09143aa4d8affe25a38384075f">equipement_desequipement_objet</a></div><div class="ttdeci">void equipement_desequipement_objet(joueur_t *joueur, int i_tab_inv, int i_obj_equipe)</div><div class="ttdoc">équipe ou déséquipe le joueur.</div><div class="ttdef"><b>Definition:</b> entite.c:324</div></div>
+<div class="ttc" id="astructjoueur__t_html_a8c5d2835d363c4241cb2ffc3958947b2"><div class="ttname"><a href="structjoueur__t.html#a8c5d2835d363c4241cb2ffc3958947b2">joueur_t::salle</a></div><div class="ttdeci">int salle</div><div class="ttdoc">numéro de la salle où se trouve le joueur</div><div class="ttdef"><b>Definition:</b> entite.h:90</div></div>
+<div class="ttc" id="astructcombattant__t_html_a41577cbdf9e519b63fc52505992db588"><div class="ttname"><a href="structcombattant__t.html#a41577cbdf9e519b63fc52505992db588">combattant_t::y</a></div><div class="ttdeci">float y</div><div class="ttdoc">position sur l'axe des ordonnées</div><div class="ttdef"><b>Definition:</b> entite.h:60</div></div>
+<div class="ttc" id="aentite_8h_html_a477cb5d47ec1d3d5be1963583396cbcb"><div class="ttname"><a href="entite_8h.html#a477cb5d47ec1d3d5be1963583396cbcb">init_joueur</a></div><div class="ttdeci">void init_joueur(joueur_t *joueur, int niveau, int zone, int pv_M, int pv_C, int mana_M, int mana_C, int atk, int or, int nb_inv, int nb_equip)</div><div class="ttdoc">initialisation du joueur</div><div class="ttdef"><b>Definition:</b> entite.c:145</div></div>
+<div class="ttc" id="aentite_8h_html_a05c63590d2c2f4b399ff268c5a687b7a"><div class="ttname"><a href="entite_8h.html#a05c63590d2c2f4b399ff268c5a687b7a">en_haut</a></div><div class="ttdeci">void en_haut(combattant_t *entite)</div><div class="ttdoc">déplacement d'un combattant d'un pas en haut</div><div class="ttdef"><b>Definition:</b> entite.c:41</div></div>
+<div class="ttc" id="astructjoueur__t_html_a6ddb5147a3b2380f3beaff9a6d5e803c"><div class="ttname"><a href="structjoueur__t.html#a6ddb5147a3b2380f3beaff9a6d5e803c">joueur_t::nb_obj_inventaire</a></div><div class="ttdeci">int nb_obj_inventaire</div><div class="ttdoc">nombre d'objet dans l'inventaire du joueur</div><div class="ttdef"><b>Definition:</b> entite.h:87</div></div>
+<div class="ttc" id="astructjoueur__t_html_a8590ed5dede772b75669e2de74efd032"><div class="ttname"><a href="structjoueur__t.html#a8590ed5dede772b75669e2de74efd032">joueur_t::inventaire</a></div><div class="ttdeci">objet_t * inventaire</div><div class="ttdoc">objets en possession du joueur</div><div class="ttdef"><b>Definition:</b> entite.h:85</div></div>
+<div class="ttc" id="aentite_8h_html_ac73a28430e8d12bd1877c369e6e2c40b"><div class="ttname"><a href="entite_8h.html#ac73a28430e8d12bd1877c369e6e2c40b">creer_monstre</a></div><div class="ttdeci">monstre_t * creer_monstre()</div><div class="ttdoc">alloue de la mémoire pour un monstre</div><div class="ttdef"><b>Definition:</b> entite.c:67</div></div>
+<div class="ttc" id="aentite_8h_html_ae9bb42d52f03bb6203ad101643e97382"><div class="ttname"><a href="entite_8h.html#ae9bb42d52f03bb6203ad101643e97382">objet_initialiser</a></div><div class="ttdeci">objet_t * objet_initialiser(objet_t *objet, int id, int attaque_sup, int mana_sup, int vie_sup, char *nom, char *description)</div><div class="ttdoc">initialisation d'un objet</div><div class="ttdef"><b>Definition:</b> entite.c:233</div></div>
+<div class="ttc" id="astructcombattant__t_html_a8d4d81f62996227bd85e2da86f13ddd0"><div class="ttname"><a href="structcombattant__t.html#a8d4d81f62996227bd85e2da86f13ddd0">combattant_t::x</a></div><div class="ttdeci">float x</div><div class="ttdoc">possition sur l'axe des abscisses</div><div class="ttdef"><b>Definition:</b> entite.h:59</div></div>
+<div class="ttc" id="astructnonCombattant__t_html_a5911e71889f6efeec3aa7b2cfa5fe86d"><div class="ttname"><a href="structnonCombattant__t.html#a5911e71889f6efeec3aa7b2cfa5fe86d">nonCombattant_t::y</a></div><div class="ttdeci">float y</div><div class="ttdoc">position sur l'axe des ordonnées</div><div class="ttdef"><b>Definition:</b> entite.h:118</div></div>
+<div class="ttc" id="astructnonCombattant__t_html"><div class="ttname"><a href="structnonCombattant__t.html">nonCombattant_t</a></div><div class="ttdoc">représentation d'une entité non combattante</div><div class="ttdef"><b>Definition:</b> entite.h:115</div></div>
+<div class="ttc" id="aentite_8h_html_ac5b9976b185b37232c5ccf1b1bef4248"><div class="ttname"><a href="entite_8h.html#ac5b9976b185b37232c5ccf1b1bef4248">objet_present</a></div><div class="ttdeci">int objet_present(joueur_t *joueur, objet_t *biblio, int ind)</div><div class="ttdoc">vérifie qu'un objet est présent dans l'inventaire du joueur</div><div class="ttdef"><b>Definition:</b> entite.c:294</div></div>
+<div class="ttc" id="astructjoueur__t_html_a8b2f13fd3827f4d8640e51e44d77e6df"><div class="ttname"><a href="structjoueur__t.html#a8b2f13fd3827f4d8640e51e44d77e6df">joueur_t::nb_obj_equip</a></div><div class="ttdeci">int nb_obj_equip</div><div class="ttdoc">nombre d'objets équipés par le joueur</div><div class="ttdef"><b>Definition:</b> entite.h:88</div></div>
+<div class="ttc" id="astructjoueur__t_html_a6e8ad28a893a29f1cacab77d25dac966"><div class="ttname"><a href="structjoueur__t.html#a6e8ad28a893a29f1cacab77d25dac966">joueur_t::zone</a></div><div class="ttdeci">int zone</div><div class="ttdoc">numéro de la zone où se trouve le joueur</div><div class="ttdef"><b>Definition:</b> entite.h:89</div></div>
+<div class="ttc" id="aentite_8h_html_a5d4d12624a601d9c382fb93ad638446b"><div class="ttname"><a href="entite_8h.html#a5d4d12624a601d9c382fb93ad638446b">init_monstre</a></div><div class="ttdeci">void init_monstre(monstre_t *monster, int pvMax, int pvCour, int attaque, int vitesse, int niveau, int type)</div><div class="ttdoc">initialisation d'un monstre</div><div class="ttdef"><b>Definition:</b> entite.c:174</div></div>
+<div class="ttc" id="astructcombattant__t_html_ae5908c363ce216ab4cb8c1627749514a"><div class="ttname"><a href="structcombattant__t.html#ae5908c363ce216ab4cb8c1627749514a">combattant_t::attaque</a></div><div class="ttdeci">int attaque</div><div class="ttdoc">valeur de ses points d'attaques</div><div class="ttdef"><b>Definition:</b> entite.h:57</div></div>
+<div class="ttc" id="aentite_8h_html_a0b4bcb67ab64f6875892ad0b75cd32bb"><div class="ttname"><a href="entite_8h.html#a0b4bcb67ab64f6875892ad0b75cd32bb">detruire_nonCombattant</a></div><div class="ttdeci">void detruire_nonCombattant(nonCombattant_t **nonCombat)</div><div class="ttdoc">libère la mémoire allouée pour le non combattant</div><div class="ttdef"><b>Definition:</b> entite.c:125</div></div>
+<div class="ttc" id="astructjoueur__t_html_a47a7f3f124d14c1022b7de318e68dbaf"><div class="ttname"><a href="structjoueur__t.html#a47a7f3f124d14c1022b7de318e68dbaf">joueur_t::manaCour</a></div><div class="ttdeci">int manaCour</div><div class="ttdoc">nombre de points de mana actuels du joeur</div><div class="ttdef"><b>Definition:</b> entite.h:92</div></div>
+<div class="ttc" id="astructcombattant__t_html_a7b923539dfdf5885c4a4516d07b577fe"><div class="ttname"><a href="structcombattant__t.html#a7b923539dfdf5885c4a4516d07b577fe">combattant_t::pvMax</a></div><div class="ttdeci">int pvMax</div><div class="ttdoc">nombre de point de vie max</div><div class="ttdef"><b>Definition:</b> entite.h:55</div></div>
+<div class="ttc" id="astructjoueur__t_html_a7e903e23bc4a9e975aab9deb939f9b7b"><div class="ttname"><a href="structjoueur__t.html#a7e903e23bc4a9e975aab9deb939f9b7b">joueur_t::manaMax</a></div><div class="ttdeci">int manaMax</div><div class="ttdoc">nombre de points de mana maximum que le joueur peut atteindre</div><div class="ttdef"><b>Definition:</b> entite.h:91</div></div>
+<div class="ttc" id="aentite_8h_html_add9bc42cd91707b12c3c4806fad2f0e4"><div class="ttname"><a href="entite_8h.html#add9bc42cd91707b12c3c4806fad2f0e4">detruire_joueur</a></div><div class="ttdeci">void detruire_joueur(joueur_t **player)</div><div class="ttdoc">libère la mémoire allouée pour le joueur</div><div class="ttdef"><b>Definition:</b> entite.c:91</div></div>
+<div class="ttc" id="aentite_8h_html_a85f32539347611837d7f5da392d48815"><div class="ttname"><a href="entite_8h.html#a85f32539347611837d7f5da392d48815">initialiser_biblio</a></div><div class="ttdeci">void initialiser_biblio(objet_t tableau[])</div><div class="ttdoc">initialise une bibliothèque d'objets</div><div class="ttdef"><b>Definition:</b> entite.c:264</div></div>
+<div class="ttc" id="aentite_8h_html_a964b470d46568a7cd3d8f4b8833a685b"><div class="ttname"><a href="entite_8h.html#a964b470d46568a7cd3d8f4b8833a685b">init_nonCombattant</a></div><div class="ttdeci">void init_nonCombattant(nonCombattant_t *nonCombattant, int id, float x, float y, int visite)</div><div class="ttdoc">initialisation d'un non combattant</div><div class="ttdef"><b>Definition:</b> entite.c:201</div></div>
+<div class="ttc" id="astructjoueur__t_html_aeb063d4a45ae0e525c4ec11048e44b2e"><div class="ttname"><a href="structjoueur__t.html#aeb063d4a45ae0e525c4ec11048e44b2e">joueur_t::objet_equipe</a></div><div class="ttdeci">objet_t * objet_equipe</div><div class="ttdoc">objets équipés par le joueur</div><div class="ttdef"><b>Definition:</b> entite.h:86</div></div>
+<div class="ttc" id="astructmonstre__t_html"><div class="ttname"><a href="structmonstre__t.html">monstre_t</a></div><div class="ttdoc">représentation d'un monstre</div><div class="ttdef"><b>Definition:</b> entite.h:100</div></div>
+<div class="ttc" id="aentite_8h_html_a5419fa5e3c0e0152358a9067e7687929"><div class="ttname"><a href="entite_8h.html#a5419fa5e3c0e0152358a9067e7687929">creer_nonCombattant</a></div><div class="ttdeci">nonCombattant_t * creer_nonCombattant()</div><div class="ttdoc">alloue de la mémoire pour un pnj ou un coffre</div><div class="ttdef"><b>Definition:</b> entite.c:80</div></div>
+<div class="ttc" id="astructcombattant__t_html_ac245b06b4d81a3056ed00bd3be5ae102"><div class="ttname"><a href="structcombattant__t.html#ac245b06b4d81a3056ed00bd3be5ae102">combattant_t::pvCour</a></div><div class="ttdeci">int pvCour</div><div class="ttdoc">nombre de point de vie actuels</div><div class="ttdef"><b>Definition:</b> entite.h:56</div></div>
+<div class="ttc" id="astructnonCombattant__t_html_ac55db3b78541d42f58b4ca3195fc3369"><div class="ttname"><a href="structnonCombattant__t.html#ac55db3b78541d42f58b4ca3195fc3369">nonCombattant_t::x</a></div><div class="ttdeci">float x</div><div class="ttdoc">possition sur l'axe des abscisses</div><div class="ttdef"><b>Definition:</b> entite.h:117</div></div>
+<div class="ttc" id="aentite_8h_html_aa1fb908770ad4e0e5bc9a7939f964331"><div class="ttname"><a href="entite_8h.html#aa1fb908770ad4e0e5bc9a7939f964331">detruire_objet</a></div><div class="ttdeci">void detruire_objet(objet_t **objet)</div><div class="ttdoc">libère la mémoire allouée pour l'objet</div><div class="ttdef"><b>Definition:</b> entite.c:249</div></div>
+<div class="ttc" id="astructjoueur__t_html_a9ce22b00354ddfcddb3379a70bdc1d29"><div class="ttname"><a href="structjoueur__t.html#a9ce22b00354ddfcddb3379a70bdc1d29">joueur_t::combattant</a></div><div class="ttdeci">combattant_t * combattant</div><div class="ttdoc">points de vie et position</div><div class="ttdef"><b>Definition:</b> entite.h:84</div></div>
+<div class="ttc" id="astructnonCombattant__t_html_ab3f10edef9660cdf07c87f4d7fdb3d74"><div class="ttname"><a href="structnonCombattant__t.html#ab3f10edef9660cdf07c87f4d7fdb3d74">nonCombattant_t::visite</a></div><div class="ttdeci">int visite</div><div class="ttdoc">1: le joueur a déjà intéragi avec l'entité</div><div class="ttdef"><b>Definition:</b> entite.h:119</div></div>
+<div class="ttc" id="astructmonstre__t_html_ad18afa120cb30fac8f2a1fbf4569610e"><div class="ttname"><a href="structmonstre__t.html#ad18afa120cb30fac8f2a1fbf4569610e">monstre_t::combattant</a></div><div class="ttdeci">combattant_t * combattant</div><div class="ttdoc">points de vie et position</div><div class="ttdef"><b>Definition:</b> entite.h:101</div></div>
+<div class="ttc" id="astructmonstre__t_html_aa0b3cd44a7d4f6869f19bb3aa4697b98"><div class="ttname"><a href="structmonstre__t.html#aa0b3cd44a7d4f6869f19bb3aa4697b98">monstre_t::etat</a></div><div class="ttdeci">int etat</div><div class="ttdoc">Correspond à l'état du monstre: vivant ou mort.</div><div class="ttdef"><b>Definition:</b> entite.h:107</div></div>
+<div class="ttc" id="astructcombattant__t_html_a2a0614b9b37a17703dbeffcfc3b68bca"><div class="ttname"><a href="structcombattant__t.html#a2a0614b9b37a17703dbeffcfc3b68bca">combattant_t::niveau</a></div><div class="ttdeci">int niveau</div><div class="ttdoc">niveau du combattant</div><div class="ttdef"><b>Definition:</b> entite.h:61</div></div>
+<div class="ttc" id="aentite_8h_html_a9b1e7e73d6952f892e2eb1844f65265c"><div class="ttname"><a href="entite_8h.html#a9b1e7e73d6952f892e2eb1844f65265c">a_gauche</a></div><div class="ttdeci">void a_gauche(combattant_t *entite)</div><div class="ttdoc">déplacement d'un combattant d'un pas à gauche</div><div class="ttdef"><b>Definition:</b> entite.c:14</div></div>
+<div class="ttc" id="astructobjet__t_html_a836a1f1ccd15e588f7a25904e96fbaf9"><div class="ttname"><a href="structobjet__t.html#a836a1f1ccd15e588f7a25904e96fbaf9">objet_t::description</a></div><div class="ttdeci">char * description</div><div class="ttdoc">description de l'objet</div><div class="ttdef"><b>Definition:</b> entite.h:76</div></div>
+<div class="ttc" id="astructobjet__t_html_a535563dd45e5162e57e544a87b888de1"><div class="ttname"><a href="structobjet__t.html#a535563dd45e5162e57e544a87b888de1">objet_t::id</a></div><div class="ttdeci">int id</div><div class="ttdoc">id de l'objet</div><div class="ttdef"><b>Definition:</b> entite.h:70</div></div>
+<div class="ttc" id="aentite_8h_html_aa9afb234e9eb16fd89c313cdb975a278"><div class="ttname"><a href="entite_8h.html#aa9afb234e9eb16fd89c313cdb975a278">a_droite</a></div><div class="ttdeci">void a_droite(combattant_t *entite)</div><div class="ttdoc">déplacement d'un combattant d'un pas à droite</div><div class="ttdef"><b>Definition:</b> entite.c:23</div></div>
+<div class="ttc" id="aentite_8h_html_aea48ddd5aa698a21ce7dd3bc414c02c6"><div class="ttname"><a href="entite_8h.html#aea48ddd5aa698a21ce7dd3bc414c02c6">creer_objet</a></div><div class="ttdeci">objet_t * creer_objet()</div><div class="ttdoc">alloue de la mémoire pour un objet</div><div class="ttdef"><b>Definition:</b> entite.c:213</div></div>
+<div class="ttc" id="astructjoueur__t_html_ada726082f84021cbff5501e4563dd334"><div class="ttname"><a href="structjoueur__t.html#ada726082f84021cbff5501e4563dd334">joueur_t::or</a></div><div class="ttdeci">int or</div><div class="ttdoc">nombre de pièces d'or en possession du joueur</div><div class="ttdef"><b>Definition:</b> entite.h:93</div></div>
+<div class="ttc" id="astructobjet__t_html_a55e4b320564b86b3fb89d878cb9ae2c9"><div class="ttname"><a href="structobjet__t.html#a55e4b320564b86b3fb89d878cb9ae2c9">objet_t::mana_sup</a></div><div class="ttdeci">int mana_sup</div><div class="ttdoc">mana de l'objet</div><div class="ttdef"><b>Definition:</b> entite.h:72</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

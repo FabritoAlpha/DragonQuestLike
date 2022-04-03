@@ -7,3 +7,180 @@ affichage des différents états du jeu
 
 {\ttfamily \#include \char`\"{}../lib/affichage.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de affichage.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{affichage_8c_aa5b1334f40cb56f6fef6226461f00264}{affichage\+\_\+carte}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, T\+T\+F\+\_\+\+Font $\ast$police, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em affichage de la carte avec la position du joueur \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8c_aeebde4e47b06224d13a18916ff3e71af}{affichage\+\_\+aide}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, T\+T\+F\+\_\+\+Font $\ast$police)
+\begin{DoxyCompactList}\small\item\em affichage du menu d\textquotesingle{}aide \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{affichage_8c_a4a331867f6ff2e9c1654c778994c5690}\label{affichage_8c_a4a331867f6ff2e9c1654c778994c5690}} 
+void {\bfseries affichage\+\_\+non\+Combattants} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, \mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$zone, \mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$salle)
+\item 
+void \mbox{\hyperlink{affichage_8c_a4a14bee2e9d823377326a36ac10c2958}{affichage\+\_\+dialogue}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde, T\+T\+F\+\_\+\+Font $\ast$police)
+\begin{DoxyCompactList}\small\item\em affichage d\textquotesingle{}une conversation ou de l\textquotesingle{}ouverture d\textquotesingle{}un coffre \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{affichage_8c_ac76c04b159b6f217e918d345f654961a}\label{affichage_8c_ac76c04b159b6f217e918d345f654961a}} 
+void {\bfseries affichage\+\_\+combat} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, T\+T\+F\+\_\+\+Font $\ast$police)
+\item 
+void \mbox{\hyperlink{affichage_8c_aef5ed86cf405e844fa994806db0cf553}{affichage\+\_\+victoire}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, T\+T\+F\+\_\+\+Font $\ast$police)
+\begin{DoxyCompactList}\small\item\em affichage lorsque le joueur a gagné \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8c_a77974d4af2576663d5ce6caec41a346a}{affichage\+\_\+inventaire}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, T\+T\+F\+\_\+\+Font $\ast$police)
+\begin{DoxyCompactList}\small\item\em affichage de l\textquotesingle{}inventaire du joueur \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8c_a605988ba4d7aba060053e99cc9a9060a}{affichage\+\_\+menu}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde, T\+T\+F\+\_\+\+Font $\ast$police)
+\begin{DoxyCompactList}\small\item\em affichage des menus de début de jeu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{affichage_8c_a431aeba141983e243cacb2b253b1a2c5}{affichage\+\_\+statistiques}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, T\+T\+F\+\_\+\+Font $\ast$police, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em affichage des statistiques de pv, mana et or du joueur \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+affichage des différents états du jeu 
+
+\begin{DoxyAuthor}{Auteur}
+Anna Beranger, Alex Choux, Arthur Fabre 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/03/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{affichage_8c_aeebde4e47b06224d13a18916ff3e71af}\label{affichage_8c_aeebde4e47b06224d13a18916ff3e71af}} 
+\index{affichage.c@{affichage.c}!affichage\_aide@{affichage\_aide}}
+\index{affichage\_aide@{affichage\_aide}!affichage.c@{affichage.c}}
+\doxysubsubsection{\texorpdfstring{affichage\_aide()}{affichage\_aide()}}
+{\footnotesize\ttfamily void affichage\+\_\+aide (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police }\end{DoxyParamCaption})}
+
+
+
+affichage du menu d\textquotesingle{}aide 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & le renderer \\
+\hline
+{\em police} & la police du texte affiché \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{affichage_8c_aa5b1334f40cb56f6fef6226461f00264}\label{affichage_8c_aa5b1334f40cb56f6fef6226461f00264}} 
+\index{affichage.c@{affichage.c}!affichage\_carte@{affichage\_carte}}
+\index{affichage\_carte@{affichage\_carte}!affichage.c@{affichage.c}}
+\doxysubsubsection{\texorpdfstring{affichage\_carte()}{affichage\_carte()}}
+{\footnotesize\ttfamily void affichage\+\_\+carte (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police,  }\item[{\mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$}]{textures,  }\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+affichage de la carte avec la position du joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & le renderer \\
+\hline
+{\em police} & la police du texte affiché \\
+\hline
+{\em textures} & les textures du jeu \\
+\hline
+{\em joueur} & le joueur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{affichage_8c_a4a14bee2e9d823377326a36ac10c2958}\label{affichage_8c_a4a14bee2e9d823377326a36ac10c2958}} 
+\index{affichage.c@{affichage.c}!affichage\_dialogue@{affichage\_dialogue}}
+\index{affichage\_dialogue@{affichage\_dialogue}!affichage.c@{affichage.c}}
+\doxysubsubsection{\texorpdfstring{affichage\_dialogue()}{affichage\_dialogue()}}
+{\footnotesize\ttfamily void affichage\+\_\+dialogue (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$}]{textures,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police }\end{DoxyParamCaption})}
+
+
+
+affichage d\textquotesingle{}une conversation ou de l\textquotesingle{}ouverture d\textquotesingle{}un coffre 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & le renderer \\
+\hline
+{\em textures} & les textures du jeu \\
+\hline
+{\em monde} & le monde du jeu \\
+\hline
+{\em police} & la police du texte affiché \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{affichage_8c_a77974d4af2576663d5ce6caec41a346a}\label{affichage_8c_a77974d4af2576663d5ce6caec41a346a}} 
+\index{affichage.c@{affichage.c}!affichage\_inventaire@{affichage\_inventaire}}
+\index{affichage\_inventaire@{affichage\_inventaire}!affichage.c@{affichage.c}}
+\doxysubsubsection{\texorpdfstring{affichage\_inventaire()}{affichage\_inventaire()}}
+{\footnotesize\ttfamily void affichage\+\_\+inventaire (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde,  }\item[{\mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$}]{textures,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police }\end{DoxyParamCaption})}
+
+
+
+affichage de l\textquotesingle{}inventaire du joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & le renderer \\
+\hline
+{\em monde} & le monde du jeu \\
+\hline
+{\em textures} & les textures du jeu \\
+\hline
+{\em police} & la police du texte affiché \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{affichage_8c_a605988ba4d7aba060053e99cc9a9060a}\label{affichage_8c_a605988ba4d7aba060053e99cc9a9060a}} 
+\index{affichage.c@{affichage.c}!affichage\_menu@{affichage\_menu}}
+\index{affichage\_menu@{affichage\_menu}!affichage.c@{affichage.c}}
+\doxysubsubsection{\texorpdfstring{affichage\_menu()}{affichage\_menu()}}
+{\footnotesize\ttfamily void affichage\+\_\+menu (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police }\end{DoxyParamCaption})}
+
+
+
+affichage des menus de début de jeu 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & le renderer \\
+\hline
+{\em monde} & le monde du jeu \\
+\hline
+{\em police} & la police du texte affiché \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{affichage_8c_a431aeba141983e243cacb2b253b1a2c5}\label{affichage_8c_a431aeba141983e243cacb2b253b1a2c5}} 
+\index{affichage.c@{affichage.c}!affichage\_statistiques@{affichage\_statistiques}}
+\index{affichage\_statistiques@{affichage\_statistiques}!affichage.c@{affichage.c}}
+\doxysubsubsection{\texorpdfstring{affichage\_statistiques()}{affichage\_statistiques()}}
+{\footnotesize\ttfamily void affichage\+\_\+statistiques (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police,  }\item[{\mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$}]{textures,  }\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+affichage des statistiques de pv, mana et or du joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & le renderer \\
+\hline
+{\em police} & la police du texte affiché \\
+\hline
+{\em textures} & les textures du jeu \\
+\hline
+{\em joueur} & le joueur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{affichage_8c_aef5ed86cf405e844fa994806db0cf553}\label{affichage_8c_aef5ed86cf405e844fa994806db0cf553}} 
+\index{affichage.c@{affichage.c}!affichage\_victoire@{affichage\_victoire}}
+\index{affichage\_victoire@{affichage\_victoire}!affichage.c@{affichage.c}}
+\doxysubsubsection{\texorpdfstring{affichage\_victoire()}{affichage\_victoire()}}
+{\footnotesize\ttfamily void affichage\+\_\+victoire (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$}]{textures,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police }\end{DoxyParamCaption})}
+
+
+
+affichage lorsque le joueur a gagné 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & le renderer \\
+\hline
+{\em textures} & les textures du jeu \\
+\hline
+{\em police} & la police du texte affiché \\
+\hline
+\end{DoxyParams}

@@ -11,12 +11,12 @@ Graphe des dépendances par inclusion de jeu.\+c\+:
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{jeu_8c_a5ad792bd416b984c63682b571a9de56f}{clean}} (S\+D\+L\+\_\+\+Window $\ast$window, S\+D\+L\+\_\+\+Renderer $\ast$renderer, images\+\_\+t $\ast$textures, monde\+\_\+t $\ast$monde, T\+T\+F\+\_\+\+Font $\ast$police)
+void \mbox{\hyperlink{jeu_8c_a5ad792bd416b984c63682b571a9de56f}{clean}} (S\+D\+L\+\_\+\+Window $\ast$window, S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde, T\+T\+F\+\_\+\+Font $\ast$police)
 \begin{DoxyCompactList}\small\item\em libère la mémoire allouée au jeu\+: la partie graphique (S\+DL), les textures, les données du jeu \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{jeu_8c_a9d75ca4ee50d5765596b56be6b767570}\label{jeu_8c_a9d75ca4ee50d5765596b56be6b767570}} 
-void {\bfseries rafraichir} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, monde\+\_\+t $\ast$monde, images\+\_\+t $\ast$textures, int $\ast$next\+\_\+tick, int $\ast$next\+\_\+tick\+\_\+monstre, T\+T\+F\+\_\+\+Font $\ast$police)
+void {\bfseries rafraichir} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, int $\ast$next\+\_\+tick, int $\ast$next\+\_\+tick\+\_\+monstre, T\+T\+F\+\_\+\+Font $\ast$police)
 \item 
-void \mbox{\hyperlink{jeu_8c_a92731ee0adcfe2328f9bc5685efaedc7}{evenements}} (S\+D\+L\+\_\+\+Event $\ast$event, monde\+\_\+t $\ast$monde)
+void \mbox{\hyperlink{jeu_8c_a92731ee0adcfe2328f9bc5685efaedc7}{evenements}} (S\+D\+L\+\_\+\+Event $\ast$event, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
 \begin{DoxyCompactList}\small\item\em gestion des évènements claviers avant le rafraichissement \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -36,7 +36,7 @@ Anna Beranger, Alex Choux, Arthur Fabre
 \index{jeu.c@{jeu.c}!clean@{clean}}
 \index{clean@{clean}!jeu.c@{jeu.c}}
 \doxysubsubsection{\texorpdfstring{clean()}{clean()}}
-{\footnotesize\ttfamily void clean (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Window $\ast$}]{window,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{images\+\_\+t $\ast$}]{textures,  }\item[{monde\+\_\+t $\ast$}]{monde,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void clean (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Window $\ast$}]{window,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$}]{textures,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police }\end{DoxyParamCaption})}
 
 
 
@@ -59,7 +59,7 @@ libère la mémoire allouée au jeu\+: la partie graphique (S\+DL), les textures
 \index{jeu.c@{jeu.c}!evenements@{evenements}}
 \index{evenements@{evenements}!jeu.c@{jeu.c}}
 \doxysubsubsection{\texorpdfstring{evenements()}{evenements()}}
-{\footnotesize\ttfamily void evenements (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Event $\ast$}]{event,  }\item[{monde\+\_\+t $\ast$}]{monde }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void evenements (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Event $\ast$}]{event,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
 
 
 

@@ -1,0 +1,370 @@
+\hypertarget{monde_8h}{}\doxysection{Référence du fichier lib/monde.h}
+\label{monde_8h}\index{lib/monde.h@{lib/monde.h}}
+
+
+header du monde  
+
+
+{\ttfamily \#include \char`\"{}sdl2\+\_\+fonctions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}entite.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de monde.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structsalle__t}{salle\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em représentation d\textquotesingle{}une salle \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structzone__t}{zone\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em représentation d\textquotesingle{}une zone \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em représentation du monde \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{monde_8h_a7f4d4c278026ed54c40410bbb0f95fc1}\label{monde_8h_a7f4d4c278026ed54c40410bbb0f95fc1}} 
+\#define {\bfseries M\+E\+N\+U1}~1
+\item 
+\mbox{\Hypertarget{monde_8h_adbdbb29cbbaa7cb50f212acfb0f86e36}\label{monde_8h_adbdbb29cbbaa7cb50f212acfb0f86e36}} 
+\#define {\bfseries M\+E\+N\+U2}~2
+\item 
+\mbox{\Hypertarget{monde_8h_ac628aff374c432084437661e9acaf134}\label{monde_8h_ac628aff374c432084437661e9acaf134}} 
+\#define {\bfseries V\+I\+C\+T\+O\+I\+RE}~1
+\item 
+\mbox{\Hypertarget{monde_8h_ab108165e25d20fd432e8c0a66765bf7e}\label{monde_8h_ab108165e25d20fd432e8c0a66765bf7e}} 
+\#define {\bfseries P\+A\+R\+T\+I\+E\+\_\+\+E\+N\+\_\+\+C\+O\+U\+RS}~0
+\item 
+\mbox{\Hypertarget{monde_8h_aa348ff1c1a28819c2be0a3c560edcf7a}\label{monde_8h_aa348ff1c1a28819c2be0a3c560edcf7a}} 
+\#define {\bfseries N\+B\+\_\+\+S\+A\+L\+L\+ES}~4
+\item 
+\mbox{\Hypertarget{monde_8h_a94439adf310c755550b3efe018fc5b26}\label{monde_8h_a94439adf310c755550b3efe018fc5b26}} 
+\#define {\bfseries N\+B\+\_\+\+Z\+O\+N\+ES}~3
+\item 
+\mbox{\Hypertarget{monde_8h_aa04e6dcea56017f8c3ec831f2274a9c7}\label{monde_8h_aa04e6dcea56017f8c3ec831f2274a9c7}} 
+\#define {\bfseries E\+T\+A\+T\+\_\+\+M\+E\+N\+U\+\_\+1}~0
+\item 
+\mbox{\Hypertarget{monde_8h_a6a113988f49aba36ffc89e4d183e984d}\label{monde_8h_a6a113988f49aba36ffc89e4d183e984d}} 
+\#define {\bfseries E\+T\+A\+T\+\_\+\+C\+O\+M\+B\+AT}~12
+\item 
+\mbox{\Hypertarget{monde_8h_a4ac519d8c2faf3171822225b80efb8aa}\label{monde_8h_a4ac519d8c2faf3171822225b80efb8aa}} 
+\#define {\bfseries E\+T\+A\+T\+\_\+\+D\+I\+A\+L\+O\+G\+UE}~22
+\item 
+\mbox{\Hypertarget{monde_8h_a2dfb46802482dd4d3d509c02ca92236a}\label{monde_8h_a2dfb46802482dd4d3d509c02ca92236a}} 
+\#define {\bfseries E\+T\+A\+T\+\_\+\+C\+O\+F\+F\+RE}~21
+\item 
+\mbox{\Hypertarget{monde_8h_a50363b0b401f5879aeddb99b112928f7}\label{monde_8h_a50363b0b401f5879aeddb99b112928f7}} 
+\#define {\bfseries E\+T\+A\+T\+\_\+\+A\+I\+DE}~23
+\item 
+\mbox{\Hypertarget{monde_8h_ae86e47ca7e4a2a3327dd8209386555b7}\label{monde_8h_ae86e47ca7e4a2a3327dd8209386555b7}} 
+\#define {\bfseries E\+T\+A\+T\+\_\+\+I\+N\+V\+E\+N\+T\+A\+I\+RE}~3
+\item 
+\mbox{\Hypertarget{monde_8h_ac3a47353e44bea22173a9b56487b1d8f}\label{monde_8h_ac3a47353e44bea22173a9b56487b1d8f}} 
+\#define {\bfseries E\+T\+A\+T\+\_\+\+Q\+U\+I\+T\+T\+ER}~-\/1
+\item 
+\mbox{\Hypertarget{monde_8h_a5c31203d8d62298219a9f5a8575cab74}\label{monde_8h_a5c31203d8d62298219a9f5a8575cab74}} 
+\#define {\bfseries E\+T\+A\+T\+\_\+\+M\+E\+N\+U\+\_\+2}~4
+\item 
+\mbox{\Hypertarget{monde_8h_af0007525ed5a14a74636caaa1d7c2f72}\label{monde_8h_af0007525ed5a14a74636caaa1d7c2f72}} 
+\#define {\bfseries E\+T\+A\+T\+\_\+\+J\+E\+U\+\_\+\+P\+R\+I\+N\+C\+I\+P\+AL}~1
+\item 
+\mbox{\Hypertarget{monde_8h_a912952fea6c16e1d656fc07a8379da0f}\label{monde_8h_a912952fea6c16e1d656fc07a8379da0f}} 
+\#define {\bfseries E\+T\+A\+T\+\_\+\+V\+I\+C\+T\+O\+I\+RE}~5
+\item 
+\mbox{\Hypertarget{monde_8h_a9e9662b1f47db12ceb766eea6c92ffac}\label{monde_8h_a9e9662b1f47db12ceb766eea6c92ffac}} 
+\#define {\bfseries E\+T\+A\+T\+\_\+\+C\+A\+R\+TE}~2
+\item 
+\mbox{\Hypertarget{monde_8h_a688fdeb49a94635a42724020c8b10f1b}\label{monde_8h_a688fdeb49a94635a42724020c8b10f1b}} 
+\#define {\bfseries N\+B\+\_\+\+M\+O\+N\+S\+T\+R\+E\+S\+\_\+\+S\+A\+L\+LE}~1
+\item 
+\mbox{\Hypertarget{monde_8h_ac7845cddbdfc060fffc2ddb6c81c07b3}\label{monde_8h_ac7845cddbdfc060fffc2ddb6c81c07b3}} 
+\#define {\bfseries N\+B\+\_\+\+P\+E\+R\+S\+O\+\_\+\+S\+A\+L\+LE}~2
+\item 
+\mbox{\Hypertarget{monde_8h_a2cd109632a6dcccaa80b43561b1ab700}\label{monde_8h_a2cd109632a6dcccaa80b43561b1ab700}} 
+\#define {\bfseries S\+C\+R\+E\+E\+N\+\_\+\+W\+I\+D\+TH}~1000.\+0
+\item 
+\mbox{\Hypertarget{monde_8h_a6974d08a74da681b3957b2fead2608b8}\label{monde_8h_a6974d08a74da681b3957b2fead2608b8}} 
+\#define {\bfseries S\+C\+R\+E\+E\+N\+\_\+\+H\+E\+I\+G\+HT}~750.\+0
+\item 
+\mbox{\Hypertarget{monde_8h_a863461896d19b8fc1f2ad46118a7f481}\label{monde_8h_a863461896d19b8fc1f2ad46118a7f481}} 
+\#define {\bfseries S\+T\+A\+T\+UE}~0
+\item 
+\mbox{\Hypertarget{monde_8h_a1c904388e6d0128646d4563cdad5620d}\label{monde_8h_a1c904388e6d0128646d4563cdad5620d}} 
+\#define {\bfseries H\+A\+U\+T\+E\+U\+R\+\_\+\+P\+E\+R\+S\+O\+N\+N\+A\+GE}~60.\+0
+\item 
+\mbox{\Hypertarget{monde_8h_aa5cddfe0fd34b5fdfb1709543b7c4cb5}\label{monde_8h_aa5cddfe0fd34b5fdfb1709543b7c4cb5}} 
+\#define {\bfseries L\+A\+R\+G\+E\+U\+R\+\_\+\+P\+E\+R\+S\+O\+N\+N\+A\+GE}~45.\+0
+\item 
+\mbox{\Hypertarget{monde_8h_a4c29b0be2bccaf1feb72dbb537109a9b}\label{monde_8h_a4c29b0be2bccaf1feb72dbb537109a9b}} 
+\#define {\bfseries H\+A\+U\+T\+E\+U\+R\+\_\+\+C\+O\+F\+F\+RE}~60.\+0
+\item 
+\mbox{\Hypertarget{monde_8h_a7b63db08e8b0861eb400e822079a04d9}\label{monde_8h_a7b63db08e8b0861eb400e822079a04d9}} 
+\#define {\bfseries L\+A\+R\+G\+E\+U\+R\+\_\+\+C\+O\+F\+F\+RE}~45.\+0
+\item 
+\mbox{\Hypertarget{monde_8h_a72758bdb3766164b6fd99ebece0a759e}\label{monde_8h_a72758bdb3766164b6fd99ebece0a759e}} 
+\#define {\bfseries E\+N\+T\+R\+E\+E\+\_\+\+H\+A\+U\+T\+\_\+\+S\+A\+L\+L\+E\+\_\+1}~(S\+C\+R\+E\+E\+N\+\_\+\+H\+E\+I\+G\+HT / 2 -\/ 100)
+\item 
+\mbox{\Hypertarget{monde_8h_a4cef5c12bfdadef848da4971c7c6ae32}\label{monde_8h_a4cef5c12bfdadef848da4971c7c6ae32}} 
+\#define {\bfseries E\+N\+T\+R\+E\+E\+\_\+\+B\+A\+S\+\_\+\+S\+A\+L\+L\+E\+\_\+1}~(S\+C\+R\+E\+E\+N\+\_\+\+H\+E\+I\+G\+HT / 2 + 100)
+\item 
+\mbox{\Hypertarget{monde_8h_a15e27da411f1fe0c699472e54bd128d3}\label{monde_8h_a15e27da411f1fe0c699472e54bd128d3}} 
+\#define {\bfseries E\+N\+T\+R\+E\+E\+\_\+\+G\+A\+U\+C\+H\+E\+\_\+\+Z\+O\+N\+E\+\_\+\+S\+U\+I\+V\+A\+N\+TE}~(S\+C\+R\+E\+E\+N\+\_\+\+W\+I\+D\+TH / 2 -\/ 100)
+\item 
+\mbox{\Hypertarget{monde_8h_a9845394d1373b404c8b303c963582be7}\label{monde_8h_a9845394d1373b404c8b303c963582be7}} 
+\#define {\bfseries E\+N\+T\+R\+E\+E\+\_\+\+D\+R\+O\+I\+T\+E\+\_\+\+Z\+O\+N\+E\+\_\+\+S\+U\+I\+V\+A\+N\+TE}~(S\+C\+R\+E\+E\+N\+\_\+\+W\+I\+D\+TH / 2 + 100)
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{monde_8h_af1e3dd837065ad4b00201fff0fa5407c}{existe\+\_\+salle}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$salle)
+\begin{DoxyCompactList}\small\item\em renvoie 1 si la salle existe \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{monde_8h_af600b3ca03d084e91db99c8bcb94024d}{existe\+\_\+zone}} (\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$zone)
+\begin{DoxyCompactList}\small\item\em renvoie 1 si la zone existe \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{monde_8h_a285b5ca4ec8f08f037f39e908e1289d4}{existe\+\_\+monde}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em renvoie 1 si le monde existe \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$ \mbox{\hyperlink{monde_8h_aebd6931a1eca9c02e80008220ad8d406}{creer\+\_\+salle}} ()
+\begin{DoxyCompactList}\small\item\em allocation de la mémoire nécessaire à une salle \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$ \mbox{\hyperlink{monde_8h_a3a824635e1fe90056403736df65e887c}{creer\+\_\+zone}} ()
+\begin{DoxyCompactList}\small\item\em allocation de la mémoire nécessaire à une zone \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$ \mbox{\hyperlink{monde_8h_a7f4399eb5ddb8d7247fea3f2a46eaaf0}{creer\+\_\+monde}} ()
+\begin{DoxyCompactList}\small\item\em allocation de la mémoire nécessaire au monde \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monde_8h_a1db6b74c49d6a879a415d976eba0deaa}{detruire\+\_\+monde}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$$\ast$monde)
+\begin{DoxyCompactList}\small\item\em libération de la mémoire allouée au monde lorsque la partie est terminée \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monde_8h_a16e9a4f3ffc84d43ab820d0e8d91e3a5}{detruire\+\_\+zone}} (\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$$\ast$zone)
+\begin{DoxyCompactList}\small\item\em libération de la mémoire allouée à une zone du monde lorsque la partie est terminée \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monde_8h_a66ed72d3268223614d00bf76d0c80123}{detruire\+\_\+salle}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$$\ast$salle)
+\begin{DoxyCompactList}\small\item\em libération de la mémoire allouée à une salle d\textquotesingle{}une zone lorsque la partie est terminée \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monde_8h_acb7e058e0b2685575cdb5ce2de075e34}{init\+\_\+monde\+\_\+menu}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em initialise les attributs du monde nécessaires au menu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monde_8h_a991818c2456473c6006e47f5f56f6383}{init\+\_\+monde\+\_\+jeu}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde, char $\ast$chemin\+\_\+fichier)
+\begin{DoxyCompactList}\small\item\em initialise les attributs du monde nécessaires au jeu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monde_8h_ae7f1c9acd89d0a6e6ef7c7a86b81591f}{init\+\_\+zone}} (\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$zone, int num\+\_\+zone)
+\begin{DoxyCompactList}\small\item\em initialise une zone \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monde_8h_a4beb9353e687cdc88cbc800ce0665ec2}{init\+\_\+salle}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$salle, int num\+\_\+salle, int num\+\_\+zone)
+\begin{DoxyCompactList}\small\item\em initialise une salle \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{monde_8h_a23cd939776316dc8c90e65b854ab4069}{victoire\+\_\+jeu}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em renvoie 1 si on a vaincu le boss final \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+header du monde 
+
+\begin{DoxyAuthor}{Auteur}
+Anna Béranger, Arthur Fabre, Alex Choux 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/03/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{monde_8h_a7f4399eb5ddb8d7247fea3f2a46eaaf0}\label{monde_8h_a7f4399eb5ddb8d7247fea3f2a46eaaf0}} 
+\index{monde.h@{monde.h}!creer\_monde@{creer\_monde}}
+\index{creer\_monde@{creer\_monde}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{creer\_monde()}{creer\_monde()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}}$\ast$ creer\+\_\+monde (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+allocation de la mémoire nécessaire au monde 
+
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur un monde 
+\end{DoxyReturn}
+\mbox{\Hypertarget{monde_8h_aebd6931a1eca9c02e80008220ad8d406}\label{monde_8h_aebd6931a1eca9c02e80008220ad8d406}} 
+\index{monde.h@{monde.h}!creer\_salle@{creer\_salle}}
+\index{creer\_salle@{creer\_salle}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{creer\_salle()}{creer\_salle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsalle__t}{salle\+\_\+t}}$\ast$ creer\+\_\+salle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+allocation de la mémoire nécessaire à une salle 
+
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur une salle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{monde_8h_a3a824635e1fe90056403736df65e887c}\label{monde_8h_a3a824635e1fe90056403736df65e887c}} 
+\index{monde.h@{monde.h}!creer\_zone@{creer\_zone}}
+\index{creer\_zone@{creer\_zone}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{creer\_zone()}{creer\_zone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structzone__t}{zone\+\_\+t}}$\ast$ creer\+\_\+zone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+allocation de la mémoire nécessaire à une zone 
+
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur une zone 
+\end{DoxyReturn}
+\mbox{\Hypertarget{monde_8h_a1db6b74c49d6a879a415d976eba0deaa}\label{monde_8h_a1db6b74c49d6a879a415d976eba0deaa}} 
+\index{monde.h@{monde.h}!detruire\_monde@{detruire\_monde}}
+\index{detruire\_monde@{detruire\_monde}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{detruire\_monde()}{detruire\_monde()}}
+{\footnotesize\ttfamily void detruire\+\_\+monde (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$$\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+libération de la mémoire allouée au monde lorsque la partie est terminée 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monde} & environnement global du jeu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monde_8h_a66ed72d3268223614d00bf76d0c80123}\label{monde_8h_a66ed72d3268223614d00bf76d0c80123}} 
+\index{monde.h@{monde.h}!detruire\_salle@{detruire\_salle}}
+\index{detruire\_salle@{detruire\_salle}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{detruire\_salle()}{detruire\_salle()}}
+{\footnotesize\ttfamily void detruire\+\_\+salle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$$\ast$}]{salle }\end{DoxyParamCaption})}
+
+
+
+libération de la mémoire allouée à une salle d\textquotesingle{}une zone lorsque la partie est terminée 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em salle} & une salle d\textquotesingle{}une zone \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monde_8h_a16e9a4f3ffc84d43ab820d0e8d91e3a5}\label{monde_8h_a16e9a4f3ffc84d43ab820d0e8d91e3a5}} 
+\index{monde.h@{monde.h}!detruire\_zone@{detruire\_zone}}
+\index{detruire\_zone@{detruire\_zone}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{detruire\_zone()}{detruire\_zone()}}
+{\footnotesize\ttfamily void detruire\+\_\+zone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$$\ast$}]{zone }\end{DoxyParamCaption})}
+
+
+
+libération de la mémoire allouée à une zone du monde lorsque la partie est terminée 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em zone} & une zone du monde \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monde_8h_a285b5ca4ec8f08f037f39e908e1289d4}\label{monde_8h_a285b5ca4ec8f08f037f39e908e1289d4}} 
+\index{monde.h@{monde.h}!existe\_monde@{existe\_monde}}
+\index{existe\_monde@{existe\_monde}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{existe\_monde()}{existe\_monde()}}
+{\footnotesize\ttfamily int existe\+\_\+monde (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+renvoie 1 si le monde existe 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monde} & monde à tester \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monde_8h_af1e3dd837065ad4b00201fff0fa5407c}\label{monde_8h_af1e3dd837065ad4b00201fff0fa5407c}} 
+\index{monde.h@{monde.h}!existe\_salle@{existe\_salle}}
+\index{existe\_salle@{existe\_salle}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{existe\_salle()}{existe\_salle()}}
+{\footnotesize\ttfamily int existe\+\_\+salle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$}]{salle }\end{DoxyParamCaption})}
+
+
+
+renvoie 1 si la salle existe 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em salle} & salle à tester \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monde_8h_af600b3ca03d084e91db99c8bcb94024d}\label{monde_8h_af600b3ca03d084e91db99c8bcb94024d}} 
+\index{monde.h@{monde.h}!existe\_zone@{existe\_zone}}
+\index{existe\_zone@{existe\_zone}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{existe\_zone()}{existe\_zone()}}
+{\footnotesize\ttfamily int existe\+\_\+zone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$}]{zone }\end{DoxyParamCaption})}
+
+
+
+renvoie 1 si la zone existe 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em zone} & zone à tester \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monde_8h_a991818c2456473c6006e47f5f56f6383}\label{monde_8h_a991818c2456473c6006e47f5f56f6383}} 
+\index{monde.h@{monde.h}!init\_monde\_jeu@{init\_monde\_jeu}}
+\index{init\_monde\_jeu@{init\_monde\_jeu}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{init\_monde\_jeu()}{init\_monde\_jeu()}}
+{\footnotesize\ttfamily void init\+\_\+monde\+\_\+jeu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde,  }\item[{char $\ast$}]{chemin\+\_\+fichier }\end{DoxyParamCaption})}
+
+
+
+initialise les attributs du monde nécessaires au jeu 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monde} & le monde \\
+\hline
+{\em chemin\+\_\+fichier} & le chemin du fichier de chargement de partie \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monde_8h_acb7e058e0b2685575cdb5ce2de075e34}\label{monde_8h_acb7e058e0b2685575cdb5ce2de075e34}} 
+\index{monde.h@{monde.h}!init\_monde\_menu@{init\_monde\_menu}}
+\index{init\_monde\_menu@{init\_monde\_menu}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{init\_monde\_menu()}{init\_monde\_menu()}}
+{\footnotesize\ttfamily void init\+\_\+monde\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+initialise les attributs du monde nécessaires au menu 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monde} & le monde \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monde_8h_a4beb9353e687cdc88cbc800ce0665ec2}\label{monde_8h_a4beb9353e687cdc88cbc800ce0665ec2}} 
+\index{monde.h@{monde.h}!init\_salle@{init\_salle}}
+\index{init\_salle@{init\_salle}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{init\_salle()}{init\_salle()}}
+{\footnotesize\ttfamily void init\+\_\+salle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$}]{salle,  }\item[{int}]{num\+\_\+salle,  }\item[{int}]{num\+\_\+zone }\end{DoxyParamCaption})}
+
+
+
+initialise une salle 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em salle} & la salle à initialiser \\
+\hline
+{\em num\+\_\+salle} & le numéro de la salle \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monde_8h_ae7f1c9acd89d0a6e6ef7c7a86b81591f}\label{monde_8h_ae7f1c9acd89d0a6e6ef7c7a86b81591f}} 
+\index{monde.h@{monde.h}!init\_zone@{init\_zone}}
+\index{init\_zone@{init\_zone}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{init\_zone()}{init\_zone()}}
+{\footnotesize\ttfamily void init\+\_\+zone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$}]{zone,  }\item[{int}]{num\+\_\+zone }\end{DoxyParamCaption})}
+
+
+
+initialise une zone 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em zone} & la zone à initialiser \\
+\hline
+{\em num\+\_\+zone} & le numéro de la zone \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monde_8h_a23cd939776316dc8c90e65b854ab4069}\label{monde_8h_a23cd939776316dc8c90e65b854ab4069}} 
+\index{monde.h@{monde.h}!victoire\_jeu@{victoire\_jeu}}
+\index{victoire\_jeu@{victoire\_jeu}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{victoire\_jeu()}{victoire\_jeu()}}
+{\footnotesize\ttfamily int victoire\+\_\+jeu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+renvoie 1 si on a vaincu le boss final 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monde} & les données du monde \\
+\hline
+\end{DoxyParams}

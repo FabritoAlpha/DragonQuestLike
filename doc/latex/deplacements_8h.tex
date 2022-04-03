@@ -1,0 +1,406 @@
+\hypertarget{deplacements_8h}{}\doxysection{Référence du fichier lib/deplacements.h}
+\label{deplacements_8h}\index{lib/deplacements.h@{lib/deplacements.h}}
+
+
+header des déplacements  
+
+
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}monde.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de deplacements.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{deplacements_8h_aafd826a123a41fd03a9c88842387a821}\label{deplacements_8h_aafd826a123a41fd03a9c88842387a821}} 
+\#define {\bfseries C\+O\+L\+L\+I\+S\+I\+ON}~1
+\item 
+\mbox{\Hypertarget{deplacements_8h_af57270e7f62d757a02e6d80c13d9a217}\label{deplacements_8h_af57270e7f62d757a02e6d80c13d9a217}} 
+\#define {\bfseries P\+A\+S\+\_\+\+C\+O\+L\+L\+I\+S\+I\+ON}~0
+\item 
+\mbox{\Hypertarget{deplacements_8h_a3e08a490189acf21385403037e616808}\label{deplacements_8h_a3e08a490189acf21385403037e616808}} 
+\#define {\bfseries A\+T\+T\+A\+Q\+UE}~1
+\item 
+\mbox{\Hypertarget{deplacements_8h_aef1d57d8b5cac815b694603b7fcc3687}\label{deplacements_8h_aef1d57d8b5cac815b694603b7fcc3687}} 
+\#define {\bfseries F\+U\+I\+TE}~2
+\item 
+\mbox{\Hypertarget{deplacements_8h_a2ebb68473716de487c7927f692aaa91d}\label{deplacements_8h_a2ebb68473716de487c7927f692aaa91d}} 
+\#define {\bfseries R\+I\+EN}~0
+\item 
+\mbox{\Hypertarget{deplacements_8h_a0dfd27b905a6ea5726409a75f1ec5965}\label{deplacements_8h_a0dfd27b905a6ea5726409a75f1ec5965}} 
+\#define {\bfseries E\+P\+EE}~1
+\item 
+\mbox{\Hypertarget{deplacements_8h_a9b9afd10e8fa9d2ec8ab180ffdd21d3d}\label{deplacements_8h_a9b9afd10e8fa9d2ec8ab180ffdd21d3d}} 
+\#define {\bfseries S\+O\+RT}~2
+\item 
+\mbox{\Hypertarget{deplacements_8h_a14727f92df7a9466f732141f23b9c252}\label{deplacements_8h_a14727f92df7a9466f732141f23b9c252}} 
+\#define {\bfseries A\+RC}~3
+\item 
+\mbox{\Hypertarget{deplacements_8h_aac300d38e82a5b413ade48e8a194a87c}\label{deplacements_8h_aac300d38e82a5b413ade48e8a194a87c}} 
+\#define {\bfseries R\+E\+T\+O\+UR}~4
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{deplacements_8h_ad0e921eab853f9bc63b5b7d575cd5637}{distance\+\_\+pnj\+\_\+coffre}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, \mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$entite)
+\begin{DoxyCompactList}\small\item\em renvoie la distance entre le joueur et un non combattant, personnage ou coffre \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{deplacements_8h_a9e05391db4346ba9eff1fe5112c4ca6e}{non\+Combattant\+\_\+proche}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em teste si un personnage, un marchand ou un coffre est proche du joueur \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{deplacements_8h_a76977603534c913a5136e59edf95e0ff}{changement\+\_\+salle}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$j, int changement\+\_\+salle)
+\begin{DoxyCompactList}\small\item\em gestion du passage du joueur dans une nouvelle salle \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{deplacements_8h_a002e49ae16e18f0ca0ac7ace6bef4f59}{changement\+\_\+zone}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em gestion du passage du joueur dans une nouvelle zone \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{deplacements_8h_ac29a4a186e1f7dd0f8e0f9f1037483e4}{collision\+\_\+combattant\+\_\+ecran}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$combattant, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em détection de collision du joueur ou d\textquotesingle{}un monstre avec le bord de la surface de jeu \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{deplacements_8h_a380a90d1731d5409f626bff8d053b6cc}{collision\+\_\+joueur\+\_\+monstre}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$joueur, \mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$monstre, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em détection de collision entre le joueur et un monstre \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{deplacements_8h_ae7994b096ee354b13fe5e0882dcfc495}{collision\+\_\+combattant\+\_\+pnj}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$combattant, \mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$pnj)
+\begin{DoxyCompactList}\small\item\em détection de collision entre le joueur ou un monstre et un personnage non joueur \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{deplacements_8h_a43f8dc7b5f604769318c10fbc67faa47}{collision\+\_\+combattant\+\_\+coffre}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$combattant, \mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$coffre)
+\begin{DoxyCompactList}\small\item\em détection de collision entre le joueur ou un monstre et un coffre \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{deplacements_8h_a409bb299269be24df7686756f71aa201}{collision\+\_\+combattant}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$combattant, int indice\+\_\+monstre, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em détection de collision entre un combattant(joueur ou monstre) et un coffre, un combattant ou un pnj \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{deplacements_8h_a84fed87d865b0b9a6515e246d4f80e1b}{deplacement\+\_\+droit}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$entite, int indice\+\_\+monstre, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em vérifie qu\textquotesingle{}un déplacement à droite est possible \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{deplacements_8h_afc18e12790e8bc23d4b24861db18f3b3}{deplacement\+\_\+gauche}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$entite, int indice\+\_\+monstre, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em vérifie qu\textquotesingle{}un déplacement à gauche est possible \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{deplacements_8h_a41c5fcf87671ef8886a3e2b4646117d8}{deplacement\+\_\+haut}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$entite, int indice\+\_\+monstre, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em vérifie qu\textquotesingle{}un déplacement en haut est possible \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{deplacements_8h_ae969f7c4dcfdabaaaca5a765cedc8391}{deplacement\+\_\+bas}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$entite, int indice\+\_\+monstre, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em vérifie qu\textquotesingle{}un déplacement en bas est possible \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{deplacements_8h_a206dad2345bcda3ebfebdffc9b868e67}{distancejoueurmonstre}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, \mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$monstre)
+\begin{DoxyCompactList}\small\item\em renvoie la distance entre le joueur et un monstre \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{deplacements_8h_aaeb5cef256ead287e1a861bdf378df8b}{deplacement\+\_\+monstre}} (\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$monstre, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$m)
+\begin{DoxyCompactList}\small\item\em IA du monstre, le déplace dans son environnement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{deplacements_8h_a1de9511e3f01652f2bd433862a553538}{sauvegarde}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em sauvegarde la partie en cours \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+header des déplacements 
+
+\begin{DoxyAuthor}{Auteur}
+Anna Béranger, Arthur Fabre, Alex Choux 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/03/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{deplacements_8h_a76977603534c913a5136e59edf95e0ff}\label{deplacements_8h_a76977603534c913a5136e59edf95e0ff}} 
+\index{deplacements.h@{deplacements.h}!changement\_salle@{changement\_salle}}
+\index{changement\_salle@{changement\_salle}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{changement\_salle()}{changement\_salle()}}
+{\footnotesize\ttfamily void changement\+\_\+salle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{j,  }\item[{int}]{changement\+\_\+salle }\end{DoxyParamCaption})}
+
+
+
+gestion du passage du joueur dans une nouvelle salle 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & le joueur \\
+\hline
+{\em changement\+\_\+salle} & direction aller (1) ou retour (-\/1) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{deplacements_8h_a002e49ae16e18f0ca0ac7ace6bef4f59}\label{deplacements_8h_a002e49ae16e18f0ca0ac7ace6bef4f59}} 
+\index{deplacements.h@{deplacements.h}!changement\_zone@{changement\_zone}}
+\index{changement\_zone@{changement\_zone}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{changement\_zone()}{changement\_zone()}}
+{\footnotesize\ttfamily void changement\+\_\+zone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+gestion du passage du joueur dans une nouvelle zone 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monde} & le monde du jeu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{deplacements_8h_a409bb299269be24df7686756f71aa201}\label{deplacements_8h_a409bb299269be24df7686756f71aa201}} 
+\index{deplacements.h@{deplacements.h}!collision\_combattant@{collision\_combattant}}
+\index{collision\_combattant@{collision\_combattant}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{collision\_combattant()}{collision\_combattant()}}
+{\footnotesize\ttfamily int collision\+\_\+combattant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{combattant,  }\item[{int}]{indice\+\_\+monstre,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+détection de collision entre un combattant(joueur ou monstre) et un coffre, un combattant ou un pnj 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em combattant} & le joueur ou un monstre \\
+\hline
+{\em indice\+\_\+monstre} & \\
+\hline
+{\em monde} & le monde du jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+collision (1), pas de collision (0) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deplacements_8h_a43f8dc7b5f604769318c10fbc67faa47}\label{deplacements_8h_a43f8dc7b5f604769318c10fbc67faa47}} 
+\index{deplacements.h@{deplacements.h}!collision\_combattant\_coffre@{collision\_combattant\_coffre}}
+\index{collision\_combattant\_coffre@{collision\_combattant\_coffre}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{collision\_combattant\_coffre()}{collision\_combattant\_coffre()}}
+{\footnotesize\ttfamily int collision\+\_\+combattant\+\_\+coffre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{combattant,  }\item[{\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$}]{coffre }\end{DoxyParamCaption})}
+
+
+
+détection de collision entre le joueur ou un monstre et un coffre 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em combattant} & le joueur ou un monstre \\
+\hline
+{\em coffre} & un coffre \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+collision (1), pas de collision (0) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deplacements_8h_ac29a4a186e1f7dd0f8e0f9f1037483e4}\label{deplacements_8h_ac29a4a186e1f7dd0f8e0f9f1037483e4}} 
+\index{deplacements.h@{deplacements.h}!collision\_combattant\_ecran@{collision\_combattant\_ecran}}
+\index{collision\_combattant\_ecran@{collision\_combattant\_ecran}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{collision\_combattant\_ecran()}{collision\_combattant\_ecran()}}
+{\footnotesize\ttfamily int collision\+\_\+combattant\+\_\+ecran (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{combattant,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+détection de collision du joueur ou d\textquotesingle{}un monstre avec le bord de la surface de jeu 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em combattant} & le joueur ou un monstre \\
+\hline
+{\em monde} & le monde du jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+collision (1), pas de collision (0) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deplacements_8h_ae7994b096ee354b13fe5e0882dcfc495}\label{deplacements_8h_ae7994b096ee354b13fe5e0882dcfc495}} 
+\index{deplacements.h@{deplacements.h}!collision\_combattant\_pnj@{collision\_combattant\_pnj}}
+\index{collision\_combattant\_pnj@{collision\_combattant\_pnj}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{collision\_combattant\_pnj()}{collision\_combattant\_pnj()}}
+{\footnotesize\ttfamily int collision\+\_\+combattant\+\_\+pnj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{combattant,  }\item[{\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$}]{pnj }\end{DoxyParamCaption})}
+
+
+
+détection de collision entre le joueur ou un monstre et un personnage non joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em combattant} & le joueur ou un monstre \\
+\hline
+{\em pnj} & un personnage non joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+collision (1), pas de collision (0) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deplacements_8h_a380a90d1731d5409f626bff8d053b6cc}\label{deplacements_8h_a380a90d1731d5409f626bff8d053b6cc}} 
+\index{deplacements.h@{deplacements.h}!collision\_joueur\_monstre@{collision\_joueur\_monstre}}
+\index{collision\_joueur\_monstre@{collision\_joueur\_monstre}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{collision\_joueur\_monstre()}{collision\_joueur\_monstre()}}
+{\footnotesize\ttfamily int collision\+\_\+joueur\+\_\+monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{joueur,  }\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{monstre,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+détection de collision entre le joueur et un monstre 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & le joueur \\
+\hline
+{\em monstre} & un monstre \\
+\hline
+{\em monde} & le monde du jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+collision (1), pas de collision (0) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deplacements_8h_ae969f7c4dcfdabaaaca5a765cedc8391}\label{deplacements_8h_ae969f7c4dcfdabaaaca5a765cedc8391}} 
+\index{deplacements.h@{deplacements.h}!deplacement\_bas@{deplacement\_bas}}
+\index{deplacement\_bas@{deplacement\_bas}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{deplacement\_bas()}{deplacement\_bas()}}
+{\footnotesize\ttfamily int deplacement\+\_\+bas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{entite,  }\item[{int}]{indice\+\_\+monstre,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+vérifie qu\textquotesingle{}un déplacement en bas est possible 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & le joueur ou un monstre \\
+\hline
+{\em indice\+\_\+monstre} & \\
+\hline
+{\em monde} & le monde du jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+déplacement non possible (1), déplacement possible (0) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deplacements_8h_a84fed87d865b0b9a6515e246d4f80e1b}\label{deplacements_8h_a84fed87d865b0b9a6515e246d4f80e1b}} 
+\index{deplacements.h@{deplacements.h}!deplacement\_droit@{deplacement\_droit}}
+\index{deplacement\_droit@{deplacement\_droit}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{deplacement\_droit()}{deplacement\_droit()}}
+{\footnotesize\ttfamily int deplacement\+\_\+droit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{entite,  }\item[{int}]{indice\+\_\+monstre,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+vérifie qu\textquotesingle{}un déplacement à droite est possible 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & le joueur ou un monstre \\
+\hline
+{\em indice\+\_\+monstre} & \\
+\hline
+{\em monde} & le monde du jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+déplacement non possible (1), déplacement possible (0) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deplacements_8h_afc18e12790e8bc23d4b24861db18f3b3}\label{deplacements_8h_afc18e12790e8bc23d4b24861db18f3b3}} 
+\index{deplacements.h@{deplacements.h}!deplacement\_gauche@{deplacement\_gauche}}
+\index{deplacement\_gauche@{deplacement\_gauche}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{deplacement\_gauche()}{deplacement\_gauche()}}
+{\footnotesize\ttfamily int deplacement\+\_\+gauche (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{entite,  }\item[{int}]{indice\+\_\+monstre,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+vérifie qu\textquotesingle{}un déplacement à gauche est possible 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & le joueur ou un monstre \\
+\hline
+{\em indice\+\_\+monstre} & \\
+\hline
+{\em monde} & le monde du jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+déplacement non possible (1), déplacement possible (0) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deplacements_8h_a41c5fcf87671ef8886a3e2b4646117d8}\label{deplacements_8h_a41c5fcf87671ef8886a3e2b4646117d8}} 
+\index{deplacements.h@{deplacements.h}!deplacement\_haut@{deplacement\_haut}}
+\index{deplacement\_haut@{deplacement\_haut}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{deplacement\_haut()}{deplacement\_haut()}}
+{\footnotesize\ttfamily int deplacement\+\_\+haut (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{entite,  }\item[{int}]{indice\+\_\+monstre,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+vérifie qu\textquotesingle{}un déplacement en haut est possible 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & le joueur ou un monstre \\
+\hline
+{\em indice\+\_\+monstre} & \\
+\hline
+{\em monde} & le monde du jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+déplacement non possible (1), déplacement possible (0) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deplacements_8h_aaeb5cef256ead287e1a861bdf378df8b}\label{deplacements_8h_aaeb5cef256ead287e1a861bdf378df8b}} 
+\index{deplacements.h@{deplacements.h}!deplacement\_monstre@{deplacement\_monstre}}
+\index{deplacement\_monstre@{deplacement\_monstre}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{deplacement\_monstre()}{deplacement\_monstre()}}
+{\footnotesize\ttfamily void deplacement\+\_\+monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$}]{monstre,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{m }\end{DoxyParamCaption})}
+
+
+
+IA du monstre, le déplace dans son environnement. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monstre} & monstre qui est controlé \\
+\hline
+{\em m} & le monde du jeu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{deplacements_8h_ad0e921eab853f9bc63b5b7d575cd5637}\label{deplacements_8h_ad0e921eab853f9bc63b5b7d575cd5637}} 
+\index{deplacements.h@{deplacements.h}!distance\_pnj\_coffre@{distance\_pnj\_coffre}}
+\index{distance\_pnj\_coffre@{distance\_pnj\_coffre}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{distance\_pnj\_coffre()}{distance\_pnj\_coffre()}}
+{\footnotesize\ttfamily int distance\+\_\+pnj\+\_\+coffre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{joueur,  }\item[{\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+renvoie la distance entre le joueur et un non combattant, personnage ou coffre 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & le joueur \\
+\hline
+{\em entite} & l\textquotesingle{}entite, personnage ou coffre \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+distance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deplacements_8h_a206dad2345bcda3ebfebdffc9b868e67}\label{deplacements_8h_a206dad2345bcda3ebfebdffc9b868e67}} 
+\index{deplacements.h@{deplacements.h}!distancejoueurmonstre@{distancejoueurmonstre}}
+\index{distancejoueurmonstre@{distancejoueurmonstre}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{distancejoueurmonstre()}{distancejoueurmonstre()}}
+{\footnotesize\ttfamily int distancejoueurmonstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{joueur,  }\item[{\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$}]{monstre }\end{DoxyParamCaption})}
+
+
+
+renvoie la distance entre le joueur et un monstre 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & le joueur \\
+\hline
+{\em monstre} & un monstre \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+distance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deplacements_8h_a9e05391db4346ba9eff1fe5112c4ca6e}\label{deplacements_8h_a9e05391db4346ba9eff1fe5112c4ca6e}} 
+\index{deplacements.h@{deplacements.h}!nonCombattant\_proche@{nonCombattant\_proche}}
+\index{nonCombattant\_proche@{nonCombattant\_proche}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{nonCombattant\_proche()}{nonCombattant\_proche()}}
+{\footnotesize\ttfamily int non\+Combattant\+\_\+proche (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+teste si un personnage, un marchand ou un coffre est proche du joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monde} & le monde du jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 si aucun non combattant est proche, sinon, 1 si c\textquotesingle{}est un personnage, 2 si c\textquotesingle{}est un marchand, 3 si c\textquotesingle{}est un coffre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{deplacements_8h_a1de9511e3f01652f2bd433862a553538}\label{deplacements_8h_a1de9511e3f01652f2bd433862a553538}} 
+\index{deplacements.h@{deplacements.h}!sauvegarde@{sauvegarde}}
+\index{sauvegarde@{sauvegarde}!deplacements.h@{deplacements.h}}
+\doxysubsubsection{\texorpdfstring{sauvegarde()}{sauvegarde()}}
+{\footnotesize\ttfamily void sauvegarde (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+sauvegarde la partie en cours 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monde} & le monde du jeu \\
+\hline
+\end{DoxyParams}

@@ -1,24 +1,9 @@
 var searchData=
 [
-  ['carte_5fposition_11',['carte_position',['../images_8c.html#a901edf61bb7423d06c1a745fff55ba2d',1,'images.c']]],
-  ['changement_5fsalle_12',['changement_salle',['../deplacements_8c.html#a76977603534c913a5136e59edf95e0ff',1,'deplacements.c']]],
-  ['changement_5fzone_13',['changement_zone',['../deplacements_8c.html#a002e49ae16e18f0ca0ac7ace6bef4f59',1,'deplacements.c']]],
-  ['choix_5fpartie_14',['choix_partie',['../menu_8c.html#a46359f8250911feb7d8ba5ea42a95c60',1,'menu.c']]],
-  ['clean_15',['clean',['../jeu_8c.html#a5ad792bd416b984c63682b571a9de56f',1,'jeu.c']]],
-  ['clean_5ffont_16',['clean_font',['../sdl2__fonctions_8c.html#af763a1894238fa2a7f3384461f8e8ded',1,'sdl2_fonctions.c']]],
-  ['clean_5fsdl_17',['clean_sdl',['../sdl2__fonctions_8c.html#a69f5b063948b40b1bac5bb2518ed9e52',1,'sdl2_fonctions.c']]],
-  ['clean_5ftexture_18',['clean_texture',['../sdl2__fonctions_8c.html#a6be5ef20bb308cf4f73ab911b33705e8',1,'sdl2_fonctions.c']]],
-  ['clear_5frenderer_19',['clear_renderer',['../sdl2__fonctions_8c.html#a572bf07064fc55f12238e71ba2930f5f',1,'sdl2_fonctions.c']]],
-  ['collision_5fcombattant_20',['collision_combattant',['../deplacements_8c.html#a409bb299269be24df7686756f71aa201',1,'deplacements.c']]],
-  ['collision_5fcombattant_5fcoffre_21',['collision_combattant_coffre',['../deplacements_8c.html#a43f8dc7b5f604769318c10fbc67faa47',1,'deplacements.c']]],
-  ['collision_5fcombattant_5fecran_22',['collision_combattant_ecran',['../deplacements_8c.html#ac29a4a186e1f7dd0f8e0f9f1037483e4',1,'deplacements.c']]],
-  ['collision_5fcombattant_5fpnj_23',['collision_combattant_pnj',['../deplacements_8c.html#ae7994b096ee354b13fe5e0882dcfc495',1,'deplacements.c']]],
-  ['collision_5fjoueur_5fmonstre_24',['collision_joueur_monstre',['../deplacements_8c.html#a380a90d1731d5409f626bff8d053b6cc',1,'deplacements.c']]],
-  ['creer_5fjoueur_25',['creer_joueur',['../entite_8c.html#a71ff41e36990c95b602165508c293747',1,'entite.c']]],
-  ['creer_5fmonde_26',['creer_monde',['../monde_8c.html#ad83a9ad35f5fabf1bd53886d0fd6d8bd',1,'monde.c']]],
-  ['creer_5fmonstre_27',['creer_monstre',['../entite_8c.html#a5382651b04b9611b4d35d332ef139e6a',1,'entite.c']]],
-  ['creer_5fnoncombattant_28',['creer_nonCombattant',['../entite_8c.html#aff1b683c2e4978bf4e136a8416b9bcb6',1,'entite.c']]],
-  ['creer_5fobjet_29',['creer_objet',['../entite_8c.html#a16733682ff83a0301dc5d4b692f733e7',1,'entite.c']]],
-  ['creer_5fsalle_30',['creer_salle',['../monde_8c.html#acee4402fde0045a1a49811451c64c978',1,'monde.c']]],
-  ['creer_5fzone_31',['creer_zone',['../monde_8c.html#a362c4991d8e163d11bcbdbf729850004',1,'monde.c']]]
+  ['biblio_5fobjet_15',['biblio_objet',['../structmonde__t.html#a802f6c6fe087251f3dc3ebeb87060ac5',1,'monde_t']]],
+  ['boss_16',['boss',['../structimages__s.html#a881947605b4b865144c7f4177ee44706',1,'images_s']]],
+  ['bouclier1_17',['bouclier1',['../structimages__s.html#a7d0f7a7c9c2ab973bcda6d40db7f18ac',1,'images_s']]],
+  ['bouclier1_5fpetit_18',['bouclier1_petit',['../structimages__s.html#a59d10ac92e1dc898fdc42b8c2ea252cb',1,'images_s']]],
+  ['bouclier2_19',['bouclier2',['../structimages__s.html#ab85611538dba7d8cfba51e8345440036',1,'images_s']]],
+  ['bouclier2_5fpetit_20',['bouclier2_petit',['../structimages__s.html#ac800bc48bc7f2a37c0c7f20fbf66632b',1,'images_s']]]
 ];

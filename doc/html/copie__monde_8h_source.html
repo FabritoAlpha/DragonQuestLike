@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dragon Quest Like:  Fichier source de lib/copie_monde.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dragon Quest Like
+   </div>
+   <div id="projectbrief">Jeu de type J-RPG</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">copie_monde.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef _MONDE_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define _MONDE_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="entite_8h.html">entite.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define NB_SALLES 1</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define NB_ZONES 1</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define NB_MONSTRES_SALLE 1</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define NB_PERSO_SALLE 1</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define SCREEN_WIDTH 1000</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define SCREEN_HEIGHT 750</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define STATUE 0</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structsalle__t.html">   27</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structsalle__t.html#aae17b92766c9464e0497cd395817400f">   28</a></span>&#160;    <a class="code" href="structmonstre__t.html">monstre_t</a> ** <a class="code" href="structsalle__t.html#aae17b92766c9464e0497cd395817400f">monstres</a>; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">//int nb_monstres; /**&lt; Nombre de monstres que contient la salle */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structsalle__t.html#a1a2de8637ab27f68abc7d203409f12a4">   30</a></span>&#160;    <a class="code" href="structnonCombattant__t.html">nonCombattant_t</a> * <a class="code" href="structsalle__t.html#a1a2de8637ab27f68abc7d203409f12a4">coffre</a>; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structsalle__t.html#ae5753c938efd747bcc29e0bbb6f9ea2e">   31</a></span>&#160;    <a class="code" href="structnonCombattant__t.html">nonCombattant_t</a> ** <a class="code" href="structsalle__t.html#ae5753c938efd747bcc29e0bbb6f9ea2e">perso</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structsalle__t.html#aa42e33112c7c14731b8989abd7933d0d">   32</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structsalle__t.html#aa42e33112c7c14731b8989abd7933d0d">difficulte</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structsalle__t.html#a51de190541322019ecd2b47af560f130">   33</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structsalle__t.html#a51de190541322019ecd2b47af560f130">num_salle</a>; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">//int largeur; à voir si on en a besoin</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//int longueur; à voir si on en a besoin</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;} <a class="code" href="structsalle__t.html">salle_t</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structzone__t.html">   42</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structzone__t.html#ac2056ba30de1176e17458b7b6cccde30">   43</a></span>&#160;    <a class="code" href="structsalle__t.html">salle_t</a> ** <a class="code" href="structzone__t.html#ac2056ba30de1176e17458b7b6cccde30">salles</a>; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structzone__t.html#a8cd37adb1410a3973f24c4c7ad47fa57">   44</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structzone__t.html#a8cd37adb1410a3973f24c4c7ad47fa57">num_zone</a>; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structzone__t.html#ab91756bcf3298bc7ace7113aa2c17dd9">   45</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structzone__t.html#ab91756bcf3298bc7ace7113aa2c17dd9">id</a>; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="structzone__t.html">zone_t</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structmonde__t.html">   52</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structmonde__t.html#a60491b6183abb17abf5be8e01133fed3">   53</a></span>&#160;    <a class="code" href="structzone__t.html">zone_t</a> ** <a class="code" href="structmonde__t.html#a60491b6183abb17abf5be8e01133fed3">zones</a>; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structmonde__t.html#a8e3eac8f3c001ad910f2126bd1094ea2">   54</a></span>&#160;    <a class="code" href="structjoueur__t.html">joueur_t</a>* <a class="code" href="structmonde__t.html#a8e3eac8f3c001ad910f2126bd1094ea2">joueur</a>; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structmonde__t.html#a80db4858c5c69dc94cf72dacbee0f7aa">   55</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmonde__t.html#a80db4858c5c69dc94cf72dacbee0f7aa">etat_jeu</a>; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structmonde__t.html#ab860d03db9a9cf4bf6be58c3888c0d1f">   56</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structmonde__t.html#ab860d03db9a9cf4bf6be58c3888c0d1f">option</a>; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;} <a class="code" href="structmonde__t.html">monde_t</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">int</span> <a class="code" href="monde_8c.html#af1e3dd837065ad4b00201fff0fa5407c">existe_salle</a>(<a class="code" href="structsalle__t.html">salle_t</a>* salle);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">int</span> <a class="code" href="monde_8c.html#af600b3ca03d084e91db99c8bcb94024d">existe_zone</a>(<a class="code" href="structzone__t.html">zone_t</a>* zone);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">int</span> <a class="code" href="monde_8c.html#a285b5ca4ec8f08f037f39e908e1289d4">existe_monde</a>(<a class="code" href="structmonde__t.html">monde_t</a>* monde);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<a class="code" href="structsalle__t.html">salle_t</a>* <a class="code" href="monde_8c.html#acee4402fde0045a1a49811451c64c978">creer_salle</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<a class="code" href="structzone__t.html">zone_t</a> * <a class="code" href="monde_8c.html#a362c4991d8e163d11bcbdbf729850004">creer_zone</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<a class="code" href="structmonde__t.html">monde_t</a> * <a class="code" href="monde_8c.html#ad83a9ad35f5fabf1bd53886d0fd6d8bd">creer_monde</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monde_8c.html#a1db6b74c49d6a879a415d976eba0deaa">detruire_monde</a>(<a class="code" href="structmonde__t.html">monde_t</a> ** monde);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monde_8c.html#a16e9a4f3ffc84d43ab820d0e8d91e3a5">detruire_zone</a>(<a class="code" href="structzone__t.html">zone_t</a> ** zone);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monde_8c.html#a66ed72d3268223614d00bf76d0c80123">detruire_salle</a>(<a class="code" href="structsalle__t.html">salle_t</a> ** salle);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">void</span> init_monde(<a class="code" href="structmonde__t.html">monde_t</a> * monde);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monde_8c.html#ae7f1c9acd89d0a6e6ef7c7a86b81591f">init_zone</a>(<a class="code" href="structzone__t.html">zone_t</a> * zone, <span class="keywordtype">int</span> num_zone);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monde_8c.html#a4beb9353e687cdc88cbc800ce0665ec2">init_salle</a>(<a class="code" href="structsalle__t.html">salle_t</a> * salle, <span class="keywordtype">int</span> num_salle);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructzone__t_html"><div class="ttname"><a href="structzone__t.html">zone_t</a></div><div class="ttdoc">représentation d'une zone</div><div class="ttdef"><b>Definition:</b> copie_monde.h:42</div></div>
+<div class="ttc" id="astructjoueur__t_html"><div class="ttname"><a href="structjoueur__t.html">joueur_t</a></div><div class="ttdoc">représentation du joueur</div><div class="ttdef"><b>Definition:</b> entite.h:83</div></div>
+<div class="ttc" id="astructzone__t_html_ab91756bcf3298bc7ace7113aa2c17dd9"><div class="ttname"><a href="structzone__t.html#ab91756bcf3298bc7ace7113aa2c17dd9">zone_t::id</a></div><div class="ttdeci">int id</div><div class="ttdoc">Entier représentant le type de la zone : 1-Ville, 2-Plaine, 3-Donjon, ...</div><div class="ttdef"><b>Definition:</b> copie_monde.h:45</div></div>
+<div class="ttc" id="astructzone__t_html_ac2056ba30de1176e17458b7b6cccde30"><div class="ttname"><a href="structzone__t.html#ac2056ba30de1176e17458b7b6cccde30">zone_t::salles</a></div><div class="ttdeci">salle_t ** salles</div><div class="ttdoc">Liste des salles de la zone (ne peut pas être vide durant la partie)</div><div class="ttdef"><b>Definition:</b> copie_monde.h:43</div></div>
+<div class="ttc" id="amonde_8c_html_a66ed72d3268223614d00bf76d0c80123"><div class="ttname"><a href="monde_8c.html#a66ed72d3268223614d00bf76d0c80123">detruire_salle</a></div><div class="ttdeci">void detruire_salle(salle_t **salle)</div><div class="ttdoc">libération de la mémoire allouée à une salle d'une zone lorsque la partie est terminée</div><div class="ttdef"><b>Definition:</b> monde.c:139</div></div>
+<div class="ttc" id="astructsalle__t_html_a1a2de8637ab27f68abc7d203409f12a4"><div class="ttname"><a href="structsalle__t.html#a1a2de8637ab27f68abc7d203409f12a4">salle_t::coffre</a></div><div class="ttdeci">nonCombattant_t * coffre</div><div class="ttdoc">coffre de la salle (peut être vide)</div><div class="ttdef"><b>Definition:</b> copie_monde.h:30</div></div>
+<div class="ttc" id="astructzone__t_html_a8cd37adb1410a3973f24c4c7ad47fa57"><div class="ttname"><a href="structzone__t.html#a8cd37adb1410a3973f24c4c7ad47fa57">zone_t::num_zone</a></div><div class="ttdeci">int num_zone</div><div class="ttdoc">Numéro de la zone dans le monde.</div><div class="ttdef"><b>Definition:</b> copie_monde.h:44</div></div>
+<div class="ttc" id="astructnonCombattant__t_html"><div class="ttname"><a href="structnonCombattant__t.html">nonCombattant_t</a></div><div class="ttdoc">représentation d'une entité non combattante</div><div class="ttdef"><b>Definition:</b> entite.h:115</div></div>
+<div class="ttc" id="astructsalle__t_html"><div class="ttname"><a href="structsalle__t.html">salle_t</a></div><div class="ttdoc">représentation d'une salle</div><div class="ttdef"><b>Definition:</b> copie_monde.h:27</div></div>
+<div class="ttc" id="astructsalle__t_html_ae5753c938efd747bcc29e0bbb6f9ea2e"><div class="ttname"><a href="structsalle__t.html#ae5753c938efd747bcc29e0bbb6f9ea2e">salle_t::perso</a></div><div class="ttdeci">nonCombattant_t ** perso</div><div class="ttdoc">Liste des personnages non joueurs de la salle (peut être vide)</div><div class="ttdef"><b>Definition:</b> copie_monde.h:31</div></div>
+<div class="ttc" id="amonde_8c_html_a16e9a4f3ffc84d43ab820d0e8d91e3a5"><div class="ttname"><a href="monde_8c.html#a16e9a4f3ffc84d43ab820d0e8d91e3a5">detruire_zone</a></div><div class="ttdeci">void detruire_zone(zone_t **zone)</div><div class="ttdoc">libération de la mémoire allouée à une zone du monde lorsque la partie est terminée</div><div class="ttdef"><b>Definition:</b> monde.c:122</div></div>
+<div class="ttc" id="astructsalle__t_html_aae17b92766c9464e0497cd395817400f"><div class="ttname"><a href="structsalle__t.html#aae17b92766c9464e0497cd395817400f">salle_t::monstres</a></div><div class="ttdeci">monstre_t ** monstres</div><div class="ttdoc">Liste des monstres de la salle (peut être vide)</div><div class="ttdef"><b>Definition:</b> copie_monde.h:28</div></div>
+<div class="ttc" id="astructsalle__t_html_aa42e33112c7c14731b8989abd7933d0d"><div class="ttname"><a href="structsalle__t.html#aa42e33112c7c14731b8989abd7933d0d">salle_t::difficulte</a></div><div class="ttdeci">int difficulte</div><div class="ttdoc">Entier qui représente le niveau de difficulté de la salle.</div><div class="ttdef"><b>Definition:</b> copie_monde.h:32</div></div>
+<div class="ttc" id="astructmonde__t_html"><div class="ttname"><a href="structmonde__t.html">monde_t</a></div><div class="ttdoc">représentation du monde</div><div class="ttdef"><b>Definition:</b> copie_monde.h:52</div></div>
+<div class="ttc" id="astructmonde__t_html_a8e3eac8f3c001ad910f2126bd1094ea2"><div class="ttname"><a href="structmonde__t.html#a8e3eac8f3c001ad910f2126bd1094ea2">monde_t::joueur</a></div><div class="ttdeci">joueur_t * joueur</div><div class="ttdoc">joueur</div><div class="ttdef"><b>Definition:</b> copie_monde.h:54</div></div>
+<div class="ttc" id="amonde_8c_html_a285b5ca4ec8f08f037f39e908e1289d4"><div class="ttname"><a href="monde_8c.html#a285b5ca4ec8f08f037f39e908e1289d4">existe_monde</a></div><div class="ttdeci">int existe_monde(monde_t *monde)</div><div class="ttdoc">renvoie 1 si le monde existe</div><div class="ttdef"><b>Definition:</b> monde.c:38</div></div>
+<div class="ttc" id="astructmonstre__t_html"><div class="ttname"><a href="structmonstre__t.html">monstre_t</a></div><div class="ttdoc">représentation d'un monstre</div><div class="ttdef"><b>Definition:</b> entite.h:100</div></div>
+<div class="ttc" id="aentite_8h_html"><div class="ttname"><a href="entite_8h.html">entite.h</a></div><div class="ttdoc">header des entités</div></div>
+<div class="ttc" id="astructmonde__t_html_ab860d03db9a9cf4bf6be58c3888c0d1f"><div class="ttname"><a href="structmonde__t.html#ab860d03db9a9cf4bf6be58c3888c0d1f">monde_t::option</a></div><div class="ttdeci">int option</div><div class="ttdoc">option a sélectionner</div><div class="ttdef"><b>Definition:</b> copie_monde.h:56</div></div>
+<div class="ttc" id="astructmonde__t_html_a60491b6183abb17abf5be8e01133fed3"><div class="ttname"><a href="structmonde__t.html#a60491b6183abb17abf5be8e01133fed3">monde_t::zones</a></div><div class="ttdeci">zone_t ** zones</div><div class="ttdoc">Liste des zones composant le monde.</div><div class="ttdef"><b>Definition:</b> copie_monde.h:53</div></div>
+<div class="ttc" id="astructsalle__t_html_a51de190541322019ecd2b47af560f130"><div class="ttname"><a href="structsalle__t.html#a51de190541322019ecd2b47af560f130">salle_t::num_salle</a></div><div class="ttdeci">int num_salle</div><div class="ttdoc">Numéro de la salle dans la zone.</div><div class="ttdef"><b>Definition:</b> copie_monde.h:33</div></div>
+<div class="ttc" id="amonde_8c_html_af1e3dd837065ad4b00201fff0fa5407c"><div class="ttname"><a href="monde_8c.html#af1e3dd837065ad4b00201fff0fa5407c">existe_salle</a></div><div class="ttdeci">int existe_salle(salle_t *salle)</div><div class="ttdoc">renvoie 1 si la salle existe</div><div class="ttdef"><b>Definition:</b> monde.c:16</div></div>
+<div class="ttc" id="amonde_8c_html_ae7f1c9acd89d0a6e6ef7c7a86b81591f"><div class="ttname"><a href="monde_8c.html#ae7f1c9acd89d0a6e6ef7c7a86b81591f">init_zone</a></div><div class="ttdeci">void init_zone(zone_t *zone, int num_zone)</div><div class="ttdoc">initialise une zone</div><div class="ttdef"><b>Definition:</b> monde.c:281</div></div>
+<div class="ttc" id="astructmonde__t_html_a80db4858c5c69dc94cf72dacbee0f7aa"><div class="ttname"><a href="structmonde__t.html#a80db4858c5c69dc94cf72dacbee0f7aa">monde_t::etat_jeu</a></div><div class="ttdeci">int etat_jeu</div><div class="ttdoc">état du jeu: 0 menu, 1 jeu en cours, -1 fin de la boucle du jeu.</div><div class="ttdef"><b>Definition:</b> copie_monde.h:55</div></div>
+<div class="ttc" id="amonde_8c_html_acee4402fde0045a1a49811451c64c978"><div class="ttname"><a href="monde_8c.html#acee4402fde0045a1a49811451c64c978">creer_salle</a></div><div class="ttdeci">salle_t * creer_salle()</div><div class="ttdoc">allocation de la mémoire nécessaire à une salle</div><div class="ttdef"><b>Definition:</b> monde.c:49</div></div>
+<div class="ttc" id="amonde_8c_html_a1db6b74c49d6a879a415d976eba0deaa"><div class="ttname"><a href="monde_8c.html#a1db6b74c49d6a879a415d976eba0deaa">detruire_monde</a></div><div class="ttdeci">void detruire_monde(monde_t **monde)</div><div class="ttdoc">libération de la mémoire allouée au monde lorsque la partie est terminée</div><div class="ttdef"><b>Definition:</b> monde.c:103</div></div>
+<div class="ttc" id="amonde_8c_html_af600b3ca03d084e91db99c8bcb94024d"><div class="ttname"><a href="monde_8c.html#af600b3ca03d084e91db99c8bcb94024d">existe_zone</a></div><div class="ttdeci">int existe_zone(zone_t *zone)</div><div class="ttdoc">renvoie 1 si la zone existe</div><div class="ttdef"><b>Definition:</b> monde.c:27</div></div>
+<div class="ttc" id="amonde_8c_html_a4beb9353e687cdc88cbc800ce0665ec2"><div class="ttname"><a href="monde_8c.html#a4beb9353e687cdc88cbc800ce0665ec2">init_salle</a></div><div class="ttdeci">void init_salle(salle_t *salle, int num_salle, int num_zone)</div><div class="ttdoc">initialise une salle</div><div class="ttdef"><b>Definition:</b> monde.c:298</div></div>
+<div class="ttc" id="amonde_8c_html_a362c4991d8e163d11bcbdbf729850004"><div class="ttname"><a href="monde_8c.html#a362c4991d8e163d11bcbdbf729850004">creer_zone</a></div><div class="ttdeci">zone_t * creer_zone()</div><div class="ttdoc">allocation de la mémoire nécessaire à une zone</div><div class="ttdef"><b>Definition:</b> monde.c:72</div></div>
+<div class="ttc" id="amonde_8c_html_ad83a9ad35f5fabf1bd53886d0fd6d8bd"><div class="ttname"><a href="monde_8c.html#ad83a9ad35f5fabf1bd53886d0fd6d8bd">creer_monde</a></div><div class="ttdeci">monde_t * creer_monde()</div><div class="ttdoc">allocation de la mémoire nécessaire au monde</div><div class="ttdef"><b>Definition:</b> monde.c:87</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['icone_5fboutique_5fposition_156',['icone_boutique_position',['../images_8c.html#a37d5fdf293ecc38e0ec721f7553e75c4',1,'images.c']]],
-  ['init_5fjoueur_157',['init_joueur',['../entite_8c.html#a477cb5d47ec1d3d5be1963583396cbcb',1,'entite.c']]],
-  ['init_5fmonde_5fjeu_158',['init_monde_jeu',['../monde_8c.html#a991818c2456473c6006e47f5f56f6383',1,'monde.c']]],
-  ['init_5fmonde_5fmenu_159',['init_monde_menu',['../monde_8c.html#acb7e058e0b2685575cdb5ce2de075e34',1,'monde.c']]],
-  ['init_5fmonstre_160',['init_monstre',['../entite_8c.html#a5d4d12624a601d9c382fb93ad638446b',1,'entite.c']]],
-  ['init_5fnoncombattant_161',['init_nonCombattant',['../entite_8c.html#a566925ae95cf6985b850b34b0fab6207',1,'entite.c']]],
-  ['init_5fsalle_162',['init_salle',['../monde_8c.html#a4beb9353e687cdc88cbc800ce0665ec2',1,'monde.c']]],
-  ['init_5fsdl_163',['init_sdl',['../sdl2__fonctions_8c.html#a7307299b4ef47feaa1a4e95341a04c7a',1,'sdl2_fonctions.c']]],
-  ['init_5fttf_164',['init_ttf',['../sdl2__fonctions_8c.html#a1eb77346b2c3ea4968cd58197a05fba0',1,'sdl2_fonctions.c']]],
-  ['init_5fzone_165',['init_zone',['../monde_8c.html#ae7f1c9acd89d0a6e6ef7c7a86b81591f',1,'monde.c']]],
-  ['initialiser_5fbiblio_166',['initialiser_biblio',['../entite_8c.html#a85f32539347611837d7f5da392d48815',1,'entite.c']]],
-  ['interaction_5fnoncombattant_167',['interaction_nonCombattant',['../interactions_8c.html#ab3624fc8dabe15392bd8ec46773bd4c3',1,'interactions.c']]]
+  ['icone_5fboutique_5fposition_285',['icone_boutique_position',['../images_8c.html#a37d5fdf293ecc38e0ec721f7553e75c4',1,'icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num):&#160;images.c'],['../images_8h.html#a37d5fdf293ecc38e0ec721f7553e75c4',1,'icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num):&#160;images.c']]],
+  ['init_5fjoueur_286',['init_joueur',['../entite_8c.html#a477cb5d47ec1d3d5be1963583396cbcb',1,'init_joueur(joueur_t *joueur, int niveau, int zone, int pv_M, int pv_C, int mana_M, int mana_C, int atk, int or, int nb_inv, int nb_equip):&#160;entite.c'],['../entite_8h.html#a477cb5d47ec1d3d5be1963583396cbcb',1,'init_joueur(joueur_t *joueur, int niveau, int zone, int pv_M, int pv_C, int mana_M, int mana_C, int atk, int or, int nb_inv, int nb_equip):&#160;entite.c']]],
+  ['init_5fmonde_5fjeu_287',['init_monde_jeu',['../monde_8c.html#a991818c2456473c6006e47f5f56f6383',1,'init_monde_jeu(monde_t *monde, char *chemin_fichier):&#160;monde.c'],['../monde_8h.html#a991818c2456473c6006e47f5f56f6383',1,'init_monde_jeu(monde_t *monde, char *chemin_fichier):&#160;monde.c']]],
+  ['init_5fmonde_5fmenu_288',['init_monde_menu',['../monde_8c.html#acb7e058e0b2685575cdb5ce2de075e34',1,'init_monde_menu(monde_t *monde):&#160;monde.c'],['../monde_8h.html#acb7e058e0b2685575cdb5ce2de075e34',1,'init_monde_menu(monde_t *monde):&#160;monde.c']]],
+  ['init_5fmonstre_289',['init_monstre',['../entite_8c.html#a5d4d12624a601d9c382fb93ad638446b',1,'init_monstre(monstre_t *monster, int pvMax, int pvCour, int attaque, int vitesse, int niveau, int type):&#160;entite.c'],['../entite_8h.html#a5d4d12624a601d9c382fb93ad638446b',1,'init_monstre(monstre_t *monster, int pvMax, int pvCour, int attaque, int vitesse, int niveau, int type):&#160;entite.c']]],
+  ['init_5fnoncombattant_290',['init_nonCombattant',['../entite_8c.html#a566925ae95cf6985b850b34b0fab6207',1,'init_nonCombattant(nonCombattant_t *nonCombat, int id, float x, float y, int visite):&#160;entite.c'],['../entite_8h.html#a964b470d46568a7cd3d8f4b8833a685b',1,'init_nonCombattant(nonCombattant_t *nonCombattant, int id, float x, float y, int visite):&#160;entite.c']]],
+  ['init_5fsalle_291',['init_salle',['../monde_8c.html#a4beb9353e687cdc88cbc800ce0665ec2',1,'init_salle(salle_t *salle, int num_salle, int num_zone):&#160;monde.c'],['../monde_8h.html#a4beb9353e687cdc88cbc800ce0665ec2',1,'init_salle(salle_t *salle, int num_salle, int num_zone):&#160;monde.c']]],
+  ['init_5fsdl_292',['init_sdl',['../sdl2__fonctions_8c.html#a7307299b4ef47feaa1a4e95341a04c7a',1,'init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height):&#160;sdl2_fonctions.c'],['../sdl2__fonctions_8h.html#a7307299b4ef47feaa1a4e95341a04c7a',1,'init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height):&#160;sdl2_fonctions.c']]],
+  ['init_5fttf_293',['init_ttf',['../sdl2__fonctions_8c.html#a1eb77346b2c3ea4968cd58197a05fba0',1,'init_ttf():&#160;sdl2_fonctions.c'],['../sdl2__fonctions_8h.html#a1eb77346b2c3ea4968cd58197a05fba0',1,'init_ttf():&#160;sdl2_fonctions.c']]],
+  ['init_5fzone_294',['init_zone',['../monde_8c.html#ae7f1c9acd89d0a6e6ef7c7a86b81591f',1,'init_zone(zone_t *zone, int num_zone):&#160;monde.c'],['../monde_8h.html#ae7f1c9acd89d0a6e6ef7c7a86b81591f',1,'init_zone(zone_t *zone, int num_zone):&#160;monde.c']]],
+  ['initialiser_5fbiblio_295',['initialiser_biblio',['../entite_8c.html#a85f32539347611837d7f5da392d48815',1,'initialiser_biblio(objet_t tableau[]):&#160;entite.c'],['../entite_8h.html#a85f32539347611837d7f5da392d48815',1,'initialiser_biblio(objet_t tableau[]):&#160;entite.c']]],
+  ['interaction_5fnoncombattant_296',['interaction_nonCombattant',['../interactions_8c.html#ab3624fc8dabe15392bd8ec46773bd4c3',1,'interaction_nonCombattant(SDL_Event *event, monde_t *monde):&#160;interactions.c'],['../interactions_8h.html#ab3624fc8dabe15392bd8ec46773bd4c3',1,'interaction_nonCombattant(SDL_Event *event, monde_t *monde):&#160;interactions.c']]]
 ];

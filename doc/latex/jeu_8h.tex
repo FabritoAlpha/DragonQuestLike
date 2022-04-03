@@ -1,0 +1,78 @@
+\hypertarget{jeu_8h}{}\doxysection{Référence du fichier lib/jeu.h}
+\label{jeu_8h}\index{lib/jeu.h@{lib/jeu.h}}
+
+
+header du jeu  
+
+
+{\ttfamily \#include \char`\"{}interactions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}affichage.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}menu.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de jeu.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{jeu_8h_a5ad792bd416b984c63682b571a9de56f}{clean}} (S\+D\+L\+\_\+\+Window $\ast$window, S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde, T\+T\+F\+\_\+\+Font $\ast$police)
+\begin{DoxyCompactList}\small\item\em libère la mémoire allouée au jeu\+: la partie graphique (S\+DL), les textures, les données du jeu \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{jeu_8h_a9d75ca4ee50d5765596b56be6b767570}\label{jeu_8h_a9d75ca4ee50d5765596b56be6b767570}} 
+void {\bfseries rafraichir} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, int $\ast$next\+\_\+tick, int $\ast$next\+\_\+tick\+\_\+monstre, T\+T\+F\+\_\+\+Font $\ast$police)
+\item 
+void \mbox{\hyperlink{jeu_8h_a92731ee0adcfe2328f9bc5685efaedc7}{evenements}} (S\+D\+L\+\_\+\+Event $\ast$event, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em gestion des évènements claviers avant le rafraichissement \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+header du jeu 
+
+\begin{DoxyAuthor}{Auteur}
+Anna Béranger, Arthur Fabre, Alex Choux 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/03/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{jeu_8h_a5ad792bd416b984c63682b571a9de56f}\label{jeu_8h_a5ad792bd416b984c63682b571a9de56f}} 
+\index{jeu.h@{jeu.h}!clean@{clean}}
+\index{clean@{clean}!jeu.h@{jeu.h}}
+\doxysubsubsection{\texorpdfstring{clean()}{clean()}}
+{\footnotesize\ttfamily void clean (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Window $\ast$}]{window,  }\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$}]{textures,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde,  }\item[{T\+T\+F\+\_\+\+Font $\ast$}]{police }\end{DoxyParamCaption})}
+
+
+
+libère la mémoire allouée au jeu\+: la partie graphique (S\+DL), les textures, les données du jeu 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em window} & la fenêtre du jeu \\
+\hline
+{\em renderer} & le renderer \\
+\hline
+{\em textures} & les textures \\
+\hline
+{\em monde} & le monde \\
+\hline
+{\em police} & la police utilisée \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{jeu_8h_a92731ee0adcfe2328f9bc5685efaedc7}\label{jeu_8h_a92731ee0adcfe2328f9bc5685efaedc7}} 
+\index{jeu.h@{jeu.h}!evenements@{evenements}}
+\index{evenements@{evenements}!jeu.h@{jeu.h}}
+\doxysubsubsection{\texorpdfstring{evenements()}{evenements()}}
+{\footnotesize\ttfamily void evenements (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Event $\ast$}]{event,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+gestion des évènements claviers avant le rafraichissement 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & contient les événements claviers (et souris) \\
+\hline
+{\em monde} & les données du monde \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,498 @@
+\hypertarget{entite_8h}{}\doxysection{Référence du fichier lib/entite.h}
+\label{entite_8h}\index{lib/entite.h@{lib/entite.h}}
+
+
+header des entités  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+Graphe des dépendances par inclusion de entite.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em représentation d\textquotesingle{}une entité combattante \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structobjet__t}{objet\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em représentation d\textquotesingle{}un objet \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em représentation du joueur \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em représentation d\textquotesingle{}un monstre \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em représentation d\textquotesingle{}une entité non combattante \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{entite_8h_a5fdcc1659ee790f8bdd196e7745ab403}\label{entite_8h_a5fdcc1659ee790f8bdd196e7745ab403}} 
+\#define {\bfseries T\+A\+I\+L\+L\+E\+\_\+\+I\+N\+V\+E\+N\+T\+A\+I\+RE}~6
+\item 
+\mbox{\Hypertarget{entite_8h_af1913ca8ccbde089b87231f66ee1edec}\label{entite_8h_af1913ca8ccbde089b87231f66ee1edec}} 
+\#define {\bfseries N\+B\+\_\+\+E\+Q\+U\+I\+P\+E\+M\+E\+NT}~2
+\item 
+\mbox{\Hypertarget{entite_8h_a7f907d351a198b9a0405ce45155625dc}\label{entite_8h_a7f907d351a198b9a0405ce45155625dc}} 
+\#define {\bfseries J\+O\+U\+E\+UR}~1
+\item 
+\mbox{\Hypertarget{entite_8h_a3a83b64ad927fef79924f6b39a7c609f}\label{entite_8h_a3a83b64ad927fef79924f6b39a7c609f}} 
+\#define {\bfseries M\+O\+N\+S\+T\+RE}~0
+\item 
+\mbox{\Hypertarget{entite_8h_a78a87d092595473bcb2a60d4ac6a622b}\label{entite_8h_a78a87d092595473bcb2a60d4ac6a622b}} 
+\#define {\bfseries B\+O\+SS}~1
+\item 
+\mbox{\Hypertarget{entite_8h_acdf2d56706f27155be98ec07be4e7523}\label{entite_8h_acdf2d56706f27155be98ec07be4e7523}} 
+\#define {\bfseries C\+O\+M\+M\+UN}~0
+\item 
+\mbox{\Hypertarget{entite_8h_a3094ba5da65ab51cca76b5c5b25f5a3d}\label{entite_8h_a3094ba5da65ab51cca76b5c5b25f5a3d}} 
+\#define {\bfseries V\+I\+V\+A\+NT}~1
+\item 
+\mbox{\Hypertarget{entite_8h_a74ad93b3e25b60b4c2e923b5281fbfe4}\label{entite_8h_a74ad93b3e25b60b4c2e923b5281fbfe4}} 
+\#define {\bfseries M\+O\+RT}~0
+\item 
+\mbox{\Hypertarget{entite_8h_ae0fb6ebd4fc0195c49c2eb6c65f8f8c5}\label{entite_8h_ae0fb6ebd4fc0195c49c2eb6c65f8f8c5}} 
+\#define {\bfseries I\+D\+\_\+\+E\+P\+E\+E\+\_\+\+P\+I\+E\+R\+RE}~1
+\item 
+\mbox{\Hypertarget{entite_8h_a8cdfad6331c55dad15ce5367060726a3}\label{entite_8h_a8cdfad6331c55dad15ce5367060726a3}} 
+\#define {\bfseries I\+D\+\_\+\+E\+P\+E\+E\+\_\+\+D\+I\+AM}~2
+\item 
+\mbox{\Hypertarget{entite_8h_afd95fbfceba423bfaf1f8b16371b7508}\label{entite_8h_afd95fbfceba423bfaf1f8b16371b7508}} 
+\#define {\bfseries I\+D\+\_\+\+B\+O\+U\+C\+L\+I\+E\+R\+\_\+\+B\+O\+IS}~3
+\item 
+\mbox{\Hypertarget{entite_8h_aaa7d6aca46750aee91081f5734477287}\label{entite_8h_aaa7d6aca46750aee91081f5734477287}} 
+\#define {\bfseries I\+D\+\_\+\+B\+O\+U\+C\+L\+I\+E\+R\+\_\+\+D\+I\+AM}~4
+\item 
+\mbox{\Hypertarget{entite_8h_aa5c02a34ced0a7e6039b31baf27d89e6}\label{entite_8h_aa5c02a34ced0a7e6039b31baf27d89e6}} 
+\#define {\bfseries I\+D\+\_\+\+P\+O\+T\+I\+O\+N\+\_\+\+PV}~6
+\item 
+\mbox{\Hypertarget{entite_8h_a0d01c23dce400c6874afa6dd31c2ad78}\label{entite_8h_a0d01c23dce400c6874afa6dd31c2ad78}} 
+\#define {\bfseries I\+D\+\_\+\+P\+O\+T\+I\+O\+N\+\_\+\+M\+A\+NA}~7
+\item 
+\mbox{\Hypertarget{entite_8h_a834e321539d8260171c942046fbb2bbd}\label{entite_8h_a834e321539d8260171c942046fbb2bbd}} 
+\#define {\bfseries I\+N\+D\+I\+C\+E\+\_\+\+E\+P\+E\+E\+\_\+\+P\+I\+E\+R\+RE}~0
+\item 
+\mbox{\Hypertarget{entite_8h_ac757e61492ecba56bbed2e2a0787adb4}\label{entite_8h_ac757e61492ecba56bbed2e2a0787adb4}} 
+\#define {\bfseries I\+N\+D\+I\+C\+E\+\_\+\+E\+P\+E\+E\+\_\+\+D\+I\+AM}~1
+\item 
+\mbox{\Hypertarget{entite_8h_a6b1160803b38a24426fe1fdf25042dda}\label{entite_8h_a6b1160803b38a24426fe1fdf25042dda}} 
+\#define {\bfseries I\+N\+D\+I\+C\+E\+\_\+\+B\+O\+U\+C\+L\+I\+E\+R\+\_\+\+B\+O\+IS}~2
+\item 
+\mbox{\Hypertarget{entite_8h_a6c90152940524264fc0947bf4a1c0243}\label{entite_8h_a6c90152940524264fc0947bf4a1c0243}} 
+\#define {\bfseries I\+N\+D\+I\+C\+E\+\_\+\+B\+O\+U\+C\+L\+I\+E\+R\+\_\+\+D\+I\+AM}~3
+\item 
+\mbox{\Hypertarget{entite_8h_a1fc7caccfa86dc8847a7ec7ca96082d6}\label{entite_8h_a1fc7caccfa86dc8847a7ec7ca96082d6}} 
+\#define {\bfseries I\+N\+D\+I\+C\+E\+\_\+\+P\+O\+T\+I\+O\+N\+\_\+\+PV}~4
+\item 
+\mbox{\Hypertarget{entite_8h_a88305a14a4d7556b27f342502adb4c61}\label{entite_8h_a88305a14a4d7556b27f342502adb4c61}} 
+\#define {\bfseries I\+N\+D\+I\+C\+E\+\_\+\+P\+O\+T\+I\+O\+N\+\_\+\+M\+A\+NA}~5
+\item 
+\mbox{\Hypertarget{entite_8h_ac58c626683f6df6b6ad0c9bf370c018f}\label{entite_8h_ac58c626683f6df6b6ad0c9bf370c018f}} 
+\#define {\bfseries I\+N\+D\+I\+C\+E\+\_\+\+E\+P\+EE}~0
+\item 
+\mbox{\Hypertarget{entite_8h_affac876c15ec7ed54d883b4d1c4e591d}\label{entite_8h_affac876c15ec7ed54d883b4d1c4e591d}} 
+\#define {\bfseries I\+N\+D\+I\+C\+E\+\_\+\+B\+O\+U\+C\+L\+I\+ER}~1
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{entite_8h_a9b1e7e73d6952f892e2eb1844f65265c}{a\+\_\+gauche}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$entite)
+\begin{DoxyCompactList}\small\item\em déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas à gauche \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_aa9afb234e9eb16fd89c313cdb975a278}{a\+\_\+droite}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$entite)
+\begin{DoxyCompactList}\small\item\em déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas à droite \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_a6d607d6ad02a239d995520b54d8cac62}{en\+\_\+bas}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$entite)
+\begin{DoxyCompactList}\small\item\em déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas en bas \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_a05c63590d2c2f4b399ff268c5a687b7a}{en\+\_\+haut}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$entite)
+\begin{DoxyCompactList}\small\item\em déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas en haut \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$ \mbox{\hyperlink{entite_8h_a2d0d98194c5fa83c07ea73bc859cb892}{creer\+\_\+joueur}} ()
+\begin{DoxyCompactList}\small\item\em alloue de la mémoire pour un joueur \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$ \mbox{\hyperlink{entite_8h_ac73a28430e8d12bd1877c369e6e2c40b}{creer\+\_\+monstre}} ()
+\begin{DoxyCompactList}\small\item\em alloue de la mémoire pour un monstre \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$ \mbox{\hyperlink{entite_8h_a5419fa5e3c0e0152358a9067e7687929}{creer\+\_\+non\+Combattant}} ()
+\begin{DoxyCompactList}\small\item\em alloue de la mémoire pour un pnj ou un coffre \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_a477cb5d47ec1d3d5be1963583396cbcb}{init\+\_\+joueur}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, int niveau, int zone, int pv\+\_\+M, int pv\+\_\+C, int mana\+\_\+M, int mana\+\_\+C, int atk, int or, int nb\+\_\+inv, int nb\+\_\+equip)
+\begin{DoxyCompactList}\small\item\em initialisation du joueur \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_a5d4d12624a601d9c382fb93ad638446b}{init\+\_\+monstre}} (\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$monster, int pv\+Max, int pv\+Cour, int attaque, int vitesse, int niveau, int type)
+\begin{DoxyCompactList}\small\item\em initialisation d\textquotesingle{}un monstre \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_a964b470d46568a7cd3d8f4b8833a685b}{init\+\_\+non\+Combattant}} (\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$non\+Combattant, int id, float x, float y, int visite)
+\begin{DoxyCompactList}\small\item\em initialisation d\textquotesingle{}un non combattant \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_add9bc42cd91707b12c3c4806fad2f0e4}{detruire\+\_\+joueur}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$$\ast$player)
+\begin{DoxyCompactList}\small\item\em libère la mémoire allouée pour le joueur \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_a4346c66945812c852cc724421ec72f58}{detruire\+\_\+monstre}} (\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$$\ast$monster)
+\begin{DoxyCompactList}\small\item\em libère la mémoire allouée pour le monstre \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_a0b4bcb67ab64f6875892ad0b75cd32bb}{detruire\+\_\+non\+Combattant}} (\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$$\ast$non\+Combat)
+\begin{DoxyCompactList}\small\item\em libère la mémoire allouée pour le non combattant \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$ \mbox{\hyperlink{entite_8h_aea48ddd5aa698a21ce7dd3bc414c02c6}{creer\+\_\+objet}} ()
+\begin{DoxyCompactList}\small\item\em alloue de la mémoire pour un objet \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$ \mbox{\hyperlink{entite_8h_ae9bb42d52f03bb6203ad101643e97382}{objet\+\_\+initialiser}} (\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$objet, int id, int attaque\+\_\+sup, int mana\+\_\+sup, int vie\+\_\+sup, char $\ast$nom, char $\ast$description)
+\begin{DoxyCompactList}\small\item\em initialisation d\textquotesingle{}un objet \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_aa1fb908770ad4e0e5bc9a7939f964331}{detruire\+\_\+objet}} (\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$$\ast$objet)
+\begin{DoxyCompactList}\small\item\em libère la mémoire allouée pour l\textquotesingle{}objet \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_a85f32539347611837d7f5da392d48815}{initialiser\+\_\+biblio}} (\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} tableau\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em initialise une bibliothèque d\textquotesingle{}objets \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{entite_8h_ac5b9976b185b37232c5ccf1b1bef4248}{objet\+\_\+present}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, \mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$biblio, int ind)
+\begin{DoxyCompactList}\small\item\em vérifie qu\textquotesingle{}un objet est présent dans l\textquotesingle{}inventaire du joueur \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{entite_8h_a27588e045842c951f7a43771c21d1dfe}\label{entite_8h_a27588e045842c951f7a43771c21d1dfe}} 
+void {\bfseries ajout\+\_\+objet} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, \mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$biblio, int ind)
+\item 
+void \mbox{\hyperlink{entite_8h_a6fc66d09143aa4d8affe25a38384075f}{equipement\+\_\+desequipement\+\_\+objet}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, int i\+\_\+tab\+\_\+inv, int i\+\_\+obj\+\_\+equipe)
+\begin{DoxyCompactList}\small\item\em équipe ou déséquipe le joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+header des entités 
+
+\begin{DoxyAuthor}{Auteur}
+Anna Béranger, Arthur Fabre, Alex Choux 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/03/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{entite_8h_aa9afb234e9eb16fd89c313cdb975a278}\label{entite_8h_aa9afb234e9eb16fd89c313cdb975a278}} 
+\index{entite.h@{entite.h}!a\_droite@{a\_droite}}
+\index{a\_droite@{a\_droite}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{a\_droite()}{a\_droite()}}
+{\footnotesize\ttfamily void a\+\_\+droite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas à droite 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & combattant à déplacer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a9b1e7e73d6952f892e2eb1844f65265c}\label{entite_8h_a9b1e7e73d6952f892e2eb1844f65265c}} 
+\index{entite.h@{entite.h}!a\_gauche@{a\_gauche}}
+\index{a\_gauche@{a\_gauche}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{a\_gauche()}{a\_gauche()}}
+{\footnotesize\ttfamily void a\+\_\+gauche (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas à gauche 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & combattant à déplacer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a2d0d98194c5fa83c07ea73bc859cb892}\label{entite_8h_a2d0d98194c5fa83c07ea73bc859cb892}} 
+\index{entite.h@{entite.h}!creer\_joueur@{creer\_joueur}}
+\index{creer\_joueur@{creer\_joueur}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{creer\_joueur()}{creer\_joueur()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}}$\ast$ creer\+\_\+joueur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+alloue de la mémoire pour un joueur 
+
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur le joueur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{entite_8h_ac73a28430e8d12bd1877c369e6e2c40b}\label{entite_8h_ac73a28430e8d12bd1877c369e6e2c40b}} 
+\index{entite.h@{entite.h}!creer\_monstre@{creer\_monstre}}
+\index{creer\_monstre@{creer\_monstre}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{creer\_monstre()}{creer\_monstre()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}}$\ast$ creer\+\_\+monstre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+alloue de la mémoire pour un monstre 
+
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur le monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{entite_8h_a5419fa5e3c0e0152358a9067e7687929}\label{entite_8h_a5419fa5e3c0e0152358a9067e7687929}} 
+\index{entite.h@{entite.h}!creer\_nonCombattant@{creer\_nonCombattant}}
+\index{creer\_nonCombattant@{creer\_nonCombattant}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{creer\_nonCombattant()}{creer\_nonCombattant()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}}$\ast$ creer\+\_\+non\+Combattant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+alloue de la mémoire pour un pnj ou un coffre 
+
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur le non combattant 
+\end{DoxyReturn}
+\mbox{\Hypertarget{entite_8h_aea48ddd5aa698a21ce7dd3bc414c02c6}\label{entite_8h_aea48ddd5aa698a21ce7dd3bc414c02c6}} 
+\index{entite.h@{entite.h}!creer\_objet@{creer\_objet}}
+\index{creer\_objet@{creer\_objet}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{creer\_objet()}{creer\_objet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structobjet__t}{objet\+\_\+t}}$\ast$ creer\+\_\+objet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+alloue de la mémoire pour un objet 
+
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur l\textquotesingle{}objet créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{entite_8h_add9bc42cd91707b12c3c4806fad2f0e4}\label{entite_8h_add9bc42cd91707b12c3c4806fad2f0e4}} 
+\index{entite.h@{entite.h}!detruire\_joueur@{detruire\_joueur}}
+\index{detruire\_joueur@{detruire\_joueur}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{detruire\_joueur()}{detruire\_joueur()}}
+{\footnotesize\ttfamily void detruire\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$$\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+libère la mémoire allouée pour le joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & le joueur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a4346c66945812c852cc724421ec72f58}\label{entite_8h_a4346c66945812c852cc724421ec72f58}} 
+\index{entite.h@{entite.h}!detruire\_monstre@{detruire\_monstre}}
+\index{detruire\_monstre@{detruire\_monstre}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{detruire\_monstre()}{detruire\_monstre()}}
+{\footnotesize\ttfamily void detruire\+\_\+monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$$\ast$}]{monster }\end{DoxyParamCaption})}
+
+
+
+libère la mémoire allouée pour le monstre 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monster} & le monstre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a0b4bcb67ab64f6875892ad0b75cd32bb}\label{entite_8h_a0b4bcb67ab64f6875892ad0b75cd32bb}} 
+\index{entite.h@{entite.h}!detruire\_nonCombattant@{detruire\_nonCombattant}}
+\index{detruire\_nonCombattant@{detruire\_nonCombattant}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{detruire\_nonCombattant()}{detruire\_nonCombattant()}}
+{\footnotesize\ttfamily void detruire\+\_\+non\+Combattant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$$\ast$}]{non\+Combat }\end{DoxyParamCaption})}
+
+
+
+libère la mémoire allouée pour le non combattant 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em non\+Combat} & le non combattant \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_aa1fb908770ad4e0e5bc9a7939f964331}\label{entite_8h_aa1fb908770ad4e0e5bc9a7939f964331}} 
+\index{entite.h@{entite.h}!detruire\_objet@{detruire\_objet}}
+\index{detruire\_objet@{detruire\_objet}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{detruire\_objet()}{detruire\_objet()}}
+{\footnotesize\ttfamily void detruire\+\_\+objet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$$\ast$}]{objet }\end{DoxyParamCaption})}
+
+
+
+libère la mémoire allouée pour l\textquotesingle{}objet 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em objet} & l\textquotesingle{}objet à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a6d607d6ad02a239d995520b54d8cac62}\label{entite_8h_a6d607d6ad02a239d995520b54d8cac62}} 
+\index{entite.h@{entite.h}!en\_bas@{en\_bas}}
+\index{en\_bas@{en\_bas}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{en\_bas()}{en\_bas()}}
+{\footnotesize\ttfamily void en\+\_\+bas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas en bas 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & combattant à déplacer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a05c63590d2c2f4b399ff268c5a687b7a}\label{entite_8h_a05c63590d2c2f4b399ff268c5a687b7a}} 
+\index{entite.h@{entite.h}!en\_haut@{en\_haut}}
+\index{en\_haut@{en\_haut}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{en\_haut()}{en\_haut()}}
+{\footnotesize\ttfamily void en\+\_\+haut (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas en haut 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & combattant à déplacer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a6fc66d09143aa4d8affe25a38384075f}\label{entite_8h_a6fc66d09143aa4d8affe25a38384075f}} 
+\index{entite.h@{entite.h}!equipement\_desequipement\_objet@{equipement\_desequipement\_objet}}
+\index{equipement\_desequipement\_objet@{equipement\_desequipement\_objet}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{equipement\_desequipement\_objet()}{equipement\_desequipement\_objet()}}
+{\footnotesize\ttfamily void equipement\+\_\+desequipement\+\_\+objet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{joueur,  }\item[{int}]{i\+\_\+tab\+\_\+inv,  }\item[{int}]{i\+\_\+obj\+\_\+equipe }\end{DoxyParamCaption})}
+
+
+
+équipe ou déséquipe le joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & le joueur \\
+\hline
+{\em i\+\_\+tab\+\_\+inv} & indice de l\textquotesingle{}objet dans l\textquotesingle{}inventaire du joueur \\
+\hline
+{\em i\+\_\+obj\+\_\+equipe} & indice de l\textquotesingle{}objet parmis ses objets équipés \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a477cb5d47ec1d3d5be1963583396cbcb}\label{entite_8h_a477cb5d47ec1d3d5be1963583396cbcb}} 
+\index{entite.h@{entite.h}!init\_joueur@{init\_joueur}}
+\index{init\_joueur@{init\_joueur}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{init\_joueur()}{init\_joueur()}}
+{\footnotesize\ttfamily void init\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{joueur,  }\item[{int}]{niveau,  }\item[{int}]{zone,  }\item[{int}]{pv\+\_\+M,  }\item[{int}]{pv\+\_\+C,  }\item[{int}]{mana\+\_\+M,  }\item[{int}]{mana\+\_\+C,  }\item[{int}]{atk,  }\item[{int}]{or,  }\item[{int}]{nb\+\_\+inv,  }\item[{int}]{nb\+\_\+equip }\end{DoxyParamCaption})}
+
+
+
+initialisation du joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & le joueur à initialiser \\
+\hline
+{\em niveau} & le niveau à donner au joueur \\
+\hline
+{\em zone} & la zone à donner au joueur \\
+\hline
+{\em pvM} & le nombre de points de vie maximal à donner au joueur \\
+\hline
+{\em pvC} & le nombre de points de vie à donner au joueur \\
+\hline
+{\em mana\+\_\+M} & le nombre de points de mana maximal à donner au joueur \\
+\hline
+{\em mana\+\_\+C} & le nombre de points de mana à donner au joueur \\
+\hline
+{\em atk} & la puissance d\textquotesingle{}attaque à donner au joueur \\
+\hline
+{\em or} & le nombre d\textquotesingle{}or à donner au joueur \\
+\hline
+{\em nb\+\_\+inv} & nombre d\textquotesingle{}objets qui seront présents dans l\textquotesingle{}inventaire \\
+\hline
+{\em nb\+\_\+equip} & nombre d\textquotesingle{}objets que le joueur aura d\textquotesingle{}équipés \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a5d4d12624a601d9c382fb93ad638446b}\label{entite_8h_a5d4d12624a601d9c382fb93ad638446b}} 
+\index{entite.h@{entite.h}!init\_monstre@{init\_monstre}}
+\index{init\_monstre@{init\_monstre}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{init\_monstre()}{init\_monstre()}}
+{\footnotesize\ttfamily void init\+\_\+monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$}]{monster,  }\item[{int}]{pv\+Max,  }\item[{int}]{pv\+Cour,  }\item[{int}]{attaque,  }\item[{int}]{vitesse,  }\item[{int}]{niveau,  }\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+initialisation d\textquotesingle{}un monstre 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monster} & le monstre à initialiser \\
+\hline
+{\em pv\+Max} & le nombre de points de vie maximal à donner au monstre \\
+\hline
+{\em pv\+Cour} & le nombre de points de vie à donner au mnstre \\
+\hline
+{\em attaque} & la puissance d\textquotesingle{}attaque à donner au monstre \\
+\hline
+{\em vitesse} & la vitesse à donner au monstre \\
+\hline
+{\em niveau} & le niveau à donner au monstre \\
+\hline
+{\em type} & le type que sera le monstre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a964b470d46568a7cd3d8f4b8833a685b}\label{entite_8h_a964b470d46568a7cd3d8f4b8833a685b}} 
+\index{entite.h@{entite.h}!init\_nonCombattant@{init\_nonCombattant}}
+\index{init\_nonCombattant@{init\_nonCombattant}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{init\_nonCombattant()}{init\_nonCombattant()}}
+{\footnotesize\ttfamily void init\+\_\+non\+Combattant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$}]{non\+Combat,  }\item[{int}]{id,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{int}]{visite }\end{DoxyParamCaption})}
+
+
+
+initialisation d\textquotesingle{}un non combattant 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em non\+Combat} & le non combattant à initialiser \\
+\hline
+{\em x} & les coordonnées en abscisses à donner à l\textquotesingle{}entité \\
+\hline
+{\em y} & les coordonnées en ordonnées à donner à l\textquotesingle{}entité \\
+\hline
+{\em id} & l\textquotesingle{}id à donner à l\textquotesingle{}entité \\
+\hline
+{\em visite} & l\textquotesingle{}initialiser déjà visité ou non par le joueur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a85f32539347611837d7f5da392d48815}\label{entite_8h_a85f32539347611837d7f5da392d48815}} 
+\index{entite.h@{entite.h}!initialiser\_biblio@{initialiser\_biblio}}
+\index{initialiser\_biblio@{initialiser\_biblio}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{initialiser\_biblio()}{initialiser\_biblio()}}
+{\footnotesize\ttfamily void initialiser\+\_\+biblio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}}}]{tableau\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+initialise une bibliothèque d\textquotesingle{}objets 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tableau} & le tableau d\textquotesingle{}objet qui représente la bibliothèque \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_ae9bb42d52f03bb6203ad101643e97382}\label{entite_8h_ae9bb42d52f03bb6203ad101643e97382}} 
+\index{entite.h@{entite.h}!objet\_initialiser@{objet\_initialiser}}
+\index{objet\_initialiser@{objet\_initialiser}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{objet\_initialiser()}{objet\_initialiser()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structobjet__t}{objet\+\_\+t}}$\ast$ objet\+\_\+initialiser (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$}]{objet,  }\item[{int}]{id,  }\item[{int}]{attaque\+\_\+sup,  }\item[{int}]{mana\+\_\+sup,  }\item[{int}]{vie\+\_\+sup,  }\item[{char $\ast$}]{nom,  }\item[{char $\ast$}]{description }\end{DoxyParamCaption})}
+
+
+
+initialisation d\textquotesingle{}un objet 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em objet} & l\textquotesingle{}objet à initialisé \\
+\hline
+{\em id} & l\textquotesingle{}id à donner à l\textquotesingle{}objet \\
+\hline
+{\em attaque\+\_\+sup} & l\textquotesingle{}attaque supplémentaire que l\textquotesingle{}objet doit apporter \\
+\hline
+{\em mana\+\_\+sup} & les points de mana supplémentaires que l\textquotesingle{}objet doit apporter \\
+\hline
+{\em les} & points de vie supplémentaires que l\textquotesingle{}objet doit apporter \\
+\hline
+{\em nom} & le nom de l\textquotesingle{}objet \\
+\hline
+{\em description} & la description de l\textquotesingle{}objet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur sur l\textquotesingle{}objet initialisé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{entite_8h_ac5b9976b185b37232c5ccf1b1bef4248}\label{entite_8h_ac5b9976b185b37232c5ccf1b1bef4248}} 
+\index{entite.h@{entite.h}!objet\_present@{objet\_present}}
+\index{objet\_present@{objet\_present}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{objet\_present()}{objet\_present()}}
+{\footnotesize\ttfamily int objet\+\_\+present (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{joueur,  }\item[{\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$}]{biblio,  }\item[{int}]{ind }\end{DoxyParamCaption})}
+
+
+
+vérifie qu\textquotesingle{}un objet est présent dans l\textquotesingle{}inventaire du joueur 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & le joueur \\
+\hline
+{\em biblio} & la bibliothèque qui contient tous les objets existants \\
+\hline
+{\em ind} & l\textquotesingle{}indice de l\textquotesingle{}objet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+objet présent dans l\textquotesingle{}inventaire (1), objet absent (0) 
+\end{DoxyReturn}

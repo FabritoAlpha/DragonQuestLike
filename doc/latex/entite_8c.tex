@@ -11,46 +11,46 @@ Graphe des dépendances par inclusion de entite.\+c\+:
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{entite_8c_a9b1e7e73d6952f892e2eb1844f65265c}{a\+\_\+gauche}} (combattant\+\_\+t $\ast$entite)
+void \mbox{\hyperlink{entite_8c_a9b1e7e73d6952f892e2eb1844f65265c}{a\+\_\+gauche}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$entite)
 \begin{DoxyCompactList}\small\item\em déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas à gauche \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{entite_8c_aa9afb234e9eb16fd89c313cdb975a278}{a\+\_\+droite}} (combattant\+\_\+t $\ast$entite)
+void \mbox{\hyperlink{entite_8c_aa9afb234e9eb16fd89c313cdb975a278}{a\+\_\+droite}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$entite)
 \begin{DoxyCompactList}\small\item\em déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas à droite \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{entite_8c_a6d607d6ad02a239d995520b54d8cac62}{en\+\_\+bas}} (combattant\+\_\+t $\ast$entite)
+void \mbox{\hyperlink{entite_8c_a6d607d6ad02a239d995520b54d8cac62}{en\+\_\+bas}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$entite)
 \begin{DoxyCompactList}\small\item\em déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas en bas \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{entite_8c_a05c63590d2c2f4b399ff268c5a687b7a}{en\+\_\+haut}} (combattant\+\_\+t $\ast$entite)
+void \mbox{\hyperlink{entite_8c_a05c63590d2c2f4b399ff268c5a687b7a}{en\+\_\+haut}} (\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$entite)
 \begin{DoxyCompactList}\small\item\em déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas en haut \end{DoxyCompactList}\item 
-joueur\+\_\+t $\ast$ \mbox{\hyperlink{entite_8c_a71ff41e36990c95b602165508c293747}{creer\+\_\+joueur}} ()
+\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$ \mbox{\hyperlink{entite_8c_a71ff41e36990c95b602165508c293747}{creer\+\_\+joueur}} ()
 \begin{DoxyCompactList}\small\item\em alloue de la mémoire pour un joueur \end{DoxyCompactList}\item 
-monstre\+\_\+t $\ast$ \mbox{\hyperlink{entite_8c_a5382651b04b9611b4d35d332ef139e6a}{creer\+\_\+monstre}} ()
+\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$ \mbox{\hyperlink{entite_8c_a5382651b04b9611b4d35d332ef139e6a}{creer\+\_\+monstre}} ()
 \begin{DoxyCompactList}\small\item\em alloue de la mémoire pour un monstre \end{DoxyCompactList}\item 
-non\+Combattant\+\_\+t $\ast$ \mbox{\hyperlink{entite_8c_aff1b683c2e4978bf4e136a8416b9bcb6}{creer\+\_\+non\+Combattant}} ()
+\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$ \mbox{\hyperlink{entite_8c_aff1b683c2e4978bf4e136a8416b9bcb6}{creer\+\_\+non\+Combattant}} ()
 \begin{DoxyCompactList}\small\item\em alloue de la mémoire pour un pnj ou un coffre \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{entite_8c_add9bc42cd91707b12c3c4806fad2f0e4}{detruire\+\_\+joueur}} (joueur\+\_\+t $\ast$$\ast$player)
+void \mbox{\hyperlink{entite_8c_add9bc42cd91707b12c3c4806fad2f0e4}{detruire\+\_\+joueur}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$$\ast$player)
 \begin{DoxyCompactList}\small\item\em libère la mémoire allouée pour le joueur \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{entite_8c_a4346c66945812c852cc724421ec72f58}{detruire\+\_\+monstre}} (monstre\+\_\+t $\ast$$\ast$monster)
+void \mbox{\hyperlink{entite_8c_a4346c66945812c852cc724421ec72f58}{detruire\+\_\+monstre}} (\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$$\ast$monster)
 \begin{DoxyCompactList}\small\item\em libère la mémoire allouée pour le monstre \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{entite_8c_a0b4bcb67ab64f6875892ad0b75cd32bb}{detruire\+\_\+non\+Combattant}} (non\+Combattant\+\_\+t $\ast$$\ast$non\+Combat)
+void \mbox{\hyperlink{entite_8c_a0b4bcb67ab64f6875892ad0b75cd32bb}{detruire\+\_\+non\+Combattant}} (\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$$\ast$non\+Combat)
 \begin{DoxyCompactList}\small\item\em libère la mémoire allouée pour le non combattant \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{entite_8c_a477cb5d47ec1d3d5be1963583396cbcb}{init\+\_\+joueur}} (joueur\+\_\+t $\ast$joueur, int niveau, int zone, int pv\+\_\+M, int pv\+\_\+C, int mana\+\_\+M, int mana\+\_\+C, int atk, int or, int nb\+\_\+inv, int nb\+\_\+equip)
+void \mbox{\hyperlink{entite_8c_a477cb5d47ec1d3d5be1963583396cbcb}{init\+\_\+joueur}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, int niveau, int zone, int pv\+\_\+M, int pv\+\_\+C, int mana\+\_\+M, int mana\+\_\+C, int atk, int or, int nb\+\_\+inv, int nb\+\_\+equip)
 \begin{DoxyCompactList}\small\item\em initialisation du joueur \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{entite_8c_a5d4d12624a601d9c382fb93ad638446b}{init\+\_\+monstre}} (monstre\+\_\+t $\ast$monster, int pv\+Max, int pv\+Cour, int attaque, int vitesse, int niveau, int type)
+void \mbox{\hyperlink{entite_8c_a5d4d12624a601d9c382fb93ad638446b}{init\+\_\+monstre}} (\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$monster, int pv\+Max, int pv\+Cour, int attaque, int vitesse, int niveau, int type)
 \begin{DoxyCompactList}\small\item\em initialisation d\textquotesingle{}un monstre \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{entite_8c_a566925ae95cf6985b850b34b0fab6207}{init\+\_\+non\+Combattant}} (non\+Combattant\+\_\+t $\ast$non\+Combat, int id, float x, float y, int visite)
+void \mbox{\hyperlink{entite_8c_a566925ae95cf6985b850b34b0fab6207}{init\+\_\+non\+Combattant}} (\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$non\+Combat, int id, float x, float y, int visite)
 \begin{DoxyCompactList}\small\item\em initialisation d\textquotesingle{}un non combattant \end{DoxyCompactList}\item 
-objet\+\_\+t $\ast$ \mbox{\hyperlink{entite_8c_a16733682ff83a0301dc5d4b692f733e7}{creer\+\_\+objet}} ()
+\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$ \mbox{\hyperlink{entite_8c_a16733682ff83a0301dc5d4b692f733e7}{creer\+\_\+objet}} ()
 \begin{DoxyCompactList}\small\item\em alloue de la mémoire pour un objet \end{DoxyCompactList}\item 
-objet\+\_\+t $\ast$ \mbox{\hyperlink{entite_8c_a542fb38a2d8afe39aaa67e3fa4ebd4c3}{objet\+\_\+initialiser}} (objet\+\_\+t $\ast$objet, int id, int attaque\+\_\+sup, int mana\+\_\+sup, int vie\+\_\+sup, char $\ast$nom, char $\ast$description)
+\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$ \mbox{\hyperlink{entite_8c_a542fb38a2d8afe39aaa67e3fa4ebd4c3}{objet\+\_\+initialiser}} (\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$objet, int id, int attaque\+\_\+sup, int mana\+\_\+sup, int vie\+\_\+sup, char $\ast$nom, char $\ast$description)
 \begin{DoxyCompactList}\small\item\em initialisation d\textquotesingle{}un objet \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{entite_8c_aa1fb908770ad4e0e5bc9a7939f964331}{detruire\+\_\+objet}} (objet\+\_\+t $\ast$$\ast$objet)
+void \mbox{\hyperlink{entite_8c_aa1fb908770ad4e0e5bc9a7939f964331}{detruire\+\_\+objet}} (\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$$\ast$objet)
 \begin{DoxyCompactList}\small\item\em libère la mémoire allouée pour l\textquotesingle{}objet \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{entite_8c_a85f32539347611837d7f5da392d48815}{initialiser\+\_\+biblio}} (objet\+\_\+t tableau\mbox{[}$\,$\mbox{]})
+void \mbox{\hyperlink{entite_8c_a85f32539347611837d7f5da392d48815}{initialiser\+\_\+biblio}} (\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} tableau\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em initialise une bibliothèque d\textquotesingle{}objets \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{entite_8c_ac5b9976b185b37232c5ccf1b1bef4248}{objet\+\_\+present}} (joueur\+\_\+t $\ast$joueur, objet\+\_\+t $\ast$biblio, int ind)
+int \mbox{\hyperlink{entite_8c_ac5b9976b185b37232c5ccf1b1bef4248}{objet\+\_\+present}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, \mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$biblio, int ind)
 \begin{DoxyCompactList}\small\item\em vérifie qu\textquotesingle{}un objet est présent dans l\textquotesingle{}inventaire du joueur \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{entite_8c_a27588e045842c951f7a43771c21d1dfe}\label{entite_8c_a27588e045842c951f7a43771c21d1dfe}} 
-void {\bfseries ajout\+\_\+objet} (joueur\+\_\+t $\ast$joueur, objet\+\_\+t $\ast$biblio, int ind)
+void {\bfseries ajout\+\_\+objet} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, \mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$biblio, int ind)
 \item 
-void \mbox{\hyperlink{entite_8c_a6fc66d09143aa4d8affe25a38384075f}{equipement\+\_\+desequipement\+\_\+objet}} (joueur\+\_\+t $\ast$joueur, int i\+\_\+tab\+\_\+inv, int i\+\_\+obj\+\_\+equipe)
+void \mbox{\hyperlink{entite_8c_a6fc66d09143aa4d8affe25a38384075f}{equipement\+\_\+desequipement\+\_\+objet}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, int i\+\_\+tab\+\_\+inv, int i\+\_\+obj\+\_\+equipe)
 \begin{DoxyCompactList}\small\item\em équipe ou déséquipe le joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -70,7 +70,7 @@ Anna Beranger, Alex Choux, Arthur Fabre
 \index{entite.c@{entite.c}!a\_droite@{a\_droite}}
 \index{a\_droite@{a\_droite}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{a\_droite()}{a\_droite()}}
-{\footnotesize\ttfamily void a\+\_\+droite (\begin{DoxyParamCaption}\item[{combattant\+\_\+t $\ast$}]{entite }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void a\+\_\+droite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{entite }\end{DoxyParamCaption})}
 
 
 
@@ -85,7 +85,7 @@ déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas à droit
 \index{entite.c@{entite.c}!a\_gauche@{a\_gauche}}
 \index{a\_gauche@{a\_gauche}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{a\_gauche()}{a\_gauche()}}
-{\footnotesize\ttfamily void a\+\_\+gauche (\begin{DoxyParamCaption}\item[{combattant\+\_\+t $\ast$}]{entite }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void a\+\_\+gauche (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{entite }\end{DoxyParamCaption})}
 
 
 
@@ -100,7 +100,7 @@ déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas à gauch
 \index{entite.c@{entite.c}!creer\_joueur@{creer\_joueur}}
 \index{creer\_joueur@{creer\_joueur}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{creer\_joueur()}{creer\_joueur()}}
-{\footnotesize\ttfamily joueur\+\_\+t $\ast$ creer\+\_\+joueur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$ creer\+\_\+joueur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -113,7 +113,7 @@ un pointeur sur le joueur
 \index{entite.c@{entite.c}!creer\_monstre@{creer\_monstre}}
 \index{creer\_monstre@{creer\_monstre}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{creer\_monstre()}{creer\_monstre()}}
-{\footnotesize\ttfamily monstre\+\_\+t $\ast$ creer\+\_\+monstre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$ creer\+\_\+monstre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -126,7 +126,7 @@ un pointeur sur le monstre
 \index{entite.c@{entite.c}!creer\_nonCombattant@{creer\_nonCombattant}}
 \index{creer\_nonCombattant@{creer\_nonCombattant}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{creer\_nonCombattant()}{creer\_nonCombattant()}}
-{\footnotesize\ttfamily non\+Combattant\+\_\+t $\ast$ creer\+\_\+non\+Combattant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$ creer\+\_\+non\+Combattant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -139,7 +139,7 @@ un pointeur sur le non combattant
 \index{entite.c@{entite.c}!creer\_objet@{creer\_objet}}
 \index{creer\_objet@{creer\_objet}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{creer\_objet()}{creer\_objet()}}
-{\footnotesize\ttfamily objet\+\_\+t $\ast$ creer\+\_\+objet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$ creer\+\_\+objet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -152,7 +152,7 @@ un pointeur sur l\textquotesingle{}objet créé
 \index{entite.c@{entite.c}!detruire\_joueur@{detruire\_joueur}}
 \index{detruire\_joueur@{detruire\_joueur}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{detruire\_joueur()}{detruire\_joueur()}}
-{\footnotesize\ttfamily void detruire\+\_\+joueur (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$$\ast$}]{player }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void detruire\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$$\ast$}]{player }\end{DoxyParamCaption})}
 
 
 
@@ -167,7 +167,7 @@ libère la mémoire allouée pour le joueur
 \index{entite.c@{entite.c}!detruire\_monstre@{detruire\_monstre}}
 \index{detruire\_monstre@{detruire\_monstre}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{detruire\_monstre()}{detruire\_monstre()}}
-{\footnotesize\ttfamily void detruire\+\_\+monstre (\begin{DoxyParamCaption}\item[{monstre\+\_\+t $\ast$$\ast$}]{monster }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void detruire\+\_\+monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$$\ast$}]{monster }\end{DoxyParamCaption})}
 
 
 
@@ -182,7 +182,7 @@ libère la mémoire allouée pour le monstre
 \index{entite.c@{entite.c}!detruire\_nonCombattant@{detruire\_nonCombattant}}
 \index{detruire\_nonCombattant@{detruire\_nonCombattant}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{detruire\_nonCombattant()}{detruire\_nonCombattant()}}
-{\footnotesize\ttfamily void detruire\+\_\+non\+Combattant (\begin{DoxyParamCaption}\item[{non\+Combattant\+\_\+t $\ast$$\ast$}]{non\+Combat }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void detruire\+\_\+non\+Combattant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$$\ast$}]{non\+Combat }\end{DoxyParamCaption})}
 
 
 
@@ -197,7 +197,7 @@ libère la mémoire allouée pour le non combattant
 \index{entite.c@{entite.c}!detruire\_objet@{detruire\_objet}}
 \index{detruire\_objet@{detruire\_objet}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{detruire\_objet()}{detruire\_objet()}}
-{\footnotesize\ttfamily void detruire\+\_\+objet (\begin{DoxyParamCaption}\item[{objet\+\_\+t $\ast$$\ast$}]{objet }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void detruire\+\_\+objet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$$\ast$}]{objet }\end{DoxyParamCaption})}
 
 
 
@@ -212,7 +212,7 @@ libère la mémoire allouée pour l\textquotesingle{}objet
 \index{entite.c@{entite.c}!en\_bas@{en\_bas}}
 \index{en\_bas@{en\_bas}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{en\_bas()}{en\_bas()}}
-{\footnotesize\ttfamily void en\+\_\+bas (\begin{DoxyParamCaption}\item[{combattant\+\_\+t $\ast$}]{entite }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void en\+\_\+bas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{entite }\end{DoxyParamCaption})}
 
 
 
@@ -227,7 +227,7 @@ déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas en bas
 \index{entite.c@{entite.c}!en\_haut@{en\_haut}}
 \index{en\_haut@{en\_haut}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{en\_haut()}{en\_haut()}}
-{\footnotesize\ttfamily void en\+\_\+haut (\begin{DoxyParamCaption}\item[{combattant\+\_\+t $\ast$}]{entite }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void en\+\_\+haut (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcombattant__t}{combattant\+\_\+t}} $\ast$}]{entite }\end{DoxyParamCaption})}
 
 
 
@@ -242,7 +242,7 @@ déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas en haut
 \index{entite.c@{entite.c}!equipement\_desequipement\_objet@{equipement\_desequipement\_objet}}
 \index{equipement\_desequipement\_objet@{equipement\_desequipement\_objet}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{equipement\_desequipement\_objet()}{equipement\_desequipement\_objet()}}
-{\footnotesize\ttfamily void equipement\+\_\+desequipement\+\_\+objet (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{joueur,  }\item[{int}]{i\+\_\+tab\+\_\+inv,  }\item[{int}]{i\+\_\+obj\+\_\+equipe }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void equipement\+\_\+desequipement\+\_\+objet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{joueur,  }\item[{int}]{i\+\_\+tab\+\_\+inv,  }\item[{int}]{i\+\_\+obj\+\_\+equipe }\end{DoxyParamCaption})}
 
 
 
@@ -261,7 +261,7 @@ déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas en haut
 \index{entite.c@{entite.c}!init\_joueur@{init\_joueur}}
 \index{init\_joueur@{init\_joueur}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{init\_joueur()}{init\_joueur()}}
-{\footnotesize\ttfamily void init\+\_\+joueur (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{joueur,  }\item[{int}]{niveau,  }\item[{int}]{zone,  }\item[{int}]{pv\+\_\+M,  }\item[{int}]{pv\+\_\+C,  }\item[{int}]{mana\+\_\+M,  }\item[{int}]{mana\+\_\+C,  }\item[{int}]{atk,  }\item[{int}]{or,  }\item[{int}]{nb\+\_\+inv,  }\item[{int}]{nb\+\_\+equip }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void init\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{joueur,  }\item[{int}]{niveau,  }\item[{int}]{zone,  }\item[{int}]{pv\+\_\+M,  }\item[{int}]{pv\+\_\+C,  }\item[{int}]{mana\+\_\+M,  }\item[{int}]{mana\+\_\+C,  }\item[{int}]{atk,  }\item[{int}]{or,  }\item[{int}]{nb\+\_\+inv,  }\item[{int}]{nb\+\_\+equip }\end{DoxyParamCaption})}
 
 
 
@@ -296,7 +296,7 @@ initialisation du joueur
 \index{entite.c@{entite.c}!init\_monstre@{init\_monstre}}
 \index{init\_monstre@{init\_monstre}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{init\_monstre()}{init\_monstre()}}
-{\footnotesize\ttfamily void init\+\_\+monstre (\begin{DoxyParamCaption}\item[{monstre\+\_\+t $\ast$}]{monster,  }\item[{int}]{pv\+Max,  }\item[{int}]{pv\+Cour,  }\item[{int}]{attaque,  }\item[{int}]{vitesse,  }\item[{int}]{niveau,  }\item[{int}]{type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void init\+\_\+monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$}]{monster,  }\item[{int}]{pv\+Max,  }\item[{int}]{pv\+Cour,  }\item[{int}]{attaque,  }\item[{int}]{vitesse,  }\item[{int}]{niveau,  }\item[{int}]{type }\end{DoxyParamCaption})}
 
 
 
@@ -323,7 +323,7 @@ initialisation d\textquotesingle{}un monstre
 \index{entite.c@{entite.c}!init\_nonCombattant@{init\_nonCombattant}}
 \index{init\_nonCombattant@{init\_nonCombattant}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{init\_nonCombattant()}{init\_nonCombattant()}}
-{\footnotesize\ttfamily void init\+\_\+non\+Combattant (\begin{DoxyParamCaption}\item[{non\+Combattant\+\_\+t $\ast$}]{non\+Combat,  }\item[{int}]{id,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{int}]{visite }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void init\+\_\+non\+Combattant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$}]{non\+Combat,  }\item[{int}]{id,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{int}]{visite }\end{DoxyParamCaption})}
 
 
 
@@ -346,7 +346,7 @@ initialisation d\textquotesingle{}un non combattant
 \index{entite.c@{entite.c}!initialiser\_biblio@{initialiser\_biblio}}
 \index{initialiser\_biblio@{initialiser\_biblio}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{initialiser\_biblio()}{initialiser\_biblio()}}
-{\footnotesize\ttfamily void initialiser\+\_\+biblio (\begin{DoxyParamCaption}\item[{objet\+\_\+t}]{tableau\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void initialiser\+\_\+biblio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}}}]{tableau\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
 
 
@@ -361,7 +361,7 @@ initialise une bibliothèque d\textquotesingle{}objets
 \index{entite.c@{entite.c}!objet\_initialiser@{objet\_initialiser}}
 \index{objet\_initialiser@{objet\_initialiser}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{objet\_initialiser()}{objet\_initialiser()}}
-{\footnotesize\ttfamily objet\+\_\+t $\ast$ objet\+\_\+initialiser (\begin{DoxyParamCaption}\item[{objet\+\_\+t $\ast$}]{objet,  }\item[{int}]{id,  }\item[{int}]{attaque\+\_\+sup,  }\item[{int}]{mana\+\_\+sup,  }\item[{int}]{vie\+\_\+sup,  }\item[{char $\ast$}]{nom,  }\item[{char $\ast$}]{description }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$ objet\+\_\+initialiser (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$}]{objet,  }\item[{int}]{id,  }\item[{int}]{attaque\+\_\+sup,  }\item[{int}]{mana\+\_\+sup,  }\item[{int}]{vie\+\_\+sup,  }\item[{char $\ast$}]{nom,  }\item[{char $\ast$}]{description }\end{DoxyParamCaption})}
 
 
 
@@ -391,7 +391,7 @@ un pointeur sur l\textquotesingle{}objet initialisé
 \index{entite.c@{entite.c}!objet\_present@{objet\_present}}
 \index{objet\_present@{objet\_present}!entite.c@{entite.c}}
 \doxysubsubsection{\texorpdfstring{objet\_present()}{objet\_present()}}
-{\footnotesize\ttfamily int objet\+\_\+present (\begin{DoxyParamCaption}\item[{joueur\+\_\+t $\ast$}]{joueur,  }\item[{objet\+\_\+t $\ast$}]{biblio,  }\item[{int}]{ind }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int objet\+\_\+present (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{joueur,  }\item[{\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$}]{biblio,  }\item[{int}]{ind }\end{DoxyParamCaption})}
 
 
 

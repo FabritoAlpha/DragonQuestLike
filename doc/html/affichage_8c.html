@@ -75,40 +75,41 @@ $(function() {
 
 <p>affichage des différents états du jeu  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;../lib/affichage.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="affichage_8h_source.html">../lib/affichage.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de affichage.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="affichage_8c__incl.png" border="0" usemap="#src_2affichage_8c" alt=""/></div>
+<!-- MAP 0 -->
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:aa5b1334f40cb56f6fef6226461f00264"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#aa5b1334f40cb56f6fef6226461f00264">affichage_carte</a> (SDL_Renderer *renderer, TTF_Font *police, images_t *textures, joueur_t *joueur)</td></tr>
+<tr class="memitem:aa5b1334f40cb56f6fef6226461f00264"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#aa5b1334f40cb56f6fef6226461f00264">affichage_carte</a> (SDL_Renderer *renderer, TTF_Font *police, <a class="el" href="structimages__t.html">images_t</a> *textures, <a class="el" href="structjoueur__t.html">joueur_t</a> *joueur)</td></tr>
 <tr class="memdesc:aa5b1334f40cb56f6fef6226461f00264"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage de la carte avec la position du joueur  <a href="affichage_8c.html#aa5b1334f40cb56f6fef6226461f00264">Plus de détails...</a><br /></td></tr>
 <tr class="separator:aa5b1334f40cb56f6fef6226461f00264"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeebde4e47b06224d13a18916ff3e71af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#aeebde4e47b06224d13a18916ff3e71af">affichage_aide</a> (SDL_Renderer *renderer, TTF_Font *police)</td></tr>
 <tr class="memdesc:aeebde4e47b06224d13a18916ff3e71af"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage du menu d'aide  <a href="affichage_8c.html#aeebde4e47b06224d13a18916ff3e71af">Plus de détails...</a><br /></td></tr>
 <tr class="separator:aeebde4e47b06224d13a18916ff3e71af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a331867f6ff2e9c1654c778994c5690"><td class="memItemLeft" align="right" valign="top"><a id="a4a331867f6ff2e9c1654c778994c5690"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_nonCombattants</b> (SDL_Renderer *renderer, images_t *textures, zone_t *zone, salle_t *salle)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_nonCombattants</b> (SDL_Renderer *renderer, <a class="el" href="structimages__t.html">images_t</a> *textures, <a class="el" href="structzone__t.html">zone_t</a> *zone, <a class="el" href="structsalle__t.html">salle_t</a> *salle)</td></tr>
 <tr class="separator:a4a331867f6ff2e9c1654c778994c5690"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a14bee2e9d823377326a36ac10c2958"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#a4a14bee2e9d823377326a36ac10c2958">affichage_dialogue</a> (SDL_Renderer *renderer, images_t *textures, monde_t *monde, TTF_Font *police)</td></tr>
+<tr class="memitem:a4a14bee2e9d823377326a36ac10c2958"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#a4a14bee2e9d823377326a36ac10c2958">affichage_dialogue</a> (SDL_Renderer *renderer, <a class="el" href="structimages__t.html">images_t</a> *textures, <a class="el" href="structmonde__t.html">monde_t</a> *monde, TTF_Font *police)</td></tr>
 <tr class="memdesc:a4a14bee2e9d823377326a36ac10c2958"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage d'une conversation ou de l'ouverture d'un coffre  <a href="affichage_8c.html#a4a14bee2e9d823377326a36ac10c2958">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a4a14bee2e9d823377326a36ac10c2958"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac76c04b159b6f217e918d345f654961a"><td class="memItemLeft" align="right" valign="top"><a id="ac76c04b159b6f217e918d345f654961a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_combat</b> (SDL_Renderer *renderer, monde_t *monde, images_t *textures, TTF_Font *police)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_combat</b> (SDL_Renderer *renderer, <a class="el" href="structmonde__t.html">monde_t</a> *monde, <a class="el" href="structimages__t.html">images_t</a> *textures, TTF_Font *police)</td></tr>
 <tr class="separator:ac76c04b159b6f217e918d345f654961a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef5ed86cf405e844fa994806db0cf553"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#aef5ed86cf405e844fa994806db0cf553">affichage_victoire</a> (SDL_Renderer *renderer, images_t *textures, TTF_Font *police)</td></tr>
+<tr class="memitem:aef5ed86cf405e844fa994806db0cf553"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#aef5ed86cf405e844fa994806db0cf553">affichage_victoire</a> (SDL_Renderer *renderer, <a class="el" href="structimages__t.html">images_t</a> *textures, TTF_Font *police)</td></tr>
 <tr class="memdesc:aef5ed86cf405e844fa994806db0cf553"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage lorsque le joueur a gagné  <a href="affichage_8c.html#aef5ed86cf405e844fa994806db0cf553">Plus de détails...</a><br /></td></tr>
 <tr class="separator:aef5ed86cf405e844fa994806db0cf553"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77974d4af2576663d5ce6caec41a346a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#a77974d4af2576663d5ce6caec41a346a">affichage_inventaire</a> (SDL_Renderer *renderer, monde_t *monde, images_t *textures, TTF_Font *police)</td></tr>
+<tr class="memitem:a77974d4af2576663d5ce6caec41a346a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#a77974d4af2576663d5ce6caec41a346a">affichage_inventaire</a> (SDL_Renderer *renderer, <a class="el" href="structmonde__t.html">monde_t</a> *monde, <a class="el" href="structimages__t.html">images_t</a> *textures, TTF_Font *police)</td></tr>
 <tr class="memdesc:a77974d4af2576663d5ce6caec41a346a"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage de l'inventaire du joueur  <a href="affichage_8c.html#a77974d4af2576663d5ce6caec41a346a">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a77974d4af2576663d5ce6caec41a346a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a605988ba4d7aba060053e99cc9a9060a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#a605988ba4d7aba060053e99cc9a9060a">affichage_menu</a> (SDL_Renderer *renderer, monde_t *monde, TTF_Font *police)</td></tr>
+<tr class="memitem:a605988ba4d7aba060053e99cc9a9060a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#a605988ba4d7aba060053e99cc9a9060a">affichage_menu</a> (SDL_Renderer *renderer, <a class="el" href="structmonde__t.html">monde_t</a> *monde, TTF_Font *police)</td></tr>
 <tr class="memdesc:a605988ba4d7aba060053e99cc9a9060a"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage des menus de début de jeu  <a href="affichage_8c.html#a605988ba4d7aba060053e99cc9a9060a">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a605988ba4d7aba060053e99cc9a9060a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a431aeba141983e243cacb2b253b1a2c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#a431aeba141983e243cacb2b253b1a2c5">affichage_statistiques</a> (SDL_Renderer *renderer, TTF_Font *police, images_t *textures, joueur_t *joueur)</td></tr>
+<tr class="memitem:a431aeba141983e243cacb2b253b1a2c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#a431aeba141983e243cacb2b253b1a2c5">affichage_statistiques</a> (SDL_Renderer *renderer, TTF_Font *police, <a class="el" href="structimages__t.html">images_t</a> *textures, <a class="el" href="structjoueur__t.html">joueur_t</a> *joueur)</td></tr>
 <tr class="memdesc:a431aeba141983e243cacb2b253b1a2c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage des statistiques de pv, mana et or du joueur  <a href="affichage_8c.html#a431aeba141983e243cacb2b253b1a2c5">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a431aeba141983e243cacb2b253b1a2c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -175,13 +176,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_combat</b> 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">images_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structimages__t.html">images_t</a> *&#160;</td>
           <td class="paramname"><em>textures</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">joueur_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
           <td class="paramname"><em>joueur</em>&#160;</td>
         </tr>
         <tr>
@@ -220,13 +221,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_combat</b> 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">images_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structimages__t.html">images_t</a> *&#160;</td>
           <td class="paramname"><em>textures</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmonde__t.html">monde_t</a> *&#160;</td>
           <td class="paramname"><em>monde</em>, </td>
         </tr>
         <tr>
@@ -271,13 +272,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_combat</b> 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmonde__t.html">monde_t</a> *&#160;</td>
           <td class="paramname"><em>monde</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">images_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structimages__t.html">images_t</a> *&#160;</td>
           <td class="paramname"><em>textures</em>, </td>
         </tr>
         <tr>
@@ -322,7 +323,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_combat</b> 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structmonde__t.html">monde_t</a> *&#160;</td>
           <td class="paramname"><em>monde</em>, </td>
         </tr>
         <tr>
@@ -372,13 +373,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_combat</b> 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">images_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structimages__t.html">images_t</a> *&#160;</td>
           <td class="paramname"><em>textures</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">joueur_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
           <td class="paramname"><em>joueur</em>&#160;</td>
         </tr>
         <tr>
@@ -417,7 +418,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_combat</b> 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">images_t *&#160;</td>
+          <td class="paramtype"><a class="el" href="structimages__t.html">images_t</a> *&#160;</td>
           <td class="paramname"><em>textures</em>, </td>
         </tr>
         <tr>

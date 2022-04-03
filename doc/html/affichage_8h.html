@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dragon Quest Like: Référence du fichier lib/affichage.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dragon Quest Like
+   </div>
+   <div id="projectbrief">Jeu de type J-RPG</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier affichage.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>header des affichages  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="images_8h_source.html">images.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="deplacements_8h_source.html">deplacements.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de affichage.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="affichage_8h__incl.png" border="0" usemap="#lib_2affichage_8h" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="affichage_8h__dep__incl.png" border="0" usemap="#lib_2affichage_8hdep" alt=""/></div>
+</div>
+</div>
+<p><a href="affichage_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aee872868c9d968600caa34e20b635485"><td class="memItemLeft" align="right" valign="top"><a id="aee872868c9d968600caa34e20b635485"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LARGEUR_TEXT</b>&#160;&#160;&#160;350</td></tr>
+<tr class="separator:aee872868c9d968600caa34e20b635485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a984a21c666fc86714b557efc98cb583e"><td class="memItemLeft" align="right" valign="top"><a id="a984a21c666fc86714b557efc98cb583e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HAUTEUR_TEXT</b>&#160;&#160;&#160;80</td></tr>
+<tr class="separator:a984a21c666fc86714b557efc98cb583e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9159d910b8cc3011605d1ecd31988c7"><td class="memItemLeft" align="right" valign="top"><a id="ad9159d910b8cc3011605d1ecd31988c7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TEXT_OBJET_L</b>&#160;&#160;&#160;(LARGEUR_TEXT/5)</td></tr>
+<tr class="separator:ad9159d910b8cc3011605d1ecd31988c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93a08e72042b5969c78cdeb235463ca6"><td class="memItemLeft" align="right" valign="top"><a id="a93a08e72042b5969c78cdeb235463ca6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TEXT_OBJET_H</b>&#160;&#160;&#160;(HAUTEUR_TEXT/5)</td></tr>
+<tr class="separator:a93a08e72042b5969c78cdeb235463ca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae755faf8c8e96feafa214bf3a0e6a664"><td class="memItemLeft" align="right" valign="top"><a id="ae755faf8c8e96feafa214bf3a0e6a664"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>POSITION_MENU_WIDTH</b>&#160;&#160;&#160;(SCREEN_WIDTH/3)</td></tr>
+<tr class="separator:ae755faf8c8e96feafa214bf3a0e6a664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeb56b7c3c0b2ba1568e72842579f448"><td class="memItemLeft" align="right" valign="top"><a id="adeb56b7c3c0b2ba1568e72842579f448"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>POSITION_MENU_HEIGHT</b>&#160;&#160;&#160;(SCREEN_HEIGHT/4)</td></tr>
+<tr class="separator:adeb56b7c3c0b2ba1568e72842579f448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a527d0a207059ecc87df9f4b1f7b58280"><td class="memItemLeft" align="right" valign="top"><a id="a527d0a207059ecc87df9f4b1f7b58280"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>POSITION_INVENTAIRE_L</b>&#160;&#160;&#160;(SCREEN_WIDTH/2)</td></tr>
+<tr class="separator:a527d0a207059ecc87df9f4b1f7b58280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a259a944269127c0326682ccce3306864"><td class="memItemLeft" align="right" valign="top"><a id="a259a944269127c0326682ccce3306864"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>POSITION_INVENTAIRE_H</b>&#160;&#160;&#160;(SCREEN_HEIGHT/3)</td></tr>
+<tr class="separator:a259a944269127c0326682ccce3306864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ea8e2db8f2070b98d88501a5ef581c5"><td class="memItemLeft" align="right" valign="top"><a id="a9ea8e2db8f2070b98d88501a5ef581c5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>POSITION_INVENTAIRE_IMG_L</b>&#160;&#160;&#160;POSITION_INVENTAIRE_L</td></tr>
+<tr class="separator:a9ea8e2db8f2070b98d88501a5ef581c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2bcec092c3d243e3832ae929ff596ad"><td class="memItemLeft" align="right" valign="top"><a id="ab2bcec092c3d243e3832ae929ff596ad"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>POSITION_INVENTAIRE_IMG_H</b>&#160;&#160;&#160;POSITION_INVENTAIRE_H</td></tr>
+<tr class="separator:ab2bcec092c3d243e3832ae929ff596ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75d4496a5156fc9ae9f471bf18d5d1fc"><td class="memItemLeft" align="right" valign="top"><a id="a75d4496a5156fc9ae9f471bf18d5d1fc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DECALAGE_IMG_TEXT_L</b>&#160;&#160;&#160;90</td></tr>
+<tr class="separator:a75d4496a5156fc9ae9f471bf18d5d1fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a785b9969a7b7ead1d194560346fa3b9a"><td class="memItemLeft" align="right" valign="top"><a id="a785b9969a7b7ead1d194560346fa3b9a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DECALAGE_TEXT_IMG_L</b>&#160;&#160;&#160;125</td></tr>
+<tr class="separator:a785b9969a7b7ead1d194560346fa3b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a883c3520ac5e43f8bd59e29850680e87"><td class="memItemLeft" align="right" valign="top"><a id="a883c3520ac5e43f8bd59e29850680e87"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DECALAGE_TEXT_IMG_H</b>&#160;&#160;&#160;150</td></tr>
+<tr class="separator:a883c3520ac5e43f8bd59e29850680e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c8a6429695a8546430af11ac023361d"><td class="memItemLeft" align="right" valign="top"><a id="a2c8a6429695a8546430af11ac023361d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>COULEUR_1_SELECTION</b>&#160;&#160;&#160;255</td></tr>
+<tr class="separator:a2c8a6429695a8546430af11ac023361d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88521ac5cb4fbc92c34963a72cd04092"><td class="memItemLeft" align="right" valign="top"><a id="a88521ac5cb4fbc92c34963a72cd04092"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>COULEUR_2_VIDE</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a88521ac5cb4fbc92c34963a72cd04092"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:aa5b1334f40cb56f6fef6226461f00264"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8h.html#aa5b1334f40cb56f6fef6226461f00264">affichage_carte</a> (SDL_Renderer *renderer, TTF_Font *police, <a class="el" href="structimages__t.html">images_t</a> *textures, <a class="el" href="structjoueur__t.html">joueur_t</a> *joueur)</td></tr>
+<tr class="memdesc:aa5b1334f40cb56f6fef6226461f00264"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage de la carte avec la position du joueur  <a href="affichage_8h.html#aa5b1334f40cb56f6fef6226461f00264">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa5b1334f40cb56f6fef6226461f00264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeebde4e47b06224d13a18916ff3e71af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8h.html#aeebde4e47b06224d13a18916ff3e71af">affichage_aide</a> (SDL_Renderer *renderer, TTF_Font *police)</td></tr>
+<tr class="memdesc:aeebde4e47b06224d13a18916ff3e71af"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage du menu d'aide  <a href="affichage_8h.html#aeebde4e47b06224d13a18916ff3e71af">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aeebde4e47b06224d13a18916ff3e71af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a331867f6ff2e9c1654c778994c5690"><td class="memItemLeft" align="right" valign="top"><a id="a4a331867f6ff2e9c1654c778994c5690"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_nonCombattants</b> (SDL_Renderer *renderer, <a class="el" href="structimages__t.html">images_t</a> *textures, <a class="el" href="structzone__t.html">zone_t</a> *zone, <a class="el" href="structsalle__t.html">salle_t</a> *salle)</td></tr>
+<tr class="separator:a4a331867f6ff2e9c1654c778994c5690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a14bee2e9d823377326a36ac10c2958"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8h.html#a4a14bee2e9d823377326a36ac10c2958">affichage_dialogue</a> (SDL_Renderer *renderer, <a class="el" href="structimages__t.html">images_t</a> *textures, <a class="el" href="structmonde__t.html">monde_t</a> *monde, TTF_Font *police)</td></tr>
+<tr class="memdesc:a4a14bee2e9d823377326a36ac10c2958"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage d'une conversation ou de l'ouverture d'un coffre  <a href="affichage_8h.html#a4a14bee2e9d823377326a36ac10c2958">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4a14bee2e9d823377326a36ac10c2958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac76c04b159b6f217e918d345f654961a"><td class="memItemLeft" align="right" valign="top"><a id="ac76c04b159b6f217e918d345f654961a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_combat</b> (SDL_Renderer *renderer, <a class="el" href="structmonde__t.html">monde_t</a> *monde, <a class="el" href="structimages__t.html">images_t</a> *textures, TTF_Font *police)</td></tr>
+<tr class="separator:ac76c04b159b6f217e918d345f654961a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef5ed86cf405e844fa994806db0cf553"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8h.html#aef5ed86cf405e844fa994806db0cf553">affichage_victoire</a> (SDL_Renderer *renderer, <a class="el" href="structimages__t.html">images_t</a> *textures, TTF_Font *police)</td></tr>
+<tr class="memdesc:aef5ed86cf405e844fa994806db0cf553"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage lorsque le joueur a gagné  <a href="affichage_8h.html#aef5ed86cf405e844fa994806db0cf553">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aef5ed86cf405e844fa994806db0cf553"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77974d4af2576663d5ce6caec41a346a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8h.html#a77974d4af2576663d5ce6caec41a346a">affichage_inventaire</a> (SDL_Renderer *renderer, <a class="el" href="structmonde__t.html">monde_t</a> *monde, <a class="el" href="structimages__t.html">images_t</a> *textures, TTF_Font *police)</td></tr>
+<tr class="memdesc:a77974d4af2576663d5ce6caec41a346a"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage de l'inventaire du joueur  <a href="affichage_8h.html#a77974d4af2576663d5ce6caec41a346a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a77974d4af2576663d5ce6caec41a346a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a605988ba4d7aba060053e99cc9a9060a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8h.html#a605988ba4d7aba060053e99cc9a9060a">affichage_menu</a> (SDL_Renderer *renderer, <a class="el" href="structmonde__t.html">monde_t</a> *monde, TTF_Font *police)</td></tr>
+<tr class="memdesc:a605988ba4d7aba060053e99cc9a9060a"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage des menus de début de jeu  <a href="affichage_8h.html#a605988ba4d7aba060053e99cc9a9060a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a605988ba4d7aba060053e99cc9a9060a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a431aeba141983e243cacb2b253b1a2c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8h.html#a431aeba141983e243cacb2b253b1a2c5">affichage_statistiques</a> (SDL_Renderer *renderer, TTF_Font *police, <a class="el" href="structimages__t.html">images_t</a> *textures, <a class="el" href="structjoueur__t.html">joueur_t</a> *joueur)</td></tr>
+<tr class="memdesc:a431aeba141983e243cacb2b253b1a2c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage des statistiques de pv, mana et or du joueur  <a href="affichage_8h.html#a431aeba141983e243cacb2b253b1a2c5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a431aeba141983e243cacb2b253b1a2c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>header des affichages </p>
+<dl class="section author"><dt>Auteur</dt><dd>Anna Béranger, Arthur Fabre, Alex Choux </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>03/03/2022 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aeebde4e47b06224d13a18916ff3e71af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeebde4e47b06224d13a18916ff3e71af">&#9670;&nbsp;</a></span>affichage_aide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_aide </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>affichage du menu d'aide </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>le renderer </td></tr>
+    <tr><td class="paramname">police</td><td>la police du texte affiché </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa5b1334f40cb56f6fef6226461f00264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5b1334f40cb56f6fef6226461f00264">&#9670;&nbsp;</a></span>affichage_carte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_carte </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimages__t.html">images_t</a> *&#160;</td>
+          <td class="paramname"><em>textures</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>affichage de la carte avec la position du joueur </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>le renderer </td></tr>
+    <tr><td class="paramname">police</td><td>la police du texte affiché </td></tr>
+    <tr><td class="paramname">textures</td><td>les textures du jeu </td></tr>
+    <tr><td class="paramname">joueur</td><td>le joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4a14bee2e9d823377326a36ac10c2958"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a14bee2e9d823377326a36ac10c2958">&#9670;&nbsp;</a></span>affichage_dialogue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_dialogue </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimages__t.html">images_t</a> *&#160;</td>
+          <td class="paramname"><em>textures</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonde__t.html">monde_t</a> *&#160;</td>
+          <td class="paramname"><em>monde</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>affichage d'une conversation ou de l'ouverture d'un coffre </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>le renderer </td></tr>
+    <tr><td class="paramname">textures</td><td>les textures du jeu </td></tr>
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+    <tr><td class="paramname">police</td><td>la police du texte affiché </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a77974d4af2576663d5ce6caec41a346a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77974d4af2576663d5ce6caec41a346a">&#9670;&nbsp;</a></span>affichage_inventaire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_inventaire </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonde__t.html">monde_t</a> *&#160;</td>
+          <td class="paramname"><em>monde</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimages__t.html">images_t</a> *&#160;</td>
+          <td class="paramname"><em>textures</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>affichage de l'inventaire du joueur </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>le renderer </td></tr>
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+    <tr><td class="paramname">textures</td><td>les textures du jeu </td></tr>
+    <tr><td class="paramname">police</td><td>la police du texte affiché </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a605988ba4d7aba060053e99cc9a9060a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a605988ba4d7aba060053e99cc9a9060a">&#9670;&nbsp;</a></span>affichage_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_menu </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonde__t.html">monde_t</a> *&#160;</td>
+          <td class="paramname"><em>monde</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>affichage des menus de début de jeu </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>le renderer </td></tr>
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+    <tr><td class="paramname">police</td><td>la police du texte affiché </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a431aeba141983e243cacb2b253b1a2c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a431aeba141983e243cacb2b253b1a2c5">&#9670;&nbsp;</a></span>affichage_statistiques()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_statistiques </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimages__t.html">images_t</a> *&#160;</td>
+          <td class="paramname"><em>textures</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>affichage des statistiques de pv, mana et or du joueur </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>le renderer </td></tr>
+    <tr><td class="paramname">police</td><td>la police du texte affiché </td></tr>
+    <tr><td class="paramname">textures</td><td>les textures du jeu </td></tr>
+    <tr><td class="paramname">joueur</td><td>le joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aef5ed86cf405e844fa994806db0cf553"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef5ed86cf405e844fa994806db0cf553">&#9670;&nbsp;</a></span>affichage_victoire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_victoire </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimages__t.html">images_t</a> *&#160;</td>
+          <td class="paramname"><em>textures</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>affichage lorsque le joueur a gagné </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>le renderer </td></tr>
+    <tr><td class="paramname">textures</td><td>les textures du jeu </td></tr>
+    <tr><td class="paramname">police</td><td>la police du texte affiché </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

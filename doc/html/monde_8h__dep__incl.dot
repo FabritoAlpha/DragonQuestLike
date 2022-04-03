@@ -1,0 +1,38 @@
+digraph "lib/monde.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="lib/monde.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="header du monde"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="lib/images.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$images_8h.html",tooltip="header des images"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="lib/affichage.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$affichage_8h.html",tooltip="header des affichages"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="src/affichage.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$affichage_8c.html",tooltip="affichage des différents états du jeu"];
+  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="lib/jeu.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$jeu_8h.html",tooltip="header du jeu"];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="src/jeu.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$jeu_8c.html",tooltip="gestion du jeu"];
+  Node5 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="src/main.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html",tooltip="programme principal du jeu"];
+  Node2 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="src/images.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$images_8c.html",tooltip="gestion des images et de la police"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="lib/deplacements.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$deplacements_8h.html",tooltip="header des déplacements"];
+  Node9 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="src/deplacements.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$deplacements_8c.html",tooltip="déplacements et collisions du joueur et des monstres"];
+  Node9 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="lib/interactions.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interactions_8h.html",tooltip="header des intéractions"];
+  Node11 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="src/interactions.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interactions_8c.html",tooltip="gestion des interactions du joueur avec les entités"];
+  Node11 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="lib/menu.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$menu_8h.html",tooltip="header des menus"];
+  Node13 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="src/menu.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$menu_8c.html",tooltip="gestion des menus"];
+  Node1 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="src/monde.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$monde_8c.html",tooltip="fonctions de gestion du monde"];
+}

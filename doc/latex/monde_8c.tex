@@ -11,33 +11,33 @@ Graphe des dépendances par inclusion de monde.\+c\+:
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{monde_8c_af1e3dd837065ad4b00201fff0fa5407c}{existe\+\_\+salle}} (salle\+\_\+t $\ast$salle)
+int \mbox{\hyperlink{monde_8c_af1e3dd837065ad4b00201fff0fa5407c}{existe\+\_\+salle}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$salle)
 \begin{DoxyCompactList}\small\item\em renvoie 1 si la salle existe \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{monde_8c_af600b3ca03d084e91db99c8bcb94024d}{existe\+\_\+zone}} (zone\+\_\+t $\ast$zone)
+int \mbox{\hyperlink{monde_8c_af600b3ca03d084e91db99c8bcb94024d}{existe\+\_\+zone}} (\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$zone)
 \begin{DoxyCompactList}\small\item\em renvoie 1 si la zone existe \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{monde_8c_a285b5ca4ec8f08f037f39e908e1289d4}{existe\+\_\+monde}} (monde\+\_\+t $\ast$monde)
+int \mbox{\hyperlink{monde_8c_a285b5ca4ec8f08f037f39e908e1289d4}{existe\+\_\+monde}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
 \begin{DoxyCompactList}\small\item\em renvoie 1 si le monde existe \end{DoxyCompactList}\item 
-salle\+\_\+t $\ast$ \mbox{\hyperlink{monde_8c_acee4402fde0045a1a49811451c64c978}{creer\+\_\+salle}} ()
+\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$ \mbox{\hyperlink{monde_8c_acee4402fde0045a1a49811451c64c978}{creer\+\_\+salle}} ()
 \begin{DoxyCompactList}\small\item\em allocation de la mémoire nécessaire à une salle \end{DoxyCompactList}\item 
-zone\+\_\+t $\ast$ \mbox{\hyperlink{monde_8c_a362c4991d8e163d11bcbdbf729850004}{creer\+\_\+zone}} ()
+\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$ \mbox{\hyperlink{monde_8c_a362c4991d8e163d11bcbdbf729850004}{creer\+\_\+zone}} ()
 \begin{DoxyCompactList}\small\item\em allocation de la mémoire nécessaire à une zone \end{DoxyCompactList}\item 
-monde\+\_\+t $\ast$ \mbox{\hyperlink{monde_8c_ad83a9ad35f5fabf1bd53886d0fd6d8bd}{creer\+\_\+monde}} ()
+\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$ \mbox{\hyperlink{monde_8c_ad83a9ad35f5fabf1bd53886d0fd6d8bd}{creer\+\_\+monde}} ()
 \begin{DoxyCompactList}\small\item\em allocation de la mémoire nécessaire au monde \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{monde_8c_a1db6b74c49d6a879a415d976eba0deaa}{detruire\+\_\+monde}} (monde\+\_\+t $\ast$$\ast$monde)
+void \mbox{\hyperlink{monde_8c_a1db6b74c49d6a879a415d976eba0deaa}{detruire\+\_\+monde}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$$\ast$monde)
 \begin{DoxyCompactList}\small\item\em libération de la mémoire allouée au monde lorsque la partie est terminée \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{monde_8c_a16e9a4f3ffc84d43ab820d0e8d91e3a5}{detruire\+\_\+zone}} (zone\+\_\+t $\ast$$\ast$zone)
+void \mbox{\hyperlink{monde_8c_a16e9a4f3ffc84d43ab820d0e8d91e3a5}{detruire\+\_\+zone}} (\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$$\ast$zone)
 \begin{DoxyCompactList}\small\item\em libération de la mémoire allouée à une zone du monde lorsque la partie est terminée \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{monde_8c_a66ed72d3268223614d00bf76d0c80123}{detruire\+\_\+salle}} (salle\+\_\+t $\ast$$\ast$salle)
+void \mbox{\hyperlink{monde_8c_a66ed72d3268223614d00bf76d0c80123}{detruire\+\_\+salle}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$$\ast$salle)
 \begin{DoxyCompactList}\small\item\em libération de la mémoire allouée à une salle d\textquotesingle{}une zone lorsque la partie est terminée \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{monde_8c_acb7e058e0b2685575cdb5ce2de075e34}{init\+\_\+monde\+\_\+menu}} (monde\+\_\+t $\ast$monde)
+void \mbox{\hyperlink{monde_8c_acb7e058e0b2685575cdb5ce2de075e34}{init\+\_\+monde\+\_\+menu}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
 \begin{DoxyCompactList}\small\item\em initialise les attributs du monde nécessaires au menu \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{monde_8c_a991818c2456473c6006e47f5f56f6383}{init\+\_\+monde\+\_\+jeu}} (monde\+\_\+t $\ast$monde, char $\ast$chemin\+\_\+fichier)
+void \mbox{\hyperlink{monde_8c_a991818c2456473c6006e47f5f56f6383}{init\+\_\+monde\+\_\+jeu}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde, char $\ast$chemin\+\_\+fichier)
 \begin{DoxyCompactList}\small\item\em initialise les attributs du monde nécessaires au jeu \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{monde_8c_ae7f1c9acd89d0a6e6ef7c7a86b81591f}{init\+\_\+zone}} (zone\+\_\+t $\ast$zone, int num\+\_\+zone)
+void \mbox{\hyperlink{monde_8c_ae7f1c9acd89d0a6e6ef7c7a86b81591f}{init\+\_\+zone}} (\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$zone, int num\+\_\+zone)
 \begin{DoxyCompactList}\small\item\em initialise une zone \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{monde_8c_a4beb9353e687cdc88cbc800ce0665ec2}{init\+\_\+salle}} (salle\+\_\+t $\ast$salle, int num\+\_\+salle, int num\+\_\+zone)
+void \mbox{\hyperlink{monde_8c_a4beb9353e687cdc88cbc800ce0665ec2}{init\+\_\+salle}} (\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$salle, int num\+\_\+salle, int num\+\_\+zone)
 \begin{DoxyCompactList}\small\item\em initialise une salle \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{monde_8c_a23cd939776316dc8c90e65b854ab4069}{victoire\+\_\+jeu}} (monde\+\_\+t $\ast$monde)
+int \mbox{\hyperlink{monde_8c_a23cd939776316dc8c90e65b854ab4069}{victoire\+\_\+jeu}} (\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
 \begin{DoxyCompactList}\small\item\em renvoie 1 si on a vaincu le boss final \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -57,7 +57,7 @@ Anna Béranger, Arthur Fabre, Alex Choux
 \index{monde.c@{monde.c}!creer\_monde@{creer\_monde}}
 \index{creer\_monde@{creer\_monde}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{creer\_monde()}{creer\_monde()}}
-{\footnotesize\ttfamily monde\+\_\+t $\ast$ creer\+\_\+monde (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$ creer\+\_\+monde (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -70,7 +70,7 @@ un pointeur sur un monde
 \index{monde.c@{monde.c}!creer\_salle@{creer\_salle}}
 \index{creer\_salle@{creer\_salle}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{creer\_salle()}{creer\_salle()}}
-{\footnotesize\ttfamily salle\+\_\+t $\ast$ creer\+\_\+salle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$ creer\+\_\+salle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -83,7 +83,7 @@ un pointeur sur une salle
 \index{monde.c@{monde.c}!creer\_zone@{creer\_zone}}
 \index{creer\_zone@{creer\_zone}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{creer\_zone()}{creer\_zone()}}
-{\footnotesize\ttfamily zone\+\_\+t $\ast$ creer\+\_\+zone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$ creer\+\_\+zone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -96,7 +96,7 @@ un pointeur sur une zone
 \index{monde.c@{monde.c}!detruire\_monde@{detruire\_monde}}
 \index{detruire\_monde@{detruire\_monde}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{detruire\_monde()}{detruire\_monde()}}
-{\footnotesize\ttfamily void detruire\+\_\+monde (\begin{DoxyParamCaption}\item[{monde\+\_\+t $\ast$$\ast$}]{monde }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void detruire\+\_\+monde (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$$\ast$}]{monde }\end{DoxyParamCaption})}
 
 
 
@@ -111,7 +111,7 @@ libération de la mémoire allouée au monde lorsque la partie est terminée
 \index{monde.c@{monde.c}!detruire\_salle@{detruire\_salle}}
 \index{detruire\_salle@{detruire\_salle}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{detruire\_salle()}{detruire\_salle()}}
-{\footnotesize\ttfamily void detruire\+\_\+salle (\begin{DoxyParamCaption}\item[{salle\+\_\+t $\ast$$\ast$}]{salle }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void detruire\+\_\+salle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$$\ast$}]{salle }\end{DoxyParamCaption})}
 
 
 
@@ -126,7 +126,7 @@ libération de la mémoire allouée à une salle d\textquotesingle{}une zone lor
 \index{monde.c@{monde.c}!detruire\_zone@{detruire\_zone}}
 \index{detruire\_zone@{detruire\_zone}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{detruire\_zone()}{detruire\_zone()}}
-{\footnotesize\ttfamily void detruire\+\_\+zone (\begin{DoxyParamCaption}\item[{zone\+\_\+t $\ast$$\ast$}]{zone }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void detruire\+\_\+zone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$$\ast$}]{zone }\end{DoxyParamCaption})}
 
 
 
@@ -141,7 +141,7 @@ libération de la mémoire allouée à une zone du monde lorsque la partie est t
 \index{monde.c@{monde.c}!existe\_monde@{existe\_monde}}
 \index{existe\_monde@{existe\_monde}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{existe\_monde()}{existe\_monde()}}
-{\footnotesize\ttfamily int existe\+\_\+monde (\begin{DoxyParamCaption}\item[{monde\+\_\+t $\ast$}]{monde }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int existe\+\_\+monde (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
 
 
 
@@ -156,7 +156,7 @@ renvoie 1 si le monde existe
 \index{monde.c@{monde.c}!existe\_salle@{existe\_salle}}
 \index{existe\_salle@{existe\_salle}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{existe\_salle()}{existe\_salle()}}
-{\footnotesize\ttfamily int existe\+\_\+salle (\begin{DoxyParamCaption}\item[{salle\+\_\+t $\ast$}]{salle }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int existe\+\_\+salle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$}]{salle }\end{DoxyParamCaption})}
 
 
 
@@ -171,7 +171,7 @@ renvoie 1 si la salle existe
 \index{monde.c@{monde.c}!existe\_zone@{existe\_zone}}
 \index{existe\_zone@{existe\_zone}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{existe\_zone()}{existe\_zone()}}
-{\footnotesize\ttfamily int existe\+\_\+zone (\begin{DoxyParamCaption}\item[{zone\+\_\+t $\ast$}]{zone }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int existe\+\_\+zone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$}]{zone }\end{DoxyParamCaption})}
 
 
 
@@ -186,7 +186,7 @@ renvoie 1 si la zone existe
 \index{monde.c@{monde.c}!init\_monde\_jeu@{init\_monde\_jeu}}
 \index{init\_monde\_jeu@{init\_monde\_jeu}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{init\_monde\_jeu()}{init\_monde\_jeu()}}
-{\footnotesize\ttfamily void init\+\_\+monde\+\_\+jeu (\begin{DoxyParamCaption}\item[{monde\+\_\+t $\ast$}]{monde,  }\item[{char $\ast$}]{chemin\+\_\+fichier }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void init\+\_\+monde\+\_\+jeu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde,  }\item[{char $\ast$}]{chemin\+\_\+fichier }\end{DoxyParamCaption})}
 
 
 
@@ -203,7 +203,7 @@ initialise les attributs du monde nécessaires au jeu
 \index{monde.c@{monde.c}!init\_monde\_menu@{init\_monde\_menu}}
 \index{init\_monde\_menu@{init\_monde\_menu}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{init\_monde\_menu()}{init\_monde\_menu()}}
-{\footnotesize\ttfamily void init\+\_\+monde\+\_\+menu (\begin{DoxyParamCaption}\item[{monde\+\_\+t $\ast$}]{monde }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void init\+\_\+monde\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
 
 
 
@@ -218,7 +218,7 @@ initialise les attributs du monde nécessaires au menu
 \index{monde.c@{monde.c}!init\_salle@{init\_salle}}
 \index{init\_salle@{init\_salle}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{init\_salle()}{init\_salle()}}
-{\footnotesize\ttfamily void init\+\_\+salle (\begin{DoxyParamCaption}\item[{salle\+\_\+t $\ast$}]{salle,  }\item[{int}]{num\+\_\+salle,  }\item[{int}]{num\+\_\+zone }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void init\+\_\+salle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsalle__t}{salle\+\_\+t}} $\ast$}]{salle,  }\item[{int}]{num\+\_\+salle,  }\item[{int}]{num\+\_\+zone }\end{DoxyParamCaption})}
 
 
 
@@ -235,7 +235,7 @@ initialise une salle
 \index{monde.c@{monde.c}!init\_zone@{init\_zone}}
 \index{init\_zone@{init\_zone}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{init\_zone()}{init\_zone()}}
-{\footnotesize\ttfamily void init\+\_\+zone (\begin{DoxyParamCaption}\item[{zone\+\_\+t $\ast$}]{zone,  }\item[{int}]{num\+\_\+zone }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void init\+\_\+zone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structzone__t}{zone\+\_\+t}} $\ast$}]{zone,  }\item[{int}]{num\+\_\+zone }\end{DoxyParamCaption})}
 
 
 
@@ -252,7 +252,7 @@ initialise une zone
 \index{monde.c@{monde.c}!victoire\_jeu@{victoire\_jeu}}
 \index{victoire\_jeu@{victoire\_jeu}!monde.c@{monde.c}}
 \doxysubsubsection{\texorpdfstring{victoire\_jeu()}{victoire\_jeu()}}
-{\footnotesize\ttfamily int victoire\+\_\+jeu (\begin{DoxyParamCaption}\item[{monde\+\_\+t $\ast$}]{monde }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int victoire\+\_\+jeu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
 
 
 

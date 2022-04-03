@@ -1,0 +1,148 @@
+\hypertarget{menu_8h}{}\doxysection{Référence du fichier lib/menu.h}
+\label{menu_8h}\index{lib/menu.h@{lib/menu.h}}
+
+
+header des menus  
+
+
+{\ttfamily \#include \char`\"{}monde.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de menu.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{menu_8h_af0b7530357a5e9e7ba3aa8150f83fc2c}\label{menu_8h_af0b7530357a5e9e7ba3aa8150f83fc2c}} 
+\#define {\bfseries I\+N\+V\+E\+N\+T\+A\+I\+RE}~1
+\item 
+\mbox{\Hypertarget{menu_8h_a98810bd5034d91c45202bfef320723a4}\label{menu_8h_a98810bd5034d91c45202bfef320723a4}} 
+\#define {\bfseries E\+P\+E\+E\+\_\+\+P\+I\+E\+R\+RE}~2
+\item 
+\mbox{\Hypertarget{menu_8h_ac47b5e7cf59c7cbdd5e43dc1b5f7da27}\label{menu_8h_ac47b5e7cf59c7cbdd5e43dc1b5f7da27}} 
+\#define {\bfseries E\+P\+E\+E\+\_\+\+D\+I\+AM}~3
+\item 
+\mbox{\Hypertarget{menu_8h_a682072aab976bc2d200d717834c946e0}\label{menu_8h_a682072aab976bc2d200d717834c946e0}} 
+\#define {\bfseries B\+O\+U\+C\+L\+I\+E\+R\+\_\+\+P\+I\+E\+R\+RE}~4
+\item 
+\mbox{\Hypertarget{menu_8h_afc14dfccf60cebd9e4a78290c9e5f93c}\label{menu_8h_afc14dfccf60cebd9e4a78290c9e5f93c}} 
+\#define {\bfseries B\+O\+U\+C\+L\+I\+E\+R\+\_\+\+D\+I\+AM}~5
+\item 
+\mbox{\Hypertarget{menu_8h_a04d2847022a92ea0e3a30aca61f8a30a}\label{menu_8h_a04d2847022a92ea0e3a30aca61f8a30a}} 
+\#define {\bfseries P\+O\+T\+I\+O\+N\+\_\+\+PV}~6
+\item 
+\mbox{\Hypertarget{menu_8h_a0ca857d2913999a9d6164e555f4e875f}\label{menu_8h_a0ca857d2913999a9d6164e555f4e875f}} 
+\#define {\bfseries P\+O\+T\+I\+O\+N\+\_\+\+M\+A\+NA}~7
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{menu_8h_abc07784a1cd817f8d58c407a3062015f}{quitter\+\_\+carte\+\_\+aide}} (S\+D\+L\+\_\+\+Event $\ast$event, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em gère la fermeture du menu aide et de la carte \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_a46359f8250911feb7d8ba5ea42a95c60}{choix\+\_\+partie}} (S\+D\+L\+\_\+\+Event $\ast$event, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em gère les options du menu de choix de partie \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_a1c36c665d2c2e320427b0c499a027c29}{evenements\+\_\+menu}} (S\+D\+L\+\_\+\+Event $\ast$event, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em gère les options du menu principal \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_a2bea21800d3f779c083424566ee001dc}{evenements\+\_\+inventaire}} (S\+D\+L\+\_\+\+Event $\ast$event, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em gère les options de l\textquotesingle{}inventaire \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_a513c9afa0ddfba1109b61ca3ff8d70fa}{evenements\+\_\+fin\+\_\+partie}} (S\+D\+L\+\_\+\+Event $\ast$event, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
+\begin{DoxyCompactList}\small\item\em gère leretour au menu pendant l\textquotesingle{}écran de victoire \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+header des menus 
+
+\begin{DoxyAuthor}{Auteur}
+Anna Béranger, Arthur Fabre, Alex Choux 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/03/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{menu_8h_a46359f8250911feb7d8ba5ea42a95c60}\label{menu_8h_a46359f8250911feb7d8ba5ea42a95c60}} 
+\index{menu.h@{menu.h}!choix\_partie@{choix\_partie}}
+\index{choix\_partie@{choix\_partie}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{choix\_partie()}{choix\_partie()}}
+{\footnotesize\ttfamily void choix\+\_\+partie (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Event $\ast$}]{event,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+gère les options du menu de choix de partie 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & les évènements claviers \\
+\hline
+{\em monde} & les données du monde \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{menu_8h_a513c9afa0ddfba1109b61ca3ff8d70fa}\label{menu_8h_a513c9afa0ddfba1109b61ca3ff8d70fa}} 
+\index{menu.h@{menu.h}!evenements\_fin\_partie@{evenements\_fin\_partie}}
+\index{evenements\_fin\_partie@{evenements\_fin\_partie}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{evenements\_fin\_partie()}{evenements\_fin\_partie()}}
+{\footnotesize\ttfamily void evenements\+\_\+fin\+\_\+partie (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Event $\ast$}]{event,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+gère leretour au menu pendant l\textquotesingle{}écran de victoire 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & les évènements claviers \\
+\hline
+{\em monde} & les données du monde \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{menu_8h_a2bea21800d3f779c083424566ee001dc}\label{menu_8h_a2bea21800d3f779c083424566ee001dc}} 
+\index{menu.h@{menu.h}!evenements\_inventaire@{evenements\_inventaire}}
+\index{evenements\_inventaire@{evenements\_inventaire}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{evenements\_inventaire()}{evenements\_inventaire()}}
+{\footnotesize\ttfamily void evenements\+\_\+inventaire (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Event $\ast$}]{event,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+gère les options de l\textquotesingle{}inventaire 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & les évènements claviers \\
+\hline
+{\em monde} & les données du monde \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{menu_8h_a1c36c665d2c2e320427b0c499a027c29}\label{menu_8h_a1c36c665d2c2e320427b0c499a027c29}} 
+\index{menu.h@{menu.h}!evenements\_menu@{evenements\_menu}}
+\index{evenements\_menu@{evenements\_menu}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{evenements\_menu()}{evenements\_menu()}}
+{\footnotesize\ttfamily void evenements\+\_\+menu (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Event $\ast$}]{event,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+gère les options du menu principal 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & les évènements claviers \\
+\hline
+{\em monde} & les données du monde \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{menu_8h_abc07784a1cd817f8d58c407a3062015f}\label{menu_8h_abc07784a1cd817f8d58c407a3062015f}} 
+\index{menu.h@{menu.h}!quitter\_carte\_aide@{quitter\_carte\_aide}}
+\index{quitter\_carte\_aide@{quitter\_carte\_aide}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{quitter\_carte\_aide()}{quitter\_carte\_aide()}}
+{\footnotesize\ttfamily void quitter\+\_\+carte\+\_\+aide (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Event $\ast$}]{event,  }\item[{\mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+gère la fermeture du menu aide et de la carte 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & les évènements claviers \\
+\hline
+{\em monde} & les données du monde \\
+\hline
+\end{DoxyParams}
