@@ -137,6 +137,12 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->game_over = NULL;
     clean_texture(textures->surbrillance_combat);
     textures->surbrillance_combat = NULL;
+    clean_texture(textures->zone0);
+    textures->zone0 = NULL;
+    clean_texture(textures->zone1);
+    textures->zone1 = NULL;
+    clean_texture(textures->zone2);
+    textures->zone2 = NULL;
     if(police != NULL){
         clean_font(police);
         police = NULL;
@@ -205,6 +211,9 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     load_image("./rsrc/img/bouclier1.bmp", &renderer, &textures->bouclier1_petit);
     load_image("./rsrc/img/bouclier2.bmp", &renderer,&textures->bouclier2_petit);
     load_image("./rsrc/img/piece_petite.bmp", &renderer,&(textures->or_petit));
+    load_image("./rsrc/img/zone0.bmp", &renderer, &textures->zone0);
+    load_image("./rsrc/img/zone1.bmp", &renderer,&textures->zone1);
+    load_image("./rsrc/img/zone2.bmp", &renderer,&(textures->zone2));
 }
 
 /**
@@ -386,6 +395,20 @@ void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, 
         break;
         case 7:
         			apply_texture(&textures->or_petit, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+        break;
+    }
+}
+
+void carte_position(SDL_Renderer *renderer, images_t *textures, int zone){
+    switch(zone){
+        case 0:
+            apply_texture(&textures->zone0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+        break;
+        case 1:
+            apply_texture(&textures->zone1, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+        break;
+        case 2:
+            apply_texture(&textures->zone2, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
         break;
     }
 }

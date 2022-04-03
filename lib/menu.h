@@ -12,7 +12,7 @@
 #define POTION_PV 6
 #define POTION_MANA 7
 
-void menu_aide(SDL_Event* event, monde_t * monde);
+void quitter_carte_aide(SDL_Event* event, monde_t * monde);
 
 void choix_partie(SDL_Event* event, monde_t * monde);
 

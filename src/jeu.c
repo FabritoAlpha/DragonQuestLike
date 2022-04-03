@@ -116,6 +116,9 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
     if(monde->etat_jeu == ETAT_AIDE){
         affichage_aide(renderer, police);
     }
+    if(monde->etat_jeu == ETAT_CARTE){
+        affichage_carte(renderer, police, textures, monde->joueur);
+    }
 
     if(monde->etat_jeu == 1){
       char aide[10] = "Aide A";
@@ -199,9 +202,13 @@ void evenements(SDL_Event* event, monde_t * monde){
         }
         /*!< Jeu en cours */
         if(monde->etat_jeu == ETAT_JEU_PRINCIPAL){
-            //si on appuie sur A on affiches les commandes et la map
+            //si on appuie sur A on affiche les commandes
             if(event->key.keysym.sym == SDLK_a){
               monde->etat_jeu = ETAT_AIDE;
+            }
+            //si on appuie sur C on affiche la map
+            if(event->key.keysym.sym == SDLK_c){
+              monde->etat_jeu = ETAT_CARTE;
             }
             //si on appuie sur M on retour au menu principal
             if(event->key.keysym.sym == SDLK_m){
@@ -252,8 +259,8 @@ void evenements(SDL_Event* event, monde_t * monde){
           evenements_fin_partie(event, monde);
         }
 
-        if(monde->etat_jeu == ETAT_AIDE){
-          menu_aide(event, monde);
+        if(monde->etat_jeu == ETAT_AIDE || monde->etat_jeu == ETAT_CARTE){
+          quitter_carte_aide(event, monde);
         }
 
         if(monde->etat_jeu == ETAT_DIALOGUE || monde->etat_jeu == ETAT_COFFRE){

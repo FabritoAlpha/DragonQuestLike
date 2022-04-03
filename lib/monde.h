@@ -33,6 +33,7 @@
 #define ETAT_MENU_2 4
 #define ETAT_JEU_PRINCIPAL 1
 #define ETAT_VICTOIRE 5
+#define ETAT_CARTE 2
 
 #define NB_MONSTRES_SALLE 1
 #define NB_PERSO_SALLE 2

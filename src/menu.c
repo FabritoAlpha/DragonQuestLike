@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include  "../lib/menu.h"
 
-void menu_aide(SDL_Event* event, monde_t * monde){
+void quitter_carte_aide(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
     //on quitte l'affichage des cmmandes
     if(event->type == SDL_KEYDOWN){

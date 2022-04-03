@@ -1,5 +1,31 @@
 #include  "../lib/affichage.h"
 
+void affichage_carte(SDL_Renderer *renderer, TTF_Font * police, images_t *textures, joueur_t * joueur){
+    int n_zone = joueur->zone;
+    int n_salle = joueur->salle;
+    int x;
+    int y;
+
+    //coordonnées du point à l'écran
+    if(n_salle == 1 || n_salle == 2)
+        x = joueur->combattant->x/2 + 500;
+    else
+        x = joueur->combattant->x/2;
+    if(n_salle == 2 || n_salle == 3)
+        y = joueur->combattant->y/2 + 350;
+    else
+        y = joueur->combattant->y/2;
+
+    //affichage carte
+    carte_position(renderer, textures, n_zone);
+
+    apply_texture(&textures->joueur, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+
+    //affichage indication pour quitter
+    char indication[100] = "ENTREE pour quitter";
+    apply_text(renderer, 0, 0, 0, indication , police, 600 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350, 380, 50);
+}
+
 void affichage_aide(SDL_Renderer *renderer, TTF_Font * police){
     char aide[150] = "";
     //largeur: 20 par caractère

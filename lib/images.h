@@ -60,6 +60,9 @@ typedef struct images_s{
     SDL_Texture* bouclier1_petit;
     SDL_Texture* bouclier2_petit;
     SDL_Texture* or_petit;
+    SDL_Texture* zone0; /*!< Texture liée à l'image de la carte de la zone 0. */
+    SDL_Texture* zone1; /*!< Texture liée à l'image de la carte de la zone 1. */
+    SDL_Texture* zone2; /*!< Texture liée à l'image de la carte de la zone 2. */
 } images_t;
 
 void clean_images(images_t *textures, TTF_Font* police);
@@ -81,5 +84,7 @@ void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t
 void or_position(SDL_Renderer *renderer, images_t *textures, int x, int y);
 
 void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num);
+
+void carte_position(SDL_Renderer *renderer, images_t *textures, int zone);
 
 #endif

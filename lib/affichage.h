@@ -20,6 +20,8 @@
 #define COULEUR_1_SELECTION 255
 #define COULEUR_2_VIDE 0
 
+void affichage_carte(SDL_Renderer *renderer, TTF_Font * police, images_t *textures, joueur_t * joueur);
+
 void affichage_aide(SDL_Renderer *renderer, TTF_Font * police);
 
 void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, zone_t* zone, salle_t* salle);
