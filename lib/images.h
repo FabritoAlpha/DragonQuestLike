@@ -63,6 +63,9 @@ typedef struct images_s{
     SDL_Texture* zone0; /*!< Texture liée à l'image de la carte de la zone 0. */
     SDL_Texture* zone1; /*!< Texture liée à l'image de la carte de la zone 1. */
     SDL_Texture* zone2; /*!< Texture liée à l'image de la carte de la zone 2. */
+    SDL_Texture* coeur; /*!< Texture liée au grand icone pv */
+    SDL_Texture* larme; /*!< Texture liée au grand icone mana */
+    SDL_Texture* feu; /*!< Texture liée au grand icone feu */
 } images_t;
 
 void clean_images(images_t *textures, TTF_Font* police);
@@ -71,7 +74,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures);
 
 void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde);
 
-void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur);
+void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur, int x, int y);
 
 void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre);
 
@@ -86,5 +89,7 @@ void or_position(SDL_Renderer *renderer, images_t *textures, int x, int y);
 void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num);
 
 void carte_position(SDL_Renderer *renderer, images_t *textures, int zone);
+
+void grand_icone_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num);
 
 #endif

@@ -61,53 +61,6 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
     }
 
     if(monde->etat_jeu == ETAT_DIALOGUE){
-      switch(monde->joueur->zone){
-          case 0:
-              switch(monde->joueur->salle){
-                  case 0:
-                      // si c'est un pnj non marchand
-                      if(nonCombattant_proche(monde) == 1)
-                          dialogue_position(renderer, textures, 0);
-                      // si c'est un marchand
-                      if(nonCombattant_proche(monde) == 2)
-                          dialogue_position(renderer, textures, 4);
-                  break;
-                  case 2:
-                      dialogue_position(renderer, textures, 3);
-                  break;
-              }
-          break;
-          case 1:
-              switch(monde->joueur->salle){
-                  case 0:
-                      // si c'est un pnj non marchand
-                      if(nonCombattant_proche(monde) == 1)
-                          dialogue_position(renderer, textures, 1);
-                      // si c'est un  marchand
-                      if(nonCombattant_proche(monde) == 2)
-                          dialogue_position(renderer, textures, 3);
-                  break;
-                  case 2:
-                      dialogue_position(renderer, textures, 4);
-                  break;
-              }
-          break;
-          case 2:
-              switch(monde->joueur->salle){
-                  case 0:
-                      // si c'est un pnj non marchand
-                      if(nonCombattant_proche(monde) == 1)
-                          dialogue_position(renderer, textures, 2);
-                      // si c'est un  marchand
-                      if(nonCombattant_proche(monde) == 2)
-                          dialogue_position(renderer, textures, 4);
-                  break;
-                  case 2:
-                      dialogue_position(renderer, textures, 3);
-                  break;
-              }
-          break;
-      }
         affichage_dialogue(renderer, textures, monde, police);
     }
     if(monde->etat_jeu == ETAT_COFFRE){
@@ -121,6 +74,7 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
     }
 
     if(monde->etat_jeu == 1){
+      affichage_statistiques(renderer, police, textures, monde->joueur);
       char aide[10] = "Aide A";
       apply_text(renderer, 0, 0, 0, aide , police, 570 + (taille_fenetre[0]/2) - 250, 300 + (taille_fenetre[1]/2) , 100, 40);
       if(nonCombattant_proche(monde) == 1 || nonCombattant_proche(monde) == 2){
@@ -134,28 +88,15 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
           }
       }
 
-      joueur_position(renderer, textures, monde->joueur);
+      joueur_position(renderer, textures, monde->joueur, monde->joueur->combattant->x, monde->joueur->combattant->y);
 
       affichage_nonCombattants(renderer,textures, monde->zones[monde->joueur->zone], monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]);
 
-      int suivaleatoir;
       if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT){
         monstre_position(renderer, textures, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre);
-        if(time_sec>(*next_tick_monstre)){
-          if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->vitesse==1){
-            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->vitesse=0;
-          }else{
-            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->vitesse=1;
-          }
-          do{
-            suivaleatoir=rand()%500;
-          }while(suivaleatoir<200||suivaleatoir>500);
-          (*next_tick_monstre)+=suivaleatoir;
-        }
         //printf("time sec %d nexttick %d\n",time_sec,(*next_tick));
         if(time_sec>(*next_tick)){
-          (*next_tick) = (*next_tick) + 8;
-          //printf("On déplace le monstre");
+          (*next_tick) = (*next_tick) + 48;
           deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
         }
         else{

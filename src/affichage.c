@@ -19,7 +19,7 @@ void affichage_carte(SDL_Renderer *renderer, TTF_Font * police, images_t *textur
     //affichage carte
     carte_position(renderer, textures, n_zone);
 
-    apply_texture(&textures->joueur, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+    joueur_position(renderer, textures, joueur, x, y);
 
     //affichage indication pour quitter
     char indication[100] = "ENTREE pour quitter";
@@ -94,23 +94,82 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, zone_t
 
 void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * monde, TTF_Font * police){
     char parole[150] = "";
+
+    //affichage des personnages et du fond des dialogues
+    switch(monde->joueur->zone){
+        case 0:
+            switch(monde->joueur->salle){
+                case 0:
+                    // si c'est un pnj non marchand
+                    if(nonCombattant_proche(monde) == 1)
+                        dialogue_position(renderer, textures, 0);
+                    // si c'est un marchand
+                    if(nonCombattant_proche(monde) == 2)
+                        dialogue_position(renderer, textures, 4);
+                break;
+                case 2:
+                    dialogue_position(renderer, textures, 3);
+                break;
+            }
+        break;
+        case 1:
+            switch(monde->joueur->salle){
+                case 0:
+                    // si c'est un pnj non marchand
+                    if(nonCombattant_proche(monde) == 1)
+                        dialogue_position(renderer, textures, 1);
+                    // si c'est un  marchand
+                    if(nonCombattant_proche(monde) == 2)
+                        dialogue_position(renderer, textures, 3);
+                break;
+                case 2:
+                    dialogue_position(renderer, textures, 4);
+                break;
+            }
+        break;
+        case 2:
+            switch(monde->joueur->salle){
+                case 0:
+                    // si c'est un pnj non marchand
+                    if(nonCombattant_proche(monde) == 1)
+                        dialogue_position(renderer, textures, 2);
+                    // si c'est un  marchand
+                    if(nonCombattant_proche(monde) == 2)
+                        dialogue_position(renderer, textures, 4);
+                break;
+                case 2:
+                    dialogue_position(renderer, textures, 3);
+                break;
+            }
+        break;
+    }
+
     // si c'est un pnj non marchand
     if(nonCombattant_proche(monde) == 1){
         if(monde->joueur->zone == 0){
-          sprintf(parole, "Bonjour!");
-          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 594 + (taille_fenetre[1]/2) - 350 , 90, 20);
-          sprintf(parole, "Comment allez-vous?");
-          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 634 + (taille_fenetre[1]/2) - 350 , 180, 20);
-          sprintf(parole, "Moi je vais bien.");
-          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 674 + (taille_fenetre[1]/2) - 350 , 125, 20);
+          //10 en largeur par caractère
+          sprintf(parole, "Le grand sorcier se dirige vers votre maison!");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 619 + (taille_fenetre[1]/2) - 375 , 450, 20);
+          sprintf(parole, "Depechez vous! Vos amis sont en danger!");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 659 + (taille_fenetre[1]/2) - 375 , 390, 20);
+          sprintf(parole, "Faites attention, il a laisse des monstres sur son passage...");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 699 + (taille_fenetre[1]/2) - 375 , 610, 20);
         }
         if(monde->joueur->zone == 1){
-          sprintf(parole, "Bonjour!");
-          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 350 , 90, 20);
+          sprintf(parole, "Faites vite! Le sorcier semblait furieux!");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 619 + (taille_fenetre[1]/2) - 375 , 410, 20);
+          sprintf(parole, "Il est passé par notre jardin.");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 659 + (taille_fenetre[1]/2) - 375 , 300, 20);
+          sprintf(parole, "Esperons que vos amis vont bien...");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 699 + (taille_fenetre[1]/2) - 375 , 340, 20);
         }
         if(monde->joueur->zone == 2){
-          sprintf(parole, "Bonjour!");
-          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 350 , 90, 20);
+          sprintf(parole, "Le sorcier est dans votre maison!");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 619 + (taille_fenetre[1]/2) - 375 , 330, 20);
+          sprintf(parole, "Il detient vos amis!");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 659 + (taille_fenetre[1]/2) - 375 , 200, 20);
+          sprintf(parole, "Il va vous falloir de nouvelles armes.");
+          apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 699 + (taille_fenetre[1]/2) - 375 , 380, 20);
         }
     }
     // si c'est un marchand
@@ -119,7 +178,7 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
         //afficher l'or en possession du joueur
         sprintf(parole, "%d", monde->joueur->or);
         apply_text(renderer, 0, 0, 0, parole , police, 800 + (taille_fenetre[0]/2) - 500, 505 + (taille_fenetre[1]/2) - 350 , 75, 60);
-        or_position(renderer, textures, 865 + (taille_fenetre[0]/2) - 500, 505 + (taille_fenetre[1]/2) - 350);
+        grand_icone_position(renderer, textures, 865 + (taille_fenetre[0]/2) - 500, 505 + (taille_fenetre[1]/2) - 350,1);
 
         sprintf(parole, "Bonjour! Que voulez-vous acheter?");
         apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 350 , 270, 20);
@@ -200,7 +259,7 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
         apply_text(renderer, 0, 0, 0, parole , police, (taille_fenetre[0]/2) - 325, (taille_fenetre[1]/2) - 100 , 650, 80);
         sprintf(parole, "500");
         apply_text(renderer, 0, 0, 0, parole , police, (taille_fenetre[0]/2) - 300, (taille_fenetre[1]/2) , 200, 60);
-        or_position(renderer, textures, (taille_fenetre[0]/2) - 100, (taille_fenetre[1]/2) + 30);
+        grand_icone_position(renderer, textures, 400 + (taille_fenetre[0]/2) - 500, 375 + (taille_fenetre[1]/2) - 375, 1);
     }
 }
 
@@ -429,33 +488,14 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
     char opt2[20] = "";
     int couleur=0; // Couleur 1 d'un item non selectionné
     int couleur2=255; //Couleur 2 d'un item normal
-    // Affichage du mana
-    sprintf(opt, "Mana");
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.55 , SCREEN_HEIGHT/12 , TEXT_OBJET_L*0.6, TEXT_OBJET_H/2+50);
-    snprintf(opt, 20, "%d", monde->joueur->manaCour);
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.60 , SCREEN_HEIGHT/12 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
-    sprintf(opt, "ManaMax");
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.65 , SCREEN_HEIGHT/12 , TEXT_OBJET_L*0.9, TEXT_OBJET_H/2+50);
-    snprintf(opt, 20, "%d", monde->joueur->manaMax);
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.73 , SCREEN_HEIGHT/12 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
-    // Affichage des points de vie
-    sprintf(opt, "PV");
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.55 , SCREEN_HEIGHT/6 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
-    snprintf(opt, 20, "%d", monde->joueur->combattant->pvCour);
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.60 , SCREEN_HEIGHT/6 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
-    sprintf(opt, "PVMax");
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.65 , SCREEN_HEIGHT/6 , TEXT_OBJET_L*0.8, TEXT_OBJET_H/2+50);
-    snprintf(opt, 20, "%d", monde->joueur->combattant->pvMax);
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.73 , SCREEN_HEIGHT/6 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
-    // Affichange des degats
-    sprintf(opt, "Attaque");
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.55 , SCREEN_HEIGHT/4 , TEXT_OBJET_L*0.9, TEXT_OBJET_H/2+50);
+
+    // Affichage du mana, de l'or et des pv
+    affichage_statistiques(renderer, police, textures, monde->joueur);
+
+    // Affichage des degats
     snprintf(opt, 20, "%d", monde->joueur->combattant->attaque);
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.63 , SCREEN_HEIGHT/4 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
-    sprintf(opt, "Or");
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.68 , SCREEN_HEIGHT/4 , TEXT_OBJET_L*0.9, TEXT_OBJET_H/2+50);
-    snprintf(opt, 20, "%d", monde->joueur->or);
-    apply_text(renderer, 0, 255, 150, opt , police, SCREEN_WIDTH*0.75 , SCREEN_HEIGHT/4 , TEXT_OBJET_L*0.5, TEXT_OBJET_H/2+50);
+    apply_text(renderer, 0, 0, 0, opt , police, 75 + (taille_fenetre[0]/2) - 500, 20 + (taille_fenetre[1]/2) - 375 , 60, 50);
+    icone_boutique_position(renderer, textures,  135 + (taille_fenetre[0]/2) - 500, 30 + (taille_fenetre[1]/2) - 375, 3);
 
     // Affichange dynamique des séléctions avec option 1 2 3 4 5 6 7.
         // Affichage Inventaire
@@ -696,4 +736,38 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
             }
         }
     }
+}
+
+void affichage_statistiques(SDL_Renderer *renderer, TTF_Font * police, images_t *textures, joueur_t * joueur){
+    int nb;
+    char nb_aff[4];
+    char max[4] = "max";
+
+    //affichage de l'or
+    nb = joueur->or;
+    sprintf(nb_aff, "%d", nb);
+    apply_text(renderer, 0, 0, 0, nb_aff , police, 220 + (taille_fenetre[0]/2) - 500, 20 + (taille_fenetre[1]/2) - 375 , 60, 50);
+    grand_icone_position(renderer, textures, 270 + (taille_fenetre[0]/2) - 500, 15 + (taille_fenetre[1]/2) - 375, 1);
+
+    //affichage du mana
+    nb = joueur->manaCour;
+    sprintf(nb_aff, "%d", nb);
+    apply_text(renderer, 0, 0, 0, nb_aff , police, 365 + (taille_fenetre[0]/2) - 500, 20 + (taille_fenetre[1]/2) - 375 , 60, 50);
+    grand_icone_position(renderer, textures, 415 + (taille_fenetre[0]/2) - 500, 15 + (taille_fenetre[1]/2) - 375, 3);
+    nb = joueur->manaMax;
+    sprintf(nb_aff, "%d", nb);
+    apply_text(renderer, 0, 0, 0, nb_aff , police, 510 + (taille_fenetre[0]/2) - 500, 20 + (taille_fenetre[1]/2) - 375 , 60, 50);
+    grand_icone_position(renderer, textures, 560 + (taille_fenetre[0]/2) - 500, 15 + (taille_fenetre[1]/2) - 375, 3);
+    apply_text(renderer, 0, 0, 255, max , police, 615 + (taille_fenetre[0]/2) - 500, 50 + (taille_fenetre[1]/2) - 375 , 30, 17);
+
+    //affichage des pv
+    nb = joueur->combattant->pvCour;
+    sprintf(nb_aff, "%d", nb);
+    apply_text(renderer, 0, 0, 0, nb_aff , police, 655 + (taille_fenetre[0]/2) - 500, 20 + (taille_fenetre[1]/2) - 375 , 60, 50);
+    grand_icone_position(renderer, textures, 705 + (taille_fenetre[0]/2) - 500, 15 + (taille_fenetre[1]/2) - 375, 2);
+    nb = joueur->combattant->pvMax;
+    sprintf(nb_aff, "%d", nb);
+    apply_text(renderer, 0, 0, 0, nb_aff , police, 800 + (taille_fenetre[0]/2) - 500, 20 + (taille_fenetre[1]/2) - 375 , 60, 50);
+    grand_icone_position(renderer, textures, 850 + (taille_fenetre[0]/2) - 500, 15 + (taille_fenetre[1]/2) - 375, 2);
+    apply_text(renderer, 255, 0, 0, max , police, 910 + (taille_fenetre[0]/2) - 500, 50 + (taille_fenetre[1]/2) - 375 , 30, 17);
 }

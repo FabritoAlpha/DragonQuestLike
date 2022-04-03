@@ -36,4 +36,6 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
 
 void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police);
 
+void affichage_statistiques(SDL_Renderer *renderer, TTF_Font * police, images_t *textures, joueur_t * joueur);
+
 #endif

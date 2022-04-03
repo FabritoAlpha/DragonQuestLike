@@ -143,6 +143,12 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->zone1 = NULL;
     clean_texture(textures->zone2);
     textures->zone2 = NULL;
+    clean_texture(textures->coeur);
+    textures->coeur = NULL;
+    clean_texture(textures->larme);
+    textures->larme = NULL;
+    clean_texture(textures->feu);
+    textures->feu = NULL;
     if(police != NULL){
         clean_font(police);
         police = NULL;
@@ -214,6 +220,9 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     load_image("./rsrc/img/zone0.bmp", &renderer, &textures->zone0);
     load_image("./rsrc/img/zone1.bmp", &renderer,&textures->zone1);
     load_image("./rsrc/img/zone2.bmp", &renderer,&(textures->zone2));
+    load_image("./rsrc/img/coeur.bmp", &renderer,&textures->coeur);
+    load_image("./rsrc/img/larme.bmp", &renderer,&textures->larme);
+    load_image("./rsrc/img/feu.bmp", &renderer,&textures->feu);
 }
 
 /**
@@ -295,23 +304,23 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
     }
 }
 
-void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur){
+void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur, int x, int y){
     // Affichage du joueur.
-    apply_texture(&textures->joueur, renderer, joueur->combattant->x + (taille_fenetre[0]/2) - 500, joueur->combattant->y + (taille_fenetre[1]/2) - 375);
+    apply_texture(&textures->joueur, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
     // Affichage de l'équipement du joueur
     // Epee
     if(joueur->objet_equipe[0].id==joueur->inventaire[0].id&&joueur->inventaire[0].id!=0){
-        apply_texture(&textures->epee1_petite, renderer, joueur->combattant->x+35 + (taille_fenetre[0]/2) - 500, joueur->combattant->y +30 + (taille_fenetre[1]/2) - 375);
+        apply_texture(&textures->epee1_petite, renderer, x+35 + (taille_fenetre[0]/2) - 500, y +30 + (taille_fenetre[1]/2) - 375);
     }
     if(joueur->objet_equipe[0].id==joueur->inventaire[1].id&&joueur->inventaire[1].id!=0){
-        apply_texture(&textures->epee2_petite, renderer, joueur->combattant->x+35 + (taille_fenetre[0]/2) - 500, joueur->combattant->y +30 + (taille_fenetre[1]/2) - 375);
+        apply_texture(&textures->epee2_petite, renderer, x+35 + (taille_fenetre[0]/2) - 500, y +30 + (taille_fenetre[1]/2) - 375);
     }
     // Bouclier
     if(joueur->objet_equipe[1].id==joueur->inventaire[2].id&&joueur->inventaire[2].id!=0){
-        apply_texture(&textures->bouclier1_petit, renderer, joueur->combattant->x-10 + (taille_fenetre[0]/2) - 500, joueur->combattant->y +33 + (taille_fenetre[1]/2) - 375);
+        apply_texture(&textures->bouclier1_petit, renderer, x-10 + (taille_fenetre[0]/2) - 500, y +33 + (taille_fenetre[1]/2) - 375);
     }
     if(joueur->objet_equipe[1].id==joueur->inventaire[3].id&&joueur->inventaire[3].id!=0){
-        apply_texture(&textures->bouclier2_petit, renderer, joueur->combattant->x-10 + (taille_fenetre[0]/2) - 500, joueur->combattant->y +33 + (taille_fenetre[1]/2) - 375);
+        apply_texture(&textures->bouclier2_petit, renderer, x-10 + (taille_fenetre[0]/2) - 500, y +33 + (taille_fenetre[1]/2) - 375);
     }
 }
 
@@ -370,6 +379,24 @@ void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t
 
 void or_position(SDL_Renderer *renderer, images_t *textures, int x, int y){
     apply_texture(&textures->or, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+}
+
+void grand_icone_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num){
+    // 1: or, 2: pv, 3: mana, 4: feu
+    switch(num){
+        case 1:
+            apply_texture(&textures->or, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 2:
+            apply_texture(&textures->coeur, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 3:
+            apply_texture(&textures->larme, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+        break;
+        case 4:
+            apply_texture(&textures->feu, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
+        break;
+    }
 }
 
 void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num){
