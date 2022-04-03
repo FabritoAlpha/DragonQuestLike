@@ -7,7 +7,7 @@
 #ifndef _JEU_H
 #define _JEU_H
 #include <math.h>
-#include "menu.h"
+#include "interactions.h"
 
 #define COLLISION 1
 #define PAS_COLLISION 0

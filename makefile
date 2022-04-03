@@ -15,7 +15,7 @@ CFLAGS= -W -Wall -g -std=c99 -g `sdl2-config --cflags `
 
 all: DragonQuest
 
-DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/monde.o $(OBJ)/entitee.o $(OBJ)/menu.o
+DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/monde.o $(OBJ)/entitee.o $(OBJ)/menu.o $(OBJ)/deplacements.o $(OBJ)/interactions.o
 	$(CC) $(CFLAGS) $(INCLUDES) $^ -o $(BIN)/$@ $(LIBS)
 
 $(OBJ)/main.o: $(SRC)/main.c $(SRC)/jeu.c $(LIB)/jeu.h $(LIB)/sdl2_fonctions.h $(LIB)/images.h
@@ -23,7 +23,7 @@ $(OBJ)/main.o: $(SRC)/main.c $(SRC)/jeu.c $(LIB)/jeu.h $(LIB)/sdl2_fonctions.h $
 
 $(OBJ)/menu.o: $(SRC)/menu.c $(LIB)/menu.h
 	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS)
-	
+
 $(OBJ)/sdl2_fonctions.o: $(SRC)/sdl2_fonctions.c $(LIB)/sdl2_fonctions.h
 	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS)
 
@@ -37,6 +37,12 @@ $(OBJ)/monde.o: $(SRC)/monde.c $(LIB)/monde.h
 	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS)
 
 $(OBJ)/entitee.o: $(SRC)/entitee.c $(LIB)/entitee.h
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS)
+
+$(OBJ)/deplacements.o: $(SRC)/deplacements.c $(LIB)/deplacements.h
+	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS)
+
+$(OBJ)/interactions.o: $(SRC)/interactions.c $(LIB)/interactions.h
 	$(CC) $(CFLAGS) -c ./$< -o $@ $(LIBS)
 
 entitee: test_entitee
