@@ -1,3 +1,10 @@
+/**
+  * \file menu.h
+  * \brief header des menus
+  * \author Anna Béranger, Arthur Fabre, Alex Choux
+  * \date 03/03/2022
+*/
+
 #ifndef MENU_H
 #define MENU_H
 

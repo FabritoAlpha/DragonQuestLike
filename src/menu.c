@@ -1,6 +1,19 @@
+/**
+  * \file menu.c
+  * \brief gestion des menus
+  * \author Anna Beranger
+  * \date 03/03/2022
+*/
+
 #include <stdio.h>
 #include  "../lib/menu.h"
 
+/**
+  * \fn void quitter_carte_aide(SDL_Event* event, monde_t * monde)
+  * \brief gère la fermeture du menu aide et de la carte
+  * \param event les évènements claviers
+  * \param monde les données du monde
+*/
 void quitter_carte_aide(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
     //on quitte l'affichage des cmmandes
@@ -11,6 +24,12 @@ void quitter_carte_aide(SDL_Event* event, monde_t * monde){
     }
 }
 
+/**
+  * \fn void choix_partie(SDL_Event* event, monde_t * monde)
+  * \brief gère les options du menu de choix de partie
+  * \param event les évènements claviers
+  * \param monde les données du monde
+*/
 void choix_partie(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
     if(event->type == SDL_KEYDOWN){
@@ -102,6 +121,12 @@ void choix_partie(SDL_Event* event, monde_t * monde){
     }
 }
 
+/**
+  * \fn void evenements_menu(SDL_Event* event, monde_t * monde)
+  * \brief gère les options du menu principal
+  * \param event les évènements claviers
+  * \param monde les données du monde
+*/
 void evenements_menu(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
@@ -132,6 +157,12 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
 
 }
 
+/**
+  * \fn void evenements_inventaire(SDL_Event* event, monde_t * monde)
+  * \brief gère les options de l'inventaire
+  * \param event les évènements claviers
+  * \param monde les données du monde
+*/
 void evenements_inventaire(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
     if(event->type == SDL_KEYDOWN){
@@ -293,13 +324,18 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
     //printf("Fin Nb obj equip = %d\n", monde->joueur->nb_obj_equip);
 }
 
+/**
+  * \fn void evenements_fin_partie(SDL_Event* event, monde_t * monde)
+  * \brief gère leretour au menu pendant l'écran de victoire
+  * \param event les évènements claviers
+  * \param monde les données du monde
+*/
 void evenements_fin_partie(SDL_Event* event, monde_t * monde){
   const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
   if(event->type == SDL_KEYDOWN){
     if(keystates[SDL_SCANCODE_RETURN]){
       monde->etat_jeu = ETAT_MENU_1;
-      printf("Monde etat jeu :%d\n", monde->etat_jeu);
     }
   }
 }
