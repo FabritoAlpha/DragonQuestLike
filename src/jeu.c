@@ -1,7 +1,7 @@
 /**
   * \file jeu.c
   * \brief gestion du jeu
-  * \author Anna Beranger
+  * \author Anna Beranger, Alex Choux, Arthur Fabre
   * \date 03/03/2022
 */
 

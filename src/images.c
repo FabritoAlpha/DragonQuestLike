@@ -1,8 +1,8 @@
 /**
   * \file images.c
   * \brief gestion des images et de la police
-  * \author Anna Béranger
-  * \date 17/02/2022
+  * \author Anna Beranger, Alex Choux, Arthur Fabre
+  * \date 03/03/2022
 */
 
 #include "../lib/images.h"

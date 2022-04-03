@@ -1,7 +1,7 @@
 /**
   * \file menu.c
   * \brief gestion des menus
-  * \author Anna Beranger
+  * \author Anna Beranger, Alex Choux, Arthur Fabre
   * \date 03/03/2022
 */
 

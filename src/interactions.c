@@ -1,8 +1,8 @@
 /**
   * \file interactions.c
   * \brief gestion des interactions du joueur avec les entités
-  * \author Anna Béranger
-  * \date 17/02/2022
+  * \author Anna Beranger, Alex Choux, Arthur Fabre
+  * \date 03/03/2022
 */
 
 #include  "../lib/interactions.h"

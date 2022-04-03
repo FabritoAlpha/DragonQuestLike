@@ -1,0 +1,763 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dragon Quest Like: Référence du fichier src/deplacements.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dragon Quest Like
+   </div>
+   <div id="projectbrief">Jeu de type J-RPG</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier deplacements.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>déplacements et collisions du joueur et des monstres  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;../lib/deplacements.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de deplacements.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="deplacements_8c__incl.png" border="0" usemap="#src_2deplacements_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ad0e921eab853f9bc63b5b7d575cd5637"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#ad0e921eab853f9bc63b5b7d575cd5637">distance_pnj_coffre</a> (joueur_t *joueur, nonCombattant_t *entite)</td></tr>
+<tr class="memdesc:ad0e921eab853f9bc63b5b7d575cd5637"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie la distance entre le joueur et un non combattant, personnage ou coffre  <a href="deplacements_8c.html#ad0e921eab853f9bc63b5b7d575cd5637">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad0e921eab853f9bc63b5b7d575cd5637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e05391db4346ba9eff1fe5112c4ca6e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#a9e05391db4346ba9eff1fe5112c4ca6e">nonCombattant_proche</a> (monde_t *monde)</td></tr>
+<tr class="memdesc:a9e05391db4346ba9eff1fe5112c4ca6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">teste si un personnage, un marchand ou un coffre est proche du joueur  <a href="deplacements_8c.html#a9e05391db4346ba9eff1fe5112c4ca6e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9e05391db4346ba9eff1fe5112c4ca6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76977603534c913a5136e59edf95e0ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#a76977603534c913a5136e59edf95e0ff">changement_salle</a> (joueur_t *j, int changement_salle)</td></tr>
+<tr class="memdesc:a76977603534c913a5136e59edf95e0ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">gestion du passage du joueur dans une nouvelle salle  <a href="deplacements_8c.html#a76977603534c913a5136e59edf95e0ff">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a76977603534c913a5136e59edf95e0ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a002e49ae16e18f0ca0ac7ace6bef4f59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#a002e49ae16e18f0ca0ac7ace6bef4f59">changement_zone</a> (monde_t *monde)</td></tr>
+<tr class="memdesc:a002e49ae16e18f0ca0ac7ace6bef4f59"><td class="mdescLeft">&#160;</td><td class="mdescRight">gestion du passage du joueur dans une nouvelle zone  <a href="deplacements_8c.html#a002e49ae16e18f0ca0ac7ace6bef4f59">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a002e49ae16e18f0ca0ac7ace6bef4f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac29a4a186e1f7dd0f8e0f9f1037483e4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#ac29a4a186e1f7dd0f8e0f9f1037483e4">collision_combattant_ecran</a> (combattant_t *combattant, monde_t *monde)</td></tr>
+<tr class="memdesc:ac29a4a186e1f7dd0f8e0f9f1037483e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">détection de collision du joueur ou d'un monstre avec le bord de la surface de jeu  <a href="deplacements_8c.html#ac29a4a186e1f7dd0f8e0f9f1037483e4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac29a4a186e1f7dd0f8e0f9f1037483e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a380a90d1731d5409f626bff8d053b6cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#a380a90d1731d5409f626bff8d053b6cc">collision_joueur_monstre</a> (combattant_t *joueur, combattant_t *monstre, monde_t *monde)</td></tr>
+<tr class="memdesc:a380a90d1731d5409f626bff8d053b6cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">détection de collision entre le joueur et un monstre  <a href="deplacements_8c.html#a380a90d1731d5409f626bff8d053b6cc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a380a90d1731d5409f626bff8d053b6cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7994b096ee354b13fe5e0882dcfc495"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#ae7994b096ee354b13fe5e0882dcfc495">collision_combattant_pnj</a> (combattant_t *combattant, nonCombattant_t *pnj)</td></tr>
+<tr class="memdesc:ae7994b096ee354b13fe5e0882dcfc495"><td class="mdescLeft">&#160;</td><td class="mdescRight">détection de collision entre le joueur ou un monstre et un personnage non joueur  <a href="deplacements_8c.html#ae7994b096ee354b13fe5e0882dcfc495">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae7994b096ee354b13fe5e0882dcfc495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43f8dc7b5f604769318c10fbc67faa47"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#a43f8dc7b5f604769318c10fbc67faa47">collision_combattant_coffre</a> (combattant_t *combattant, nonCombattant_t *coffre)</td></tr>
+<tr class="memdesc:a43f8dc7b5f604769318c10fbc67faa47"><td class="mdescLeft">&#160;</td><td class="mdescRight">détection de collision entre le joueur ou un monstre et un coffre  <a href="deplacements_8c.html#a43f8dc7b5f604769318c10fbc67faa47">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a43f8dc7b5f604769318c10fbc67faa47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a409bb299269be24df7686756f71aa201"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#a409bb299269be24df7686756f71aa201">collision_combattant</a> (combattant_t *combattant, int indice_monstre, monde_t *monde)</td></tr>
+<tr class="memdesc:a409bb299269be24df7686756f71aa201"><td class="mdescLeft">&#160;</td><td class="mdescRight">détection de collision entre un combattant(joueur ou monstre) et un coffre, un combattant ou un pnj  <a href="deplacements_8c.html#a409bb299269be24df7686756f71aa201">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a409bb299269be24df7686756f71aa201"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84fed87d865b0b9a6515e246d4f80e1b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#a84fed87d865b0b9a6515e246d4f80e1b">deplacement_droit</a> (combattant_t *entite, int indice_monstre, monde_t *monde)</td></tr>
+<tr class="memdesc:a84fed87d865b0b9a6515e246d4f80e1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie qu'un déplacement à droite est possible  <a href="deplacements_8c.html#a84fed87d865b0b9a6515e246d4f80e1b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a84fed87d865b0b9a6515e246d4f80e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc18e12790e8bc23d4b24861db18f3b3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#afc18e12790e8bc23d4b24861db18f3b3">deplacement_gauche</a> (combattant_t *entite, int indice_monstre, monde_t *monde)</td></tr>
+<tr class="memdesc:afc18e12790e8bc23d4b24861db18f3b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie qu'un déplacement à gauche est possible  <a href="deplacements_8c.html#afc18e12790e8bc23d4b24861db18f3b3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afc18e12790e8bc23d4b24861db18f3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41c5fcf87671ef8886a3e2b4646117d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#a41c5fcf87671ef8886a3e2b4646117d8">deplacement_haut</a> (combattant_t *entite, int indice_monstre, monde_t *monde)</td></tr>
+<tr class="memdesc:a41c5fcf87671ef8886a3e2b4646117d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie qu'un déplacement en haut est possible  <a href="deplacements_8c.html#a41c5fcf87671ef8886a3e2b4646117d8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a41c5fcf87671ef8886a3e2b4646117d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae969f7c4dcfdabaaaca5a765cedc8391"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#ae969f7c4dcfdabaaaca5a765cedc8391">deplacement_bas</a> (combattant_t *entite, int indice_monstre, monde_t *monde)</td></tr>
+<tr class="memdesc:ae969f7c4dcfdabaaaca5a765cedc8391"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie qu'un déplacement en bas est possible  <a href="deplacements_8c.html#ae969f7c4dcfdabaaaca5a765cedc8391">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae969f7c4dcfdabaaaca5a765cedc8391"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a206dad2345bcda3ebfebdffc9b868e67"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#a206dad2345bcda3ebfebdffc9b868e67">distancejoueurmonstre</a> (joueur_t *joueur, monstre_t *monstre)</td></tr>
+<tr class="memdesc:a206dad2345bcda3ebfebdffc9b868e67"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie la distance entre le joueur et un monstre  <a href="deplacements_8c.html#a206dad2345bcda3ebfebdffc9b868e67">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a206dad2345bcda3ebfebdffc9b868e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeb5cef256ead287e1a861bdf378df8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#aaeb5cef256ead287e1a861bdf378df8b">deplacement_monstre</a> (monstre_t *monstre, monde_t *m)</td></tr>
+<tr class="memdesc:aaeb5cef256ead287e1a861bdf378df8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">IA du monstre, le déplace dans son environnement.  <a href="deplacements_8c.html#aaeb5cef256ead287e1a861bdf378df8b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aaeb5cef256ead287e1a861bdf378df8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1de9511e3f01652f2bd433862a553538"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deplacements_8c.html#a1de9511e3f01652f2bd433862a553538">sauvegarde</a> (monde_t *monde)</td></tr>
+<tr class="memdesc:a1de9511e3f01652f2bd433862a553538"><td class="mdescLeft">&#160;</td><td class="mdescRight">sauvegarde la partie en cours  <a href="deplacements_8c.html#a1de9511e3f01652f2bd433862a553538">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1de9511e3f01652f2bd433862a553538"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>déplacements et collisions du joueur et des monstres </p>
+<dl class="section author"><dt>Auteur</dt><dd>Anna Beranger, Alex Choux, Arthur Fabre </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>03/03/2022 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a76977603534c913a5136e59edf95e0ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76977603534c913a5136e59edf95e0ff">&#9670;&nbsp;</a></span>changement_salle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void changement_salle </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t *&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>changement_salle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>gestion du passage du joueur dans une nouvelle salle </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j</td><td>le joueur </td></tr>
+    <tr><td class="paramname">changement_salle</td><td>direction aller (1) ou retour (-1) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a002e49ae16e18f0ca0ac7ace6bef4f59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a002e49ae16e18f0ca0ac7ace6bef4f59">&#9670;&nbsp;</a></span>changement_zone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void changement_zone </td>
+          <td>(</td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>gestion du passage du joueur dans une nouvelle zone </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a409bb299269be24df7686756f71aa201"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a409bb299269be24df7686756f71aa201">&#9670;&nbsp;</a></span>collision_combattant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int collision_combattant </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>combattant</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indice_monstre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>détection de collision entre un combattant(joueur ou monstre) et un coffre, un combattant ou un pnj </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">combattant</td><td>le joueur ou un monstre </td></tr>
+    <tr><td class="paramname">indice_monstre</td><td></td></tr>
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>collision (1), pas de collision (0) </dd></dl>
+
+</div>
+</div>
+<a id="a43f8dc7b5f604769318c10fbc67faa47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43f8dc7b5f604769318c10fbc67faa47">&#9670;&nbsp;</a></span>collision_combattant_coffre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int collision_combattant_coffre </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>combattant</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">nonCombattant_t *&#160;</td>
+          <td class="paramname"><em>coffre</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>détection de collision entre le joueur ou un monstre et un coffre </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">combattant</td><td>le joueur ou un monstre </td></tr>
+    <tr><td class="paramname">coffre</td><td>un coffre </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>collision (1), pas de collision (0) </dd></dl>
+
+</div>
+</div>
+<a id="ac29a4a186e1f7dd0f8e0f9f1037483e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac29a4a186e1f7dd0f8e0f9f1037483e4">&#9670;&nbsp;</a></span>collision_combattant_ecran()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int collision_combattant_ecran </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>combattant</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>détection de collision du joueur ou d'un monstre avec le bord de la surface de jeu </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">combattant</td><td>le joueur ou un monstre </td></tr>
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>collision (1), pas de collision (0) </dd></dl>
+
+</div>
+</div>
+<a id="ae7994b096ee354b13fe5e0882dcfc495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7994b096ee354b13fe5e0882dcfc495">&#9670;&nbsp;</a></span>collision_combattant_pnj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int collision_combattant_pnj </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>combattant</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">nonCombattant_t *&#160;</td>
+          <td class="paramname"><em>pnj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>détection de collision entre le joueur ou un monstre et un personnage non joueur </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">combattant</td><td>le joueur ou un monstre </td></tr>
+    <tr><td class="paramname">pnj</td><td>un personnage non joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>collision (1), pas de collision (0) </dd></dl>
+
+</div>
+</div>
+<a id="a380a90d1731d5409f626bff8d053b6cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a380a90d1731d5409f626bff8d053b6cc">&#9670;&nbsp;</a></span>collision_joueur_monstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int collision_joueur_monstre </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>monstre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>détection de collision entre le joueur et un monstre </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>le joueur </td></tr>
+    <tr><td class="paramname">monstre</td><td>un monstre </td></tr>
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>collision (1), pas de collision (0) </dd></dl>
+
+</div>
+</div>
+<a id="ae969f7c4dcfdabaaaca5a765cedc8391"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae969f7c4dcfdabaaaca5a765cedc8391">&#9670;&nbsp;</a></span>deplacement_bas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int deplacement_bas </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>entite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indice_monstre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vérifie qu'un déplacement en bas est possible </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>le joueur ou un monstre </td></tr>
+    <tr><td class="paramname">indice_monstre</td><td></td></tr>
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>déplacement non possible (1), déplacement possible (0) </dd></dl>
+
+</div>
+</div>
+<a id="a84fed87d865b0b9a6515e246d4f80e1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84fed87d865b0b9a6515e246d4f80e1b">&#9670;&nbsp;</a></span>deplacement_droit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int deplacement_droit </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>entite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indice_monstre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vérifie qu'un déplacement à droite est possible </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>le joueur ou un monstre </td></tr>
+    <tr><td class="paramname">indice_monstre</td><td></td></tr>
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>déplacement non possible (1), déplacement possible (0) </dd></dl>
+
+</div>
+</div>
+<a id="afc18e12790e8bc23d4b24861db18f3b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc18e12790e8bc23d4b24861db18f3b3">&#9670;&nbsp;</a></span>deplacement_gauche()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int deplacement_gauche </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>entite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indice_monstre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vérifie qu'un déplacement à gauche est possible </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>le joueur ou un monstre </td></tr>
+    <tr><td class="paramname">indice_monstre</td><td></td></tr>
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>déplacement non possible (1), déplacement possible (0) </dd></dl>
+
+</div>
+</div>
+<a id="a41c5fcf87671ef8886a3e2b4646117d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41c5fcf87671ef8886a3e2b4646117d8">&#9670;&nbsp;</a></span>deplacement_haut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int deplacement_haut </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>entite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indice_monstre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vérifie qu'un déplacement en haut est possible </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>le joueur ou un monstre </td></tr>
+    <tr><td class="paramname">indice_monstre</td><td></td></tr>
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>déplacement non possible (1), déplacement possible (0) </dd></dl>
+
+</div>
+</div>
+<a id="aaeb5cef256ead287e1a861bdf378df8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaeb5cef256ead287e1a861bdf378df8b">&#9670;&nbsp;</a></span>deplacement_monstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void deplacement_monstre </td>
+          <td>(</td>
+          <td class="paramtype">monstre_t *&#160;</td>
+          <td class="paramname"><em>monstre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>IA du monstre, le déplace dans son environnement. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monstre</td><td>monstre qui est controlé </td></tr>
+    <tr><td class="paramname">m</td><td>le monde du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad0e921eab853f9bc63b5b7d575cd5637"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0e921eab853f9bc63b5b7d575cd5637">&#9670;&nbsp;</a></span>distance_pnj_coffre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int distance_pnj_coffre </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">nonCombattant_t *&#160;</td>
+          <td class="paramname"><em>entite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>renvoie la distance entre le joueur et un non combattant, personnage ou coffre </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>le joueur </td></tr>
+    <tr><td class="paramname">entite</td><td>l'entite, personnage ou coffre </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>distance </dd></dl>
+
+</div>
+</div>
+<a id="a206dad2345bcda3ebfebdffc9b868e67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a206dad2345bcda3ebfebdffc9b868e67">&#9670;&nbsp;</a></span>distancejoueurmonstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int distancejoueurmonstre </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">monstre_t *&#160;</td>
+          <td class="paramname"><em>monstre</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>renvoie la distance entre le joueur et un monstre </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>le joueur </td></tr>
+    <tr><td class="paramname">monstre</td><td>un monstre </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>distance </dd></dl>
+
+</div>
+</div>
+<a id="a9e05391db4346ba9eff1fe5112c4ca6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e05391db4346ba9eff1fe5112c4ca6e">&#9670;&nbsp;</a></span>nonCombattant_proche()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int nonCombattant_proche </td>
+          <td>(</td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>teste si un personnage, un marchand ou un coffre est proche du joueur </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 si aucun non combattant est proche, sinon, 1 si c'est un personnage, 2 si c'est un marchand, 3 si c'est un coffre </dd></dl>
+
+</div>
+</div>
+<a id="a1de9511e3f01652f2bd433862a553538"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1de9511e3f01652f2bd433862a553538">&#9670;&nbsp;</a></span>sauvegarde()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sauvegarde </td>
+          <td>(</td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sauvegarde la partie en cours </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

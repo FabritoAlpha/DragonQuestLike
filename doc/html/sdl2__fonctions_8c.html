@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dragon Quest Like: Référence du fichier src/sdl2_fonctions.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dragon Quest Like
+   </div>
+   <div id="projectbrief">Jeu de type J-RPG</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier sdl2_fonctions.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>fonctions de gestion de la sdl2  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;../lib/sdl2_fonctions.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de sdl2_fonctions.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="sdl2__fonctions_8c__incl.png" border="0" usemap="#src_2sdl2__fonctions_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a7307299b4ef47feaa1a4e95341a04c7a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl2__fonctions_8c.html#a7307299b4ef47feaa1a4e95341a04c7a">init_sdl</a> (SDL_Window **window, SDL_Renderer **renderer, int width, int height)</td></tr>
+<tr class="memdesc:a7307299b4ef47feaa1a4e95341a04c7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise la SDL, crée la fenêtre du jeu et le renderer  <a href="sdl2__fonctions_8c.html#a7307299b4ef47feaa1a4e95341a04c7a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7307299b4ef47feaa1a4e95341a04c7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e9e4dd083f7a9f3a776e33b3e7e33ed"><td class="memItemLeft" align="right" valign="top"><a id="a4e9e4dd083f7a9f3a776e33b3e7e33ed"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>load_image</b> (const char *nomfichier, SDL_Renderer **renderer, SDL_Texture **text)</td></tr>
+<tr class="separator:a4e9e4dd083f7a9f3a776e33b3e7e33ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b4c723fb6f7205e7d089cbdd4175ba"><td class="memItemLeft" align="right" valign="top"><a id="a31b4c723fb6f7205e7d089cbdd4175ba"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>apply_texture</b> (SDL_Texture **texture, SDL_Renderer *renderer, float x, float y)</td></tr>
+<tr class="separator:a31b4c723fb6f7205e7d089cbdd4175ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaf353d9ae01b52dd37cd0adf2d5c9ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl2__fonctions_8c.html#adaf353d9ae01b52dd37cd0adf2d5c9ee">update_screen</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:adaf353d9ae01b52dd37cd0adf2d5c9ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">mise à jour de l'écran avec le contenu du renderer  <a href="sdl2__fonctions_8c.html#adaf353d9ae01b52dd37cd0adf2d5c9ee">Plus de détails...</a><br /></td></tr>
+<tr class="separator:adaf353d9ae01b52dd37cd0adf2d5c9ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be5ef20bb308cf4f73ab911b33705e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl2__fonctions_8c.html#a6be5ef20bb308cf4f73ab911b33705e8">clean_texture</a> (SDL_Texture *texture)</td></tr>
+<tr class="memdesc:a6be5ef20bb308cf4f73ab911b33705e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">libère la mémoire d'une texture  <a href="sdl2__fonctions_8c.html#a6be5ef20bb308cf4f73ab911b33705e8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6be5ef20bb308cf4f73ab911b33705e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a572bf07064fc55f12238e71ba2930f5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl2__fonctions_8c.html#a572bf07064fc55f12238e71ba2930f5f">clear_renderer</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:a572bf07064fc55f12238e71ba2930f5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">vide le contenu graphique du renderer  <a href="sdl2__fonctions_8c.html#a572bf07064fc55f12238e71ba2930f5f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a572bf07064fc55f12238e71ba2930f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69f5b063948b40b1bac5bb2518ed9e52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl2__fonctions_8c.html#a69f5b063948b40b1bac5bb2518ed9e52">clean_sdl</a> (SDL_Renderer *renderer, SDL_Window *window)</td></tr>
+<tr class="memdesc:a69f5b063948b40b1bac5bb2518ed9e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">libère la mémoire du renderer et de la fenêtre  <a href="sdl2__fonctions_8c.html#a69f5b063948b40b1bac5bb2518ed9e52">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a69f5b063948b40b1bac5bb2518ed9e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eb77346b2c3ea4968cd58197a05fba0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl2__fonctions_8c.html#a1eb77346b2c3ea4968cd58197a05fba0">init_ttf</a> ()</td></tr>
+<tr class="memdesc:a1eb77346b2c3ea4968cd58197a05fba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">SDL TTF.  <a href="sdl2__fonctions_8c.html#a1eb77346b2c3ea4968cd58197a05fba0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1eb77346b2c3ea4968cd58197a05fba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1107bcdfcb3844cc251888c504f7d658"><td class="memItemLeft" align="right" valign="top">TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl2__fonctions_8c.html#a1107bcdfcb3844cc251888c504f7d658">apply_font</a> (const char *fileName, int size)</td></tr>
+<tr class="memdesc:a1107bcdfcb3844cc251888c504f7d658"><td class="mdescLeft">&#160;</td><td class="mdescRight">applique l'écriture sur l'écran  <a href="sdl2__fonctions_8c.html#a1107bcdfcb3844cc251888c504f7d658">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1107bcdfcb3844cc251888c504f7d658"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4317fa36d9cadb9245261aa19d1e7af"><td class="memItemLeft" align="right" valign="top"><a id="ab4317fa36d9cadb9245261aa19d1e7af"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>apply_text</b> (SDL_Renderer *renderer, int r, int g, int b, const char *text, TTF_Font *font, int x, int y, int w, int h)</td></tr>
+<tr class="separator:ab4317fa36d9cadb9245261aa19d1e7af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af763a1894238fa2a7f3384461f8e8ded"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sdl2__fonctions_8c.html#af763a1894238fa2a7f3384461f8e8ded">clean_font</a> (TTF_Font *font)</td></tr>
+<tr class="memdesc:af763a1894238fa2a7f3384461f8e8ded"><td class="mdescLeft">&#160;</td><td class="mdescRight">libère la mémoire de la police et quitte la ttf  <a href="sdl2__fonctions_8c.html#af763a1894238fa2a7f3384461f8e8ded">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af763a1894238fa2a7f3384461f8e8ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>fonctions de gestion de la sdl2 </p>
+<dl class="section author"><dt>Auteur</dt><dd>Anna Béranger, Arthur Fabre, Alex Choux </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>03/03/2022 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a1107bcdfcb3844cc251888c504f7d658"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1107bcdfcb3844cc251888c504f7d658">&#9670;&nbsp;</a></span>apply_font()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TTF_Font * apply_font </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>applique l'écriture sur l'écran </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">const</td><td>char* fileName le nom du fichier et la taille de la police \size taille </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af763a1894238fa2a7f3384461f8e8ded"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af763a1894238fa2a7f3384461f8e8ded">&#9670;&nbsp;</a></span>clean_font()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clean_font </td>
+          <td>(</td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>font</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>libère la mémoire de la police et quitte la ttf </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">font</td><td>la police </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a69f5b063948b40b1bac5bb2518ed9e52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69f5b063948b40b1bac5bb2518ed9e52">&#9670;&nbsp;</a></span>clean_sdl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clean_sdl </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Window *&#160;</td>
+          <td class="paramname"><em>window</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>libère la mémoire du renderer et de la fenêtre </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>le renderer à nettoyer </td></tr>
+    <tr><td class="paramname">window</td><td>la fenêtre à nettoyer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6be5ef20bb308cf4f73ab911b33705e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6be5ef20bb308cf4f73ab911b33705e8">&#9670;&nbsp;</a></span>clean_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clean_texture </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>texture</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>libère la mémoire d'une texture </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">texture</td><td>la texture à nettoyer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a572bf07064fc55f12238e71ba2930f5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a572bf07064fc55f12238e71ba2930f5f">&#9670;&nbsp;</a></span>clear_renderer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clear_renderer </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vide le contenu graphique du renderer </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>le renderer de l'écran </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7307299b4ef47feaa1a4e95341a04c7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7307299b4ef47feaa1a4e95341a04c7a">&#9670;&nbsp;</a></span>init_sdl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init_sdl </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Window **&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer **&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialise la SDL, crée la fenêtre du jeu et le renderer </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>la fenêtre du jeu </td></tr>
+    <tr><td class="paramname">renderer</td><td>le renderer </td></tr>
+    <tr><td class="paramname">width</td><td>largeur de l'écran de jeu </td></tr>
+    <tr><td class="paramname">height</td><td>hauteur de l'écran de jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>-1 en cas d'erreur, 0 sinon </dd></dl>
+
+</div>
+</div>
+<a id="a1eb77346b2c3ea4968cd58197a05fba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eb77346b2c3ea4968cd58197a05fba0">&#9670;&nbsp;</a></span>init_ttf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_ttf </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SDL TTF. </p>
+<p>initialisation de la ttf </p>
+
+</div>
+</div>
+<a id="adaf353d9ae01b52dd37cd0adf2d5c9ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaf353d9ae01b52dd37cd0adf2d5c9ee">&#9670;&nbsp;</a></span>update_screen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void update_screen </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>mise à jour de l'écran avec le contenu du renderer </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>le renderer de l'écran </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

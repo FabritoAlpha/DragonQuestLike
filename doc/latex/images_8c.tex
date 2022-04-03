@@ -1,0 +1,140 @@
+\hypertarget{images_8c}{}\doxysection{Référence du fichier src/images.c}
+\label{images_8c}\index{src/images.c@{src/images.c}}
+
+
+gestion des images et de la police  
+
+
+{\ttfamily \#include \char`\"{}../lib/images.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de images.\+c\+:
+% FIG 0
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{images_8c_af723f894a73d0ddedebdc2ec09c93d17}\label{images_8c_af723f894a73d0ddedebdc2ec09c93d17}} 
+void {\bfseries clean\+\_\+images} (images\+\_\+t $\ast$textures, T\+T\+F\+\_\+\+Font $\ast$police)
+\item 
+\mbox{\Hypertarget{images_8c_a15086b856c86d5d1b0809bd4c0061126}\label{images_8c_a15086b856c86d5d1b0809bd4c0061126}} 
+void {\bfseries init\+\_\+images} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, images\+\_\+t $\ast$textures)
+\item 
+\mbox{\Hypertarget{images_8c_a31e713a46ef7fb249f736ba9e6df753d}\label{images_8c_a31e713a46ef7fb249f736ba9e6df753d}} 
+void {\bfseries fond} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, images\+\_\+t $\ast$textures, monde\+\_\+t $\ast$monde)
+\item 
+\mbox{\Hypertarget{images_8c_a583b76b61783165e01c00bbb22e90e94}\label{images_8c_a583b76b61783165e01c00bbb22e90e94}} 
+void {\bfseries joueur\+\_\+position} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, images\+\_\+t $\ast$textures, joueur\+\_\+t $\ast$joueur, int x, int y)
+\item 
+\mbox{\Hypertarget{images_8c_aa1d99f56bf9c2d6a57e3702255a0a507}\label{images_8c_aa1d99f56bf9c2d6a57e3702255a0a507}} 
+void {\bfseries monstre\+\_\+position} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, images\+\_\+t $\ast$textures, monstre\+\_\+t $\ast$monstre)
+\item 
+\mbox{\Hypertarget{images_8c_a835a5ba92e69c9a528195a5b999f4b91}\label{images_8c_a835a5ba92e69c9a528195a5b999f4b91}} 
+void {\bfseries non\+Combattant\+\_\+position} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, images\+\_\+t $\ast$textures, non\+Combattant\+\_\+t $\ast$perso, int type)
+\item 
+void \mbox{\hyperlink{images_8c_a0f98beaa02795807c1ecd129d7ce1eb1}{dialogue\+\_\+position}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, images\+\_\+t $\ast$textures, int type)
+\begin{DoxyCompactList}\small\item\em positionne la bulle de discussion, le joueur et le pnj \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{images_8c_a79ecb7ef060e2ce1a5e555260ac47bb3}\label{images_8c_a79ecb7ef060e2ce1a5e555260ac47bb3}} 
+void {\bfseries coffre\+\_\+position} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, images\+\_\+t $\ast$textures, non\+Combattant\+\_\+t $\ast$coffre, int ouvert)
+\item 
+void \mbox{\hyperlink{images_8c_a691a6a7512814a45e8afc80d5dbf5c9d}{grand\+\_\+icone\+\_\+position}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, images\+\_\+t $\ast$textures, int x, int y, int num)
+\begin{DoxyCompactList}\small\item\em positionne les grands icônes \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{images_8c_a37d5fdf293ecc38e0ec721f7553e75c4}{icone\+\_\+boutique\+\_\+position}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, images\+\_\+t $\ast$textures, int x, int y, int num)
+\begin{DoxyCompactList}\small\item\em positionne les petits icônes \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{images_8c_a901edf61bb7423d06c1a745fff55ba2d}{carte\+\_\+position}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, images\+\_\+t $\ast$textures, int zone)
+\begin{DoxyCompactList}\small\item\em positionne l\textquotesingle{}iamge de la carte d\textquotesingle{}une zone \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+gestion des images et de la police 
+
+\begin{DoxyAuthor}{Auteur}
+Anna Beranger, Alex Choux, Arthur Fabre 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03/03/2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{images_8c_a901edf61bb7423d06c1a745fff55ba2d}\label{images_8c_a901edf61bb7423d06c1a745fff55ba2d}} 
+\index{images.c@{images.c}!carte\_position@{carte\_position}}
+\index{carte\_position@{carte\_position}!images.c@{images.c}}
+\doxysubsubsection{\texorpdfstring{carte\_position()}{carte\_position()}}
+{\footnotesize\ttfamily void carte\+\_\+position (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{images\+\_\+t $\ast$}]{textures,  }\item[{int}]{zone }\end{DoxyParamCaption})}
+
+
+
+positionne l\textquotesingle{}iamge de la carte d\textquotesingle{}une zone 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & le renderer \\
+\hline
+{\em textures} & les textures du jeu \\
+\hline
+{\em zone} & le numéro de la zone à afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{images_8c_a0f98beaa02795807c1ecd129d7ce1eb1}\label{images_8c_a0f98beaa02795807c1ecd129d7ce1eb1}} 
+\index{images.c@{images.c}!dialogue\_position@{dialogue\_position}}
+\index{dialogue\_position@{dialogue\_position}!images.c@{images.c}}
+\doxysubsubsection{\texorpdfstring{dialogue\_position()}{dialogue\_position()}}
+{\footnotesize\ttfamily void dialogue\+\_\+position (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{images\+\_\+t $\ast$}]{textures,  }\item[{int}]{type }\end{DoxyParamCaption})}
+
+
+
+positionne la bulle de discussion, le joueur et le pnj 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & le renderer \\
+\hline
+{\em textures} & les textures du jeu \\
+\hline
+{\em type} & quel personnage il faut afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{images_8c_a691a6a7512814a45e8afc80d5dbf5c9d}\label{images_8c_a691a6a7512814a45e8afc80d5dbf5c9d}} 
+\index{images.c@{images.c}!grand\_icone\_position@{grand\_icone\_position}}
+\index{grand\_icone\_position@{grand\_icone\_position}!images.c@{images.c}}
+\doxysubsubsection{\texorpdfstring{grand\_icone\_position()}{grand\_icone\_position()}}
+{\footnotesize\ttfamily void grand\+\_\+icone\+\_\+position (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{images\+\_\+t $\ast$}]{textures,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+positionne les grands icônes 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & le renderer \\
+\hline
+{\em textures} & les textures du jeu \\
+\hline
+{\em x} & la position de l\textquotesingle{}image en abscisses \\
+\hline
+{\em y} & la position de l\textquotesingle{}image en ordonnées \\
+\hline
+{\em num} & (de 1 à 4) indique si c\textquotesingle{}est une pièce, un coeur, une larme ou une boule de feu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{images_8c_a37d5fdf293ecc38e0ec721f7553e75c4}\label{images_8c_a37d5fdf293ecc38e0ec721f7553e75c4}} 
+\index{images.c@{images.c}!icone\_boutique\_position@{icone\_boutique\_position}}
+\index{icone\_boutique\_position@{icone\_boutique\_position}!images.c@{images.c}}
+\doxysubsubsection{\texorpdfstring{icone\_boutique\_position()}{icone\_boutique\_position()}}
+{\footnotesize\ttfamily void icone\+\_\+boutique\+\_\+position (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{images\+\_\+t $\ast$}]{textures,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+positionne les petits icônes 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & le renderer \\
+\hline
+{\em textures} & les textures du jeu \\
+\hline
+{\em x} & la position de l\textquotesingle{}image en abscisses \\
+\hline
+{\em y} & la position de l\textquotesingle{}image en ordonnées \\
+\hline
+{\em num} & (de 1 à 7) indique si c\textquotesingle{}est une potion rouge, une bleue, une épée ou un bouclier en pierre, une épée ou un bouclier n diamant, de l\textquotesingle{}or \\
+\hline
+\end{DoxyParams}

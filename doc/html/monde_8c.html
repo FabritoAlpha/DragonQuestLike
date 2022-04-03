@@ -1,0 +1,529 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dragon Quest Like: Référence du fichier src/monde.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dragon Quest Like
+   </div>
+   <div id="projectbrief">Jeu de type J-RPG</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier monde.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>fonctions de gestion du monde  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;../lib/monde.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de monde.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="monde_8c__incl.png" border="0" usemap="#src_2monde_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:af1e3dd837065ad4b00201fff0fa5407c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#af1e3dd837065ad4b00201fff0fa5407c">existe_salle</a> (salle_t *salle)</td></tr>
+<tr class="memdesc:af1e3dd837065ad4b00201fff0fa5407c"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie 1 si la salle existe  <a href="monde_8c.html#af1e3dd837065ad4b00201fff0fa5407c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af1e3dd837065ad4b00201fff0fa5407c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af600b3ca03d084e91db99c8bcb94024d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#af600b3ca03d084e91db99c8bcb94024d">existe_zone</a> (zone_t *zone)</td></tr>
+<tr class="memdesc:af600b3ca03d084e91db99c8bcb94024d"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie 1 si la zone existe  <a href="monde_8c.html#af600b3ca03d084e91db99c8bcb94024d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af600b3ca03d084e91db99c8bcb94024d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a285b5ca4ec8f08f037f39e908e1289d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a285b5ca4ec8f08f037f39e908e1289d4">existe_monde</a> (monde_t *monde)</td></tr>
+<tr class="memdesc:a285b5ca4ec8f08f037f39e908e1289d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie 1 si le monde existe  <a href="monde_8c.html#a285b5ca4ec8f08f037f39e908e1289d4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a285b5ca4ec8f08f037f39e908e1289d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acee4402fde0045a1a49811451c64c978"><td class="memItemLeft" align="right" valign="top">salle_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#acee4402fde0045a1a49811451c64c978">creer_salle</a> ()</td></tr>
+<tr class="memdesc:acee4402fde0045a1a49811451c64c978"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocation de la mémoire nécessaire à une salle  <a href="monde_8c.html#acee4402fde0045a1a49811451c64c978">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acee4402fde0045a1a49811451c64c978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a362c4991d8e163d11bcbdbf729850004"><td class="memItemLeft" align="right" valign="top">zone_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a362c4991d8e163d11bcbdbf729850004">creer_zone</a> ()</td></tr>
+<tr class="memdesc:a362c4991d8e163d11bcbdbf729850004"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocation de la mémoire nécessaire à une zone  <a href="monde_8c.html#a362c4991d8e163d11bcbdbf729850004">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a362c4991d8e163d11bcbdbf729850004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad83a9ad35f5fabf1bd53886d0fd6d8bd"><td class="memItemLeft" align="right" valign="top">monde_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#ad83a9ad35f5fabf1bd53886d0fd6d8bd">creer_monde</a> ()</td></tr>
+<tr class="memdesc:ad83a9ad35f5fabf1bd53886d0fd6d8bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocation de la mémoire nécessaire au monde  <a href="monde_8c.html#ad83a9ad35f5fabf1bd53886d0fd6d8bd">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad83a9ad35f5fabf1bd53886d0fd6d8bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1db6b74c49d6a879a415d976eba0deaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a1db6b74c49d6a879a415d976eba0deaa">detruire_monde</a> (monde_t **monde)</td></tr>
+<tr class="memdesc:a1db6b74c49d6a879a415d976eba0deaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">libération de la mémoire allouée au monde lorsque la partie est terminée  <a href="monde_8c.html#a1db6b74c49d6a879a415d976eba0deaa">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1db6b74c49d6a879a415d976eba0deaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16e9a4f3ffc84d43ab820d0e8d91e3a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a16e9a4f3ffc84d43ab820d0e8d91e3a5">detruire_zone</a> (zone_t **zone)</td></tr>
+<tr class="memdesc:a16e9a4f3ffc84d43ab820d0e8d91e3a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">libération de la mémoire allouée à une zone du monde lorsque la partie est terminée  <a href="monde_8c.html#a16e9a4f3ffc84d43ab820d0e8d91e3a5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a16e9a4f3ffc84d43ab820d0e8d91e3a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66ed72d3268223614d00bf76d0c80123"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a66ed72d3268223614d00bf76d0c80123">detruire_salle</a> (salle_t **salle)</td></tr>
+<tr class="memdesc:a66ed72d3268223614d00bf76d0c80123"><td class="mdescLeft">&#160;</td><td class="mdescRight">libération de la mémoire allouée à une salle d'une zone lorsque la partie est terminée  <a href="monde_8c.html#a66ed72d3268223614d00bf76d0c80123">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a66ed72d3268223614d00bf76d0c80123"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb7e058e0b2685575cdb5ce2de075e34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#acb7e058e0b2685575cdb5ce2de075e34">init_monde_menu</a> (monde_t *monde)</td></tr>
+<tr class="memdesc:acb7e058e0b2685575cdb5ce2de075e34"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise les attributs du monde nécessaires au menu  <a href="monde_8c.html#acb7e058e0b2685575cdb5ce2de075e34">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acb7e058e0b2685575cdb5ce2de075e34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991818c2456473c6006e47f5f56f6383"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a991818c2456473c6006e47f5f56f6383">init_monde_jeu</a> (monde_t *monde, char *chemin_fichier)</td></tr>
+<tr class="memdesc:a991818c2456473c6006e47f5f56f6383"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise les attributs du monde nécessaires au jeu  <a href="monde_8c.html#a991818c2456473c6006e47f5f56f6383">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a991818c2456473c6006e47f5f56f6383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7f1c9acd89d0a6e6ef7c7a86b81591f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#ae7f1c9acd89d0a6e6ef7c7a86b81591f">init_zone</a> (zone_t *zone, int num_zone)</td></tr>
+<tr class="memdesc:ae7f1c9acd89d0a6e6ef7c7a86b81591f"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise une zone  <a href="monde_8c.html#ae7f1c9acd89d0a6e6ef7c7a86b81591f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae7f1c9acd89d0a6e6ef7c7a86b81591f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4beb9353e687cdc88cbc800ce0665ec2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a4beb9353e687cdc88cbc800ce0665ec2">init_salle</a> (salle_t *salle, int num_salle, int num_zone)</td></tr>
+<tr class="memdesc:a4beb9353e687cdc88cbc800ce0665ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise une salle  <a href="monde_8c.html#a4beb9353e687cdc88cbc800ce0665ec2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4beb9353e687cdc88cbc800ce0665ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23cd939776316dc8c90e65b854ab4069"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a23cd939776316dc8c90e65b854ab4069">victoire_jeu</a> (monde_t *monde)</td></tr>
+<tr class="memdesc:a23cd939776316dc8c90e65b854ab4069"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie 1 si on a vaincu le boss final  <a href="monde_8c.html#a23cd939776316dc8c90e65b854ab4069">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a23cd939776316dc8c90e65b854ab4069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>fonctions de gestion du monde </p>
+<dl class="section author"><dt>Auteur</dt><dd>Anna Béranger, Arthur Fabre, Alex Choux </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>03/03/2022 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="ad83a9ad35f5fabf1bd53886d0fd6d8bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad83a9ad35f5fabf1bd53886d0fd6d8bd">&#9670;&nbsp;</a></span>creer_monde()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">monde_t * creer_monde </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>allocation de la mémoire nécessaire au monde </p>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur un monde </dd></dl>
+
+</div>
+</div>
+<a id="acee4402fde0045a1a49811451c64c978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acee4402fde0045a1a49811451c64c978">&#9670;&nbsp;</a></span>creer_salle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">salle_t * creer_salle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>allocation de la mémoire nécessaire à une salle </p>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur une salle </dd></dl>
+
+</div>
+</div>
+<a id="a362c4991d8e163d11bcbdbf729850004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a362c4991d8e163d11bcbdbf729850004">&#9670;&nbsp;</a></span>creer_zone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">zone_t * creer_zone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>allocation de la mémoire nécessaire à une zone </p>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur une zone </dd></dl>
+
+</div>
+</div>
+<a id="a1db6b74c49d6a879a415d976eba0deaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1db6b74c49d6a879a415d976eba0deaa">&#9670;&nbsp;</a></span>detruire_monde()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_monde </td>
+          <td>(</td>
+          <td class="paramtype">monde_t **&#160;</td>
+          <td class="paramname"><em>monde</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>libération de la mémoire allouée au monde lorsque la partie est terminée </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monde</td><td>environnement global du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a66ed72d3268223614d00bf76d0c80123"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66ed72d3268223614d00bf76d0c80123">&#9670;&nbsp;</a></span>detruire_salle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_salle </td>
+          <td>(</td>
+          <td class="paramtype">salle_t **&#160;</td>
+          <td class="paramname"><em>salle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>libération de la mémoire allouée à une salle d'une zone lorsque la partie est terminée </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">salle</td><td>une salle d'une zone </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a16e9a4f3ffc84d43ab820d0e8d91e3a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16e9a4f3ffc84d43ab820d0e8d91e3a5">&#9670;&nbsp;</a></span>detruire_zone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_zone </td>
+          <td>(</td>
+          <td class="paramtype">zone_t **&#160;</td>
+          <td class="paramname"><em>zone</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>libération de la mémoire allouée à une zone du monde lorsque la partie est terminée </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">zone</td><td>une zone du monde </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a285b5ca4ec8f08f037f39e908e1289d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a285b5ca4ec8f08f037f39e908e1289d4">&#9670;&nbsp;</a></span>existe_monde()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int existe_monde </td>
+          <td>(</td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>renvoie 1 si le monde existe </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monde</td><td>monde à tester </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af1e3dd837065ad4b00201fff0fa5407c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1e3dd837065ad4b00201fff0fa5407c">&#9670;&nbsp;</a></span>existe_salle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int existe_salle </td>
+          <td>(</td>
+          <td class="paramtype">salle_t *&#160;</td>
+          <td class="paramname"><em>salle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>renvoie 1 si la salle existe </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">salle</td><td>salle à tester </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af600b3ca03d084e91db99c8bcb94024d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af600b3ca03d084e91db99c8bcb94024d">&#9670;&nbsp;</a></span>existe_zone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int existe_zone </td>
+          <td>(</td>
+          <td class="paramtype">zone_t *&#160;</td>
+          <td class="paramname"><em>zone</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>renvoie 1 si la zone existe </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">zone</td><td>zone à tester </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a991818c2456473c6006e47f5f56f6383"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a991818c2456473c6006e47f5f56f6383">&#9670;&nbsp;</a></span>init_monde_jeu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_monde_jeu </td>
+          <td>(</td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>chemin_fichier</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialise les attributs du monde nécessaires au jeu </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monde</td><td>le monde </td></tr>
+    <tr><td class="paramname">chemin_fichier</td><td>le chemin du fichier de chargement de partie </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acb7e058e0b2685575cdb5ce2de075e34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb7e058e0b2685575cdb5ce2de075e34">&#9670;&nbsp;</a></span>init_monde_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_monde_menu </td>
+          <td>(</td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialise les attributs du monde nécessaires au menu </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monde</td><td>le monde </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4beb9353e687cdc88cbc800ce0665ec2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4beb9353e687cdc88cbc800ce0665ec2">&#9670;&nbsp;</a></span>init_salle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_salle </td>
+          <td>(</td>
+          <td class="paramtype">salle_t *&#160;</td>
+          <td class="paramname"><em>salle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_salle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_zone</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialise une salle </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">salle</td><td>la salle à initialiser </td></tr>
+    <tr><td class="paramname">num_salle</td><td>le numéro de la salle </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae7f1c9acd89d0a6e6ef7c7a86b81591f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7f1c9acd89d0a6e6ef7c7a86b81591f">&#9670;&nbsp;</a></span>init_zone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_zone </td>
+          <td>(</td>
+          <td class="paramtype">zone_t *&#160;</td>
+          <td class="paramname"><em>zone</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_zone</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialise une zone </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">zone</td><td>la zone à initialiser </td></tr>
+    <tr><td class="paramname">num_zone</td><td>le numéro de la zone </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a23cd939776316dc8c90e65b854ab4069"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23cd939776316dc8c90e65b854ab4069">&#9670;&nbsp;</a></span>victoire_jeu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int victoire_jeu </td>
+          <td>(</td>
+          <td class="paramtype">monde_t *&#160;</td>
+          <td class="paramname"><em>monde</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>renvoie 1 si on a vaincu le boss final </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monde</td><td>les données du monde </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

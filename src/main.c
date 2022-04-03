@@ -1,8 +1,8 @@
 /**
-*\file main.c
-*\brief programme principal
-*\author Anna Beranger
-*\date 17/02/2022
+  * \file main.c
+  * \brief programme principal du jeu
+  * \author Anna Beranger, Alex Choux, Arthur Fabre
+  * \date 03/03/2022
 */
 
 #include "../lib/jeu.h"

@@ -1,0 +1,868 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dragon Quest Like: Référence du fichier src/entite.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Dragon Quest Like
+   </div>
+   <div id="projectbrief">Jeu de type J-RPG</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier entite.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>primitives des entités  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;../lib/entite.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de entite.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="entite_8c__incl.png" border="0" usemap="#src_2entite_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a9b1e7e73d6952f892e2eb1844f65265c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a9b1e7e73d6952f892e2eb1844f65265c">a_gauche</a> (combattant_t *entite)</td></tr>
+<tr class="memdesc:a9b1e7e73d6952f892e2eb1844f65265c"><td class="mdescLeft">&#160;</td><td class="mdescRight">déplacement d'un combattant d'un pas à gauche  <a href="entite_8c.html#a9b1e7e73d6952f892e2eb1844f65265c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9b1e7e73d6952f892e2eb1844f65265c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9afb234e9eb16fd89c313cdb975a278"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#aa9afb234e9eb16fd89c313cdb975a278">a_droite</a> (combattant_t *entite)</td></tr>
+<tr class="memdesc:aa9afb234e9eb16fd89c313cdb975a278"><td class="mdescLeft">&#160;</td><td class="mdescRight">déplacement d'un combattant d'un pas à droite  <a href="entite_8c.html#aa9afb234e9eb16fd89c313cdb975a278">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa9afb234e9eb16fd89c313cdb975a278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d607d6ad02a239d995520b54d8cac62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a6d607d6ad02a239d995520b54d8cac62">en_bas</a> (combattant_t *entite)</td></tr>
+<tr class="memdesc:a6d607d6ad02a239d995520b54d8cac62"><td class="mdescLeft">&#160;</td><td class="mdescRight">déplacement d'un combattant d'un pas en bas  <a href="entite_8c.html#a6d607d6ad02a239d995520b54d8cac62">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6d607d6ad02a239d995520b54d8cac62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05c63590d2c2f4b399ff268c5a687b7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a05c63590d2c2f4b399ff268c5a687b7a">en_haut</a> (combattant_t *entite)</td></tr>
+<tr class="memdesc:a05c63590d2c2f4b399ff268c5a687b7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">déplacement d'un combattant d'un pas en haut  <a href="entite_8c.html#a05c63590d2c2f4b399ff268c5a687b7a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a05c63590d2c2f4b399ff268c5a687b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71ff41e36990c95b602165508c293747"><td class="memItemLeft" align="right" valign="top">joueur_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a71ff41e36990c95b602165508c293747">creer_joueur</a> ()</td></tr>
+<tr class="memdesc:a71ff41e36990c95b602165508c293747"><td class="mdescLeft">&#160;</td><td class="mdescRight">alloue de la mémoire pour un joueur  <a href="entite_8c.html#a71ff41e36990c95b602165508c293747">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a71ff41e36990c95b602165508c293747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5382651b04b9611b4d35d332ef139e6a"><td class="memItemLeft" align="right" valign="top">monstre_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a5382651b04b9611b4d35d332ef139e6a">creer_monstre</a> ()</td></tr>
+<tr class="memdesc:a5382651b04b9611b4d35d332ef139e6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">alloue de la mémoire pour un monstre  <a href="entite_8c.html#a5382651b04b9611b4d35d332ef139e6a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5382651b04b9611b4d35d332ef139e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff1b683c2e4978bf4e136a8416b9bcb6"><td class="memItemLeft" align="right" valign="top">nonCombattant_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#aff1b683c2e4978bf4e136a8416b9bcb6">creer_nonCombattant</a> ()</td></tr>
+<tr class="memdesc:aff1b683c2e4978bf4e136a8416b9bcb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">alloue de la mémoire pour un pnj ou un coffre  <a href="entite_8c.html#aff1b683c2e4978bf4e136a8416b9bcb6">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aff1b683c2e4978bf4e136a8416b9bcb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add9bc42cd91707b12c3c4806fad2f0e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#add9bc42cd91707b12c3c4806fad2f0e4">detruire_joueur</a> (joueur_t **player)</td></tr>
+<tr class="memdesc:add9bc42cd91707b12c3c4806fad2f0e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">libère la mémoire allouée pour le joueur  <a href="entite_8c.html#add9bc42cd91707b12c3c4806fad2f0e4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:add9bc42cd91707b12c3c4806fad2f0e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4346c66945812c852cc724421ec72f58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a4346c66945812c852cc724421ec72f58">detruire_monstre</a> (monstre_t **monster)</td></tr>
+<tr class="memdesc:a4346c66945812c852cc724421ec72f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">libère la mémoire allouée pour le monstre  <a href="entite_8c.html#a4346c66945812c852cc724421ec72f58">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4346c66945812c852cc724421ec72f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b4bcb67ab64f6875892ad0b75cd32bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a0b4bcb67ab64f6875892ad0b75cd32bb">detruire_nonCombattant</a> (nonCombattant_t **nonCombat)</td></tr>
+<tr class="memdesc:a0b4bcb67ab64f6875892ad0b75cd32bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">libère la mémoire allouée pour le non combattant  <a href="entite_8c.html#a0b4bcb67ab64f6875892ad0b75cd32bb">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0b4bcb67ab64f6875892ad0b75cd32bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a477cb5d47ec1d3d5be1963583396cbcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a477cb5d47ec1d3d5be1963583396cbcb">init_joueur</a> (joueur_t *joueur, int niveau, int zone, int pv_M, int pv_C, int mana_M, int mana_C, int atk, int or, int nb_inv, int nb_equip)</td></tr>
+<tr class="memdesc:a477cb5d47ec1d3d5be1963583396cbcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation du joueur  <a href="entite_8c.html#a477cb5d47ec1d3d5be1963583396cbcb">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a477cb5d47ec1d3d5be1963583396cbcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d4d12624a601d9c382fb93ad638446b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a5d4d12624a601d9c382fb93ad638446b">init_monstre</a> (monstre_t *monster, int pvMax, int pvCour, int attaque, int vitesse, int niveau, int type)</td></tr>
+<tr class="memdesc:a5d4d12624a601d9c382fb93ad638446b"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation d'un monstre  <a href="entite_8c.html#a5d4d12624a601d9c382fb93ad638446b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5d4d12624a601d9c382fb93ad638446b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a566925ae95cf6985b850b34b0fab6207"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a566925ae95cf6985b850b34b0fab6207">init_nonCombattant</a> (nonCombattant_t *nonCombat, int id, float x, float y, int visite)</td></tr>
+<tr class="memdesc:a566925ae95cf6985b850b34b0fab6207"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation d'un non combattant  <a href="entite_8c.html#a566925ae95cf6985b850b34b0fab6207">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a566925ae95cf6985b850b34b0fab6207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16733682ff83a0301dc5d4b692f733e7"><td class="memItemLeft" align="right" valign="top">objet_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a16733682ff83a0301dc5d4b692f733e7">creer_objet</a> ()</td></tr>
+<tr class="memdesc:a16733682ff83a0301dc5d4b692f733e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">alloue de la mémoire pour un objet  <a href="entite_8c.html#a16733682ff83a0301dc5d4b692f733e7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a16733682ff83a0301dc5d4b692f733e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a542fb38a2d8afe39aaa67e3fa4ebd4c3"><td class="memItemLeft" align="right" valign="top">objet_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a542fb38a2d8afe39aaa67e3fa4ebd4c3">objet_initialiser</a> (objet_t *objet, int id, int attaque_sup, int mana_sup, int vie_sup, char *nom, char *description)</td></tr>
+<tr class="memdesc:a542fb38a2d8afe39aaa67e3fa4ebd4c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation d'un objet  <a href="entite_8c.html#a542fb38a2d8afe39aaa67e3fa4ebd4c3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a542fb38a2d8afe39aaa67e3fa4ebd4c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1fb908770ad4e0e5bc9a7939f964331"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#aa1fb908770ad4e0e5bc9a7939f964331">detruire_objet</a> (objet_t **objet)</td></tr>
+<tr class="memdesc:aa1fb908770ad4e0e5bc9a7939f964331"><td class="mdescLeft">&#160;</td><td class="mdescRight">libère la mémoire allouée pour l'objet  <a href="entite_8c.html#aa1fb908770ad4e0e5bc9a7939f964331">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa1fb908770ad4e0e5bc9a7939f964331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85f32539347611837d7f5da392d48815"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a85f32539347611837d7f5da392d48815">initialiser_biblio</a> (objet_t tableau[])</td></tr>
+<tr class="memdesc:a85f32539347611837d7f5da392d48815"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise une bibliothèque d'objets  <a href="entite_8c.html#a85f32539347611837d7f5da392d48815">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a85f32539347611837d7f5da392d48815"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5b9976b185b37232c5ccf1b1bef4248"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#ac5b9976b185b37232c5ccf1b1bef4248">objet_present</a> (joueur_t *joueur, objet_t *biblio, int ind)</td></tr>
+<tr class="memdesc:ac5b9976b185b37232c5ccf1b1bef4248"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie qu'un objet est présent dans l'inventaire du joueur  <a href="entite_8c.html#ac5b9976b185b37232c5ccf1b1bef4248">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac5b9976b185b37232c5ccf1b1bef4248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27588e045842c951f7a43771c21d1dfe"><td class="memItemLeft" align="right" valign="top"><a id="a27588e045842c951f7a43771c21d1dfe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ajout_objet</b> (joueur_t *joueur, objet_t *biblio, int ind)</td></tr>
+<tr class="separator:a27588e045842c951f7a43771c21d1dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fc66d09143aa4d8affe25a38384075f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a6fc66d09143aa4d8affe25a38384075f">equipement_desequipement_objet</a> (joueur_t *joueur, int i_tab_inv, int i_obj_equipe)</td></tr>
+<tr class="memdesc:a6fc66d09143aa4d8affe25a38384075f"><td class="mdescLeft">&#160;</td><td class="mdescRight">équipe ou déséquipe le joueur.  <a href="entite_8c.html#a6fc66d09143aa4d8affe25a38384075f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6fc66d09143aa4d8affe25a38384075f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>primitives des entités </p>
+<dl class="section author"><dt>Auteur</dt><dd>Anna Beranger, Alex Choux, Arthur Fabre </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>03/03/2022 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aa9afb234e9eb16fd89c313cdb975a278"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9afb234e9eb16fd89c313cdb975a278">&#9670;&nbsp;</a></span>a_droite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void a_droite </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>entite</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>déplacement d'un combattant d'un pas à droite </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>combattant à déplacer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9b1e7e73d6952f892e2eb1844f65265c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b1e7e73d6952f892e2eb1844f65265c">&#9670;&nbsp;</a></span>a_gauche()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void a_gauche </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>entite</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>déplacement d'un combattant d'un pas à gauche </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>combattant à déplacer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a71ff41e36990c95b602165508c293747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71ff41e36990c95b602165508c293747">&#9670;&nbsp;</a></span>creer_joueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">joueur_t * creer_joueur </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>alloue de la mémoire pour un joueur </p>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur le joueur </dd></dl>
+
+</div>
+</div>
+<a id="a5382651b04b9611b4d35d332ef139e6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5382651b04b9611b4d35d332ef139e6a">&#9670;&nbsp;</a></span>creer_monstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">monstre_t * creer_monstre </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>alloue de la mémoire pour un monstre </p>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur le monstre </dd></dl>
+
+</div>
+</div>
+<a id="aff1b683c2e4978bf4e136a8416b9bcb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff1b683c2e4978bf4e136a8416b9bcb6">&#9670;&nbsp;</a></span>creer_nonCombattant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">nonCombattant_t * creer_nonCombattant </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>alloue de la mémoire pour un pnj ou un coffre </p>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur le non combattant </dd></dl>
+
+</div>
+</div>
+<a id="a16733682ff83a0301dc5d4b692f733e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16733682ff83a0301dc5d4b692f733e7">&#9670;&nbsp;</a></span>creer_objet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">objet_t * creer_objet </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>alloue de la mémoire pour un objet </p>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur l'objet créé </dd></dl>
+
+</div>
+</div>
+<a id="add9bc42cd91707b12c3c4806fad2f0e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add9bc42cd91707b12c3c4806fad2f0e4">&#9670;&nbsp;</a></span>detruire_joueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_joueur </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t **&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>libère la mémoire allouée pour le joueur </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>le joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4346c66945812c852cc724421ec72f58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4346c66945812c852cc724421ec72f58">&#9670;&nbsp;</a></span>detruire_monstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_monstre </td>
+          <td>(</td>
+          <td class="paramtype">monstre_t **&#160;</td>
+          <td class="paramname"><em>monster</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>libère la mémoire allouée pour le monstre </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monster</td><td>le monstre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0b4bcb67ab64f6875892ad0b75cd32bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b4bcb67ab64f6875892ad0b75cd32bb">&#9670;&nbsp;</a></span>detruire_nonCombattant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_nonCombattant </td>
+          <td>(</td>
+          <td class="paramtype">nonCombattant_t **&#160;</td>
+          <td class="paramname"><em>nonCombat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>libère la mémoire allouée pour le non combattant </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nonCombat</td><td>le non combattant </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa1fb908770ad4e0e5bc9a7939f964331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1fb908770ad4e0e5bc9a7939f964331">&#9670;&nbsp;</a></span>detruire_objet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_objet </td>
+          <td>(</td>
+          <td class="paramtype">objet_t **&#160;</td>
+          <td class="paramname"><em>objet</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>libère la mémoire allouée pour l'objet </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">objet</td><td>l'objet à détruire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6d607d6ad02a239d995520b54d8cac62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d607d6ad02a239d995520b54d8cac62">&#9670;&nbsp;</a></span>en_bas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void en_bas </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>entite</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>déplacement d'un combattant d'un pas en bas </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>combattant à déplacer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a05c63590d2c2f4b399ff268c5a687b7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05c63590d2c2f4b399ff268c5a687b7a">&#9670;&nbsp;</a></span>en_haut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void en_haut </td>
+          <td>(</td>
+          <td class="paramtype">combattant_t *&#160;</td>
+          <td class="paramname"><em>entite</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>déplacement d'un combattant d'un pas en haut </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>combattant à déplacer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6fc66d09143aa4d8affe25a38384075f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fc66d09143aa4d8affe25a38384075f">&#9670;&nbsp;</a></span>equipement_desequipement_objet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void equipement_desequipement_objet </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i_tab_inv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i_obj_equipe</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>équipe ou déséquipe le joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>le joueur </td></tr>
+    <tr><td class="paramname">i_tab_inv</td><td>indice de l'objet dans l'inventaire du joueur </td></tr>
+    <tr><td class="paramname">i_obj_equipe</td><td>indice de l'objet parmis ses objets équipés </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a477cb5d47ec1d3d5be1963583396cbcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a477cb5d47ec1d3d5be1963583396cbcb">&#9670;&nbsp;</a></span>init_joueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_joueur </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>niveau</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>zone</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pv_M</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pv_C</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mana_M</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mana_C</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>atk</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>or</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_inv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_equip</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialisation du joueur </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>le joueur à initialiser </td></tr>
+    <tr><td class="paramname">niveau</td><td>le niveau à donner au joueur </td></tr>
+    <tr><td class="paramname">zone</td><td>la zone à donner au joueur </td></tr>
+    <tr><td class="paramname">pvM</td><td>le nombre de points de vie maximal à donner au joueur </td></tr>
+    <tr><td class="paramname">pvC</td><td>le nombre de points de vie à donner au joueur </td></tr>
+    <tr><td class="paramname">mana_M</td><td>le nombre de points de mana maximal à donner au joueur </td></tr>
+    <tr><td class="paramname">mana_C</td><td>le nombre de points de mana à donner au joueur </td></tr>
+    <tr><td class="paramname">atk</td><td>la puissance d'attaque à donner au joueur </td></tr>
+    <tr><td class="paramname">or</td><td>le nombre d'or à donner au joueur </td></tr>
+    <tr><td class="paramname">nb_inv</td><td>nombre d'objets qui seront présents dans l'inventaire </td></tr>
+    <tr><td class="paramname">nb_equip</td><td>nombre d'objets que le joueur aura d'équipés </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5d4d12624a601d9c382fb93ad638446b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d4d12624a601d9c382fb93ad638446b">&#9670;&nbsp;</a></span>init_monstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_monstre </td>
+          <td>(</td>
+          <td class="paramtype">monstre_t *&#160;</td>
+          <td class="paramname"><em>monster</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pvMax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pvCour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attaque</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vitesse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>niveau</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialisation d'un monstre </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monster</td><td>le monstre à initialiser </td></tr>
+    <tr><td class="paramname">pvMax</td><td>le nombre de points de vie maximal à donner au monstre </td></tr>
+    <tr><td class="paramname">pvCour</td><td>le nombre de points de vie à donner au mnstre </td></tr>
+    <tr><td class="paramname">attaque</td><td>la puissance d'attaque à donner au monstre </td></tr>
+    <tr><td class="paramname">vitesse</td><td>la vitesse à donner au monstre </td></tr>
+    <tr><td class="paramname">niveau</td><td>le niveau à donner au monstre </td></tr>
+    <tr><td class="paramname">type</td><td>le type que sera le monstre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a566925ae95cf6985b850b34b0fab6207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a566925ae95cf6985b850b34b0fab6207">&#9670;&nbsp;</a></span>init_nonCombattant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_nonCombattant </td>
+          <td>(</td>
+          <td class="paramtype">nonCombattant_t *&#160;</td>
+          <td class="paramname"><em>nonCombat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>visite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialisation d'un non combattant </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nonCombat</td><td>le non combattant à initialiser </td></tr>
+    <tr><td class="paramname">x</td><td>les coordonnées en abscisses à donner à l'entité </td></tr>
+    <tr><td class="paramname">y</td><td>les coordonnées en ordonnées à donner à l'entité </td></tr>
+    <tr><td class="paramname">id</td><td>l'id à donner à l'entité </td></tr>
+    <tr><td class="paramname">visite</td><td>l'initialiser déjà visité ou non par le joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a85f32539347611837d7f5da392d48815"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85f32539347611837d7f5da392d48815">&#9670;&nbsp;</a></span>initialiser_biblio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initialiser_biblio </td>
+          <td>(</td>
+          <td class="paramtype">objet_t&#160;</td>
+          <td class="paramname"><em>tableau</em>[]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialise une bibliothèque d'objets </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tableau</td><td>le tableau d'objet qui représente la bibliothèque </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a542fb38a2d8afe39aaa67e3fa4ebd4c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a542fb38a2d8afe39aaa67e3fa4ebd4c3">&#9670;&nbsp;</a></span>objet_initialiser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">objet_t * objet_initialiser </td>
+          <td>(</td>
+          <td class="paramtype">objet_t *&#160;</td>
+          <td class="paramname"><em>objet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attaque_sup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mana_sup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vie_sup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>nom</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>description</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialisation d'un objet </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">objet</td><td>l'objet à initialisé </td></tr>
+    <tr><td class="paramname">id</td><td>l'id à donner à l'objet </td></tr>
+    <tr><td class="paramname">attaque_sup</td><td>l'attaque supplémentaire que l'objet doit apporter </td></tr>
+    <tr><td class="paramname">mana_sup</td><td>les points de mana supplémentaires que l'objet doit apporter </td></tr>
+    <tr><td class="paramname">les</td><td>points de vie supplémentaires que l'objet doit apporter </td></tr>
+    <tr><td class="paramname">nom</td><td>le nom de l'objet </td></tr>
+    <tr><td class="paramname">description</td><td>la description de l'objet </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>un pointeur sur l'objet initialisé </dd></dl>
+
+</div>
+</div>
+<a id="ac5b9976b185b37232c5ccf1b1bef4248"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5b9976b185b37232c5ccf1b1bef4248">&#9670;&nbsp;</a></span>objet_present()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int objet_present </td>
+          <td>(</td>
+          <td class="paramtype">joueur_t *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">objet_t *&#160;</td>
+          <td class="paramname"><em>biblio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ind</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vérifie qu'un objet est présent dans l'inventaire du joueur </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>le joueur </td></tr>
+    <tr><td class="paramname">biblio</td><td>la bibliothèque qui contient tous les objets existants </td></tr>
+    <tr><td class="paramname">ind</td><td>l'indice de l'objet </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>objet présent dans l'inventaire (1), objet absent (0) </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>
