@@ -1,5 +1,20 @@
+/**
+*\file affichage.c
+*\brief affichage des différents états du jeu
+*\author Anna Beranger, Alex Choux, Arthur Fabre
+*\date 03/03/2022
+*/
+
 #include  "../lib/affichage.h"
 
+/**
+	*\fn void affichage_carte(SDL_Renderer *renderer, TTF_Font * police, images_t *textures, joueur_t * joueur)
+	*\brief affichage de la carte avec la position du joueur
+  *\param renderer le renderer
+  *\param police la police du texte affiché
+  *\param textures les textures du jeu
+  *\param joueur le joueur
+*/
 void affichage_carte(SDL_Renderer *renderer, TTF_Font * police, images_t *textures, joueur_t * joueur){
     int n_zone = joueur->zone;
     int n_salle = joueur->salle;
@@ -26,6 +41,12 @@ void affichage_carte(SDL_Renderer *renderer, TTF_Font * police, images_t *textur
     apply_text(renderer, 0, 0, 0, indication , police, 600 + (taille_fenetre[0]/2) - 500, 650 + (taille_fenetre[1]/2) - 350, 380, 50);
 }
 
+/**
+	*\fn void affichage_aide(SDL_Renderer *renderer, TTF_Font * police)
+	*\brief affichage du menu d'aide
+  *\param renderer le renderer
+  *\param police la police du texte affiché
+*/
 void affichage_aide(SDL_Renderer *renderer, TTF_Font * police){
     char aide[150] = "";
     //largeur: 20 par caractère
@@ -48,6 +69,14 @@ void affichage_aide(SDL_Renderer *renderer, TTF_Font * police){
 
 }
 
+/**
+	*\fn void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, zone_t* zone, salle_t* salle)
+	*\brief affichage des personnages non joueur et des coffres
+  *\param renderer le renderer
+  *\param textures les textures du jeu
+  *\param zone la zone affichée à l'écran
+  *\param salle la salle affichée à l'écran
+*/
 void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, zone_t* zone, salle_t* salle){
   int n_zone = zone->num_zone;
   int n_salle = salle->num_salle;
@@ -92,6 +121,14 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, zone_t
     coffre_position(renderer, textures, salle->coffre, 1);
 }
 
+/**
+	*\fn void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * monde, TTF_Font * police)
+	*\brief affichage d'une conversation ou de l'ouverture d'un coffre
+  *\param renderer le renderer
+  *\param textures les textures du jeu
+  *\param monde le monde du jeu
+  *\param police la police du texte affiché
+*/
 void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * monde, TTF_Font * police){
     char parole[150] = "";
 
@@ -263,6 +300,14 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
     }
 }
 
+/**
+	*\fn void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font* police)
+	*\brief affichage d'un combat
+  *\param renderer le renderer
+  *\param monde le monde du jeu
+  *\param textures les textures du jeu
+  *\param police la police du texte affiché
+*/
 void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font* police){
     //Si le monstre est vivant et le joueur vivant alors on affiche tout ce qui est utile à prendre en compte pour les combats:
     //PV/PM
@@ -464,6 +509,13 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
     }
 }
 
+/**
+	*\fn void affichage_victoire(SDL_Renderer* renderer, images_t * textures, TTF_Font* police)
+	*\brief affichage lorsque le joueur a gagné
+  *\param renderer le renderer
+  *\param textures les textures du jeu
+  *\param police la police du texte affiché
+*/
 void affichage_victoire(SDL_Renderer* renderer, images_t * textures, TTF_Font* police){
   apply_texture(&textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
   apply_text(renderer, 255, 0, 0, "VICTOIRE", police, SCREEN_WIDTH/2 - 100, SCREEN_HEIGHT/2 - 125, 200, 100);
@@ -471,6 +523,14 @@ void affichage_victoire(SDL_Renderer* renderer, images_t * textures, TTF_Font* p
 
 }
 
+/**
+	*\fn void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font * police)
+	*\brief affichage de l'inventaire du joueur
+  *\param renderer le renderer
+  *\param monde le monde du jeu
+  *\param textures les textures du jeu
+  *\param police la police du texte affiché
+*/
 void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font * police){
     //epee en pierre
     //monde->joueur->inventaire[0]=monde->biblio_objet[0]; // placement de l'item dans l'inventaire pour tester le menu
@@ -607,6 +667,13 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
         apply_text(renderer, couleur, couleur2, 0, opt , police, POSITION_INVENTAIRE_L*0.15+DECALAGE_TEXT_IMG_L, POSITION_INVENTAIRE_H*1.5+DECALAGE_TEXT_IMG_H+125, TEXT_OBJET_L/5, TEXT_OBJET_H);
 }
 
+/**
+	*\fn void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police)
+	*\brief affichage des menus de début de jeu
+  *\param renderer le renderer
+  *\param monde le monde du jeu
+  *\param police la police du texte affiché
+*/
 void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
     char opt[20] = "";
 
@@ -738,6 +805,14 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
     }
 }
 
+/**
+	*\fn void affichage_statistiques(SDL_Renderer *renderer, TTF_Font * police, images_t *textures, joueur_t * joueur)
+	*\brief affichage des statistiques de pv, mana et or du joueur
+  *\param renderer le renderer
+  *\param police la police du texte affiché
+  *\param textures les textures du jeu
+  *\param joueur le joueur
+*/
 void affichage_statistiques(SDL_Renderer *renderer, TTF_Font * police, images_t *textures, joueur_t * joueur){
     int nb;
     char nb_aff[4];
