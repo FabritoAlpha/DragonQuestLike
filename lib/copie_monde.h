@@ -9,7 +9,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "entitee.h"
+#include "entite.h"
 
 
 #define NB_SALLES 1

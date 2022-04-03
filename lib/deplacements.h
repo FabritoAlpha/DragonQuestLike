@@ -37,13 +37,13 @@ int collision_combattant_coffre(combattant_t * combattant, nonCombattant_t * cof
 
 int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t * monde/*, int indice_salle, int indice_zone*/);
 
-int deplacement_droit(combattant_t * entitee, int indice_monstre, monde_t * monde);
+int deplacement_droit(combattant_t * entite, int indice_monstre, monde_t * monde);
 
-int deplacement_gauche(combattant_t * entitee, int indice_monstre, monde_t * monde);
+int deplacement_gauche(combattant_t * entite, int indice_monstre, monde_t * monde);
 
-int deplacement_haut(combattant_t * entitee, int indice_monstre, monde_t * monde);
+int deplacement_haut(combattant_t * entite, int indice_monstre, monde_t * monde);
 
-int deplacement_bas(combattant_t * entitee, int indice_monstre, monde_t * monde);
+int deplacement_bas(combattant_t * entite, int indice_monstre, monde_t * monde);
 
 int distancejoueurmonstre(joueur_t * joueur,monstre_t * monstre);
 

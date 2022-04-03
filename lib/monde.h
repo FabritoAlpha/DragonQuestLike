@@ -8,7 +8,7 @@
 #define _MONDE_H
 
 #include "sdl2_fonctions.h"
-#include "entitee.h"
+#include "entite.h"
 
 //Numéro du menu lors du combat
 #define MENU1 1

@@ -1,41 +1,41 @@
 /**
-  * \file entitee.c
+  * \file entite.c
   * \brief Contient les fonctions liées aux entitées
   * \author Anna Béranger, Arthur Fabre, Alex Choux
 */
-#include  "../lib/entitee.h"
+#include  "../lib/entite.h"
 
 /**
   * \fn void a_gauche(combattant_t*)
-  * \param entitee entitée à déplacer.
+  * \param entite entitée à déplacer.
   * \brief déplacement d'une entitée à gauche selon un pas.
 */
-void a_gauche(combattant_t * entitee){
-    entitee->x = (entitee->x)-entitee->vitesse;
+void a_gauche(combattant_t * entite){
+    entite->x = (entite->x)-entite->vitesse;
 }
 /**
   * \fn void a_droite(combattant_t*)
-  * \param entitee entitée à déplacer.
+  * \param entite entitée à déplacer.
   * \brief déplacement d'une entitée à droite selon un pas.
 */
-void a_droite(combattant_t* entitee){
-    entitee->x = (entitee->x)+entitee->vitesse;
+void a_droite(combattant_t* entite){
+    entite->x = (entite->x)+entite->vitesse;
 }
 /**
   * \fn void en_bas(combattant_t*)
-  * \param entitee entitée à déplacer.
+  * \param entite entitée à déplacer.
   * \brief déplacement d'une entitée en bas selon un pas.
 */
-void en_bas(combattant_t* entitee){
-    entitee->y = (entitee->y)+entitee->vitesse;
+void en_bas(combattant_t* entite){
+    entite->y = (entite->y)+entite->vitesse;
 }
 /**
   * \fn void en_haut(combattant_t*)
-  * \param entitee entitée à déplacer.
+  * \param entite entitée à déplacer.
   * \brief déplacement d'une entitée en haut selon un pas.
 */
-void en_haut(combattant_t* entitee){
-    entitee->y = (entitee->y)-entitee->vitesse;
+void en_haut(combattant_t* entite){
+    entite->y = (entite->y)-entite->vitesse;
 }
 
 

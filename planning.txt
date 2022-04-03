@@ -33,7 +33,7 @@ Microplanning:
 	Arthur:
 		fonctions création et initialisation combattant
 		fonctions création et initialisation joueur
-		test_entitee.c
+		test_entite.c
 	Alex:
 		makefile avec les tests
 		aide Arthur et Anna
@@ -50,7 +50,7 @@ Microplanning:
 	Arthur:
 		fonctions création et initialisation combattant
 		fonctions création et initialisation joueur
-		test_entitee.c
+		test_entite.c
 	Alex:
 		makefile avec les tests
 		aide Arthur et Anna
@@ -71,7 +71,7 @@ Microplanning:
 		destruction joueur
 		destruction monstre
 		destruction non combattant
-		test_entitee.c
+		test_entite.c
 	Alex:
 		définition de la librairie jeu.h
 		initialisation du jeu

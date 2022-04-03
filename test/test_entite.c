@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include "../lib/entitee.h"
+#include "../lib/entite.h"
 /**
-  * \file test_entitee.c
-  * \brief Test les fonctions d'entitees
+  * \file test_entite.c
+  * \brief Test les fonctions d'entites
   * \author Anna Béranger, Arthur Fabre, Alex Choux
 */
 int main(){

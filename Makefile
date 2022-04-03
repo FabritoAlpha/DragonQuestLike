@@ -23,7 +23,7 @@ CFLAGS=$(FLAGS) -g
 
 all: DragonQuest
 
-DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/menu.o $(OBJ)/monde.o $(OBJ)/entitee.o $(OBJ)/affichage.o $(OBJ)/deplacements.o $(OBJ)/interactions.o
+DragonQuest: $(OBJ)/main.o $(OBJ)/sdl2_fonctions.o $(OBJ)/images.o $(OBJ)/jeu.o $(OBJ)/menu.o $(OBJ)/monde.o $(OBJ)/entite.o $(OBJ)/affichage.o $(OBJ)/deplacements.o $(OBJ)/interactions.o
 	$(CC) $(CFLAGS) $^ -o $(BIN)/$@ $(LIBS) $(INCS)
 
 $(OBJ)/main.o: $(SRC)/main.c $(LIB)/jeu.h $(LIB)/sdl2_fonctions.h $(LIB)/images.h
@@ -44,7 +44,7 @@ $(OBJ)/menu.o: $(SRC)/menu.c $(LIB)/menu.h
 $(OBJ)/monde.o: $(SRC)/monde.c $(LIB)/monde.h
 	$(CC) $(CFLAGS) -c ./$< -o $@ $(INCS)
 
-$(OBJ)/entitee.o: $(SRC)/entitee.c $(LIB)/entitee.h
+$(OBJ)/entite.o: $(SRC)/entite.c $(LIB)/entite.h
 	$(CC) $(CFLAGS) -c ./$< -o $@ $(INCS)
 
 $(OBJ)/affichage.o: $(SRC)/affichage.c $(LIB)/affichage.h
@@ -56,17 +56,17 @@ $(OBJ)/deplacements.o: $(SRC)/deplacements.c $(LIB)/deplacements.h
 $(OBJ)/interactions.o: $(SRC)/interactions.c $(LIB)/interactions.h
 	$(CC) $(CFLAGS) -c ./$< -o $@ $(INCS)
 
-entitee: test_entitee
+entite: test_entite
 
-test_entitee: $(OBJ)/test_entitee.o $(OBJ)/entitee.o
+test_entite: $(OBJ)/test_entite.o $(OBJ)/entite.o
 	$(CC) $(CFLAGS) ./$^ -o $(BIN)/$@
 
-$(OBJ)/test_entitee.o: $(TEST)/test_entitee.c $(LIB)/entitee.h
+$(OBJ)/test_entite.o: $(TEST)/test_entite.c $(LIB)/entite.h
 	$(CC) $(FLAGS) -c ./$< -o $@
 
 monde: test_monde
 
-test_monde: $(OBJ)/test_monde.o $(OBJ)/monde.o $(OBJ)/entitee.o
+test_monde: $(OBJ)/test_monde.o $(OBJ)/monde.o $(OBJ)/entite.o
 	$(CC) $(CFLAGS) ./$^ -o $(BIN)/$@
 
 $(OBJ)/test_monde.o: $(TEST)/test_monde.c $(LIB)/monde.h
@@ -74,7 +74,7 @@ $(OBJ)/test_monde.o: $(TEST)/test_monde.c $(LIB)/monde.h
 
 jeu: test_jeu
 
-test_jeu: $(OBJ)/test_jeu.o $(OBJ)/jeu.o $(OBJ)/monde.o $(OBJ)/entitee.o
+test_jeu: $(OBJ)/test_jeu.o $(OBJ)/jeu.o $(OBJ)/monde.o $(OBJ)/entite.o
 	$(CC) $(CFLAGS) ./$^ -o $(BIN)/$@ $(LIBS)
 
 $(OBJ)/test_jeu.o: $(TEST)/test_jeu.c $(LIB)/jeu.h

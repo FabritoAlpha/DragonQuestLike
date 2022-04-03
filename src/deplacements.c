@@ -436,11 +436,11 @@ int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t 
   *\param monde le monde du jeu
   *\return déplacement non possible (1), déplacement possible (0)
 */
-int deplacement_droit(combattant_t * entitee, int indice_monstre, monde_t * monde){
-    entitee->x = (entitee->x)+entitee->vitesse;
-    if(collision_combattant(entitee, indice_monstre, monde)){
+int deplacement_droit(combattant_t * entite, int indice_monstre, monde_t * monde){
+    entite->x = (entite->x)+entite->vitesse;
+    if(collision_combattant(entite, indice_monstre, monde)){
 
-        a_gauche(entitee);
+        a_gauche(entite);
         return(1);
     }else{
       return(0);
@@ -455,11 +455,11 @@ int deplacement_droit(combattant_t * entitee, int indice_monstre, monde_t * mond
   *\param monde le monde du jeu
   *\return déplacement non possible (1), déplacement possible (0)
 */
-int deplacement_gauche(combattant_t * entitee, int indice_monstre, monde_t * monde){
-    entitee->x = (entitee->x)-entitee->vitesse;
-    if(collision_combattant(entitee, indice_monstre, monde)){
+int deplacement_gauche(combattant_t * entite, int indice_monstre, monde_t * monde){
+    entite->x = (entite->x)-entite->vitesse;
+    if(collision_combattant(entite, indice_monstre, monde)){
 
-        a_droite(entitee);
+        a_droite(entite);
         return(1);
     }else{
       return(0);
@@ -474,11 +474,11 @@ int deplacement_gauche(combattant_t * entitee, int indice_monstre, monde_t * mon
   *\param monde le monde du jeu
   *\return déplacement non possible (1), déplacement possible (0)
 */
-int deplacement_haut(combattant_t * entitee, int indice_monstre, monde_t * monde){
-    entitee->y = (entitee->y)-entitee->vitesse;
-    if(collision_combattant(entitee, indice_monstre, monde)){
+int deplacement_haut(combattant_t * entite, int indice_monstre, monde_t * monde){
+    entite->y = (entite->y)-entite->vitesse;
+    if(collision_combattant(entite, indice_monstre, monde)){
 
-        en_bas(entitee);
+        en_bas(entite);
         return(1);
     }else{
       return(0);
@@ -493,11 +493,11 @@ int deplacement_haut(combattant_t * entitee, int indice_monstre, monde_t * monde
   *\param monde le monde du jeu
   *\return déplacement non possible (1), déplacement possible (0)
 */
-int deplacement_bas(combattant_t * entitee, int indice_monstre, monde_t * monde){
-    entitee->y = (entitee->y)+entitee->vitesse;
-    if(collision_combattant(entitee, indice_monstre, monde)){
+int deplacement_bas(combattant_t * entite, int indice_monstre, monde_t * monde){
+    entite->y = (entite->y)+entite->vitesse;
+    if(collision_combattant(entite, indice_monstre, monde)){
 
-        en_haut(entitee);
+        en_haut(entite);
         return(1);
     }else{
       return(0);

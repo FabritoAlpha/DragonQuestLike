@@ -1,10 +1,10 @@
 /**
-  * \file entitee.h
+  * \file entite.h
   * \brief header des entitées
   * \author Anna Béranger, Arthur Fabre, Alex Choux
 */
-#ifndef ENTITEE_H
-#define ENTITEE_H
+#ifndef entite_H
+#define entite_H
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -47,7 +47,7 @@
 
 /**
   * \struct combattant_t
-  * \brief représentation d'une entitee combattante
+  * \brief représentation d'une entite combattante
 */
 typedef struct{
   int pvMax; /**< nombre de point de vie max */
@@ -109,7 +109,7 @@ typedef struct{
 
 /**
   * \struct nonCombattant_t
-  * \brief représentation d'une entitee non combattante
+  * \brief représentation d'une entite non combattante
 */
 typedef struct{
   int id; /**< id des entités coffre: 0, pnj n°1: 1, pnj n°2: 2 */
@@ -120,28 +120,28 @@ typedef struct{
 
 /**
   * \fn void a_gauche(combattant_t*)
-  * \param entitee entitée à déplacer.
+  * \param entite entitée à déplacer.
   * \brief déplacement d'une entitée à gauche selon un PAS.
 */
-void a_gauche(combattant_t* entitee);
+void a_gauche(combattant_t* entite);
 /**
   * \fn void a_droite(combattant_t*)
-  * \param entitee entitée à déplacer.
+  * \param entite entitée à déplacer.
   * \brief déplacement d'une entitée à droite selon un PAS.
 */
-void a_droite(combattant_t* entitee);
+void a_droite(combattant_t* entite);
 /**
   * \fn void en_bas(combattant_t*)
-  * \param entitee entitée à déplacer.
+  * \param entite entitée à déplacer.
   * \brief déplacement d'une entitée en bas selon un PAS.
 */
-void en_bas(combattant_t* entitee);
+void en_bas(combattant_t* entite);
 /**
   * \fn void en_haut(combattant_t*)
-  * \param entitee entitée à déplacer.
+  * \param entite entitée à déplacer.
   * \brief déplacement d'une entitée en haut selon un PAS.
 */
-void en_haut(combattant_t* entitee);
+void en_haut(combattant_t* entite);
 
 joueur_t * creer_joueur();
 
