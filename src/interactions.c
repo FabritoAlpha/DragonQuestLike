@@ -1,10 +1,17 @@
+/**
+  * \file interactions.c
+  * \brief gestion des interactions du joueur avec les entités
+  * \author Anna Béranger
+  * \date 17/02/2022
+*/
+
 #include  "../lib/interactions.h"
 
 /**
-	*\fn interaction_nonCombattant(SDL_Event* event, monde_t * monde)
-  *\brief gestion des intéraction avec les nonCombattant: dialogue avec pnj, ouverture de coffre
-  *\param monde
-  *\param event
+	* \fn void interaction_nonCombattant(SDL_Event* event, monde_t * monde)
+  * \brief gestion des intéraction avec les nonCombattant: dialogue avec pnj, ouverture de coffre
+  * \param event les évènements claviers (et souris)
+  * \param monde le monde
 */
 void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
@@ -113,6 +120,12 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
     }
 }
 
+/**
+	* \fn void evenements_combat(SDL_Event * event, monde_t * monde)
+  * \brief gestion des combats
+  * \param event les évènements claviers (et souris)
+  * \param monde le monde
+*/
 void evenements_combat(SDL_Event * event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
     int joueur_etait_vivant = (monde->joueur->combattant->pvCour > 0);
