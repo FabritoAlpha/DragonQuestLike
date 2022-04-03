@@ -1,18 +1,18 @@
 /**
- * \file images.c
- * \brief gestion de l'affichage
- * \author Anna Béranger
- * \date 17/02/2022
- */
+  * \file images.c
+  * \brief gestion des images et de la police
+  * \author Anna Béranger
+  * \date 17/02/2022
+*/
 
 #include "../lib/images.h"
 
 
 
 /**
- * \fn void clean_images(images_t *textures)
- * \brief La fonction nettoie les textures
- * \param textures les textures
+  * \fn void clean_images(images_t *textures)
+  * \brief libère la mémoire allouée aux textures
+  * \param textures les textures
 */
 
 void clean_images(images_t *textures, TTF_Font * police){
@@ -160,12 +160,11 @@ void clean_images(images_t *textures, TTF_Font * police){
 
 
 /**
- * \fn void init_images(SDL_Renderer *renderer, textures_t *textures)
- * \brief La fonction initialise les textures
- * \param screen la surface correspondant à l'écran de jeu
- * \param textures les textures du jeu
+  * \fn void init_images(SDL_Renderer *renderer, textures_t *textures)
+  * \brief charge les images associées aux textures
+  * \param screen la surface correspondant à l'écran de jeu
+  * \param textures les textures du jeu
 */
-
 void init_images(SDL_Renderer *renderer, images_t *textures){
   //load_image("./rsrc/img/joueur.bmp",&renderer,&textures->print_yest);
     load_image("./rsrc/img/zone0_salle0.bmp",&renderer,&textures->zone0salle0);
@@ -226,10 +225,11 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
 }
 
 /**
- * \fn void fond_position(SDL_Renderer *renderer, images_t *textures)
- * \brief La fonction applique la texture du fond sur le renderer lié à l'écran
- * \param renderer le renderer
- * \param textures les textures du jeu
+  * \fn void fond_position(SDL_Renderer *renderer, images_t *textures, monde_t * monde)
+  * \brief applique la texture du fond sur le renderer lié à l'écran selon l'état du jeu
+  * \param renderer le renderer
+  * \param textures les textures du jeu
+  * \param monde le monde du jeu
 */
 void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
 
@@ -304,6 +304,15 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
     }
 }
 
+/**
+  * \fn void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur, int x, int y)
+  * \brief positionne la texture du joueur avec ses objets équipés
+  * \param renderer le renderer
+  * \param textures les textures du jeu
+  * \param joueur le joueur
+  * \param x la position de l'image en abscisses
+  * \param y la position de l'image en ordonnées
+*/
 void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur, int x, int y){
     // Affichage du joueur.
     apply_texture(&textures->joueur, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
@@ -324,10 +333,24 @@ void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueu
     }
 }
 
+/**
+  * \fn void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre)
+  * \brief positionne la texture du monstre
+  * \param renderer le renderer
+  * \param textures les textures du jeu
+  * \param monstre le monstre
+*/
 void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre){
     apply_texture(&textures->monstre, renderer, monstre->combattant->x + (taille_fenetre[0]/2) - 500, monstre->combattant->y + (taille_fenetre[1]/2) - 375);
 }
 
+/**
+  * \fn void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre)
+  * \brief positionne la texture du monstre
+  * \param renderer le renderer
+  * \param textures les textures du jeu
+  * \param monstre le monstre
+*/
 void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* perso, int type){
     switch(type){
         case 0:
@@ -348,6 +371,13 @@ void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonComba
     }
 }
 
+/**
+  * \fn void dialogue_position(SDL_Renderer *renderer, images_t *textures, int type)
+  * \brief positionne la bulle de discussion, le joueur et le pnj
+  * \param renderer le renderer
+  * \param textures les textures du jeu
+  * \param type quel personnage il faut afficher
+*/
 void dialogue_position(SDL_Renderer *renderer, images_t *textures, int type){
     apply_texture(&textures->dialogue, renderer, (taille_fenetre[0]/2) - 500, 750 - 156 + (taille_fenetre[1]/2) - 375);
     apply_texture(&textures->joueur, renderer, 450 + (taille_fenetre[0]/2) - 500, 300 + (taille_fenetre[1]/2) - 375);
@@ -370,6 +400,13 @@ void dialogue_position(SDL_Renderer *renderer, images_t *textures, int type){
     }
 }
 
+/**
+  * \fn void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* coffre, int ouvert)
+  * \brief positionne le coffre
+  * \param renderer le renderer
+  * \param textures les textures du jeu
+  * \param ouvert 1 si le coffre est ouvert, 0 si il n'as pas été ouvert
+*/
 void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* coffre, int ouvert){
     if(ouvert == 1)
         apply_texture(&textures->coffre_vide, renderer, coffre->x + (taille_fenetre[0]/2) - 500, coffre->y + (taille_fenetre[1]/2) - 375);
@@ -377,10 +414,15 @@ void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t
         apply_texture(&textures->coffre, renderer, coffre->x + (taille_fenetre[0]/2) - 500, coffre->y + (taille_fenetre[1]/2) - 375);
 }
 
-void or_position(SDL_Renderer *renderer, images_t *textures, int x, int y){
-    apply_texture(&textures->or, renderer, x + (taille_fenetre[0]/2) - 500, y + (taille_fenetre[1]/2) - 375);
-}
-
+/**
+  * \fn void grand_icone_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num)
+  * \brief positionne les grands icônes
+  * \param renderer le renderer
+  * \param textures les textures du jeu
+  * \param x la position de l'image en abscisses
+  * \param y la position de l'image en ordonnées
+  * \param num (de 1 à 4) indique si c'est une pièce, un coeur, une larme ou une boule de feu
+*/
 void grand_icone_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num){
     // 1: or, 2: pv, 3: mana, 4: feu
     switch(num){
@@ -399,6 +441,15 @@ void grand_icone_position(SDL_Renderer *renderer, images_t *textures, int x, int
     }
 }
 
+/**
+  * \fn void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num)
+  * \brief positionne les petits icônes
+  * \param renderer le renderer
+  * \param textures les textures du jeu
+  * \param x la position de l'image en abscisses
+  * \param y la position de l'image en ordonnées
+  * \param num (de 1 à 7) indique si c'est une potion rouge, une bleue, une épée ou un bouclier en pierre, une épée ou un bouclier n diamant, de l'or
+*/
 void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num){
     // 1: potion rouge, 2: potion bleue, 3: epee 1, 4: bouclier 1, 5: epee 2, 6: bouclier 2, 7: icone or
     switch(num){
@@ -426,6 +477,13 @@ void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, 
     }
 }
 
+/**
+  * \fn void carte_position(SDL_Renderer *renderer, images_t *textures, int zone)
+  * \brief positionne l'iamge de la carte d'une zone
+  * \param renderer le renderer
+  * \param textures les textures du jeu
+  * \param zone le numéro de la zone à afficher
+*/
 void carte_position(SDL_Renderer *renderer, images_t *textures, int zone){
     switch(zone){
         case 0:

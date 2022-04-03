@@ -1,3 +1,10 @@
+/**
+  * \file images.h
+  * \brief header des images
+  * \author Anna Béranger, Arthur Fabre, Alex Choux
+  * \date 03/03/2022
+*/
+
 #ifndef _IMAGES_H
 #define _IMAGES_H
 
@@ -5,9 +12,9 @@
 
 
 /**
- * \brief stocke les images (textures) nécessaires à l'affichage graphique
+  * \struct images_t
+  * \brief stocke les images (textures) nécessaires à l'affichage graphique du jeu
 */
-
 typedef struct images_s{
     //SDL_Texture* menu; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* zone0salle0; /*!< Texture liée à l'image du fond de l'écran. */
@@ -48,18 +55,18 @@ typedef struct images_s{
     SDL_Texture* selection_inactive; /*!< Texture liée à l'image de fond d'une case d'un objet quand. */
     SDL_Texture* selection_active; /*!< Texture liée à l'image de fond d'un objet quand il es survolé. */
     SDL_Texture* equipe; /*!< Texture liée à l'image de fond d'un objet quand il est équipé. */
-    SDL_Texture* fond_inventaire;
-    SDL_Texture* case_combat;
-    SDL_Texture* surbrillance_combat;
-    SDL_Texture* game_over;
-    SDL_Texture* arene_combat;
-    SDL_Texture* potion_b_petite;
-    SDL_Texture* potion_r_petite;
-    SDL_Texture* epee1_petite;
-    SDL_Texture* epee2_petite;
-    SDL_Texture* bouclier1_petit;
-    SDL_Texture* bouclier2_petit;
-    SDL_Texture* or_petit;
+    SDL_Texture* fond_inventaire; /*!< Texture liée à l'image de fond de l'inventaire. */
+    SDL_Texture* case_combat; /*!< Texture liée à l'image de fond d'une option en combat. */
+    SDL_Texture* surbrillance_combat; /*!< Texture liée à l'image de surbrillance d'une option en combat. */
+    SDL_Texture* game_over; /*!< Texture liée à l'image de fond lorsque l'on perd un combat. */
+    SDL_Texture* arene_combat; /*!< Texture liée à l'image de fond lors d'un combat. */
+    SDL_Texture* potion_b_petite; /*!< Texture liée à l'image d'une petite icône de potion de mana. */
+    SDL_Texture* potion_r_petite; /*!< Texture liée à l'image d'une petite icône de potion de vie. */
+    SDL_Texture* epee1_petite; /*!< Texture liée à l'image d'une petite icône d'épée en pierre'. */
+    SDL_Texture* epee2_petite; /*!< Texture liée à l'image d'une petite icône d'épée en diamant'. */
+    SDL_Texture* bouclier1_petit; /*!< Texture liée à l'image d'une petite icône de bouclier en pierre. */
+    SDL_Texture* bouclier2_petit; /*!< Texture liée à l'image d'une petite icône de bouclier en diamant. */
+    SDL_Texture* or_petit; /*!< Texture liée à l'image d'une petite icône de pièce d'or. */
     SDL_Texture* zone0; /*!< Texture liée à l'image de la carte de la zone 0. */
     SDL_Texture* zone1; /*!< Texture liée à l'image de la carte de la zone 1. */
     SDL_Texture* zone2; /*!< Texture liée à l'image de la carte de la zone 2. */
@@ -83,8 +90,6 @@ void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonComba
 void dialogue_position(SDL_Renderer *renderer, images_t *textures, int type);
 
 void coffre_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* coffre, int ouvert);
-
-void or_position(SDL_Renderer *renderer, images_t *textures, int x, int y);
 
 void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num);
 
