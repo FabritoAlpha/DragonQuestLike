@@ -159,6 +159,7 @@ void evenements(SDL_Event* event, monde_t * monde){
             }
             //si on appuie sur M on retour au menu principal
             if(event->key.keysym.sym == SDLK_m){
+              reinitialiser_joueur(monde->joueur, monde->biblio_objet);
               monde->option = 1;
               monde->etat_jeu= ETAT_MENU_1;
             }
