@@ -10,9 +10,10 @@ var searchData=
   ['affichage_5finventaire_7',['affichage_inventaire',['../affichage_8c.html#a77974d4af2576663d5ce6caec41a346a',1,'affichage_inventaire(SDL_Renderer *renderer, monde_t *monde, images_t *textures, TTF_Font *police):&#160;affichage.c'],['../affichage_8h.html#a77974d4af2576663d5ce6caec41a346a',1,'affichage_inventaire(SDL_Renderer *renderer, monde_t *monde, images_t *textures, TTF_Font *police):&#160;affichage.c']]],
   ['affichage_5fmenu_8',['affichage_menu',['../affichage_8c.html#a605988ba4d7aba060053e99cc9a9060a',1,'affichage_menu(SDL_Renderer *renderer, monde_t *monde, TTF_Font *police):&#160;affichage.c'],['../affichage_8h.html#a605988ba4d7aba060053e99cc9a9060a',1,'affichage_menu(SDL_Renderer *renderer, monde_t *monde, TTF_Font *police):&#160;affichage.c']]],
   ['affichage_5fstatistiques_9',['affichage_statistiques',['../affichage_8c.html#a431aeba141983e243cacb2b253b1a2c5',1,'affichage_statistiques(SDL_Renderer *renderer, TTF_Font *police, images_t *textures, joueur_t *joueur):&#160;affichage.c'],['../affichage_8h.html#a431aeba141983e243cacb2b253b1a2c5',1,'affichage_statistiques(SDL_Renderer *renderer, TTF_Font *police, images_t *textures, joueur_t *joueur):&#160;affichage.c']]],
-  ['affichage_5fvictoire_10',['affichage_victoire',['../affichage_8c.html#aef5ed86cf405e844fa994806db0cf553',1,'affichage_victoire(SDL_Renderer *renderer, images_t *textures, TTF_Font *police):&#160;affichage.c'],['../affichage_8h.html#aef5ed86cf405e844fa994806db0cf553',1,'affichage_victoire(SDL_Renderer *renderer, images_t *textures, TTF_Font *police):&#160;affichage.c']]],
-  ['apply_5ffont_11',['apply_font',['../sdl2__fonctions_8c.html#a1107bcdfcb3844cc251888c504f7d658',1,'apply_font(const char *fileName, int size):&#160;sdl2_fonctions.c'],['../sdl2__fonctions_8h.html#a08df1571f0c1d16a8b54a6b159253e3e',1,'apply_font(const char *fileName, int size):&#160;sdl2_fonctions.c']]],
-  ['arene_5fcombat_12',['arene_combat',['../structimages__s.html#ac3c2c740d520063ef2e3c34d89b887e4',1,'images_s']]],
-  ['attaque_13',['attaque',['../structcombattant__t.html#ae5908c363ce216ab4cb8c1627749514a',1,'combattant_t']]],
-  ['attaque_5fsup_14',['attaque_sup',['../structobjet__t.html#afbc77bf8b3e1c88c0b9024f54afe2011',1,'objet_t']]]
+  ['amis_5fcage_10',['amis_cage',['../structimages__s.html#a7b5b16cc936ebad7ad513a5f248361bf',1,'images_s']]],
+  ['amis_5fvictoire_11',['amis_victoire',['../structimages__s.html#a093f09d972f89c4fe27895298049a2c9',1,'images_s']]],
+  ['apply_5ffont_12',['apply_font',['../sdl2__fonctions_8c.html#a1107bcdfcb3844cc251888c504f7d658',1,'apply_font(const char *fileName, int size):&#160;sdl2_fonctions.c'],['../sdl2__fonctions_8h.html#a08df1571f0c1d16a8b54a6b159253e3e',1,'apply_font(const char *fileName, int size):&#160;sdl2_fonctions.c']]],
+  ['arene_5fcombat_13',['arene_combat',['../structimages__s.html#ac3c2c740d520063ef2e3c34d89b887e4',1,'images_s']]],
+  ['attaque_14',['attaque',['../structcombattant__t.html#ae5908c363ce216ab4cb8c1627749514a',1,'combattant_t']]],
+  ['attaque_5fsup_15',['attaque_sup',['../structobjet__t.html#afbc77bf8b3e1c88c0b9024f54afe2011',1,'objet_t']]]
 ];

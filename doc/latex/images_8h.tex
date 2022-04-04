@@ -36,8 +36,8 @@ void {\bfseries fond} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{
 \mbox{\Hypertarget{images_8h_a583b76b61783165e01c00bbb22e90e94}\label{images_8h_a583b76b61783165e01c00bbb22e90e94}} 
 void {\bfseries joueur\+\_\+position} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, \mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, int x, int y)
 \item 
-\mbox{\Hypertarget{images_8h_aa1d99f56bf9c2d6a57e3702255a0a507}\label{images_8h_aa1d99f56bf9c2d6a57e3702255a0a507}} 
-void {\bfseries monstre\+\_\+position} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, \mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$monstre)
+\mbox{\Hypertarget{images_8h_a4251dca3ce8adc3583eeec63e712a87a}\label{images_8h_a4251dca3ce8adc3583eeec63e712a87a}} 
+void {\bfseries monstre\+\_\+position} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, \mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$monstre, \mbox{\hyperlink{structmonde__t}{monde\+\_\+t}} $\ast$monde)
 \item 
 \mbox{\Hypertarget{images_8h_a835a5ba92e69c9a528195a5b999f4b91}\label{images_8h_a835a5ba92e69c9a528195a5b999f4b91}} 
 void {\bfseries non\+Combattant\+\_\+position} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, \mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$perso, int type)
@@ -52,7 +52,9 @@ void \mbox{\hyperlink{images_8h_a37d5fdf293ecc38e0ec721f7553e75c4}{icone\+\_\+bo
 void \mbox{\hyperlink{images_8h_a901edf61bb7423d06c1a745fff55ba2d}{carte\+\_\+position}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, int zone)
 \begin{DoxyCompactList}\small\item\em positionne l\textquotesingle{}iamge de la carte d\textquotesingle{}une zone \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{images_8h_a691a6a7512814a45e8afc80d5dbf5c9d}{grand\+\_\+icone\+\_\+position}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, int x, int y, int num)
-\begin{DoxyCompactList}\small\item\em positionne les grands icônes \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em positionne les grands icônes \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{images_8h_a0be087140dd6292cff2e4276fcf4384f}{derniere\+\_\+salle\+\_\+position}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$textures, int etat)
+\begin{DoxyCompactList}\small\item\em positionne les éléments fixes de la dernière salle \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Description détaillée}
@@ -84,6 +86,25 @@ positionne l\textquotesingle{}iamge de la carte d\textquotesingle{}une zone
 {\em textures} & les textures du jeu \\
 \hline
 {\em zone} & le numéro de la zone à afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{images_8h_a0be087140dd6292cff2e4276fcf4384f}\label{images_8h_a0be087140dd6292cff2e4276fcf4384f}} 
+\index{images.h@{images.h}!derniere\_salle\_position@{derniere\_salle\_position}}
+\index{derniere\_salle\_position@{derniere\_salle\_position}!images.h@{images.h}}
+\doxysubsubsection{\texorpdfstring{derniere\_salle\_position()}{derniere\_salle\_position()}}
+{\footnotesize\ttfamily void derniere\+\_\+salle\+\_\+position (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{structimages__t}{images\+\_\+t}} $\ast$}]{textures,  }\item[{int}]{etat }\end{DoxyParamCaption})}
+
+
+
+positionne les éléments fixes de la dernière salle 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & le renderer \\
+\hline
+{\em textures} & les textures du jeu \\
+\hline
+{\em etat} & l\textquotesingle{}état jeu ou l\textquotesingle{}état victoire \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{images_8h_a0f98beaa02795807c1ecd129d7ce1eb1}\label{images_8h_a0f98beaa02795807c1ecd129d7ce1eb1}} 
