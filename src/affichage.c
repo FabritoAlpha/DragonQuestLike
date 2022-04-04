@@ -51,21 +51,21 @@ void affichage_aide(SDL_Renderer *renderer, TTF_Font * police){
     char aide[150] = "";
     //largeur: 20 par caractère
     sprintf(aide, "ENTREE - Quitter le menu d'aide");
-    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 85 + (taille_fenetre[1]/2) - 350 , 620, 50);
+    apply_text(renderer, 255, 255, 255, aide , police, 150 + (taille_fenetre[0]/2) - 500, 85 + (taille_fenetre[1]/2) - 350 , 620, 50);
     sprintf(aide, "M - Retour au menu principal");
-    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 155 + (taille_fenetre[1]/2) - 350 , 560, 50);
+    apply_text(renderer, 255, 255, 255, aide , police, 150 + (taille_fenetre[0]/2) - 500, 155 + (taille_fenetre[1]/2) - 350 , 560, 50);
     sprintf(aide, "FLECHES - Naviguer");
-    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 225 + (taille_fenetre[1]/2) - 350 , 360, 50);
+    apply_text(renderer, 255, 255, 255, aide , police, 150 + (taille_fenetre[0]/2) - 500, 225 + (taille_fenetre[1]/2) - 350 , 360, 50);
     sprintf(aide, "ENTREE - Valider l'option");
-    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 295 + (taille_fenetre[1]/2) - 350 , 500, 50);
+    apply_text(renderer, 255, 255, 255, aide , police, 150 + (taille_fenetre[0]/2) - 500, 295 + (taille_fenetre[1]/2) - 350 , 500, 50);
     sprintf(aide, "O - Ouvrir le coffre");
-    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 365 + (taille_fenetre[1]/2) - 350 , 400, 50);
+    apply_text(renderer, 255, 255, 255, aide , police, 150 + (taille_fenetre[0]/2) - 500, 365 + (taille_fenetre[1]/2) - 350 , 400, 50);
     sprintf(aide, "I - Ouvrir ou fermer l'inventaire");
-    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 435 + (taille_fenetre[1]/2) - 350 , 660, 50);
+    apply_text(renderer, 255, 255, 255, aide , police, 150 + (taille_fenetre[0]/2) - 500, 435 + (taille_fenetre[1]/2) - 350 , 660, 50);
     sprintf(aide, "C - Afficher la carte");
-    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 505 + (taille_fenetre[1]/2) - 350 , 420, 50);
+    apply_text(renderer, 255, 255, 255, aide , police, 150 + (taille_fenetre[0]/2) - 500, 505 + (taille_fenetre[1]/2) - 350 , 420, 50);
     sprintf(aide, "P - Parler");
-    apply_text(renderer, 0, 0, 0, aide , police, 150 + (taille_fenetre[0]/2) - 500, 575 + (taille_fenetre[1]/2) - 350 , 200, 50);
+    apply_text(renderer, 255, 255, 255, aide , police, 150 + (taille_fenetre[0]/2) - 500, 575 + (taille_fenetre[1]/2) - 350 , 200, 50);
 
 }
 

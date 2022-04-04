@@ -62,7 +62,7 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
     }
 
     if(monde->etat_jeu == ETAT_VICTOIRE){
-      affichage_victoire(renderer,textures,police);
+      affichage_victoire(renderer, police);
     }
 
     if(monde->etat_jeu == ETAT_DIALOGUE){
