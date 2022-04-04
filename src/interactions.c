@@ -176,8 +176,28 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             //On quitte le combat
                             //On modifie l'état du jeu afin de retourner à  la carte principale
                             monde->etat_jeu = ETAT_JEU_PRINCIPAL;
-                            break;
+                            //On fait spawn le monstre suffisamment loin de nous pour pouvoir fuire
+                            //On place le monstre à l'opossé du joueur
+                            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->x = SCREEN_WIDTH - monde->joueur->combattant->x;
+                            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->y = SCREEN_HEIGHT - monde->joueur->combattant->y;
+                            //On vérifie que le monstre ne soit pas bloquée dans la bordure haute de la salle
+                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->y < 100){
+                              monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->y += 100;
+                            }
+                            //On vérifie que le monstre ne soit pas bloquée dans la bordure basse de la salle
+                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->y + HAUTEUR_PERSONNAGE > SCREEN_HEIGHT - 100){
+                              monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->y -= 100;
+                            }
+                            //On vérifie que le monstre ne soit pas bloquée dans la bordure gauche de la salle
+                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->x < 100){
+                              monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->x += 100;
+                            }
+                            //On vérifie que le monstre ne soit pas bloquée dans la bordure droite de la salle
+                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->x + LARGEUR_PERSONNAGE > SCREEN_WIDTH -100){
+                              monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->x -= 100;
+                            }
 
+                            break;
                     }
                 }
             }
