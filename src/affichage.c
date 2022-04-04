@@ -429,6 +429,17 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
               //case pour le choix retour
               apply_texture(&textures->case_combat, renderer, 600, 440);
 
+              //on affiche la boule de feu et la larme qui représente le coût
+              grand_icone_position(renderer, textures, 630, 320, 4);
+              grand_icone_position(renderer, textures, 790, 320, 3);
+              //On affiche le coût du sort
+              apply_text(renderer, 0, 0, 255, "10", police, 820 + 30, 330,40,50);
+              //On affiche une petite épée
+              icone_boutique_position(renderer, textures, 320, 336, 3);
+              //On affiche deux petites potions
+              icone_boutique_position(renderer, textures, 320, 456, 1);
+              icone_boutique_position(renderer, textures, 336, 456, 2);
+
               switch(monde->option){
                 case EPEE:
                   apply_texture(&textures->surbrillance_combat, renderer, 100, 320);
@@ -485,6 +496,8 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
         char potion_pv[20];
         char potion_mana[20];
         char retour[20];
+        char nb_pot_pv[4];
+        char nb_pot_pm[4];
 
         //Récupération des chaînes de caractères
         sprintf(potion_pv, "Potion de vie");
@@ -497,6 +510,21 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
         apply_texture(&textures->case_combat, renderer, 600, 320);
         //case pour retourner en arrière
         apply_texture(&textures->case_combat, renderer, 350, 440);
+
+        //On affiche deux petites potions
+        icone_boutique_position(renderer, textures, 100 + 200, 336, 1);
+        icone_boutique_position(renderer, textures, 800, 336, 2);
+
+        //On affiche combien le joueur possède de potions dans chacune des cases
+        snprintf(nb_pot_pv, 4, "%d", monde->joueur->inventaire[INDICE_POTION_PV].nb_obj);
+        snprintf(nb_pot_pm, 4, "%d", monde->joueur->inventaire[INDICE_POTION_MANA].nb_obj);
+
+        apply_text(renderer, 0, 255, 255, potion_pv, police, 100+100, 320+20,100,30);
+        apply_text(renderer, 0, 255, 255, potion_mana, police, 600+100, 320+20,100,30);
+
+        apply_text(renderer, 0, 0, 0, nb_pot_pv, police, 100+250, 320+20,40,30);
+        apply_text(renderer, 0, 0, 0, nb_pot_pm, police, 600+250, 320+20,40,30);
+
 
         switch(monde->option){
           case CHOIX_POTION_PV:
