@@ -145,7 +145,9 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
                         dialogue_position(renderer, textures, 4);
                 break;
                 case 2:
-                    dialogue_position(renderer, textures, 3);
+                    // si c'est un marchand
+                    if(nonCombattant_proche(monde) == 2)
+                        dialogue_position(renderer, textures, 3);
                 break;
             }
         break;
@@ -160,7 +162,9 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
                         dialogue_position(renderer, textures, 3);
                 break;
                 case 2:
-                    dialogue_position(renderer, textures, 4);
+                    // si c'est un marchand
+                    if(nonCombattant_proche(monde) == 2)
+                        dialogue_position(renderer, textures, 4);
                 break;
             }
         break;
@@ -175,7 +179,9 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
                         dialogue_position(renderer, textures, 4);
                 break;
                 case 2:
-                    dialogue_position(renderer, textures, 3);
+                    // si c'est un marchand
+                    if(nonCombattant_proche(monde) == 2)
+                        dialogue_position(renderer, textures, 3);
                 break;
             }
         break;
@@ -195,7 +201,7 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
         if(monde->joueur->zone == 1){
           sprintf(parole, "Faites vite! Le sorcier semblait furieux!");
           apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 619 + (taille_fenetre[1]/2) - 375 , 410, 20);
-          sprintf(parole, "Il est passé par notre jardin.");
+          sprintf(parole, "Il est passe par notre jardin.");
           apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 659 + (taille_fenetre[1]/2) - 375 , 300, 20);
           sprintf(parole, "Esperons que vos amis vont bien...");
           apply_text(renderer, 0, 0, 0, parole , police, 100 + (taille_fenetre[0]/2) - 500, 699 + (taille_fenetre[1]/2) - 375 , 340, 20);
@@ -291,6 +297,7 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
 
 
     }
+    //si un coffre est proche
     if(nonCombattant_proche(monde) == 3){
         sprintf(parole, "Recompense");
         apply_text(renderer, 0, 0, 0, parole , police, (taille_fenetre[0]/2) - 325, (taille_fenetre[1]/2) - 100 , 650, 80);
@@ -314,9 +321,12 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
     //Menus ave choix des actions
     //printf("Option du menu: %d\n", monde->option);
     //printf("Numéro du menu:%d\n",monde->num_menu_comb);
+    char opt[20];
+    //printf("début affichage combats : %d\n", monde->num_menu_comb);
     if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->joueur->combattant->pvCour > 0){
         //On affiche le monstre et le personnage
-        apply_texture(&textures->joueur,renderer, 180, 600);
+
+        joueur_position(renderer, textures, monde->joueur, 180, 600);
 
         //récupéation de l'information via la zone et la salle du joueur
         switch(monde->joueur->zone){
@@ -340,44 +350,18 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
                         apply_texture(&textures->monstre_zone2, renderer, SCREEN_WIDTH - 180, 600);
                         break;
                     case 3:
-                        apply_texture(&textures->boss, renderer, SCREEN_WIDTH - 280, 500);
+                        apply_texture(&textures->boss, renderer, SCREEN_WIDTH - 180, 591);
                         break;
                 }
             break;
         }
 
-        //On affiche les points de vie/pm du joueur et du monstre
+        //On affiche les statistiques du joueur:
+        snprintf(opt, 20, "%d", monde->joueur->combattant->attaque);
+        apply_text(renderer, 0, 0, 0, opt , police, 75 + (taille_fenetre[0]/2) - 500, 20 + (taille_fenetre[1]/2) - 375 , 60, 50);
+        icone_boutique_position(renderer, textures,  135 + (taille_fenetre[0]/2) - 500, 30 + (taille_fenetre[1]/2) - 375, 3);
 
-        char pv_j[5];
-        char pv_m[5];
-        char pm_j[5];
-/*
-        printf("pv_j %d\n", (monde->joueur->combattant->pvCour));
-        printf("pv_m %d\n", (monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour));
-        printf("pm_j, %d\n", (monde->joueur->manaCour));
-
-*/
-        int pv_j2 =  (monde->joueur->combattant->pvCour);
-
-        sprintf(pv_j, "%d", pv_j2);
-        //itoa(pv_j2, pv_j, DECIMAL);
-        sprintf(pv_m, "%d", (monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour));
-        sprintf(pm_j, "%d", (monde->joueur->manaCour));
-
-        //Il faut afficher la barre de point de vie du joueur et du monstre ainsi que la barre de mana du joueur
-
-        //Trois apply_texture à faire
-        //->un pour chaque barre
-
-        //sprintf(opt, pv_j);
-        apply_text(renderer, 255, 20, 20, pv_j, police, 50, 600, 50, 25);
-
-        //sprintf(opt, pv_m);
-        apply_text(renderer, 255, 20, 20, pv_m, police, SCREEN_WIDTH - 80, 600, 50, 25);
-
-        //sprintf(opt, mana_j);
-        apply_text(renderer, 20, 20, 255, pm_j, police, 50, 665, 50, 25);
-
+        affichage_statistiques(renderer, police, textures, monde->joueur);
 
         //Si on affiche le menu 1
         if(monde->num_menu_comb == MENU1){
@@ -421,81 +405,137 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
                     break;
             }
         }
+        else{
+          //Si on affiche le menu 2
+          if(monde->num_menu_comb == MENU2){
 
-        //Si on affiche le menu 2
-        if(monde->num_menu_comb == MENU2){
+              char epee[10];
+              char sort[10];
+              char arc[10];
+              char retour[10];
 
-            char epee[10];
-            char sort[10];
-            char arc[10];
-            char retour[10];
+              //Chaînes de caractères utiles pour afficher le texte
+              sprintf(epee, "Epee");
+              sprintf(sort, "Sort");
+              sprintf(arc, "Objets");
+              sprintf(retour, "Retour");
 
-            //Chaînes de caractères utiles pour afficher le texte
-            sprintf(epee, "Epee");
-            sprintf(sort, "Sort");
-            sprintf(arc, "Arc");
-            sprintf(retour, "Retour");
+              //case pour le choix coup d'épée
+              apply_texture(&textures->case_combat, renderer, 100, 320);
+              //case pour le choix sort
+              apply_texture(&textures->case_combat, renderer, 600, 320);
+              //case pour le choix tir Ã  l'arc
+              apply_texture(&textures->case_combat, renderer, 100, 440);
+              //case pour le choix retour
+              apply_texture(&textures->case_combat, renderer, 600, 440);
 
-            //case pour le choix coup d'épée
-            apply_texture(&textures->case_combat, renderer, 100, 320);
-            //case pour le choix sort
-            apply_texture(&textures->case_combat, renderer, 600, 320);
-            //case pour le choix tir Ã  l'arc
-            apply_texture(&textures->case_combat, renderer, 100, 440);
-            //case pour le choix retour
-            apply_texture(&textures->case_combat, renderer, 600, 440);
-
-            switch(monde->option){
-              case EPEE:
-                apply_texture(&textures->surbrillance_combat, renderer, 100, 320);
-                break;
-              case SORT:
-                apply_texture(&textures->surbrillance_combat, renderer, 600, 320);
-                break;
-              case ARC:
-                apply_texture(&textures->surbrillance_combat, renderer, 100, 440);
-                break;
-              case RETOUR:
-                apply_texture(&textures->surbrillance_combat, renderer, 600, 440);
-                break;
-            }
-
-            switch(monde->option){
-                case RIEN:
-                  apply_text(renderer, 0, 255, 255, epee, police, 100+100, 320+20,100,30);
-                  apply_text(renderer, 0, 255, 255, sort, police, 600+100, 320+20,100,30);
-                  apply_text(renderer, 0, 255, 255, arc, police, 100+100, 440+20,100,30);
-                  apply_text(renderer, 0, 255, 255, retour, police, 600+100, 440+20,100,30);
-                  break;
+              switch(monde->option){
                 case EPEE:
-                    apply_text(renderer, 255, 0, 0, epee, police, 100+100, 320+20,100,30);
-                    apply_text(renderer, 0, 255, 255, sort, police, 600+100, 320+20,100,30);
-                    apply_text(renderer, 0, 255, 255, arc, police, 100+100, 440+20,100,30);
-                    apply_text(renderer, 0, 255, 255, retour, police, 600+100, 440+20,100,30);
-                    break;
+                  apply_texture(&textures->surbrillance_combat, renderer, 100, 320);
+                  break;
                 case SORT:
-                    apply_text(renderer, 0, 255, 255, epee, police, 100+100, 320+20,100,30);
-                    apply_text(renderer, 255, 0, 0, sort, police, 600+100, 320+20,100,30);
-                    apply_text(renderer, 0, 255, 255, arc, police, 100+100, 440+20,100,30);
-                    apply_text(renderer, 0, 255, 255, retour, police, 600+100, 440+20,100,30);
-                    break;
-                case ARC:
-                    apply_text(renderer, 0, 255, 255, epee, police, 100+100, 320+20,100,30);
-                    apply_text(renderer, 0, 255, 255, sort, police, 600+100, 320+20,100,30);
-                    apply_text(renderer, 255, 0, 0, arc, police, 100+100, 440+20,100,30);
-                    apply_text(renderer, 0, 255, 255, retour, police, 600+100, 440+20,100,30);
-                    break;
+                  apply_texture(&textures->surbrillance_combat, renderer, 600, 320);
+                  break;
+                case OBJETS:
+                  apply_texture(&textures->surbrillance_combat, renderer, 100, 440);
+                  break;
                 case RETOUR:
+                  apply_texture(&textures->surbrillance_combat, renderer, 600, 440);
+                  break;
+              }
+
+              switch(monde->option){
+                  case RIEN:
                     apply_text(renderer, 0, 255, 255, epee, police, 100+100, 320+20,100,30);
                     apply_text(renderer, 0, 255, 255, sort, police, 600+100, 320+20,100,30);
                     apply_text(renderer, 0, 255, 255, arc, police, 100+100, 440+20,100,30);
-                    apply_text(renderer, 255, 0, 0, retour, police, 600+100, 440+20,100,30);
+                    apply_text(renderer, 0, 255, 255, retour, police, 600+100, 440+20,100,30);
                     break;
-            }
-        }
-    }
+                  case EPEE:
+                      apply_text(renderer, 255, 0, 0, epee, police, 100+100, 320+20,100,30);
+                      apply_text(renderer, 0, 255, 255, sort, police, 600+100, 320+20,100,30);
+                      apply_text(renderer, 0, 255, 255, arc, police, 100+100, 440+20,100,30);
+                      apply_text(renderer, 0, 255, 255, retour, police, 600+100, 440+20,100,30);
+                      break;
+                  case SORT:
+                      apply_text(renderer, 0, 255, 255, epee, police, 100+100, 320+20,100,30);
+                      apply_text(renderer, 255, 0, 0, sort, police, 600+100, 320+20,100,30);
+                      apply_text(renderer, 0, 255, 255, arc, police, 100+100, 440+20,100,30);
+                      apply_text(renderer, 0, 255, 255, retour, police, 600+100, 440+20,100,30);
+                      break;
+                  case OBJETS:
+                      apply_text(renderer, 0, 255, 255, epee, police, 100+100, 320+20,100,30);
+                      apply_text(renderer, 0, 255, 255, sort, police, 600+100, 320+20,100,30);
+                      apply_text(renderer, 255, 0, 0, arc, police, 100+100, 440+20,100,30);
+                      apply_text(renderer, 0, 255, 255, retour, police, 600+100, 440+20,100,30);
+                      break;
+                  case RETOUR:
+                      apply_text(renderer, 0, 255, 255, epee, police, 100+100, 320+20,100,30);
+                      apply_text(renderer, 0, 255, 255, sort, police, 600+100, 320+20,100,30);
+                      apply_text(renderer, 0, 255, 255, arc, police, 100+100, 440+20,100,30);
+                      apply_text(renderer, 255, 0, 0, retour, police, 600+100, 440+20,100,30);
+                      break;
+              }
+          }
+      }
 
-    else if(monde->joueur->combattant->pvCour <= 0){
+      if(monde->num_menu_comb == MENU3){
+        //On doit afficher trois cases
+        //printf("On rentre bien dans le menu 3\n");
+        char potion_pv[20];
+        char potion_mana[20];
+        char retour[20];
+
+        //Récupération des chaînes de caractères
+        sprintf(potion_pv, "Potion de vie");
+        sprintf(potion_mana, "Potion de mana");
+        sprintf(retour, "Retour");
+
+        //case pour la potion de vie
+        apply_texture(&textures->case_combat, renderer, 100, 320);
+        //case pour la potion de mana
+        apply_texture(&textures->case_combat, renderer, 600, 320);
+        //case pour retourner en arrière
+        apply_texture(&textures->case_combat, renderer, 350, 440);
+
+        switch(monde->option){
+          case CHOIX_POTION_PV:
+            apply_texture(&textures->surbrillance_combat, renderer, 100, 320);
+            break;
+          case CHOIX_POTION_MANA:
+            apply_texture(&textures->surbrillance_combat, renderer, 600, 320);
+            break;
+          case RETOUR:
+            apply_texture(&textures->surbrillance_combat, renderer, 350, 440);
+            break;
+        }
+
+        switch(monde->option){
+            case RIEN:
+              apply_text(renderer, 0, 255, 255, potion_pv, police, 100+100, 320+20,100,30);
+              apply_text(renderer, 0, 255, 255, potion_mana, police, 600+100, 320+20,100,30);
+              apply_text(renderer, 0, 255, 255, retour, police, 350+100, 440+20,100,30);
+              break;
+            case CHOIX_POTION_PV:
+                apply_text(renderer, 255, 0, 0, potion_pv, police, 100+100, 320+20,100,30);
+                apply_text(renderer, 0, 255, 255, potion_mana, police, 600+100, 320+20,100,30);
+                apply_text(renderer, 0, 255, 255, retour, police, 350+100, 440+20,100,30);
+                break;
+            case CHOIX_POTION_MANA:
+                apply_text(renderer, 0, 255, 255, potion_pv, police, 100+100, 320+20,100,30);
+                apply_text(renderer, 255, 0, 0, potion_mana, police, 600+100, 320+20,100,30);
+                apply_text(renderer, 0, 255, 255, retour, police, 350+100, 440+20,100,30);
+                break;
+            case RETOUR:
+                apply_text(renderer, 0, 255, 255, potion_pv, police, 100+100, 320+20,100,30);
+                apply_text(renderer, 0, 255, 255, potion_mana, police, 600+100, 320+20,100,30);
+                apply_text(renderer, 255, 0, 0, retour, police, 350+100, 440+20,100,30);
+                break;
+        }
+
+      }
+    }
+    if(monde->joueur->combattant->pvCour <= 0){
         //Si le joueur est mort alors on affiche une image de game over
         //Il faudra appuyez sur une touche pour sortir du jeu
         apply_texture(&textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
@@ -503,10 +543,10 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
         apply_text(renderer, 255, 0, 0, "Press Enter To Retry", police, SCREEN_WIDTH/2 - 200, SCREEN_HEIGHT/2 + 25, 400, 100);
 
     }
-    else{
+    /*else{
         //ça signifie que seul le monstre est mort -> on retourne seulement au jeu
         monde->etat_jeu = ETAT_JEU_PRINCIPAL;
-    }
+    }*/
 }
 
 /**

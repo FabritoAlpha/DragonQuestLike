@@ -219,18 +219,18 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                                 monde->option = SORT;
                             }
                             else{
-                                monde->option = ARC;
+                                monde->option = OBJETS;
                             }
                             break;
                         case SORT:
                             monde->option = EPEE;
                             break;
-                        case ARC:
+                        case OBJETS:
                             //Si on a assez de mana on va sur la case sort sinon on va sur la case epee
                             monde->option = RETOUR;
                             break;
                         case RETOUR:
-                            monde->option = ARC;
+                            monde->option = OBJETS;
                             break;
                     }
                 }
@@ -246,17 +246,17 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                                 monde->option = SORT;
                             }
                             else{
-                                monde->option = ARC;
+                                monde->option = OBJETS;
                             }
                             break;
                         case SORT:
                             monde->option = EPEE;
                             break;
-                        case ARC:
+                        case OBJETS:
                             monde->option = RETOUR;
                             break;
                         case RETOUR:
-                            monde->option = ARC;
+                            monde->option = OBJETS;
                             break;
                     }
                 }
@@ -268,12 +268,12 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             break;
                         case EPEE:
                             //Si on a assez de manas on va sur sort sinon on va sur arc car on ne peut pas utiliser le sort
-                            monde->option = ARC;
+                            monde->option = OBJETS;
                             break;
                         case SORT:
                             monde->option = RETOUR;
                             break;
-                        case ARC:
+                        case OBJETS:
                             monde->option = EPEE;
                             break;
                         case RETOUR:
@@ -293,13 +293,13 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             monde->option = EPEE;
                             break;
                         case EPEE:
-                            //Si on a assez de manas on va sur sort sinon on va sur arc car on ne peut pas utiliser le sort
-                            monde->option = ARC;
+                            //Si on a assez de manas on va sur sort sinon on va sur OBJETS car on ne peut pas utiliser le sort
+                            monde->option = OBJETS;
                             break;
                         case SORT:
                             monde->option = RETOUR;
                             break;
-                        case ARC:
+                        case OBJETS:
                             monde->option = EPEE;
                             break;
                         case RETOUR:
@@ -319,6 +319,8 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             //On inflige des dégâts au monstre
                             //Actualise ses pts de vie
                             monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour -=monde->joueur->combattant->attaque;
+                            monde->num_menu_comb = MENU1;
+                            monde->option = ATTAQUE;
                             //Finit le combat si pv du monstre <= 0
                             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour <= 0){
                                 monde->etat_jeu = ETAT_JEU_PRINCIPAL;//On retourne sur la carte du monde si le monstre est mort
@@ -334,6 +336,8 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour -=monde->joueur->combattant->attaque;
                             //On réduit de 5 ses points de mana
                             monde->joueur->manaCour -= 5;
+                            monde->num_menu_comb = MENU1;
+                            monde->option = ATTAQUE;
                             //Finit le combat si pv du monstre <= 0
                             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour <= 0){
                                 monde->etat_jeu = ETAT_JEU_PRINCIPAL;//On retourne sur la carte du monde si le monstre est mort
@@ -342,18 +346,10 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             }
                             indice_deg++;
                             break;
-                        case ARC:
-                            //On inflige des dÃ©gÃ¢ts au monstre
-                            //Actualise ses pts de vie
-                            monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour -=monde->joueur->combattant->attaque;
-                            //Finit le combat si pv du monstre <= 0
-                            if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour <= 0){
-                                monde->etat_jeu = ETAT_JEU_PRINCIPAL;//On retourne sur la carte du monde si le monstre est mort
-                                printf("On tue par l'arc\n");
-                                monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
-                                monde->joueur->or += 30;
-                            }
-                            indice_deg++;
+                        case OBJETS:
+                            //Si on choisit d'utiliser un objet, on ouvre un troisième menu avec la possibilité d'utiliser une potion de pv ou une potion de mana
+                            monde->num_menu_comb = MENU3;
+                            monde->option = RETOUR;
                             break;
                         case RETOUR:
                             //Si on appuie sur "Retour" on affiche de nouveau le menu1
@@ -364,6 +360,112 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                 }
             }
         }
+        else if(monde->num_menu_comb == MENU3){
+          if(event->type == SDL_KEYDOWN){
+              if(keystates[SDL_SCANCODE_LEFT]){
+                  switch(monde->option){
+                      //On décale le curseur vers la case à gauche
+                      case RIEN:
+                          monde->option = RETOUR;
+                          break;
+                      case CHOIX_POTION_PV:
+                          if(monde->joueur->inventaire[INDICE_POTION_MANA].nb_obj > 0){
+                            monde->option = CHOIX_POTION_MANA;
+                          }
+                          break;
+                      case CHOIX_POTION_MANA:
+                          if(monde->joueur->inventaire[INDICE_POTION_PV].nb_obj > 0){
+                            monde->option = CHOIX_POTION_PV;
+                          }
+                          break;
+                  }
+              }
+            if(keystates[SDL_SCANCODE_RIGHT]){
+              switch(monde->option){
+                //On décale le curseur vers la case à droite
+                case RIEN:
+                    monde->option = RETOUR;
+                    break;
+                case CHOIX_POTION_PV:
+                    if(monde->joueur->inventaire[INDICE_POTION_MANA].nb_obj > 0){
+                      monde->option = CHOIX_POTION_MANA;
+                    }
+                    break;
+                case CHOIX_POTION_MANA:
+                    if(monde->joueur->inventaire[INDICE_POTION_PV].nb_obj > 0){
+                      monde->option = CHOIX_POTION_PV;
+                    }
+                    break;
+              }
+            }
+            if(keystates[SDL_SCANCODE_UP]){
+              switch(monde->option){
+                case RIEN:
+                  monde->option = RETOUR;
+                  break;
+                case CHOIX_POTION_PV:
+                  monde->option = RETOUR;
+                  break;
+                case CHOIX_POTION_MANA:
+                  monde->option = RETOUR;
+                  break;
+                case RETOUR:
+                  //On vérifie qu'on a des potions avant de sélectionner l'option
+                  if(monde->joueur->inventaire[INDICE_POTION_PV].nb_obj > 0){
+                    monde->option = CHOIX_POTION_PV;
+                  }
+                  else if(monde->joueur->inventaire[INDICE_POTION_MANA].nb_obj > 0){
+                    monde->option = CHOIX_POTION_MANA;
+                  }
+                  break;
+              }
+            }
+            if(keystates[SDL_SCANCODE_DOWN]){
+              switch(monde->option){
+                case RIEN:
+                  monde->option = RETOUR;
+                  break;
+                case CHOIX_POTION_PV:
+                  monde->option = RETOUR;
+                  break;
+                case CHOIX_POTION_MANA:
+                  monde->option = RETOUR;
+                  break;
+                case RETOUR:
+                  //On vérifie qu'on a des potions avant de sélectionner l'option
+                  if(monde->joueur->inventaire[INDICE_POTION_PV].nb_obj > 0){
+                    monde->option = CHOIX_POTION_PV;
+                  }
+                  else if(monde->joueur->inventaire[INDICE_POTION_MANA].nb_obj > 0){
+                    monde->option = CHOIX_POTION_MANA;
+                  }
+                  break;
+              }
+            }
+            if(keystates[SDL_SCANCODE_RETURN]){
+              switch(monde->option){
+                case RETOUR:
+                  monde->num_menu_comb = MENU2;
+                  break;
+                case CHOIX_POTION_PV:
+                  if(monde->joueur->combattant->pvCour < monde->joueur->combattant->pvMax){
+                    consommer_potion(monde->joueur, INDICE_POTION_PV);
+                    monde->num_menu_comb = MENU2;
+                    monde->num_menu_comb = OBJETS;
+                    indice_deg++;
+                  }
+                  break;
+                case CHOIX_POTION_MANA:
+                  if(monde->joueur->manaCour < monde->joueur->manaMax){
+                    consommer_potion(monde->joueur, INDICE_POTION_MANA);
+                    monde->num_menu_comb = MENU2;
+                    monde->option = OBJETS;
+                    indice_deg++;
+                  }
+                  break;
+              }
+            }
+        }
     }
     if(!joueur_etait_vivant){
         while(event->type != SDL_KEYDOWN){
@@ -372,8 +474,10 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
         printf("Sortie de boucle\n");
         monde->num_menu_comb = MENU1;
         monde->etat_jeu = ETAT_JEU_PRINCIPAL;
+        reinitialiser_joueur(monde->joueur, monde->biblio_objet);
 	    if(monde->partie == 1){
             init_monde_jeu(monde, "./rsrc/txt/partie1.txt");
+            printf("initialise bien à partir du fichier texte\n");
         }
         else{
             init_monde_jeu(monde, "./rsrc/txt/partie2.txt");
@@ -381,7 +485,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
     }
     //Le monstre attaque si le joueur a attaqué
 
-    else if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->num_menu_comb != MENU1 && monde->etat_jeu != ETAT_JEU_PRINCIPAL && indice_deg == 1){
+    else if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->etat_jeu != ETAT_JEU_PRINCIPAL && indice_deg == 1){
 		    //Le monstre inflige des dégâts basiquement au joueur
 		    monde->joueur->combattant->pvCour -= monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->attaque;
 
@@ -393,7 +497,9 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
 		    }
 	  }
     //On réinitialise la valeur de menu sur celle du premier pour le ré-afficher par la suite
-    if(monde->num_menu_comb != MENU2){
+    if(monde->num_menu_comb != MENU2 && monde->num_menu_comb != MENU3){
         monde->num_menu_comb = MENU1;
     }
+  }
+  //printf("Fin d'evenements combats : %d\n", monde->num_menu_comb);
 }

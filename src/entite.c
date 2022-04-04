@@ -369,3 +369,46 @@ void equipement_desequipement_objet(joueur_t * joueur, int i_tab_inv, int i_obj_
     }
   }
 }
+
+
+void consommer_potion(joueur_t * joueur, int indice_obj){
+  joueur->combattant->pvCour += joueur->inventaire[indice_obj].vie_sup;
+  joueur->manaCour += joueur->inventaire[indice_obj].mana_sup;
+
+  if(joueur->combattant->pvCour > joueur->combattant->pvMax){
+    joueur->combattant->pvCour = joueur->combattant->pvMax;
+  }
+  if(joueur->manaCour > joueur->manaMax){
+    joueur->manaCour = joueur->manaMax;
+  }
+
+  joueur->inventaire[indice_obj].nb_obj--;
+}
+
+void reinitialiser_joueur(joueur_t * joueur, objet_t * biblio){
+  int i;
+  if(joueur->nb_obj_equip != 0){
+    for(i = 0; i < TAILLE_INVENTAIRE - 2; i++){
+      if(joueur->objet_equipe[i].id != 0){
+        //Si l'objet est présent il faut le retirer
+        //joueur->objet_equipe[i].id - 1 correspond à l'indice de l'objet equipe dans la bibio des objets
+        if(joueur->objet_equipe[i].id == ID_EPEE_PIERRE || joueur->objet_equipe[i].id == ID_EPEE_DIAM){
+          equipement_desequipement_objet(joueur, i, INDICE_EPEE);
+        }
+        else if(joueur->objet_equipe[i].id == ID_BOUCLIER_BOIS || joueur->objet_equipe[i].id == ID_BOUCLIER_DIAM){
+          equipement_desequipement_objet(joueur, i, INDICE_BOUCLIER);
+        }
+      }
+    }
+  }
+  if(joueur->nb_obj_inventaire != 0){
+    for(i = 0; i < TAILLE_INVENTAIRE; i++){
+      if(objet_present(joueur, biblio, i)){
+        //Si l'objet est présent il faut le retirer
+        joueur->inventaire[i].id = 0;
+        joueur->inventaire[i].nb_obj = 0;
+      }
+    }
+  }
+
+}

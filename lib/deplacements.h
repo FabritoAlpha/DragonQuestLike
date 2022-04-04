@@ -21,8 +21,12 @@
 #define RIEN 0
 #define EPEE 1
 #define SORT 2
-#define ARC 3
+#define OBJETS 3
 #define RETOUR 4
+
+//Choix du joueur pour le menu 3 du combat
+#define CHOIX_POTION_PV 1
+#define CHOIX_POTION_MANA 2
 
 
 

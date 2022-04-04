@@ -14,6 +14,7 @@
 //Numéro du menu lors du combat
 #define MENU1 1
 #define MENU2 2
+#define MENU3 3
 
 //Valeurs représentants l'état de la partie
 #define VICTOIRE 1
