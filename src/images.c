@@ -149,6 +149,12 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->larme = NULL;
     clean_texture(textures->feu);
     textures->feu = NULL;
+    clean_texture(textures->sorcier_cage);
+    textures->sorcier_cage = NULL;
+    clean_texture(textures->amis_cage);
+    textures->amis_cage = NULL;
+    clean_texture(textures->amis_victoire);
+    textures->amis_victoire = NULL;
     if(police != NULL){
         clean_font(police);
         police = NULL;
@@ -184,7 +190,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     load_image("./rsrc/img/monstre.bmp",&renderer,&textures->monstre);
     load_image("./rsrc/img/monstre.bmp",&renderer,&textures->monstre_zone1);
     load_image("./rsrc/img/monstre.bmp",&renderer,&textures->monstre_zone2);
-    load_image("./rsrc/img/monstre.bmp",&renderer,&textures->boss);
+    load_image("./rsrc/img/sorcier.bmp",&renderer,&textures->boss);
     load_image("./rsrc/img/perso_z0.bmp",&renderer,&textures->perso_z0);
     load_image("./rsrc/img/perso_z1.bmp",&renderer,&textures->perso_z1 );
     load_image("./rsrc/img/perso_z2.bmp",&renderer,&textures->perso_z2);
@@ -222,6 +228,9 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     load_image("./rsrc/img/coeur.bmp", &renderer,&textures->coeur);
     load_image("./rsrc/img/larme.bmp", &renderer,&textures->larme);
     load_image("./rsrc/img/feu.bmp", &renderer,&textures->feu);
+    load_image("./rsrc/img/sorcier_cage.bmp", &renderer,&textures->sorcier_cage);
+    load_image("./rsrc/img/amis_cage.bmp", &renderer,&textures->amis_cage);
+    load_image("./rsrc/img/amis_victoire.bmp", &renderer,&textures->amis_victoire);
 }
 
 /**
@@ -237,7 +246,7 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
     int salle = monde->joueur->salle;
     int etat = monde->etat_jeu;
     //fond du menu
-    if(etat == ETAT_JEU_PRINCIPAL || etat == ETAT_DIALOGUE || etat == ETAT_COFFRE || etat == ETAT_AIDE){
+    if(etat == ETAT_JEU_PRINCIPAL || etat == ETAT_DIALOGUE || etat == ETAT_COFFRE || etat == ETAT_AIDE || etat == ETAT_VICTOIRE){
         if(zone == 0){
             switch(salle){
                 case 0:
@@ -288,6 +297,7 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
                     break;
                 case 3:
                     apply_texture(&textures->zone2salle3, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+                    derniere_salle_position(renderer, textures, etat);
                     break;
             }
         }
@@ -494,6 +504,25 @@ void carte_position(SDL_Renderer *renderer, images_t *textures, int zone){
         break;
         case 2:
             apply_texture(&textures->zone2, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+        break;
+    }
+}
+
+/**
+  * \fn void derniere_salle_position(SDL_Renderer *renderer, images_t *textures, int etat)
+  * \brief positionne les éléments fixes de la dernière salle
+  * \param renderer le renderer
+  * \param textures les textures du jeu
+  * \param etat l'état jeu ou l'état victoire
+*/
+void derniere_salle_position(SDL_Renderer *renderer, images_t *textures, int etat){
+    switch(etat){
+        case ETAT_JEU_PRINCIPAL:
+            apply_texture(&textures->amis_cage, renderer, 200 + (taille_fenetre[0]/2) - 500, 400 + (taille_fenetre[1]/2) - 375);
+        break;
+        case ETAT_VICTOIRE:
+            apply_texture(&textures->sorcier_cage, renderer, 200 + (taille_fenetre[0]/2) - 500, 400 + (taille_fenetre[1]/2) - 375);
+            apply_texture(&textures->amis_victoire, renderer, 430 + (taille_fenetre[0]/2) - 500,  415 + (taille_fenetre[1]/2) - 375);
         break;
     }
 }

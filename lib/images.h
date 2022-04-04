@@ -73,6 +73,9 @@ typedef struct images_s{
     SDL_Texture* coeur; /*!< Texture liée au grand icone pv */
     SDL_Texture* larme; /*!< Texture liée au grand icone mana */
     SDL_Texture* feu; /*!< Texture liée au grand icone feu */
+    SDL_Texture* sorcier_cage; /*!< Texture liée à l'image du sorcier en cage */
+    SDL_Texture* amis_cage; /*!< Texture liée à l'image des amis en cage */
+    SDL_Texture* amis_victoire; /*!< Texture liée à l'mage des trois amis libérés */
 } images_t;
 
 void clean_images(images_t *textures, TTF_Font* police);
@@ -96,5 +99,7 @@ void icone_boutique_position(SDL_Renderer *renderer, images_t *textures, int x, 
 void carte_position(SDL_Renderer *renderer, images_t *textures, int zone);
 
 void grand_icone_position(SDL_Renderer *renderer, images_t *textures, int x, int y, int num);
+
+void derniere_salle_position(SDL_Renderer *renderer, images_t *textures, int etat);
 
 #endif

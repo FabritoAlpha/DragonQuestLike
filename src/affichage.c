@@ -553,13 +553,12 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
 	* \fn void affichage_victoire(SDL_Renderer* renderer, images_t * textures, TTF_Font* police)
 	* \brief affichage lorsque le joueur a gagné
   * \param renderer le renderer
-  * \param textures les textures du jeu
   * \param police la police du texte affiché
 */
-void affichage_victoire(SDL_Renderer* renderer, images_t * textures, TTF_Font* police){
-  apply_texture(&textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
-  apply_text(renderer, 255, 0, 0, "VICTOIRE", police, SCREEN_WIDTH/2 - 100, SCREEN_HEIGHT/2 - 125, 200, 100);
-  apply_text(renderer, 255, 0, 0, "Press Enter To Quit", police, SCREEN_WIDTH/2 - 200, SCREEN_HEIGHT/2 + 25, 400, 100);
+void affichage_victoire(SDL_Renderer* renderer, TTF_Font* police){
+  apply_text(renderer, 255, 255, 255, "VICTOIRE", police, 340 + (taille_fenetre[0]/2) - 500, 250 + (taille_fenetre[1]/2) - 375, 320, 100);
+  //affichage indication pour quitter
+  apply_text(renderer, 255, 255, 255, "ENTREE pour quitter" , police, 600 + (taille_fenetre[0]/2) - 500, 675 + (taille_fenetre[1]/2) - 375, 380, 50);
 
 }
 
