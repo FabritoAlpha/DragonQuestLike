@@ -309,8 +309,10 @@ void ajout_objet(joueur_t* joueur, objet_t* biblio, int ind){
     (joueur->nb_obj_inventaire)++;
   }
   //si l'objet est une potion
-  if(ind == INDICE_POTION_PV || ind == INDICE_POTION_MANA){
-    joueur->inventaire[ind].nb_obj++; // dans tout les cas ajouter 1 (on peut avoir plusieurs potions)
+  else{
+    if(ind == INDICE_POTION_PV || ind == INDICE_POTION_MANA){
+      joueur->inventaire[ind].nb_obj++; // dans tout les cas ajouter 1 (on peut avoir plusieurs potions)
+    }
   }
 }
 
