@@ -310,7 +310,8 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
 
     }
     else{
-        apply_texture(&textures->zone0salle0, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+      //fond menus du début du jeu
+        apply_texture(&textures->fond_inventaire, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
     }
 }
 

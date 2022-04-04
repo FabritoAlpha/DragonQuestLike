@@ -539,8 +539,9 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
         //Si le joueur est mort alors on affiche une image de game over
         //Il faudra appuyez sur une touche pour sortir du jeu
         apply_texture(&textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
-        apply_text(renderer, 255, 0, 0, "Game Over", police, SCREEN_WIDTH/2 - 100, SCREEN_HEIGHT/2 - 125, 200, 100);
-        apply_text(renderer, 255, 0, 0, "Press Enter To Retry", police, SCREEN_WIDTH/2 - 200, SCREEN_HEIGHT/2 + 25, 400, 100);
+        apply_text(renderer, 255, 255, 255, "PERDU!", police, 380 + (taille_fenetre[0]/2) - 500, 250 + (taille_fenetre[1]/2) - 375, 240, 100);
+        //affichage indication pour quitter
+        apply_text(renderer, 255, 255, 255, "ENTREE pour reapparaitre" , police, 260 + (taille_fenetre[0]/2) - 500, 370 + (taille_fenetre[1]/2) - 375, 480, 50);
 
     }
     /*else{
@@ -722,7 +723,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
         if(monde->option == 1){
             sprintf(opt, "Jouer");
             if(police != 0){
-                apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
+                apply_text(renderer, 255, 255, 255, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/3 , 350, 80);
             }
         } else{
             sprintf(opt, "Jouer");
@@ -734,7 +735,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
         if(monde->option == 2){
             sprintf(opt, "Quitter");
             if(police != 0){
-                apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
+                apply_text(renderer, 255, 255, 255, opt , police, SCREEN_WIDTH/3 , 2*SCREEN_HEIGHT/3, 350, 80);
             }
         } else{
             sprintf(opt, "Quitter");
@@ -750,7 +751,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
         if(monde->option == 1){
             sprintf(opt, "Partie 1");
             if(police != 0){
-                apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
+                apply_text(renderer, 255, 255, 255, opt , police, SCREEN_WIDTH/3 , SCREEN_HEIGHT/5 , 350, 80);
             }
         } else{
             sprintf(opt, "Partie 1");
@@ -762,7 +763,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
         if(monde->option == 2){
             sprintf(opt, "Partie 2");
             if(police != 0){
-                apply_text(renderer, 150, 255, 150 , opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
+                apply_text(renderer, 255, 255, 255, opt , police, SCREEN_WIDTH/3, 2*SCREEN_HEIGHT/5 , 350, 80);
             }
         } else{
             sprintf(opt, "Partie 2");
@@ -777,7 +778,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
                 //l'affichage de l'option nouvelle partie est affichée sélectionnée
                 sprintf(opt, "Nouvelle partie");
                 if(police != 0){
-                    apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
+                    apply_text(renderer, 255, 255, 255, opt , police, SCREEN_WIDTH/3 , 3*SCREEN_HEIGHT/5, 350, 80);
                 }
             //sinon on affiche la sélection du nouveau menu
             } else{
@@ -792,7 +793,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
                 if(monde->option2 == 1){
                     sprintf(opt, "Partie1");
                     if(police != 0){
-                        apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                        apply_text(renderer, 255, 255, 255, opt , police, SCREEN_WIDTH/3, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
                     }
                 } else {
                     sprintf(opt, "Partie1");
@@ -803,7 +804,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
                 if(monde->option2 == 2){
                     sprintf(opt, "Partie2");
                     if(police != 0){
-                        apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 + 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                        apply_text(renderer, 255, 255, 255, opt , police, SCREEN_WIDTH/3 + 180, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
                     }
                 } else {
                     sprintf(opt, "Partie2");
@@ -814,7 +815,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
                 if(monde->option2 == 3){
                     sprintf(opt, "Annuler");
                     if(police != 0){
-                        apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 + 360, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
+                        apply_text(renderer, 255, 255, 255, opt , police, SCREEN_WIDTH/3 + 360, 3*SCREEN_HEIGHT/5 + 90, 175, 40);
                     }
                 } else {
                     sprintf(opt, "Annuler");
@@ -833,7 +834,7 @@ void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police){
         if(monde->option == 4){
             sprintf(opt, "Retour");
             if(police != 0){
-                apply_text(renderer, 150, 255, 150, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
+                apply_text(renderer, 255, 255, 255, opt , police, SCREEN_WIDTH/3 , 4*SCREEN_HEIGHT/5, 350, 80);
             }
         } else{
             sprintf(opt, "Retour");
