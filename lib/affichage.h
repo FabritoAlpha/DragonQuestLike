@@ -37,14 +37,12 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
 
 void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font* police);
 
-void affichage_victoire(SDL_Renderer* renderer, images_t * textures, TTF_Font* police);
+void affichage_victoire(SDL_Renderer* renderer, TTF_Font* police);
 
 void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font * police);
 
 void affichage_menu(SDL_Renderer *renderer, monde_t * monde, TTF_Font * police);
 
 void affichage_statistiques(SDL_Renderer *renderer, TTF_Font * police, images_t *textures, joueur_t * joueur);
-
-void affichage_victoire(SDL_Renderer* renderer, TTF_Font* police);
 
 #endif
