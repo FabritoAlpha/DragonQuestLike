@@ -300,9 +300,9 @@ void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * mo
     //si un coffre est proche
     if(nonCombattant_proche(monde) == 3){
         sprintf(parole, "Recompense");
-        apply_text(renderer, 0, 0, 0, parole , police, (taille_fenetre[0]/2) - 325, (taille_fenetre[1]/2) - 100 , 650, 80);
+        apply_text(renderer, 255, 255, 255, parole , police, (taille_fenetre[0]/2) - 325, (taille_fenetre[1]/2) - 100 , 650, 80);
         sprintf(parole, "500");
-        apply_text(renderer, 0, 0, 0, parole , police, (taille_fenetre[0]/2) - 300, (taille_fenetre[1]/2) , 200, 60);
+        apply_text(renderer, 255,255, 255, parole , police, (taille_fenetre[0]/2) - 300, (taille_fenetre[1]/2) , 200, 60);
         grand_icone_position(renderer, textures, 400 + (taille_fenetre[0]/2) - 500, 375 + (taille_fenetre[1]/2) - 375, 1);
     }
 }
