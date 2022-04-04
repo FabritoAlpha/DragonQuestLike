@@ -349,8 +349,12 @@ void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueu
   * \param renderer le renderer
   * \param textures les textures du jeu
   * \param monstre le monstre
+  * \param monde le monde
 */
-void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre){
+void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre, monde_t * monde){
+    if(monde->joueur->zone == 2 && monde->joueur->salle == 3)
+        apply_texture(&textures->boss, renderer, monstre->combattant->x + (taille_fenetre[0]/2) - 500, monstre->combattant->y - 9 + (taille_fenetre[1]/2) - 375);
+     else
     apply_texture(&textures->monstre, renderer, monstre->combattant->x + (taille_fenetre[0]/2) - 500, monstre->combattant->y + (taille_fenetre[1]/2) - 375);
 }
 

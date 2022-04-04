@@ -98,7 +98,7 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
       affichage_nonCombattants(renderer,textures, monde->zones[monde->joueur->zone], monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]);
 
       if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT){
-        monstre_position(renderer, textures, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre);
+        monstre_position(renderer, textures, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
         //printf("time sec %d nexttick %d\n",time_sec,(*next_tick));
         if(time_sec>(*next_tick)){
           (*next_tick) = (*next_tick) + 48;

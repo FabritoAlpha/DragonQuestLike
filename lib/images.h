@@ -86,7 +86,7 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde);
 
 void joueur_position(SDL_Renderer *renderer, images_t *textures, joueur_t* joueur, int x, int y);
 
-void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre);
+void monstre_position(SDL_Renderer *renderer, images_t *textures, monstre_t* monstre, monde_t * monde);
 
 void nonCombattant_position(SDL_Renderer *renderer, images_t *textures, nonCombattant_t* perso, int type);
 
