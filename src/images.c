@@ -155,6 +155,8 @@ void clean_images(images_t *textures, TTF_Font * police){
     textures->amis_cage = NULL;
     clean_texture(textures->amis_victoire);
     textures->amis_victoire = NULL;
+    clean_texture(textures->fond_menus);
+    textures->fond_menus = NULL;
     if(police != NULL){
         clean_font(police);
         police = NULL;
@@ -231,6 +233,7 @@ void init_images(SDL_Renderer *renderer, images_t *textures){
     load_image("./rsrc/img/sorcier_cage.bmp", &renderer,&textures->sorcier_cage);
     load_image("./rsrc/img/amis_cage.bmp", &renderer,&textures->amis_cage);
     load_image("./rsrc/img/amis_victoire.bmp", &renderer,&textures->amis_victoire);
+    load_image("./rsrc/img/fond_menus.bmp", &renderer,&textures->fond_menus);
 }
 
 /**
@@ -311,7 +314,7 @@ void fond(SDL_Renderer *renderer, images_t *textures, monde_t * monde){
     }
     else{
       //fond menus du début du jeu
-        apply_texture(&textures->fond_inventaire, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
+        apply_texture(&textures->fond_menus, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
     }
 }
 

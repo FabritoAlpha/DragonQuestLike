@@ -76,6 +76,7 @@ typedef struct images_s{
     SDL_Texture* sorcier_cage; /*!< Texture liée à l'image du sorcier en cage */
     SDL_Texture* amis_cage; /*!< Texture liée à l'image des amis en cage */
     SDL_Texture* amis_victoire; /*!< Texture liée à l'mage des trois amis libérés */
+    SDL_Texture* fond_menus; /*!< Texture liée à l'image de fond des menus de début de jeu. */
 } images_t;
 
 void clean_images(images_t *textures, TTF_Font* police);
