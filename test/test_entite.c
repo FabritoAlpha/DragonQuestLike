@@ -1,10 +1,12 @@
-#include <stdio.h>
-#include "../lib/entite.h"
 /**
   * \file test_entite.c
-  * \brief Test les fonctions d'entites
+  * \brief Test l'allocation et la libération de mémoire pour les structures d'entite.h
   * \author Anna Béranger, Arthur Fabre, Alex Choux
 */
+
+#include <stdio.h>
+#include "../lib/entite.h"
+
 int main(){
     printf("Lancement du test unitaire pour les entitées\n");
     printf("\n***\n");

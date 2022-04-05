@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['victoire_5fjeu_307',['victoire_jeu',['../monde_8c.html#a23cd939776316dc8c90e65b854ab4069',1,'victoire_jeu(monde_t *monde):&#160;monde.c'],['../monde_8h.html#a23cd939776316dc8c90e65b854ab4069',1,'victoire_jeu(monde_t *monde):&#160;monde.c']]]
+  ['update_5fscreen_314',['update_screen',['../sdl2__fonctions_8c.html#adaf353d9ae01b52dd37cd0adf2d5c9ee',1,'update_screen(SDL_Renderer *renderer):&#160;sdl2_fonctions.c'],['../sdl2__fonctions_8h.html#adaf353d9ae01b52dd37cd0adf2d5c9ee',1,'update_screen(SDL_Renderer *renderer):&#160;sdl2_fonctions.c']]]
 ];

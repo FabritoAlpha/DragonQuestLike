@@ -35,4 +35,6 @@ digraph "lib/monde.h"
   Node14 [label="src/menu.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$menu_8c.html",tooltip="gestion des menus"];
   Node1 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node15 [label="src/monde.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$monde_8c.html",tooltip="fonctions de gestion du monde"];
+  Node1 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="test/test_monde.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$test__monde_8c.html",tooltip="Test l'allocation et la libération de mémoire pour les structures de monde.h."];
 }

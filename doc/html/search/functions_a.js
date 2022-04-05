@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sauvegarde_305',['sauvegarde',['../deplacements_8c.html#a1de9511e3f01652f2bd433862a553538',1,'sauvegarde(monde_t *monde):&#160;deplacements.c'],['../deplacements_8h.html#a1de9511e3f01652f2bd433862a553538',1,'sauvegarde(monde_t *monde):&#160;deplacements.c']]]
+  ['reinitialiser_5fjoueur_312',['reinitialiser_joueur',['../entite_8c.html#a9c8d036cd6dd0c557f18139581d3e146',1,'reinitialiser_joueur(joueur_t *joueur, objet_t *biblio):&#160;entite.c'],['../entite_8h.html#a9c8d036cd6dd0c557f18139581d3e146',1,'reinitialiser_joueur(joueur_t *joueur, objet_t *biblio):&#160;entite.c']]]
 ];

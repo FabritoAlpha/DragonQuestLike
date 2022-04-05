@@ -1,6 +1,6 @@
 /**
   * \file test_monde.c
-  * \brief fichier test de monde.c
+  * \brief Test l'allocation et la libération de mémoire pour les structures de monde.h
   * \author Anna Béranger, Arthur Fabre, Alex Choux
 */
 

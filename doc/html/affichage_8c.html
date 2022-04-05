@@ -95,9 +95,9 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a4a331867f6ff2e9c1654c778994c5690"><td class="memItemLeft" align="right" valign="top"><a id="a4a331867f6ff2e9c1654c778994c5690"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_nonCombattants</b> (SDL_Renderer *renderer, <a class="el" href="structimages__t.html">images_t</a> *textures, <a class="el" href="structzone__t.html">zone_t</a> *zone, <a class="el" href="structsalle__t.html">salle_t</a> *salle)</td></tr>
 <tr class="separator:a4a331867f6ff2e9c1654c778994c5690"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a14bee2e9d823377326a36ac10c2958"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#a4a14bee2e9d823377326a36ac10c2958">affichage_dialogue</a> (SDL_Renderer *renderer, <a class="el" href="structimages__t.html">images_t</a> *textures, <a class="el" href="structmonde__t.html">monde_t</a> *monde, TTF_Font *police)</td></tr>
-<tr class="memdesc:a4a14bee2e9d823377326a36ac10c2958"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage d'une conversation ou de l'ouverture d'un coffre  <a href="affichage_8c.html#a4a14bee2e9d823377326a36ac10c2958">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a4a14bee2e9d823377326a36ac10c2958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad6b8f5b028262bb84b71d0f91ca65ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="affichage_8c.html#aad6b8f5b028262bb84b71d0f91ca65ac">interactions</a> (SDL_Renderer *renderer, <a class="el" href="structimages__t.html">images_t</a> *textures, <a class="el" href="structmonde__t.html">monde_t</a> *monde, TTF_Font *police)</td></tr>
+<tr class="memdesc:aad6b8f5b028262bb84b71d0f91ca65ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">affichage d'une conversation ou de l'ouverture d'un coffre  <a href="affichage_8c.html#aad6b8f5b028262bb84b71d0f91ca65ac">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aad6b8f5b028262bb84b71d0f91ca65ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac76c04b159b6f217e918d345f654961a"><td class="memItemLeft" align="right" valign="top"><a id="ac76c04b159b6f217e918d345f654961a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_combat</b> (SDL_Renderer *renderer, <a class="el" href="structmonde__t.html">monde_t</a> *monde, <a class="el" href="structimages__t.html">images_t</a> *textures, TTF_Font *police)</td></tr>
 <tr class="separator:ac76c04b159b6f217e918d345f654961a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -201,57 +201,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_victoire</b
     <tr><td class="paramname">police</td><td>la police du texte affiché </td></tr>
     <tr><td class="paramname">textures</td><td>les textures du jeu </td></tr>
     <tr><td class="paramname">joueur</td><td>le joueur </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a4a14bee2e9d823377326a36ac10c2958"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a14bee2e9d823377326a36ac10c2958">&#9670;&nbsp;</a></span>affichage_dialogue()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void affichage_dialogue </td>
-          <td>(</td>
-          <td class="paramtype">SDL_Renderer *&#160;</td>
-          <td class="paramname"><em>renderer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structimages__t.html">images_t</a> *&#160;</td>
-          <td class="paramname"><em>textures</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structmonde__t.html">monde_t</a> *&#160;</td>
-          <td class="paramname"><em>monde</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">TTF_Font *&#160;</td>
-          <td class="paramname"><em>police</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>affichage d'une conversation ou de l'ouverture d'un coffre </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">renderer</td><td>le renderer </td></tr>
-    <tr><td class="paramname">textures</td><td>les textures du jeu </td></tr>
-    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
-    <tr><td class="paramname">police</td><td>la police du texte affiché </td></tr>
   </table>
   </dd>
 </dl>
@@ -398,6 +347,57 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>affichage_victoire</b
     <tr><td class="paramname">police</td><td>la police du texte affiché </td></tr>
     <tr><td class="paramname">textures</td><td>les textures du jeu </td></tr>
     <tr><td class="paramname">joueur</td><td>le joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aad6b8f5b028262bb84b71d0f91ca65ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad6b8f5b028262bb84b71d0f91ca65ac">&#9670;&nbsp;</a></span>interactions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void interactions </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structimages__t.html">images_t</a> *&#160;</td>
+          <td class="paramname"><em>textures</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmonde__t.html">monde_t</a> *&#160;</td>
+          <td class="paramname"><em>monde</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>police</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>affichage d'une conversation ou de l'ouverture d'un coffre </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>le renderer </td></tr>
+    <tr><td class="paramname">textures</td><td>les textures du jeu </td></tr>
+    <tr><td class="paramname">monde</td><td>le monde du jeu </td></tr>
+    <tr><td class="paramname">police</td><td>la police du texte affiché </td></tr>
   </table>
   </dd>
 </dl>

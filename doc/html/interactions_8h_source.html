@@ -75,15 +75,24 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef _INTERACTIONS_H</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define _INTERACTIONS_H</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="deplacements_8h.html">deplacements.h</a>&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//Récompense en or</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define RECOMPENSE_COMBAT 50</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define RECOMPENSE_COFFRE 100</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interactions_8h.html#ab3624fc8dabe15392bd8ec46773bd4c3">interaction_nonCombattant</a>(SDL_Event* event, <a class="code" href="structmonde__t.html">monde_t</a> * monde);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interactions_8h.html#a3d763cccdabfdf5d282aedffb369d96d">evenements_combat</a>(SDL_Event * event, <a class="code" href="structmonde__t.html">monde_t</a> * monde);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//Prix des OBJETS</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define COUT_POTION 20</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define COUT_OBJ_DIAM 250</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define COUT_OBJ_PIERRE 100</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="deplacements_8h.html">deplacements.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interactions_8h.html#ab3624fc8dabe15392bd8ec46773bd4c3">interaction_nonCombattant</a>(SDL_Event* event, <a class="code" href="structmonde__t.html">monde_t</a> * monde);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> <a class="code" href="interactions_8h.html#a3d763cccdabfdf5d282aedffb369d96d">evenements_combat</a>(SDL_Event * event, <a class="code" href="structmonde__t.html">monde_t</a> * monde);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="ainteractions_8h_html_a3d763cccdabfdf5d282aedffb369d96d"><div class="ttname"><a href="interactions_8h.html#a3d763cccdabfdf5d282aedffb369d96d">evenements_combat</a></div><div class="ttdeci">void evenements_combat(SDL_Event *event, monde_t *monde)</div><div class="ttdoc">gestion des combats</div><div class="ttdef"><b>Definition:</b> interactions.c:129</div></div>
 <div class="ttc" id="ainteractions_8h_html_ab3624fc8dabe15392bd8ec46773bd4c3"><div class="ttname"><a href="interactions_8h.html#ab3624fc8dabe15392bd8ec46773bd4c3">interaction_nonCombattant</a></div><div class="ttdeci">void interaction_nonCombattant(SDL_Event *event, monde_t *monde)</div><div class="ttdoc">gestion des intéraction avec les nonCombattant: dialogue avec pnj, ouverture de coffre</div><div class="ttdef"><b>Definition:</b> interactions.c:16</div></div>

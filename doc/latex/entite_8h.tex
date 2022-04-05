@@ -41,6 +41,12 @@ struct \mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}}
 \mbox{\Hypertarget{entite_8h_a3a83b64ad927fef79924f6b39a7c609f}\label{entite_8h_a3a83b64ad927fef79924f6b39a7c609f}} 
 \#define {\bfseries M\+O\+N\+S\+T\+RE}~0
 \item 
+\mbox{\Hypertarget{entite_8h_a42ee19267a83983ee6248110c20d5889}\label{entite_8h_a42ee19267a83983ee6248110c20d5889}} 
+\#define {\bfseries A\+G\+RO}~1
+\item 
+\mbox{\Hypertarget{entite_8h_a9ab92911d7768e203b46ff4de174adac}\label{entite_8h_a9ab92911d7768e203b46ff4de174adac}} 
+\#define {\bfseries R\+O\+DE}~1
+\item 
 \mbox{\Hypertarget{entite_8h_a78a87d092595473bcb2a60d4ac6a622b}\label{entite_8h_a78a87d092595473bcb2a60d4ac6a622b}} 
 \#define {\bfseries B\+O\+SS}~1
 \item 
@@ -94,6 +100,9 @@ struct \mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}}
 \item 
 \mbox{\Hypertarget{entite_8h_affac876c15ec7ed54d883b4d1c4e591d}\label{entite_8h_affac876c15ec7ed54d883b4d1c4e591d}} 
 \#define {\bfseries I\+N\+D\+I\+C\+E\+\_\+\+B\+O\+U\+C\+L\+I\+ER}~1
+\item 
+\mbox{\Hypertarget{entite_8h_a1b9c3f868bdad14d3d46e92e22f9a1f0}\label{entite_8h_a1b9c3f868bdad14d3d46e92e22f9a1f0}} 
+\#define {\bfseries P\+U\+I\+S\+S\+A\+N\+C\+E\+\_\+\+M\+A\+G\+I\+Q\+UE}~1.\+5
 \end{DoxyCompactItemize}
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
@@ -114,8 +123,9 @@ void \mbox{\hyperlink{entite_8h_a05c63590d2c2f4b399ff268c5a687b7a}{en\+\_\+haut}
 \begin{DoxyCompactList}\small\item\em alloue de la mémoire pour un pnj ou un coffre \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{entite_8h_a477cb5d47ec1d3d5be1963583396cbcb}{init\+\_\+joueur}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, int niveau, int zone, int pv\+\_\+M, int pv\+\_\+C, int mana\+\_\+M, int mana\+\_\+C, int atk, int or, int nb\+\_\+inv, int nb\+\_\+equip)
 \begin{DoxyCompactList}\small\item\em initialisation du joueur \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{entite_8h_a5d4d12624a601d9c382fb93ad638446b}{init\+\_\+monstre}} (\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$monster, int pv\+Max, int pv\+Cour, int attaque, int vitesse, int niveau, int type)
-\begin{DoxyCompactList}\small\item\em initialisation d\textquotesingle{}un monstre \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{entite_8h_a7faa47ca76278ff88cfcdde2859997e1}\label{entite_8h_a7faa47ca76278ff88cfcdde2859997e1}} 
+void {\bfseries init\+\_\+monstre} (\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$monster, int pv\+Max, int attaque, int vitesse, int niveau, int type)
+\item 
 void \mbox{\hyperlink{entite_8h_a964b470d46568a7cd3d8f4b8833a685b}{init\+\_\+non\+Combattant}} (\mbox{\hyperlink{structnonCombattant__t}{non\+Combattant\+\_\+t}} $\ast$non\+Combattant, int id, float x, float y, int visite)
 \begin{DoxyCompactList}\small\item\em initialisation d\textquotesingle{}un non combattant \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{entite_8h_add9bc42cd91707b12c3c4806fad2f0e4}{detruire\+\_\+joueur}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$$\ast$player)
@@ -139,12 +149,10 @@ void {\bfseries ajout\+\_\+objet} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\
 \item 
 void \mbox{\hyperlink{entite_8h_a6fc66d09143aa4d8affe25a38384075f}{equipement\+\_\+desequipement\+\_\+objet}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, int i\+\_\+tab\+\_\+inv, int i\+\_\+obj\+\_\+equipe)
 \begin{DoxyCompactList}\small\item\em équipe ou déséquipe le joueur. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{entite_8h_ae9c395955efa52fab1d340d4ef62a115}\label{entite_8h_ae9c395955efa52fab1d340d4ef62a115}} 
-void {\bfseries consommer\+\_\+potion} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, int indice\+\_\+obj)
-\item 
-\mbox{\Hypertarget{entite_8h_a9c8d036cd6dd0c557f18139581d3e146}\label{entite_8h_a9c8d036cd6dd0c557f18139581d3e146}} 
-void {\bfseries reinitialiser\+\_\+joueur} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, \mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$biblio)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{entite_8h_ae9c395955efa52fab1d340d4ef62a115}{consommer\+\_\+potion}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, int indice\+\_\+obj)
+\begin{DoxyCompactList}\small\item\em permet de consommer une potion \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_a9c8d036cd6dd0c557f18139581d3e146}{reinitialiser\+\_\+joueur}} (\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$joueur, \mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$biblio)
+\begin{DoxyCompactList}\small\item\em déséquipe le joueur de tous les objets équipés \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Description détaillée}
@@ -187,6 +195,23 @@ déplacement d\textquotesingle{}un combattant d\textquotesingle{}un pas à gauch
 
 \begin{DoxyParams}{Paramètres}
 {\em entite} & combattant à déplacer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_ae9c395955efa52fab1d340d4ef62a115}\label{entite_8h_ae9c395955efa52fab1d340d4ef62a115}} 
+\index{entite.h@{entite.h}!consommer\_potion@{consommer\_potion}}
+\index{consommer\_potion@{consommer\_potion}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{consommer\_potion()}{consommer\_potion()}}
+{\footnotesize\ttfamily void consommer\+\_\+potion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{joueur,  }\item[{int}]{indice\+\_\+obj }\end{DoxyParamCaption})}
+
+
+
+permet de consommer une potion 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & le joueur \\
+\hline
+{\em indice\+\_\+obj} & indice de la potion dans l\textquotesingle{}inventaire du joueur \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{entite_8h_a2d0d98194c5fa83c07ea73bc859cb892}\label{entite_8h_a2d0d98194c5fa83c07ea73bc859cb892}} 
@@ -385,33 +410,6 @@ initialisation du joueur
 {\em nb\+\_\+equip} & nombre d\textquotesingle{}objets que le joueur aura d\textquotesingle{}équipés \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{entite_8h_a5d4d12624a601d9c382fb93ad638446b}\label{entite_8h_a5d4d12624a601d9c382fb93ad638446b}} 
-\index{entite.h@{entite.h}!init\_monstre@{init\_monstre}}
-\index{init\_monstre@{init\_monstre}!entite.h@{entite.h}}
-\doxysubsubsection{\texorpdfstring{init\_monstre()}{init\_monstre()}}
-{\footnotesize\ttfamily void init\+\_\+monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmonstre__t}{monstre\+\_\+t}} $\ast$}]{monster,  }\item[{int}]{pv\+Max,  }\item[{int}]{pv\+Cour,  }\item[{int}]{attaque,  }\item[{int}]{vitesse,  }\item[{int}]{niveau,  }\item[{int}]{type }\end{DoxyParamCaption})}
-
-
-
-initialisation d\textquotesingle{}un monstre 
-
-
-\begin{DoxyParams}{Paramètres}
-{\em monster} & le monstre à initialiser \\
-\hline
-{\em pv\+Max} & le nombre de points de vie maximal à donner au monstre \\
-\hline
-{\em pv\+Cour} & le nombre de points de vie à donner au mnstre \\
-\hline
-{\em attaque} & la puissance d\textquotesingle{}attaque à donner au monstre \\
-\hline
-{\em vitesse} & la vitesse à donner au monstre \\
-\hline
-{\em niveau} & le niveau à donner au monstre \\
-\hline
-{\em type} & le type que sera le monstre \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{entite_8h_a964b470d46568a7cd3d8f4b8833a685b}\label{entite_8h_a964b470d46568a7cd3d8f4b8833a685b}} 
 \index{entite.h@{entite.h}!init\_nonCombattant@{init\_nonCombattant}}
 \index{init\_nonCombattant@{init\_nonCombattant}!entite.h@{entite.h}}
@@ -502,3 +500,20 @@ vérifie qu\textquotesingle{}un objet est présent dans l\textquotesingle{}inven
 \begin{DoxyReturn}{Renvoie}
 objet présent dans l\textquotesingle{}inventaire (1), objet absent (0) 
 \end{DoxyReturn}
+\mbox{\Hypertarget{entite_8h_a9c8d036cd6dd0c557f18139581d3e146}\label{entite_8h_a9c8d036cd6dd0c557f18139581d3e146}} 
+\index{entite.h@{entite.h}!reinitialiser\_joueur@{reinitialiser\_joueur}}
+\index{reinitialiser\_joueur@{reinitialiser\_joueur}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{reinitialiser\_joueur()}{reinitialiser\_joueur()}}
+{\footnotesize\ttfamily void reinitialiser\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structjoueur__t}{joueur\+\_\+t}} $\ast$}]{joueur,  }\item[{\mbox{\hyperlink{structobjet__t}{objet\+\_\+t}} $\ast$}]{biblio }\end{DoxyParamCaption})}
+
+
+
+déséquipe le joueur de tous les objets équipés 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & le joueur \\
+\hline
+{\em biblio} & tableau sur tous les objets \\
+\hline
+\end{DoxyParams}

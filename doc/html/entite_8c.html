@@ -119,9 +119,9 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a477cb5d47ec1d3d5be1963583396cbcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a477cb5d47ec1d3d5be1963583396cbcb">init_joueur</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *joueur, int niveau, int zone, int pv_M, int pv_C, int mana_M, int mana_C, int atk, int or, int nb_inv, int nb_equip)</td></tr>
 <tr class="memdesc:a477cb5d47ec1d3d5be1963583396cbcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation du joueur  <a href="entite_8c.html#a477cb5d47ec1d3d5be1963583396cbcb">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a477cb5d47ec1d3d5be1963583396cbcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d4d12624a601d9c382fb93ad638446b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a5d4d12624a601d9c382fb93ad638446b">init_monstre</a> (<a class="el" href="structmonstre__t.html">monstre_t</a> *monster, int pvMax, int pvCour, int attaque, int vitesse, int niveau, int type)</td></tr>
-<tr class="memdesc:a5d4d12624a601d9c382fb93ad638446b"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation d'un monstre  <a href="entite_8c.html#a5d4d12624a601d9c382fb93ad638446b">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a5d4d12624a601d9c382fb93ad638446b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7faa47ca76278ff88cfcdde2859997e1"><td class="memItemLeft" align="right" valign="top"><a id="a7faa47ca76278ff88cfcdde2859997e1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_monstre</b> (<a class="el" href="structmonstre__t.html">monstre_t</a> *monster, int pvMax, int attaque, int vitesse, int niveau, int type)</td></tr>
+<tr class="separator:a7faa47ca76278ff88cfcdde2859997e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a566925ae95cf6985b850b34b0fab6207"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a566925ae95cf6985b850b34b0fab6207">init_nonCombattant</a> (<a class="el" href="structnonCombattant__t.html">nonCombattant_t</a> *nonCombat, int id, float x, float y, int visite)</td></tr>
 <tr class="memdesc:a566925ae95cf6985b850b34b0fab6207"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialisation d'un non combattant  <a href="entite_8c.html#a566925ae95cf6985b850b34b0fab6207">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a566925ae95cf6985b850b34b0fab6207"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,11 +146,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ajout_objet</b> (<a c
 <tr class="memitem:a6fc66d09143aa4d8affe25a38384075f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a6fc66d09143aa4d8affe25a38384075f">equipement_desequipement_objet</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *joueur, int i_tab_inv, int i_obj_equipe)</td></tr>
 <tr class="memdesc:a6fc66d09143aa4d8affe25a38384075f"><td class="mdescLeft">&#160;</td><td class="mdescRight">équipe ou déséquipe le joueur.  <a href="entite_8c.html#a6fc66d09143aa4d8affe25a38384075f">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a6fc66d09143aa4d8affe25a38384075f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9c395955efa52fab1d340d4ef62a115"><td class="memItemLeft" align="right" valign="top"><a id="ae9c395955efa52fab1d340d4ef62a115"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>consommer_potion</b> (<a class="el" href="structjoueur__t.html">joueur_t</a> *joueur, int indice_obj)</td></tr>
+<tr class="memitem:ae9c395955efa52fab1d340d4ef62a115"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#ae9c395955efa52fab1d340d4ef62a115">consommer_potion</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *joueur, int indice_obj)</td></tr>
+<tr class="memdesc:ae9c395955efa52fab1d340d4ef62a115"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de consommer une potion  <a href="entite_8c.html#ae9c395955efa52fab1d340d4ef62a115">Plus de détails...</a><br /></td></tr>
 <tr class="separator:ae9c395955efa52fab1d340d4ef62a115"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c8d036cd6dd0c557f18139581d3e146"><td class="memItemLeft" align="right" valign="top"><a id="a9c8d036cd6dd0c557f18139581d3e146"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reinitialiser_joueur</b> (<a class="el" href="structjoueur__t.html">joueur_t</a> *joueur, <a class="el" href="structobjet__t.html">objet_t</a> *biblio)</td></tr>
+<tr class="memitem:a9c8d036cd6dd0c557f18139581d3e146"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a9c8d036cd6dd0c557f18139581d3e146">reinitialiser_joueur</a> (<a class="el" href="structjoueur__t.html">joueur_t</a> *joueur, <a class="el" href="structobjet__t.html">objet_t</a> *biblio)</td></tr>
+<tr class="memdesc:a9c8d036cd6dd0c557f18139581d3e146"><td class="mdescLeft">&#160;</td><td class="mdescRight">déséquipe le joueur de tous les objets équipés  <a href="entite_8c.html#a9c8d036cd6dd0c557f18139581d3e146">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a9c8d036cd6dd0c557f18139581d3e146"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
@@ -204,6 +204,43 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>reinitialiser_joueur<
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">entite</td><td>combattant à déplacer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae9c395955efa52fab1d340d4ef62a115"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9c395955efa52fab1d340d4ef62a115">&#9670;&nbsp;</a></span>consommer_potion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void consommer_potion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indice_obj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet de consommer une potion </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>le joueur </td></tr>
+    <tr><td class="paramname">indice_obj</td><td>indice de la potion dans l'inventaire du joueur </td></tr>
   </table>
   </dd>
 </dl>
@@ -590,78 +627,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>reinitialiser_joueur<
 
 </div>
 </div>
-<a id="a5d4d12624a601d9c382fb93ad638446b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d4d12624a601d9c382fb93ad638446b">&#9670;&nbsp;</a></span>init_monstre()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void init_monstre </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structmonstre__t.html">monstre_t</a> *&#160;</td>
-          <td class="paramname"><em>monster</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pvMax</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pvCour</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>attaque</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>vitesse</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>niveau</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>type</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>initialisation d'un monstre </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">monster</td><td>le monstre à initialiser </td></tr>
-    <tr><td class="paramname">pvMax</td><td>le nombre de points de vie maximal à donner au monstre </td></tr>
-    <tr><td class="paramname">pvCour</td><td>le nombre de points de vie à donner au mnstre </td></tr>
-    <tr><td class="paramname">attaque</td><td>la puissance d'attaque à donner au monstre </td></tr>
-    <tr><td class="paramname">vitesse</td><td>la vitesse à donner au monstre </td></tr>
-    <tr><td class="paramname">niveau</td><td>le niveau à donner au monstre </td></tr>
-    <tr><td class="paramname">type</td><td>le type que sera le monstre </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a566925ae95cf6985b850b34b0fab6207"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a566925ae95cf6985b850b34b0fab6207">&#9670;&nbsp;</a></span>init_nonCombattant()</h2>
 
@@ -861,6 +826,43 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>reinitialiser_joueur<
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>objet présent dans l'inventaire (1), objet absent (0) </dd></dl>
+
+</div>
+</div>
+<a id="a9c8d036cd6dd0c557f18139581d3e146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c8d036cd6dd0c557f18139581d3e146">&#9670;&nbsp;</a></span>reinitialiser_joueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reinitialiser_joueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur__t.html">joueur_t</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structobjet__t.html">objet_t</a> *&#160;</td>
+          <td class="paramname"><em>biblio</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>déséquipe le joueur de tous les objets équipés </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>le joueur </td></tr>
+    <tr><td class="paramname">biblio</td><td>tableau sur tous les objets </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

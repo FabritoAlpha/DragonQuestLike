@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_182',['y',['../structcombattant__t.html#a41577cbdf9e519b63fc52505992db588',1,'combattant_t::y()'],['../structnonCombattant__t.html#a5911e71889f6efeec3aa7b2cfa5fe86d',1,'nonCombattant_t::y()']]]
+  ['x_186',['x',['../structcombattant__t.html#a8d4d81f62996227bd85e2da86f13ddd0',1,'combattant_t::x()'],['../structnonCombattant__t.html#ac55db3b78541d42f58b4ca3195fc3369',1,'nonCombattant_t::x()']]]
 ];
