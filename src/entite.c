@@ -368,6 +368,12 @@ void equipement_desequipement_objet(joueur_t * joueur, int i_tab_inv, int i_obj_
   }
 }
 
+/**
+  * \fn void consommer_potion(joueur_t * joueur, int indice_obj)
+  * \brief permet de consommer une potion
+  * \param joueur le joueur
+  * \param indice_obj indice de la potion dans l'inventaire du joueur
+*/
 
 void consommer_potion(joueur_t * joueur, int indice_obj){
   joueur->combattant->pvCour += joueur->inventaire[indice_obj].vie_sup;
@@ -383,6 +389,12 @@ void consommer_potion(joueur_t * joueur, int indice_obj){
   joueur->inventaire[indice_obj].nb_obj--;
 }
 
+/**
+  * \fn void reinitialiser_joueur(joueur_t * joueur, objet_t * biblio)
+  * \brief déséquipe le joueur de tous les objets équipés
+  * \param joueur le joueur
+  * \param biblio tableau sur tous les objets
+*/
 void reinitialiser_joueur(joueur_t * joueur, objet_t * biblio){
   int i;
   if(joueur->nb_obj_equip != 0){

@@ -10,6 +10,8 @@ Diagramme de Gantt: https://docs.google.com/spreadsheets/d/1ef4WqBX_j6s_sS7xId5K
 
 Planning hebdomadaire: voir planning.txt
 
+Debogage: présent dans les annexes du rapport nommé rapport_dragon_quest_like.pdf
+
 Démonstration: https://www.youtube.com/watch?v=UK4fRQUhwvs
 
 Pour jouer au jeu: compiler avec le Makefile à la racine du projet en tapant la commande suivante "make -f Makefile DragonQuest" puis exécuter "./bin/DragonQuest"
