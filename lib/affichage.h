@@ -33,7 +33,7 @@ void affichage_aide(SDL_Renderer *renderer, TTF_Font * police);
 
 void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, zone_t* zone, salle_t* salle);
 
-void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * monde, TTF_Font * police);
+void interactions(SDL_Renderer *renderer, images_t *textures, monde_t * monde, TTF_Font * police);
 
 void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font* police);
 

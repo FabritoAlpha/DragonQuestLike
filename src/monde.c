@@ -192,6 +192,8 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   int j_nb_obj_inv;
   int j_nb_obj_equip;
   int indice_tab_inv;
+  int indice_tab_obj_equipe;
+  int id_obj_equipe;
 
   FILE * fichier;
 
@@ -206,8 +208,9 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
 
     fscanf(fichier,"%i", &j_nb_obj_equip);
     for(i = 0; i < j_nb_obj_equip; i++){
-          fscanf(fichier, "%i", &monde->joueur->objet_equipe[i].id);
-          fscanf(fichier, "%i", &monde->joueur->objet_equipe[i].nb_obj);
+          fscanf(fichier, "%i", &indice_tab_obj_equipe);
+          fscanf(fichier, "%i", &id_obj_equipe);
+          equipement_desequipement_objet(monde->joueur, id_obj_equipe - 1, indice_tab_obj_equipe);
     }
 
   fscanf(fichier,"%i", &j_niveau);
@@ -228,46 +231,6 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   }
 
   init_joueur(monde->joueur,j_niveau,j_zone,j_pv_max,j_pv_cour,j_mana_max,j_mana_cour,j_attaque,j_or,j_nb_obj_inv, j_nb_obj_equip);
-    printf("On ne plante avant la copie de l'inventaire\n");
-    //On copie les informations des objets dans le tableau de l'inventaire du joueur
-    /*for(i = 0; i < TAILLE_INVENTAIRE; i++){
-        for(j = i; j == i; j++){
-            printf("j = %d\n", j);
-            if(monde->joueur->inventaire[i].id == monde->biblio_objet[j].id){
-                //SI les objets ont le même id, copie les informations de l'objet dans le tableau du joueur
-
-                monde->joueur->inventaire[i].nom = malloc(sizeof(char)*20);
-                monde->joueur->inventaire[i].description = malloc(sizeof(char)*50);
-                strcpy(monde->joueur->inventaire[i].nom, monde->biblio_objet[j].nom);
-                printf("nom biblio : %s\n", monde->biblio_objet[j].nom);
-                printf("nom inv : %s\n", monde->joueur->inventaire[i].nom);
-                strcpy(monde->joueur->inventaire[i].description, monde->biblio_objet[j].description);
-                printf("desc biblio : %s\n", monde->biblio_objet[j].description);
-                printf("desc inv : %s\n", monde->joueur->inventaire[i].description);
-                monde->joueur->inventaire[i].attaque_sup = monde->joueur->inventaire[j].attaque_sup;
-                monde->joueur->inventaire[i].vie_sup = monde->joueur->inventaire[j].vie_sup;
-                monde->joueur->inventaire[i].mana_sup = monde->joueur->inventaire[j].mana_sup;
-            }
-        }
-    }*/
-    printf("On ne plante pas après la copie de l'inventaire\n");
-
-    //On fait la même chose pour le tableau des objets équipés
-    for(i = 0; i < j_nb_obj_equip; i++){
-        for(j = 0; j < TAILLE_INVENTAIRE - 2; j++){
-            if(monde->joueur->objet_equipe[i].id == monde->biblio_objet[j].id){
-                //SI les objets ont le même id, copie les informations de l'objet dans le tableau du joueur
-                monde->joueur->objet_equipe[i].nom = malloc(sizeof(char)*20);
-                monde->joueur->objet_equipe[i].description = malloc(sizeof(char)*50);
-                monde->joueur->objet_equipe[i].attaque_sup = monde->biblio_objet[j].attaque_sup;
-                monde->joueur->objet_equipe[i].mana_sup = monde->biblio_objet[j].mana_sup;
-                monde->joueur->objet_equipe[i].vie_sup = monde->biblio_objet[j].vie_sup;
-                strcpy(monde->joueur->objet_equipe[i].nom, monde->biblio_objet[j].nom);
-                strcpy(monde->joueur->objet_equipe[i].description, monde->biblio_objet[j].description);
-                printf("On a copié un item de l'inventaire equipe\n");
-            }
-        }
-    }
 
   fclose(fichier);
 }
@@ -301,7 +264,7 @@ void init_salle(salle_t * salle, int num_salle, int num_zone){
   //Si on est dans la dernière salle du jeu
   //On a à faire à un boss
   if(num_zone == NB_ZONES - 1 && num_salle == NB_SALLES - 1){
-    init_monstre(salle->monstre, 300,20, 1,2,BOSS);
+    init_monstre(salle->monstre, 200,20, 1,2,BOSS);
   }
   //Si on est dans une autre salle c'est un monstre commun
   else{

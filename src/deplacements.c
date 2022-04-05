@@ -642,88 +642,89 @@ void sauvegarde(monde_t* monde){
     int i;
     int nb_obj_inv = monde->joueur->nb_obj_inventaire;
     int nb_obj_equip = monde->joueur->nb_obj_equip;
-    //Pour sauvegarder correctement la partie:
-    /*
-    -niveau du joueur --> nécessaires
-    -zone du joueur --> nécessaires
-    -pvMax, pvCour du joueur -->nécessaires
-    -manaMax, manaCour du joueur -->nécessaires
-    -Or du joueur --> nécessaires
-    -Les objets possédés voire ceux équipés --> nécessaires
-      -->Faire comment: premier nb le nombre d'item, les nombres suivants: les id respectifs de chaque item
-    -L'etat des monstres --> pas besoin puisqu'on charge tout le temps au début de la zone donc tous les monstres sont vivants à cet instant
-    */
+
+    //La sauvegarde prend en compte le choix de la partie afin de sauvegarder dans le bon fichier
     if(monde->partie == 1){
+        //On ouvre le fichier
         fichier = fopen("./rsrc/txt/partie1.txt","w");
-        //Sauvegarde du niveau et de la zone locale
+        //On sauvegarde le nombre d'objets possédés pour faciliter le chargement
         fprintf(fichier, "%d\n", nb_obj_inv);
         for(i = 0; i < TAILLE_INVENTAIRE; i++){
           //Si un objet est présent à l'indice i du tableau
           if(monde->joueur->inventaire[i].id != 0){
-            //printf("i = %d\n", i);
-            //printf("id = %d\n", monde->joueur->inventaire[i].id);
-            //printf("desc = %s\n", monde->joueur->inventaire[i].description);
+            //On sauvegarde son indice et le nombre d'objets possédés 1 si c'est une pièce d'équipement, 1 ou plus pour un consommable
             fprintf(fichier, "%d\n", i);
-            //fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
             fprintf(fichier, "%d\n", monde->joueur->inventaire[i].nb_obj);
           }
         }
+        //On sauvegarde ke nombre d'objets équipés pour facilier le chargement
         fprintf(fichier, "%d\n", nb_obj_equip);
-        //printf("nb obj equip : %d\n", nb_obj_equip);
-        for(i = 0; i < nb_obj_equip; i++){
-          //printf("i2 = %d\n", i);
-          fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
-          fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].nb_obj);
+        for(i = 0; i < NB_EQUIPEMENT; i++){
+          //Si une épée ou un bouclier est équipée
+          if(monde->joueur->objet_equipe[i].id != 0){
+            //On sauvegarde l'indice dans le tableau pour savoir si c'est une épée ou un bouclier
+            //On sauvegarde aussi l'id de l'objet équipé
+            fprintf(fichier, "%d\n", i);
+            fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
+          }
         }
+        //Sauvegarde du niveau du joueur et de la zone
         fprintf(fichier, "%d\n%d\n", monde->joueur->combattant->niveau, monde->joueur->zone);
+
         //Sauvegarde des pv max et courrants
         fprintf(fichier, "%d\n%d\n", monde->joueur->combattant->pvMax, monde->joueur->combattant->pvCour);
+
         //Sauvegarde du mana max et courrant
         fprintf(fichier, "%d\n%d\n", monde->joueur->manaMax, monde->joueur->manaCour);
+
         //Sauvegarde de l'or
         fprintf(fichier, "%d\n", monde->joueur->or);
+
         //Sauvegarde de l'attaque
         fprintf(fichier, "%d\n", monde->joueur->combattant->attaque);
-        //Sauvegarde des objets présents dans l'inventaire
-
-        //printf("nb obj inv : %d\n", nb_obj_inv);
-
-        //Sauvegarde des objets équipés
 
         //On ferme le fichier
         fclose(fichier);
     }
     if(monde->partie == 2){
+      //On ouvre le fichier
       fichier = fopen("./rsrc/txt/partie2.txt","w");
-      //Sauvegarde du niveau et de la zone locale
+      //On sauvegarde le nombre d'objets possédés pour faciliter le chargement
       fprintf(fichier, "%d\n", nb_obj_inv);
       for(i = 0; i < TAILLE_INVENTAIRE; i++){
         //Si un objet est présent à l'indice i du tableau
         if(monde->joueur->inventaire[i].id != 0){
-          //printf("i = %d\n", i);
-          //printf("id = %d\n", monde->joueur->inventaire[i].id);
-          //printf("desc = %s\n", monde->joueur->inventaire[i].description);
+          //On sauvegarde son indice et le nombre d'objets possédés 1 si c'est une pièce d'équipement, 1 ou plus pour un consommable
           fprintf(fichier, "%d\n", i);
-          //fprintf(fichier, "%d\n", monde->joueur->inventaire[i].id);
           fprintf(fichier, "%d\n", monde->joueur->inventaire[i].nb_obj);
         }
       }
+      //On sauvegarde ke nombre d'objets équipés pour facilier le chargement
       fprintf(fichier, "%d\n", nb_obj_equip);
-      //printf("nb obj equip : %d\n", nb_obj_equip);
-      for(i = 0; i < nb_obj_equip; i++){
-        //printf("i2 = %d\n", i);
-        fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
-        fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].nb_obj);
+      for(i = 0; i < NB_EQUIPEMENT; i++){
+        //Si une épée ou un bouclier est équipée
+        if(monde->joueur->objet_equipe[i].id != 0){
+          //On sauvegarde l'indice dans le tableau pour savoir si c'est une épée ou un bouclier
+          //On sauvegarde aussi l'id de l'objet équipé
+          fprintf(fichier, "%d\n", i);
+          fprintf(fichier, "%d\n", monde->joueur->objet_equipe[i].id);
+        }
       }
+      //Sauvegarde du niveau du joueur et de la zone
       fprintf(fichier, "%d\n%d\n", monde->joueur->combattant->niveau, monde->joueur->zone);
+
       //Sauvegarde des pv max et courrants
       fprintf(fichier, "%d\n%d\n", monde->joueur->combattant->pvMax, monde->joueur->combattant->pvCour);
+
       //Sauvegarde du mana max et courrant
       fprintf(fichier, "%d\n%d\n", monde->joueur->manaMax, monde->joueur->manaCour);
+
       //Sauvegarde de l'or
       fprintf(fichier, "%d\n", monde->joueur->or);
+
       //Sauvegarde de l'attaque
       fprintf(fichier, "%d\n", monde->joueur->combattant->attaque);
+
       //On ferme le fichier
       fclose(fichier);
     }

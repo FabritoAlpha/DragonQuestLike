@@ -122,14 +122,14 @@ void affichage_nonCombattants(SDL_Renderer *renderer, images_t *textures, zone_t
 }
 
 /**
-	* \fn void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * monde, TTF_Font * police)
+	* \fn void interactions(SDL_Renderer *renderer, images_t *textures, monde_t * monde, TTF_Font * police)
 	* \brief affichage d'une conversation ou de l'ouverture d'un coffre
   * \param renderer le renderer
   * \param textures les textures du jeu
   * \param monde le monde du jeu
   * \param police la police du texte affiché
 */
-void affichage_dialogue(SDL_Renderer *renderer, images_t *textures, monde_t * monde, TTF_Font * police){
+void interactions(SDL_Renderer *renderer, images_t *textures, monde_t * monde, TTF_Font * police){
     char parole[150] = "";
 
     //affichage des personnages et du fond des dialogues

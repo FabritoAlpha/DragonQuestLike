@@ -66,10 +66,10 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
     }
 
     if(monde->etat_jeu == ETAT_DIALOGUE){
-        affichage_dialogue(renderer, textures, monde, police);
+        interactions(renderer, textures, monde, police);
     }
     if(monde->etat_jeu == ETAT_COFFRE){
-        affichage_dialogue(renderer, textures, monde, police);
+        interactions(renderer, textures, monde, police);
     }
     if(monde->etat_jeu == ETAT_AIDE){
         affichage_aide(renderer, police);

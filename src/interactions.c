@@ -451,7 +451,6 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                   if(monde->joueur->combattant->pvCour < monde->joueur->combattant->pvMax){
                     consommer_potion(monde->joueur, INDICE_POTION_PV);
                     monde->num_menu_comb = MENU1;
-                    monde->num_menu_comb = OBJETS;
                     indice_action++;
                   }
                   break;
@@ -459,7 +458,6 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                   if(monde->joueur->manaCour < monde->joueur->manaMax){
                     consommer_potion(monde->joueur, INDICE_POTION_MANA);
                     monde->num_menu_comb = MENU1;
-                    monde->option = OBJETS;
                     indice_action++;
                   }
                   break;
