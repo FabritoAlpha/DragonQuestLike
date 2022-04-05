@@ -47,6 +47,9 @@
 #define INDICE_EPEE 0
 #define INDICE_BOUCLIER 1
 
+//Multiplicateur de dégâts lors de l'utilisation d'un SORT
+#define PUISSANCE_MAGIQUE 1.5
+
 /**
   * \struct combattant_t
   * \brief représentation d'une entité combattante
@@ -136,7 +139,7 @@ nonCombattant_t * creer_nonCombattant();
 
 void init_joueur(joueur_t * joueur,int niveau, int zone, int pv_M, int pv_C, int mana_M, int mana_C, int atk, int or, int nb_inv, int nb_equip);
 
-void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse, int niveau,int type);
+void init_monstre(monstre_t * monster, int pvMax, int attaque, int vitesse, int niveau,int type);
 
 void init_nonCombattant(nonCombattant_t* nonCombattant, int id, float x, float y,int visite);
 

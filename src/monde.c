@@ -301,11 +301,11 @@ void init_salle(salle_t * salle, int num_salle, int num_zone){
   //Si on est dans la dernière salle du jeu
   //On a à faire à un boss
   if(num_zone == NB_ZONES - 1 && num_salle == NB_SALLES - 1){
-    init_monstre(salle->monstre, 30, 30,100, 1,0,BOSS);
+    init_monstre(salle->monstre, 300,20, 1,2,BOSS);
   }
   //Si on est dans une autre salle c'est un monstre commun
   else{
-    init_monstre(salle->monstre, 30, 30,100, 1,0,COMMUN);
+    init_monstre(salle->monstre, 50,5, 1,num_zone,COMMUN);
   }
   if(num_salle == 0 || num_salle == 2){
     int hauteur = 251;

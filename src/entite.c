@@ -165,16 +165,15 @@ void init_joueur(joueur_t * joueur,int niveau, int zone, int pv_M, int pv_C, int
   * \brief initialisation d'un monstre
   * \param monster le monstre à initialiser
   * \param pvMax le nombre de points de vie maximal à donner au monstre
-  * \param pvCour le nombre de points de vie à donner au mnstre
   * \param attaque la puissance d'attaque à donner au monstre
   * \param vitesse la vitesse à donner au monstre
   * \param niveau le niveau à donner au monstre
-  * \param type le type que sera le monstre
+  * \param type type boss ou monstre commun
 */
-void init_monstre(monstre_t * monster, int pvMax, int pvCour, int attaque, int vitesse,int niveau,int type){
-  monster->combattant->pvMax=pvMax;
-  monster->combattant->pvCour=pvCour;
-  monster->combattant->attaque=attaque;
+void init_monstre(monstre_t * monster, int pvMax, int attaque, int vitesse,int niveau,int type){
+  monster->combattant->pvMax=pvMax + 20 * niveau;
+  monster->combattant->pvCour=pvMax + 20 * niveau;
+  monster->combattant->attaque=attaque + 5*niveau;
   monster->combattant->vitesse=vitesse;
   monster->combattant->x=500;
   monster->combattant->y=250;
@@ -264,19 +263,19 @@ void detruire_objet(objet_t**objet){
 void initialiser_biblio(objet_t tableau[]){
   int i_tab=0;
   objet_t * epee1 = creer_objet();
-  epee1 =objet_initialiser(epee1,ID_EPEE_PIERRE,4,0,0,"Epee en pierre","Desc");
+  epee1 =objet_initialiser(epee1,ID_EPEE_PIERRE,5,0,0,"Epee en pierre","Desc");
   tableau[i_tab++]=*epee1;
   objet_t * epee2 = creer_objet();
-  epee2 =objet_initialiser(epee2,ID_EPEE_DIAM,0,8,0,"Epee en diamant","Desc");
+  epee2 =objet_initialiser(epee2,ID_EPEE_DIAM,10,10,0,"Epee en diamant","Desc");
   tableau[i_tab++]=*epee2;
   objet_t * bouclier1 = creer_objet();
-  bouclier1 =objet_initialiser(bouclier1,ID_BOUCLIER_BOIS,0,0,10,"Bouclier en bois","Desc");
+  bouclier1 =objet_initialiser(bouclier1,ID_BOUCLIER_BOIS,0,0,20,"Bouclier en pierre","Desc");
   tableau[i_tab++]=*bouclier1;
   objet_t * bouclier2 = creer_objet();
-  bouclier2 =objet_initialiser(bouclier2,ID_BOUCLIER_DIAM,0,10,0,"Bouclier en Diamant","Desc");
+  bouclier2 =objet_initialiser(bouclier2,ID_BOUCLIER_DIAM,0,10,40,"Bouclier en Diamant","Desc");
   tableau[i_tab++]=*bouclier2;
   objet_t *potionvie = creer_objet();
-  potionvie =objet_initialiser(potionvie,ID_POTION_PV,0,0,20,"Potion de vie","Desc");
+  potionvie =objet_initialiser(potionvie,ID_POTION_PV,0,0,50,"Potion de vie","Desc");
   tableau[i_tab++]=*potionvie;
   objet_t *potionmana = creer_objet();
   potionmana =objet_initialiser(potionmana,ID_POTION_MANA,0,20,0,"Potion de mana","Desc");

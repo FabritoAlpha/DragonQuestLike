@@ -28,6 +28,8 @@
 #define CHOIX_POTION_PV 1
 #define CHOIX_POTION_MANA 2
 
+//Coût d'un sort
+#define COUT_SORT 10
 
 
 int distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite);

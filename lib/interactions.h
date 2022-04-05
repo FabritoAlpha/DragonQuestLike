@@ -8,6 +8,8 @@
 #ifndef _INTERACTIONS_H
 #define _INTERACTIONS_H
 
+//Récompense en or d'un combat
+#define RECOMPENSE_COMBAT 50
 
 #include "deplacements.h"
 
