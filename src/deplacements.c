@@ -41,7 +41,6 @@ int nonCombattant_proche(monde_t * monde){
   //pnj de la salle 0
   if(monde->joueur->salle == 0){
       //pnj
-      nonCombattant_t * pnj=monde->zones[monde->joueur->zone]->salles[0]->perso[0] ;
       if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[0]->perso[0]) <= 75)
           return 1;
       //marchand
