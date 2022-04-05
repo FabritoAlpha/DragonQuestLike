@@ -51,7 +51,7 @@ int main(){
       evenements(&event,monde);
 
       //Rafraichissement de l'affichage de la fenêtre
-      rafraichir( screen, monde, &textures,&tick,&tick_monstre,police);
+      rafraichir( screen, monde, &textures,&tick,police);
 
     }
 

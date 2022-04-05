@@ -32,10 +32,9 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, mond
   * \param monde les données du monde
   * \param textures les textures
   * \param next_tick correspond au prochain tick du jeu
-  * \param next_tick_monstre correspond au prochain tick dans lequel le monstre va effectuer une action
   * \param police la police utilisée
 */
-void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police){
+void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick, TTF_Font* police){
     //printf("On rentre dans rafraichir\n");
     int time_sec=(SDL_GetTicks()/15);
 

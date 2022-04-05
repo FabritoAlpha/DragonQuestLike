@@ -13,7 +13,7 @@
 
 void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, monde_t * monde, TTF_Font * police);
 
-void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick,int *next_tick_monstre, TTF_Font* police);
+void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick, TTF_Font* police);
 
 void evenements(SDL_Event* event, monde_t * monde);
 
