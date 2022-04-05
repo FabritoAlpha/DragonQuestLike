@@ -19,6 +19,10 @@
 #define JOUEUR 1
 #define MONSTRE 0
 
+//Agressivité du monstre
+#define AGRO 1
+#define RODE 1
+
 //Type du monstre
 #define BOSS 1
 #define COMMUN 0

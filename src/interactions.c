@@ -483,12 +483,6 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
     else if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->etat_jeu != ETAT_JEU_PRINCIPAL && indice_action == 1){
 		    //Le monstre inflige des dégâts basiquement au joueur
 		    monde->joueur->combattant->pvCour -= monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->attaque;
-
-		    if( monde->joueur->combattant->pvCour <= 0 && joueur_etait_vivant == 1){
-			    //S'il tue le joueur on affiche game over
-			    //apply_texture(textures->game_over, renderer, (taille_fenetre[0]/2) - 500, (taille_fenetre[1]/2) - 375);
-		      //Il doit cliquer sur une touche en dehors de escape afin de le passer
-		    }
 	  }
     //On réinitialise la valeur de menu sur celle du premier pour le ré-afficher par la suite
     if(monde->num_menu_comb != MENU2 && monde->num_menu_comb != MENU3){

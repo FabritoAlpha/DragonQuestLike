@@ -41,15 +41,10 @@ int nonCombattant_proche(monde_t * monde){
   //pnj de la salle 0
   if(monde->joueur->salle == 0){
       //pnj
-      //printf("nonCombattant proche première condition\n");
-      joueur_t * j2 = monde->joueur;
-      //printf("Réussite d'affecation joueur\n");
       nonCombattant_t * pnj=monde->zones[monde->joueur->zone]->salles[0]->perso[0] ;
-      //printf("Réussite affectation pnj\n");
       if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[0]->perso[0]) <= 75)
           return 1;
       //marchand
-      //printf("nonCombattant proche seconde condition\n");
       if(distance_pnj_coffre(monde->joueur, monde->zones[monde->joueur->zone]->salles[0]->perso[1]) <= 75)
           return 2;
   }
@@ -453,6 +448,7 @@ int collision_combattant(combattant_t * combattant, int indice_monstre, monde_t 
 */
 int deplacement_droit(combattant_t * entite, int indice_monstre, monde_t * monde){
     entite->x = (entite->x)+entite->vitesse;
+    //On vérifie s'il y a la collision suite au déplacement, si oui on annule le déplacement en revenant dans l'autre sens
     if(collision_combattant(entite, indice_monstre, monde)){
 
         a_gauche(entite);
@@ -472,8 +468,8 @@ int deplacement_droit(combattant_t * entite, int indice_monstre, monde_t * monde
 */
 int deplacement_gauche(combattant_t * entite, int indice_monstre, monde_t * monde){
     entite->x = (entite->x)-entite->vitesse;
+    //On vérifie s'il y a la collision suite au déplacement, si oui on annule le déplacement en revenant dans l'autre sens
     if(collision_combattant(entite, indice_monstre, monde)){
-
         a_droite(entite);
         return(1);
     }else{
@@ -491,8 +487,8 @@ int deplacement_gauche(combattant_t * entite, int indice_monstre, monde_t * mond
 */
 int deplacement_haut(combattant_t * entite, int indice_monstre, monde_t * monde){
     entite->y = (entite->y)-entite->vitesse;
+    //On vérifie s'il y a la collision suite au déplacement, si oui on annule le déplacement en revenant dans l'autre sens
     if(collision_combattant(entite, indice_monstre, monde)){
-
         en_bas(entite);
         return(1);
     }else{
@@ -510,8 +506,8 @@ int deplacement_haut(combattant_t * entite, int indice_monstre, monde_t * monde)
 */
 int deplacement_bas(combattant_t * entite, int indice_monstre, monde_t * monde){
     entite->y = (entite->y)+entite->vitesse;
+    //On vérifie s'il y a la collision suite au déplacement, si oui on annule le déplacement en revenant dans l'autre sens
     if(collision_combattant(entite, indice_monstre, monde)){
-
         en_haut(entite);
         return(1);
     }else{
@@ -557,7 +553,7 @@ void deplacement_monstre(monstre_t * monstre, monde_t * m){
   if(distancejoueurmonstre(m->joueur,monstre)<distance_agro && monstre->agro==0){
     monstre->agro=1;
   }
-  if(monstre->agro==0){ // Etat du monde dans lequel il se déplace de manière aléatoire
+  if(monstre->agro==0){ // Etat du monde dans lequel il se dÃ©place de maniÃ¨re alÃ©atoire
     if(monstre->dir==-1){ // dir -1 = initialisation du monstre sur son emplacement
       direction=rand()%nb_direction;
       do{distance=rand()%dist_max;}while(distance<dist_min||distance>dist_max);
@@ -566,7 +562,7 @@ void deplacement_monstre(monstre_t * monstre, monde_t * m){
       monstre->x=monstre->combattant->x;
       monstre->y=monstre->combattant->y;
     }
-    if(monstre->dir==0 && (monstre->combattant->x)>(monstre->x-monstre->dist)){ // Si le monstre va à gauche
+    if(monstre->dir==0 && (monstre->combattant->x)>(monstre->x-monstre->dist)){ // Si le monstre va Ã  gauche
       valColision = deplacement_gauche(monstre->combattant, 0, m);
       if(valColision){
         monstre->dir=-1;
@@ -578,7 +574,7 @@ void deplacement_monstre(monstre_t * monstre, monde_t * m){
         monstre->dir=direction;
       }
     }
-    if(monstre->dir==1 && (monstre->combattant->x)<(monstre->x+monstre->dist)){ // Si le monstre va à droite
+    if(monstre->dir==1 && (monstre->combattant->x)<(monstre->x+monstre->dist)){ // Si le monstre va Ã  droite
       valColision = deplacement_droit(monstre->combattant, 0, m);
       if(valColision){
         monstre->dir=-1;

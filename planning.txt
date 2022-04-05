@@ -43,23 +43,6 @@ Microplanning:
 		fonctions création et destruction zone
 		fonctions création et destruction monde
 		test_monde.c
-
-31 janvier - 6 février :
-	Tout le monde:
-
-	Arthur:
-		fonctions création et initialisation combattant
-		fonctions création et initialisation joueur
-		test_entite.c
-	Alex:
-		makefile avec les tests
-		aide Arthur et Anna
-	Anna:
-		création fichiers test
-		fonctions création et destruction salle
-		fonctions création et destruction zone
-		fonctions création et destruction monde
-		test_monde.c
 		microplannings
 
 7 février - 13 février :

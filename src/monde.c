@@ -179,7 +179,6 @@ void init_monde_menu(monde_t * monde){
 */
 void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   int i;
-  int j;
 
   int j_niveau;
   int j_zone;
@@ -221,10 +220,6 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   fscanf(fichier,"%i", &j_mana_cour);
   fscanf(fichier,"%i", &j_or);
   fscanf(fichier,"%i", &j_attaque);
-
-
-
-
 
   for(i = j_zone; i < NB_ZONES; i++){
     init_zone(monde->zones[i], i);

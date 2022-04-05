@@ -89,7 +89,6 @@ nonCombattant_t * creer_nonCombattant(){
   * \param player le joueur
 */
 void detruire_joueur(joueur_t ** player){
-  int i;
   free((*player)->combattant);
   (*player)->combattant=NULL;
 

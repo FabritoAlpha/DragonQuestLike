@@ -31,6 +31,17 @@
 //Coût d'un sort
 #define COUT_SORT 10
 
+//Constantes pour le déplacement du monstre
+#define DIST_MIN 10
+#define DIST_MAX 50
+#define NB_DIRECTION 4
+#define DIST_AGRO 250
+
+//Directions
+#define GAUCHE 0
+#define DROITE 1
+#define HAUT 2
+#define BAS 3
 
 int distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite);
 

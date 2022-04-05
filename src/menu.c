@@ -335,7 +335,7 @@ void evenements_fin_partie(SDL_Event* event, monde_t * monde){
 
   if(event->type == SDL_KEYDOWN){
     if(keystates[SDL_SCANCODE_RETURN]){
-      monde->etat_jeu = ETAT_MENU_1;
+      monde->etat_jeu = ETAT_QUITTER;
     }
   }
 }

@@ -34,7 +34,7 @@
 #define ETAT_QUITTER -1
 #define ETAT_MENU_2 4
 #define ETAT_JEU_PRINCIPAL 1
-#define ETAT_VICTOIRE 5
+#define ETAT_VICTOIRE 57
 #define ETAT_CARTE 2
 
 #define NB_MONSTRES_SALLE 1

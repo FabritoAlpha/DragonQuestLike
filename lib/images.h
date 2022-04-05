@@ -16,19 +16,15 @@
   * \brief stocke les images (textures) nécessaires à l'affichage graphique du jeu
 */
 typedef struct images_s{
-    //SDL_Texture* menu; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* zone0salle0; /*!< Texture liée à l'image du fond de l'écran. */
-    //SDL_Texture* s1; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* zone0salle1; /*!< Texture liée à l'image du fond de l'écran*/
     SDL_Texture* zone0salle2; /*!< Texture liée à l'image du fond de l'écran*/
     SDL_Texture* zone0salle3; /*!< Texture liée à l'image du fond de l'écran*/
     SDL_Texture* zone1salle0; /*!< Texture liée à l'image du fond de l'écran. */
-    //SDL_Texture* s1; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* zone1salle1; /*!< Texture liée à l'image du fond de l'écran*/
     SDL_Texture* zone1salle2; /*!< Texture liée à l'image du fond de l'écran*/
     SDL_Texture* zone1salle3; /*!< Texture liée à l'image du fond de l'écran*/
     SDL_Texture* zone2salle0; /*!< Texture liée à l'image du fond de l'écran. */
-    //SDL_Texture* s1; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* zone2salle1; /*!< Texture liée à l'image du fond de l'écran*/
     SDL_Texture* zone2salle2; /*!< Texture liée à l'image du fond de l'écran*/
     SDL_Texture* zone2salle3; /*!< Texture liée à l'image du fond de l'écran*/
