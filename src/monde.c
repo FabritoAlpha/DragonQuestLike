@@ -199,18 +199,18 @@ void init_monde_jeu(monde_t * monde, char* chemin_fichier){
   fichier = fopen(chemin_fichier,"r");
   fscanf(fichier,"%i", &j_nb_obj_inv);
 
-    for(i = 0; i < j_nb_obj_inv; i++){
-        fscanf(fichier, "%i", &indice_tab_inv);
-        ajout_objet(monde->joueur, monde->biblio_objet ,indice_tab_inv);
-        fscanf(fichier, "%i", &monde->joueur->inventaire[indice_tab_inv].nb_obj);
-    }
+  for(i = 0; i < j_nb_obj_inv; i++){
+      fscanf(fichier, "%i", &indice_tab_inv);
+      ajout_objet(monde->joueur, monde->biblio_objet ,indice_tab_inv);
+      fscanf(fichier, "%i", &monde->joueur->inventaire[indice_tab_inv].nb_obj);
+  }
 
-    fscanf(fichier,"%i", &j_nb_obj_equip);
-    for(i = 0; i < j_nb_obj_equip; i++){
-          fscanf(fichier, "%i", &indice_tab_obj_equipe);
-          fscanf(fichier, "%i", &id_obj_equipe);
-          equipement_desequipement_objet(monde->joueur, id_obj_equipe - 1, indice_tab_obj_equipe);
-    }
+  fscanf(fichier,"%i", &j_nb_obj_equip);
+  for(i = 0; i < j_nb_obj_equip; i++){
+        fscanf(fichier, "%i", &indice_tab_obj_equipe);
+        fscanf(fichier, "%i", &id_obj_equipe);
+        equipement_desequipement_objet(monde->joueur, id_obj_equipe - 1, indice_tab_obj_equipe);
+  }
 
   fscanf(fichier,"%i", &j_niveau);
   fscanf(fichier,"%i", &j_zone);

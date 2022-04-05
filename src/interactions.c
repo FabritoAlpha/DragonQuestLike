@@ -137,7 +137,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
             if(event->type == SDL_KEYDOWN){
                 if(keystates[SDL_SCANCODE_LEFT]){
                     switch(monde->option){
-                        //On décale le curseur vers la case Ã  gauche
+                        //On décale le curseur vers la case à  gauche
                         case RIEN:
                             monde->option = ATTAQUE;
                             break;
@@ -151,7 +151,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                 }
                 if(keystates[SDL_SCANCODE_RIGHT]){
                     switch(monde->option){
-                        //On décale le curseur vers la case Ã  droite
+                        //On décale le curseur vers la case à  droite
                         case RIEN:
                             monde->option = FUITE;
                             break;
@@ -167,9 +167,9 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                     switch(monde->option){
                         case ATTAQUE:
                             //On change le numéro menu combat pour afficher celui des attaques dispos
-                            //printf("On passe au menu des attaques\n");
+
                             monde->num_menu_comb = MENU2;
-                            //printf("Nouveau numéro de menu : %d\n", monde->num_menu_comb);
+
                             monde->option = RIEN;
                             break;
                         case FUITE:
@@ -324,7 +324,7 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             //Finit le combat si pv du monstre <= 0
                             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour <= 0){
                                 monde->etat_jeu = ETAT_JEU_PRINCIPAL;//On retourne sur la carte du monde si le monstre est mort
-                                //monstre->etat = MORT;//On indique que le monstre est mort -->utile pour l'affichage et les collisions
+
                                 monde->joueur->or += RECOMPENSE_COMBAT;
                                 monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat = MORT;
                             }
@@ -334,7 +334,6 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
                             //On inflige des dégâts au monstre
                             //Actualise ses pts de vie
                             monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->combattant->pvCour -=monde->joueur->combattant->attaque * PUISSANCE_MAGIQUE;
-                            //On réduit de 10 ses points de mana
                             monde->joueur->manaCour -= COUT_SORT;
                             monde->num_menu_comb = MENU1;
                             monde->option = ATTAQUE;
@@ -489,5 +488,4 @@ void evenements_combat(SDL_Event * event, monde_t * monde){
         monde->num_menu_comb = MENU1;
     }
   }
-  //printf("Fin d'evenements combats : %d\n", monde->num_menu_comb);
 }

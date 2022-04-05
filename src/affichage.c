@@ -316,11 +316,9 @@ void interactions(SDL_Renderer *renderer, images_t *textures, monde_t * monde, T
   * \param police la police du texte affiché
 */
 void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font* police){
-    //Si le monstre est vivant et le joueur vivant alors on affiche tout ce qui est utile à prendre en compte pour les combats:
-    //PV/PM
+
     //Menus ave choix des actions
-    //printf("Option du menu: %d\n", monde->option);
-    //printf("Numéro du menu:%d\n",monde->num_menu_comb);
+
     char opt[20];
     //printf("début affichage combats : %d\n", monde->num_menu_comb);
     if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT && monde->joueur->combattant->pvCour > 0){
@@ -331,8 +329,6 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
         //récupéation de l'information via la zone et la salle du joueur
         switch(monde->joueur->zone){
             case 0:
-        //Renommer monstre_zone0
-        //printf("Le monstre s'affiche\n");
                 apply_texture(&textures->monstre, renderer, SCREEN_WIDTH - 180, 600);
                 break;
             case 1:
@@ -374,7 +370,6 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
             apply_texture(&textures->case_combat, renderer, 600, 320);
             switch(monde->option){
               case ATTAQUE:
-                //printf("On rentre en surbrillance dans attaque\n");
                 apply_texture(&textures->surbrillance_combat, renderer, 100, 320);
                 break;
               case FUITE:
@@ -492,7 +487,6 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
 
       if(monde->num_menu_comb == MENU3){
         //On doit afficher trois cases
-        //printf("On rentre bien dans le menu 3\n");
         char potion_pv[20];
         char potion_mana[20];
         char retour[20];
@@ -572,10 +566,6 @@ void affichage_combat(SDL_Renderer *renderer, monde_t * monde, images_t *texture
         apply_text(renderer, 255, 255, 255, "ENTREE pour reapparaitre" , police, 260 + (taille_fenetre[0]/2) - 500, 370 + (taille_fenetre[1]/2) - 375, 480, 50);
 
     }
-    /*else{
-        //ça signifie que seul le monstre est mort -> on retourne seulement au jeu
-        monde->etat_jeu = ETAT_JEU_PRINCIPAL;
-    }*/
 }
 
 /**
@@ -600,18 +590,6 @@ void affichage_victoire(SDL_Renderer* renderer, TTF_Font* police){
   * \param police la police du texte affiché
 */
 void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *textures, TTF_Font * police){
-    //epee en pierre
-    //monde->joueur->inventaire[0]=monde->biblio_objet[0]; // placement de l'item dans l'inventaire pour tester le menu
-    //epee en diamant
-    //monde->joueur->inventaire[1]=monde->biblio_objet[1]; // placement de l'item dans l'inventaire pour tester le menu
-    //bouclier en pierre
-    //monde->joueur->inventaire[2]=monde->biblio_objet[2]; // placement de l'item dans l'inventaire pour tester le menu
-    //bouclier en diamant
-    //monde->joueur->inventaire[3]=monde->biblio_objet[3]; // placement de l'item dans l'inventaire pour tester le menu
-    //Potion de vie
-    //monde->joueur->inventaire[4]=monde->biblio_objet[4]; // placement de l'item dans l'inventaire pour tester le menu
-    //Potion de mana
-    //monde->joueur->inventaire[5]=monde->biblio_objet[5]; // placement de l'item dans l'inventaire pour tester le menu
     char opt[20] = "";
     char opt2[20] = "";
     int couleur=0; // Couleur 1 d'un item non selectionné
@@ -625,7 +603,6 @@ void affichage_inventaire(SDL_Renderer *renderer, monde_t * monde, images_t *tex
     apply_text(renderer, 0, 0, 0, opt , police, 75 + (taille_fenetre[0]/2) - 500, 20 + (taille_fenetre[1]/2) - 375 , 60, 50);
     icone_boutique_position(renderer, textures,  135 + (taille_fenetre[0]/2) - 500, 30 + (taille_fenetre[1]/2) - 375, 3);
 
-    // Affichange dynamique des séléctions avec option 1 2 3 4 5 6 7.
         // Affichage Inventaire
         if(monde->option==1){
             couleur=COULEUR_1_SELECTION;

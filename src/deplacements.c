@@ -15,19 +15,19 @@
   * \return distance
 */
 int distance_pnj_coffre(joueur_t * joueur, nonCombattant_t * entite){
-    //printf("Test début distance pnj coffre\n");
+
     int distance;
-    //printf("Test début distance pnj coffre2\n");
+
     int xa = joueur->combattant->x;
-    //printf("Test début distance pnj coffre3\n");
+
     int ya = joueur->combattant->y;
-    //printf("Test début distance pnj coffre4\n");
+
     int xb = entite->x;
-    //printf("Test début distance pnj coffre5\n");
+
     int yb = entite->y;
-    //printf("Test début distance pnj coffre6\n");
+
     distance = sqrt(pow(xb-xa,2)+pow(yb-ya,2));
-    //printf("Test début distance pnj coffre7\n");
+
     return distance;
 }
 
@@ -293,10 +293,6 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, mond
     if( (joueur->x + LARGEUR_PERSONNAGE >= monstre->x) && (joueur->x + LARGEUR_PERSONNAGE <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
         monde->etat_jeu = ETAT_COMBAT;
-        /*
-        charger_combat(monde);
-        return(PAS_COLLISION);
-        */
         monde->option = RIEN;
         return(COLLISION);
     }
@@ -305,30 +301,21 @@ int collision_joueur_monstre(combattant_t * joueur, combattant_t * monstre, mond
         monde->etat_jeu = ETAT_COMBAT;
         monde->option = RIEN;
         return(COLLISION);
-        /*
-        charger_combat(monde);
-        return(PAS_COLLISION);
-        */
+
     }
     if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y >= monstre->y) && (joueur->y <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
         monde->etat_jeu = ETAT_COMBAT;
         monde->option = RIEN;
         return(COLLISION);
-        /*
-        charger_combat(monde);
-        return(PAS_COLLISION);
-        */
+
     }
     if( (joueur->x >= monstre->x) && (joueur->x <= monstre->x + LARGEUR_PERSONNAGE) && (joueur->y + HAUTEUR_PERSONNAGE >= monstre->y) && (joueur->y + HAUTEUR_PERSONNAGE <= monstre->y + HAUTEUR_PERSONNAGE) ){
 
         monde->etat_jeu = ETAT_COMBAT;
         monde->option = RIEN;
         return(COLLISION);
-        /*
-        charger_combat(monde);
-        return(PAS_COLLISION);
-        */
+
     }
     return(PAS_COLLISION);
 }

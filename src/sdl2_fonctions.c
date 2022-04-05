@@ -24,11 +24,6 @@ int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height
         return -1;
     }
 
-    /*if(0 != SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_FULLSCREEN, window, renderer)){
-        fprintf(stderr, "Erreur lors de la creation de l'image et du renderer : %s", SDL_GetError());
-        return -1;
-    }*/
-
     (*window) = SDL_CreateWindow("Dragon Quest Like", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
             width, height,
             SDL_WINDOW_FULLSCREEN); //SDL_WINDOW_RESIZABLE SDL_WINDOW_SHOWN SDL_WINDOW_FULLSCREEN SDL_WINDOW_MAXIMIZED
@@ -36,13 +31,11 @@ int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height
     if (window == 0)
     {
         fprintf(stderr, "Erreur d'initialisation de la SDL : %s\n", SDL_GetError());
-        /* on peut aussi utiliser SLD_Log() */
     }
 
     (*renderer) = SDL_CreateRenderer(*window, -1, SDL_RENDERER_ACCELERATED ); /*  SDL_RENDERER_SOFTWARE */
     if ((*renderer) == 0) {
          fprintf(stderr, "Erreur d'initialisation de la SDL : %s\n", SDL_GetError());
-         /* faire ce qu'il faut pour quitter proprement */
     }
 
     SDL_GetWindowSize((*window),&taille_fenetre[0],&taille_fenetre[1]);
@@ -58,16 +51,15 @@ int init_sdl(SDL_Window **window, SDL_Renderer **renderer, int width, int height
   * \return la surface SDL contenant l'image, NULL si le chargement a échoué
 */
 void load_image(const char* nomfichier, SDL_Renderer** renderer, SDL_Texture** text){
-    //printf("Oui on arrive dans load_image\n");
-    //printf("On ouvre le fichier :%s\n", nomfichier);
+
     SDL_Surface *tmp = NULL;
     SDL_Texture *texture = NULL;
     tmp = SDL_LoadBMP(nomfichier);
     if(NULL == tmp)
     {
-        //printf("Erreur via tmp dans load images\n");
+
         fprintf(stderr, "Erreur pendant chargement image BMP: %s", SDL_GetError());
-        return /*NULL*/;
+        return ;
     }
     SDL_SetColorKey(tmp, SDL_TRUE, SDL_MapRGB(tmp->format, 255, 0, 255));
     texture = SDL_CreateTextureFromSurface(*renderer, tmp);
@@ -75,15 +67,15 @@ void load_image(const char* nomfichier, SDL_Renderer** renderer, SDL_Texture** t
     tmp = NULL;
     if(NULL == texture)
     {
-        //printf("Erreur via la texture dans load image\n");
+
         fprintf(stderr, "Erreur pendant creation de la texture liee a l'image chargee: %s", SDL_GetError());
-        return /*NULL*/;
+        return ;
     }
     if(tmp != NULL)
     {
-        //printf("Erreur via tmp != NULL dans load image\n");
+
         fprintf(stderr, "Erreur freesurface: %s", SDL_GetError());
-        return /*NULL*/;
+        return ;
     }
     if(texture == NULL){
       printf("Texture NULL\n");
@@ -101,34 +93,11 @@ void load_image(const char* nomfichier, SDL_Renderer** renderer, SDL_Texture** t
 */
 void apply_texture(SDL_Texture **texture,SDL_Renderer *renderer,float x, float y){
     SDL_Rect dst = {0, 0, 0, 0};
-    //SDL_Rect src = {0, 0, 0, 0};
-
-    if(*texture == NULL){
-      //printf("Texture NULL\n");
-    }
-    if(renderer == NULL){
-      //printf("Renderer Null\n");
-    }
-
     SDL_QueryTexture(*texture, NULL, NULL, &dst.w, &dst.h);
     dst.x = x;
     dst.y = y;
 
-    if(texture == NULL){
-      //printf("Texture NULL\n");
-    }
-    if(renderer == NULL){
-      //printf("Renderer Null\n");
-    }
-
     SDL_RenderCopy(renderer, *texture, NULL, &dst);
-
-    if(texture == NULL){
-      //printf("Texture NULL\n");
-    }
-    if(renderer == NULL){
-      //printf("Renderer Null\n");
-    }
 
 }
 
@@ -149,9 +118,6 @@ void update_screen(SDL_Renderer *renderer){
 void clean_texture(SDL_Texture *texture){
     if(NULL != texture){
         SDL_DestroyTexture(texture);
-    }
-    else{
-      printf("Texture pas null\n");
     }
 }
 
@@ -180,12 +146,6 @@ void clean_sdl(SDL_Renderer *renderer,SDL_Window *window){
     if(NULL != window){
         SDL_DestroyWindow(window);
     }
-    if(renderer != NULL){
-      //printf("Le renderer ne pointe pas sur NULL\n");
-    }
-    if(window != NULL){
-      //printf("Le window ne pointe pas sur NULL\n");
-    }
 
     SDL_Quit();
 }
@@ -209,7 +169,7 @@ void init_ttf(){
   * \size taille
 */
 TTF_Font* apply_font(const char* fileName, int size){
-    //charger la police
+
     TTF_Font *font = TTF_OpenFont(fileName, size);
     if(font == NULL){
         printf("Erreur chargement font: %s\n", SDL_GetError());

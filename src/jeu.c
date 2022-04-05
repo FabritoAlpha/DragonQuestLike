@@ -112,7 +112,6 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
     }
 
     //On actualise l'affichage
-    //(*next_tick)+=1;
     SDL_RenderPresent(renderer);
 
 }
@@ -211,12 +210,10 @@ void evenements(SDL_Event* event, monde_t * monde){
 
         //Si l'utilisateur a cliqué sur le X de la fenêtre
         if( event->type == SDL_QUIT ) {
-            //sauvegarde(monde);
             //On indique la fin du jeu
             monde->etat_jeu = ETAT_QUITTER;
         }
         if(keystates[SDL_SCANCODE_ESCAPE] ){
-            //sauvegarde(monde);
             monde->etat_jeu = ETAT_QUITTER;
         }
     }
