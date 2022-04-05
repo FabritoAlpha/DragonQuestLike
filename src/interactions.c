@@ -39,8 +39,8 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
             }
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
                 //on achète la potion de vie
-                if((monde->joueur->or)-20 >= 0){ // vérification de l'argent du joueur
-                  monde->joueur->or = monde->joueur->or - 20;
+                if((monde->joueur->or)-COUT_POTION >= 0){ // vérification de l'argent du joueur
+                  monde->joueur->or = monde->joueur->or - COUT_POTION;
                   // Ajout d'une potion de vie
                   ajout_objet(monde->joueur, monde->biblio_objet, 4);
                   monde->option = 0;
@@ -49,8 +49,8 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
             }
             if(keystates[SDL_SCANCODE_RETURN] && monde->option == 2){
                 //on achète la potion de mana
-                if((monde->joueur->or) -20 >= 0){ // vérification de l'argent du joueur
-                  monde->joueur->or = monde->joueur->or - 20;
+                if((monde->joueur->or) -COUT_POTION >= 0){ // vérification de l'argent du joueur
+                  monde->joueur->or = monde->joueur->or - COUT_POTION;
                   // Ajout d'une potion de mana
                   ajout_objet(monde->joueur, monde->biblio_objet, 5);
                   monde->option = 0;
@@ -60,8 +60,8 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
                 //si on est dans la dernière zone
                 if(monde->joueur->zone == 2){
                   //le marchand vend l'épée en diamant
-                  if((monde->joueur->or) - 200 >= 0 && !objet_present(monde->joueur, monde->biblio_objet, 1)){ // vérification de l'argent du joueur
-                    monde->joueur->or = monde->joueur->or - 200;
+                  if((monde->joueur->or) - COUT_OBJ_DIAM >= 0 && !objet_present(monde->joueur, monde->biblio_objet, 1)){ // vérification de l'argent du joueur
+                    monde->joueur->or = monde->joueur->or - COUT_OBJ_DIAM;
                     // Ajout d'une épée en diamant
                     ajout_objet(monde->joueur, monde->biblio_objet, 1);
                     monde->option = 0;
@@ -69,8 +69,8 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
                 } else{
                   //avant la dernière zone:
                   //le marchand vend l'épée en pierre
-                  if((monde->joueur->or) - 100 >= 0 && !objet_present(monde->joueur, monde->biblio_objet, 0)){ // vérification de l'argent du joueur
-                    monde->joueur->or = monde->joueur->or - 100;
+                  if((monde->joueur->or) - COUT_OBJ_PIERRE >= 0 && !objet_present(monde->joueur, monde->biblio_objet, 0)){ // vérification de l'argent du joueur
+                    monde->joueur->or = monde->joueur->or - COUT_OBJ_PIERRE;
                     // Ajout d'une épée en pierre
                     ajout_objet(monde->joueur, monde->biblio_objet, 0);
                     monde->option = 0;
@@ -82,8 +82,8 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
               if(monde->joueur->zone == 2){
                 //le marchand vend le bouclier en diamant
                 // vérification de l'argent du joueur et de l'absence de l'objet dans l'inventaire
-                if((monde->joueur->or) - 200 >= 0 && !objet_present(monde->joueur, monde->biblio_objet, 3)){
-                  monde->joueur->or = monde->joueur->or - 200;
+                if((monde->joueur->or) - COUT_OBJ_DIAM >= 0 && !objet_present(monde->joueur, monde->biblio_objet, 3)){
+                  monde->joueur->or = monde->joueur->or - COUT_OBJ_DIAM;
                   // Ajout d'un bouclier en diamant
                   ajout_objet(monde->joueur, monde->biblio_objet, 3);
                   monde->option = 0;
@@ -91,8 +91,8 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
               } else{
                 //avant la dernière zone:
                 //le marchand vend le bouclier en pierre
-                if((monde->joueur->or) - 100 >= 0 && !objet_present(monde->joueur, monde->biblio_objet, 2)){ // vérification de l'argent du joueur
-                  monde->joueur->or = monde->joueur->or - 100;
+                if((monde->joueur->or) - COUT_OBJ_PIERRE >= 0 && !objet_present(monde->joueur, monde->biblio_objet, 2)){ // vérification de l'argent du joueur
+                  monde->joueur->or = monde->joueur->or - COUT_OBJ_PIERRE;
                   // Ajout d'un bouclier en pierre
                   ajout_objet(monde->joueur, monde->biblio_objet, 2);
                   monde->option = 0;
@@ -111,7 +111,7 @@ void interaction_nonCombattant(SDL_Event* event, monde_t * monde){
         if(nonCombattant_proche(monde) == 3){
             if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre->visite == 0){
                 monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->coffre->visite = 1;
-                monde->joueur->or = monde->joueur->or + 500;
+                monde->joueur->or = monde->joueur->or + RECOMPENSE_COFFRE;
             }
             if(keystates[SDL_SCANCODE_RETURN]){
                 monde->etat_jeu = ETAT_JEU_PRINCIPAL;

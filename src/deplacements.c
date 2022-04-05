@@ -127,6 +127,14 @@ void changement_zone(monde_t * monde){
 	monde->joueur->combattant->x = (SCREEN_WIDTH/2) - (LARGEUR_PERSONNAGE/2);
 	monde->joueur->combattant->y = 100 + 10;
 
+  //En changeant de zone le joueur augmente son niveau de 1 et ainsi il augmente ses statistiques de base
+  monde->joueur->combattant->niveau += 1;
+  monde->joueur->combattant->attaque += 5;
+  monde->joueur->combattant->pvMax +=10;
+  monde->joueur->combattant->pvCour += 10;
+  monde->joueur->manaMax += 5;
+  monde->joueur->manaCour += 5;
+
   sauvegarde(monde);
 }
 
