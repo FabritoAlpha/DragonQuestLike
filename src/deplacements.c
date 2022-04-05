@@ -100,7 +100,6 @@ void changement_salle(joueur_t * j, int changement_salle){
 		case 3:
       //S'il va vers la gauche même cas que pour le cas 0
       if(j->zone == 2){
-        printf("Modif de x du joueur\n");
 
         j->combattant->x = SCREEN_WIDTH - LARGEUR_PERSONNAGE - 100 -j->combattant->vitesse;
       }else{

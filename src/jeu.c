@@ -35,7 +35,6 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, images_t *textures, mond
   * \param police la police utilisée
 */
 void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int * next_tick, TTF_Font* police){
-    //printf("On rentre dans rafraichir\n");
     int time_sec=(SDL_GetTicks()/15);
 
     //on vide le renderer
@@ -50,7 +49,6 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
 
     }
     else{
-      //printf("Test affichage fond\n");
       fond(renderer, textures, monde);
     }
     if(monde->etat_jeu == ETAT_INVENTAIRE){
@@ -98,7 +96,6 @@ void rafraichir(SDL_Renderer *renderer, monde_t * monde, images_t *textures,int 
 
       if(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre->etat == VIVANT){
         monstre_position(renderer, textures, monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
-        //printf("time sec %d nexttick %d\n",time_sec,(*next_tick));
         if(time_sec>(*next_tick)){
           (*next_tick) = (*next_tick) + 48;
           deplacement_monstre(monde->zones[monde->joueur->zone]->salles[monde->joueur->salle]->monstre, monde);
@@ -135,7 +132,6 @@ void evenements(SDL_Event* event, monde_t * monde){
            continue;
 
         if(monde->etat_jeu == ETAT_MENU_1){
-            printf("On rentre dans evenements menu\n");
             evenements_menu(event, monde);
         }
         if(monde->etat_jeu == ETAT_MENU_2){
@@ -144,7 +140,6 @@ void evenements(SDL_Event* event, monde_t * monde){
               //Après avoir choisi le fichier où sauvegarder on écrase la sauvegarde avec soit l'initialisation soit le fichier chargé qui était sauvegardé
               sauvegarde(monde);
             }
-            printf("menu partie\n");
         }
         /*!< Jeu en cours */
         if(monde->etat_jeu == ETAT_JEU_PRINCIPAL){
@@ -219,12 +214,10 @@ void evenements(SDL_Event* event, monde_t * monde){
             //sauvegarde(monde);
             //On indique la fin du jeu
             monde->etat_jeu = ETAT_QUITTER;
-            printf("fin du jeu");
         }
         if(keystates[SDL_SCANCODE_ESCAPE] ){
             //sauvegarde(monde);
             monde->etat_jeu = ETAT_QUITTER;
-            printf("fin du jeu");
         }
     }
 

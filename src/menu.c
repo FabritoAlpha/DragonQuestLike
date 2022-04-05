@@ -55,7 +55,6 @@ void choix_partie(SDL_Event* event, monde_t * monde){
           //on initialise la partie
           init_monde_jeu(monde,"./rsrc/txt/partie1.txt"); //TO DO utiliser sauvegarde de différentes parties
           monde->partie = 1;
-          printf("partie1");
           //on commence le jeu
           monde->etat_jeu = ETAT_JEU_PRINCIPAL;
         }
@@ -64,7 +63,6 @@ void choix_partie(SDL_Event* event, monde_t * monde){
           //on initialise la partie
           init_monde_jeu(monde,"./rsrc/txt/partie2.txt"); //TO DO utiliser sauvegarde de différentes parties
           monde->partie = 2;
-          printf("partie2");
           //on commence le jeu
           monde->etat_jeu = ETAT_JEU_PRINCIPAL;
         }
@@ -93,7 +91,6 @@ void choix_partie(SDL_Event* event, monde_t * monde){
                         monde->option2 = 3; //3 options pour le moment
                 }
             }
-            printf("option2: %d", monde->option2);
             //nouvelle partie sur l'emplacement partie 1
             if(keystates[SDL_SCANCODE_RETURN] && monde->option2 == 1){
               //on initialise la partie
@@ -144,11 +141,9 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
                 monde->option = 2; //2 options pour le moment
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 1){
-            printf("On appuie sur jouer\n");
             //on entre dans un menu avec le choix de la partie
             monde->etat_jeu = ETAT_MENU_2;
             monde->option = -1;
-            printf("monde->etat_jeu = %d\n", monde->etat_jeu);
         }
         if(keystates[SDL_SCANCODE_RETURN] && monde->option == 2){
             monde->etat_jeu = ETAT_QUITTER;
@@ -166,7 +161,6 @@ void evenements_menu(SDL_Event* event, monde_t * monde){
 void evenements_inventaire(SDL_Event* event, monde_t * monde){
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
     if(event->type == SDL_KEYDOWN){
-      //printf("Debut Nb obj equip = %d\n", monde->joueur->nb_obj_equip);
         if(keystates[SDL_SCANCODE_DOWN]){
           switch(monde->option){
             case INVENTAIRE :
@@ -321,7 +315,6 @@ void evenements_inventaire(SDL_Event* event, monde_t * monde){
 
     }
 
-    //printf("Fin Nb obj equip = %d\n", monde->joueur->nb_obj_equip);
 }
 
 /**
