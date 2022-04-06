@@ -27,6 +27,8 @@ int main(){
     monde = creer_monde();
     int tick=5;
 
+    //Initialisation de la bilibothèque des objet
+    initialiser_biblio(monde->biblio_objet);
 
     //mise en place du jeu (l'écran, le monde de jeu et les textures. )
 
